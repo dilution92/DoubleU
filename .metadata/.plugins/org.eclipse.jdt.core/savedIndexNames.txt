@@ -1,3 +1,0 @@
-INDEX VERSION 1.131+C:\Users\USER\DoubleU\.metadata\.plugins\org.eclipse.jdt.core
-641090112.index
-4088832729.index
