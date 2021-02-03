@@ -1,5 +1,6 @@
 # DoubleU
 Final-Project
+<<<<<<< HEAD
 
 -  `컨셉` : 그룹웨어 <br> 
 -  `팀명` : Double U
@@ -44,3 +45,5 @@ ppt 제작| 03.01 ~ 03.03|　|
 - ## [21.01.29](double-mettings/21.01.29.md)
 - ## [21.02.01](double-mettings/21.02.01.md)
 - ## [21.02.03](double-mettings/21.02.03.md)
+=======
+>>>>>>> 44d4118896448b8bae7439da697663d65a2603e9

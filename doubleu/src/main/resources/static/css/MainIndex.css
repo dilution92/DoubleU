@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+
+/* main영역 스타일 정의 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+.main-gnb {
+	padding: 0;
+}
+
+.index-body {
+	padding: 0 50px 0 50px;
+}
+.index-first-row {
+	width: 100%;
+}
+
+.index-notice {
+	margin-top: 1em;
+}
+
+.index-mail-box {
+	margin-top: 1em;
+}
+
+.index-profile {
+	height: 250px;
+	text-align: center;
+	padding-bottom: 0; 
+}
+
+.index-profile-text {
+	padding-bottom: 0;
+}
+.index-attendance {
+	margin-top: 1em;
+}
+
+.index-gnb {
+	padding: 0;
+}
+
+.index-profile-main {
+	padding-bottom: 0;
+	padding-top: 0;	
+}
+
+.index-profile-img {
+	width: 50%;
+	height: 60%;
+	margin-top: 1.5em;
+}
+
+.index-attendance-select-box {
+	width: 90%;
+	margin-top: 0.5em;
+	margin-left: 10px;
+}
+
+.index-attendance-btns {
+	margin: 0 auto;
+	width: 90%;
+}
