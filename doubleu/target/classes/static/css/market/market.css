@@ -104,7 +104,9 @@ body {
 
 
 /* e-approval-search-bar CSS */
-
+.market-header{
+	display : flex;
+}
 
 .e-approval-search-bar {
 	width: 100%;
@@ -148,30 +150,30 @@ body {
 	margin-left: 0.5em;
 	}
 
+/*-------------market 글갯수 및 정렬 CSS ----------------------*/
 
-/* e-approval-table CSS */
-.e-approval-table {
-	width: 100%;	
+.market-subheader-container{
+	display: flex;
+    margin-bottom: 20px;
 }
-.e-approval-table > strong {
-	display: inline-block;
-	font-size: 0.9em;
-	margin-bottom: 0.5em;
+/*글갯 수 간격 조정*/
+.market-total {
+	width : 85%;
 }
-
-.e-approval-list {
-	font-size: 0.8em;
+/* ------------market contents CSS -------------------------*/
+/*게시글 간격 조정 */
+.mb-4, .my-4 {
+    margin-bottom: 5rem!important;
+    padding-right: 50px;
 }
-
-.e-approval-list td:hover {
-	cursor: pointer;
+/* 작성자 css */
+.card-text-name {
+	background : #aaa;
+	color : white;
+	width : 30%;
+	float : right;
+	text-align : center;
 }
-
-.e-approval-list tr {
-	text-align: center;
-}
-
-
 /* e-approval-list-pagination CSS (페이징처리)*/
 .e-approval-list-pagination a:link {
 	color: #6c757d;
@@ -195,4 +197,6 @@ body {
 .e-approval-list-pagination:last-child {
 	padding-bottom: 7em;
 }
+
+/* Important part */
 
