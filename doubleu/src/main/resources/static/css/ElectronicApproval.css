@@ -35,7 +35,7 @@ body {
 
 .e-approval-lnb-content > h4{
 	margin-bottom: 1em;
-	font-size: 1.2em;
+	font-size: 1.4em;
 }
 
 .e-approval-form-btn > input[type="button"] {
@@ -75,7 +75,6 @@ body {
 	font-size: 1.1em;
 }
 
-
 .e-approval-approval-list a:visited{
 	text-decoration: none;
 	color: #000000;
@@ -88,6 +87,12 @@ body {
 .e-approval-approval-list > ul > li:hover {
 	background-color: #e2e5de;
 }
+
+.approval-scroll {
+	overflow: auto;
+	height: 300px;
+}
+
 /* +++++++++++++++++++++++++++++++++++++++ */
 
 
@@ -190,6 +195,4 @@ body {
 .e-approval-list-pagination:last-child {
 	padding-bottom: 7em;
 }
-
-
 
