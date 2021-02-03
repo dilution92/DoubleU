@@ -1,2 +1,0 @@
-# DoubleU
-Final-Project
