@@ -1,0 +1,3 @@
+INDEX VERSION 1.131
+C:\Users\USER\DoubleU\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3288016119.index
+\doubleU\src\main\java

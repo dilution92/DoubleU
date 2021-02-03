@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\USER\DoubleU\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1308992427.index
+3288016119.index
+1611915551.index
+1845766659.index
+2596869913.index
+61584499.index
