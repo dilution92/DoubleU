@@ -60,15 +60,15 @@
 						<li><a href="#">중요 메일함</a></li>
 						<li><a href="#">임시 보관함</a></li>
 						<li><a href="#">보낸 보관함</a></li>
-						<li><a href="#">스팸 메일함</a> <button type="button" class="btn btn-primary btn-sm">비우기</button></li>
-						<li><a href="#">휴지통</a><button type="button" class="btn btn-primary btn-sm">비우기</button></li>
+						<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
+						<li><a href="#">휴지통</a>       <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
 						
 					</ul>
 				</div>
 				<div class="e-approval-approval-list">
 					<span class="sendmail-align">
 					<span>내 메일함</span>
-					<button type="button" style="line-height: 15px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
+					<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
 					</span>
 					
 					<ul>
