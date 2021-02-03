@@ -42,3 +42,5 @@ ppt 제작| 03.01 ~ 03.03|　|
 # 🎉 회의록
 - ## [21.01.28](double-mettings/21.01.28.md)
 - ## [21.01.29](double-mettings/21.01.29.md)
+- ## [21.02.01](double-mettings/21.02.01.md)
+- ## [21.02.03](double-mettings/21.02.03.md)
