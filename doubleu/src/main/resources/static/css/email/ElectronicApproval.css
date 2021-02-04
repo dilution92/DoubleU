@@ -284,13 +284,18 @@ body {
 
 /* 받은 메일함 선택 바*/
 
+.email-select-content {
+	width: 1000px;
+	margin: 0 auto;
+}
+
 .email-select-content > .email-select-list {
 	display: flex;
 	margin-left: 0px;
 	margin-bottom: 2rem;
 	justify-content:space-around;
 	padding: 0px;
-	width: 580px;
+	width: 650px;
 	
 }
 
@@ -300,16 +305,93 @@ body {
 	margin: 0px 10px;
 }
 
-.email-select-content > ul > li:hover {
-	background-color: #e2e5de;
-}
 
 
 .email-select-content > ul > li > label {
 	cursor: pointer;
+	width: 100px;
 }
 
 
 .email-select-content > ul > li > label > input{
 	margin-right: 10px;
 }
+
+.email-select-content > ul > li > span {
+	width:80px;
+}
+
+
+.email-select-content > ul > li div > div > button {
+	width:80px;
+}
+
+/* 이동 모달창 */
+
+.modalMoveContent {
+    height: 600px;
+}
+
+.modalMoveBtn {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalMoveBtn > h4 {
+	text-align: left;
+}
+.modalMoveBtn > ul{
+   margin-top: 30px;
+
+}
+
+.modalMoveBtn > ul > li {
+   width: 300px;
+   list-style:none;
+   text-indent: 15px;
+   display:block;
+   margin-bottom: 5px;
+}
+ 
+.modalMoveBtn > ul > li:nth-child(1) {
+ 	text-align:left;
+} 
+
+.modalMoveContent > input {
+    margin: 30px auto;
+    width: 400px;
+    height: 30px;
+}
+
+.modalMoveContent > .modalMoveBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalMoveContent > .modalMoveBtn > button {
+    margin: 0 50px;
+}
+
+.modalMoveEmailBtn {
+	text-align: center;
+	width: 400px;
+}
+
+.modalMoveEmailBtn > button {
+	margin: 0px 35px;
+}
+
+
+/* 맨위로, 목록으로 */
+
+.email-select-first  {
+	position: fixed;
+	left: 1300px;
+}
+.email-select-first > div{
+	width: 100px;
+	display: block;
+	
+}
+
+
