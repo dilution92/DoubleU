@@ -69,8 +69,14 @@
 			<div class="e-approval-lnb-content">
 				<h4>전자결재 홈</h4>
 				<div class="e-approval-form-btn">
-					<input type="button" class="btn btn-primary btn-lg" value="새 결재 진행">
+					<input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" value="새 결재 진행">
 				</div>
+
+				
+				
+				
+				
+				
 				<div class="e-approval-approval-list">
 					<a href="#">내가 보낸 문서함</a>
 					<ul>
@@ -97,7 +103,7 @@
 
 			<!-- 전자결재홈 검색바 code -->
 			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="" method="post">
+	      		<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 			      	<div class="e-approval-form-box">
 				        <input class="btn btn-outline-primary btn-sm" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
@@ -209,6 +215,85 @@
 			<!-- ========= -->
 		</main>
 	</section>
+	
+	<!-- 모달창 -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">결재 유형 선택</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="moadl-body approval-scroll">
+					<div class="accordion" id="accordionExample">
+						<div class="card">
+							<div class="card-header" id="headingOne">
+								<h6 class="mb-0">
+									<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne"
+									 aria-expanded="true" aria-controls="collapseOne">
+									 일반 업무
+									 </button>
+								</h6>
+							</div>
+							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+								<div class="card-body">
+									<ul>
+										<li><a href="#">업무 기안</a></li>
+										<li><a href="#">업무 협조</a></li>
+										<li><a href="#">품의서</a></li>
+										<li><a href="#">회의록</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header" id="headingTwo">
+								<h6 class="mb-0">
+									<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo"
+									 aria-expanded="true" aria-controls="collapseTwo">
+									 인사
+									</button>
+								</h6>
+							</div>
+							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+								<div class="card-body">
+									<ul>
+										<li><a href="#">휴가 신청서</a></li>
+										<li><a href="#">지각/불참 사유서</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header" id="headingThree">
+								<h6 class="mb-0">
+									<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree"
+									 aria-expanded="true" aria-controls="collapseThree">
+									 지출결의
+									 </button>
+								</h6>
+							</div>
+							<div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample">
+								<div class="card-body">
+									<ul>
+										<li><a href="#">지출결의서</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="button" class="btn btn-secondary" data-dismiss="modal" value="close">
+					<input type="button" class="btn btn-primary" value="선택"> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 
 <!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -219,6 +304,9 @@
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
 <!-- ****************************** -->
-		
+
+<script type="text/javascript">
+</script>
+
 </body>
 </html>
