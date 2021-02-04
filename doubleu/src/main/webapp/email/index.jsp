@@ -33,6 +33,7 @@
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
+
 	<header>
 		<div class="container-fluid main-gnb">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
@@ -41,8 +42,7 @@
 		</div>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
-	 			
-	 				
+				
 	<section class="e-approval-container">
 		<!-- e-approval-lnb code -->
 							
@@ -55,13 +55,13 @@
 				<div class="e-approval-approval-list">
 					<span>메일함</span>
 					<ul>
-						<li><a href="#">받은 메일함</a><span class="badge badge-primary">1566</span></li>
+						<li><a href="#">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
 						<li><a href="#">별표 메일함</a></li>
 						<li><a href="#">중요 메일함</a></li>
 						<li><a href="#">임시 보관함</a></li>
-						<li><a href="#">보낸 보관함</a></li>
+						<li><a href="#">보낸 메일함</a></li>
 						<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-						<li><a href="#">휴지통</a>       <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
+						<li><a href="#">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
 						
 					</ul>
 				</div>
@@ -115,7 +115,41 @@
 	                        
 	                    </div>
 	                </div>  
-	                </div>       
+	                </div>
+	                
+	    <!-- 3. 이동 모달창 -->
+	     <div class="modal fade bs-example-modal-lg" id="moveEmailRev" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" style="margin: 30px auto;">
+                            <div class="modal-content modalMoveContent">
+                                <div class="modalMoveBtn">
+                                    <h4>이동</h4>
+                                    
+                                    <ul style="font-size: 20px;">
+                                        <li>메일함</li>
+                                        <li class="btn btn-outline-primary btn-sm">받은 메일함</li>
+                                        <li class="btn btn-outline-primary btn-sm">중요 메일함</li>
+                                        <li class="btn btn-outline-primary btn-sm">임시 보관함</li>
+                                        <li class="btn btn-outline-primary btn-sm">내가 쓴 메일함</li>
+                                        <li class="btn btn-outline-primary btn-sm">스팸 메일함</li>
+                                        <li class="btn btn-outline-primary btn-sm">휴지통</li>
+                                    </ul>
+                                    
+                                    <ul style="font-size: 20px;">
+                                        <li>내 메일함</li>
+                                        <li class="btn btn-outline-primary btn-sm">NOTES</li>
+                                        <li class="btn btn-outline-primary btn-sm">보관함</li>
+                                    </ul>
+
+                                    <div class="modalMoveEmailBtn">
+                                        <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">이동하기</button>
+	                                	<button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        </div>  
+	                       
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
@@ -130,7 +164,10 @@
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	
 				      	<select class="form-control form-control-sm e-approval-select-box">
-				      		<option selected> 메일 </option>
+				      		<option selected> 제목 </option>
+				      		<option value="0"> 내용 </option>
+				      		<option value="1">  제목+내용 </option>
+				      		<option value="2"> 보낸이 </option>
 				      	</select>
 					</div>
 	     		</form>
@@ -142,35 +179,58 @@
 			<div class="email-select-content">
 				<ul class="email-select-list">
 					<li>
-						<label>
+						<label class="btn btn-outline-primary btn-sm">
 						<input type="checkbox"/>전체선택
 						</label>
 					</li>
                     <li>
-                     	<span data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
+                     	<span class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
                     </li>
-                    <li class="listTest" style="cursor: pointer; ">
-                          <span>답장하기</span>
+                    <li>
+                          <span class="btn btn-outline-primary btn-sm">답장하기</span>
                      </li>
 
-                     <li class="listTest" style="cursor: pointer; ">
-                         <span>삭제하기</span>
+                     <li>
+                         <span class="btn btn-outline-primary btn-sm">삭제하기</span>
                      </li>
 
-                     <li class="listTest" style="cursor: pointer; ">
-                         <span>전달하기</span>
+                     <li>
+                         <span class="btn btn-outline-primary btn-sm">전달하기</span>
                      </li>
 
-                     <li class="listTest" style="cursor: pointer; ">
-                         <span>읽음</span>
+                     <li>
+                         <span class="btn btn-outline-primary btn-sm">읽음</span>
                      </li>
 
-                     <li class="listTest" style="cursor: pointer; ">
-                         <span data-toggle="modal" data-target=".bs-example-modal-sm">이동</span>
+                     <li>
+                         <div class="input-group mb-3">
+							  <div class="input-group-prepend">
+							    <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">이동</button>
+							    <div class="dropdown-menu">
+							      <a class="dropdown-item" href="#">받은 메일함</a>
+							      <a class="dropdown-item" href="#">별표 메일함</a>
+							      <a class="dropdown-item" href="#">임시 보관함</a>
+							      <a class="dropdown-item" href="#">보낸 메일함</a>
+							      <a class="dropdown-item" href="#">스팸 메일함</a>
+							      <a class="dropdown-item" href="#">휴지통</a>
+							      <div role="separator" class="dropdown-divider"></div>
+							      <a class="dropdown-item" href="#">NOTES</a>
+							    </div>
+							  </div>
+						</div>	
                  	</li>
+                 	
 				</ul>
 			</div>
-				
+			
+			<!-- 맨위로, 목록으로 	
+			<div class="email-select-align">
+				<div class="email-select-first">
+					<div class="btn btn-outline-primary btn-sm"><i class="bi bi-arrow-up"></i>맨위로</div>
+					<div class="btn btn-outline-primary btn-sm"><i class="bi bi-list"></i>목록으로</div>
+				</div>
+			</div>
+			-->
 			
 			
 			<!-- 메일함 -->
@@ -183,7 +243,7 @@
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td><i class="bi bi-exclamation"></i></td>
-								<td>song@gmail.com</td>					
+								<td>DoubleU Project</td>					
 								<td style=" text-align: left; text-indent: 2em;">프론트엔드 작업 중 입니다. 시간이 참 빨리 지나가네요 흑흑</td>					
 								<td>2021-02-23 23:55:45</td>							
 							</tr>
@@ -211,6 +271,8 @@
 
 		</main>
 	</section>
+	
+	<!-- Example single danger button -->
 
 
 		
