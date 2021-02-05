@@ -158,7 +158,6 @@
 				      	</select>
 					</div>
 	     		</form>
-	     		<input type="text" name="inputTest">
 			</div>
 			<!-- ========== -->
 			<input type="text" id="testType">
@@ -273,10 +272,14 @@
 <script>
 	
 	chk = function() {
+		var arr = ['zero', 'one', 'tow']; 
+		
 		let btn = document.getElementById('testType')
+		btn.value = arr
 		console.log(btn.value)
+		/*
 		document.frm.action = "test.jsp";
-		document.frm.submit();	
+		document.frm.submit();	*/
 	}
 	
 	
