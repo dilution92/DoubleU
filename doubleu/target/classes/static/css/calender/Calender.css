@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+
+body {
+	height: 100%;
+}
+
+/* 일정 사이드 바 */
+    aside{
+        float: left;
+        width: 20%;
+    	height: 1000px;
+        box-sizing: border-box;
+        padding: 1.2em 1.5em 0em 1.5em;
+        background-color: #f8f9fa;
+        text-align: center;
+    }
+    
+/* 일정 메인 컨텐츠*/
+    main{
+        float: right;
+        width: 80%;
+        box-sizing: border-box;
+        padding: 3em 5em 0 5em;
+    }
+    
+    #calender_content:hover{
+    	background-color: skyblue;
+    }
