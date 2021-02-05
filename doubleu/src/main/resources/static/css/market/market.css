@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+body {
+	height: 100%;
+}
+
+.main-gnb-content {
+	padding: 1rem 1rem;
+}
+.main-gnb-menu > li > a {
+	margin-right: 1em;
+}
+
+
+/* 전자결재 사이드바 CSS */
+.e-approval-container {
+	display: flex;	
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.e-approval-lnb {
+	background-color: #f8f9fa;
+	width: 20%;
+	text-align: center;
+	padding: 1.2em 1.5em 0em 1.5em;
+	min-height: 100%;
+}
+
+.e-approval-lnb-content {
+	width: 16%;
+	position: fixed;
+}
+
+.e-approval-lnb-content > h4{
+	margin-bottom: 1em;
+	font-size: 1.4em;
+}
+
+.e-approval-form-btn > input[type="button"] {
+	width: 100%;
+	font-size: 0.9em;
+	margin-bottom: 1em;
+}
+
+.e-approval-lnb-content ul {
+	list-style-type: none; 
+	padding-inline-start: 0;
+}
+
+.e-approval-lnb-content ul > li {
+	font-size: 0.9em;
+	padding: 5px 0 5px 40px;
+	text-align: left;
+}
+
+.e-approval-approval-list > ul > li > a {
+	text-indent: 1em;
+}
+
+.e-approval-approval-list  {
+	margin-top: 2em;
+}
+.e-approval-approval-list a {
+	color: #000000;
+	width: 100%;
+	display: block;
+}
+
+.e-approval-approval-list > a {
+	margin-bottom: 0.7em;
+	display: block;
+	width: 100%;
+	font-size: 1.1em;
+}
+
+.e-approval-approval-list a:visited{
+	text-decoration: none;
+	color: #000000;
+}
+.e-approval-approval-list a:link{
+	text-decoration: none;
+	color: #000000;
+}
+
+.e-approval-approval-list > ul > li:hover {
+	background-color: #e2e5de;
+}
+
+.approval-scroll {
+	overflow: auto;
+	height: 300px;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++ */
+
+
+/* 전자결재 main CSS */
+.e-approval-article {
+	width: 80%;
+	padding: 3em 5em 0 5em;
+}
+
+
+/* e-approval-search-bar CSS */
+.market-header{
+	display : flex;
+}
+
+.e-approval-search-bar {
+	width: 100%;
+	min-height: 10%; 
+	margin-bottom: 4em;
+}
+
+.e-approval-search-form {
+	width: 100%;
+	min-height: 10%;
+}
+
+.e-approval-form-box {
+	width: 100%;
+	min-height: 10%;
+}
+
+.e-approval-select-box:hover {
+	cursor: pointer;
+}
+
+.e-approval-form-box > select {
+	display: inline-block;
+	width: 15%;
+	float: right;
+	margin-left: 0.5em;
+}
+
+.e-approval-form-box > input[type="text"] {
+	display: inline-block;
+	margin-top: 0;
+	width: 30%;
+	float: right;
+	margin-left: 0.5em;
+}
+
+.e-approval-form-box > input[type="button"] {
+	display: inline-block;
+	margin-top: 0;
+	float: right;
+	margin-left: 0.5em;
+	}
+
+/*-------------market 글갯수 및 정렬 CSS ----------------------*/
+
+.market-subheader-container{
+	display: flex;
+    margin-bottom: 20px;
+}
+/*글갯 수 간격 조정*/
+.market-total {
+	width : 85%;
+}
+/* ------------market contents CSS -------------------------*/
+/*게시글 간격 조정 */
+.mb-4, .my-4 {
+    margin-bottom: 5rem!important;
+    padding-right: 50px;
+}
+/* 작성자 css */
+.card-text-name {
+	background : #aaa;
+	color : white;
+	width : 30%;
+	float : right;
+	text-align : center;
+}
+/* e-approval-list-pagination CSS (페이징처리)*/
+.e-approval-list-pagination a:link {
+	color: #6c757d;
+	text-decoration: none;
+} 
+
+.e-approval-list-pagination a:visited {
+	color: #6c757d;
+	text-decoration: none;
+}
+
+.e-approval-list-pagination a:hover {
+	color: #212529;
+}
+
+.e-approval-list-pagination {
+	margin-top: 1em;
+	margin-bottom: 4em;
+}
+
+.e-approval-list-pagination:last-child {
+	padding-bottom: 7em;
+}
+
+/*-----------market insert----- */
+.market-insert-form{
+	width: 60%; margin : 50px auto;
+}
+
+
+.market-btn-zone{
+	width : 100%;
+	margin-top: 50px;
+	text-align: center;
+}
+
+/*사진미리보기 */
+.form-group .View_area{
+	margin-top : 10px;
+	position:relative; 
+	width: 100px; 
+	height: 100px; 
+	color: black; 
+	border: 1px solid #aaa; 
+	dispaly: inline; 
+}
+
+/*----------market view------------*/
+.market-list{
+	margin-left: 50px;
+}
+.market-img{
+	width : 300px;
+	height : 300px;
+}
