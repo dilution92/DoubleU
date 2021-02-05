@@ -21,11 +21,8 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="/notice/notice_index.jsp">게시판</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-<<<<<<< HEAD
 				<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-=======
 				<li class="nav-item"><a class="nav-link" href="/calender/CalenderMonth.jsp">캘린더</a></li>
->>>>>>> 24dd9c77e9262fdc9829a6f1793db52babb459e3
 				<li class="nav-item"><a class="nav-link" href="/email/email_index.jsp">메일함</a></li>
 				<li class="nav-item"><a class="nav-link" href="/ElectronicApproval/E_Approval_home.jsp">전자결재</a></li>
 				<li class="nav-item"><a class="nav-link" href="/market/market_index.jsp">중고시장</a></li>
