@@ -21,7 +21,7 @@
 				</li>
 				<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
+				<li class="nav-item"><a class="nav-link" href="/calender/CalenderMonth.jsp">캘린더</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">메일함</a></li>
 				<li class="nav-item"><a class="nav-link" href="/ElectronicApproval/E_Approval_home.jsp">전자결재</a></li>
 			</ul>

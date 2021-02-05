@@ -15,19 +15,10 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
-<!-- bootstrap script, Jquery CDN -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
-<!-- ****************************** -->	
 
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
-<!-- 전자결재용 CSS -->
+<!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/ElectronicApproval.css">
 
 </head>
@@ -35,17 +26,12 @@
 	<!-- 그룹웨어 GNB 헤더-->
 
 	<header>
-		<div class="container-fluid main-gnb">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
-				<a class="navbar-brand navbar-text-light " href="#" style="margin-right: 28em">DoubleU</a>
-			</nav>
-		</div>
+		<jsp:include page="/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
 				
 	<section class="e-approval-container">
-		<!-- e-approval-lnb code -->
-							
+		<!-- e-approval-lnb code -->	
 		<nav class="e-approval-lnb">
 			<div class="e-approval-lnb-content">
 				<h3>메일</h3>
@@ -272,8 +258,16 @@
 		</main>
 	</section>
 	
-	<!-- Example single danger button -->
 
+<!-- bootstrap script, Jquery CDN -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+<!-- ****************************** -->
 
 		
 </body>
