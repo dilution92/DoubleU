@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="doubleu/.mvn/wrapper"/>
+	<classpathentry kind="src" path="doubleu/src/main/java"/>
+	<classpathentry kind="src" path="doubleu/src/test/java"/>
+	<classpathentry kind="lib" path="doubleu/bin/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/mybatis-3.5.6.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/ojdbc6_g.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/taglibs-standard-compat-1.2.5.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar"/>
+	<classpathentry kind="lib" path="doubleu/src/main/webapp/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
+	<classpathentry kind="output" path="doubleu/target/classes"/>
+</classpath>
