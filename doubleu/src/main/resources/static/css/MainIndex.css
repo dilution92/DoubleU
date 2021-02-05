@@ -5,6 +5,14 @@
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 
+
+.main-gnb-content {
+	padding: 1rem 1rem;
+}
+.main-gnb-menu > li > a {
+	margin-right: 1em;
+}
+
 .main-gnb {
 	padding: 0;
 }

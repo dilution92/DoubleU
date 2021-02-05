@@ -209,3 +209,23 @@ body {
 	margin-top: 50px;
 	text-align: center;
 }
+
+/*사진미리보기 */
+.form-group .View_area{
+	margin-top : 10px;
+	position:relative; 
+	width: 100px; 
+	height: 100px; 
+	color: black; 
+	border: 1px solid #aaa; 
+	dispaly: inline; 
+}
+
+/*----------market view------------*/
+.market-list{
+	margin-left: 50px;
+}
+.market-img{
+	width : 300px;
+	height : 300px;
+}

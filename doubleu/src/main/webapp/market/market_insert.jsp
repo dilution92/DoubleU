@@ -14,13 +14,14 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
+<!--file CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js">
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전자결재용 CSS -->
 <link rel="stylesheet" href="/css/market/market.css">
-
-</head>
+<!-- 중고게시판 javascript -->
+<script src='/js/market/market.js'></script></head>
 <body>
 
 	<!-- 그룹웨어 GNB -->
@@ -75,11 +76,6 @@
 						data-toggle="modal" data-target="#exampleModal" value="글쓰기">
 				</div>
 
-
-
-
-
-
 				<div class="e-approval-approval-list">
 					<a href="#">중고게시판</a>
 					<ul>
@@ -92,19 +88,23 @@
 		</nav>
 		<!-- lnb code 끝 -->
 
-		<main class="market-insert-form">
+		<main class="e-approval-article">
+					<h3 style="width : 13% ; margin-bottom : 20px; margin-left: 30px;">중고게시판</h3>
+		
+		
+			<div class='market-insert-form'>
 			<form>
 				<div class="form-group row">
-		   		 <label for="inputPassword" class="col-sm-2 col-form-label">상품명</label>
-				    <div class="col-sm-5">
-				      <input type="password" class="form-control" id="inputPassword">
+		   		 <label for="marketName" class="col-sm-2 col-form-label">상품명</label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control" id="marketName">
 				    </div>
 				  </div>
 				  
 				<div class="form-group row">
-		   		 <label for="inputPassword" class="col-sm-2 col-form-label">카테고리</label>
-				    <div class="col-sm-5">
-   					 <select class="form-control" id="exampleFormControlSelect1">
+		   		 <label for="marketaCate" class="col-sm-2 col-form-label">카테고리</label>
+				    <div class="col-sm-8">
+   					 <select class="form-control" id="marketaCate">
 								<option selected>카테고리</option>
 								<option value="0">뷰티/미용</option>
 								<option value="1">생활/가공식품</option>
@@ -117,24 +117,33 @@
 				  </div>
 				  
 					<div class="form-group row">
-		   		 <label for="inputPassword" class="col-sm-2 col-form-label">판매가격</label>
-				    <div class="col-sm-5" style="display : inline-block;">
+		   		 <label for="marketPrice" class="col-sm-2 col-form-label">판매가격</label>
+				    <div class="col-sm-8" style="display : inline-block;">
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;" >무료 나눔</button>
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;">시세 확인</button>
-				      <input type="password" class="form-control" id="inputPassword">
+				    	  <div style="display:flex;">
+				    	  <input type="text" class="form-control" id="marketPrice" onkeyup="numberWithCommas(this.value)" style="text-align : right;">
+				    	  <span class="input-group-text">원</span>
+				    	</div>
 				    </div>
 				  </div>
-				  
-				<div class="form-group row">
-		   		<div class="custom-file">
-  <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Choose file</label>
-</div>
-				</div>
+				
 				
 				<div class="form-group row">
-		   		 <label for="inputPassword" class="col-sm-2 col-form-label">계좌번호</label>
-				    <div class="col-sm-5">
+				 <label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
+				  <div class="col-sm-8" style="display : inline-block;">
+			   		<div class="custom-file">
+					  <input type="file" class="custom-file-input"  id="profile_pt" onchange="previewImage(this,'View_area')">
+					  <label class="custom-file-label" for="customFile">Choose file</label>
+					</div>
+					<div id='View_area' class='View_area' ></div>
+					</div>
+				</div>
+
+
+				<div class="form-group row">
+		   		 <label for="marketAccount" class="col-sm-2 col-form-label">계좌번호</label>
+				    <div class="col-sm-8">
    					 <select class="form-control" id="exampleFormControlSelect1">
 								<option selected>은행</option>
 								<option value="0">신한</option>
@@ -144,15 +153,15 @@
 								<option value="4">케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
-				      <input type="password" class="form-control" id="inputPassword">
+				      <input type="text" class="form-control" id="marketAccount">
 				    </div>
 				    </div>
 				  </div>
 				  
 				  <div class="form-group row">
-		   		 <label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
-				    <div class="col-sm-5">
-				      <textarea class="form-control" id="inputPassword" rows ="10"></textarea>
+		   		 <label for="marketDoc" class="col-sm-2 col-form-label">내용</label>
+				    <div class="col-sm-8">
+				      <textarea class="form-control" id="marketDoc" rows ="10"></textarea>
 				    </div>
 				  </div>
 				  
@@ -161,19 +170,9 @@
 					<button class="btn btn-primary" type="submit">취소</button>
 				</div>
 			</form>
-			<form>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Example file input</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-</form>
-  <div class="form-group">
+			</div>
 
-	<div class="custom-file">
-  <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Choose file</label>
-</div>
-</div>
+
 			<!-- ========== -->
 
 
@@ -238,6 +237,7 @@
 	<!-- ****************************** -->
 
 	<script type="text/javascript">
+
 </script>
 </body>
 </html>
