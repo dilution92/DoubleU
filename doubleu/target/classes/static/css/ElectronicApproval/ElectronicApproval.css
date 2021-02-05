@@ -4,13 +4,6 @@ body {
 	height: 100%;
 }
 
-.main-gnb-content {
-	padding: 1rem 1rem;
-}
-.main-gnb-menu > li > a {
-	margin-right: 1em;
-}
-
 
 /* 전자결재 사이드바 CSS */
 .e-approval-container {
@@ -25,7 +18,7 @@ body {
 	width: 20%;
 	text-align: center;
 	padding: 1.2em 1.5em 0em 1.5em;
-	min-height: 100%;
+	min-height: 722px;
 }
 
 .e-approval-lnb-content {
@@ -55,37 +48,24 @@ body {
 	text-align: left;
 }
 
-.e-approval-approval-list > ul > li > .test:hover {
-	visibility:visible;
-}
-
 .e-approval-approval-list > ul > li > a {
 	text-indent: 1em;
-	width: 100px;
-	font-size: 15px;
-}
-
-.e-approval-approval-list > ul > li > span {
-	margin-left: 5px;
 }
 
 .e-approval-approval-list  {
 	margin-top: 2em;
 }
-
-.e-approval-approval-list > span {
-	display: inline-block;
+.e-approval-approval-list a {
 	color: #000000;
-	margin-bottom: 0.7em;
-	font-size: 1.1em;
-	width: 200px;
-	text-align: left;	
+	width: 100%;
+	display: block;
 }
 
-
-.e-approval-approval-list > .sendmail-align {
-	width: 200px;
-	text-align: left;
+.e-approval-approval-list > a {
+	margin-bottom: 0.7em;
+	display: block;
+	width: 100%;
+	font-size: 1.1em;
 }
 
 .e-approval-approval-list a:visited{
@@ -100,6 +80,12 @@ body {
 .e-approval-approval-list > ul > li:hover {
 	background-color: #e2e5de;
 }
+
+.approval-scroll {
+	overflow: auto;
+	height: 300px;
+}
+
 /* +++++++++++++++++++++++++++++++++++++++ */
 
 
@@ -115,8 +101,8 @@ body {
 
 .e-approval-search-bar {
 	width: 100%;
-	min-height: 10%;
-	margin-bottom: 2em;
+	min-height: 10%; 
+	margin-bottom: 4em;
 }
 
 .e-approval-search-form {
@@ -127,11 +113,6 @@ body {
 .e-approval-form-box {
 	width: 100%;
 	min-height: 10%;
-
-}
-
-.e-approval-form-box > span{
-	font-size: 25px;
 }
 
 .e-approval-select-box:hover {
@@ -175,10 +156,6 @@ body {
 	font-size: 0.8em;
 }
 
-.e-approval-list > tr > td:nth-child(4){
-	color:red;
-}
-
 .e-approval-list td:hover {
 	cursor: pointer;
 }
@@ -213,3 +190,62 @@ body {
 }
 
 
+
+/* 전자결재 form 양식 */
+.e-approval-form-container {
+	width: 90%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.e-approval-form-header {
+	width: 90%;
+	margin: 3em auto 2em auto;
+}
+
+.e-approval-form-table-container {
+	width: 90%;
+	height: 100%;
+	margin: 2em auto 0em auto;
+	border: 2px solid gray;
+	padding: 6em 5em 10em 5em;  
+}
+
+
+.e-approval-form-table-1 {
+	width: 200px;
+	text-align: center;
+	font-size: 0.8em;
+	margin-bottom: 3em;
+}
+
+.e-approval-form-table-top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.e-approval-file-zone {
+	width: 100%;
+	
+}
+
+.e-approval-work-btns {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+.e-approval-work-form-btns:nth-child(1) {
+	display: flex;
+	align-items: flex-start;
+}
+
+.e-approval-work-form-btns:nth-child(1) > select{
+	display: inline-block;
+	width: 200px;
+	margin-right: 10px;
+}
+
+.e-approval-work-form-btns:nth-child(2) > input {
+	margin-left: 5px;
+}
