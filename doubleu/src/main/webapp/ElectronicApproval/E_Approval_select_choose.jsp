@@ -32,7 +32,13 @@
 			
 			<!-- 최근 발신한 문서함 code -->
 			<div class="e-approval-table">
-				<strong class="text-gray-dark">최근 발신한 문서</strong>
+			<%
+				String selectName = "검색 결과";
+				if(request.getParameter("selectName") != null) {
+					selectName = request.getParameter("selectName");
+				}
+			%>
+				<strong class="text-gray-dark"><%= selectName %></strong>
 				<table class="table table-hover table-sm">
 					<thead class="e-approval-list text-muted text-gray-dark">
 						<tr>
@@ -45,7 +51,7 @@
 						</tr>
 					</thead>
 					<tbody class="e-approval-list text-muted">
-						<c:forEach begin="1" end="4">
+						<c:forEach begin="1" end="10">
 							<tr>
 								<td>2021-02-03</td>
 								<td>업무 기안</td>					
@@ -75,52 +81,6 @@
 				</nav>
 			</div>
 			<!-- ========== -->
-			
-			<!-- 최근 수신한 문서함 code -->
-			<div class="e-approval-table">
-				<strong class="text-gray-dark">최근 수신한 문서</strong>
-				<table class="table table-hover table-sm">
-					<thead class="e-approval-list text-muted text-gray-dark">
-						<tr>
-							<th scope="col">기안일</th>
-							<th scope="col">결재양식</th>
-							<th scope="col">제목</th>
-							<th scope="col">기안자</th>
-							<th scope="col">긴급</th>
-							<th scope="col">결재 상태</th>
-						</tr>
-					</thead>
-					<tbody class="e-approval-list text-muted">
-						<c:forEach begin="1" end="4">
-							<tr>
-								<td>2021-02-03</td>
-								<td>업무 기안</td>					
-								<td style=" text-align: left; text-indent: 2em;">그룹웨어 프론트엔드 화면 설계안 요청합니다.</td>					
-								<td>정해준</td>					
-								<td>긴급</td>					
-								<td>진행중</td>					
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<!-- ========== -->
-			
-			<!-- 수신 문서함 페이징 아이콘 code -->
-			<div class="e-approval-list-pagination" >
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
-					</ul>
-				</nav>
-			</div>
-			<!-- ========= -->
 			
 			
 
