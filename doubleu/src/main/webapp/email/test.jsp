@@ -8,9 +8,10 @@
 </head>
 <body>
 <h1>하이</h1>
-<h3></h3>
+<h3>${btn.value }</h3>
 <script>
-console.log(btn.value);
+
+
 </script>
 </body>
 </html>
