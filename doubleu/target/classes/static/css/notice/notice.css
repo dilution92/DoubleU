@@ -33,14 +33,15 @@ body {
 	position: fixed;
 }
 
-.e-approval-lnb-content > h3{
-	margin-bottom: 1.5em;
-	font-size: 1.2em;
+.e-approval-lnb-content > h4{
+	margin-bottom: 1em;
+	font-size: 1.4em;
 }
 
 .e-approval-form-btn > input[type="button"] {
 	width: 100%;
 	font-size: 0.9em;
+	margin-bottom: 1em;
 }
 
 .e-approval-lnb-content ul {
@@ -115,7 +116,7 @@ body {
 .e-approval-search-bar {
 	width: 100%;
 	min-height: 10%;
-	margin-bottom: 0.5rem; 
+	margin-bottom: 2em;
 }
 
 .e-approval-search-form {

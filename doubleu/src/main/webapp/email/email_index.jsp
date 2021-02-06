@@ -31,39 +31,40 @@
 	 <!-- 그룹웨어 GNB code 끝 -->
 				
 	<section class="e-approval-container">
-		<!-- e-approval-lnb code -->	
-		<nav class="e-approval-lnb">
-			<div class="e-approval-lnb-content">
-				<h3>메일</h3>
-				<div class="e-approval-form-btn">
-					<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
-				</div>
-				<div class="e-approval-approval-list">
-					<span>메일함</span>
-					<ul>
-						<li><a href="#">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
-						<li><a href="#">별표 메일함</a></li>
-						<li><a href="#">중요 메일함</a></li>
-						<li><a href="#">임시 보관함</a></li>
-						<li><a href="#">보낸 메일함</a></li>
-						<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-						<li><a href="#">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
+		
+		<!-- e-approval-lnb code -->
+			<nav class="e-approval-lnb"> 
+				<div class="e-approval-lnb-content">
+					<h3>메일</h3>
+					<div class="e-approval-form-btn">
+						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
+					</div>
+					<div class="e-approval-approval-list">
+						<span>메일함</span>
+						<ul>
+							<li><a href="#">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
+							<li><a href="#">별표 메일함</a></li>
+							<li><a href="#">중요 메일함</a></li>
+							<li><a href="#">임시 보관함</a></li>
+							<li><a href="#">보낸 메일함</a></li>
+							<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
+							<li><a href="#">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
+							
+						</ul>
+					</div>
+					<div class="e-approval-approval-list">
+						<span class="sendmail-align">
+						<span>내 메일함</span>
+						<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
+						</span>
 						
-					</ul>
+						<ul>
+							<li><a href="#">NOTES</a></li>
+							<li><a href="#">보관함</a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="e-approval-approval-list">
-					<span class="sendmail-align">
-					<span>내 메일함</span>
-					<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
-					</span>
-					
-					<ul>
-						<li><a href="#">NOTES</a></li>
-						<li><a href="#">보관함</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
+			</nav>
 	<!-- lnb code 끝 -->
 	
 	<!-- 모달창 모음 -->
@@ -143,10 +144,10 @@
 		
 			<!-- 메일 검색바 code -->
 			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="" method="post">
+	      		<form class="e-approval-search-form" action="https://www.daum.net" name="frm" method="post">
 			      	<div class="e-approval-form-box">
 			      		<span>받은메일함</span>
-				        <input class="btn btn-outline-primary btn-sm" type="button" value="검색"/>
+				        <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	
 				      	<select class="form-control form-control-sm e-approval-select-box">
@@ -159,7 +160,7 @@
 	     		</form>
 			</div>
 			<!-- ========== -->
-			
+			<input type="text" id="testType">
 			<!-- 선택 -->
 						
 			<div class="email-select-content">
@@ -254,7 +255,7 @@
 				</nav>
 			</div>
 			<!-- ========== -->
-
+			
 		</main>
 	</section>
 	
@@ -268,7 +269,21 @@
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
 <!-- ****************************** -->
-
+<script>
+	
+	chk = function() {
+		var arr = ['zero', 'one', 'tow']; 
+		
+		let btn = document.getElementById('testType')
+		btn.value = arr
+		console.log(btn.value)
+		/*
+		document.frm.action = "test.jsp";
+		document.frm.submit();	*/
+	}
+	
+	
+</script>
 		
 </body>
 </html>
