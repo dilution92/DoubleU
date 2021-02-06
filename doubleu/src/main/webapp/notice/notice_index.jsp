@@ -23,13 +23,13 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <!-- bootstrap script, Jquery CDN -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+	crossorigin="anonymous"></script>
 <!-- ****************************** -->	
 
 <!-- main page CSS -->
@@ -91,30 +91,8 @@
 	<section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
-		<nav class="e-approval-lnb">
-			<div class="e-approval-lnb-content">
-				<h4>게시판</h4>
-				<div class="e-approval-form-btn">
-					<input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" value="글쓰기">
-				</div>
-				<div class="e-approval-approval-list">
-					<span>전사게시판</span>
-					<ul>
-						<li><a href="#">사내공지</a></li>
-						<li><a href="#">경조사</a></li>
-					</ul>
-				</div>
-				<div class="e-approval-approval-list">
-					<span>부서게시판</span>					
-					<ul>
-						<li><a href="#">부서던가</a></li>
-						<li><a href="#">자유던가</a></li>
-						<li><a href="#">부서인 자유였지..</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	<!-- lnb code 끝 -->
+		<jsp:include page="notice_aside.jsp"/>
+		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
 
