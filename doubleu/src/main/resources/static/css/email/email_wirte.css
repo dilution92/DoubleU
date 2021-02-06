@@ -162,58 +162,6 @@ body {
 	}
 
 
-/* e-approval-table CSS */
-.e-approval-table {
-	width: 100%;	
-}
-.e-approval-table > strong {
-	display: inline-block;
-	font-size: 0.9em;
-	margin-bottom: 0.5em;
-}
-
-.e-approval-list {
-	font-size: 0.8em;
-}
-
-.e-approval-list > tr > td:nth-child(4){
-	color:red;
-}
-
-.e-approval-list td:hover {
-	cursor: pointer;
-}
-
-.e-approval-list tr {
-	text-align: center;
-}
-
-
-/* e-approval-list-pagination CSS (페이징처리)*/
-.e-approval-list-pagination a:link {
-	color: #6c757d;
-	text-decoration: none;
-} 
-
-.e-approval-list-pagination a:visited {
-	color: #6c757d;
-	text-decoration: none;
-}
-
-.e-approval-list-pagination a:hover {
-	color: #212529;
-}
-
-.e-approval-list-pagination {
-	margin-top: 1em;
-	margin-bottom: 4em;
-}
-
-.e-approval-list-pagination:last-child {
-	padding-bottom: 7em;
-}
-
-
 
 /* 내 메일함 모달창 */
 .modalEmail{
@@ -248,45 +196,26 @@ body {
 }
 
 
-/* 스팸함 모달창 */
 
-.modalSpamEmail{
-    height: 350px;
-}
-
-.modalSpamEmailFolder {
-    padding: 30px;
-    margin: 15px auto;
-}
-
-.modalSpamEmailFolder > p{
-   margin-top: 30px;
-   width: 500px;
-}
-
-
-.modalSpamEmailFolder > input {
-    text-indent: 20px;
-    margin: 30px auto;
-    width: 500px;
-    height: 30px;
-}
-
-.modalSpamEmailFolder > .modalSpamEmailFolderBtn {
-    margin: 20px auto;
-    text-align: center;
-}
-
-.modalSpamEmailFolder > .modalSpamEmailFolderBtn > button {
-    margin: 0 50px;
-}
 
 
 /* 받은 메일함 선택 바*/
 
+.form-group {
+	display: inline-block;
+}
+
+
+
 .email-select-content {
-	width: 1000px;
-	margin: 0 auto;
+	width: 100%;
+	margin: 30px auto;
+	height: 1500px;
+	padding: 10px;
+}
+
+.email-select-content > div {
+	font-size: 17px;
 }
 
 .email-select-content > .email-select-list {
@@ -326,92 +255,56 @@ body {
 	width:80px;
 }
 
-/* 이동 모달창 */
 
-.modalMoveContent {
-    height: 600px;
-}
+/* 메일 쓰기 */
 
-.modalMoveBtn {
-    padding: 30px;
-    margin: 15px auto;
-}
-
-.modalMoveBtn > h4 {
-	text-align: left;
-}
-.modalMoveBtn > ul{
-   margin-top: 30px;
-
-}
-
-.modalMoveBtn > ul > li {
-   width: 300px;
-   list-style:none;
-   text-indent: 15px;
-   display:block;
-   margin-bottom: 5px;
-}
- 
-.modalMoveBtn > ul > li:nth-child(1) {
- 	text-align:left;
-} 
-
-.modalMoveContent > input {
-    margin: 30px auto;
-    width: 400px;
-    height: 30px;
-}
-
-.modalMoveContent > .modalMoveBtn {
-    margin: 20px auto;
-    text-align: center;
-}
-
-.modalMoveContent > .modalMoveBtn > button {
-    margin: 0 50px;
-}
-
-.modalMoveEmailBtn {
-	text-align: center;
-	width: 400px;
-}
-
-.modalMoveEmailBtn > button {
-	margin: 0px 35px;
-}
-
-
-/* 맨위로, 목록으로 */
-
-.email-select-first  {
-	position: fixed;
-	left: 1300px;
-}
-.email-select-first > div{
-	width: 100px;
-	display: block;
+.emailSendContentsRev > .revEmail{
+	border: 1px solid black;
+	height: 200px;
 	
 }
 
+.emailSendContentsRev > .revEmail > input{
+	display: inline-block;
+	font-size: 10px;
+	margin: 5px 0;
 
-/* 상세보기 */
+} 
 
-.dropdown-align {
-	padding: 10px;
+.emailSendContentsRef > .rev-to-me > input {
+	line-height: 2;
+} 
+
+/* 참조 */
+
+.emailSendContentsRef > .revRef{
+	border: 1px solid black;
+	height: 200px;
+	
 }
-.dropdown-align > span > label{
-	width: 80px;
+
+.emailSendContentsRef > .revRef > input{
+	display: inline-block;
+	font-size: 10px;
+	margin: 7px 0;
+
+} 
+
+
+/* 제목 */
+.emailSendContentsHeader > .importSend > .form-check {
+	padding:0px;
+	font-size: 15px;
+	color:red;
 }
 
-.dropdown-align > span > input {
-	width: 320px;
-}
 
-.searchResetBtn {
+/* 보내기 취소 버튼 */
+.send-and-cancel {
+	margin: 50px auto;
 	text-align: center;
 }
 
-.searchResetBtn > input {
-	margin: 0px 35px;
+.send-and-cancel > button {
+	margin: 0 30px;	
 }

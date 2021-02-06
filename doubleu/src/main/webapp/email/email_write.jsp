@@ -16,10 +16,25 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 
+<!-- bootstrap script, Jquery CDN -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+<!-- ****************************** -->	
+	
+	
+<!-- include summernote css/js-->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
-<link rel="stylesheet" href="/css/email/email_main.css">
+<link rel="stylesheet" href="/css/email/email_wirte.css">
 
 </head>
 <body>
@@ -128,8 +143,8 @@
                                     </ul>
 
                                     <div class="modalMoveEmailBtn">
-                                        <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">이동하기</button>
-	                                	<button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+                                        <button class="btn btn-primary btn-sm" role="button">이동하기</button>
+	                                	<button class="btn btn-primary btn-sm" role="button">취소하기</button>
                                     </div>
                                 </div>
                                 
@@ -146,159 +161,103 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>받은 메일함</span>
-				        <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
-				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-				      	
-				      	
-						<button class="btn btn-outline-primary btn-sm dropdown-toggle" style="display: inline-block; width: 7%; float: right; margin-left: 0.5em;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="">상세 </button>
-						 <div class="dropdown-menu" style="width:450px;">
-						   <div class="dropdown-align">
-						   		<span><label for="searchSend">보낸사람</label></span>
-						   		<span><input type="text" id="searchSend"></span>
-						   </div>
-						   <div class="dropdown-align">
-						   		<span><label for="searchReceive">받는사람</label></span>
-						   		<span><input type="text" id="searchReceive"></span>
-						   </div>
-						   <div class="dropdown-align">
-						   		<span><label for="searchContents">제목</label></span>
-						   		<span><input type="text" id="searchContents"></span>
-						   </div>
-						   <div class="dropdown-align">
-						   		<span><label for="searchDate">기간</label></span>
-						   		<span><span><input type="date" id="searchDateOne"></span></span>
-						   		<span><span><input type="date" id="searchDateTwo"></span></span>
-						   </div>
-						   
-						    <div class="dropdown-divider"></div>
-						    <div class="searchResetBtn">
-							    <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
-								<input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="내용 초기화"/>
+			      		<span>메일쓰기</span>
+			      		<button type="button" style="line-height: 1.3;" class="btn btn-outline-primary btn-sm">임시 저장하기</button>
+					</div>
+					
+					<div class="email-select-content">
+						
+						<div class="emailSendContents">
+							<div class="form-group col-sm-2">
+							    <label for="exampleFormControlInput1">보내는 사람</label>
 							</div>
+							
+							<div class="form-group col-sm-7">
+							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+							</div>
+					    </div>
+					    
+					    <div class="emailSendContentsRev">
+					    
+					    <!--  받는 사람 -->
+							<div class="form-group col-sm-2">
+							    <label for="exampleFormControlInput1">받는 사람</label>
+							</div>
+							
+						
+							<div class="form-group col-sm-7 revEmail">
+								<c:forEach begin="0" end="10">
+							 	<input type="email" class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="name1234ho@example.com">
+							 	</c:forEach>
+							 
+							</div>
+							
+							<div class="form-group col-sm-2 rev-to-me">
+							 	<input type="button" class="btn btn-outline-primary btn-sm" role="button" value="주소록">
+							</div>
+					    </div>
+					    
+					    <!-- 참조 -->
+					    <div class="emailSendContentsRef">
+							<div class="form-group col-sm-2">
+							    <label for="exampleFormControlInput1">참조</label>
+							</div>
+							
+						
+							<div class="form-group col-sm-7 revRef">
+								<c:forEach begin="0" end="10">
+							 	<input type="email" class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="name1234ho@example.com">
+							 	</c:forEach>
+							</div>
+							
+					    </div>
+					    
+					    <!-- 제목 -->
+					    <div class="emailSendContentsHeader">
+							<div class="form-group col-sm-1">
+							    <label for="exampleFormControlInput1">제목</label>
+							</div>
+							
+							<div class="form-group col-sm-1 importSend">
+								<div class="form-check">
+								  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+								  <label class="form-check-label" for="defaultCheck1">
+								    중요!
+								  </label>
+								</div>
+							</div>
+							
+							<div class="form-group col-sm-7">
+							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
+							</div>
+					    </div>
+			
+						<!-- 내용 -->
+						<textarea name="emailDoc" id="summernote" value=""></textarea>
+							
+						
+						
+						<!-- 파일첨부 -->
+						<div class="custom-file">
+							  <input type="file" class="custom-file-input" id="customFile">
+							  <label class="custom-file-label" for="customFile">Choose file</label>
+						</div>
+					
+						<!-- 버튼 -->
+						<div class="send-and-cancel">
+						<button type="button" class="btn btn-primary btn-lg">보내기</button>
+						<button type="button" class="btn btn-primary btn-lg">취소하기</button>
 						</div>
 					</div>
 					
-					<!-- 테스트 삭제해야함 -->
-					<input type="hidden" id="testType">
+					
 	     		</form>
 			</div>
-			<!-- ========== -->
-			
-			
-			
-			 
-		
-			<!-- 선택 -->
-						
-			<div class="email-select-content">
-				<ul class="email-select-list">
-					<li>
-						<label class="btn btn-outline-primary btn-sm">
-						<input type="checkbox"/>전체선택
-						</label>
-					</li>
-                    <li>
-                     	<span class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
-                    </li>
-                    <li>
-                          <span class="btn btn-outline-primary btn-sm">답장하기</span>
-                     </li>
-
-                     <li>
-                         <span class="btn btn-outline-primary btn-sm">삭제하기</span>
-                     </li>
-
-                     <li>
-                         <span class="btn btn-outline-primary btn-sm">전달하기</span>
-                     </li>
-
-                     <li>
-                         <span class="btn btn-outline-primary btn-sm">읽음</span>
-                     </li>
-
-                     <li>
-                         <div class="input-group mb-3">
-							  <div class="input-group-prepend">
-							    <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">이동</button>
-							    <div class="dropdown-menu">
-							      <a class="dropdown-item" href="#">받은 메일함</a>
-							      <a class="dropdown-item" href="#">별표 메일함</a>
-							      <a class="dropdown-item" href="#">임시 보관함</a>
-							      <a class="dropdown-item" href="#">보낸 메일함</a>
-							      <a class="dropdown-item" href="#">스팸 메일함</a>
-							      <a class="dropdown-item" href="#">휴지통</a>
-							      <div role="separator" class="dropdown-divider"></div>
-							      <a class="dropdown-item" href="#">NOTES</a>
-							    </div>
-							  </div>
-						</div>	
-                 	</li>
-                 	
-				</ul>
-			</div>
-			
-			<!-- 맨위로, 목록으로 	
-			<div class="email-select-align">
-				<div class="email-select-first">
-					<div class="btn btn-outline-primary btn-sm"><i class="bi bi-arrow-up"></i>맨위로</div>
-					<div class="btn btn-outline-primary btn-sm"><i class="bi bi-list"></i>목록으로</div>
-				</div>
-			</div>
-			-->
-			
-			
-			<!-- 메일함 -->
-			<div class="e-approval-table">
-				<table class="table table-hover table-sm">
-					<tbody class="e-approval-list text-muted">
-						<c:forEach begin="1" end="20">
-							<tr>
-								<td><input type="checkbox"/></td>
-								<td><i class="bi bi-star"></i></td>
-                                <td><i class="bi bi-envelope"></i></td>
-                                <td><i class="bi bi-exclamation"></i></td>
-								<td>DoubleU Project</td>					
-								<td style=" text-align: left; text-indent: 2em;">프론트엔드 작업 중 입니다. 시간이 참 빨리 지나가네요 흑흑</td>					
-								<td>2021-02-23 23:55:45</td>							
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<!-- ========== -->
-			
-			<!-- 리스트 페이징 아이콘 code -->
-			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
-					</ul>
-				</nav>
-			</div>
-			<!-- ========== -->
-			
 		</main>
 	</section>
-	
 
-<!-- bootstrap script, Jquery CDN -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
-<!-- ****************************** -->
 <script>
-	
+
 	chk = function() {
 		console.log('하이')
 		var arr = ['zero', 'one', 'tow']; 
@@ -312,8 +271,24 @@
 		document.frm.submit();	*/
 	}
 	
-	
+	/* 텍스트 쓰기*/
+	$('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 500,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video',]],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+
+
 </script>
-		
+	
 </body>
 </html>
