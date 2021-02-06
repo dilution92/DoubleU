@@ -52,7 +52,9 @@
 		<div class="container-fluid main-gnb">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
 				<a class="navbar-brand navbar-text-light " href="#"	style="margin-right: 28em">
-					<span style="color:#007BFF; font-size:35px;"><i class="fab fa-weebly"></i></span></a>
+					<!-- <span style="color:#007BFF; font-size:35px;"><i class="fab fa-weebly"></i></span> -->
+					<img alt="" src="../images/notice/로고7.png" width="150px">
+					</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
