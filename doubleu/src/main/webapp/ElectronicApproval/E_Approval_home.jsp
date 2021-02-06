@@ -69,7 +69,7 @@
 	</section>
 	
 	<!-- 모달창 -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade e-approval-formChoose-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -78,57 +78,59 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="moadl-body approval-scroll">
+				<div class="moadl-body e-approval-scroll">
 					<div class="accordion" id="accordionExample">
 						<div class="card">
-							<div class="card-header" id="headingOne">
+							<div class="card-header e-approval-formChoose-modal-tab" id="headingOne">
 								<h6 class="mb-0">
-									<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne"
+									<button class="btn btn-link btn-block text-left e-approval-formChoose-btn" type="button" data-toggle="collapse" data-target="#collapseOne"
 									 aria-expanded="true" aria-controls="collapseOne">
-									 일반 업무
+									 업무
 									 </button>
 								</h6>
 							</div>
 							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 								<div class="card-body">
-									<ul>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_work.jsp">업무 기안</a></li>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_work.jsp">업무 협조</a></li>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_work.jsp">품의서</a></li>
+									<ul  class="e-approval-formChoose-modal-ul">
+										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_work.jsp&formName=업무 기안">업무 기안</a></li>
+										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_work.jsp&formName=업무 협조">업무 협조</a></li>
+										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_petition.jsp&formName=품의서">품의서</a></li>
+										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_purchasePetition.jsp&formName=구매 품의서">구매품의서</a></li>
+										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_explanatory.jsp&formName=사유서">사유서</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="card">
-							<div class="card-header" id="headingTwo">
+							<div class="card-header e-approval-formChoose-modal-tab" id="headingTwo">
 								<h6 class="mb-0">
-									<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo"
-									 aria-expanded="true" aria-controls="collapseTwo">
+									<button class="btn btn-link btn-block text-left e-approval-formChoose-btn" type="button" data-toggle="collapse" data-target="#collapseTwo"
+									 aria-expanded="true" aria-controls="collapseTwo" style="width: 100%;">
 									 인사
 									</button>
 								</h6>
 							</div>
 							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 								<div class="card-body">
-									<ul>
-										<li><a href="#">휴가 신청서</a></li>
-										<li><a href="#">지각/불참 사유서</a></li>
+									<ul class="e-approval-formChoose-modal-ul">
+										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_vacation.jsp&formName=휴가 신청서">휴가 신청서</a></li>
+										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_explanatory.jsp&formName=지각/결근 사유서"">지각/결근 사유서</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="card">
-							<div class="card-header" id="headingThree">
+							<div class="card-header e-approval-formChoose-modal-tab" id="headingThree">
 								<h6 class="mb-0">
-									<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree"
+									<button class="btn btn-link btn-block text-left e-approval-formChoose-btn" type="button" data-toggle="collapse" data-target="#collapseThree"
 									 aria-expanded="true" aria-controls="collapseThree">
-									 지출결의
+									 지출 결의
 									 </button>
 								</h6>
 							</div>
 							<div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample">
 								<div class="card-body">
-									<ul>
+									<ul  class="e-approval-formChoose-modal-ul">
 										<li><a href="#">지출결의서</a></li>
 									</ul>
 								</div>

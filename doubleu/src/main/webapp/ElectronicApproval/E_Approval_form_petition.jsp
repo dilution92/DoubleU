@@ -20,7 +20,6 @@
 		}
 	 %>
 	
-	
 	<div class="e-approval-form-container">
 		<form action="">
 			<div class="e-approval-work-btns">
@@ -91,9 +90,9 @@
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
-						<th> 일시 </th>
-						<td> <input type="date" class="form-control form-control-sm" style="font-size: 1em;" > </td>
-						<th> 협조부서 </th>
+						<th> 품의 목적 </th>
+						<td> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<th> 관련 부서 </th>
 						<td> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>
 					<tr>

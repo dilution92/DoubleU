@@ -46,7 +46,6 @@
 							<th scope="col">결재양식</th>
 							<th scope="col">제목</th>
 							<th scope="col">기안자</th>
-							<th scope="col">긴급</th>
 							<th scope="col">결재 상태</th>
 						</tr>
 					</thead>
@@ -57,7 +56,6 @@
 								<td>업무 기안</td>					
 								<td style=" text-align: left; text-indent: 2em;">그룹웨어 프론트엔드 화면 설계안 요청합니다.</td>					
 								<td>정해준</td>					
-								<td>긴급</td>					
 								<td>진행중</td>					
 							</tr>
 						</c:forEach>

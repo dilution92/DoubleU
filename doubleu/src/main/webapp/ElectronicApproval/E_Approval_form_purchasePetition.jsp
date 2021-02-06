@@ -20,7 +20,6 @@
 		}
 	 %>
 	
-	
 	<div class="e-approval-form-container">
 		<form action="">
 			<div class="e-approval-work-btns">
@@ -91,9 +90,9 @@
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
-						<th> 일시 </th>
-						<td> <input type="date" class="form-control form-control-sm" style="font-size: 1em;" > </td>
-						<th> 협조부서 </th>
+						<th> 품의 목적 </th>
+						<td width="350px;"> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<th> 금액 </th>
 						<td> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>
 					<tr>
@@ -103,7 +102,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th style="line-height: 400px; padding: 0;"> 상세 내용 </th>
+						<th style="line-height: 400px; padding: 0;"> 상세 내역 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
 							<textarea class="form-control" style="height: 100%; overflow: auto;" ></textarea>
 						</td>
