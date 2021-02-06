@@ -149,7 +149,15 @@ body {
 	float: right;
 	margin-left: 0.5em;
 	}
+/*-------------market header---------------------*/
+.market-header{
+	width: 100%;
+}
 
+.market-dib {
+	margin-right:10px;
+    height: 30px;
+}
 /*-------------market 글갯수 및 정렬 CSS ----------------------*/
 
 .market-subheader-container{
@@ -158,7 +166,7 @@ body {
 }
 /*글갯 수 간격 조정*/
 .market-total {
-	width : 85%;
+	width : 80%;
 }
 /* ------------market contents CSS -------------------------*/
 /*게시글 간격 조정 */
@@ -229,3 +237,30 @@ body {
 	width : 300px;
 	height : 300px;
 }
+.market-view-table{
+	margin-top : 50px;
+}
+.market-view-container{
+	margin-top : 50px;
+	min-height: 500px
+}
+.market-view-form{
+padding-left: 400px;
+    padding-top: 70px;
+    padding-bottom: 70px;}
+    
+    
+/*댓글*/
+.market-repl-container{
+	margin-top : 100px;
+}
+
+.market-repl-each{
+	min-height: 100px;
+}
+
+.market-repl-each-doc{
+margin-top: 30px;
+    position: relative;
+    }
+    
