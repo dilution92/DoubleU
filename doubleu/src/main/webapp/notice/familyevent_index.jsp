@@ -51,30 +51,8 @@
 	<section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
-		<nav class="e-approval-lnb">
-			<div class="e-approval-lnb-content">
-				<h4>게시판</h4>
-				<div class="e-approval-form-btn">
-					<input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" value="글쓰기">
-				</div>
-				<div class="e-approval-approval-list">
-					<span>전사게시판</span>
-					<ul>
-						<li><a href="#">사내공지</a></li>
-						<li><a href="#">경조사</a></li>
-					</ul>
-				</div>
-				<div class="e-approval-approval-list">
-					<span>부서게시판</span>					
-					<ul>
-						<li><a href="#">부서던가</a></li>
-						<li><a href="#">자유던가</a></li>
-						<li><a href="#">부서인 자유였지..</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	<!-- lnb code 끝 -->
+		<jsp:include page="notice_aside.jsp"/>
+		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
 
@@ -98,8 +76,8 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 code -->
-			<div class="container">
+			<!-- 전사게시판 경조사 code -->
+			<div class="familyevent_list">
         		<div class = "row">
           			<table class = "table table-striped" style="text-align:center; border:1px solid #ffffff">
                 		<thead>
@@ -132,7 +110,7 @@
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">
 				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center">  
+					<ul class="pagination pagination-sm text-muted justify-content-center" style="padding-top:20px">  
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>

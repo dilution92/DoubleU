@@ -17,8 +17,8 @@
 			<div class="e-approval-approval-list">
 				<span>전사게시판</span>
 				<ul>
-					<li><a href="#">사내공지</a></li>
-					<li><a href="#">경조사</a></li>
+					<li><a href="/notice/notice_index.jsp">사내공지</a></li>
+					<li><a href="/notice/familyevent_index.jsp">경조사</a></li>
 				</ul>
 			</div>
 			<div class="e-approval-approval-list">
