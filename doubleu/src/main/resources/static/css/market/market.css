@@ -264,3 +264,46 @@ margin-top: 30px;
     position: relative;
     }
     
+/*---------market price range-----------*/
+.market-price-search-container{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.cate-top-txt h3{
+	text-align: center;
+}
+
+.market-search{
+	width: 100%;
+	text-align : center;
+	margin-right : 10px;
+}
+
+.market-search-bar {
+	display : flex;
+	align-items : center;
+	margin-left: 300px;
+	margin-right: 300px;
+	position: relative;
+}
+
+.price-chart{
+    width: 500px;
+    height: 500px;
+    border: 1px solid #aaa;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.price-chart-detail{
+    width: 500px;
+    height: 300px;
+    border: 1px solid #aaa;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+
+
