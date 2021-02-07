@@ -32,23 +32,8 @@
 
 	<section class="e-approval-container">
 		<!-- e-approval-lnb code -->
-		<nav class="e-approval-lnb">
-			<div class="e-approval-lnb-content">
-				<h4>게시판</h4>
-				<div class="e-approval-form-btn">
-					<input type="button" class="btn btn-primary btn-lg"
-						data-toggle="modal" data-target="#exampleModal" value="글쓰기">
-				</div>
-				<div class="e-approval-approval-list">
-					<a href="#">중고게시판</a>
-					<ul>
-
-						<li><a href="#">나눠야하나</a></li>
-					</ul>
-				</div>
-
-			</div>
-		</nav>
+		<jsp:include page="side_menu.jsp"/>
+	
 		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
