@@ -26,6 +26,10 @@
 				      		<option value="6"> 반려한 문서 </option>
 				      	</select>
 					</div>
+					<!-- hidden -->
+					<input type="hidden" name="viewSerial" value="">
+					<input type="hidden" name="formType" value="">
+					<input type="hidden" name="formState" value="">
 	     		</form>
 			</div>
 			<!-- ========== -->

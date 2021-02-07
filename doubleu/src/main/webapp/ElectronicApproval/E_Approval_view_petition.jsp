@@ -20,7 +20,6 @@
 		}
 	 %>
 	
-	
 	<div class="e-approval-form-container">
 		<form action="">
 			<div class="e-approval-work-btns">
@@ -91,56 +90,25 @@
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
-					 <th> 휴가 종류 </th>
-					 <td colspan="3"> 
-					 	<select class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
-					 		<option value="연차"> 연차 </option>
-					 		<option value="연차"> 월차 </option>
-					 		<option value="연차"> 반차 </option>
-					 	</select>
-					 </td>
-					</tr>
-					<tr>
-						<th> 기간 및 일시 </th>
-						<td>
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
-						~
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="endDay" >
-						</td>
-						<th> 일 수 </th>
-						<td> <input type="text" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " name="vacationCnt" value="총 1일"> </td>
-					</tr>
-					<tr>
-						<th> 반차 여부 </th>
-						<td colspan="3">
-							<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimeAM" value="checkAM" checked>
-							  <label class="form-check-label" for="halfTimeAM">
-							   오전
-							  </label>
-							</div>
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimePM" value="checkBM">
-							  <label class="form-check-label" for="halfTimePM">
-							    오후
-							  </label>
-							</div>
-						</td>
+						<th> 품의 목적 </th>
+						<td> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<th> 관련 부서 </th>
+						<td> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>
-						<td colspan="3"> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required> </td>
+						<td colspan="3" align="left" style="">
+						<input type="text" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required>
+						</td>
 					</tr>
-					
 					<tr>
-						<th style="line-height: 200px; padding: 0;"> 사유 </th>
+						<th style="line-height: 400px; padding: 0;"> 상세 내용 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" style="height: 100%; overflow: auto ;" ></textarea>
+							<textarea class="form-control" style="height: 100%; overflow: auto;" ></textarea>
 						</td>
 					</tr>		
 					<tr>
-						<th colspan="4"  style="padding: 0.5em; ">파일 첨부</th>
+						<th colspan="4"  style="padding: 0.5em; ">파일 첨부 </th>
 					</tr>		
 					<tr>
 						<td colspan="4">
