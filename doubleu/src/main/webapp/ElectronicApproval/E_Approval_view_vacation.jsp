@@ -113,7 +113,6 @@
 					<tr>
 						<th> 반차 여부 </th>
 						<td colspan="3">
-							<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
 							<div class="form-check e-approval-form-vacationType-check-box">
 							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimeAM" value="checkAM" checked>
 							  <label class="form-check-label" for="halfTimeAM">
@@ -127,10 +126,6 @@
 							  </label>
 							</div>
 						</td>
-					</tr>
-					<tr>
-						<th> 제목 </th>
-						<td colspan="3"> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required> </td>
 					</tr>
 					
 					<tr>

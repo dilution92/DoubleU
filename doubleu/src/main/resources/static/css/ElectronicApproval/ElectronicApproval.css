@@ -219,7 +219,6 @@ body {
 	text-align: center;
 }
 
-
 /* e-approval-list-pagination CSS (페이징처리)*/
 .e-approval-list-pagination a:link,
 .e-approval-list-pagination a:visited {
@@ -264,6 +263,19 @@ body {
 	display: flex;
 	justify-content: flex-end;
 }
+
+.e-approval-view-btn-box {
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.e-approva-view-btn-content:last-child input[type=button] {
+	margin-left: 5px;
+	
+}
+
 
 .e-approval-work-btns input[type=button] {
 	margin-left: 5px;
