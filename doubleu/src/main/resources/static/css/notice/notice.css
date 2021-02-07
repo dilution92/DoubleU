@@ -11,6 +11,11 @@ body {
 	margin-right: 1em;
 }
 
+/* 게시판 main CSS */
+#notice-list > tbody > tr:hover {
+    background: white;
+    color: black;
+}
 
 /* 전자결재 사이드바 CSS */
 .e-approval-container {
@@ -111,8 +116,6 @@ body {
 
 
 /* e-approval-search-bar CSS */
-
-
 .e-approval-search-bar {
 	width: 100%;
 	min-height: 10%;

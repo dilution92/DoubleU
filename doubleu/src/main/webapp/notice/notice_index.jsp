@@ -65,11 +65,13 @@
 					<ul class="navbar-nav mr-auto main-gnb-menu">
 						<li class="nav-item active"><a class="nav-link" href="#">홈<span
 								class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
+						<li class="nav-item"><a class="nav-link" href="/notice/notice_index.jsp">게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">메일함</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">전자결재</a></li>
+						<li class="nav-item"><a class="nav-link" href="/calender/CalenderMonth.jsp">캘린더</a></li>
+						<li class="nav-item"><a class="nav-link" href="/email/email_index.jsp">메일함</a></li>
+						<li class="nav-item"><a class="nav-link" href="/ElectronicApproval/E_Approval_home.jsp">전자결재</a></li>
+						<li class="nav-item"><a class="nav-link" href="/market/market_index.jsp">중고시장</a></li>
 					</ul>
 
 					<ul class="navbar-nav my-2 my-lg-0">
@@ -119,9 +121,9 @@
 			<!-- ========== -->
 			
 			<!-- 전사게시판 사내공지 code -->
-			<div class="container">
+			<div class="notice-container">
         		<div class = "row">
-          			<table class = "table table-striped" style="text-align:center; border:1px solid #ffffff">
+          			<table class = "table table-hover">
                 		<thead>
                     		<tr>
 		                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
@@ -147,12 +149,11 @@
             		</table>
         		</div>
    			</div>
-						
-			
+
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">
 				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center">  
+					<ul class="pagination pagination-sm text-muted justify-content-center" style="padding-top:20px">  
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>

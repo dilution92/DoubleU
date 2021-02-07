@@ -75,46 +75,60 @@
 			<!-- ========== -->
 			
 			<!-- 전사게시판 사내공지 상세보기 code -->
-			<div class="form-group row">
-		    	<label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-		    	<div class="col-sm-10">
-		      		<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-		   		</div>
-		    </div>
-			
-			
-			
-			
-			
-			<div class="container">
-        		<div class = "row">
-          			<table class = "table table-striped" style="text-align:center; border:1px solid #ffffff">
-                		<thead>
-                    		<tr>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">분류</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">제목</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">작성자</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">날짜</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
-	                    	</tr>
-	                	</thead>
-	                	<tbody>
-							<c:forEach begin="1" end="10">
-	                    		<tr>
-			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">공지사항</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">안녕하세요</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">나</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
-		                        </tr>
-							</c:forEach>
-                		</tbody>
-            		</table>
-        		</div>
-   			</div>
-						
+			<div class="row">
+			    <div class="col-xs-2 col-md-2"></div>
+			    <div class="col-xs-8 col-md-8">
+				    <div class="table table-responsive">
+				        <table class="table">
+				        <tr>
+				            <th class="success">제목</th>
+				            <td colspan="3">아마도 제목임</td>
+				        </tr>
+				        <tr>
+				            <th class="success">작성자</th>
+				            <td>ㄴ ㅏ</td>
+				            <th class="success">작성일</th>
+				            <td>2021.02.07</td>
+				        </tr>
+				        <tr>
+				            <th class="success">분류</th>
+				            <td>중요공지</td>
+				            <th class="success">조회수</th>
+				            <td>1</td>
+				        </tr>
+				         
+				        <tr>
+				            <th class="success">글 내용</th>
+				            <td colspan="3">
+				            안녕하세요? 입사지원서 언제 쓰죠?<br>
+				            안녕하세요? 입사지원서 언제 쓰죠? <br>
+				            안녕하세요? 입사지원서 언제 쓰죠? <br>
+				            안녕하세요? 입사지원서 언제 쓰죠? <br>
+				            안녕하세요? 입사지원서 언제 쓰죠? <br>
+				            안녕하세요? 입사지원서 언제 쓰죠? <br>
+				            안녕하세요? 입사지원서 언제 쓰죠? <br>
+				            안녕하세요? 입사지원서 언제 쓰죠?
+				            </td>
+				        </tr>
+				        <tr>
+				        	<th class="success">첨부파일</th>
+				        	<td> 하기싫어.png </td>
+				        	<td colspan="2">
+				        		<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
+				        	
+				        	</td>
+				         
+				        <tr>
+				            <td colspan="4" class="text-center">
+								<input type="button" class="btn btn-primary"  value="댓글 쓰기" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="목록보기" onclick="location.href=''">
+				            </td>
+				        </tr>
+				        </table>
+				    </div>
+			    </div>
+			</div>
+ 			
 			
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">

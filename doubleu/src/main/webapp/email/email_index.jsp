@@ -43,12 +43,12 @@
 						<span>메일함</span>
 						<ul>
 							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
-							<li><a href="#">별표 메일함</a></li>
+							<li><a href="email_star.jsp">별표 메일함</a></li>
 							<li><a href="email_important.jsp">중요 메일함</a></li>
-							<li><a href="#">임시 보관함</a></li>
-							<li><a href="#">보낸 메일함</a></li>
-							<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-							<li><a href="#">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
+							<li><a href="email_temporary.jsp">임시 보관함</a></li>
+							<li><a href="email_sendEmail.jsp">보낸 메일함</a></li>
+							<li><a href="email_spam.jsp">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
+							<li><a href="email_trash.jsp">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
 							
 						</ul>
 					</div>
@@ -59,8 +59,8 @@
 						</span>
 						
 						<ul>
-							<li><a href="#">NOTES</a></li>
-							<li><a href="#">보관함</a></li>
+							<li><a href="email_keep_one.jsp">NOTES</a></li>
+							<li><a href="email_keep_two.jsp">보관함</a></li>
 						</ul>
 					</div>
 				</div>
