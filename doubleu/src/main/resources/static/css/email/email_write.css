@@ -121,7 +121,7 @@ body {
 }
 
 .e-approval-search-form {
-	width: 100%;
+	width: 1000px;
 	min-height: 10%;
 }
 
@@ -258,46 +258,86 @@ body {
 
 /* 메일 쓰기 */
 
+.emailSendContents div:nth-child(2) {
+	padding: 0px;
+}
+
+.emailSendContentsRev div:first-child > label {
+	position: absolute;
+	top: -120px;
+}
+
 .emailSendContentsRev > .revEmail{
-	border: 1px solid black;
-	height: 200px;
+	border: 1px solid #E5E5E5;
+	max-height: 300px;
+	padding: 5px;
+	margin: 0 auto;
 	
 }
 
 .emailSendContentsRev > .revEmail > input{
 	display: inline-block;
 	font-size: 10px;
-	margin: 5px 0;
+	margin: 5px 20px;
+	text-align: center;
+	
 
 } 
+
+/* 주소록 버튼 */
+
+.emailSendContentsRev div:nth-child(3)> input {
+	position: absolute;
+	top: -125px;
+}
+
+
+
+/* 참조 */
+.emailSendContentsRef {
+	margin-top : 10px;
+}
+
+.emailSendContentsRef div:nth-child(1)> label {
+	position: absolute;
+	top: -125px;
+}
 
 .emailSendContentsRef > .rev-to-me > input {
 	line-height: 2;
 } 
 
-/* 참조 */
-
 .emailSendContentsRef > .revRef{
-	border: 1px solid black;
-	height: 200px;
+	border: 1px solid #E5E5E5;
+	max-height: 300px;
+	padding: 5px;
+	margin: 0 auto;
 	
 }
 
 .emailSendContentsRef > .revRef > input{
 	display: inline-block;
 	font-size: 10px;
-	margin: 7px 0;
+	margin: 5px 20px;
+	text-align: center;
 
 } 
 
 
 /* 제목 */
+
+.emailSendContentsHeader {
+	margin-top: 30px;
+}
 .emailSendContentsHeader > .importSend > .form-check {
 	padding:0px;
 	font-size: 15px;
 	color:red;
 }
 
+.emailSendContentsHeader div:nth-child(3) {
+	padding: 0px;
+}
 
 /* 보내기 취소 버튼 */
 .send-and-cancel {
@@ -308,3 +348,45 @@ body {
 .send-and-cancel > button {
 	margin: 0 30px;	
 }
+
+
+/* 임시 저장 */
+
+.modalTemporaryEmail{
+    height: 380px;
+}
+
+.modalTemporaryEmailFolder {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalTemporaryEmailFolder > p{
+   margin-top: 30px;
+   width: 500px;
+}
+
+
+.modalTemporaryEmailFolder > input {
+    text-indent: 20px;
+    margin: 30px auto;
+    width: 500px;
+    height: 30px;
+}
+
+.modalTemporaryEmailFolder > h6 {
+	margin-top: 50px;
+	border:1px solid #E5E5E5;
+	height: 50px;
+	line-height:50px;
+}
+
+.modalTemporaryEmailFolder > .modalTemporaryEmailFolderBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalTemporaryEmailFolder > .modalTemporaryEmailFolderBtn > button {
+    margin: 10px 50px;
+}
+

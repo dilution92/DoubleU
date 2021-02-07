@@ -34,7 +34,7 @@
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
-<link rel="stylesheet" href="/css/email/email_wirte.css">
+<link rel="stylesheet" href="/css/email/email_write.css">
 
 </head>
 <body>
@@ -57,7 +57,7 @@
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
 						<ul>
-							<li><a href="#">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
+							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
 							<li><a href="#">별표 메일함</a></li>
 							<li><a href="#">중요 메일함</a></li>
 							<li><a href="#">임시 보관함</a></li>
@@ -70,7 +70,7 @@
 					<div class="e-approval-approval-list">
 						<span class="sendmail-align">
 						<span>내 메일함</span>
-						<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
+						<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#moveEmailContents">+</button>
 						</span>
 						
 						<ul>
@@ -84,7 +84,7 @@
 	
 	<!-- 모달창 모음 -->
 		<!-- 1. 내 메일함 추가 모달창 -->
-	                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	                <div class="modal fade bs-example-modal-lg" id="moveEmailContents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	                <div class="modal-dialog modal-lg">
 	                    <div class="modal-content modalEmail">
 	                        <div class="modalNewEmailFolder">
@@ -100,58 +100,31 @@
 	                </div>  
 	                </div>
 	                
-        <!-- 2. 스팸 모달창 -->
+        <!-- 2. 임시 저장하기 모달창 -->
          
-         <div class="modal fade bs-example-modal-lg"  id="spamEmailRev" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+         <div class="modal fade bs-example-modal-lg"  id="temporaryEmailContents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	                <div class="modal-dialog modal-lg">
-	                    <div class="modal-content modalSpamEmail">
-	                        <div class="modalSpamEmailFolder">
-	                            <h4>스팸 차단</h4>
-	                            <p>선택한 메일의 정보를 차단 정보로 등록하고, 해당 정보로 오는 메일은 앞으로 받지 않고 자동 반송합니다.</p>
-	                            <input type="text" placeholder="song@gmail.com">
-	                            <div class="modalSpamEmailFolderBtn">
-	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">차단하기</button>
-	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+	                    <div class="modal-content modalTemporaryEmail">
+	                        <div class="modalTemporaryEmailFolder">
+	                       
+	                            <h4>작성하신 메일이 임시 저장되었습니다.</h4>
+	                            <h6>제목 : 제목없음</h6>
+	                            <p>
+	                            <strong>임시저장된 메일 보내기</strong><br/>
+	                            	<br/>
+									1. 왼쪽 메뉴에서 ‘임시보관함’을 선택하세요.
+								</p>
+	                            <div class="modalTemporaryEmailFolderBtn">
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">확인</button>
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">쓰던 페이지로 가기</button>
 	                            </div>
 	                        </div>
 	                        
 	                    </div>
 	                </div>  
-	                </div>
+          </div>
 	                
-	    <!-- 3. 이동 모달창 -->
-	     <div class="modal fade bs-example-modal-lg" id="moveEmailRev" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg" style="margin: 30px auto;">
-                            <div class="modal-content modalMoveContent">
-                                <div class="modalMoveBtn">
-                                    <h4>이동</h4>
-                                    
-                                    <ul style="font-size: 20px;">
-                                        <li>메일함</li>
-                                        <li class="btn btn-outline-primary btn-sm">받은 메일함</li>
-                                        <li class="btn btn-outline-primary btn-sm">중요 메일함</li>
-                                        <li class="btn btn-outline-primary btn-sm">임시 보관함</li>
-                                        <li class="btn btn-outline-primary btn-sm">내가 쓴 메일함</li>
-                                        <li class="btn btn-outline-primary btn-sm">스팸 메일함</li>
-                                        <li class="btn btn-outline-primary btn-sm">휴지통</li>
-                                    </ul>
-                                    
-                                    <ul style="font-size: 20px;">
-                                        <li>내 메일함</li>
-                                        <li class="btn btn-outline-primary btn-sm">NOTES</li>
-                                        <li class="btn btn-outline-primary btn-sm">보관함</li>
-                                    </ul>
-
-                                    <div class="modalMoveEmailBtn">
-                                        <button class="btn btn-primary btn-sm" role="button">이동하기</button>
-	                                	<button class="btn btn-primary btn-sm" role="button">취소하기</button>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        </div>  
-
+	  
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
@@ -162,17 +135,23 @@
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
 			      		<span>메일쓰기</span>
-			      		<button type="button" style="line-height: 1.3;" class="btn btn-outline-primary btn-sm">임시 저장하기</button>
+			      		<button type="button" style="line-height: 1.3;" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
 					</div>
 					
 					<div class="email-select-content">
-						
+											    
 						<div class="emailSendContents">
 							<div class="form-group col-sm-2">
 							    <label for="exampleFormControlInput1">보내는 사람</label>
 							</div>
 							
-							<div class="form-group col-sm-7">
+							<div class="form-group col-sm-1">
+								
+							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="송연주">
+							</div>
+							
+							<div class="form-group col-sm-6">
+								
 							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
 							</div>
 					    </div>
@@ -186,8 +165,8 @@
 							
 						
 							<div class="form-group col-sm-7 revEmail">
-								<c:forEach begin="0" end="10">
-							 	<input type="email" class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="name1234ho@example.com">
+								<c:forEach begin="0" end="9">
+							 	<input type="email" readonly class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="song1234567@gmail.com">
 							 	</c:forEach>
 							 
 							</div>
@@ -206,7 +185,7 @@
 						
 							<div class="form-group col-sm-7 revRef">
 								<c:forEach begin="0" end="10">
-							 	<input type="email" class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="name1234ho@example.com">
+							 	<input type="email" readonly class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="name1234ho@example.com">
 							 	</c:forEach>
 							</div>
 							
