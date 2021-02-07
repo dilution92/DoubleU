@@ -18,6 +18,21 @@
 						onClick="location.href='market_insert.jsp'" value="글쓰기">
 				</div>
 				<div class="e-approval-approval-list">
+				<span>전사게시판</span>
+				<ul>
+					<li><a href="/notice/notice_index.jsp">사내공지</a></li>
+					<li><a href="/notice/familyevent_index.jsp">경조사</a></li>
+				</ul>
+			</div>
+			<div class="e-approval-approval-list">
+				<span>부서게시판</span>					
+				<ul>
+					<li><a href="#">부서던가</a></li>
+					<li><a href="#">자유던가</a></li>
+					<li><a href="#">부서인 자유였지..</a></li>
+				</ul>
+			</div>
+				<div class="e-approval-approval-list">
 					<a href="market_index.jsp">중고게시판</a>
 					<!-- 
 					<ul>
