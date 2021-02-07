@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>전사게시판-경조사</title>
 
 <!-- awesome font CDN(W icon) -->
@@ -23,13 +23,13 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <!-- bootstrap script, Jquery CDN -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+	crossorigin="anonymous"></script>
 <!-- ****************************** -->	
 
 <!-- main page CSS -->
@@ -41,11 +41,9 @@
 <body>
 
 	<!-- 그룹웨어 GNB -->
-	<header>
-		<header class="container-fluid main-gnb">
+	<header class="container-fluid main-gnb">
 		<jsp:include page="/MainPage/header.jsp"/>
 	 </header>
-
 	<!-- 그룹웨어 GNB code 끝 -->
 
 	<section class="e-approval-container">
@@ -73,56 +71,69 @@
 						</div>
 					</form>
 				</div>
-
 			<!-- ========== -->
 			
-			<!-- 전사게시판 경조사 code -->
-			<div class="familyevent_list">
-        		<div class = "row">
-          			<table class = "table table-striped" style="text-align:center; border:1px solid #ffffff">
-                		<thead>
-                    		<tr>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">분류</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">제목</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">작성자</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">날짜</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
-	                    	</tr>
-	                	</thead>
-	                	<tbody>
-	                		<c:forEach begin="1" end="10">
-	                    		<tr>
-			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;"><i class="fas fa-birthday-cake"></i> 결혼</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">관리부 누구 본인 결혼</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">나</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
-		                        </tr>
-	                        </c:forEach>
-                		</tbody>
-            		</table>
-        		</div>
-   			</div>
-						
-			
-			<!-- 리스트 페이징 아이콘 code -->
-			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center" style="padding-top:20px">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
-					</ul>
-				</nav>
+			<!-- 경조사 상세보기 code -->
+			<div class="row">
+			    <div class="col-xs-2 col-md-2"></div>
+			    <div class="col-xs-8 col-md-8">
+				    <div class="table table-responsive">
+				        <table class="table">
+				        <tr>
+				            <th class="success">제목</th>
+				            <td colspan="3">관리부 누구 본인 결혼</td>
+				        </tr>
+				        <tr>
+				            <th class="success">작성자</th>
+				            <td>관리자</td>
+				            <th class="success">작성일</th>
+				            <td>2021.02.07</td>
+				        </tr>
+				        <tr>
+				            <th class="success">분류</th>
+				            <td><i class="fas fa-birthday-cake"></i> 결혼</td>
+				            <th class="success">조회수</th>
+				            <td>1</td>
+				        </tr>
+				         
+				        <tr>
+				            <th class="success">글 내용</th>
+				            <td colspan="3">
+							관리부 누구님 결혼 축하합니다.<br>
+							
+							▶ 일 시 : 2021년 03월 06일 토요일 오후 1시<br>
+							
+							▶ 장 소 : 공항컨벤션웨딩홀 2층 베니스홀<br>
+							
+							▶ 연락처 : 관리부 대리 누구(010-1111-1111)<br>
+				            </td>
+				        </tr>
+				        <tr>
+				        	<th class="success">첨부파일</th>
+				        	<td> 축하.gif </td>
+				        	<td colspan="2">
+				        		<img src="https://item.kakaocdn.net/do/c102cefcee683173508c5fee9f6869c9f43ad912ad8dd55b04db6a64cddaf76d">
+				        	
+				        	</td>
+<!-- 관리자 할 때 부활시킬듯				         
+				        <tr>
+				            <td colspan="4" class="text-center">
+								<input type="button" class="btn btn-primary"  value="댓글 쓰기" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="목록보기" onclick="location.href=''">
+				            </td>
+				        </tr>
+				         -->
+				        </table>
+				    </div>
+			    </div>
 			</div>
-			<!-- ========== -->
-
+ 			<!-- ========== -->
+ 			
+ 			<!-- 경조사 댓글창 -->
+ 			<jsp:include page="notice_repl.jsp"/>
+ 			<!-- ========== -->
+ 			
+			
 		</main>
 	</section>
 	

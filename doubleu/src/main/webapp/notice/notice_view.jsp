@@ -117,35 +117,24 @@
 				        		<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
 				        	
 				        	</td>
-				         
+<!-- 관리자 할 때 부활시킬듯				         
 				        <tr>
 				            <td colspan="4" class="text-center">
 								<input type="button" class="btn btn-primary"  value="댓글 쓰기" onclick="location.href=''">
 								<input type="button" class="btn btn-primary" value="목록보기" onclick="location.href=''">
 				            </td>
 				        </tr>
+				         -->
 				        </table>
 				    </div>
 			    </div>
 			</div>
- 			
-			
-			<!-- 리스트 페이징 아이콘 code -->
-			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
-					</ul>
-				</nav>
-			</div>
 			<!-- ========== -->
-
+			
+ 			<!-- 경조사 댓글창 -->
+ 			<jsp:include page="notice_repl.jsp"/>
+ 			<!-- ========== -->
+ 			
 		</main>
 	</section>
 	
