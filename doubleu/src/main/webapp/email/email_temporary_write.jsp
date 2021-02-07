@@ -55,15 +55,15 @@
 						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
 					</div>
 					<div class="e-approval-approval-list">
-						<span>메일함</span>
+						<span>메일쓰기</span>
 						<ul>
 							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
-							<li><a href="#">별표 메일함</a></li>
-							<li><a href="#">중요 메일함</a></li>
-							<li><a href="#">임시 보관함</a></li>
-							<li><a href="#">보낸 메일함</a></li>
-							<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-							<li><a href="#">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
+							<li><a href="email_star.jsp">별표 메일함</a></li>
+							<li><a href="email_important.jsp">중요 메일함</a></li>
+							<li><a href="email_temporary.jsp">임시 보관함</a></li>
+							<li><a href="email_sendEmail.jsp">보낸 메일함</a></li>
+							<li><a href="email_spam.jsp">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
+							<li><a href="email_trash.jsp">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
 							
 						</ul>
 					</div>
@@ -134,7 +134,7 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>메일쓰기</span>
+			      		<span>임시 보관함</span>
 			      		<button type="button" style="line-height: 1.3;" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
 					</div>
 					
