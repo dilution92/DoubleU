@@ -19,7 +19,7 @@
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
-<link rel="stylesheet" href="/css/email/email_main.css">
+<link rel="stylesheet" href="/css/email/ElectronicApproval.css">
 
 </head>
 <body>
@@ -37,14 +37,14 @@
 				<div class="e-approval-lnb-content">
 					<h3>메일</h3>
 					<div class="e-approval-form-btn">
-						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기" onclick="location.href='email_write.jsp'">
+						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
 					</div>
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
 						<ul>
-							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
+							<li><a href="#">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
 							<li><a href="#">별표 메일함</a></li>
-							<li><a href="email_important.jsp">중요 메일함</a></li>
+							<li><a href="#">중요 메일함</a></li>
 							<li><a href="#">임시 보관함</a></li>
 							<li><a href="#">보낸 메일함</a></li>
 							<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
@@ -69,7 +69,7 @@
 	
 	<!-- 모달창 모음 -->
 		<!-- 1. 내 메일함 추가 모달창 -->
-	                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="moveEmailContents" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	                <div class="modal fade bs-example-modal-lg" id="moveEmailContents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	                <div class="modal-dialog modal-lg">
 	                    <div class="modal-content modalEmail">
 	                        <div class="modalNewEmailFolder">
@@ -146,7 +146,7 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>받은 메일함</span>
+			      		<span>메일쓰기</span>
 				        <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	

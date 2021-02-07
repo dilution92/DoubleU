@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>전사게시판-사내게시판</title>
+<meta charset="UTF-8">
+<title>전사게시판-상세보기</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -41,53 +41,9 @@
 <body>
 
 	<!-- 그룹웨어 GNB -->
-<%--
-	<header>
-		<header class="container-fluid main-gnb">
+	<header class="container-fluid main-gnb">
 		<jsp:include page="/MainPage/header.jsp"/>
 	 </header>
---%>
-	
-	<header>
-		<div class="container-fluid main-gnb">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
-				<a class="navbar-brand navbar-text-light " href="#"	style="margin-right: 28em">
-					<!-- <span style="color:#007BFF; font-size:35px;"><i class="fab fa-weebly"></i></span> -->
-					<img alt="" src="../images/notice/로고7.png" width="150px">
-					</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto main-gnb-menu">
-						<li class="nav-item active"><a class="nav-link" href="#">홈<span
-								class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">메일함</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">전자결재</a></li>
-					</ul>
-
-					<ul class="navbar-nav my-2 my-lg-0">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span class="navbar-toggler-icon"></span>
-						</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item  " href="#">정보 수정</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item  " href="#">로그아웃</a>
-							</div></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</header>
 	<!-- 그룹웨어 GNB code 끝 -->
 
 	<section class="e-approval-container">
@@ -118,7 +74,18 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 code -->
+			<!-- 전사게시판 사내공지 상세보기 code -->
+			<div class="form-group row">
+		    	<label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+		    	<div class="col-sm-10">
+		      		<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+		   		</div>
+		    </div>
+			
+			
+			
+			
+			
 			<div class="container">
         		<div class = "row">
           			<table class = "table table-striped" style="text-align:center; border:1px solid #ffffff">

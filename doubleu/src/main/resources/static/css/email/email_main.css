@@ -395,3 +395,23 @@ body {
 }
 
 
+/* 상세보기 */
+
+.dropdown-align {
+	padding: 10px;
+}
+.dropdown-align > span > label{
+	width: 80px;
+}
+
+.dropdown-align > span > input {
+	width: 320px;
+}
+
+.searchResetBtn {
+	text-align: center;
+}
+
+.searchResetBtn > input {
+	margin: 0px 35px;
+}
