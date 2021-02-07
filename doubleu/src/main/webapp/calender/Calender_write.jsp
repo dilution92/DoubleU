@@ -24,7 +24,7 @@
 	 
 <aside id="calender_aside">
 	<!-- 일정 사이드바  -->
-	<jsp:include page="CalenderAside.jsp"></jsp:include>
+	<jsp:include page="Calender_aside.jsp"></jsp:include>
 </aside>
 
 <main id="calender_main">
