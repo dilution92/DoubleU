@@ -25,7 +25,7 @@
 	 
 <aside id="calender_aside">
 	<!-- 일정 사이드바  -->
-	<jsp:include page="CalenderAside.jsp"></jsp:include>
+	<jsp:include page="Calender_aside.jsp"></jsp:include>
 </aside>
 
 <main id="calender_main">
@@ -39,9 +39,9 @@
             <h3>2021년 3월</h3>
         </div>
         <div style="float: right; margin-right: 50px;" id="calender_main_top_sector"> <!-- 우측 표시 달력 -->
-            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='CalenderMonth.jsp'">
-            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='CalenderWeek.jsp'">
-            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='CalenderDay.jsp'">
+            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='Calender_month.jsp'">
+            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='Calender_week.jsp'">
+            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='Calender_day.jsp'">
         </div>
     </div>
     <div>
@@ -84,8 +84,8 @@
 				<div><!-- 날자가 표시 될 곳 -->
 					<%=num %>
 				</div>
-				<div><!-- 장기 일정이 표시 될 곳 -->
-				
+				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
+					여기에 일정이 표시
 				</div>
 				<div><!-- 단기 일정이 표시 될 곳 -->
 				
@@ -101,7 +101,72 @@
         %>
 			</tbody>
 		</table>
+	</div>
+	
+	<!-- 모달창 -->
+	<div class="modal fade" id="Calender_detail_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">일정 상세 보기</h5>
+		    	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		        	<span aria-hidden="true">&times;</span>
+		        </button>
+		</div>
+		<div class="modal-body">
+			<form action="">
+				<table class="table table-bordered" >
+		    		<tr>
+		    			<td width="20%">제목</td>
+		    			<td>제목</td>
+		    		</tr>
+		    		<tr>
+		    			<td>기간</td>
+		    			<td> 
+		    			<input type="date" name="calender_date_start">
+		    			<input type="time" name="calender_time_start">
+		    			<input type="date" name="calender_date_end"> 
+		    			<input type="time" name="calender_time_end">
+		    			</td>
+		    		</tr>
+		    		<tr>
+		    			<td>그룹분류</td>
+		    			<td>그룹분류</td>
+		    		</tr>
+		    		<tr>
+		    			<td>참석자</td>
+		    			<td> <input type="text" name="calender_participtant"> </td>
+		    		</tr>
+		    		<tr>
+		    			<td>장소</td>
+		    			<td> <input type="text" name="calender_place"> </td>
+		    		</tr>
+		    		<tr>
+		    			<td>내용</td>
+		    			<td> <textarea rows="5" cols="40" name="calender_content"></textarea> </td>
+		    		</tr>
+				</table>
+		    </form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-primary" data-dismiss="modal">돌아가기</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='Calender_modify.jsp'">일정수정</button>
+			<button type="button" class="btn btn-primary">일정삭제</button>
+		</div>
+ 	</div>
+   </div>
+</div>	
+		
 </main>
+
+<script type="text/javascript">
+$(function(){
+    $(".calender_modal").click(function(){
+        $('#Calender_detail_modal').modal();
+    })
+})
+</script>
+
 
 </body>
 </html>

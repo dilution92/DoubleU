@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전자결재용 CSS -->
 <link rel="stylesheet" href="/css/ElectronicApproval/ElectronicApproval.css">
+<script type="text/javascript" src="/js/E-Approval/ElectronicApproval.js"></script>
 </head>
 <body>
 	<%
@@ -67,6 +68,7 @@
 			<jsp:include page="<%= mainJob %>"></jsp:include>
 		</main>
 	</section>
+	
 	
 	<!-- 모달창 -->
 	<div class="modal fade e-approval-formChoose-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -145,7 +147,6 @@
 			</div>
 		</div>
 	</div>
-
 
 
 <!-- bootstrap script, Jquery CDN -->

@@ -27,3 +27,12 @@ body {
     #calender_content:hover{
     	background-color: skyblue;
     }
+
+ 
+ 
+/* 모달창 */
+
+	div.modal{
+		width:100%;
+  		height:100%;
+	}

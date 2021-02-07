@@ -23,21 +23,18 @@
 	
 	<div class="e-approval-form-container">
 		<form action="">
-			<div class="e-approval-work-btns">
-				<div class="e-approval-work-form-choose">
-					</a><select class="form-control form-control-sm e-approval-work-form-change">
-						<option selected> 결재 양식 유형 </option>
-						<option value="업무일반"> 업무 기안 </option>
-						<option value="업무협조"> 업무 협조 </option>
-						<option value="휴가신청"> 휴가신청서 </option>
-						<option value="지각불참"> 지각/불참사유서 </option>
-						<option value="지출결의서"> 지출 결의서 </option>
-						<option value="업무일반"> 품의서 </option>
-						<option value="업무일반"> 품의서 </option>
-					</select>
-					<input type="button" class="btn btn-outline-primary btn-sm" value="변경">
+			<div class="e-approval-view-btn-box">
+				<div class="e-approva-view-btn-content">
+					<input type="button" class="btn btn-outline-primary btn-sm" value="인쇄">
 				</div>
-				<div class="e-approval-work-form-btns">
+				<div class="e-approva-view-btn-content">
+					<input type="button" class="btn btn-outline-primary btn-sm" value="상신 요청" style="float: left">
+					<input type="button" class="btn btn-outline-primary btn-sm" value="승인" style="float: left">
+					<input type="button" class="btn btn-outline-primary btn-sm" value="재상신" style="float: left">
+					<input type="button" class="btn btn-outline-primary btn-sm" value="상신 취소" style="float: left">
+					<input type="button" class="btn btn-outline-secondary btn-sm" value="반려" style="float: left">
+					<input type="button" class="btn btn-outline-secondary btn-sm" value="수정" style="float: left">
+					<input type="button" class="btn btn-outline-secondary btn-sm" value="삭제" style="float: left">
 					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
 				</div>
 			</div>
@@ -91,56 +88,25 @@
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
-					 <th> 휴가 종류 </th>
-					 <td colspan="3"> 
-					 	<select class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
-					 		<option value="연차"> 연차 </option>
-					 		<option value="연차"> 월차 </option>
-					 		<option value="연차"> 반차 </option>
-					 	</select>
-					 </td>
-					</tr>
-					<tr>
-						<th> 기간 및 일시 </th>
-						<td>
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
-						~
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="endDay" >
-						</td>
-						<th> 일 수 </th>
-						<td> <input type="text" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " name="vacationCnt" value="총 1일"> </td>
-					</tr>
-					<tr>
-						<th> 반차 여부 </th>
-						<td colspan="3">
-							<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimeAM" value="checkAM" checked>
-							  <label class="form-check-label" for="halfTimeAM">
-							   오전
-							  </label>
-							</div>
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimePM" value="checkBM">
-							  <label class="form-check-label" for="halfTimePM">
-							    오후
-							  </label>
-							</div>
-						</td>
+						<th> 일시 </th>
+						<td> <input type="date" class="form-control form-control-sm" style="font-size: 1em;" > </td>
+						<th> 협조부서 </th>
+						<td> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>
-						<td colspan="3"> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required> </td>
+						<td colspan="3" align="left" style="">
+						<input type="text" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required>
+						</td>
 					</tr>
-					
 					<tr>
-						<th style="line-height: 200px; padding: 0;"> 사유 </th>
+						<th style="line-height: 400px; padding: 0;"> 상세 내용 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" style="height: 100%; overflow: auto ;" ></textarea>
+							<textarea class="form-control" style="height: 100%; overflow: auto;" ></textarea>
 						</td>
 					</tr>		
 					<tr>
-						<th colspan="4"  style="padding: 0.5em; ">파일 첨부</th>
+						<th colspan="4"  style="padding: 0.5em; ">파일 첨부 </th>
 					</tr>		
 					<tr>
 						<td colspan="4">
@@ -159,8 +125,6 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<input type="submit" class="btn btn-outline-primary btn-sm" value="상신요청">
-					<input type="button" class="btn btn-outline-primary btn-sm" value="임시저장">
 					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
 				</div>
 			</div>
