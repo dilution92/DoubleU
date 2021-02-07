@@ -37,14 +37,14 @@
 				<div class="e-approval-lnb-content">
 					<h3>메일</h3>
 					<div class="e-approval-form-btn">
-						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
+						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기" onclick="location.href='email_write.jsp'">
 					</div>
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
 						<ul>
-							<li><a href="#">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
+							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
 							<li><a href="#">별표 메일함</a></li>
-							<li><a href="#">중요 메일함</a></li>
+							<li><a href="email_important.jsp">중요 메일함</a></li>
 							<li><a href="#">임시 보관함</a></li>
 							<li><a href="#">보낸 메일함</a></li>
 							<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
@@ -55,7 +55,7 @@
 					<div class="e-approval-approval-list">
 						<span class="sendmail-align">
 						<span>내 메일함</span>
-						<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".bs-example-modal-lg">+</button>
+						<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#moveEmailContents">+</button>
 						</span>
 						
 						<ul>
@@ -69,7 +69,7 @@
 	
 	<!-- 모달창 모음 -->
 		<!-- 1. 내 메일함 추가 모달창 -->
-	                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="moveEmailContents" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	                <div class="modal-dialog modal-lg">
 	                    <div class="modal-content modalEmail">
 	                        <div class="modalNewEmailFolder">

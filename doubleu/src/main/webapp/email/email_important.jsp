@@ -19,7 +19,7 @@
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
-<link rel="stylesheet" href="/css/email/ElectronicApproval.css">
+<link rel="stylesheet" href="/css/email/email_main.css">
 
 </head>
 <body>
@@ -42,9 +42,9 @@
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
 						<ul>
-							<li><a href="#">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
+							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
 							<li><a href="#">별표 메일함</a></li>
-							<li><a href="#">중요 메일함</a></li>
+							<li><a href="email_important.jsp">중요 메일함</a></li>
 							<li><a href="#">임시 보관함</a></li>
 							<li><a href="#">보낸 메일함</a></li>
 							<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
@@ -146,7 +146,7 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>메일쓰기</span>
+			      		<span>중요 메일함</span>
 				        <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	
