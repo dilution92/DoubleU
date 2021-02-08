@@ -9,7 +9,9 @@
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
-		<a class="navbar-brand navbar-text-light " href="/MainPage/index.jsp" style="margin-right: 41em">DoubleU</a>
+		<a class="navbar-brand navbar-text-light " href="/MainPage/index.jsp" style="margin-right: 41em">
+			<img alt="" src="../images/notice/로고7.png" width="150px" style="margin-left: 8px">
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>

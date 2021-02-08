@@ -110,28 +110,12 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>받은 메일함</span>
+			      		<span>보낸 메일함</span>
 					</div>
 
 				
 				<div class="email-select-content">
-					<ul class="email-select-list">
-                    <li>
-                     	<span class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
-                    </li>
-                    <li>
-                          <span class="btn btn-outline-primary btn-sm">답장하기</span>
-                     </li>
-
-                     <li>
-                         <span class="btn btn-outline-primary btn-sm">삭제하기</span>
-                     </li>
-
-                     <li>
-                         <span class="btn btn-outline-primary btn-sm">전달하기</span>
-                     </li>
-
-				</ul>
+				
 					<!-- 제목 -->
 				    <div class="emailSendContentsHeader">
 						<div class="form-group col-sm-1">
