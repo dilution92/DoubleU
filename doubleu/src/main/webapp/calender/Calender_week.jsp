@@ -33,13 +33,13 @@
             <input type="button" class="btn btn-primary" value="다음">
             <input type="button" class="btn btn-primary" value="오늘">
         </div>
-        <div style="position: absolute; left: 54rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
+        <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
             <h3>2021년 3월</h3>
         </div>
         <div style="float: right; margin-right: 50px;" id="calender_main_top_sector"> <!-- 우측 표시 달력 -->
-            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='CalenderMonth.jsp'">
-            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='CalenderWeek.jsp'">
-            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='CalenderDay.jsp'">
+            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='Calender_month.jsp'">
+            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='Calender_week.jsp'">
+            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='Calender_day.jsp'">
         </div>
     </div>
     <div>

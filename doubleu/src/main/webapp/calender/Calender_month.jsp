@@ -1,5 +1,7 @@
+<%@page import="com.doubleu.calender.Calender"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,11 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 </head>
 <body>
+<%
+	Calender cal = new Calender();
+	cal.getList();
 
+%>
 
 
 	<!-- 그룹웨어 GNB -->
@@ -35,7 +41,7 @@
             <input type="button" class="btn btn-primary" value="다음">
             <input type="button" class="btn btn-primary" value="오늘">
         </div>
-        <div style="position: absolute; left: 54rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
+        <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
             <h3>2021년 3월</h3>
         </div>
         <div style="float: right; margin-right: 50px;" id="calender_main_top_sector"> <!-- 우측 표시 달력 -->
@@ -72,17 +78,15 @@
 				</tr>
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
-				<%
-        	int num = 1;
-        	for(int i=1; i<=6; i++){
-        %>
+			<c:forEach var="i" begin="0" end="5">
+		
         	<tr height="150px;"><!-- 일주일은 묶는곳 -->
-        <%
-        		for(int j=1; j<=7; j++){
-        %>
+			
+			<c:forEach var="j" begin="0" end="6">
+			
 			<td id="calender_content"><!-- 월간 달력 한칸 -->
 				<div><!-- 날자가 표시 될 곳 -->
-					<%=num %>
+					${(i*6+j+i) }
 				</div>
 				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
 					여기에 일정이 표시
@@ -91,14 +95,9 @@
 				
 				</div>
 			</td>
-        <%
-        		num++;
-        		}
-        %>		
+        </c:forEach>
         	</tr>
-        <% 
-        	}
-        %>
+       </c:forEach>
 			</tbody>
 		</table>
 	</div>
