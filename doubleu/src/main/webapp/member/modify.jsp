@@ -2,299 +2,265 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Double U</title>
+ <head>
+    <title>Checkout example · Bootstrap v5.0</title>
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- awesome font CDN(W icon) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+<!-- favicon -->
+<link rel="shortcut icon" href="../images/w_icon.ico">
+<link rel="icon" href="w_icon.ico">
+
+<!-- bootstrap CDN -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+<!-- bootstrap script, Jquery CDN -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
+<!-- ****************************** -->	
+
+<!-- main page CSS -->
+<link rel="stylesheet" href="/css/MainIndex.css">
+<!-- 전사게시판 CSS -->
+<link rel="stylesheet" href="/css/notice/notice.css">
+    
+
     <style>
-        /*전역 설정 시작*/
-        html, body{
-            margin:0;
-            background-color: #f1f1f1;
-        }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
 
-        *,*::before, *::after{
-            box-sizing:border-box;
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
-        p{
-            margin:0;
-        }
-        /*전역 설정 끝 */
-
-        .logo-box>img{
-        cursor: pointer;
-           width : 70%;
-           height:70%;
-           display:block;
-          
-       }
-
-        .form-container{
-            max-width: 400px;
-            height: 200vh;
-            background-color: white;
-            margin: 0 auto;
-            padding : 0 45px 100px 45px;
-        }
-
-        .sign-up-header{
-            text-align: center;
-            padding: 60px 0 26px 0;
-        }
-
-        .sign-up-header>h2{
-            font-size:1.1rem;
-            font-weight: 600;
-        }
-
-        .form-box-field{
-            margin-bottom: 1rem;
-        }
-        .form-box-field>.form-box-field-input{
-            width:100%;
-            height:40px;
-            outline:none;
-            border: 1px solid #e5e5e5;
-            font-size:0.8rem;
-            text-indent:0.5rem;
-        }
-
-        .form-box-field>.form-box-field-input::placeholder{
-            color:#cccccc;
-        }
-
-        .form-box-field>.form-box-field-input:focus{
-            border-color: #aaaaaa;
-            transition: [어떤속성][전환시간][];
-            transition: border 0.3s ease-in-out;
-        }
-        .form-box-field>.form-box-email-input{
-            width:45%;
-            height:40px;
-            outline:none;
-            border: 1px solid #e5e5e5;
-            font-size:0.8rem;
-            text-indent:0.5rem;
-            margin-top: 1rem;
-        }
-        .form-box-field>.form-box-email-input::placeholder{
-            color:#cccccc;
-        }
-        .form-box-field>.form-box-email-input:focus{
-            border-color: #aaaaaa;
-            transition: [어떤속성][전환시간][];
-            transition: border 0.3s ease-in-out;
-        }
-        .join-btn>.join-btn-disabled{
-            height: 40px;
-            color: black;
-            border-color: black;
-            background-color: white;
-        }
-        .field-required{
-            display: inline-block;
-            width: 3px;
-            height: 3px;
-            background-color: red;
-            border-radius: 100%;
-            text-indent: -999999999999999px;
-        }
-        .form-box-field.warn>.present-email{
-            display: block;
-            border:0;
-            background-color: white;
-            color:blue;
-            position:absolute;
-        }
-        
-        .form-box-field>.warn-info{
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            color: red;
-            display:none;
-        }
-
-        .form-box-field.warn > .warn-info{
-            display:block;
-        }
-        .form-box-field>label{
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .terms-box input{
-            display:block;
-            width: 0;
-            height:0;
-            overflow: hidden;
-            visibility: hidden;
-            position: absolute;
-            
-        }
-
-        .terms-box label{
-            display: inline-block;
-            padding-left: 1.5rem;
-            line-height: 1;
-            vertical-align: middle;
-            position: relative;
-            cursor: pointer;
-            user-select: none; /*체크박스 아닌거 누르면 선택X*/
-        }
-
-        .terms-box label::before{
-            content:'';
-            display: block;
-            position: absolute;
-            background-color: cornflowerblue;
-            top: 0;
-            left: 0;
-            width: 18px;
-            height: 18px;
-            border-radius: 100%;
-            border: 1px solid #cccccc;
-            background-color: #f1f1f1;
-        }
-
-        .terms-box div{
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-        .terms-box input:checked ~label::before{
-            background-color: #0078ff;
-            border-color: #0078ff;
-        }
-
-        .terms-box label::after{
-            content: '';
-            display: block;
-            position: absolute;
-            width: 6px;
-            height: 3px;
-            border-left: 1px solid white;
-            border-bottom: 1px solid white;
-            top:7px;
-            left:7px;
-            transform: rotate(-45deg);
-            visibility: hidden;
-        }
-
-        .terms-box input:checked ~ label::after{
-            visibility: visible;
-        }
-
-        .join-btn{
-            display:block;
-            width: 100%;
-            height:50px;
-            border:1px solid white;
-            line-height: 47px;
-            box-sizing: border-box;
-            color:#ffffff;
-            text-align:center;
-            padding: 1px 10px 0 10px;
-           
-        }
-        
-        .join-btn-disabled{
-            border-color: #eee;
-            background-color: #eee;
-            color:#aaaaaa;
-            
-        }
-        .non-memeber-btn>.non-member{
-            display: block;
-            border:0;
-            background-color: white;
-            color:blue;
-            position:absolute;
-        }
+      }
     </style>
-</head>
-<body>
-    <div class="form-container">
-        <header class="sign-up-header">
-            <div class="logo-box">
-                <img src="Double U.png">
+
+    
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+    <!-- main page CSS -->
+<link rel="stylesheet" href="/css/MainIndex.css">
+<!-- 전사게시판 CSS -->
+<link rel="stylesheet" href="/css/notice/notice.css">
+  </head>
+  <body class="bg-light">
+    <!-- main-GNB -->
+	<!-- 그룹웨어 GNB -->
+	<header>
+		<div class="container-fluid main-gnb">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
+				<a class="navbar-brand navbar-text-light " href="#"	style="margin-right: 28em">
+					<span style="color:#007BFF"><i class="fab fa-weebly fa-2x"></i></span></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto main-gnb-menu">
+						<li class="nav-item active"><a class="nav-link" href="#">홈<span
+								class="sr-only">(current)</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">메일함</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">전자결재</a></li>
+					</ul>
+
+					<ul class="navbar-nav my-2 my-lg-0">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> <span class="navbar-toggler-icon"></span>
+						</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item  " href="#">정보 수정</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item  " href="#">로그아웃</a>
+							</div></li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</header>
+	<!-- 그룹웨어 GNB code 끝 -->
+
+	<section class="e-approval-container">
+	<!-- e-approval-lnb code -->
+		<nav class="e-approval-lnb">
+			<div class="e-approval-lnb-content">
+				<h4>인사 페이지</h4>
+				<div class="e-approval-form-btn">
+					<input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" value="회원정보 수정">
+				</div>
+				<div class="e-approval-approval-list">
+					<span>인사 관리</span>
+					<ul>
+						<li><a href="#">조직도</a></li>
+						<li><a href="#">프로필</a></li>
+					</ul>
+				</div>
+				<div class="e-approval-approval-list">
+					<span>근태 관리</span>					
+					<ul>
+						<li><a href="#">휴가 신청</a></li>
+						<li><a href="#">출/퇴근 현황</a></li>
+						<li><a href="#">휴가 현황</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	<!-- lnb code 끝 -->
+<div class="container">
+  <main>
+
+    <div class="row g-3">
+      
+      <div class="main">
+        <h5 class="mb-3">회원정보 수정</h5>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">성</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                성은 필수 정보입니다.
+              </div>
             </div>
 
-            <h2>회원정보 수정</h2>
-        </header>
-        <main>
-            <form class="form-box" name="sign-up-form">
-                <div class="form-box-field warn">
-                    <label>
-                        아이디
-                        <span class="field-required">이 글을 읽을 수 있다면 당신은 개발자입니다.</span>
-                    </label>
-                    <input class="form-box-field-input" 
-                    type="text"
-                    placeholder="아이디" />
-                    <p class="warn-info">아이디는 필수정보입니다.</p>
-                </div>
-                <div class="form-box-field warn">
-                    <label>
-                        비밀번호
-                        <span class="field-required">이 글을 읽을 수 있다면 당신은 개발자입니다.</span>
-                    </label>
-                    <input class="form-box-field-input" 
-                    type="text"
-                    placeholder="비밀번호" />
-                    <p class="warn-info">비밀번호는 필수정보입니다.</p>
-                </div>
-                
-                <div class="form-box-field warn">
-                    <label>
-                        이메일
-                        <span class="field-required">이 글을 읽을 수 있다면 당신은 개발자입니다.</span>
-                    </label>
-                        <input class="form-box-email-input" type="text" placeholder="이메일" maxlength="50">
-                        @
-                        <select class="form-box-email-input" id="mail2">
-                            <option value="naver.com">naver.com</option>
-                            <option value="gmail.com">gmail.com</option>
-                            <option value="daum.net" >daum.net</option>
-                            <option value="nate.com">nate.com</option>                        
-                        </select>
-                    
-                    <p class="warn-info">이메일은 필수정보입니다.</p>
-                </div>
-                
-                <div class="terms-box">
-                     <div>
-                        <input id="all-dong-eui" type="checkbox">
-                        <label for="all-dong-eui">약관 전체</label>
-                     </div>
-                    <div class="terms-box">
-                         <div>
-                              <input id="privacy" type="checkbox">
-                              <label for="privacy">개인정보 수집 이용동의(필수) </label>
-                         </div>
-                    <div class="terms-box">
-                    <div>
-                         <input id="use-dong-dui" type="checkbox">
-                         <label for="use-dong-eui">그룹웨어 이용약관(필수)</label>
-                     </div>
-                     <div class="terms-box">
-                        <div>
-                            <input id="marketing" type="checkbox">
-                            <label for="marketing">마케팅 활용 및 광고성 정보 수신 동의(선택)</label>
-                        </div>
-                          <div class="terms-box">
-                              <div>
-                                 <input id="no-kids" type="checkbox">
-                                 <label for="no-kids">만 19세 미만 가입 제한(필수)</label>
-                              </div>
-                    </div>
-                    </div>
-                </div>
-                <div class="join-btn">
-                    <button id="join" class="join-btn-disabled">회원정보 수정</button>
-                </div>
-                <p class="memeber-info">본인인증이 어려운 경우, 아래의 서비스를 통해 주문하실 수 있습니다.</p>
-                <div class="non-memeber-btn">
-                <button type="button" class="non-member"><u>자세히 보기</u></button>
-                 </div>
-            </form>
-        </main>
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">이름</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                이름은 필수 정보입니다.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label">이메일</label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                이메일은 필수 정보입니다.
+              </div>
+            </div>
+            
+			<div class="col-12">
+              <label for="department" class="form-label">부서<span class="text-muted">(수정불가)</span></label>
+              <div class="input-group">
+                 <label for="department" class="form-label">~~~부서이름 들어갈 곳~~~</label>
+              </div>
+            </div>
+            
+            <div class="col-12">
+              <label for="address" class="form-label">휴대폰 번호</label>
+              <input type="text" class="form-control" id="address" placeholder="010-OOOO-OOOO" required>
+              <div class="invalid-feedback">
+                휴대폰 번호는 필수 정보입니다.
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="address2" class="form-label">주소 <span class="text-muted">(선택)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="건물명 동/호">
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">시/도</label>
+              <select class="form-select" id="country" required>
+                <option value="">선택</option>
+                <option>서울</option>
+                <option>경기</option>
+                <option>강원</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">구</label>
+              <select class="form-select" id="state" required>
+                <option value="">선택</option>
+                <option>~~구</option>
+                <option>~~구</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="state" class="form-label">동</label>
+              <select class="form-select" id="state" required>
+                <option value="">선택</option>
+                <option>~~동</option>
+                <option>~~동</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">개인정보 수집이용 동의</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="save-info">
+            <label class="form-check-label" for="save-info">그룹웨어 이용약관</label>
+          </div>
+
+          <hr class="my-4">
+
+          
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">저장</button>
+        </form>
+      </div>
     </div>
-</body>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2020–2021 Double U</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  </body>
 </html>
