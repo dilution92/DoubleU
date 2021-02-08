@@ -39,15 +39,10 @@
     
 <div class="container">
   <main>
-    <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-      <h2>회원정보</h2>
-      <p class="lead">회원정보 수정</p>
-    </div>
 
     <div class="row g-3">
       
-      <div class="col-md-7 col-lg-8">
+      <div class="main">
         <h4 class="mb-3">회원정보</h4>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
@@ -76,13 +71,9 @@
             </div>
             
 			<div class="col-12">
-              <label for="username" class="form-label">부서<span class="text-muted">(Optional)</span></label>
+              <label for="department" class="form-label">부서<span class="text-muted">(수정불가)</span></label>
               <div class="input-group">
-                <span class="input-group-text">검색</span>
-                <input type="text" class="form-control" id="username" placeholder="Username" required>
-              <div class="invalid-feedback">
-                  Your username is required.
-                </div>
+                 <label for="department" class="form-label">~~~부서이름 들어갈 곳~~~</label>
               </div>
             </div>
             
@@ -95,15 +86,17 @@
             </div>
 
             <div class="col-12">
-              <label for="address2" class="form-label">주소 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+              <label for="address2" class="form-label">주소 <span class="text-muted">(선택)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="건물명 동/호">
             </div>
 
             <div class="col-md-5">
-              <label for="country" class="form-label">시</label>
+              <label for="country" class="form-label">시/도</label>
               <select class="form-select" id="country" required>
                 <option value="">Choose...</option>
                 <option>서울</option>
+                <option>경기</option>
+                <option>강원</option>
               </select>
               <div class="invalid-feedback">
                 Please select a valid country.
@@ -111,10 +104,11 @@
             </div>
 
             <div class="col-md-4">
-              <label for="state" class="form-label">State</label>
+              <label for="state" class="form-label">구</label>
               <select class="form-select" id="state" required>
                 <option value="">Choose...</option>
-                <option>California</option>
+                <option>~~구</option>
+                <option>~~구</option>
               </select>
               <div class="invalid-feedback">
                 Please provide a valid state.
@@ -122,7 +116,7 @@
             </div>
 
             <div class="col-md-3">
-              <label for="zip" class="form-label">Zip</label>
+              <label for="zip" class="form-label">추가 정보</label>
               <input type="text" class="form-control" id="zip" placeholder="" required>
               <div class="invalid-feedback">
                 Zip code required.
