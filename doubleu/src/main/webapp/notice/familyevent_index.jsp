@@ -39,10 +39,8 @@
 
 </head>
 <body>
-
 	<!-- 그룹웨어 GNB -->
-	<header>
-		<header class="container-fluid main-gnb">
+	<header class="container-fluid main-gnb">
 		<jsp:include page="/MainPage/header.jsp"/>
 	 </header>
 
@@ -77,20 +75,19 @@
 			<!-- ========== -->
 			
 			<!-- 전사게시판 경조사 code -->
-			<div class="familyevent_list">
-        		<div class = "row">
-          			<table class = "table table-striped" style="text-align:center; border:1px solid #ffffff">
-                		<thead>
-                    		<tr>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">분류</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">제목</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">작성자</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">날짜</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
-	                    	</tr>
-	                	</thead>
-	                	<tbody>
+			<div class="familyevent-list">
+				<table class="table table-hover">
+			     	<thead>
+                   		<tr>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">분류</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">제목</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">작성자</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">날짜</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
+                    	</tr>
+                	</thead>
+					<tbody class="e-approval-list text-muted">
 	                		<c:forEach begin="1" end="10">
 	                    		<tr>
 			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
@@ -101,11 +98,9 @@
 			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
 		                        </tr>
 	                        </c:forEach>
-                		</tbody>
-            		</table>
-        		</div>
-   			</div>
-						
+					</tbody>
+				</table>		
+ 			</div>
 			
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">

@@ -76,8 +76,8 @@
 			
 			<!-- 전사게시판 사내공지 상세보기 code -->
 			<div class="row">
-			    <div class="col-xs-2 col-md-2"></div>
-			    <div class="col-xs-8 col-md-8">
+			    <div class="col-xs-1 col-md-1"></div>
+			    <div class="col-xs-8 col-md-10">
 				    <div class="table table-responsive">
 				        <table class="table">
 				        <tr>
