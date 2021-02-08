@@ -51,7 +51,7 @@
 	<section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
-		<jsp:include page="notice_aside.jsp"/>
+		<jsp:include page="../market/side_menu.jsp"/>
 		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
@@ -94,7 +94,7 @@
 	                		<c:forEach begin="1" end="10">
 	                    		<tr>
 			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">결혼</td>
+			                        <td style = "background-color:#ffffff; text-align:center;"><i class="fas fa-birthday-cake"></i> 결혼</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">관리부 누구 본인 결혼</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">나</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>

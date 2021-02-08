@@ -11,7 +11,7 @@
 <body>
 			<!-- 전자결재홈 검색바 code -->
 			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="frm_approval" method="post">
+	      		<form class="e-approval-search-form" action="" name="frmApproval" method="post">
 			      	<div class="e-approval-form-box">
 				        <input class="btn btn-outline-primary btn-sm" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
@@ -26,6 +26,10 @@
 				      		<option value="6"> 반려한 문서 </option>
 				      	</select>
 					</div>
+					<!-- hidden 탭 -->
+					<input type="hidden" name="viewSerial" value="">
+					<input type="hidden" name="formType" value="">
+					<input type="hidden" name="formState" value="">
 	     		</form>
 			</div>
 			<!-- ========== -->
@@ -45,7 +49,7 @@
 					</thead>
 					<tbody class="e-approval-list text-muted">
 						<c:forEach begin="1" end="4">
-							<tr>
+							<tr onclick="view(1)">
 								<td>2021-02-03</td>
 								<td>업무 기안</td>					
 								<td style=" text-align: left; text-indent: 2em;">그룹웨어 프론트엔드 화면 설계안 요청합니다.</td>					
@@ -62,7 +66,7 @@
 			<div class="e-approval-list-pagination">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
+						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" >first</a></li>
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
 						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>

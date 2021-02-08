@@ -15,8 +15,8 @@
 				<input class="btn btn-outline-primary btn-sm market-dib" data-toggle="modal"
 					data-target="#dibModal" type="button" value="찜목록" />
 				<!-- 시세확인 -->
-				<input class="btn btn-outline-primary btn-sm market-dib" data-toggle="modal"
-					data-target="#dibModal" type="button" value="시세확인" />
+				<input class="btn btn-outline-primary btn-sm market-dib" 
+				onClick="location.href='market_price_range.jsp'" type="button" value="시세확인" />
 				<!-- 전자결재홈 검색바 code -->
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval"
