@@ -14,7 +14,7 @@
 <body>
 <div id="repl-move">
 	<div class="row">
-		<table width="800px" height="70px">
+		<table width="950px" height="70px">
 			<tr>
 				<td rowspan="2" width="50px">
 					<span style="font-size:60px; margin-right:10px; color:#BBBBBB"><i class="fas fa-user"></i></span>
@@ -30,7 +30,7 @@
 				</td>
 			</tr>
 		</table>
-		<table width="800px" height="70px">
+		<table width="950px" height="70px">
 			<tr>
 				<td rowspan="2" width="50px">
 					<span style="font-size:60px; margin-right:10px; color:#BBBBBB"><i class="fas fa-user"></i></span>

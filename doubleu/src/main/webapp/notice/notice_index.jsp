@@ -24,12 +24,11 @@
 
 <!-- bootstrap script, Jquery CDN -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-	crossorigin="anonymous"></script>
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+		crossorigin="anonymous"></script>
 <!-- ****************************** -->	
 
 <!-- main page CSS -->
@@ -41,55 +40,9 @@
 <body>
 
 	<!-- 그룹웨어 GNB -->
-<%--
-	<header>
-		<header class="container-fluid main-gnb">
+	<header class="container-fluid main-gnb">
 		<jsp:include page="/MainPage/header.jsp"/>
 	 </header>
---%>
-	
-	<header>
-		<div class="container-fluid main-gnb">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
-				<a class="navbar-brand navbar-text-light " href="#"	style="margin-right: 28em">
-					<!-- <span style="color:#007BFF; font-size:35px;"><i class="fab fa-weebly"></i></span> -->
-					<img alt="" src="../images/notice/로고7.png" width="150px">
-					</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto main-gnb-menu">
-						<li class="nav-item active"><a class="nav-link" href="#">홈<span
-								class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="/notice/notice_index.jsp">게시판</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-						<li class="nav-item"><a class="nav-link" href="/calender/CalenderMonth.jsp">캘린더</a></li>
-						<li class="nav-item"><a class="nav-link" href="/email/email_index.jsp">메일함</a></li>
-						<li class="nav-item"><a class="nav-link" href="/ElectronicApproval/E_Approval_home.jsp">전자결재</a></li>
-						<li class="nav-item"><a class="nav-link" href="/market/market_index.jsp">중고시장</a></li>
-					</ul>
-
-					<ul class="navbar-nav my-2 my-lg-0">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span class="navbar-toggler-icon"></span>
-						</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item  " href="#">정보 수정</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item  " href="#">로그아웃</a>
-							</div></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</header>
 	<!-- 그룹웨어 GNB code 끝 -->
 
 	<section class="e-approval-container">
@@ -117,8 +70,7 @@
 						</div>
 					</form>
 				</div>
-
-			<!-- ========== -->
+				<!-- ========== -->
 			
 			<!-- 전사게시판 사내공지 code -->
 			<div class="notice-container">
@@ -149,6 +101,8 @@
             		</table>
         		</div>
    			</div>
+   			<!-- ========== -->
+   			
 
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">
@@ -169,7 +123,7 @@
 		</main>
 	</section>
 	
-		<!-- 글쓰기 모달창 -->
+	<!-- 글쓰기 모달창 -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content"
@@ -193,20 +147,20 @@
 									</select>
 								</h6>
 							</div>
-
 						</div>
-
-
 					</div>
 				</div>
+				<!-- ========== -->
+				
 				<div class="modal-footer">
 					<input type="button" class="btn btn-secondary" data-dismiss="modal"
 						value="close"> <input type="button"
 						class="btn btn-primary" value="선택">
 				</div>
+				<!-- ========== -->
+				
 			</div>
 		</div>
 	</div>
- 
 </body>
 </html>
