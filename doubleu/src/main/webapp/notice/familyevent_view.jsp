@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전사게시판-상세보기</title>
+<title>전사게시판-경조사</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -58,7 +58,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>사내공지</span>
+							<span>경조사</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -71,10 +71,9 @@
 						</div>
 					</form>
 				</div>
-
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 상세보기 code -->
+			<!-- 경조사 상세보기 code -->
 			<div class="row">
 			    <div class="col-xs-2 col-md-2"></div>
 			    <div class="col-xs-8 col-md-8">
@@ -82,17 +81,17 @@
 				        <table class="table">
 				        <tr>
 				            <th class="success">제목</th>
-				            <td colspan="3">아마도 제목임</td>
+				            <td colspan="3">관리부 누구 본인 결혼</td>
 				        </tr>
 				        <tr>
 				            <th class="success">작성자</th>
-				            <td>ㄴ ㅏ</td>
+				            <td>관리자</td>
 				            <th class="success">작성일</th>
 				            <td>2021.02.07</td>
 				        </tr>
 				        <tr>
 				            <th class="success">분류</th>
-				            <td>중요공지</td>
+				            <td><i class="fas fa-birthday-cake"></i> 결혼</td>
 				            <th class="success">조회수</th>
 				            <td>1</td>
 				        </tr>
@@ -100,21 +99,20 @@
 				        <tr>
 				            <th class="success">글 내용</th>
 				            <td colspan="3">
-				            안녕하세요? 입사지원서 언제 쓰죠?<br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠?
+							관리부 누구님 결혼 축하합니다.<br>
+							
+							▶ 일 시 : 2021년 03월 06일 토요일 오후 1시<br>
+							
+							▶ 장 소 : 공항컨벤션웨딩홀 2층 베니스홀<br>
+							
+							▶ 연락처 : 관리부 대리 누구(010-1111-1111)<br>
 				            </td>
 				        </tr>
 				        <tr>
 				        	<th class="success">첨부파일</th>
-				        	<td> 하기싫어.png </td>
+				        	<td> 축하.gif </td>
 				        	<td colspan="2">
-				        		<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
+				        		<img src="https://item.kakaocdn.net/do/c102cefcee683173508c5fee9f6869c9f43ad912ad8dd55b04db6a64cddaf76d">
 				        	
 				        	</td>
 <!-- 관리자 할 때 부활시킬듯				         
@@ -129,12 +127,13 @@
 				    </div>
 			    </div>
 			</div>
-			<!-- ========== -->
-			
+ 			<!-- ========== -->
+ 			
  			<!-- 경조사 댓글창 -->
  			<jsp:include page="notice_repl.jsp"/>
  			<!-- ========== -->
  			
+			
 		</main>
 	</section>
 	

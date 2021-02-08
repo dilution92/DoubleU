@@ -2,6 +2,7 @@
 
 body {
 	height: 100%;
+	box-sizing: border;
 }
 
 .main-gnb-content {
@@ -390,3 +391,84 @@ body {
     margin: 10px 50px;
 }
 
+/* 주소록 */
+.modalEmailAddressEmail{
+	width: 1000px;
+    height: 600px;
+}
+
+.modalAddressEmailFolder {
+    padding: 30px;
+    margin: 15px auto;
+    width: 800px;
+}
+
+.modalAddressEmailFolder > p{
+   margin-top: 30px;
+   width: 500px;
+}
+
+
+.modalAddressEmailFolder > input {
+    text-indent: 20px;
+    margin: 30px auto;
+    width: 500px;
+    height: 30px;
+}
+
+.modalAddressEmailFolder > h6 {
+	margin-top: 50px;
+	border:1px solid #E5E5E5;
+	height: 50px;
+	line-height:50px;
+}
+
+.modalAddressEmailFolder > .modalAddressEmailFolderBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalAddressEmailFolder > .modalAddressEmailFolderBtn > button {
+    margin: 10px 50px;
+}
+
+/* 검색 했을 때 창 css */
+.search-btn {
+	width: 800px;
+	display: flex;
+	margin: 30px auto;
+}
+
+.search-btn-address {
+	border:1px solid #E5E5E5;
+	height: 300px;
+	display: flex;
+}
+
+
+.search-btn-address-btn-one {
+	margin: 10px 0px;
+}
+
+.address-name {
+	padding: 3px;
+}
+
+.search-btn-address-btn-two {
+	margin: 0px auto;
+	border-left: 1px solid #E5E5E5;
+	border-right:1px solid #E5E5E5;
+	height: 300px;
+}
+
+.search-btn-address-btn-two-align {
+	width: 100px;
+	align-content: flex-start;
+	height: 150px;
+	margin-top: 75px;
+}
+
+.search-btn-address-btn-two-align > button {
+	display: block;
+	margin: 10px auto;
+}

@@ -123,8 +123,52 @@
 	                    </div>
 	                </div>  
           </div>
-	                
-	  
+	      
+	      <!-- 주소록 모달창 -->
+	  	<div class="modal fade bs-example-modal-lg"  id="EmailAddress" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	                <div class="modal-dialog modal-lg">
+	                    <div class="modal-content modalEmailAddressEmail">
+	                        <div class="modalAddressEmailFolder">
+	                       	
+	                            <h4>주소록</h4>
+	                            
+	                            <div class="search-btn">
+					        		<input class="form-control form-control-sm col-3" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
+				      				<input class="btn btn-outline-primary btn-sm " onclick="" name="onname" type="button" value="검색"/>
+				      			</div>
+	                            
+	                            <div class="search-btn-address">
+	                            	<div class="search-btn-address-btn-one col-5">
+	                            		<c:forEach begin="0" end="1">
+	                            			<div class="address-name">
+		                            			<span class="badge rounded-pill bg-light text-dark">송연주</span>
+		                            			<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
+		                            			<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
+	                            			</div>
+	                            		</c:forEach>
+	                            	</div>
+	                            	
+	                            	<div class="search-btn-address-btn-two col-2">
+	                            		<div class="search-btn-address-btn-two-align">
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus"></i></button>
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-dash"></i></button>
+	                            		</div>
+	                            	</div>
+	                            	
+	                            	<div class="search-btn-address-btn-three col-5">
+	                            	내용
+	                            	</div>
+	                            </div>
+	                           
+	                            <div class="modalAddressEmailFolderBtn">
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">추가하기</button>
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+	                            </div>
+	                        </div>
+	                        
+	                    </div>
+	                </div>  
+          </div>
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
@@ -171,8 +215,9 @@
 							 
 							</div>
 							
+							<!-- 주소록 버튼 -->
 							<div class="form-group col-sm-2 rev-to-me">
-							 	<input type="button" class="btn btn-outline-primary btn-sm" role="button" value="주소록">
+							 	<input type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#EmailAddress" role="button" value="주소록">
 							</div>
 					    </div>
 					    
