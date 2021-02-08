@@ -135,7 +135,6 @@
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
 			      		<span>임시 보관함</span>
-			      		<button type="button" style="line-height: 1.3;" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
 					</div>
 					
 					<div class="email-select-content">
@@ -146,14 +145,14 @@
 							</div>
 							
 							<div class="form-group col-sm-1">
-								
 							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="송연주">
 							</div>
 							
 							<div class="form-group col-sm-6">
-								
 							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
 							</div>
+							
+							<button type="button" style="margin-left: 11px; height:37px;" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
 					    </div>
 					    
 					    <div class="emailSendContentsRev">
