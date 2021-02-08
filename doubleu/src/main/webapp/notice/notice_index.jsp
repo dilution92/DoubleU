@@ -95,7 +95,7 @@
 	<section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
-		<jsp:include page="notice_aside.jsp"/>
+		<jsp:include page="../market/side_menu.jsp"/>
 		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
@@ -123,7 +123,7 @@
 			<!-- 전사게시판 사내공지 code -->
 			<div class="notice-container">
         		<div class = "row">
-          			<table class = "table table-hover">
+          			<table class = "table table-hover" id="notice-list" style="text-align:center; border:1px solid #ffffff">
                 		<thead>
                     		<tr>
 		                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
@@ -139,7 +139,7 @@
 	                    		<tr>
 			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">공지사항</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">안녕하세요</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">파이널 일정 안내 <i class="fas fa-paperclip"></i></td>
 			                        <td style = "background-color:#ffffff; text-align:center;">나</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">31</td>

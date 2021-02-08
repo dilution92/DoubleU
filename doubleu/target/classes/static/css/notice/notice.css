@@ -1,4 +1,4 @@
-@charset "UTF-8";
+	@charset "UTF-8";
 
 body {
 	height: 100%;
@@ -11,10 +11,29 @@ body {
 	margin-right: 1em;
 }
 
-/* 게시판 main CSS */
+/* 게시판 repl CSS */
 #notice-list > tbody > tr:hover {
     background: white;
     color: black;
+}
+
+#repl-move{
+	margin: 300px;
+}
+
+.repl-who{
+	text-align: left;
+	width: 130px;
+	padding-top: 15px;
+}
+
+.repl-when{
+	padding-top: 15px;
+	
+}
+
+.repl-say{
+	padding-bottom: 15px;
 }
 
 /* 전자결재 사이드바 CSS */
