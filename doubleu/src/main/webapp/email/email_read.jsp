@@ -58,7 +58,6 @@
 					<span>메일함</span>
 					<ul>
 						<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
-						<li><a href="email_star.jsp">별표 메일함</a></li>
 						<li><a href="email_important.jsp">중요 메일함</a></li>
 						<li><a href="email_temporary.jsp">임시 보관함</a></li>
 						<li><a href="email_sendEmail.jsp">보낸 메일함</a></li>
