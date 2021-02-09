@@ -392,13 +392,13 @@ body {
 /* 주소록 */
 .modalEmailAddressEmail{
 	width: 1000px;
-    height: 600px;
+    height: 650px;
 }
 
 .modalAddressEmailFolder {
     padding: 30px;
     margin: 15px auto;
-    width: 800px;
+    width: 900px;
 }
 
 .modalAddressEmailFolder > p{
@@ -410,7 +410,7 @@ body {
 .modalAddressEmailFolder > input {
     text-indent: 20px;
     margin: 30px auto;
-    width: 500px;
+    width: 600px;
     height: 30px;
 }
 
@@ -440,15 +440,16 @@ body {
 .search-btn-address {
 	width: 100%;
 	border:1px solid #E5E5E5;
-	height: 300px;
+	height: 400px;
 	display: flex;
 }
 
 
 .search-btn-address-btn-one {
-	margin: 10px 0px;
+	margin: 10px auto;
 	overflow: scroll;
 }
+
 
 /* 주소록 스크롤 */
 .search-btn-address-btn-one::-webkit-scrollbar {
@@ -478,17 +479,97 @@ body {
 	
 	border-left: 1px solid #E5E5E5;
 	border-right:1px solid #E5E5E5;
-	height: 300px;
+	height: 400px;
 }
 
 .search-btn-address-btn-two-align {
 	width: 50px;
 	align-content: flex-start;
 	height: 150px;
-	margin-top: 75px;
+	margin-top: 150px;
 }
 
 .search-btn-address-btn-two-align > button {
 	display: block;
 	margin: 10px 0;
 }
+
+/* 주소록 받는 사람 */
+
+.rev-mail-one {
+	border: 1px solid #E5E5E5;
+    max-height: 150px;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+
+.rev-mail-one > div:nth-child(1){
+	padding: 10px;
+}
+
+.rev-align-scroll {
+	width: 300px;
+	text-align: center;
+}
+
+
+/* 받는 사람 스크롤 */
+.rev-mail-one::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rev-mail-one::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.rev-mail-one::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.rev-mail-one::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+
+
+
+/* 주소록 참조 */
+.ref-mail-two {
+	border: 1px solid #E5E5E5;
+    max-height: 150px;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+
+.ref-mail-two > div:nth-child(1){
+	padding: 10px;
+}
+
+.ref-align-scroll {
+	width: 300px;
+	text-align: center;
+}
+
+/* 참조 스크롤 */
+.ref-mail-two::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ref-mail-two::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.ref-mail-two::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.ref-mail-two::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+
+

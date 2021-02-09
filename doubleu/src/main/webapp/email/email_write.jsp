@@ -126,7 +126,7 @@
 	      <!-- 주소록 모달창 -->
 	  	<div class="modal fade bs-example-modal-lg"  id="EmailAddress" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	                <div class="modal-dialog modal-lg">
-	                    <div class="modal-content modalEmailAddressEmail">
+	                    <div class="modal-content modalEmailAddressEmail" style="margin-left: -30px;">
 	                        <div class="modalAddressEmailFolder">
 	                       	
 	                       		
@@ -143,11 +143,11 @@
 				      			</div>
 	                            
 	                            <div class="search-btn-address">
-	                            	<div class="search-btn-address-btn-one col-6">
+	                            	<div class="search-btn-address-btn-one col-5">
 	                            		<label class="btn btn-outline-primary btn-sm" >
 											<input type="checkbox" style="margin-right: 5px;"/> 전체선택
 										</label>
-	                            		<c:forEach begin="0" end="10">
+	                            		<c:forEach begin="0" end="20">
 	                            			<div class="address-name">
 	                            				<input type="checkbox" name="emailAddressChk"/>
 		                            			<span class="badge rounded-pill bg-light text-dark">송연주</span>
@@ -166,7 +166,27 @@
 	                            	
 	                            	<div class="search-btn-address-btn-one col-5">
 	                            		
+	                            		<div>받는 사람</div>
+	                            		<div class="rev-mail-one">
+	                            			<div class="rev-align-scroll">
+		                            			<c:forEach begin="0" end="20">
+		                            			<span class="badge rounded-pill bg-light text-dark">송연주</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
+		                            			</c:forEach>
+	                            			</div>
+	                            		</div>
 	                            		
+	                            		<div style="margin-top:10px">참조</div>
+	                            		<div class="ref-mail-two">
+	                            			<div class="rev-align-scroll">
+		                            			<c:forEach begin="0" end="20">
+		                            			<span class="badge rounded-pill bg-light text-dark">송연주</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
+		                            			</c:forEach>
+	                            			</div>
+	                            		</div>
 	                            	</div>
 	                            </div>
 	                           
