@@ -6,7 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>중고 게시판</title>
-
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" 
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+		crossorigin="anonymous"></script>
 <!-- bootstrap CDN -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -22,6 +25,7 @@
 <link rel="stylesheet" href="/css/market/market.css">
 <!-- 중고게시판 javascript -->
 <script src='/js/market/market.js'></script></head>
+
 <body>
 
 		<!-- main-GNB -->
@@ -67,7 +71,7 @@
 					<div class="form-group row">
 		   		 <label for="marketPrice" class="col-sm-2 col-form-label">판매가격</label>
 				    <div class="col-sm-8" style="display : inline-block;">
-						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;" >무료 나눔</button>
+						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;" id='btnFree' data-toggle="modal" data-target="#FreeModal">무료 나눔</button>
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;">시세 확인</button>
 				    	  <div style="display:flex;">
 				    	  <input type="text" class="form-control" id="marketPrice" onkeyup="numberWithCommas(this.value)" style="text-align : right;">
@@ -123,57 +127,21 @@
 
 			<!-- ========== -->
 
-
-
-
-
-
-
 		</main>
 	</section>
 
 	<!-- 글쓰기 모달창 -->
-	<div class="modal fade" id="exampleModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content"
-				style="width: 80%; height: 300px; top: 200px;">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">글쓰기</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="moadl-body approval-scroll">
-					<div class="accordion" id="accordionExample">
-						<div class="card">
-							<div class="card-header" id="headingOne">
-								<h6 class="mb-0">
-									<select
-										class="form-control form-control-sm e-approval-select-box">
-										<option selected>게시판 선택</option>
-										<option value="1">중고게시판</option>
-									</select>
-								</h6>
-							</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<jsp:include page="board_write.jsp"/>
+	</div>
+	<!-- 무료나눔 모달창 -->
 
-						</div>
-
-
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-secondary" data-dismiss="modal"
-						value="close"> <input type="button"
-						class="btn btn-primary" value="선택">
-				</div>
-			</div>
-		</div>
+	<div class="modal fade" id="FreeModal" tabindex="-1" aria-labelledby="FreeModal" aria-hidden="true">
+		<jsp:include page="free_modal.jsp"/>
+		
 	</div>
 
-
-
+	
 	<!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

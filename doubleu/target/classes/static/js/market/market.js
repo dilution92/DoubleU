@@ -81,5 +81,23 @@
 		}
 		
 		
-//-----------무료나눔 시 disabled ----//
+//-----------무료나눔 버튼클릭 시 disabled 및 모달창띄우기----//
+ $(function() {
+    $("#btnFree").click(function() { 
+		
+		if($("#marketPrice").is(":disabled")){
+			$('#FreeText').html("아쉽네요😢");
+			$('#marketPrice').attr("disabled", false); 
+		}
+		else{
+			
+		$('#marketPrice').val("0");
+		$('#marketPrice').attr("disabled", true); 
+		$('#FreeText').html("무료나눔을 하는 당신, 멋져요👍");
+	
+		}
+});
+})		
+			
 
+//----------insert 시 유효성 검사 -----------------//
