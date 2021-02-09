@@ -67,11 +67,10 @@
 								class="sr-only">(current)</span></a></li>
 						<li class="nav-item"><a class="nav-link" href="/notice/notice_index.jsp">게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">근태관리</a></li>
 						<li class="nav-item"><a class="nav-link" href="/calender/CalenderMonth.jsp">캘린더</a></li>
 						<li class="nav-item"><a class="nav-link" href="/email/email_index.jsp">메일함</a></li>
 						<li class="nav-item"><a class="nav-link" href="/ElectronicApproval/E_Approval_home.jsp">전자결재</a></li>
-						<li class="nav-item"><a class="nav-link" href="/market/market_index.jsp">중고시장</a></li>
 					</ul>
 
 					<ul class="navbar-nav my-2 my-lg-0">

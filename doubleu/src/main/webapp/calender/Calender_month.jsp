@@ -79,16 +79,13 @@
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
 			
-			<c:forEach var="i" begin="0" end="5">
-		
+			<% for(int i=0; i<6; i++) { %>
         	<tr height="150px;"><!-- 일주일은 묶는곳 -->
 			
-			<c:forEach var="j" begin="0" end="6">
-			
+			<% for(int j=0; j<7; j++){ %>
 			<td id="calender_content"><!-- 월간 달력 한칸 -->
 				<div><!-- 날자가 표시 될 곳 -->
-				<%=list.get(20) %>
-					${(i*6+j+i) }
+				<%=list.get(i*6+j+i) %>
 				</div>
 				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
 					여기에 일정이 표시
@@ -97,9 +94,9 @@
 				
 				</div>
 			</td>
-        </c:forEach>
+       <%} %>
         	</tr>
-       </c:forEach>
+		<%} %>
 			</tbody>
 		</table>
 	</div>
