@@ -65,45 +65,10 @@
   <body class="bg-light">
     <!-- main-GNB -->
 	<!-- 그룹웨어 GNB -->
-	<header>
-		<div class="container-fluid main-gnb">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
-				<a class="navbar-brand navbar-text-light " href="#"	style="margin-right: 28em">
-					<span style="color:#007BFF"><i class="fab fa-weebly fa-2x"></i></span></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto main-gnb-menu">
-						<li class="nav-item active"><a class="nav-link" href="#">홈<span
-								class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">메일함</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">전자결재</a></li>
-					</ul>
-
-					<ul class="navbar-nav my-2 my-lg-0">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span class="navbar-toggler-icon"></span>
-						</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item  " href="#">정보 수정</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item  " href="#">로그아웃</a>
-							</div></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<!-- 그룹웨어 GNB code 끝 -->
+	<header class="container-fluid main-gnb">
+		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+	 </header>
+	 <!-- 그룹웨어 GNB code 끝 -->
 
 	<section class="e-approval-container">
 	<!-- e-approval-lnb code -->
@@ -140,17 +105,9 @@
         <h5 class="mb-3">회원정보 수정</h5>
         <form class="needs-validation" novalidate>
           <div class="row g-3">
-            <div class="col-sm-6">
-              <label for="firstName" class="form-label">성</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                성은 필수 정보입니다.
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <label for="lastName" class="form-label">이름</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <div class="col-sm-12">
+              <label for="Name" class="form-label">이름</label>
+              <input type="text" class="form-control" id="Name" placeholder="이름을 입력하세요." value="" required>
               <div class="invalid-feedback">
                 이름은 필수 정보입니다.
               </div>
