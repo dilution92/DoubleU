@@ -37,6 +37,20 @@ body {
 	padding-bottom: 15px;
 }
 
+/* 게시판 insert */
+#searchDate, #searchDateTwo{
+	border: 1px solid #ced4da;
+	padding: 6px 12px;
+	border-radius: .25rem;
+	color: #495057;
+}
+
+/* 경조사 테이블 */
+.familyevent-icon{
+	font-family: "Font Awesome 5 Free";
+	font-weight:900;
+}
+
 /* 전자결재 사이드바 CSS */
 .e-approval-container {
 	display: flex;	
@@ -138,7 +152,7 @@ body {
 /* e-approval-search-bar CSS */
 .e-approval-search-bar {
 	width: 100%;
-	min-height: 10%;
+	min-height: 90px;
 	margin-bottom: 2em;
 }
 
