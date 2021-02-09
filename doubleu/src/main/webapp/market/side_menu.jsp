@@ -33,7 +33,7 @@
 				</ul>
 			</div>
 				<div class="e-approval-approval-list">
-					<a href="../market/market_index.jsp">중고게시판</a>
+					<span><a href="../market/market_index.jsp">중고게시판</a></span>
 					<!-- 
 					<ul>
 

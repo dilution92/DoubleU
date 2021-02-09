@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판 댓글</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -14,7 +14,7 @@
 <body>
 <div id="repl-move">
 	<div class="row">
-		<table width="800px" height="70px">
+		<table width="950px" height="70px">
 			<tr>
 				<td rowspan="2" width="50px">
 					<span style="font-size:60px; margin-right:10px; color:#BBBBBB"><i class="fas fa-user"></i></span>
@@ -30,7 +30,7 @@
 				</td>
 			</tr>
 		</table>
-		<table width="800px" height="70px">
+		<table width="950px" height="70px">
 			<tr>
 				<td rowspan="2" width="50px">
 					<span style="font-size:60px; margin-right:10px; color:#BBBBBB"><i class="fas fa-user"></i></span>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전사게시판-상세보기</title>
+<title>전사게시판-사내공지 view</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -76,8 +76,8 @@
 			
 			<!-- 전사게시판 사내공지 상세보기 code -->
 			<div class="row">
-			    <div class="col-xs-2 col-md-2"></div>
-			    <div class="col-xs-8 col-md-8">
+			    <div class="col-xs-1 col-md-1"></div>
+			    <div class="col-xs-8 col-md-10">
 				    <div class="table table-responsive">
 				        <table class="table">
 				        <tr>
