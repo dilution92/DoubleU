@@ -105,7 +105,7 @@ body {
 /* +++++++++++++++++++++++++++++++++++++++ */
 
 
-/* 전자결재 main CSS */
+/* main CSS */
 .e-approval-article {
 	width: 80%;
 	padding: 3em 5em 0 5em;
@@ -113,7 +113,6 @@ body {
 
 
 /* e-approval-search-bar CSS */
-
 
 .e-approval-search-bar {
 	width: 100%;
@@ -199,63 +198,18 @@ body {
 
 
 
-
 /* 받은 메일함 선택 바*/
 
 .form-group {
 	display: inline-block;
 }
 
-
-
 .email-select-content {
 	width: 100%;
 	margin: 30px auto;
-	height: 1500px;
+	height: 100%;
 	padding: 10px;
 }
-
-.email-select-content > div {
-	font-size: 17px;
-}
-
-.email-select-content > .email-select-list {
-	display: flex;
-	margin-left: 0px;
-	margin-bottom: 2rem;
-	justify-content:space-around;
-	padding: 0px;
-	width: 650px;
-	
-}
-
-.email-select-content > ul > li {
-	cursor: pointer;
-	list-style: none;
-	margin: 0px 10px;
-}
-
-
-
-.email-select-content > ul > li > label {
-	cursor: pointer;
-	width: 100px;
-}
-
-
-.email-select-content > ul > li > label > input{
-	margin-right: 10px;
-}
-
-.email-select-content > ul > li > span {
-	width:80px;
-}
-
-
-.email-select-content > ul > li div > div > button {
-	width:80px;
-}
-
 
 /* 메일 쓰기 */
 
@@ -265,16 +219,35 @@ body {
 
 .emailSendContentsRev div:first-child > label {
 	position: absolute;
-	top: -120px;
+	top: -90px;
 }
 
 .emailSendContentsRev > .revEmail{
 	border: 1px solid #E5E5E5;
-	max-height: 300px;
+	max-height: 100px;
 	padding: 5px;
 	margin: 0 auto;
+	overflow: scroll;
+	overflow-x:hidden;
 	
 }
+
+/* 받는 사람스크롤 바 */
+.revEmail::-webkit-scrollbar {
+  width: 6px;
+}
+.revEmail::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.revEmail::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+.revEmail::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
 
 .emailSendContentsRev > .revEmail > input{
 	display: inline-block;
@@ -282,14 +255,16 @@ body {
 	margin: 5px 20px;
 	text-align: center;
 	
-
 } 
 
 /* 주소록 버튼 */
 
 .emailSendContentsRev div:nth-child(3)> input {
 	position: absolute;
-	top: -125px;
+	top: -80px;
+	width: 105px;
+	height: 37px;
+	
 }
 
 
@@ -297,31 +272,52 @@ body {
 /* 참조 */
 .emailSendContentsRef {
 	margin-top : 10px;
+
 }
 
 .emailSendContentsRef div:nth-child(1)> label {
 	position: absolute;
-	top: -125px;
+	top: -80px;
 }
 
 .emailSendContentsRef > .rev-to-me > input {
 	line-height: 2;
 } 
 
+	
 .emailSendContentsRef > .revRef{
 	border: 1px solid #E5E5E5;
-	max-height: 300px;
 	padding: 5px;
 	margin: 0 auto;
+	overflow: scroll;
+	overflow-x:hidden;
+	max-height: 100px;
 	
 }
+
+/* 참조 스크롤 바 */
+
+.revRef::-webkit-scrollbar {
+  width: 6px;
+}
+.revRef::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.revRef::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+.revRef::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
 
 .emailSendContentsRef > .revRef > input{
 	display: inline-block;
 	font-size: 10px;
 	margin: 5px 20px;
 	text-align: center;
-
 } 
 
 
@@ -389,18 +385,20 @@ body {
 
 .modalTemporaryEmailFolder > .modalTemporaryEmailFolderBtn > button {
     margin: 10px 50px;
+    
 }
+
 
 /* 주소록 */
 .modalEmailAddressEmail{
 	width: 1000px;
-    height: 600px;
+    height: 650px;
 }
 
 .modalAddressEmailFolder {
     padding: 30px;
     margin: 15px auto;
-    width: 800px;
+    width: 900px;
 }
 
 .modalAddressEmailFolder > p{
@@ -412,7 +410,7 @@ body {
 .modalAddressEmailFolder > input {
     text-indent: 20px;
     margin: 30px auto;
-    width: 500px;
+    width: 600px;
     height: 30px;
 }
 
@@ -440,35 +438,138 @@ body {
 }
 
 .search-btn-address {
+	width: 100%;
 	border:1px solid #E5E5E5;
-	height: 300px;
+	height: 400px;
 	display: flex;
 }
 
 
 .search-btn-address-btn-one {
-	margin: 10px 0px;
+	margin: 10px auto;
+	overflow: scroll;
 }
+
+
+/* 주소록 스크롤 */
+.search-btn-address-btn-one::-webkit-scrollbar {
+  width: 6px;
+}
+.search-btn-address-btn-one::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.search-btn-address-btn-one::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+.search-btn-address-btn-one::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+
 
 .address-name {
 	padding: 3px;
+	margin: 0 4px;
+	
 }
 
 .search-btn-address-btn-two {
-	margin: 0px auto;
+	
 	border-left: 1px solid #E5E5E5;
 	border-right:1px solid #E5E5E5;
-	height: 300px;
+	height: 400px;
 }
 
 .search-btn-address-btn-two-align {
-	width: 100px;
+	width: 50px;
 	align-content: flex-start;
 	height: 150px;
-	margin-top: 75px;
+	margin-top: 150px;
 }
 
 .search-btn-address-btn-two-align > button {
 	display: block;
-	margin: 10px auto;
+	margin: 10px 0;
 }
+
+/* 주소록 받는 사람 */
+
+.rev-mail-one {
+	border: 1px solid #E5E5E5;
+    max-height: 150px;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+
+.rev-mail-one > div:nth-child(1){
+	padding: 10px;
+}
+
+.rev-align-scroll {
+	width: 300px;
+	text-align: center;
+}
+
+
+/* 받는 사람 스크롤 */
+.rev-mail-one::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rev-mail-one::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.rev-mail-one::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.rev-mail-one::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+
+
+
+/* 주소록 참조 */
+.ref-mail-two {
+	border: 1px solid #E5E5E5;
+    max-height: 150px;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+
+.ref-mail-two > div:nth-child(1){
+	padding: 10px;
+}
+
+.ref-align-scroll {
+	width: 300px;
+	text-align: center;
+}
+
+/* 참조 스크롤 */
+.ref-mail-two::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ref-mail-two::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.ref-mail-two::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.ref-mail-two::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+
+

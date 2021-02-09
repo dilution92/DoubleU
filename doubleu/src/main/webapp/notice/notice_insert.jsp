@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>전사게시판-경조사</title>
+<meta charset="UTF-8">
+<title>전사게시판-사내공지 view</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -23,13 +23,13 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <!-- bootstrap script, Jquery CDN -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+	crossorigin="anonymous"></script>
 <!-- ****************************** -->	
 
 <!-- main page CSS -->
@@ -39,11 +39,11 @@
 
 </head>
 <body>
+
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
 		<jsp:include page="/MainPage/header.jsp"/>
 	 </header>
-
 	<!-- 그룹웨어 GNB code 끝 -->
 
 	<section class="e-approval-container">
@@ -58,7 +58,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>경조사</span>
+							<span>사내공지</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -74,50 +74,81 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 경조사 code -->
-			<div class="familyevent-list">
-				<table class="table table-hover">
-			     	<thead>
-                   		<tr>
-	                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
-	                        <th style = "background-color:#f8f9fa; text-align:center;">분류</th>
-	                        <th style = "background-color:#f8f9fa; text-align:center;">제목</th>
-	                        <th style = "background-color:#f8f9fa; text-align:center;">작성자</th>
-	                        <th style = "background-color:#f8f9fa; text-align:center;">날짜</th>
-	                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
-                    	</tr>
-                	</thead>
-					<tbody class="e-approval-list text-muted">
-	                		<c:forEach begin="1" end="10">
-	                    		<tr>
-			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;"><i class="fas fa-birthday-cake"></i> 결혼</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">관리부 누구 본인 결혼</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">나</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
-		                        </tr>
-	                        </c:forEach>
-					</tbody>
-				</table>		
- 			</div>
+			<!-- 전사게시판 사내공지 상세보기 code -->
 			
-			<!-- 리스트 페이징 아이콘 code -->
-			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center" style="padding-top:20px">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
-					</ul>
-				</nav>
+			<form>
+				<div class="row">
+			    <div class="col-xs-1 col-md-1"></div>
+			    <div class="col-xs-8 col-md-10">
+				    <div class="table table-responsive">
+				        <table class="table">
+				        <tr>
+				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
+			    <td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
+				        </tr>
+				        <tr>
+				        	<div class="form-group">
+				            <th class="success">작성자</th>
+				            <td>관리자</td>
+				            <th class="success">작성일</th>
+				            <td>2021.02.07</td>
+				            </div>
+				        </tr>
+				        <tr>
+				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
+				            <td>
+				            <select class="form-control" id="exampleFormControlSelect4">
+						      <option>중요공지</option>
+						      <option>일반공지</option>
+			   				 </select>
+				            </td>
+				            <th class="success">조회수</th>
+				            <td>1</td>
+				        </tr>
+				         
+				        <tr>
+				        	<div class="form-group">
+				            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
+				            <td colspan="3">
+				            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요.">
+</textarea>
+				            </td>
+						  </div>
+				        </tr>
+				        <tr style="border-color: #ffffff;">
+				        	<th class="success">첨부파일</th>
+				        	<td colspan="3">
+				        		<div class="custom-file mb-3">
+									<input type="file" class="custom-file-input" id="validatedCustomFile" required>
+				    				<label class="custom-file-label" for="validatedCustomFile">파일을 선택하세요.</label>
+			    					<div class="invalid-feedback">Example invalid custom file feedback</div>
+			  					</div>
+				        	</td>
+				        </tr>
+				        <tr>
+				        	<td></td>
+				        	<td colspan="3">
+				        		지워야하는데 너무 귀엽짜나..<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
+				        	</td>
+				        </tr>
+				        <tr>
+				            <td colspan="4" class="text-center">
+								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="취소" onclick="location.href=''">
+				            </td>
+				        </tr>
+				        </table>
+				    </div>
+			    </div>
 			</div>
+			</form>
 			<!-- ========== -->
-
+			
+ 			<!-- 경조사 댓글창 -->
+ 			<jsp:include page="notice_repl.jsp"/>
+ 			<!-- ========== -->
+ 			
 		</main>
 	</section>
 	
@@ -145,10 +176,7 @@
 									</select>
 								</h6>
 							</div>
-
 						</div>
-
-
 					</div>
 				</div>
 				<div class="modal-footer">
