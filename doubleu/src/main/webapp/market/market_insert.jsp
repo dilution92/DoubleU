@@ -45,19 +45,19 @@
 		
 		
 			<div class='market-insert-form'>
-			<form>
+			<form class="frm_market_insert">
 				<div class="form-group row">
-		   		 <label for="marketName" class="col-sm-2 col-form-label">상품명</label>
+		   		 <label for="marketName" class="col-sm-2 col-form-label  is-invalid">상품명</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control" id="marketName">
+				      <input type="text" class="form-control " id="marketName" required>
 				    </div>
 				  </div>
 				  
 				<div class="form-group row">
 		   		 <label for="marketaCate" class="col-sm-2 col-form-label">카테고리</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control" id="marketaCate">
-								<option selected>카테고리</option>
+   					 <select class="form-control " id="marketaCate"  required>
+								<option value="">카테고리</option>
 								<option value="0">뷰티/미용</option>
 								<option value="1">생활/가공식품</option>
 								<option value="2">의류</option>
@@ -74,7 +74,7 @@
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;" id='btnFree' data-toggle="modal" data-target="#FreeModal">무료 나눔</button>
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;">시세 확인</button>
 				    	  <div style="display:flex;">
-				    	  <input type="text" class="form-control" id="marketPrice" onkeyup="numberWithCommas(this.value)" style="text-align : right;">
+				    	  <input type="text" class="form-control" id="marketPrice" onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
 				    	  <span class="input-group-text">원</span>
 				    	</div>
 				    </div>
@@ -96,8 +96,8 @@
 				<div class="form-group row">
 		   		 <label for="marketAccount" class="col-sm-2 col-form-label">계좌번호</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control" id="exampleFormControlSelect1">
-								<option selected>은행</option>
+   					 <select class="form-control" id="exampleFormControlSelect1" required>
+								<option value="">은행</option>
 								<option value="0">신한</option>
 								<option value="1">국민</option>
 								<option value="2">농협</option>
@@ -105,7 +105,7 @@
 								<option value="4">케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
-				      <input type="text" class="form-control" id="marketAccount">
+				      <input type="text" class="form-control js-sms-content" id="marketAccount" onkeyup="accountCheck(this.value)" >
 				    </div>
 				    </div>
 				  </div>
@@ -113,7 +113,7 @@
 				  <div class="form-group row">
 		   		 <label for="marketDoc" class="col-sm-2 col-form-label">내용</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="marketDoc" rows ="10"></textarea>
+				      <textarea class="form-control" id="marketDoc" rows ="10"required></textarea>
 				    </div>
 				  </div>
 				  

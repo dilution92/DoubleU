@@ -73,7 +73,7 @@
 		}
 	}
 
-	//------숫자 천단위 쉼표----------//
+//------숫자 천단위 쉼표----------//
 	function numberWithCommas(x) {
 		  x = x.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
 		  x = x.replace(/,/g,'');          // ,값 공백처리
@@ -100,4 +100,41 @@
 })		
 			
 
-//----------insert 시 유효성 검사 -----------------//
+//----------계좌번호  숫자만 입력 -----------------//
+function accountCheck(x) {
+  x = x.replace(/[^0-9]/g,'');   
+		  x = x.replace(/,/g,'');         
+		  $("#marketAccount").val(x.replace(/\B(?=(\d{3})+(?!\d))/g, "")); // 공백처리
+
+
+		}
+//---------계좌번호 길이체크하고 17이상이면 자르기---------------//
+	  $(document).ready(function () {
+        $('.js-sms-content').keyup(function(){
+            cut_5(this);
+        });
+
+        
+    });
+
+    function getTextLength(str) {
+        var len = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (escape(str.charAt(i)).length == 6) {
+                len++;
+            }
+            len++;
+        }
+        return len;
+    }
+
+    function cut_5(obj){
+        var text = $(obj).val();
+        var leng = text.length;
+        while(getTextLength(text) > 17){
+            leng--;
+            text = text.substring(0, leng);
+        }
+        $(obj).val(text);
+    }
+
