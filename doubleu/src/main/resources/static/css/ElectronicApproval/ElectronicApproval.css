@@ -4,6 +4,12 @@ body {
 	height: 100%;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 
 /* 전자결재 사이드바 CSS */
 .e-approval-container {
@@ -261,6 +267,11 @@ body {
 	width: 90%;
 	margin: 0 auto;
 	display: flex;
+	justify-content: space-between;
+}
+.e-approval-work-form-btns {
+	width: 100%;
+	display: flex;
 	justify-content: flex-end;
 }
 
@@ -362,3 +373,12 @@ body {
 	margin-right: 1em;	
 }
 
+
+.e-approval-reason {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.e-approval-reason > textarea {
+	margin-bottom: 1em;
+}

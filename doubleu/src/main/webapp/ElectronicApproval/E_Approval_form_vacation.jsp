@@ -54,11 +54,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> 정해준 </td>
+									<td> <input type="text" name="drafterName" value="정해준" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td>기획부 </td>
+									<td> <input type="text" name="drafterDepartment" value="기획부" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
@@ -95,25 +95,25 @@
 					 <td colspan="3"> 
 					 	<select class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
 					 		<option value="연차"> 연차 </option>
-					 		<option value="연차"> 월차 </option>
-					 		<option value="연차"> 반차 </option>
+					 		<option value="월차"> 월차 </option>
+					 		<option value="반차"> 반차 </option>
 					 	</select>
 					 </td>
 					</tr>
 					<tr>
 						<th> 기간 및 일시 </th>
 						<td>
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
+						<input type="date" name="startDate" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						~
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="endDay" >
+						<input type="date" name="endDate" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						</td>
 						<th> 일 수 </th>
-						<td> <input type="text" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " name="vacationCnt" value="총 1일"> </td>
+						<td> <input type="text" name="vacationCnt" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " value="1"> </td>
 					</tr>
 					<tr>
 						<th> 반차 여부 </th>
 						<td colspan="3">
-							<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
+							<input type="date" name="halfDate" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 							<div class="form-check e-approval-form-vacationType-check-box">
 							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimeAM" value="checkAM" checked>
 							  <label class="form-check-label" for="halfTimeAM">
@@ -130,13 +130,13 @@
 					</tr>
 					<tr>
 						<th> 제목 </th>
-						<td colspan="3"> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required> </td>
+						<td colspan="3"> <input type="text" name="formTitle" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required> </td>
 					</tr>
 					
 					<tr>
 						<th style="line-height: 200px; padding: 0;"> 사유 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" style="height: 100%; overflow: auto ;" ></textarea>
+							<textarea class="form-control"  name="formDoc" style="height: 100%; overflow: auto ;" ></textarea>
 						</td>
 					</tr>		
 					<tr>
@@ -165,6 +165,12 @@
 				</div>
 			</div>
 			</main>
+			<!-- 공통 -->
+			<input type="hidden" name="formType" value="<%= formName %>">
+			<input type="hidden" name="drafterPosition" value="">
+			
+			<input type="hidden" name="vacationType" value="">
+			<input type="hidden" name="checkedHaifTime" value="">
 		</form>
 	</div>
 

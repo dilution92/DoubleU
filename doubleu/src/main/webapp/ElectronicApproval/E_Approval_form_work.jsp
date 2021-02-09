@@ -54,11 +54,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> 정해준 </td>
+									<td> <input type="text" name="drafterName" value="정해준" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td>기획부 </td>
+									<td> <input type="text" name="drafterDepartment" value="기획부" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
@@ -66,7 +66,7 @@
 								</tr>
 								<tr>
 									<th>문서번호</th>
-									<td>  </td>
+									<td> </td>
 								</tr>
 						</table>
 					</div>
@@ -92,20 +92,20 @@
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
 						<th> 일시 </th>
-						<td> <input type="date" class="form-control form-control-sm" style="font-size: 1em;" > </td>
+						<td> <input type="date" name="eventDate" class="form-control form-control-sm" style="font-size: 1em;" > </td>
 						<th> 협조부서 </th>
-						<td> <input type="text" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<td> <input type="text" name="cooperationDepartment" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>
-						<td colspan="3" align="left" style="">
-						<input type="text" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required>
+						<td colspan="3" align="left" >
+						<input type="text" name="formTitle" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required>
 						</td>
 					</tr>
 					<tr>
 						<th style="line-height: 400px; padding: 0;"> 상세 내용 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" style="height: 100%; overflow: auto;" ></textarea>
+							<textarea class="form-control" name="formDoc" style="height: 100%; overflow: auto;" ></textarea>
 						</td>
 					</tr>		
 					<tr>
@@ -116,7 +116,7 @@
 							<div class="e-approval-file-zone">
 								<div class="input-group mb-3">
 								  <div class="custom-file">
-								    <input type="file" class="custom-file-input" id="inputGroupFile02">
+								    <input type="file" class="custom-file-input" id="inputGroupFile02" multiple="multiple">
 								    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
 								  </div>
 								</div>
@@ -134,8 +134,10 @@
 				</div>
 			</div>
 			</main>
+			<!-- 공통 -->
+			<input type="text" name="formType" value="<%= formName %>">
+			<input type="text" name="drafterPosition" value="">
 		</form>
 	</div>
-
 </body>
 </html>

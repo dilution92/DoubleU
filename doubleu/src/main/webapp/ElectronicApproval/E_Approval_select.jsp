@@ -49,7 +49,7 @@
 					</thead>
 					<tbody class="e-approval-list text-muted">
 						<c:forEach begin="1" end="4">
-							<tr onclick="view(1)">
+							<tr onclick="view(0)">
 								<td>2021-02-03</td>
 								<td>업무 기안</td>					
 								<td style=" text-align: left; text-indent: 2em;">그룹웨어 프론트엔드 화면 설계안 요청합니다.</td>					
