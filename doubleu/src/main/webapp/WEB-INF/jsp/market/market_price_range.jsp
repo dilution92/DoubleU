@@ -25,9 +25,10 @@
 
 	<!-- main-GNB -->
 	<header class="container-fluid main-gnb">
-			<jsp:include page="/MainPage/header.jsp"/>
+			<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"/>
 	</header>
 	<!-- main-GNB code 끝 -->
+
 
 	<section class="e-approval-container">
 		<!-- e-approval-lnb code -->
@@ -37,40 +38,53 @@
 
 		<main class="e-approval-article">
 			<div class="market-header" style="height: 2%;  margin-bottom: 50px;">
-				<jsp:include page="market_header.jsp"/>
-	
+				<h3 style="width: 200px; height: 30px;">중고게시판</h3>
 			</div>
 			<!-- ========== -->
-			<span class="badge badge-pill badge-primary">2분 전</span>
-			
-			<!-- market view contents -->
-			<div class='container' >
-				<jsp:include page="market_view_contents.jsp"/>	
-			</div>
-	
-	
-			<!-- market repl  -->
-			<div class='container market-repl-container'>
-				<jsp:include page="market_repl.jsp"/>	
-			</div>
+			<div class='container market-price-search-container 'id = "content">
+				<div class='market-price-search-form'>
+					<div id = "cont-wrap" >
+						<div class="cate-top-txt"><h3>시세검색</h3></div>
+			        </div>
+					<div class="search-bar">
+			                 <form  name="frm_search" role="search" method="post" class="search-form" >
+								 <div class="market-search-bar" >
+									 <input class="form-control form-control-lg market-search"
+											type="text" placeholder="상품명" aria-label="Search"
+											id="approvalFindStr" value="${param.findStr }" name="findStr">
+					                 <input class="btn btn-outline-primary btn-lg" type="button" value="검색" />
+					                    <input type="hidden" name="nowPage" value="${(empty param.nowPage)? 1: param.nowPage}" size="10">
+										<input type="hidden" name="serial" size="10" >
+										<input type="hidden" name="search" value="select">
+									</div>
+			                 </form>
+			       	 </div>
+			     </div>
+			     
+			     
+			     
+			     <div class="market-price-contents">
+			     	<div class="price-chart">
+			     	  차트 화면
+			     	
+			     	</div>
+					<div class="price-chart-detail">
+					
+					상품 시세
+					
+					</div>
+			     
+			     
+			     </div>
+				</div>
+
+				
+
+
 		</main>
 	</section>
 
-	<!-- 글쓰기 모달창 -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<jsp:include page="board_write.jsp"/>
-	</div>
- 
- <!-- 찜목록 모달창 -->
-	<div class="modal fade" id="dibModal" tabindex="-1" aria-labelledby="dibModal" aria-hidden="true">
-		<jsp:include page="dib_modal.jsp"/>
-	</div>
 
-	<!-- 계좌번호 모달창 -->
-	<div class="modal fade" id="goAccount" tabindex="-1" aria-labelledby="goAccount" aria-hidden="true">
-		<jsp:include page="accountModal.jsp"/>
-		
-	</div>
 	<!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

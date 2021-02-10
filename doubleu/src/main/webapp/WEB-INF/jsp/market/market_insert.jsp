@@ -30,7 +30,7 @@
 
 		<!-- main-GNB -->
 	<header class="container-fluid main-gnb">
-			<jsp:include page="/MainPage/header.jsp"/>
+			<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"/>
 	</header>
 	<!-- main-GNB code 끝 -->
 
