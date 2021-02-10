@@ -21,6 +21,9 @@
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_main.css">
 
+<!-- 텍스트 js -->
+<script src="/js/email/email_text.js"></script>
+
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
@@ -311,7 +314,7 @@
 		document.frm.submit();	*/
 	}
 	
-	
+	summernote();
 </script>
 		
 </body>

@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_write.css">
-
+<script src="/js/email/email_text.js"></script>
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
@@ -159,6 +159,11 @@
 	                            	
 	                            	<div class="search-btn-address-btn-two col-1">
 	                            		<div class="search-btn-address-btn-two-align">
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus"></i></button>
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-dash"></i></button>
+	                            		</div>
+	                            		
+	                            		<div class="search-btn-address-btn-two-ref-align">
 		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus"></i></button>
 		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-dash"></i></button>
 	                            		</div>
@@ -329,22 +334,8 @@
 		document.frm.submit();	*/
 	}
 	
-	/* 텍스트 쓰기*/
-	$('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 500,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video',]],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
 
+	summernote();
 
 </script>
 	

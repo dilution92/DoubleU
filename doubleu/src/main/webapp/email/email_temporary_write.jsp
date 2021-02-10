@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_write.css">
+<script src="/js/email/email_text.js"></script>
 
 </head>
 <body>
@@ -249,22 +250,9 @@
 		document.frm.submit();	*/
 	}
 	
-	/* 텍스트 쓰기*/
-	$('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 500,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video',]],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
 
+/* 텍스트 쓰기*/
+summernote();
 
 </script>
 	
