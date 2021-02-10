@@ -26,3 +26,7 @@ function funcApproval() {
 	}) 
 	
 }
+
+function chooseMakers() {
+	var win = window.open('ElectrinicApproval/E_Approval_choose_decisionMakers.jsp', 'win', 'width=400px, height=100px, left=300px, top=300px;')
+}

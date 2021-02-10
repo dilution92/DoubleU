@@ -15,7 +15,7 @@ public class ApprovalFormVo {
 	String cooperationDepartment;
 	String eventDate;
 	
-	List<ApprovalAttFileVo> approvalAttFiles; // 파일 첨부가 있을 경우
+	List<ApprovalAttFileVo> approvalAttFiles; // 파일 첨부가 있을 경우  
 	List<ApprovalDecisionMakers> makersList; // 결재권자 목록을 담을 인스턴스
 	FormPetition formPetition; // 품의서 관련 결재 양식일 경우
 	FormVacation formVacation; // 휴가 관련 결재 양식일 경우

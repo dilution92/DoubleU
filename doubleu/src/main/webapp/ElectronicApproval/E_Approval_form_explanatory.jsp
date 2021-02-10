@@ -79,7 +79,7 @@
 										<td height="20px;"style="padding-top: 0; padding-bottom: 0;"> 직급 </td>
 									</tr>
 									<tr>
-										<td height="80px;" style="padding: 0; line-height: 80px"> <a href="#" style="font-weight: bold;">직원 조회</a> </td>
+										<td height="80px;" style="padding: 0; line-height: 80px"> <a href="javascript:chooseMakers()" style="font-weight: bold;">직원 조회</a> </td>
 									</tr>
 									<tr>
 										<td height="20px;" style="padding-top: 0; padding-bottom: 0;" > 결재 대기 </td>

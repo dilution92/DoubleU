@@ -55,7 +55,7 @@
 				<div class="e-approval-approval-list">
 					<a href="E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=발신된 문서">발신 문서함</a>
 					<ul>
-						<li><a href="E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함">상신한 문서함</a></li>
+						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함">상신한 문서함</a></li>
 						<li><a href="E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=임시 저장된 문서">임시 저장된 문서</a></li>
 						<li><a href="E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=승인 완료된 문서">승인 완료된 문서</a></li>
 						<li><a href="E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=반려된 문서">반려된 문서</a></li>
