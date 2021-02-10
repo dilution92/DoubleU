@@ -74,32 +74,30 @@
 			
 			<!-- 전사게시판 사내공지 code -->
 			<div class="notice-container">
-        		<div class = "row">
-          			<table class = "table table-hover" id="notice-list" style="text-align:center; border:1px solid #ffffff">
-                		<thead>
-                    		<tr>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">분류</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">제목</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">작성자</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">날짜</th>
-		                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
-	                    	</tr>
+				<table class="table table-hover">
+			   		<thead>
+                   		<tr>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">번호</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">분류</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">제목</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">작성자</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">날짜</th>
+	                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
+                    	</tr>
 	                	</thead>
-	                	<tbody>
+					<tbody class="e-approval-list text-muted">
 							<c:forEach begin="1" end="10">
 	                    		<tr>
 			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">공지사항</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">일반공지</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">파이널 일정 안내 <i class="fas fa-paperclip"></i></td>
-			                        <td style = "background-color:#ffffff; text-align:center;">나</td>
+			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">관리자</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
 		                        </tr>
 							</c:forEach>
-                		</tbody>
-            		</table>
-        		</div>
+                	</tbody>
+            	</table>
    			</div>
    			<!-- ========== -->
    			

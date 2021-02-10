@@ -12,10 +12,7 @@ body {
 }
 
 /* 게시판 index CSS */
-.familyevent-list td:hover{
-	color: black;
-	background-color: black;
-}
+
 
 /* 게시판 repl CSS */
 #repl-move{
@@ -38,15 +35,15 @@ body {
 }
 
 /* 게시판 insert */
-#searchDate, #searchDateTwo{
+#searchDateOne, #searchDateTwo{
 	border: 1px solid #ced4da;
 	padding: 6px 12px;
 	border-radius: .25rem;
 	color: #495057;
 }
 
-/* 경조사 테이블 */
-.familyevent-icon{
+/* 게시판 분류 아이콘 */
+.familyevent-icon, .notice-icon{
 	font-family: "Font Awesome 5 Free";
 	font-weight:900;
 }

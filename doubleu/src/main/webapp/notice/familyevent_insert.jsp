@@ -74,7 +74,7 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 상세보기 code -->
+			<!-- 경조사 상세보기 code -->
 			
 			<form>
 				<div class="row">
@@ -83,7 +83,7 @@
 				    <div class="table table-responsive">
 				        <table class="table">
 				        <tr>
-				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
+				        	<th class="success"><label for="exampleFormControlSelect1">제목</label></th>
 			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
 				        </tr>
 				        <tr>
@@ -97,8 +97,8 @@
 				        <tr>
 				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
 				            <td>
-					            <select class="form-control" id="exampleFormControlSelect4" selected="부고">
-							      <option class="familyevent-icon" id="결혼">&#xf1fd 결혼</option>
+					            <select class="form-control" id="exampleFormControlSelect4">
+							      <option class="familyevent-icon" id="결혼" selected>&#xf1fd 결혼</option>
 							      <option class="familyevent-icon">&#xf5b4 부고</option>
 				   				</select>
 				            </td>
@@ -110,9 +110,12 @@
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
 									<label for="searchDate"></label>
-									시작일자 &nbsp;<input type="date" id="searchDate" class="success">
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									종료일자 &nbsp;<input type="date" id="searchDateTwo">
+										<input type="radio" name="searchDate" value="영구" checked>영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="searchDate" value="설정">설정 &nbsp;&nbsp;
+										
+											(시작일자 &nbsp;<input type="date" id="searchDateOne" class="success">
+											&nbsp;~ &nbsp;
+											종료일자 &nbsp;<input type="date" id="searchDateTwo"> )
 								</div>
 							</td>
 				        </tr> 
@@ -137,7 +140,7 @@
 				        <tr>
 				        	<td style="border:none"></td>
 				        	<td colspan="3" style="border:none">
-				        		지워야하는데 너무 귀엽짜나..<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
+
 				        	</td>
 				        </tr>
 				        <tr>
