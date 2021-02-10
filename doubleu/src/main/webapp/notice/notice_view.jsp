@@ -82,53 +82,66 @@
 				        <table class="table">
 				        <tr>
 				            <th class="success">제목</th>
-				            <td colspan="3">아마도 제목임</td>
+				            <td colspan="3">ㅠㅠㅠㅠㅠㅠㅠ</td>
 				        </tr>
 				        <tr>
 				            <th class="success">작성자</th>
-				            <td>ㄴ ㅏ</td>
+				            <td>관리자</td>
 				            <th class="success">작성일</th>
 				            <td>2021.02.07</td>
 				        </tr>
 				        <tr>
 				            <th class="success">분류</th>
-				            <td>중요공지</td>
+				            <td><span style="color:red"><i class="fas fa-exclamation-triangle"></i></span> 중요공지</td>
 				            <th class="success">조회수</th>
 				            <td>1</td>
 				        </tr>
-				         
 				        <tr>
-				            <th class="success">글 내용</th>
-				            <td colspan="3">
-				            안녕하세요? 입사지원서 언제 쓰죠?<br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠?
-				            </td>
+				        	<th>게시기한</th>
+				        	<td colspan="3">
+								<input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							</td>
+				        </tr> 				         
+				        <tr>
+				        	<div class="form-group">
+					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
+					            <td colspan="3">
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" readonly="readonly" style="background-color:white">
+안녕하세요? 입사지원서 언제 쓰죠?
+안녕하세요? 입사지원서 언제 쓰죠?
+안녕하세요? 입사지원서 언제 쓰죠?
+안녕하세요? 입사지원서 언제 쓰죠?
+안녕하세요? 입사지원서 언제 쓰죠?
+안녕하세요? 입사지원서 언제 쓰죠?
+안녕하세요? 입사지원서 언제 쓰죠?
+안녕하세요? 입사지원서 언제 쓰죠?</textarea>
+					            </td>
+						  	</div>
+				        </tr>				        
+				        <tr style="border-color: #ffffff;">
+				        	<th class="success">첨부파일</th>
+				        	<td colspan="3">
+								하기싫어.png
+				        	</td>
 				        </tr>
 				        <tr>
-				        	<th class="success">첨부파일</th>
-				        	<td> 하기싫어.png </td>
-				        	<td colspan="2">
+				        	<td style="border:none"></td>
+				        	<td colspan="3" style="border:none">
 				        		<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
-				        	
 				        	</td>
-<!-- 관리자 할 때 부활시킬듯				         
+				        </tr>
 				        <tr>
 				            <td colspan="4" class="text-center">
-								<input type="button" class="btn btn-primary"  value="댓글 쓰기" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" value="목록보기" onclick="location.href=''">
+								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="취소" onclick="location.href=''">
 				            </td>
 				        </tr>
-				         -->
 				        </table>
 				    </div>
 			    </div>
 			</div>
+			</form>
 			<!-- ========== -->
 			
  			<!-- 경조사 댓글창 -->

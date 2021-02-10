@@ -99,7 +99,24 @@
                 </div>  
                 </div>
                 
-  
+   <!-- 2. 스팸 모달창 -->
+         
+         <div class="modal fade bs-example-modal-lg"  id="spamEmailRev" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	                <div class="modal-dialog modal-lg">
+	                    <div class="modal-content modalSpamEmail">
+	                        <div class="modalSpamEmailFolder">
+	                            <h4>스팸 차단</h4>
+	                            <p>선택한 메일의 정보를 차단 정보로 등록하고, 해당 정보로 오는 메일은 앞으로 받지 않고 자동 반송합니다.</p>
+	                            <input type="text" placeholder="song@gmail.com">
+	                            <div class="modalSpamEmailFolderBtn">
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">차단하기</button>
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+	                            </div>
+	                        </div>
+	                        
+	                    </div>
+	                </div>  
+	                </div>
     <!-- 모달창 모음 끝 -->           
                
 	<main class="e-approval-article">
@@ -163,8 +180,11 @@
 				    
 		
 					<!-- 내용 -->
-					<div class="readContents">
-						하하
+					<div class="send-read-contents">
+					 <c:forEach begin="0" end="500">
+					 	 <div class="badge badge-light">내용</div>
+					 </c:forEach>
+						
 					</div>
 						
 					

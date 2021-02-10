@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전사게시판-사내공지 insert</title>
+<title>전사게시판-경조사 insert</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -58,7 +58,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>사내공지</span>
+							<span>경조사</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -74,7 +74,7 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 상세보기 code -->
+			<!-- 경조사 상세보기 code -->
 			
 			<form>
 				<div class="row">
@@ -83,7 +83,7 @@
 				    <div class="table table-responsive">
 				        <table class="table">
 				        <tr>
-				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
+				        	<th class="success"><label for="exampleFormControlSelect1">제목</label></th>
 			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
 				        </tr>
 				        <tr>
@@ -98,8 +98,8 @@
 				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
 				            <td>
 					            <select class="form-control" id="exampleFormControlSelect4">
-							      <option class="notice-icon">&#xf071중요공지</option>
-							      <option class="notice-icon"selected>일반공지</option>
+							      <option class="familyevent-icon" id="결혼" selected>&#xf1fd 결혼</option>
+							      <option class="familyevent-icon">&#xf5b4 부고</option>
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
@@ -140,7 +140,7 @@
 				        <tr>
 				        	<td style="border:none"></td>
 				        	<td colspan="3" style="border:none">
-								
+
 				        	</td>
 				        </tr>
 				        <tr>

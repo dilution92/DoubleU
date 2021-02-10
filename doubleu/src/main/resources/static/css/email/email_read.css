@@ -350,4 +350,63 @@ body {
 	border: 1px solid #E5E5E5;
 }
 
+/* 스팸함 모달창 */
 
+.modalSpamEmail{
+    height: 350px;
+}
+
+.modalSpamEmailFolder {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalSpamEmailFolder > p{
+   margin-top: 30px;
+   width: 500px;
+}
+
+
+.modalSpamEmailFolder > input {
+    text-indent: 20px;
+    margin: 30px auto;
+    width: 500px;
+    height: 30px;
+}
+
+.modalSpamEmailFolder > .modalSpamEmailFolderBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalSpamEmailFolder > .modalSpamEmailFolderBtn > button {
+    margin: 0 50px;
+}
+
+/* 내용 */
+.send-read-contents {
+	border: 1px solid #E5E5E5;
+	height: 500px;
+	overflow: scroll;
+	overflow-x:hidden;
+	padding: 30px;
+	width: 100%;
+}
+
+.send-read-contents::-webkit-scrollbar {
+  width: 6px;
+}
+
+.send-read-contents::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.send-read-contents::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.send-read-contents::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}

@@ -93,7 +93,7 @@
 			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
 			                        <td style = "background-color:#ffffff; text-align:center;"><i class="fas fa-birthday-cake"></i> 결혼</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">관리부 누구 본인 결혼</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">나</td>
+			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">관리자</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
 		                        </tr>
