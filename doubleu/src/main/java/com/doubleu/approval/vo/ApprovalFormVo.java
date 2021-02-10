@@ -1,4 +1,4 @@
-package com.doubleu.approval;
+package com.doubleu.approval.vo;
 
 import java.util.List;
 
@@ -33,8 +33,6 @@ public class ApprovalFormVo {
 	public void setApprovalAttFiles(List<ApprovalAttFileVo> approvalAttFiles) {
 		this.approvalAttFiles = approvalAttFiles;
 	}
-	
-	
 	public String getDrafterPosition() {
 		return drafterPosition;
 	}

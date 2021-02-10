@@ -40,7 +40,7 @@
 	
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
-		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
 	 
@@ -54,26 +54,26 @@
 				</div>
 				<div class="e-approval-approval-list">
 					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=발신된 문서">발신 문서함</a>
-					<ul>
-						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함">상신한 문서함</a></li>
-						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=임시 저장된 문서">임시 저장된 문서</a></li>
-						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=승인 완료된 문서">승인 완료된 문서</a></li>
-						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=반려된 문서">반려된 문서</a></li>
+					<ul>	<!-- /WEB-INF/ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함 -->
+						<li><a href="/approvalGoList?selectName=0">상신한 문서함</a></li>
+						<li><a href="/approvalGoList?selectName=1">임시 저장된 문서</a></li>
+						<li><a href="/approvalGoList?selectName=2">승인 완료된 문서</a></li>
+						<li><a href="/approvalGoList?selectName=3">반려된 문서</a></li>
 					</ul>
 				</div>
 				<div class="e-approval-approval-list">
 					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=수신된 문서">수신 문서함</a>					
 					<ul>
-						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=결재할 문서">결재할 문서</a></li>
-						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=승인한 문서">승인한 문서</a></li>
-						<li><a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=반려한 문서">반려한 문서</a></li>
+						<li><a href="/approvalGoList?selectName=4">결재할 문서</a></li>
+						<li><a href="/approvalGoList?selectName=5">승인한 문서</a></li>
+						<li><a href="/approvalGoList?selectName=6">반려한 문서</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 	<!-- lnb code 끝 -->
 		<main class="e-approval-article">
-			<jsp:include page="<%= mainJob %>"></jsp:include>
+			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/${empty mainJob ? 'E_Approval_select.jsp': mainJob }"></jsp:include>
 		</main>
 	</section>
 	
@@ -102,11 +102,11 @@
 							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 								<div class="card-body">
 									<ul  class="e-approval-formChoose-modal-ul">
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_work.jsp&formName=업무 기안">업무 기안</a></li>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_work.jsp&formName=업무 협조">업무 협조</a></li>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_petition.jsp&formName=품의서">품의서</a></li>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_purchasePetition.jsp&formName=구매 품의서">구매품의서</a></li>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_explanatory.jsp&formName=사유서">사유서</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=0">업무 기안</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=1">업무 협조</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=2">품의서</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=3">구매품의서</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=4">사유서</a></li>
 									</ul>
 								</div>
 							</div>
@@ -123,8 +123,8 @@
 							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 								<div class="card-body">
 									<ul class="e-approval-formChoose-modal-ul">
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_vacation.jsp&formName=휴가 신청서">휴가 신청서</a></li>
-										<li><a href="E_Approval_home.jsp?mainJob=E_Approval_form_explanatory.jsp&formName=지각/결근 사유서"">지각/결근 사유서</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=5">휴가 신청서</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=6"">지각/결근 사유서</a></li>
 									</ul>
 								</div>
 							</div>
@@ -141,7 +141,7 @@
 							<div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample">
 								<div class="card-body">
 									<ul  class="e-approval-formChoose-modal-ul">
-										<li><a href="#">지출결의서</a></li>
+										<li><a href="/approvalGoFormType?formTypeNo=7">지출결의서</a></li>
 									</ul>
 								</div>
 							</div>
@@ -150,7 +150,6 @@
 				</div>
 				<div class="modal-footer">
 					<input type="button" class="btn btn-secondary" data-dismiss="modal" value="close">
-					<input type="button" class="btn btn-primary" value="선택"> 
 				</div>
 			</div>
 		</div>

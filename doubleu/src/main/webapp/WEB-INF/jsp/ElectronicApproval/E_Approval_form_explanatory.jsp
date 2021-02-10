@@ -13,11 +13,6 @@
 	<%
 		Date nowTime = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-		
-		String formName = "";
-		if(request.getParameter("formName") != null) {
-			formName = request.getParameter("formName");
-		}
 	 %>
 	
 	<div class="e-approval-form-container">
@@ -45,7 +40,7 @@
 		<main>
 			<div class="e-approval-form-workType-container">
 				<div class="e-approval-form-workType-title">
-					<h4 style="font-weight: bold"><%= formName %></h4>
+					<h4 style="font-weight: bold">${formName}</h4>
 				</div>
 				
 				<div class="e-approval-form-workType-top">
@@ -137,7 +132,7 @@
 			</main>
 			
 			<!-- 공통 -->
-			<input type="text" name="formType" value="<%= formName %>">
+			<input type="text" name="formType" value="${formTypeNo}">
 			<input type="text" name="drafterPosition" value="">
 			
 		</form>

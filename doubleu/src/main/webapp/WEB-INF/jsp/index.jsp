@@ -21,9 +21,10 @@
 <body>
 	<!-- main-GNB -->
 	<header class="container-fluid main-gnb">
-			<jsp:include page="./MainPage/header.jsp"/>
+			<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"/>
 	</header>
 	<!-- main-GNB code 끝 -->
+
 
 	<!-- main-body code -->
 	<div class="container-fluid index-body">

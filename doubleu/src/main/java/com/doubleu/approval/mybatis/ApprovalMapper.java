@@ -1,4 +1,4 @@
-package com.doubleu.mybatis;
+package com.doubleu.approval.mybatis;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;

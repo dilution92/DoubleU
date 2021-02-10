@@ -1,4 +1,4 @@
-package com.doubleu.approval;
+package com.doubleu.approval.vo;
 
 public class ApprovalDecisionMakers {
 	int employeeNo;

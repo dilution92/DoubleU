@@ -46,7 +46,7 @@
 		<main>
 			<div class="e-approval-form-workType-container">
 				<div class="e-approval-form-workType-title">
-					<h4 style="font-weight: bold"><%= formName %></h4>
+					<h4 style="font-weight: bold">${formName}</h4>
 				</div>
 				
 				<div class="e-approval-form-workType-top">
@@ -135,7 +135,7 @@
 			</div>
 			</main>
 			<!-- 공통 -->
-			<input type="text" name="formType" value="<%= formName %>">
+			<input type="text" name="formType" value="${formTypeNo }">
 			<input type="text" name="drafterPosition" value="">
 		</form>
 	</div>

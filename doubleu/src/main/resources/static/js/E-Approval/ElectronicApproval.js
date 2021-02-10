@@ -2,11 +2,11 @@
  * 
  */
 
-var view = function(serial) {
+var goView = function(formNo) {
 	var frm = document.frmApproval;
-	frm.viewSerial.value = serial;
+	frm.formNo.value = formNo;
 	
-	frm.action = "E_Approval_home.jsp?mainJob=E_Approval_view_work.jsp"
+	frm.action = "/approvalGoView"
 	frm.submit();	
 }
 
@@ -24,7 +24,6 @@ function funcApproval() {
 		frm.action = '/approvalTempInsert';
 		frm.submit();
 	}) 
-	
 }
 
 function chooseMakers() {

@@ -27,7 +27,7 @@
 				      	</select>
 					</div>
 					<!-- hidden 탭 -->
-					<input type="hidden" name="viewSerial" value="">
+					<input type="hidden" name="formNo" value="">
 					<input type="hidden" name="formType" value="">
 					<input type="hidden" name="formState" value="">
 	     		</form>
@@ -48,14 +48,16 @@
 						</tr>
 					</thead>
 					<tbody class="e-approval-list text-muted">
-						<c:forEach begin="1" end="4">
-							<tr onclick="view(0)">
+						<c:set var="no" value="0" />
+						<c:forEach begin="1" end="5">
+							<tr onclick="goView(${no})">
 								<td>2021-02-03</td>
 								<td>업무 기안</td>					
 								<td style=" text-align: left; text-indent: 2em;">그룹웨어 프론트엔드 화면 설계안 요청합니다.</td>					
 								<td>정해준</td>					
-								<td>진행중</td>					
+								<td>진행중</td>		
 							</tr>
+							<c:set var= "no" value="${no+1 }"></c:set>
 						</c:forEach>
 					</tbody>
 				</table>
@@ -83,7 +85,7 @@
 				<strong class="text-gray-dark">최근 수신한 문서</strong>
 				<table class="table table-hover table-sm">
 					<thead class="e-approval-list text-muted text-gray-dark">
-						<tr>
+						<tr onclick="goView(${no})">
 							<th scope="col">기안일</th>
 							<th scope="col">결재양식</th>
 							<th scope="col">제목</th>
@@ -92,7 +94,8 @@
 						</tr>
 					</thead>
 					<tbody class="e-approval-list text-muted">
-						<c:forEach begin="1" end="4">
+						<c:set var="no" value="0"></c:set>
+						<c:forEach begin="1" end="5">
 							<tr>
 								<td>2021-02-03</td>
 								<td>업무 기안</td>					
@@ -100,6 +103,7 @@
 								<td>정해준</td>					
 								<td>진행중</td>					
 							</tr>
+							<c:set var="no" value="${no+1 }"></c:set>
 						</c:forEach>
 					</tbody>
 				</table>

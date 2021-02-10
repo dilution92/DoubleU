@@ -15,4 +15,12 @@ public class ControllerMain {
 		mv.setViewName("index");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/mainHeader")
+	public ModelAndView mainHeader() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("MainPage/");
+		return mv;
+	}
 }
