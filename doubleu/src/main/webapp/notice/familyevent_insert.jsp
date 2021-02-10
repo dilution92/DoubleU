@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전사게시판-사내공지 view</title>
+<title>전사게시판-경조사 insert</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -58,7 +58,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>사내공지</span>
+							<span>경조사</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -75,64 +75,87 @@
 			<!-- ========== -->
 			
 			<!-- 전사게시판 사내공지 상세보기 code -->
-			<div class="row">
+			
+			<form>
+				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
 				    <div class="table table-responsive">
 				        <table class="table">
 				        <tr>
-				            <th class="success">제목</th>
-				            <td colspan="3">아마도 제목임</td>
+				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
+			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
 				        </tr>
 				        <tr>
+				        	<div class="form-group">
 				            <th class="success">작성자</th>
-				            <td>ㄴ ㅏ</td>
+				            <td>관리자</td>
 				            <th class="success">작성일</th>
 				            <td>2021.02.07</td>
+				            </div>
 				        </tr>
 				        <tr>
-				            <th class="success">분류</th>
-				            <td>중요공지</td>
+				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
+				            <td>
+					            <select class="form-control" id="exampleFormControlSelect4" selected="부고">
+							      <option class="familyevent-icon" id="결혼">&#xf1fd 결혼</option>
+							      <option class="familyevent-icon">&#xf5b4 부고</option>
+				   				</select>
+				            </td>
 				            <th class="success">조회수</th>
 				            <td>1</td>
 				        </tr>
-				         
 				        <tr>
-				            <th class="success">글 내용</th>
-				            <td colspan="3">
-				            안녕하세요? 입사지원서 언제 쓰죠?<br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠? <br>
-				            안녕하세요? 입사지원서 언제 쓰죠?
-				            </td>
+				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
+				        	<td colspan="3" style="padding-left:8px;">
+							    <div class="dropdown-align">
+									<label for="searchDate"></label>
+									시작일자 &nbsp;<input type="date" id="searchDate" class="success">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									종료일자 &nbsp;<input type="date" id="searchDateTwo">
+								</div>
+							</td>
+				        </tr> 
+				        <tr>
+				        	<div class="form-group">
+					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
+					            <td colspan="3">
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요."></textarea>
+					            </td>
+						  	</div>
+				        </tr>
+				        <tr style="border-color: #ffffff;">
+				        	<th class="success">첨부파일</th>
+				        	<td colspan="3">
+				        		<div class="custom-file mb-3">
+									<input type="file" class="custom-file-input" id="validatedCustomFile" required>
+				    				<label class="custom-file-label" for="validatedCustomFile">파일을 선택하세요.</label>
+			    					<div class="invalid-feedback">Example invalid custom file feedback</div>
+			  					</div>
+				        	</td>
 				        </tr>
 				        <tr>
-				        	<th class="success">첨부파일</th>
-				        	<td> 하기싫어.png </td>
-				        	<td colspan="2">
-				        		<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
-				        	
+				        	<td style="border:none"></td>
+				        	<td colspan="3" style="border:none">
+				        		지워야하는데 너무 귀엽짜나..<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
 				        	</td>
-<!-- 관리자 할 때 부활시킬듯				         
+				        </tr>
 				        <tr>
 				            <td colspan="4" class="text-center">
-								<input type="button" class="btn btn-primary"  value="댓글 쓰기" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" value="목록보기" onclick="location.href=''">
+								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="취소" onclick="location.href=''">
 				            </td>
 				        </tr>
-				         -->
 				        </table>
 				    </div>
 			    </div>
 			</div>
+			</form>
 			<!-- ========== -->
-			
- 			<!-- 경조사 댓글창 -->
- 			<jsp:include page="notice_repl_admin.jsp"/>
+
+ 			<!-- 사내공지 댓글창 -->
+ 			<jsp:include page="notice_repl.jsp"/>
  			<!-- ========== -->
  			
 		</main>
@@ -141,8 +164,7 @@
 		<!-- 글쓰기 모달창 -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content"
-				style="width: 80%; height: 300px; top: 200px;">
+			<div class="modal-content" style="width: 80%; height: 300px; top: 200px;">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">글쓰기</h5>
 					<button type="button" class="close" data-dismiss="modal"
@@ -155,17 +177,13 @@
 						<div class="card">
 							<div class="card-header" id="headingOne">
 								<h6 class="mb-0">
-									<select
-										class="form-control form-control-sm e-approval-select-box">
+									<select class="form-control form-control-sm e-approval-select-box">
 										<option selected>게시판 선택</option>
 										<option value="1">중고게시판</option>
 									</select>
 								</h6>
 							</div>
-
 						</div>
-
-
 					</div>
 				</div>
 				<div class="modal-footer">
