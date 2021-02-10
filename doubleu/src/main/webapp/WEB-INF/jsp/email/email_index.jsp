@@ -26,7 +26,7 @@
 	<!-- 그룹웨어 GNB 헤더-->
 
 	<header>
-		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
 	 
@@ -145,7 +145,7 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>스팸 메일함</span>
+			      		<span>받은 메일함</span>
 				        <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	
@@ -310,6 +310,7 @@
 		document.frm.action = "test.jsp";
 		document.frm.submit();	*/
 	}
+	
 	
 	
 </script>

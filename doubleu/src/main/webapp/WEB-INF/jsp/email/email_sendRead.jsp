@@ -41,7 +41,7 @@
 	<!-- 그룹웨어 GNB 헤더-->
 
 	<header>
-		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
 	 

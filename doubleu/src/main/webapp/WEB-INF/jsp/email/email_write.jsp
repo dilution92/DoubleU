@@ -36,13 +36,12 @@
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_write.css">
 <script src="/js/email/email_text.js"></script>
-
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
 
 	<header>
-		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
 	 
@@ -56,15 +55,14 @@
 						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
 					</div>
 					<div class="e-approval-approval-list">
-						<span>메일쓰기</span>
+						<span>메일함</span>
 						<ul>
 							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
-							<li><a href="email_star.jsp">별표 메일함</a></li>
-							<li><a href="email_important.jsp">중요 메일함</a></li>
-							<li><a href="email_temporary.jsp">임시 보관함</a></li>
-							<li><a href="email_sendEmail.jsp">보낸 메일함</a></li>
-							<li><a href="email_spam.jsp">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-							<li><a href="email_trash.jsp">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
+							<li><a href="#">별표 메일함</a></li>
+							<li><a href="#">임시 보관함</a></li>
+							<li><a href="#">보낸 메일함</a></li>
+							<li><a href="#">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
+							<li><a href="#">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
 							
 						</ul>
 					</div>
@@ -124,8 +122,88 @@
 	                    </div>
 	                </div>  
           </div>
-	                
-	  
+	      
+	      <!-- 주소록 모달창 -->
+	  	<div class="modal fade bs-example-modal-lg"  id="EmailAddress" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	                <div class="modal-dialog modal-lg">
+	                    <div class="modal-content modalEmailAddressEmail" style="margin-left: -30px;">
+	                        <div class="modalAddressEmailFolder">
+	                       	
+	                       		
+	                            <h4>주소록</h4>
+	                            
+	                            <div class="search-btn">
+	                            	<select class="form-control form-control-sm" style="width: 70px;">
+										<option value=""> 이름 </option>
+										<option value=""> 부서 </option>
+									</select>
+									
+					        		<input class="form-control form-control-sm col-3" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
+				      				<input class="btn btn-outline-primary btn-sm " onclick="" name="onname" type="button" value="검색"/>
+				      			</div>
+	                            
+	                            <div class="search-btn-address">
+	                            	<div class="search-btn-address-btn-one col-5">
+	                            		<label class="btn btn-outline-primary btn-sm" >
+											<input type="checkbox" style="margin-right: 5px;"/> 전체선택
+										</label>
+	                            		<c:forEach begin="0" end="20">
+	                            			<div class="address-name">
+	                            				<input type="checkbox" name="emailAddressChk"/>
+		                            			<span class="badge rounded-pill bg-light text-dark">송연주</span>
+		                            			<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
+		                            			<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
+	                            			</div>
+	                            		</c:forEach>
+	                            	</div>
+	                            	
+	                            	<div class="search-btn-address-btn-two col-1">
+	                            		<div class="search-btn-address-btn-two-align">
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus"></i></button>
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-dash"></i></button>
+	                            		</div>
+	                            		
+	                            		<div class="search-btn-address-btn-two-ref-align">
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-plus"></i></button>
+		                            		<button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-dash"></i></button>
+	                            		</div>
+	                            	</div>
+	                            	
+	                            	<div class="search-btn-address-btn-one col-5">
+	                            		
+	                            		<div>받는 사람</div>
+	                            		<div class="rev-mail-one">
+	                            			<div class="rev-align-scroll">
+		                            			<c:forEach begin="0" end="20">
+		                            			<span class="badge rounded-pill bg-light text-dark">송연주</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
+		                            			</c:forEach>
+	                            			</div>
+	                            		</div>
+	                            		
+	                            		<div style="margin-top:10px">참조</div>
+	                            		<div class="ref-mail-two">
+	                            			<div class="rev-align-scroll">
+		                            			<c:forEach begin="0" end="20">
+		                            			<span class="badge rounded-pill bg-light text-dark">송연주</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
+			                            		<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
+		                            			</c:forEach>
+	                            			</div>
+	                            		</div>
+	                            	</div>
+	                            </div>
+	                           
+	                            <div class="modalAddressEmailFolderBtn">
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">추가하기</button>
+	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+	                            </div>
+	                        </div>
+	                        
+	                    </div>
+	                </div>  
+          </div>
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
@@ -135,7 +213,8 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>임시 보관함</span>
+			      		<span>메일쓰기</span>
+			      		
 					</div>
 					
 					<div class="email-select-content">
@@ -145,6 +224,7 @@
 							    <label for="exampleFormControlInput1">보내는 사람</label>
 							</div>
 							
+							
 							<div class="form-group col-sm-1">
 							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="송연주">
 							</div>
@@ -152,7 +232,6 @@
 							<div class="form-group col-sm-6">
 							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
 							</div>
-							
 							<button type="button" style="margin-left: 11px; height:37px;" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
 					    </div>
 					    
@@ -163,16 +242,18 @@
 							    <label for="exampleFormControlInput1">받는 사람</label>
 							</div>
 							
+							
 						
 							<div class="form-group col-sm-7 revEmail">
-								<c:forEach begin="0" end="9">
+								<c:forEach begin="0" end="20">
 							 	<input type="email" readonly class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="song1234567@gmail.com">
 							 	</c:forEach>
 							 
 							</div>
 							
+							<!-- 주소록 버튼 -->
 							<div class="form-group col-sm-2 rev-to-me">
-							 	<input type="button" class="btn btn-outline-primary btn-sm" role="button" value="주소록">
+							 	<input type="button" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#EmailAddress" role="button" value="주소록">
 							</div>
 					    </div>
 					    
@@ -204,11 +285,14 @@
 								    중요!
 								  </label>
 								</div>
+																
 							</div>
 							
 							<div class="form-group col-sm-7">
 							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
 							</div>
+							
+							
 					    </div>
 			
 						<!-- 내용 -->
@@ -251,8 +335,7 @@
 	}
 	
 
-/* 텍스트 쓰기*/
-summernote();
+	summernote();
 
 </script>
 	

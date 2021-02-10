@@ -19,14 +19,14 @@
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
-<link rel="stylesheet" href="/css/email/email_main.css">
+<link rel="stylesheet" href="/css/email/email_temporary.css">
 
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
 
 	<header>
-		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
 	 
@@ -37,7 +37,7 @@
 				<div class="e-approval-lnb-content">
 					<h3>메일</h3>
 					<div class="e-approval-form-btn">
-						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
+						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기" onclick="location.href='email_write.jsp'">
 					</div>
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
@@ -68,7 +68,7 @@
 	
 	<!-- 모달창 모음 -->
 		<!-- 1. 내 메일함 추가 모달창 -->
-	                <div class="modal fade bs-example-modal-lg" id="moveEmailContents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="moveEmailContents" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	                <div class="modal-dialog modal-lg">
 	                    <div class="modal-content modalEmail">
 	                        <div class="modalNewEmailFolder">
@@ -145,7 +145,7 @@
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
-			      		<span>중요 메일함</span>
+			      		<span>임시 보관함</span>
 				        <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	
@@ -251,14 +251,14 @@
 			<div class="e-approval-table">
 				<table class="table table-hover table-sm">
 					<tbody class="e-approval-list text-muted">
-						<c:forEach begin="1" end="20">
+						<c:forEach begin="1" end="2">
 							<tr>
 								<td><input type="checkbox"/></td>
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td><i class="bi bi-exclamation"></i></td>
 								<td>DoubleU Project</td>					
-								<td style=" text-align: left; text-indent: 2em;">프론트엔드 작업 중 입니다. 시간이 참 빨리 지나가네요 흑흑</td>					
+								<td style=" text-align: left; text-indent: 2em;">프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.</td>					
 								<td>2021-02-23 23:55:45</td>							
 							</tr>
 						</c:forEach>
