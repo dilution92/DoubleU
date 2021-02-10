@@ -15,7 +15,8 @@
 <style>
 * {margin: 0; padding: 0;}
 .tree{
-	padding-top : 50px;
+	padding-top : 60px;
+	padding-left : 130px;
 }
 .tree ul {
     padding-top: 20px; position: relative;
@@ -90,7 +91,7 @@ right connector from last child*/
 	text-decoration: none;
 	color: #666;
 	font-family: arial, verdana, tahoma;
-	font-size: 15px;
+	font-size: 17px;
 	display: inline-block;
 	
 	border-radius: 5px;
@@ -119,46 +120,12 @@ right connector from last child*/
 </head>
 <body>
 <!-- main-GNB -->
-	<!-- 그룹웨어 GNB -->
-	<header>
-		<div class="container-fluid main-gnb">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
-				<a class="navbar-brand navbar-text-light " href="#"	style="margin-right: 28em">
-					<span style="color:#007BFF"><i class="fab fa-weebly fa-2x"></i></span></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto main-gnb-menu">
-						<li class="nav-item active"><a class="nav-link" href="#">홈<span
-								class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">메일함</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">전자결재</a></li>
-					</ul>
-
-					<ul class="navbar-nav my-2 my-lg-0">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span class="navbar-toggler-icon"></span>
-						</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item  " href="#">정보 수정</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item  " href="#">로그아웃</a>
-							</div></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<!-- 그룹웨어 GNB code 끝 -->
+<!-- 그룹웨어 GNB -->
+	<header class="container-fluid main-gnb">
+		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+	 </header>
+	 <!-- 그룹웨어 GNB code 끝 -->
+	 
 <section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
@@ -171,8 +138,8 @@ right connector from last child*/
 				<div class="e-approval-approval-list">
 					<span>인사 관리</span>
 					<ul>
-						<li><a href="#">조직도</a></li>
-						<li><a href="#">프로필</a></li>
+						<li><a href="/member/organization.jsp">조직도</a></li>
+						<li><a href="/member/profile.jsp">프로필</a></li>
 					</ul>
 				</div>
 				<div class="e-approval-approval-list">

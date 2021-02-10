@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
 </head>
-
 <body>
+
 <div id="repl-move">
 	<div class="row">
 		<table width="950px" height="70px">
@@ -21,7 +21,7 @@
 				</td>
 				<td colspan="2">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="댓글 추가하기" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+					<input type="text" class="form-control" placeholder="댓글을 입력하세요." aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
 					<div class="input-group-append" id="button-addon4">
 					<button class="btn btn-primary" type="button">댓글</button>
 					<button class="btn btn-outline-secondary" type="button">취소</button>
@@ -38,7 +38,9 @@
 				<th class="repl-who">영업부 누구</th>
 				<td class="repl-when">2021.02.07   10:11</td>
 				<td rowspan="2" class="text-right">
-					<input type="button" class="btn btn-primary" value="답글" onclick="location.href=''">
+					<!-- <input type="button" class="btn btn-primary" value="답글" onclick="location.href=''"> -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">답글</button>
+					<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal2">삭제</button>
 				</td>
 			</tr>
 			<tr>
@@ -51,7 +53,9 @@
 				<th class="repl-who">관리부 누구</th>
 				<td class="repl-when">2021.02.07   9:11</td>
 				<td rowspan="2" class="text-right">
-					<input type="button" class="btn btn-primary" value="답글" onclick="location.href=''">
+					<!-- <input type="button" class="btn btn-primary" value="답글" onclick="location.href=''"> -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">답글</button>
+					<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal2">삭제</button>
 				</td>
 			</tr>
 			<tr>
@@ -70,6 +74,11 @@
 		</table>
 		<br><br><br>
 	</div>
+	
+ 			<!-- 게시판 답글, 댓글 삭제 모달창 -->
+ 			<jsp:include page="notice_comment_modal.jsp"/>
+ 			<!-- ========== -->
+ 			
 </div>
 </body>
 </html>
