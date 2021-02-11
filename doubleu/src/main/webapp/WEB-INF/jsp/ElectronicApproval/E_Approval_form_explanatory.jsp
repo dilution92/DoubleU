@@ -64,23 +64,13 @@
 								</tr>
 						</table>
 					</div>
-					<div class="e-approval-form-approval-box">
-						<div class="e-approval-form-approval-box-1 table-bordered">
+					<div class="e-approval-form-decision-box">
+						<div class="e-approval-form-decision-box-1 table-bordered">
 							<p style="margin: 0;"> 결재란 </p>
 						</div>
-						<c:forEach begin="1" end="3">						
-							<table class="table table-sm table-bordered e-approval-form-approval-box-2">
-									<tr>
-										<td height="20px;"style="padding-top: 0; padding-bottom: 0;"> 직급 </td>
-									</tr>
-									<tr>
-										<td height="80px;" style="padding: 0; line-height: 80px"> <a href="javascript:chooseMakers()" style="font-weight: bold;">직원 조회</a> </td>
-									</tr>
-									<tr>
-										<td height="20px;" style="padding-top: 0; padding-bottom: 0;" > 결재 대기 </td>
-									</tr>
-							</table>
-						</c:forEach>
+							<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
+							
+							</div>
 					</div>
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
@@ -124,6 +114,9 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
+					<input type="text" name="test" id="test1" value="1">
+					<input type="text" name="test" id="test2" value="2">
+					<input type="text" name="test" id="test3" value="3">
 					<input type="button" id="btnApprovalSave" class="btn btn-outline-primary btn-sm" value="상신요청">
 					<input type="button" id="btnApprovalTempSave" class="btn btn-outline-primary btn-sm" value="임시저장">
 					<input type="button" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
@@ -134,11 +127,13 @@
 			<!-- 공통 -->
 			<input type="text" name="formType" value="${formTypeNo}">
 			<input type="text" name="drafterPosition" value="">
-			
+			<input type="hidden" id="TempMakerPosition" value="">
+			<input type="hidden" id="TempMakerName" value="">
 		</form>
 	</div>
 <script type="text/javascript">
 funcApproval();
+createMakerBox('makersZone');
 </script>
 </body>
 </html>

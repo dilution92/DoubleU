@@ -342,11 +342,11 @@ body {
 	min-height: 150px;
 }
 
-.e-approval-form-approval-box {
+.e-approval-form-decision-box {
 	display: flex;
 }
 
-.e-approval-form-approval-box-1 {
+.e-approval-form-decision-box-1 {
 	writing-mode: tb-rl;
 	height: 120.8px;
 	width: 20px;
@@ -356,7 +356,7 @@ body {
 	font-weight: bold;
 }
 
-.e-approval-form-approval-box-2 td {
+.e-approval-form-decision-box-2 td {
 	width: 65px;
 }
 
@@ -381,4 +381,59 @@ body {
 
 .e-approval-reason > textarea {
 	margin-bottom: 1em;
+}
+
+/* 결재권자 자동화 */
+#approval-amkers-zone > table {
+	display: inline-block;
+}
+
+#makerDelBtn {
+	height: 20px;
+	width: 30px;
+	text-align: center;	
+	line-height: 20px;
+	padding: 0;
+}
+
+#makerBox {
+	margin: 0;
+}
+
+#makersZone {
+	display: flex;
+}
+
+#makerContent {
+	width: 100%;
+	height: 98%;
+	font-size: 1em;
+	border: none;
+	text-align: center;
+	padding: 0;
+}
+
+#makerSignContent {
+	padding: 0!important ;
+	font-weight: bold;
+}
+#makerNameContent,
+#makerPositionContent {
+	padding: 0!important;
+}
+
+#makerDelBtn {
+	border: none;
+	background-color: #ffffff;
+	font-weight: bold;	
+	color: #dc4535;
+} 
+
+#makerSignBtn {
+	border: none;
+	background-color: #ffffff;
+	font-weight: bold;	
+	color: #0d6efd;
+	margin-top: 18px;
+	
 }

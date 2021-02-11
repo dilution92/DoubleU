@@ -187,4 +187,14 @@ public class ControllerApprovalGoLink {
 		mv.setViewName("/ElectronicApproval/E_Approval_home");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/newPage")
+	public ModelAndView newPage() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("ElectronicApproval/E_Approval_choose_decisionMakers");
+		return mv;
+		
+	}
+	
 }

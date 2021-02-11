@@ -69,23 +69,13 @@
 								</tr>
 						</table>
 					</div>
-					<div class="e-approval-form-approval-box">
-						<div class="e-approval-form-approval-box-1 table-bordered">
+					<div class="e-approval-form-decision-box">
+						<div class="e-approval-form-decision-box-1 table-bordered">
 							<p style="margin: 0;"> 결재란 </p>
 						</div>
-						<c:forEach begin="1" end="3">						
-							<table class="table table-sm table-bordered e-approval-form-approval-box-2">
-									<tr>
-										<td height="20px;"style="padding-top: 0; padding-bottom: 0;"> 직급 </td>
-									</tr>
-									<tr>
-										<td height="80px;" style="padding: 0; line-height: 80px"> <a href="#" style="font-weight: bold;">직원 조회</a> </td>
-									</tr>
-									<tr>
-										<td height="20px;" style="padding-top: 0; padding-bottom: 0;" > 결재 대기 </td>
-									</tr>
-							</table>
-						</c:forEach>
+							<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
+							
+							</div>
 					</div>
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
@@ -136,8 +126,12 @@
 			<!-- 공통 -->
 			<input type="text" name="formType" value="${formTypeNo }">
 			<input type="text" name="drafterPosition" value="">
+			<input type="hidden" id="TempMakerPosition" value="">
+			<input type="hidden" id="TempMakerName" value="">
 		</form>
 	</div>
-
+<script type="text/javascript">
+createMakerBox('makersZone');
+</script>
 </body>
 </html>
