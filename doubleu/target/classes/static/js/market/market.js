@@ -6,35 +6,17 @@
 	//-----------사진미리보기------------------//
 	function previewImage(targetObj, View_area) {
 		var preview = document.getElementById(View_area); //div id
-		var ua = window.navigator.userAgent;
 
-	  //ie일때(IE8 이하에서만 작동)
-		if (ua.indexOf("MSIE") > -1) {
-			targetObj.select();
-			try {
-				var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
-				var ie_preview_error = document.getElementById("ie_preview_error_" + View_area);
-
-
-				if (ie_preview_error) {
-					preview.removeChild(ie_preview_error); //error가 있으면 delete
-				}
-
-				var img = document.getElementById(View_area); //이미지가 뿌려질 곳
-
-				//이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
-				img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+src+"', sizingMethod='scale')";
-			} catch (e) {
-				if (!document.getElementById("ie_preview_error_" + View_area)) {
-					var info = document.createElement("<p>");
-					info.id = "ie_preview_error_" + View_area;
-					info.innerHTML = e.name;
-					preview.insertBefore(info, null);
-				}
-			}
-	  //ie가 아닐때(크롬, 사파리, FF)
-		} else {
-			var files = targetObj.files;
+			var files= targetObj.files;
+			
+			console.log("files.length:"+files.length);//한 번 들어갈 때 갯수
+			
+			var ele = document.getElementById('View_area');
+			var eleCount = ele.childElementCount;		
+			console.log("eleCount:"+eleCount);//총 갯수
+			
+			if(files.length<6 && files.length+eleCount<6){
+		
 			for ( var i = 0; i < files.length; i++) {
 				var file = files[i];
 				var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
@@ -45,7 +27,7 @@
 					preview.removeChild(prevImg);
 				}
 				var img = document.createElement("img"); 
-				img.id = "prev_" + View_area;
+				img.id = "prev_"+ [i];
 				img.classList.add("obj");
 				img.file = file;
 				img.style.width = '100px'; 
@@ -59,6 +41,7 @@
 						};
 					})(img);
 					reader.readAsDataURL(file);
+					console.log(files[i]);
 				} else { // safari is not supported FileReader
 					//alert('not supported FileReader');
 					if (!document.getElementById("sfr_preview_error_"
@@ -69,11 +52,14 @@
 						preview.insertBefore(info, null);
 					}
 				}
+}
+						console.log("eleCount:"+eleCount);//총 갯수
+						if(eleCount>5) return;
 			}
+			else $('#PhotoAlertModal').modal("show");
 		}
-	}
 
-	//------숫자 천단위 쉼표----------//
+//------숫자 천단위 쉼표----------//
 	function numberWithCommas(x) {
 		  x = x.replace(/[^0-9]/g,'');   // 입력값이 숫자가 아니면 공백
 		  x = x.replace(/,/g,'');          // ,값 공백처리
@@ -81,5 +67,60 @@
 		}
 		
 		
-//-----------무료나눔 시 disabled ----//
+//-----------무료나눔 버튼클릭 시 disabled 및 모달창띄우기----//
+ $(function() {
+    $("#btnFree").click(function() { 
+		
+		if($("#marketPrice").is(":disabled")){
+			$('#FreeText').html("아쉽네요😢");
+			$('#marketPrice').attr("disabled", false); 
+		}
+		else{
+			
+		$('#marketPrice').val("0");
+		$('#marketPrice').attr("disabled", true); 
+		$('#FreeText').html("무료나눔을 하는 당신, 멋져요👍");
+	
+		}
+});
+})		
+			
+
+//----------계좌번호  숫자만 입력 -----------------//
+function accountCheck(x) {
+  x = x.replace(/[^0-9]/g,'');   
+		  x = x.replace(/,/g,'');         
+		  $("#marketAccount").val(x.replace(/\B(?=(\d{3})+(?!\d))/g, "")); // 공백처리
+
+
+		}
+//---------계좌번호 길이체크하고 17이상이면 자르기---------------//
+	  $(document).ready(function () {
+        $('.js-sms-content').keyup(function(){
+            cut_5(this);
+        });
+
+        
+    });
+
+    function getTextLength(str) {
+        var len = 0;
+        for (var i = 0; i < str.length; i++) {
+            if (escape(str.charAt(i)).length == 6) {
+                len++;
+            }
+            len++;
+        }
+        return len;
+    }
+
+    function cut_5(obj){
+        var text = $(obj).val();
+        var leng = text.length;
+        while(getTextLength(text) > 17){
+            leng--;
+            text = text.substring(0, leng);
+        }
+        $(obj).val(text);
+    }
 

@@ -223,12 +223,14 @@ body {
 	margin-top : 10px;
 	position:relative; 
 	width: 100px; 
-	height: 100px; 
-	color: black; 
+	min-height: 100px; 
 	border: 1px solid #aaa; 
-	dispaly: inline; 
+	color: black; 
 }
-
+.form-group .View_area img{
+	border: 1px solid #aaa; 
+	
+}
 /*----------market view------------*/
 .market-list{
 	margin-left: 50px;

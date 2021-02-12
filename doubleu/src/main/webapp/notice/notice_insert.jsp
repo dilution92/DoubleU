@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전사게시판-사내공지 view</title>
+<title>전사게시판-사내공지 insert</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -84,7 +84,7 @@
 				        <table class="table">
 				        <tr>
 				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
-			    <td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
+			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
 				        </tr>
 				        <tr>
 				        	<div class="form-group">
@@ -97,23 +97,35 @@
 				        <tr>
 				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
 				            <td>
-				            <select class="form-control" id="exampleFormControlSelect4">
-						      <option>중요공지</option>
-						      <option>일반공지</option>
-			   				 </select>
+					            <select class="form-control" id="exampleFormControlSelect4">
+							      <option class="notice-icon">&#xf071중요공지</option>
+							      <option class="notice-icon"selected>일반공지</option>
+				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
 				            <td>1</td>
 				        </tr>
-				         
+				        <tr>
+				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
+				        	<td colspan="3" style="padding-left:8px;">
+							    <div class="dropdown-align">
+									<label for="searchDate"></label>
+										<input type="radio" name="searchDate" value="영구" checked>영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="searchDate" value="설정">설정 &nbsp;&nbsp;
+										
+											(시작일자 &nbsp;<input type="date" id="searchDateOne" class="success">
+											&nbsp;~ &nbsp;
+											종료일자 &nbsp;<input type="date" id="searchDateTwo"> )
+								</div>
+							</td>
+				        </tr> 
 				        <tr>
 				        	<div class="form-group">
-				            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
-				            <td colspan="3">
-				            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요.">
-</textarea>
-				            </td>
-						  </div>
+					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
+					            <td colspan="3">
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요."></textarea>
+					            </td>
+						  	</div>
 				        </tr>
 				        <tr style="border-color: #ffffff;">
 				        	<th class="success">첨부파일</th>
@@ -126,9 +138,9 @@
 				        	</td>
 				        </tr>
 				        <tr>
-				        	<td></td>
-				        	<td colspan="3">
-				        		지워야하는데 너무 귀엽짜나..<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
+				        	<td style="border:none"></td>
+				        	<td colspan="3" style="border:none">
+								
 				        	</td>
 				        </tr>
 				        <tr>
@@ -144,8 +156,8 @@
 			</div>
 			</form>
 			<!-- ========== -->
-			
- 			<!-- 경조사 댓글창 -->
+
+ 			<!-- 사내공지 댓글창 -->
  			<jsp:include page="notice_repl.jsp"/>
  			<!-- ========== -->
  			
@@ -155,8 +167,7 @@
 		<!-- 글쓰기 모달창 -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
-			<div class="modal-content"
-				style="width: 80%; height: 300px; top: 200px;">
+			<div class="modal-content" style="width: 80%; height: 300px; top: 200px;">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">글쓰기</h5>
 					<button type="button" class="close" data-dismiss="modal"
@@ -169,8 +180,7 @@
 						<div class="card">
 							<div class="card-header" id="headingOne">
 								<h6 class="mb-0">
-									<select
-										class="form-control form-control-sm e-approval-select-box">
+									<select class="form-control form-control-sm e-approval-select-box">
 										<option selected>게시판 선택</option>
 										<option value="1">중고게시판</option>
 									</select>

@@ -12,10 +12,7 @@ body {
 }
 
 /* 게시판 index CSS */
-.familyevent-list td:hover{
-	color: black;
-	background-color: black;
-}
+
 
 /* 게시판 repl CSS */
 #repl-move{
@@ -35,6 +32,20 @@ body {
 
 .repl-say{
 	padding-bottom: 15px;
+}
+
+/* 게시판 insert */
+#searchDateOne, #searchDateTwo{
+	border: 1px solid #ced4da;
+	padding: 6px 12px;
+	border-radius: .25rem;
+	color: #495057;
+}
+
+/* 게시판 분류 아이콘 */
+.familyevent-icon, .notice-icon{
+	font-family: "Font Awesome 5 Free";
+	font-weight:900;
 }
 
 /* 전자결재 사이드바 CSS */
@@ -138,7 +149,7 @@ body {
 /* e-approval-search-bar CSS */
 .e-approval-search-bar {
 	width: 100%;
-	min-height: 10%;
+	min-height: 90px;
 	margin-bottom: 2em;
 }
 
