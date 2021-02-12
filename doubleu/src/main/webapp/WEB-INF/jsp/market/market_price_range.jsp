@@ -69,8 +69,14 @@
 			     	
 			     	</div>
 					<div class="price-chart-detail">
+						<div>
+						상품명 : 마우스
+						</div>
 					
-					상품 시세
+						<div>
+						평균가격 : 13,000원
+						</div>
+					
 					
 					</div>
 			     

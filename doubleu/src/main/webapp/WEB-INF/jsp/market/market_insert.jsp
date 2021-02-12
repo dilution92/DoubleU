@@ -85,10 +85,11 @@
 				 <label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
 				  <div class="col-sm-8" style="display : inline-block;">
 			   		<div class="custom-file">
-					  <input type="file" class="custom-file-input"  id="profile_pt" onchange="previewImage(this,'View_area')">
+					  <input type="file" class="custom-file-input"  id="profile_pt" onchange="previewImage(this,'View_area')" multiple='multiple'>
 					  <label class="custom-file-label" for="customFile">Choose file</label>
 					</div>
-					<div id='View_area' class='View_area' ></div>
+					<div id='View_area' class='View_area' style="display:flex;" >
+					</div>
 					</div>
 				</div>
 
@@ -137,11 +138,16 @@
 	<!-- 무료나눔 모달창 -->
 
 	<div class="modal fade" id="FreeModal" tabindex="-1" aria-labelledby="FreeModal" aria-hidden="true">
-		<jsp:include page="free_modal.jsp"/>
+		<jsp:include page="modal/free_modal.jsp"/>
+
 		
 	</div>
 
+<!-- 파일 모달창 -->
+	<div class="modal fade" id="PhotoAlertModal" tabindex="-1" aria-labelledby="PhotoAlertModal" aria-hidden="true">
+		<jsp:include page="modal/photo_alert_modal.jsp"/>
 	
+		</div>
 	<!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

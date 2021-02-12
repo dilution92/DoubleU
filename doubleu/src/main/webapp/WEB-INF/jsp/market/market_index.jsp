@@ -105,7 +105,7 @@
  
  <!-- 찜목록 모달창 -->
 	<div class="modal fade" id="dibModal" tabindex="-1" aria-labelledby="dibModal" aria-hidden="true">
-		<jsp:include page="dib_modal.jsp"/>
+		<jsp:include page="modal/dib_modal.jsp"/>
 	</div>
 
 	<!-- bootstrap script, Jquery CDN -->

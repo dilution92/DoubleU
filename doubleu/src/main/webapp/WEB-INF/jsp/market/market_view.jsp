@@ -63,12 +63,12 @@
  
  <!-- 찜목록 모달창 -->
 	<div class="modal fade" id="dibModal" tabindex="-1" aria-labelledby="dibModal" aria-hidden="true">
-		<jsp:include page="dib_modal.jsp"/>
+		<jsp:include page="modal/dib_modal.jsp"/>
 	</div>
 
 	<!-- 계좌번호 모달창 -->
 	<div class="modal fade" id="goAccount" tabindex="-1" aria-labelledby="goAccount" aria-hidden="true">
-		<jsp:include page="accountModal.jsp"/>
+		<jsp:include page="modal/account_modal.jsp"/>
 		
 	</div>
 	<!-- bootstrap script, Jquery CDN -->
