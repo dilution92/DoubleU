@@ -53,11 +53,12 @@ public class Calender {
 		month = Integer.parseInt(time1.substring(5,7));
 		day = Integer.parseInt(time1.substring(8,10));
 		
+		setCalender();
+	}
+	
+	public void setCalender() {
 		
-		System.out.println(year);
-		System.out.println(month);
-		System.out.println(day);
-		
+		List<Integer> list1 = new ArrayList<>();
 		
 		//2017년 1월 1일 일요일이 기준
 		String week[] = {"일","월","화","수","목","금","토"};
@@ -78,12 +79,10 @@ public class Calender {
 		int totaltoday = totalyear+totalmonth+day;
 		int totalweek = totaltoday%7; // 오늘 요일 계산하기
 		
-		System.out.println(week[totalweek]);
 		
 		int monthfirstday = totalyear+totalmonth+1;
 		int monthweek = monthfirstday%7; // 이번 달 1일의 요일 계산하기
 		
-		System.out.println(week[monthweek]);
 		
 		// 화면단에 뿌려질 날짜리스트
 		//첫번째 일요일 날짜부터 차례대로 입력한다.
@@ -98,23 +97,20 @@ public class Calender {
 		System.out.println(lastMonthday);
 		for(int i=0; i<monthweek; i++) {
 			int startNum = lastMonthday-monthweek;
-			list.add(startNum);
+			list1.add(startNum);
 			startNum++;
 		}
+		
 		for(int i=0; i<lastDay[month-1]; i++) {
-			list.add(i+1);
+			list1.add(i+1);
 		}
+		
 		int nextMonthday = 42-(monthweek+lastDay[month-1]);
 		for(int i=0; i<nextMonthday; i++) {
-			list.add(i+1);
+			list1.add(i+1);
 		}
-		System.out.println("달력출력");
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i));
-		}
+		
+		setList(list1);
 	}
 	
-	public static void main(String[] args) {
-		new Calender();
-	}
 }
