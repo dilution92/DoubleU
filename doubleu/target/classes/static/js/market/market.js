@@ -124,3 +124,11 @@ function accountCheck(x) {
         $(obj).val(text);
     }
 
+
+//-------------시세확인창--------------------//
+aSign.onclick = function() {
+		var win = window.open('/newPage', 'win', 'width=400px, height=100px, left=300px, top=300px;')
+
+	
+		
+	}

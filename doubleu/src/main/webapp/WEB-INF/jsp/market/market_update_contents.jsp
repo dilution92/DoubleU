@@ -62,6 +62,8 @@
 				
 								<div class="market-btn-zone">
 					<button class="btn btn-primary" type="submit" id=''>목록</button>
+					<button class="btn btn-primary" type="submit" id=''>수정</button>
+					<button class="btn btn-primary" type="submit" id=''>삭제</button>
 				</div>
 			 </div>
 </body>
