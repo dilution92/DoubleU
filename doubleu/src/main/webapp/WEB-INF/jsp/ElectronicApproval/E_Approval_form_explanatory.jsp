@@ -114,19 +114,14 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<input type="text" name="test" id="test1" value="1">
-					<input type="text" name="test" id="test2" value="2">
-					<input type="text" name="test" id="test3" value="3">
-					<input type="button" id="btnApprovalSave" class="btn btn-outline-primary btn-sm" value="상신요청">
-					<input type="button" id="btnApprovalTempSave" class="btn btn-outline-primary btn-sm" value="임시저장">
-					<input type="button" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/E_Approval_form_btns.jsp"></jsp:include>
 				</div>
 			</div>
 			</main>
 			
 			<!-- 공통 -->
-			<input type="text" name="formType" value="${formTypeNo}">
-			<input type="text" name="drafterPosition" value="">
+			<input type="text" name="formType" value="${formType}">
+			
 			<input type="hidden" id="TempMakerPosition" value="">
 			<input type="hidden" id="TempMakerName" value="">
 		</form>
