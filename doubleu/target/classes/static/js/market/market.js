@@ -15,11 +15,11 @@
 			var eleCount = ele.childElementCount;		
 			console.log("eleCount:"+eleCount);//총 갯수
 			
-			if(files.length<6 && files.length+eleCount<6){
+			if(files.length<6 && files.length+eleCount<6){//사진제한 5개
 		
 			for ( var i = 0; i < files.length; i++) {
 				var file = files[i];
-				var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+				var imageType = /image.*/; //이미지 파일일경우만
 				if (!file.type.match(imageType))
 					continue;
 				var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
@@ -27,7 +27,7 @@
 					preview.removeChild(prevImg);
 				}
 				var img = document.createElement("img"); 
-				img.id = "prev_"+ [i];
+				img.id = "prev_"+ [i]; 
 				img.classList.add("obj");
 				img.file = file;
 				img.style.width = '100px'; 
@@ -42,8 +42,7 @@
 					})(img);
 					reader.readAsDataURL(file);
 					console.log(files[i]);
-				} else { // safari is not supported FileReader
-					//alert('not supported FileReader');
+				} else {//에러확인
 					if (!document.getElementById("sfr_preview_error_"
 							+ View_area)) {
 						var info = document.createElement("p");
@@ -56,7 +55,7 @@
 						console.log("eleCount:"+eleCount);//총 갯수
 						if(eleCount>5) return;
 			}
-			else $('#PhotoAlertModal').modal("show");
+			else $('#PhotoAlertModal').modal("show"); //5개 이상일시 경고모달창
 		}
 
 //------숫자 천단위 쉼표----------//
@@ -125,10 +124,5 @@ function accountCheck(x) {
     }
 
 
-//-------------시세확인창--------------------//
-aSign.onclick = function() {
-		var win = window.open('/newPage', 'win', 'width=400px, height=100px, left=300px, top=300px;')
-
 	
-		
-	}
+	

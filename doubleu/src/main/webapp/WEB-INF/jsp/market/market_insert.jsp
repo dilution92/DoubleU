@@ -45,18 +45,18 @@
 		
 		
 			<div class='market-insert-form'>
-			<form class="frm_market_insert">
+			<form action = "/bInsertR" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
 				<div class="form-group row">
 		   		 <label for="marketName" class="col-sm-2 col-form-label  is-invalid">상품명</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control " id="marketName" required>
+				      <input type="text" class="form-control "  name="marketSubject"required value="휴대폰">
 				    </div>
 				  </div>
 				  
 				<div class="form-group row">
 		   		 <label for="marketaCate" class="col-sm-2 col-form-label">카테고리</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control " id="marketaCate"  required>
+   					 <select class="form-control " name="categoryNo"  required>
 								<option value="">카테고리</option>
 								<option value="0">뷰티/미용</option>
 								<option value="1">생활/가공식품</option>
@@ -75,7 +75,7 @@
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;"
 						onclick="window.open('/marketNewpage','window_name','width=600,height=182,location=no,status=no,scrollbars=yes');">시세 확인</button>
 				    	  <div style="display:flex;">
-				    	  <input type="text" class="form-control" id="marketPrice" onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
+				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="1"onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
 				    	  <span class="input-group-text">원</span>
 				    	</div>
 				    </div>
@@ -86,7 +86,7 @@
 				 <label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
 				  <div class="col-sm-8" style="display : inline-block;">
 			   		<div class="custom-file">
-					  <input type="file" class="custom-file-input"  id="profile_pt" onchange="previewImage(this,'View_area')" multiple='multiple'>
+					  <input type="file" class="custom-file-input"  name="attList" onchange="previewImage(this,'View_area')" multiple='multiple'>
 					  <label class="custom-file-label" for="customFile">Choose file</label>
 					</div>
 					<div id='View_area' class='View_area' style="display:flex;" >
@@ -98,7 +98,7 @@
 				<div class="form-group row">
 		   		 <label for="marketAccount" class="col-sm-2 col-form-label">계좌번호</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control" id="exampleFormControlSelect1" required>
+   					 <select class="form-control" id="exampleFormControlSelect1" name="marketAccount"required>
 								<option value="">은행</option>
 								<option value="0">신한</option>
 								<option value="1">국민</option>
@@ -107,7 +107,7 @@
 								<option value="4">케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
-				      <input type="text" class="form-control js-sms-content" id="marketAccount" onkeyup="accountCheck(this.value)" >
+				      <input type="text" class="form-control js-sms-content" id="marketAccount" value="23"onkeyup="accountCheck(this.value)" >
 				    </div>
 				    </div>
 				  </div>
@@ -115,14 +115,18 @@
 				  <div class="form-group row">
 		   		 <label for="marketDoc" class="col-sm-2 col-form-label">내용</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="marketDoc" rows ="10"required></textarea>
+				      <textarea class="form-control" id="marketDoc" name = "marketDoc" rows ="10"required>test</textarea>
 				    </div>
 				  </div>
 				  
 				<div class="market-btn-zone">
-					<button class="btn btn-primary" type="submit">등록</button>
-					<button class="btn btn-primary" type="submit">취소</button>
+					<input class="btn btn-primary" type="submit"   id = 'btnSave' value="등록">
+					<input class="btn btn-primary" type = 'button' value = '취소' id = 'btnList'>
 				</div>
+				
+				<input name="membersNo" value = "1">
+				<input name="membersHit" value = "1">
+				<input name="membersDate" value = "2021-01-01">
 			</form>
 			</div>
 
@@ -159,8 +163,6 @@
 		crossorigin="anonymous"></script>
 	<!-- ****************************** -->
 
-	<script type="text/javascript">
-
-</script>
+<script></script>
 </body>
 </html>
