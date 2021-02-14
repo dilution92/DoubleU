@@ -1,34 +1,43 @@
 package com.doubleu.approval.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.approval.mybatis.ApprovalDao;
+import com.doubleu.approval.vo.ApprovalAttFileVo;
 import com.doubleu.approval.vo.ApprovalFormVo;
 import com.doubleu.approval.vo.FormPetition;
 
 @RestController
 public class ControllerApproval {
-
 	@Autowired
 	ApprovalDao service;
 	
+	@Autowired
+	ControllerApprovalUpload fu;
+	
 	
 	@RequestMapping(value = "/approvalInsert", method = {RequestMethod.POST, RequestMethod.GET} )
-	public ModelAndView insert(ApprovalFormVo vo, FormPetition petitionVo) {
+	public ModelAndView insert(ApprovalFormVo vo, FormPetition petitionVo, @RequestParam("approvalFile") List<MultipartFile> mul) {
+		System.out.println("insert 도착");
+		
 		ModelAndView mv = new ModelAndView();
 		String msg = null;
-		vo.setFormPetition(petitionVo);
 		
+		List<ApprovalAttFileVo> attList = fu.upload(mul);
+		vo.setApprovalAttFiles(attList);
 		
-		System.out.println(vo.getEventDate());
-		System.out.println(vo.getDrafterName());
-		
-		System.out.println("insert 도착");
 		msg = service.insert(vo);
 		
 		System.out.println(msg);

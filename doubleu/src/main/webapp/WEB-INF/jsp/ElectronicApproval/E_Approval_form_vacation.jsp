@@ -47,7 +47,6 @@
 				<div class="e-approval-form-workType-title">
 					<h4 style="font-weight: bold">${formName}</h4>
 				</div>
-				<input type="button" id="btnTest" value="test">
 				<div class="e-approval-form-workType-top">
 					<div class="e-approval-form-workType-top-1">
 						<table class="table table-sm table-bordered">
@@ -96,8 +95,8 @@
 						~
 						<input type="date" id="endDate" name="endDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						</td>
-						<th> 일 수 </th>
-						<td> <input type="text" name="vacationCnt" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " value="1"> </td>
+						<th> 총 일 수 </th>
+						<td> <input type="text" name="vacationCnt" class="form-control form-control-sm" style="width: 50px; font-size: 1em; margin: 0 auto; display: inline-block;"> </td>
 					</tr>
 					<tr>
 						<th> 반차 여부 </th>
@@ -135,9 +134,7 @@
 						<td colspan="4">
 							<div class="e-approval-file-zone">
 								<div class="input-group mb-3">
-								  <div class="custom-file">
-								    <input type="file" class="custom-file-input" id="inputGroupFile02">
-								    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+								  <div class="custom-file" id="fileZone">
 								  </div>
 								</div>
 							</div>
@@ -165,6 +162,7 @@
 <script type="text/javascript">
 funcApproval();
 createMakerBox('makersZone');
+createFile('fileZone')
 </script>
 </body>
 </html>
