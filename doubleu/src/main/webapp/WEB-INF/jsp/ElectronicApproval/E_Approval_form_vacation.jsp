@@ -20,7 +20,6 @@
 		}
 	 %>
 	
-	
 	<div class="e-approval-form-container">
 		<form action="" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
@@ -48,7 +47,7 @@
 				<div class="e-approval-form-workType-title">
 					<h4 style="font-weight: bold">${formName}</h4>
 				</div>
-				
+				<input type="button" id="btnTest" value="test">
 				<div class="e-approval-form-workType-top">
 					<div class="e-approval-form-workType-top-1">
 						<table class="table table-sm table-bordered">
@@ -83,7 +82,7 @@
 					<tr>
 					 <th> 휴가 종류 </th>
 					 <td colspan="3"> 
-					 	<select class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
+					 	<select id="VacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
 					 		<option value="연차"> 연차 </option>
 					 		<option value="월차"> 월차 </option>
 					 		<option value="반차"> 반차 </option>
@@ -93,9 +92,9 @@
 					<tr>
 						<th> 기간 및 일시 </th>
 						<td>
-						<input type="date" name="startDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+						<input type="date" id="startDate" name="startDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						~
-						<input type="date" name="endDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+						<input type="date" id="endDate" name="endDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						</td>
 						<th> 일 수 </th>
 						<td> <input type="text" name="vacationCnt" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " value="1"> </td>

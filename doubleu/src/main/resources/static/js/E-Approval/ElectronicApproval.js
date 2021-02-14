@@ -25,6 +25,10 @@ function funcApproval() {
 		var frm = document.frmApproval;
 		
 	/*정보 전송*/
+	$('#btnTest').on('click', function() {
+		frm.vacationCnt.value = 2;
+	})
+	
 	$('#btnApprovalSave').on('click', function() {
 		alert("정상적으로 등록되었습니다.")
 		frm.action = '/approvalInsert';
@@ -148,4 +152,30 @@ function append(zone, boxCnt) {
 	}
 	tdSign.appendChild(delBtn);
 	zone.appendChild(makerBox)
+}
+
+function vacationCnt() {
+	var frm = document.frmApproval;
+	
+	if(frm.startDate.value == null || frm.endDate.value == null) {
+		return;
+	}
+	else {
+	}
+}
+function chooseVacationType() {
+	var frm = document.frmApproval;
+	var vacationType = $('#VacationType option:selected').val();
+	if(vacationType == '반차') {
+		$('#startDate').attr('disabled', 'disabled');
+		$('#endDate').attr('disabled', 'disabled');
+		frm.vacationCnt.value = 0.5;
+	}
+	else if( vacationType == '연차' || vacationType == '월차'){
+		$('#startDate').removeAttr('disabled');
+		$('#endDate').removeAttr('disabled');
+		frm.vacationCnt.value = null;
+	}
+
+
 }
