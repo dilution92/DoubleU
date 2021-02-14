@@ -22,7 +22,7 @@
 	
 	
 	<div class="e-approval-form-container">
-		<form action="">
+		<form action="" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-choose">
 					</a><select class="form-control form-control-sm e-approval-work-form-change">
@@ -118,24 +118,21 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<input type="submit" class="btn btn-outline-primary btn-sm" value="상신요청">
-					<input type="button" class="btn btn-outline-primary btn-sm" value="임시저장">
-					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/E_Approval_form_btns.jsp"></jsp:include>
 				</div>
 			</div>
 			</main>
 			<!-- 공통 -->
-			<input type="text" name="formType" value="${formTypeNo }">
-			<input type="text" name="drafterPosition" value="">
+			<input type="hidden" name="formType" value="${formType }">
+			<input type="hidden" name="drafterPosition" value="사원">
 			<input type="hidden" id="TempMakerPosition" value="">
 			<input type="hidden" id="TempMakerName" value="">
 		</form>
 	</div>
 	
 <script type="text/javascript">
+funcApproval();
 createMakerBox('makersZone');
-
-
 </script>
 </body>
 </html>

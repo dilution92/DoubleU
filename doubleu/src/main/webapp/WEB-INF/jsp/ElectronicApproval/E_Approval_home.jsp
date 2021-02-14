@@ -55,18 +55,18 @@
 				<div class="e-approval-approval-list">
 					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=발신된 문서">발신 문서함</a>
 					<ul>	<!-- /WEB-INF/ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함 -->
-						<li><a href="/approvalGoList?selectName=0">상신한 문서함</a></li>
-						<li><a href="/approvalGoList?selectName=1">임시 저장된 문서</a></li>
-						<li><a href="/approvalGoList?selectName=2">승인 완료된 문서</a></li>
-						<li><a href="/approvalGoList?selectName=3">반려된 문서</a></li>
+						<li><a href="/approvalGoList?selectName=(발신)상신">상신한 문서함</a></li>
+						<li><a href="/approvalGoList?selectName=(발신)임시저장">임시 저장된 문서</a></li>
+						<li><a href="/approvalGoList?selectName=(발신)승인">승인 완료된 문서</a></li>
+						<li><a href="/approvalGoList?selectName=(발신)반려">반려된 문서</a></li>
 					</ul>
 				</div>
 				<div class="e-approval-approval-list">
 					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=수신된 문서">수신 문서함</a>					
 					<ul>
-						<li><a href="/approvalGoList?selectName=4">결재할 문서</a></li>
-						<li><a href="/approvalGoList?selectName=5">승인한 문서</a></li>
-						<li><a href="/approvalGoList?selectName=6">반려한 문서</a></li>
+						<li><a href="/approvalGoList?selectName=(수신)결재예정">결재할 문서</a></li>
+						<li><a href="/approvalGoList?selectName=(수신)승인">승인한 문서</a></li>
+						<li><a href="/approvalGoList?selectName=(수신)반려">반려한 문서</a></li>
 					</ul>
 				</div>
 			</div>
@@ -102,11 +102,11 @@
 							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
 								<div class="card-body">
 									<ul  class="e-approval-formChoose-modal-ul">
-										<li><a href="/approvalGoFormType?formTypeNo=0">업무 기안</a></li>
-										<li><a href="/approvalGoFormType?formTypeNo=1">업무 협조</a></li>
-										<li><a href="/approvalGoFormType?formTypeNo=2">품의서</a></li>
-										<li><a href="/approvalGoFormType?formTypeNo=3">구매품의서</a></li>
-										<li><a href="/approvalGoFormType?formTypeNo=4">사유서</a></li>
+										<li><a href="/approvalGoFormType?formType=업무기안">업무 기안</a></li>
+										<li><a href="/approvalGoFormType?formType=업무협조">업무 협조</a></li>
+										<li><a href="/approvalGoFormType?formType=품의서">품의서</a></li>
+										<li><a href="/approvalGoFormType?formType=구매품의서">구매품의서</a></li>
+										<li><a href="/approvalGoFormType?formType=사유서">사유서</a></li>
 									</ul>
 								</div>
 							</div>
@@ -123,8 +123,8 @@
 							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 								<div class="card-body">
 									<ul class="e-approval-formChoose-modal-ul">
-										<li><a href="/approvalGoFormType?formTypeNo=5">휴가 신청서</a></li>
-										<li><a href="/approvalGoFormType?formTypeNo=6"">지각/결근 사유서</a></li>
+										<li><a href="/approvalGoFormType?formType=휴가신청서">휴가 신청서</a></li>
+										<li><a href="/approvalGoFormType?formType=지각/결근사유서">지각/결근 사유서</a></li>
 									</ul>
 								</div>
 							</div>
@@ -141,7 +141,7 @@
 							<div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample">
 								<div class="card-body">
 									<ul  class="e-approval-formChoose-modal-ul">
-										<li><a href="/approvalGoFormType?formTypeNo=7">지출결의서</a></li>
+										<li><a href="/approvalGoFormType?formType=지출결의서">지출결의서</a></li>
 									</ul>
 								</div>
 							</div>

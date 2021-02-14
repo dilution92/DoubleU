@@ -38,5 +38,36 @@ public class MarketUrlController {
 		
 		return mv;
 	}
+	
+	// market_view.jsp
+	@RequestMapping(value="/marketView", method=RequestMethod.GET)
+	public ModelAndView marketView() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("market/market_view");
+		
+		return mv;
+	}
+	
+	
+	// market_update.jsp
+	@RequestMapping(value="/marketUpdate", method=RequestMethod.GET)
+	public ModelAndView marketUpdate() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("market/market_update");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "/marketNewpage")
+	public ModelAndView marketNewpage() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("market/market_price_popup");
+		return mv;
+		
+	}
 		
 }

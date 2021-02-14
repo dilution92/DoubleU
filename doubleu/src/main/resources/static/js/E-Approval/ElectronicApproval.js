@@ -26,7 +26,7 @@ function funcApproval() {
 		
 	/*정보 전송*/
 	$('#btnApprovalSave').on('click', function() {
-		alert('정상적으로 등록되었습니다.');
+		alert("정상적으로 등록되었습니다.")
 		frm.action = '/approvalInsert';
 		frm.submit();
 	})
@@ -85,8 +85,15 @@ function append(zone, boxCnt) {
 	aSign.setAttribute("value", "직원조회");
 	
 	//직원 조회 버튼 생성
-	aSign.onclick = function() {
-		var win = window.open('/newPage', 'win', 'width=400px, height=100px, left=300px, top=300px;')
+	aSign.onclick = function() {   
+		
+		var winWidth = "500";
+		var winHeight = "600";
+		
+		
+		var winLeft = Math.ceil((window.screen.width - winWidth)/2);
+		var winTop = Math.ceil((window.screen.height- winHeight)/2);
+		var win = window.open('/newPage', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
 
 		win.onbeforeunload = function(){
 			inputName.value = $('#TempMakerName').val();
