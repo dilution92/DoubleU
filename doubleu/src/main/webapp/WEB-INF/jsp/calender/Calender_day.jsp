@@ -1,8 +1,5 @@
-<%@page import="java.util.List"%>
-<%@page import="com.doubleu.calender.Calender"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +11,14 @@
 <link rel="stylesheet" href="/css/calender/Calender.css">
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
+
 </head>
 <body>
-<%
-	Calender cal = new Calender();
-	List<Integer> list = cal.getList();
-%>
-
-
-	<!-- 그룹웨어 GNB -->
+<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
-		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+		<jsp:include page="../MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
-	 
 	 
 <aside id="calender_aside">
 	<!-- 일정 사이드바  -->
@@ -54,68 +45,47 @@
 		<table class="table table-bordered">
 			<thead><!-- 요일 들어갈 자리 -->
 				<tr height="50px">
-					<th scope="col" width="14.2%">
-						Sun
+					<th scope="col" width="8%">
+						#
 					</th>
-					<th scope="col" width="14.2%">
-						Mon
+					<th scope="col" width="92%">
+						<h4>Mon 02.01</h4>
 					</th>
-					<th scope="col" width="14.2%">
-						Tue
-					</th>
-					<th scope="col" width="14.2%">
-						Wen
-					</th>
-					<th scope="col" width="14.2%">
-						Thu
-					</th>
-					<th scope="col" width="14.2%">
-						Fri
-					</th>
-					<th scope="col" width="14.2%">
-						Sat
-					</th>
+					
 				</tr>
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
-			
-			<% for(int i=0; i<6; i++) { %>
-        	<tr height="150px;"><!-- 일주일은 묶는곳 -->
-			
-			<% for(int j=0; j<7; j++){ %>
-			<td id="calender_content"><!-- 월간 달력 한칸 -->
-				<div><!-- 날자가 표시 될 곳 -->
-				<%=list.get(i*6+j+i) %>
-				</div>
-				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
-					여기에 일정이 표시
-				</div>
-				<div><!-- 단기 일정이 표시 될 곳 -->
-				
-				</div>
-			</td>
-       <%} %>
-        	</tr>
-		<%} %>
-			</tbody>
+		      	<tr><!-- 일주일은 묶는곳 -->
+		      		<th><!-- all-day 표시칸  -->
+		      			All-day
+		      		</th>
+		      
+		      		<td id="calender_content"><!-- all-day 표시칸  -->
+		      			I can do this all day
+		      		</td>
+					
+		      	</tr>
+		      
+	      
+	        <%
+	        	for(int i=1; i<=25; i++){
+	        %>
+	        	<tr><!-- 일주일은 묶는곳 -->
+	        	<th ><!--  -->
+	        		<%=i-1 %>
+	        	</th>
+				<td id="calender_content"><!-- 월간 달력 한칸 -->
+					<div><!-- 단기 일정이 표시 될 곳 -->
+					</div>
+				</td>
+	        	</tr>
+	        <% 
+	        	}
+	        %>
+	        
+		</tbody>
 		</table>
-	</div>
-	
-	<!-- 모달창 -->
-	<div class="modal fade" id="Calender_detail_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
- 		<jsp:include page="Calender_pop_modal.jsp"></jsp:include>
-	</div>	
-		
 </main>
- 
-<script type="text/javascript">
-$(function(){
-    $(".calender_modal").click(function(){
-        $('#Calender_detail_modal').modal();
-    })
-})
-</script>
-
 
 </body>
 </html>
