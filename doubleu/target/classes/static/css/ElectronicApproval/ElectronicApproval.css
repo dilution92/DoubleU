@@ -396,7 +396,7 @@ body {
 	padding: 0;
 }
 
-#makerBox {
+.makerBox {
 	margin: 0;
 }
 
@@ -437,3 +437,17 @@ body {
 	margin-top: 18px;
 	
 }
+
+#fileZone {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 96%;
+}
+.fileContent {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+

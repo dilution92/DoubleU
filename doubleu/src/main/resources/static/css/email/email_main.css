@@ -12,7 +12,7 @@ body {
 }
 
 
-/* 전자결재 사이드바 CSS */
+/* 메일함 사이드바 CSS */
 .e-approval-container {
 	display: flex;	
 	flex-direction: row;
@@ -104,7 +104,7 @@ body {
 /* +++++++++++++++++++++++++++++++++++++++ */
 
 
-/* 전자결재 main CSS */
+/* 메일함 main CSS */
 .e-approval-article {
 	width: 80%;
 	padding: 3em 5em 0 5em;
@@ -116,7 +116,7 @@ body {
 
 .e-approval-search-bar {
 	width: 100%;
-	min-height: 10%;
+	max-height: 20%;
 	margin-bottom: 0.5rem; 
 }
 
@@ -176,9 +176,16 @@ body {
 	font-size: 0.8em;
 }
 
+
+.e-approval-list > .container > div:nth-child(1) {
+	background: black;
+	color: aqua;
+}
+
 .e-approval-list > tr > td:nth-child(4){
 	color:red;
 }
+
 
 .e-approval-list td:hover {
 	cursor: pointer;

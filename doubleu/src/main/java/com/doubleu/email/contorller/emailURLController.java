@@ -1,18 +1,33 @@
 package com.doubleu.email.contorller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import com.doubleu.email.mybatis.EmailDao;
+import com.doubleu.email.vo.EmailMainVo;
+
+@RestController
 public class emailURLController {
 
+	@Autowired
+	EmailDao service;
+	
 	// email_index.jsp
 	@RequestMapping(value="/emailIndex", method=RequestMethod.GET)
-	public ModelAndView emailIndex() {
+	public ModelAndView emailIndex(EmailMainVo vo) {
+		
 		ModelAndView mv = new ModelAndView();
 
+		
+		List<EmailMainVo> list = service.select();
+		
+		mv.addObject("list", list);
 		mv.setViewName("email/email_index");
 
 		return mv;

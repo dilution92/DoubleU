@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.doubleu.email.mybatis.EmailMapper">
+	
+
+	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
+ 
+	<result property="emailNo" column="email_no" /> 
+	<result property="emailMid" column="email_mid" /> 
+	<result property="emailAddress" column="email_address" /> 
+	<result property="emailName" column="email_name" /> 
+	<result property="emailTitle" column="email_title" /> 
+	<result property="emailDate" column="email_date"  /> 
+	<result property="emailContents" column="email_contents"/>  
+	<result property="emailMailBox" column="email_mailbox" />
+	<result property="emailFile" column="email_file" /> 
+	<result property="emailChk" column="email_chk" /> 
+	<result property="emailDelete" column="email_delete" /> 
+
+</resultMap>
+	
+	
+	<select id="select" resultMap="getEmailListSelect">
+		SELECT * FROM email ORDER BY email_date DESC
+	</select>
+	
+	<!--  
+	<select id="select2" resultType="com.doubleu.email.vo.Test">
+	 	SELECT * FROM test
+	</select>-->
+</mapper>
