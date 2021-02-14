@@ -4,27 +4,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.doubleu.market.mybatis.MarketDao;
 import com.doubleu.market.vo.MarketAttVo;
-import com.doubleu.market.vo.MarketVo;
 
 
-@Controller
+@Service
 public class MarketUploadController {
 	String saveDir = "C:\\Users\\wotjd\\Documents\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\market\\";
 
-	@Autowired
-	MarketDao dao;
 
-	@RequestMapping(value="/bInsertR")
 	public  List<MarketAttVo> upload(List<MultipartFile> mul) {
 		List<MarketAttVo> attList = new ArrayList<>();
 		String msg ;

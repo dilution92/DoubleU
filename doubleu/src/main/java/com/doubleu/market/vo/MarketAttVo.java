@@ -3,7 +3,7 @@ package com.doubleu.market.vo;
 
 public class MarketAttVo {
 		int filesNo;
-		int formNo;
+		int MarketNo;
 		String sysFile;
 		String oriFile;
 		
@@ -13,11 +13,12 @@ public class MarketAttVo {
 		public void setFilesNo(int filesNo) {
 			this.filesNo = filesNo;
 		}
-		public int getFormNo() {
-			return formNo;
+		
+		public int getMarketNo() {
+			return MarketNo;
 		}
-		public void setFormNo(int formNo) {
-			this.formNo = formNo;
+		public void setMarketNo(int marketNo) {
+			MarketNo = marketNo;
 		}
 		public String getSysFile() {
 			return sysFile;
