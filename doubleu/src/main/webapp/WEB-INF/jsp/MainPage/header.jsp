@@ -26,7 +26,7 @@
 				<li class="nav-item"><a class="nav-link" href="/calender/Calender_month.jsp">캘린더</a></li>
 				<li class="nav-item"><a class="nav-link" href="/email/email_index.jsp">메일함</a></li>
 				<li class="nav-item"><a class="nav-link" href="/approvalGoHome">전자결재</a></li>
-				<li class="nav-item"><a class="nav-link" href="/market/market_index.jsp">중고시장</a></li>
+				<li class="nav-item"><a class="nav-link" href="/marketIndex">중고시장</a></li>
 			</ul>
 	
 			<ul class="navbar-nav my-2 my-lg-0">

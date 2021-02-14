@@ -15,7 +15,7 @@
 						data-toggle="modal" data-target="#exampleModal" value="글쓰기">
  -->					
  				<input type="button" class="btn btn-primary btn-lg"
-						onClick="location.href='market_insert.jsp'" value="글쓰기">
+						onClick="location.href='marketInsert'" value="글쓰기">
 				</div>
 				<div class="e-approval-approval-list">
 				<span>전사게시판</span>
@@ -33,7 +33,7 @@
 				</ul>
 			</div>
 				<div class="e-approval-approval-list">
-					<span><a href="../market/market_index.jsp">중고게시판</a></span>
+					<span><a href="marketIndex">중고게시판</a></span>
 					<!-- 
 					<ul>
 

@@ -30,7 +30,7 @@
 					  <div class="form-group row">
 					    <label for="inputEmail3" class="col-sm-2 col-form-label">제품명</label>
 					    <div class="col-sm-8">
-					      <div class="form-control" id="inputEmail3" ></div>
+					      <div class="form-control" id="inputEmail3" >텀블러</div>
 					    </div>
 					  </div>
 	
@@ -61,7 +61,7 @@
 				</div>
 				
 								<div class="market-btn-zone">
-					<button class="btn btn-primary" type="submit">목록</button>
+					<button class="btn btn-primary" type="submit" id=''>목록</button>
 				</div>
 			 </div>
 </body>

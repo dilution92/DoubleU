@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>중고 게시판</title>
+<title>시세확인</title>
 
 <!-- bootstrap CDN -->
 <link rel="stylesheet"
@@ -22,33 +21,16 @@
 
 </head>
 <body>
-
-	<!-- main-GNB -->
-	<header class="container-fluid main-gnb">
-			<jsp:include page="/MainPage/header.jsp"/>
-	</header>
-	<!-- main-GNB code 끝 -->
-
-
-	<section class="e-approval-container">
-		<!-- e-approval-lnb code -->
-				<jsp:include page="side_menu.jsp"/>
-
-		<!-- lnb code 끝 -->
-
-		<main class="e-approval-article">
-			<div class="market-header" style="height: 2%;  margin-bottom: 50px;">
-				<h3 style="width: 200px; height: 30px;">중고게시판</h3>
-			</div>
+<main class="e-approval-article"  style="width:100%;">
+			
 			<!-- ========== -->
 			<div class='container market-price-search-container 'id = "content">
 				<div class='market-price-search-form'>
-					<div id = "cont-wrap" >
 						<div class="cate-top-txt"><h3>시세검색</h3></div>
-			        </div>
 					<div class="search-bar">
-			                 <form  name="frm_search" role="search" method="post" class="search-form" >
-								 <div class="market-search-bar" >
+			                 <form  name="frm_search" role="search" method="post" class="search-form" 
+			                 style="width: 100%; ">
+								 <div class="market-search-bar" style="width: 500px; margin:0;">
 									 <input class="form-control form-control-lg market-search"
 											type="text" placeholder="상품명" aria-label="Search"
 											id="approvalFindStr" value="${param.findStr }" name="findStr">
@@ -63,14 +45,20 @@
 			     
 			     
 			     
-			     <div class="market-price-contents">
+			     <div class="market-price-contents container">
 			     	<div class="price-chart">
 			     	  차트 화면
 			     	
 			     	</div>
 					<div class="price-chart-detail">
+						<div>
+						상품명 : 마우스
+						</div>
 					
-					상품 시세
+						<div>
+						평균가격 : 13,000원
+						</div>
+					
 					
 					</div>
 			     
@@ -82,20 +70,5 @@
 
 
 		</main>
-	</section>
-
-
-	<!-- bootstrap script, Jquery CDN -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-		crossorigin="anonymous"></script>
-	<!-- ****************************** -->
-
-	<script type="text/javascript">
-</script>
 </body>
 </html>

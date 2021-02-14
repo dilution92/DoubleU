@@ -20,9 +20,8 @@
 		}
 	 %>
 	
-	
 	<div class="e-approval-form-container">
-		<form action="">
+		<form action="" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-choose">
 					</a><select class="form-control form-control-sm e-approval-work-form-change">
@@ -48,7 +47,7 @@
 				<div class="e-approval-form-workType-title">
 					<h4 style="font-weight: bold">${formName}</h4>
 				</div>
-				
+				<input type="button" id="btnTest" value="test">
 				<div class="e-approval-form-workType-top">
 					<div class="e-approval-form-workType-top-1">
 						<table class="table table-sm table-bordered">
@@ -70,30 +69,20 @@
 								</tr>
 						</table>
 					</div>
-					<div class="e-approval-form-approval-box">
-						<div class="e-approval-form-approval-box-1 table-bordered">
+					<div class="e-approval-form-decision-box">
+						<div class="e-approval-form-decision-box-1 table-bordered">
 							<p style="margin: 0;"> 결재란 </p>
 						</div>
-						<c:forEach begin="1" end="3">						
-							<table class="table table-sm table-bordered e-approval-form-approval-box-2">
-									<tr>
-										<td height="20px;"style="padding-top: 0; padding-bottom: 0;"> 직급 </td>
-									</tr>
-									<tr>
-										<td height="80px;" style="padding: 0; line-height: 80px"> <a href="#" style="font-weight: bold;">직원 조회</a> </td>
-									</tr>
-									<tr>
-										<td height="20px;" style="padding-top: 0; padding-bottom: 0;" > 결재 대기 </td>
-									</tr>
-							</table>
-						</c:forEach>
+							<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
+							
+							</div>
 					</div>
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
 					 <th> 휴가 종류 </th>
 					 <td colspan="3"> 
-					 	<select class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
+					 	<select id="VacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
 					 		<option value="연차"> 연차 </option>
 					 		<option value="월차"> 월차 </option>
 					 		<option value="반차"> 반차 </option>
@@ -103,9 +92,9 @@
 					<tr>
 						<th> 기간 및 일시 </th>
 						<td>
-						<input type="date" name="startDate" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+						<input type="date" id="startDate" name="startDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						~
-						<input type="date" name="endDate" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+						<input type="date" id="endDate" name="endDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						</td>
 						<th> 일 수 </th>
 						<td> <input type="text" name="vacationCnt" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " value="1"> </td>
@@ -113,7 +102,7 @@
 					<tr>
 						<th> 반차 여부 </th>
 						<td colspan="3">
-							<input type="date" name="halfDate" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+							<input type="date" name="halfDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 							<div class="form-check e-approval-form-vacationType-check-box">
 							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimeAM" value="checkAM" checked>
 							  <label class="form-check-label" for="halfTimeAM">
@@ -159,20 +148,23 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<input type="submit" class="btn btn-outline-primary btn-sm" value="상신요청">
-					<input type="button" class="btn btn-outline-primary btn-sm" value="임시저장">
-					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/E_Approval_form_btns.jsp"></jsp:include>
 				</div>
 			</div>
 			</main>
 			<!-- 공통 -->
 			<input type="hidden" name="formType" value="${formTypeNo }">
-			<input type="hidden" name="drafterPosition" value="">
+			<input type="hidden" name="drafterPosition" value="사원">
+			<input type="hidden" id="TempMakerPosition" value="">
+			<input type="hidden" id="TempMakerName" value="">
 			
 			<input type="hidden" name="vacationType" value="">
 			<input type="hidden" name="checkedHaifTime" value="">
 		</form>
 	</div>
-
+<script type="text/javascript">
+funcApproval();
+createMakerBox('makersZone');
+</script>
 </body>
 </html>

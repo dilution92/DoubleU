@@ -25,75 +25,34 @@
 
 	<!-- main-GNB -->
 	<header class="container-fluid main-gnb">
-			<jsp:include page="/MainPage/header.jsp"/>
+			<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"/>
 	</header>
 	<!-- main-GNB code 끝 -->
 
-
 	<section class="e-approval-container">
 		<!-- e-approval-lnb code -->
-		<jsp:include page="side_menu.jsp"/>
-	
+				<jsp:include page="side_menu.jsp"/>
+
 		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
 			<div class="market-header" style="height: 2%;  margin-bottom: 50px;">
 				<jsp:include page="market_header.jsp"/>
+	
 			</div>
 			<!-- ========== -->
-
-
-			<!-- 글갯수/ 최신순 -->
-			<div class="market-subheader-container">
-				<div class='market-total'>
-					<p class="card-text">글 갯수 : 8</p>
-				</div>
-				<div class="e-approval-dib">
-					<form class="e-approval-search-form" action="" name="frm_approval"
-						method="post">
-						<div class="e-approval-form-box" style="float: right;">
-							<input class="btn btn-outline-primary btn-sm" type="button"
-								value="최신순" /> <input class="btn btn-outline-primary btn-sm"
-								type="button" value="낮은 가격순" />
-
-						</div>
-					</form>
-				</div>
-			</div>
+			<span class="badge badge-pill badge-primary">2분 전</span>
 			
-			<!-- 중고게시판 게시글  -->
-			<div class="row row-cols-1 row-cols-md-4">
-				<jsp:include page="market_index_contents.jsp"/>
+			<!-- market view contents -->
+			<div class='container' >
+				<jsp:include page="market_update_contents.jsp"/>	
 			</div>
-			<!-- ========== -->
-
-			<!-- 리스트 페이징 아이콘 code -->
-			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul
-						class="pagination pagination-sm text-muted justify-content-center">
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">last</a></li>
-					</ul>
-				</nav>
+	
+	
+			<!-- market repl  -->
+			<div class='container market-repl-container'>
+				<jsp:include page="market_repl.jsp"/>	
 			</div>
-			<!-- ========== -->
-
-
-
-
 		</main>
 	</section>
 
@@ -102,12 +61,16 @@
 		<jsp:include page="board_write.jsp"/>
 	</div>
  
- 
  <!-- 찜목록 모달창 -->
 	<div class="modal fade" id="dibModal" tabindex="-1" aria-labelledby="dibModal" aria-hidden="true">
-		<jsp:include page="dib_modal.jsp"/>
+		<jsp:include page="modal/dib_modal.jsp"/>
 	</div>
 
+	<!-- 계좌번호 모달창 -->
+	<div class="modal fade" id="goAccount" tabindex="-1" aria-labelledby="goAccount" aria-hidden="true">
+		<jsp:include page="modal/account_modal.jsp"/>
+		
+	</div>
 	<!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
