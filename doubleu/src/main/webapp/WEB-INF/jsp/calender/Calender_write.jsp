@@ -31,24 +31,25 @@
     <div id="calender_main_content">
     	<h2>일정 입력</h2>
     	<form action="/calenderInsert">
+    		<input type="hidden" value="writer" name="calenderWriter">
 			<table class="table table-bordered" >
     			<tr>
     				<td width="20%">제목</td>
-    				<td width="80%"> <input type="text" name="calender_name"> </td>
+    				<td width="80%"> <input type="text" name="calenderSubject"> </td>
     			</tr>
     			<tr>
     				<td>기간</td>
     				<td> 
-    				<input type="date" name="calender_date_start">
-    				<input type="time" name="calender_time_start">
-    				<input type="date" name="calender_date_end"> 
-    				<input type="time" name="calender_time_end">
+    				<input type="date" name="calenderDateStart">
+    				<input type="time" name="calenderTimeStart">
+    				<input type="date" name="calenderDateEnd"> 
+    				<input type="time" name="calenderTimeEnd">
     				</td>
     			</tr>
     			<tr>
     				<td>그룹분류</td>
     				<td> 
-    					<select name="calender_group">
+    					<select name="calenderGroup">
     						<option value="">그룹선택</option>
 						    <option value="그룹일정">그룹일정</option>
 						    <option value="내일정">내 일정</option>
@@ -57,15 +58,15 @@
     			</tr>
     			<tr>
     				<td>참석자</td>
-    				<td> <input type="text" name="calender_participtant"> </td>
+    				<td> <input type="text" name="calenderParticiptant"> </td>
     			</tr>
     			<tr>
     				<td>장소</td>
-    				<td> <input type="text" name="calender_place"> </td>
+    				<td> <input type="text" name="calenderPlace"> </td>
     			</tr>
     			<tr>
     				<td>내용</td>
-    				<td> <textarea rows="10" cols="80" name="calender_content"></textarea> </td>
+    				<td> <textarea rows="10" cols="80" name="calenderContent"></textarea> </td>
     			</tr>
 			</table>
 				<div>

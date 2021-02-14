@@ -1,6 +1,8 @@
 package com.doubleu.calender.service;
 
+import com.doubleu.calender.vo.CalenderVo;
+
 public interface CalenderService {
 	
-	public void insert();
+	public String insert(CalenderVo vo);
 }

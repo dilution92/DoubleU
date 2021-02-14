@@ -1,30 +1,27 @@
 package com.doubleu.calender.controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import com.doubleu.calender.service.CalenderService;
+import com.doubleu.calender.vo.CalenderVo;
+
+@RestController
 public class CalenderController {
 
-	@RequestMapping(value = "/calenderMonth", method = {RequestMethod.POST, RequestMethod.GET} )
-	public ModelAndView calenderMonth() {
+	@Autowired
+	CalenderService service;
+
+	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
+	public ModelAndView calenderInsertR(CalenderVo vo) {
 		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("calender/Calender_month");
-
+		String msg = "";
+		
+		msg = service.insert(vo);
+		mv.setViewName("calender/calenderMonth");
 		return mv;
 	}
-	
-	@RequestMapping(value = "/calenderWrite", method = {RequestMethod.POST, RequestMethod.GET}  )
-	public ModelAndView calenderWrite() {
-		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("calender/Calender_write");
-
-		return mv;
-	}
-	
-	
 }

@@ -3,31 +3,47 @@ package com.doubleu.calender.vo;
 public class CalenderVo {
 
 	private int calenderNo;
-	private String calenderStart;
-	private String calenderEnd;
+	private String calenderDateStart;
+	private String calenderTimeStart;
+	private String calenderDateEnd;
+	private String calenderTimeEnd;
 	private String calenderSubject;
 	private String calenderContent;
 	private String calenderPlace;
 	private String calenderWriter;
 	private String calenderGroup;
-	private String calenderDate;
+	private String calenderTime;
+	
+	
 	public int getCalenderNo() {
 		return calenderNo;
 	}
 	public void setCalenderNo(int calenderNo) {
 		this.calenderNo = calenderNo;
 	}
-	public String getCalenderStart() {
-		return calenderStart;
+	public String getCalenderDateStart() {
+		return calenderDateStart;
 	}
-	public void setCalenderStart(String calenderStart) {
-		this.calenderStart = calenderStart;
+	public void setCalenderDateStart(String calenderDateStart) {
+		this.calenderDateStart = calenderDateStart;
 	}
-	public String getCalenderEnd() {
-		return calenderEnd;
+	public String getCalenderTimeStart() {
+		return calenderTimeStart;
 	}
-	public void setCalenderEnd(String calenderEnd) {
-		this.calenderEnd = calenderEnd;
+	public void setCalenderTimeStart(String calenderTimeStart) {
+		this.calenderTimeStart = calenderTimeStart;
+	}
+	public String getCalenderDateEnd() {
+		return calenderDateEnd;
+	}
+	public void setCalenderDateEnd(String calenderDateEnd) {
+		this.calenderDateEnd = calenderDateEnd;
+	}
+	public String getCalenderTimeEnd() {
+		return calenderTimeEnd;
+	}
+	public void setCalenderTimeEnd(String calenderTimeEnd) {
+		this.calenderTimeEnd = calenderTimeEnd;
 	}
 	public String getCalenderSubject() {
 		return calenderSubject;
@@ -59,12 +75,11 @@ public class CalenderVo {
 	public void setCalenderGroup(String calenderGroup) {
 		this.calenderGroup = calenderGroup;
 	}
-	public String getCalenderDate() {
-		return calenderDate;
+	public String getCalenderTime() {
+		return calenderTime;
 	}
-	public void setCalenderDate(String calenderDate) {
-		this.calenderDate = calenderDate;
+	public void setCalenderTime(String calenderTime) {
+		this.calenderTime = calenderTime;
 	}
-	
 	
 }
