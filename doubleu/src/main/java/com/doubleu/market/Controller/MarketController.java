@@ -26,17 +26,27 @@ public class MarketController {
 	@Autowired
 	MarketUploadController fu;
 	
-	@RequestMapping(value="/bInsertR", method=RequestMethod.POST)
-	public ModelAndView insertR(@RequestParam("attList") List<MultipartFile> mul, 
+	@RequestMapping(value="/marketInsertR", method=RequestMethod.POST)
+	public ModelAndView marketInsertR(@RequestParam("attList") List<MultipartFile> mul, 
 								@ModelAttribute MarketVo vo, @ModelAttribute MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		List<MarketAttVo> attList = fu.upload(mul);
 		
 		vo.setAttlist(attList);
+		System.out.println("attList: " + vo.getAttlist());
 		
 		msg = dao.insert(vo);
+		System.out.println(msg);
+		System.out.println("catenum : " + vo.getCategoryNo());
+		System.out.println("membersno: "+ vo.getMembersNo());
 		System.out.println("subject : "+vo.getMarketSubject());
+		System.out.println("price: "+vo.getMarketPrice());
+		System.out.println("account: " +vo.getMarketAccount());
+		System.out.println("hit : " +vo.getMarketHit());
+		System.out.println("doc : " + vo.getMarketDoc());
+		System.out.println("date: " + vo.getMarketDate());
+		System.out.println("attList" + vo.getAttlist());
 		mv.setViewName("market/market_index");
 		return mv;
 	}

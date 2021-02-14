@@ -1,7 +1,6 @@
 //market게시물 vo
 package com.doubleu.market.vo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,13 +16,11 @@ public class MarketVo {
 	int marketHit ;
 	String marketDate ;
 	
-	List<MarketAttVo> attlist = new ArrayList<MarketAttVo>();
+	
+	List<MarketAttVo> attlist;
 	//erd photo->attlist
 	
 	
-	public int getMarketNo() {
-		return marketNo;
-	}
 
 
 	public List<MarketAttVo> getAttlist() {
@@ -32,6 +29,9 @@ public class MarketVo {
 
 	public void setAttlist(List<MarketAttVo> attlist) {
 		this.attlist = attlist;
+	}
+	public int getMarketNo() {
+		return marketNo;
 	}
 
 	public void setMarketNo(int marketNo) {
