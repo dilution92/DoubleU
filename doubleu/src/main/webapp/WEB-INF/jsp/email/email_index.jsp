@@ -256,7 +256,7 @@
 								<td><input type="checkbox"/></td>
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
-                                <td><i class="bi bi-exclamation"></i></td>
+                                <td>${list.emailChk }</td>
 								<td>${list.emailAddress}</td>					
 								<td style=" text-align: left; text-indent: 2em;">${list.emailTitle }</td>					
 								<td>${list.emailDate }</td>		
