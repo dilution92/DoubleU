@@ -617,3 +617,47 @@ body {
   width: 0;
   height: 0;
 }
+
+
+/* alert */
+.swal-button {
+	background-color: #fff;
+	color:#007bff;
+	border:1px solid #007bff;
+}
+
+.swal-button:not([disabled]):hover {
+	background-color: #0069d9;
+	color:#fff;
+	border: none;
+
+}
+
+.swal-button:focus {
+	box-shadow: 0 0 0 0;
+}
+.swal-text {
+	font-size: 20px;
+}
+
+/* 파일첨부 다중 css*/
+
+.custom-file > .file_list {
+	border: 1px solid #E5E5E5;
+}
+
+.custom-file > .file_list > span {
+    color: #212529;
+    background-color: #f8f9fa;
+    
+	display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}

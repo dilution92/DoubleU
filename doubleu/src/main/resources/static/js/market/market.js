@@ -1,6 +1,15 @@
 /**
  * 
  */
+var goPage = function goPage(page) {
+	var frm = $('#frm_market')[0];
+	frm.nowPage.value = page;
+	var param = $(frm).serialize();
+
+	frm.action = "/marketSelecct"
+	frm.submit();	
+
+}
 
 
 	//-----------사진미리보기------------------//

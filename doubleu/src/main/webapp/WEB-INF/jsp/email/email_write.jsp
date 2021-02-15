@@ -35,7 +35,15 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_write.css">
+
+<!-- alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- 텍스트 js -->
 <script src="/js/email/email_text.js"></script>
+<script src="/js/email/email_write.js"></script>
+
+
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
@@ -139,7 +147,7 @@
 									</select>
 									
 					        		<input class="form-control form-control-sm col-3" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-				      				<input class="btn btn-outline-primary btn-sm " onclick="" name="onname" type="button" value="검색"/>
+				      				<input class="btn btn-outline-primary btn-sm " name="onname" type="button" value="검색"/>
 				      			</div>
 	                            
 	                            <div class="search-btn-address">
@@ -209,9 +217,9 @@
 		<main class="e-approval-article">
 
 		
-			<!-- 메일 검색바 code -->
+			<!-- 메일 쓰기 action="emailResult"-->
 			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="frm" method="post">
+	      		<form class="e-approval-search-form" action="" id="sendToEmail" name="frm" method="post">
 			      	<div class="e-approval-form-box">
 			      		<span>메일쓰기</span>
 			      		
@@ -226,13 +234,13 @@
 							
 							
 							<div class="form-group col-sm-1">
-							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="송연주">
+							 	<input type="text" class="form-control" name="sendToPerson" id="exampleFormControlInput1" value="송" placeholder="송연주">
 							</div>
 							
 							<div class="form-group col-sm-6">
-							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+							 	<input type="email" class="form-control" name="sendToAddress" id="exampleFormControlInput1" value="name@example.com" placeholder="name@example.com">
 							</div>
-							<button type="button" style="margin-left: 11px; height:37px;" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
+							<button type="button" style="margin-left: 11px; height:37px;" class="btn btn-outline-primary btn-sm" onclick="sendToTemp()" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
 					    </div>
 					    
 					    <div class="emailSendContentsRev">
@@ -246,7 +254,7 @@
 						
 							<div class="form-group col-sm-7 revEmail">
 								<c:forEach begin="0" end="20">
-							 	<input type="email" readonly class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="song1234567@gmail.com">
+							 	<input type="text" readonly class="form-control col-sm-3" id="exampleFormControlInput1" placeholder="song1234567@gmail.com">
 							 	</c:forEach>
 							 
 							</div>
@@ -280,7 +288,7 @@
 							
 							<div class="form-group col-sm-1 importSend">
 								<div class="form-check">
-								  <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+								  <input class="form-check-input" type="checkbox" name="importChk" value="" id="defaultCheck1">
 								  <label class="form-check-label" for="defaultCheck1">
 								    중요!
 								  </label>
@@ -289,7 +297,7 @@
 							</div>
 							
 							<div class="form-group col-sm-7">
-							 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
+							 	<input type="email" class="form-control" name="sendToContents" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
 							</div>
 							
 							
@@ -301,14 +309,19 @@
 						
 						
 						<!-- 파일첨부 -->
+				
 						<div class="custom-file">
-							  <input type="file" class="custom-file-input" id="customFile">
-							  <label class="custom-file-label" for="customFile">Choose file</label>
+							  <input type="file" class="custom-file-input" multiple="multiple" onchange="FileChoice()" id="customFile">
+							  <label class="custom-file-label" for="customFile">Choose files</label>
+							  <div class="file_list" id="fileList">
+							  	<button type="button" class="btn btn-light">첨부파일</button>
+							  <!-- 파일 첨부 시 span 태그가 생김 -->
+							  </div>
 						</div>
-					
+						
 						<!-- 버튼 -->
 						<div class="send-and-cancel">
-						<button type="button" class="btn btn-primary btn-lg">보내기</button>
+						<button type="button" class="btn btn-primary btn-lg" onclick="sendToEmail()">보내기</button>
 						<button type="button" class="btn btn-primary btn-lg">취소하기</button>
 						</div>
 					</div>
@@ -321,21 +334,18 @@
 
 <script>
 
-	chk = function() {
-		console.log('하이')
-		var arr = ['zero', 'one', 'tow']; 
-		
-		let btn = document.getElementById('testType')
-		btn.value = arr
-		console.log(btn.value)
-		
-		/*
-		document.frm.action = "test.jsp";
-		document.frm.submit();	*/
-	}
-	
 
-	summernote();
+	/* js */
+	
+	summernote(); // text 에디터 함수
+	
+	/* jQuery */
+	$(document).ready(function(){ 
+
+		
+	});
+
+	
 
 </script>
 	
