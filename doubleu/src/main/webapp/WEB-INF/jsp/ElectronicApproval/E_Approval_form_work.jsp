@@ -105,9 +105,7 @@
 						<td colspan="4">
 							<div class="e-approval-file-zone">
 								<div class="input-group mb-3">
-								  <div class="custom-file">
-								    <input type="file" class="custom-file-input" id="inputGroupFile02" multiple="multiple" modify="no">
-								    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02" >Choose file</label>
+								  <div class="custom-file" id="fileZone" >
 								  </div>
 								</div>
 							</div>

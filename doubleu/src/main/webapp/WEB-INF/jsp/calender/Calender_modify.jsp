@@ -17,7 +17,7 @@
 <body>
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
-		<jsp:include page="/MainPage/header.jsp"></jsp:include>
+		<jsp:include page="../MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
 	 
@@ -29,7 +29,7 @@
 
 <main id="calender_main">
     <div id="calender_main_content">
-    	<h2>일정 입력</h2>
+    	<h2>일정 수정</h2>
     	<form action="">
 			<table class="table table-bordered" >
     			<tr>
@@ -69,7 +69,8 @@
     			</tr>
 			</table>
 				<div>
-					<input type="button" class="btn btn-primary" value="일정작성">
+					<input type="button" class="btn btn-primary" value="일정수정">
+					<input type="button" class="btn btn-primary" value="일정삭제">
 					<input type="button" class="btn btn-primary" value="돌아가기">
 				</div>
     	</form>

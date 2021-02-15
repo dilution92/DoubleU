@@ -8,6 +8,10 @@
 	수정일자: 2021-02-11
 	수정자: 정해준
 	수정내역: append(zone, boxCnt), createMakerBox(makersZone) 정의 
+	
+	수정일자: 2021-02-14
+	수정자: 정해준
+	수정내역, checkFile()
  */
 
 
@@ -25,11 +29,10 @@ function funcApproval() {
 		var frm = document.frmApproval;
 		
 	/*정보 전송*/
-	$('#btnTest').on('click', function() {
-		frm.vacationCnt.value = 2;
-	})
 	
 	$('#btnApprovalSave').on('click', function() {
+		frm.enctype = 'multipart/form-data';
+		
 		alert("정상적으로 등록되었습니다.")
 		frm.action = '/approvalInsert';
 		frm.submit();
@@ -56,7 +59,7 @@ function append(zone, boxCnt) {
 	
 	//table 생성
 	var makerBox = document.createElement("table");
-	makerBox.setAttribute("class", "table table-sm table-bordered e-approval-form-decision-box-2");
+	makerBox.setAttribute("class", "table table-sm table-bordered e-approval-form-decision-box-2 makerBox");
 	makerBox.setAttribute("id", "makerBox");
 	
 	
@@ -85,11 +88,14 @@ function append(zone, boxCnt) {
 	
 	var aSign= document.createElement("input");
 	aSign.setAttribute("id", "makerSignBtn");
+	aSign.setAttribute("name", "makerSignBtn" + boxCnt);
 	aSign.setAttribute("type", "button");
 	aSign.setAttribute("value", "직원조회");
 	
 	//직원 조회 버튼 생성
 	aSign.onclick = function() {   
+		var eventBtn = event.srcElement.name;
+		var checkSize = eventBtn.charAt(eventBtn.length-1);
 		
 		var winWidth = "500";
 		var winHeight = "600";
@@ -102,10 +108,15 @@ function append(zone, boxCnt) {
 		win.onbeforeunload = function(){
 			inputName.value = $('#TempMakerName').val();
 			inputPosition.value = $('#TempMakerPosition').val();
-				
+			
+			var checkName = $('.makerBox:last input[id=makerSignBtn]').attr('name');
+			alert(checkName);
+			alert(aSign.name)
 			var zone = document.getElementById("makersZone")
-			boxCnt++;
-			append(zone, boxCnt);
+			if(zone.childNodes.length === 2 || aSign.name === checkName) {
+				boxCnt++;
+				append(zone, boxCnt);
+			}
 		}
 	}
 	tdSign.appendChild(aSign);
@@ -176,6 +187,49 @@ function chooseVacationType() {
 		$('#endDate').removeAttr('disabled');
 		frm.vacationCnt.value = null;
 	}
-
-
 }
+
+
+function appendFile(zone, fileCnt) {
+	var fileCnt = fileCnt;
+	var div = document.createElement('div');
+	div.setAttribute('class', 'fileContent');
+	
+	var fileInput = document.createElement('input');
+	fileInput.setAttribute('type', 'file');
+	fileInput.setAttribute('name', 'approvalFile');
+	fileInput.setAttribute('id', 'approvalFile' + fileCnt);
+	fileInput.setAttribute('multiple', 'multiple');
+	fileInput.onchange = function() {
+		var checkId = $('.fileContent:last input[type=file]').attr('id');
+		if(checkId === fileInput.id || zone.childNodes.length === 2) {
+		fileCnt++;
+		appendFile(zone,fileCnt)
+		}
+	}
+	
+	var delBtn = document.createElement('input');
+	delBtn.setAttribute('type', 'button');
+	delBtn.setAttribute('id', 'delBtnFile');
+	delBtn.setAttribute('value', '파일 삭제');
+	delBtn.onclick = function() {
+		if(zone.childNodes.length <= 2) {
+			return;
+		}
+		else {
+			ele = event.srcElement;
+			eleParent = ele.parentNode;
+			zone. removeChild(eleParent);
+		}
+	}
+	div.appendChild(fileInput);	
+	div.appendChild(delBtn);	
+	zone.appendChild(div);
+}
+
+function createFile(fileZone) {
+	var zone = document.getElementById(fileZone);
+	var fileCnt = 1;
+	appendFile(zone, fileCnt)
+}
+
