@@ -5,8 +5,9 @@
 	
 <mapper namespace="com.doubleu.market.mybatis.MarketMapper">
 	
+	
 <!-- select -->	
-	<select id="selectAtt" resultType="com.doubleu.market.vo.MarketAttVo" parameterType="int">
+	<select id="selectAtt" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo" parameterType="int">
 		select * from market_files where market_no = #{_parameter}
 	</select>
 	
@@ -15,13 +16,25 @@
 		where market_subject like '%${findStr}%'
 	</select>
 	
-	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage">
-  		select market_subject from ( select rownum no, m.* from (
+	<select id="select2" resultMap="marketList" >
+		select * from market
+	
+	</select>
+	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+  		select * from ( select rownum no, m.* from (
 			select * from market mk join market_files att on mk.market_no=att.market_no
 			 where market_subject like '%${findStr}%'  ) m   
 			 ) where no between #{startNo} and #{endNo}
 	</select>
-
+	<!-- index게시글 총 갯수 -->
+	<select id="totalCount" resultType="int">
+		select count(*) from market
+	</select>
+	<!-- select게시글 총 갯수 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from market where market_subject like '%${findStr}%'
+	</select>
 
 <!-- insert -->
 	<insert id = 'insert' parameterType="com.doubleu.market.vo.MarketVo">
@@ -45,6 +58,28 @@
 		</foreach>
 		SELECT * FROM dual
 	</insert>
+	
+	
+	
+	<!-- resultMap -->
+	<resultMap id="marketList" type="com.doubleu.market.vo.MarketVo">
+		<result property="marketSubject" column="market_subject" /> 	
+		<result property="marketNo" column="market_no" /> 	
+		<result property="categoryNo" column="category_no" /> 	
+		<result property="marketPrice" column="market_price" /> 	
+		<result property="marketAccount" column="market_account" /> 	
+		<result property="marketDoc" column="market_doc" /> 	
+		<result property="marketHit" column="market_hit" /> 	
+		<result property="marketDate" column="market_date" /> 	
+		<result property="membersNo" column="members_no" /> 	
+	</resultMap>
+	
+	<resultMap type="com.doubleu.market.vo.MarketAttVo" id="attList">
+		<result property="fileNo" column="files_no"/>
+		<result property="MarketNo" column="market_no"/>
+		<result property="sysFile" column="files_sysfile"/>
+		<result property="oriFile" column="files_orifile"/>
+	</resultMap>
 </mapper>
 
 

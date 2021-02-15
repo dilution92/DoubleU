@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,7 @@
 			<!-- 글갯수/ 최신순 -->
 			<div class="market-subheader-container">
 				<div class='market-total'>
-					<p class="card-text">글 갯수 : 8</p>
+					<p class="card-text">글 갯수 : ${cnt }</p>
 				</div>
 				<div class="e-approval-dib">
 					<form class="e-approval-search-form" action="" name="frm_approval"
@@ -80,7 +81,7 @@
 						<li class="page-item"><a class="page-link" onclick='brd.goPage(${page.startPage-1})'style="font-size: 0.7em">&lt;</a></li>
 							
 							<c:forEach var='i' begin='${page.startPage }' end='${page.endPage }'>
-								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">${i }</a></li>
+								<li class="page-item"><a class="page-link"  style="font-size: 0.7em">${i }</a></li>
 							</c:forEach>
 						<li class="page-item"><a class="page-link" onclick = 'brd.goPage(${page.endPage+1})'
 							style="font-size: 0.7em">&gt;</a></li>

@@ -37,10 +37,11 @@ public class MarketController {
 		}
 		
 		Map<String, Object> map = dao.select(page);
+		int cnt = dao.selectCount();
 
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
-
+		mv.addObject("cnt", cnt);
 		mv.setViewName("market/market_index");
 		
 		return mv;
