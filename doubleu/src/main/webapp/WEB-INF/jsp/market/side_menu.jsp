@@ -16,6 +16,8 @@
  -->					
  				<input type="button" class="btn btn-primary btn-lg"
 						onClick="location.href='marketInsert'" value="글쓰기">
+	 			<input type="button" class="btn btn-primary btn-lg"
+						onClick="location.href='noticeInsert'" value="사내공지 글쓰기">		
 				</div>
 				<div class="e-approval-approval-list">
 				<span>전사게시판</span>
