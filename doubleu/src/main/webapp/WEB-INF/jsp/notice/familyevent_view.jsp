@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전사게시판-사내공지 insert</title>
+<title>전사게시판-경조사 view</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -42,7 +42,7 @@
 
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
-		<jsp:include page="/MainPage/header.jsp"/>
+		<jsp:include page="../MainPage/header.jsp"/>
 	 </header>
 	<!-- 그룹웨어 GNB code 끝 -->
 
@@ -58,7 +58,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>사내공지</span>
+							<span>경조사</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -74,17 +74,15 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 상세보기 code -->
-			
-			<form>
-				<div class="row">
+			<!-- 경조사 상세보기 code -->
+			<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
 				    <div class="table table-responsive">
 				        <table class="table">
 				        <tr>
-				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
-			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
+				        	<th class="success"><label for="exampleFormControlSelect1">제목</label></th>
+				            <td colspan="3">관리부 누구 본인 결혼</td>
 				        </tr>
 				        <tr>
 				        	<div class="form-group">
@@ -95,52 +93,42 @@
 				            </div>
 				        </tr>
 				        <tr>
-				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
-				            <td>
-					            <select class="form-control" id="exampleFormControlSelect4">
-							      <option class="notice-icon">&#xf071중요공지</option>
-							      <option class="notice-icon"selected>일반공지</option>
-				   				</select>
-				            </td>
+				            <th class="success">분류</th>
+				            <td><i class="fas fa-birthday-cake"></i> 결혼</td>
 				            <th class="success">조회수</th>
 				            <td>1</td>
 				        </tr>
 				        <tr>
-				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
-				        	<td colspan="3" style="padding-left:8px;">
-							    <div class="dropdown-align">
-									<label for="searchDate"></label>
-										<input type="radio" name="searchDate" value="영구" checked>영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="radio" name="searchDate" value="설정">설정 &nbsp;&nbsp;
-										
-											(시작일자 &nbsp;<input type="date" id="searchDateOne" class="success">
-											&nbsp;~ &nbsp;
-											종료일자 &nbsp;<input type="date" id="searchDateTwo"> )
-								</div>
+				        	<th>게시기한</th>
+				        	<td colspan="3">
+								<input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							</td>
 				        </tr> 
 				        <tr>
 				        	<div class="form-group">
 					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
 					            <td colspan="3">
-					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요."></textarea>
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" readonly="readonly" style="background-color:white">
+관리부 누구님 결혼 축하합니다.
+
+▶ 일 시 : 2021년 03월 06일 토요일 오후 1시
+
+▶ 장 소 : 공항컨벤션웨딩홀 2층 베니스홀
+
+▶ 연락처 : 관리부 대리 누구(010-1111-1111)</textarea>
 					            </td>
 						  	</div>
 				        </tr>
 				        <tr style="border-color: #ffffff;">
 				        	<th class="success">첨부파일</th>
 				        	<td colspan="3">
-				        		<div class="custom-file mb-3">
-									<input type="file" class="custom-file-input" id="validatedCustomFile" required>
-				    				<label class="custom-file-label" for="validatedCustomFile">파일을 선택하세요.</label>
-			    					<div class="invalid-feedback">Example invalid custom file feedback</div>
-			  					</div>
+								축하.gif
 				        	</td>
 				        </tr>
 				        <tr>
 				        	<td style="border:none"></td>
 				        	<td colspan="3" style="border:none">
-								
+				        		<img src="https://item.kakaocdn.net/do/c102cefcee683173508c5fee9f6869c9f43ad912ad8dd55b04db6a64cddaf76d">
 				        	</td>
 				        </tr>
 				        <tr>
