@@ -17,6 +17,24 @@ public class CalenderURLController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/calenderWeek", method = {RequestMethod.POST, RequestMethod.GET} )
+	public ModelAndView calenderWeek() {
+		ModelAndView mv = new ModelAndView();
+
+		mv.setViewName("calender/Calender_week");
+
+		return mv;
+	}
+	
+	@RequestMapping(value = "/calenderDay", method = {RequestMethod.POST, RequestMethod.GET} )
+	public ModelAndView calenderDay() {
+		ModelAndView mv = new ModelAndView();
+
+		mv.setViewName("calender/Calender_day");
+
+		return mv;
+	}
+	
 	@RequestMapping(value = "/calenderWrite", method = {RequestMethod.POST, RequestMethod.GET}  )
 	public ModelAndView calenderWrite() {
 		ModelAndView mv = new ModelAndView();

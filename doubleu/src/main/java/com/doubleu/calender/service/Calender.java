@@ -1,4 +1,4 @@
-package com.doubleu.calender;
+package com.doubleu.calender.service;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -63,11 +63,13 @@ public class Calender {
 		//2017년 1월 1일 일요일이 기준
 		String week[] = {"일","월","화","수","목","금","토"};
 		int lastDay[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-		if(year%4==0) {
-		    lastDay[1]=29;
-			}else {
-		    lastDay[1]=28;
-		}
+		if(year%400==0) {
+				lastDay[1]=29;
+			}else if(year%100!=0) {
+				lastDay[1]=28;
+			}else if(year%4==0) {
+				lastDay[1]=29;
+			}
 		int totalyear = (year-2017-1)*365+((year-2017)/4); // 기준년부터 작년까지의 총 일수
 		
 		int totalmonth = 0;

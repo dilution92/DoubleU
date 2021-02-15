@@ -17,11 +17,12 @@ public class CalenderController {
 
 	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
 	public ModelAndView calenderInsertR(CalenderVo vo) {
+		System.out.println("controller 시작");
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		
 		msg = service.insert(vo);
-		mv.setViewName("calender/calenderMonth");
+		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
 }

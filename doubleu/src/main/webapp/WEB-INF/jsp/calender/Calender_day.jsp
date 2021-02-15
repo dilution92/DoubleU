@@ -36,9 +36,9 @@
             <h3>2021년 3월</h3>
         </div>
         <div style="float: right; margin-right: 50px;" id="calender_main_top_sector"> <!-- 우측 표시 달력 -->
-            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='Calender_month.jsp'">
-            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='Calender_week.jsp'">
-            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='Calender_day.jsp'">
+            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='/calenderMonth'">
+            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='/calenderWeek'">
+            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='/calenderDay'">
         </div>
     </div>
     <div>
@@ -85,6 +85,7 @@
 	        
 		</tbody>
 		</table>
+		</div>
 </main>
 
 </body>

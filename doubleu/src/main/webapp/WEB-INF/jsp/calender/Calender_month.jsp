@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="com.doubleu.calender.Calender"%>
+<%@page import="com.doubleu.calender.service.Calender"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
@@ -42,12 +42,26 @@
             <input type="button" class="btn btn-primary" value="오늘">
         </div>
         <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
-            <h3>2021년 3월</h3>
+            <input type="number" id="year" value="2021" class="form-control">
+            <select id="month" class="form-control">
+            	<option value="1">1월</option>
+            	<option value="2">2월</option>
+            	<option value="3">3월</option>
+            	<option value="4">4월</option>
+            	<option value="5">5월</option>
+            	<option value="6">6월</option>
+            	<option value="7">7월</option>
+            	<option value="8">8월</option>
+            	<option value="9">9월</option>
+            	<option value="10">10월</option>
+            	<option value="11">11월</option>
+            	<option value="12">12월</option>
+            </select>
         </div>
         <div style="float: right; margin-right: 50px;" id="calender_main_top_sector"> <!-- 우측 표시 달력 -->
-            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='Calender_month.jsp'">
-            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='Calender_week.jsp'">
-            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='Calender_day.jsp'">
+            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='/calenderMonth'">
+            <input type="button" class="btn btn-primary" value="주간" onclick="location.href='/calenderWeek'">
+            <input type="button" class="btn btn-primary" value="일간" onclick="location.href='/calenderDay'">
         </div>
     </div>
     <div>

@@ -30,7 +30,7 @@
 <main id="calender_main">
     <div id="calender_main_content">
     	<h2>일정 입력</h2>
-    	<form action="/calenderInsert">
+    	<form action="/CalenderInsertR" method="post">
     		<input type="hidden" value="writer" name="calenderWriter">
 			<table class="table table-bordered" >
     			<tr>
@@ -70,7 +70,7 @@
     			</tr>
 			</table>
 				<div>
-					<input type="button" class="btn btn-primary" value="일정작성">
+					<input type="submit" class="btn btn-primary" value="일정작성">
 					<input type="button" class="btn btn-primary" value="돌아가기">
 				</div>
     	</form>
