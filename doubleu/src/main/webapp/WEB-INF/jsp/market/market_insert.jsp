@@ -58,12 +58,11 @@
 				    <div class="col-sm-8">
    					 <select class="form-control " name="categoryNo"  required>
 								<option value="">카테고리</option>
-								<option value="0">뷰티/미용</option>
-								<option value="1">생활/가공식품</option>
-								<option value="2">의류</option>
-								<option value="3">디지털/가전</option>
-								<option value="4">도서/티켓</option>
-								<option value="5">부동산</option>
+								<option value="1">뷰티/미용</option>
+								<option value="2">식품</option>
+								<option value="3">의류</option>
+								<option value="4">전자제품</option>
+								<option value="5">도서/티켓</option>
 								<option value="6">기타 중고물품</option>
 							</select>				    </div>
 				  </div>
