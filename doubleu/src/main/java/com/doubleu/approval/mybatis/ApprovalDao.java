@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.doubleu.approval.vo.ApprovalFormVo;
+import com.doubleu.approval.vo.FormVo;
 
 @Service
 @Transactional
@@ -13,7 +13,7 @@ public class ApprovalDao {
 	@Autowired
 	ApprovalMapper mapper;
 	
-	public String insert(ApprovalFormVo vo) {
+	public String insert(FormVo vo) {
 		String msg = "정상적으로 등록되었습니다.";
 		System.out.println("service도착");
 		int cnt = mapper.insert(vo);

@@ -12,7 +12,7 @@
 <body>
 	<%
 		Date nowTime = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		
 		String formName = "";
 		if(request.getParameter("formName") != null) {
@@ -20,9 +20,8 @@
 		}
 	 %>
 	
-	
 	<div class="e-approval-form-container">
-		<form action="" name="frmApproval" id="frmApproval" method="post">
+		<form action="/approvalInsertR" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-choose">
 					</a><select class="form-control form-control-sm e-approval-work-form-change">
@@ -66,9 +65,9 @@
 								</tr>
 								<tr>
 									<th>문서번호</th>
-									<td> </td>
+									<td>  </td>
 								</tr>
-						</table>						
+						</table>
 					</div>
 					<div class="e-approval-form-decision-box">
 						<div class="e-approval-form-decision-box-1 table-bordered">
@@ -81,14 +80,14 @@
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
-						<th> 일시 </th>
-						<td> <input type="date" name="eventDate" class="form-control form-control-sm" style="font-size: 1em;" > </td>
-						<th> 협조부서 </th>
+						<th> 품의 목적 </th>
+						<td> <input type="text" name="formPurpose" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<th> 관련 부서 </th>
 						<td> <input type="text" name="cooperationDepartment" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>
-						<td colspan="3" align="left" >
+						<td colspan="3" align="left" style="">
 						<input type="text" name="formTitle" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required>
 						</td>
 					</tr>
@@ -105,7 +104,9 @@
 						<td colspan="4">
 							<div class="e-approval-file-zone">
 								<div class="input-group mb-3">
-								  <div class="custom-file" id="fileZone" >
+								  <div class="custom-file">
+								    <input type="file" class="custom-file-input" id="inputGroupFile02">
+								    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
 								  </div>
 								</div>
 							</div>
@@ -116,18 +117,19 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/E_Approval_form_btns.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/insert/approval_insert_btns.jsp"></jsp:include>
 				</div>
 			</div>
 			</main>
 			<!-- 공통 -->
-			<input type="hidden" name="formType" value="${formType }">
-			<input type="hidden" name="drafterPosition" value="사원">
+			<input type="text" name="formType" value="${formType }">
+			<input type="text" name="drafterPosition" value="">
 			<input type="hidden" id="TempMakerPosition" value="">
 			<input type="hidden" id="TempMakerName" value="">
+			<input type="hidden" name="eventDate" id="eventDate" value="<%= format.format(nowTime) %>">
+			<input type="hidden" name="budget" value="0">
 		</form>
 	</div>
-	
 <script type="text/javascript">
 funcApproval();
 createMakerBox('makersZone');

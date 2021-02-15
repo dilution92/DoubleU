@@ -3,7 +3,7 @@ package com.doubleu.approval.vo;
 import java.util.List;
 
 // 결재 양식에 공통으로 들어가는 내용을 담은 Vo
-public class ApprovalFormVo {
+public class FormVo {
 	int formNo;
 	String drafterName;
 	String formDate;
@@ -14,24 +14,32 @@ public class ApprovalFormVo {
 	String formType;
 	String cooperationDepartment;
 	String eventDate;
+	String approvalState;
 	
-	List<ApprovalAttFileVo> approvalAttFiles; // 파일 첨부가 있을 경우  
-	List<ApprovalDecisionMakers> makersList; // 결재권자 목록을 담을 인스턴스
-	FormPetition formPetition; // 품의서 관련 결재 양식일 경우
-	FormVacation formVacation; // 휴가 관련 결재 양식일 경우
+	
+	List<AttFileVo> attFileList; // 파일 첨부가 있을 경우  
+	List<DecisionMakerVo> makersList; // 결재권자 목록을 담을 인스턴스
+	FormPetitionVo formPetitionVo; // 품의서 관련 결재 양식일 경우
+	FormVacationVo formVacationVo; // 휴가 관련 결재 양식일 경우
 
 	
-	public List<ApprovalDecisionMakers> getMakersList() {
+	public List<AttFileVo> getAttFileList() {
+		return attFileList;
+	}
+	public void setAttFileList(List<AttFileVo> attFileList) {
+		this.attFileList = attFileList;
+	}
+	public String getApprovalState() {
+		return approvalState;
+	}
+	public void setApprovalState(String approvalState) {
+		this.approvalState = approvalState;
+	}
+	public List<DecisionMakerVo> getMakersList() {
 		return makersList;
 	}
-	public void setMakersList(List<ApprovalDecisionMakers> makersList) {
+	public void setMakersList(List<DecisionMakerVo> makersList) {
 		this.makersList = makersList;
-	}
-	public List<ApprovalAttFileVo> getApprovalAttFiles() {
-		return approvalAttFiles;
-	}
-	public void setApprovalAttFiles(List<ApprovalAttFileVo> approvalAttFiles) {
-		this.approvalAttFiles = approvalAttFiles;
 	}
 	public String getDrafterPosition() {
 		return drafterPosition;
@@ -39,20 +47,20 @@ public class ApprovalFormVo {
 	public void setDrafterPosition(String drafterPosition) {
 		this.drafterPosition = drafterPosition;
 	}
-	public FormPetition getFormPetition() {
-		return formPetition;
-	}
-	public void setFormPetition(FormPetition formPetition) {
-		this.formPetition = formPetition;
-	}
-	public FormVacation getFormVacation() {
-		return formVacation;
-	}
-	public void setFormVacation(FormVacation formVacation) {
-		this.formVacation = formVacation;
-	}
 	public int getFormNo() {
 		return formNo;
+	}
+	public FormPetitionVo getFormPetitionVo() {
+		return formPetitionVo;
+	}
+	public void setFormPetitionVo(FormPetitionVo formPetitionVo) {
+		this.formPetitionVo = formPetitionVo;
+	}
+	public FormVacationVo getFormVacationVo() {
+		return formVacationVo;
+	}
+	public void setFormVacationVo(FormVacationVo formVacationVo) {
+		this.formVacationVo = formVacationVo;
 	}
 	public void setFormNo(int formNo) {
 		this.formNo = formNo;

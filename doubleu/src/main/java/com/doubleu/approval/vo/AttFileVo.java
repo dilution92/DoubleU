@@ -1,6 +1,6 @@
 package com.doubleu.approval.vo;
 
-public class ApprovalAttFileVo {
+public class AttFileVo {
 	int filesNo;
 	int formNo;
 	String sysFile;
