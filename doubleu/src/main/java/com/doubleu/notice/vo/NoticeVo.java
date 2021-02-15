@@ -1,6 +1,6 @@
 package com.doubleu.notice.vo;
 
-public class noticeListVo {
+public class NoticeVo {
 	int notice_no;
 	String notice_subject;
 	String notice_mid;

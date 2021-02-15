@@ -42,7 +42,7 @@
 
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
-		<jsp:include page="/MainPage/header.jsp"/>
+		<jsp:include page="../MainPage/header.jsp"/>
 	 </header>
 	<!-- 그룹웨어 GNB code 끝 -->
 
@@ -76,7 +76,7 @@
 			
 			<!-- 전사게시판 사내공지 상세보기 code -->
 			
-			<form>
+			<form action="/noticeInsertR" method="post">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -84,26 +84,27 @@
 				        <table class="table">
 				        <tr>
 				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
-			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
+			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요." name="notice_subject"></td>
 				        </tr>
 				        <tr>
 				        	<div class="form-group">
 				            <th class="success">작성자</th>
-				            <td>관리자</td>
+				            <td><input type="text" name="notice_mid" value="관리자"></td>
 				            <th class="success">작성일</th>
-				            <td>2021.02.07</td>
+				            <td><input type="date" name="notice_date"></td>
 				            </div>
 				        </tr>
 				        <tr>
-				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
+				            <th class="success"><label for="exampleFormControlSelect4">분류</label>
+				            </th>
 				            <td>
-					            <select class="form-control" id="exampleFormControlSelect4">
+					            <select class="form-control" id="exampleFormControlSelect4" name="notice_type">
 							      <option class="notice-icon">&#xf071중요공지</option>
 							      <option class="notice-icon"selected>일반공지</option>
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
-				            <td>1</td>
+				            <td><input type="number" name="notice_hit" value="1"></td>
 				        </tr>
 				        <tr>
 				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
@@ -123,7 +124,7 @@
 				        	<div class="form-group">
 					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
 					            <td colspan="3">
-					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요."></textarea>
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요." name="notice_doc"></textarea>
 					            </td>
 						  	</div>
 				        </tr>
@@ -131,7 +132,7 @@
 				        	<th class="success">첨부파일</th>
 				        	<td colspan="3">
 				        		<div class="custom-file mb-3">
-									<input type="file" class="custom-file-input" id="validatedCustomFile" required>
+									<input type="file" class="custom-file-input" id="validatedCustomFile" name="notice_file">
 				    				<label class="custom-file-label" for="validatedCustomFile">파일을 선택하세요.</label>
 			    					<div class="invalid-feedback">Example invalid custom file feedback</div>
 			  					</div>
@@ -146,8 +147,8 @@
 				        <tr>
 				            <td colspan="4" class="text-center">
 								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" value="저장" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" value="취소" onclick="location.href=''">
+								<input type="submit" class="btn btn-primary" value="저장" onclick="location.href=''">
+								<input type="reset" class="btn btn-primary" value="취소" onclick="location.href=''">
 				            </td>
 				        </tr>
 				        </table>
