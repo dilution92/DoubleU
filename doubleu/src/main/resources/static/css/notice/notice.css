@@ -35,11 +35,16 @@ body {
 }
 
 /* 게시판 insert */
-#searchDateOne, #searchDateTwo{
+#searchDateOne, #searchDateTwo, #mid, #mdate, #hit{
 	border: 1px solid #ced4da;
 	padding: 6px 12px;
 	border-radius: .25rem;
 	color: #495057;
+}
+
+#mid, #mdate, #hit{
+	background-color: #f8f9fa;
+	outline: none;
 }
 
 /* 게시판 분류 아이콘 */

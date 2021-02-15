@@ -36,6 +36,8 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전사게시판 CSS -->
 <link rel="stylesheet" href="/css/notice/notice.css">
+<!-- 전사게시판 JS -->
+<script src='/js/notice/notice.js'></script>
 
 </head>
 <body>
@@ -89,9 +91,9 @@
 				        <tr>
 				        	<div class="form-group">
 				            <th class="success">작성자</th>
-				            <td><input type="text" name="notice_mid" value="관리자"></td>
+				            <td><input type="text" id="mid" name="notice_mid" value="관리자" readonly></td>
 				            <th class="success">작성일</th>
-				            <td><input type="date" name="notice_date"></td>
+				            <td><input type="date" id="mdate" name="notice_date" readonly></td>
 				            </div>
 				        </tr>
 				        <tr>
@@ -104,19 +106,19 @@
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
-				            <td><input type="number" name="notice_hit" value="1"></td>
+				            <td><input type="number" id="hit" name="notice_hit" value="1" readonly></td>
 				        </tr>
 				        <tr>
 				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
 									<label for="searchDate"></label>
-										<input type="radio" name="searchDate" value="영구" checked>영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="radio" name="searchDate" value="설정">설정 &nbsp;&nbsp;
+										<input type="radio" name="searchDate" value="영구" id="r1" checked><label for="r1">영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+										<input type="radio" name="searchDate" value="설정" id="r2"><label for="r2">설정  &nbsp;&nbsp;</label>
 										
-											(시작일자 &nbsp;<input type="date" id="searchDateOne" class="success">
+											(시작일자 &nbsp;<input type="date" id="searchDateOne" name="searchDateOne">
 											&nbsp;~ &nbsp;
-											종료일자 &nbsp;<input type="date" id="searchDateTwo"> )
+											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="searchDateOne"> )
 								</div>
 							</td>
 				        </tr> 
@@ -156,6 +158,8 @@
 			    </div>
 			</div>
 			</form>
+			
+			
 			<!-- ========== -->
 
  			<!-- 사내공지 댓글창 -->
