@@ -5,22 +5,26 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.doubleu.approval.mybatis.ApprovalMapper">
-	<insert id="insert" parameterType="com.doubleu.approval.vo.ApprovalFormVo">
+	<insert id="insert" parameterType="com.doubleu.approval.vo.FormVo">
 		INSERT ALL 
-		INTO approval_form(form_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position) 
-		VALUES(seq_approval_form.nextval, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}')
+		INTO approval_form(form_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position,approval_state) 
+		VALUES(seq_approval_form.nextval, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}', '(발신)상신')
 		<choose>
 		<when test= "formType == '품의서' or formType == '구매품의서'">
 			INTO approval_form_petition(form_no, form_purpose, budget) 
 			VALUES (seq_approval_form.currval, '${formPetition.formPurpose}', '${formPetition.budget}')
 		</when>
 		<when test="formType == '휴가신청서'">
-		
-		
+			INTO approval_form_vacation(form_no, start_date, end_date, vacation_cnt, vacation_type, half_day_type)
+			VALUES(seq_approval_form.currval, TO_DATE('${formVacationVo.startDate}', 'YYYY-MM-DD'), TO_DATE('${formVacationVo.endDate}', 'YYYY-MM-DD'), ${formVacationVo.vacationCnt}, '${formVacationVo.vacationType}', '${formVacationVo.halfDayType}')
 		</when>
-
 		</choose>
+		<if test="attFileList != null">
+			<foreach collection="attFileList" item="att">
+				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
+				VALUES(getApprovalAttSeq(), seq_approval_form.currval, '${att.sysFile}', '${att.oriFile}')
+			</foreach>
+		</if>
 		SELECT * FROM dual
-		
 	</insert>
 </mapper>

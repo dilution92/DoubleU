@@ -1,6 +1,7 @@
 package com.doubleu.market.Controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,7 +27,27 @@ public class MarketController {
 	@Autowired
 	MarketUploadController fu;
 	
-	@RequestMapping(value="/marketInsertR", method=RequestMethod.POST)
+	//select결과화면->index
+	@RequestMapping(value="/marketSelect" , method= {RequestMethod.GET , RequestMethod.POST})
+	public ModelAndView marketSelect(MarketPage page) {
+		ModelAndView mv = new ModelAndView();
+		
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+		
+		Map<String, Object> map = dao.select(page);
+
+		mv.addObject("list", map.get("list"));
+		mv.addObject("page", map.get("page"));
+
+		mv.setViewName("market/market_index");
+		
+		return mv;
+	}
+	
+	//insert결과화면->index
+	@RequestMapping(value="/marketInsertR", method= {RequestMethod.GET , RequestMethod.POST})
 	public ModelAndView marketInsertR(@RequestParam("attList") List<MultipartFile> mul, 
 								@ModelAttribute MarketVo vo, @ModelAttribute MarketPage page) {
 		ModelAndView mv = new ModelAndView();
@@ -37,7 +58,7 @@ public class MarketController {
 		System.out.println("attList: " + vo.getAttlist());
 		
 		msg = dao.insert(vo);
-		System.out.println(msg);
+		/*System.out.println(msg);
 		System.out.println("catenum : " + vo.getCategoryNo());
 		System.out.println("membersno: "+ vo.getMembersNo());
 		System.out.println("subject : "+vo.getMarketSubject());
@@ -46,7 +67,7 @@ public class MarketController {
 		System.out.println("hit : " +vo.getMarketHit());
 		System.out.println("doc : " + vo.getMarketDoc());
 		System.out.println("date: " + vo.getMarketDate());
-		System.out.println("attList" + vo.getAttlist());
+		System.out.println("attList" + vo.getAttlist());*/
 		mv.setViewName("market/market_index");
 		return mv;
 	}

@@ -1,4 +1,14 @@
 
+/* Drop Tables */
+
+DROP TABLE approval_decision_makers CASCADE CONSTRAINTS;
+DROP TABLE approval_files CASCADE CONSTRAINTS;
+DROP TABLE approval_form_petition CASCADE CONSTRAINTS;
+DROP TABLE approval_form_vacation CASCADE CONSTRAINTS;
+DROP TABLE approval_form CASCADE CONSTRAINTS;
+
+
+
 
 /* Create Tables */
 
@@ -8,7 +18,9 @@ CREATE TABLE approval_decision_makers
 	form_no number NOT NULL,
 	maker_name varchar2(50) NOT NULL,
 	maker_position varchar2(100) NOT NULL,
-	decision_state varchar2(50),
+	decision_state varchar2(50) NOT NULL,
+	maker_comment nvarchar2(2000) NOT NULL,
+	maker_order number NOT NULL,
 	PRIMARY KEY (employee_no)
 );
 
@@ -35,6 +47,7 @@ CREATE TABLE approval_form
 	cooperation_department varchar2(100),
 	event_date date,
 	drafter_position varchar2(50),
+	approval_state varchar2(100),
 	PRIMARY KEY (form_no)
 );
 

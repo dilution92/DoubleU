@@ -1,6 +1,6 @@
 package com.doubleu.approval.vo;
 
-public class FormPetition {
+public class FormPetitionVo {
 
 	int formNo;
 	String formPurpose;

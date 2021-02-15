@@ -1,12 +1,26 @@
 package com.doubleu.approval.vo;
 
-public class ApprovalDecisionMakers {
+public class DecisionMakerVo {
 	int employeeNo;
 	int formNo;
 	String makerName;
 	String makerPosition;
-	int decisionState;
-	
+	String makerOrder;
+	int decisionState;  
+	String makerComment;
+
+	public String getMakerComment() {
+		return makerComment;
+	}
+	public String getMakerOrder() {
+		return makerOrder;
+	}
+	public void setMakerOrder(String makerOrder) {
+		this.makerOrder = makerOrder;
+	}
+	public void setMakerComment(String makerComment) {
+		this.makerComment = makerComment;
+	}
 	public int getEmployeeNo() {
 		return employeeNo;
 	}

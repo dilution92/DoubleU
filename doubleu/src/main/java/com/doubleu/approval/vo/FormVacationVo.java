@@ -1,12 +1,25 @@
 package com.doubleu.approval.vo;
 
-public class FormVacation {
+public class FormVacationVo {
 	int formNo;
 	String startDate;
 	String endDate;
-	int vacationCnt;
+	String vacationCnt;
 	String vacationType;
+	String halfDayType;
 	
+	public String getHalfDayType() {
+		return halfDayType;
+	}
+	public void setHalfDayType(String halfDayType) {
+		this.halfDayType = halfDayType;
+	}
+	public String getVacationCnt() {
+		return vacationCnt;
+	}
+	public void setVacationCnt(String vacationCnt) {
+		this.vacationCnt = vacationCnt;
+	}
 	public int getFormNo() {
 		return formNo;
 	}
@@ -31,7 +44,5 @@ public class FormVacation {
 	public void setVacationType(String vacationType) {
 		this.vacationType = vacationType;
 	}
-	
-	
 
 }
