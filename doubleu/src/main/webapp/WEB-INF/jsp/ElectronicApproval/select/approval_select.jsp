@@ -9,53 +9,41 @@
 <title>전자결재 홈</title>
 </head>
 <body>
-			<!-- 전자결재홈 검색바 code -->
-			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="frmApproval" method="post">
-			      	<div class="e-approval-form-box">
-				        <input class="btn btn-outline-primary btn-sm" type="button" value="검색"/>
-				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-				      	<select class="form-control form-control-sm e-approval-select-box">
-				      		<option selected> 문서 상태 </option>
-				      		<option value="0"> 진행중인 문서 </option>
-				      		<option value="1"> 임시저장한 문서 </option>
-				      		<option value="2"> 승인된 문서 </option>
-				      		<option value="3"> 반려된 문서 </option>
-				      		<option value="4"> 결재해야할 문서 </option>
-				      		<option value="5"> 승인한 문서 </option>
-				      		<option value="6"> 반려한 문서 </option>
-				      	</select>
-					</div>
-					<!-- hidden 탭 -->
-					<input type="hidden" name="formNo" value="">
-					<input type="hidden" name="formType" value="">
-					<input type="hidden" name="formState" value="">
-	     		</form>
-			</div>
-			<!-- ========== -->
-			
 			<!-- 최근 발신한 문서함 code -->
 			<div class="e-approval-table">
 				<strong class="text-gray-dark">최근 발신한 문서</strong>
 				<table class="table table-hover table-sm">
 					<thead class="e-approval-list text-muted text-gray-dark">
 						<tr>
-							<th scope="col">기안일</th>
-							<th scope="col">결재양식</th>
+							<th scope="col"  width="180px;">기안일</th>
+							<th scope="col"  width="150px;">결재양식</th>
 							<th scope="col">제목</th>
 							<th scope="col">기안자</th>
-							<th scope="col">결재 상태</th>
+							<th scope="col" width="150px;">결재 상태</th>
 						</tr>
 					</thead>
 					<tbody class="e-approval-list text-muted">
-						<c:set var="no" value="0" />
-						<c:forEach begin="1" end="5">
-							<tr onclick="goView(${no})">
-								<td>2021-02-03</td>
-								<td>업무 기안</td>					
-								<td style=" text-align: left; text-indent: 2em;">그룹웨어 프론트엔드 화면 설계안 요청합니다.</td>					
-								<td>정해준</td>					
-								<td>진행중</td>		
+						<c:set var="no" value="1" />
+						<c:forEach var="outgoingVo" items="${outgoingList }">
+							<tr onclick="goView(${outgoingVo.formNo})">
+								<td>${outgoingVo.formDate}</td>
+								<td>${outgoingVo.formType}</td>					
+								<td style=" text-align: left; text-indent: 3em;">${outgoingVo.formTitle}</td>					
+								<td>${outgoingVo.drafterName }</td>					
+								<c:choose>
+									<c:when test="${outgoingVo.approvalState eq '(발신)상신'}">
+										<td><span class="badge badge-success">진행중</span></td>	
+									</c:when>
+									<c:when test="${outgoingVo.approvalState eq '(발신)임시저장'}">
+										<span class="badge badge-light">임시저장</span>
+									</c:when>
+									<c:when test="${outgoingVo.approvalState eq '(발신)승인'}">
+										<span class="badge badge-primary">승인</span>	
+									</c:when>
+									<c:when test="${outgoingVo.approvalState eq '(발신)반려'}">
+										<span class="badge badge-warning">반려</span>
+									</c:when>
+								</c:choose>
 							</tr>
 							<c:set var= "no" value="${no+1 }"></c:set>
 						</c:forEach>
@@ -68,13 +56,13 @@
 			<div class="e-approval-list-pagination">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" >first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
+						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(1)" >first</a></li>
+						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${outgoingPage.startPage-1})">&lt;</a></li>
+						<c:forEach var="i" begin="${outgoingPage.startPage}" end="${outgoingPage.endPage }">
+							<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${i})">${i}</a></li>
+						</c:forEach>
+						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${outgoingPage.endPage+1})">&gt;</a></li>
+						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${outgoingPage.totPage})">last</a></li>
 					</ul>
 				</nav>
 			</div>

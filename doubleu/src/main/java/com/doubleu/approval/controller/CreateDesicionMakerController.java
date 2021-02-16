@@ -17,6 +17,8 @@ public class CreateDesicionMakerController {
 		String makerPositionStr = req.getParameter("makerPositionArr");
 		String makerNameStr = req.getParameter("makerNameArr");
 		String makerOrderStr = req.getParameter("makerOrderArr");
+		String makerComment = "";
+		
 		
 		String[] makerPosition = makerPositionStr.split(",");
 		String[] makerName = makerNameStr.split(",");
@@ -30,7 +32,7 @@ public class CreateDesicionMakerController {
 			decisionMaker.setMakerPosition(makerPosition[i]);
 			decisionMaker.setMakerName(makerName[i]);
 			decisionMaker.setMakerOrder(makerOrder[i]);
-			
+			decisionMaker.setMakerComment(makerComment);
 			list.add(decisionMaker);
 		}
 		
