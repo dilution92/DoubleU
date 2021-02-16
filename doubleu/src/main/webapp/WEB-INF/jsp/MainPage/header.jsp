@@ -8,6 +8,7 @@
 
 </head>
 <body>
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
 		<a class="navbar-brand navbar-text-light " href="/MainPage/index.jsp" style="margin-right: 41em">
 			<img alt="" src="../images/notice/로고7.png" width="150px" style="margin-left: 8px">
@@ -25,7 +26,7 @@
 				<li class="nav-item"><a class="nav-link" href="/member/organization.jsp">주소록</a></li>
 				<li class="nav-item"><a class="nav-link" href="/calenderMonth">캘린더</a></li>
 				<li class="nav-item"><a class="nav-link" href="/email/email_index.jsp">메일함</a></li>
-				<li class="nav-item"><a class="nav-link" href="/approvalIndex">전자결재</a></li>
+				<li class="nav-item"><a class="nav-link" href="/approvalIndex?employeeNo=3355">전자결재</a></li>
 				<li class="nav-item"><a class="nav-link" href="/marketIndex">중고시장</a></li>
 			</ul>
 	

@@ -9,31 +9,6 @@
 <title>전자결재 홈</title>
 </head>
 <body>
-			<!-- 전자결재홈 검색바 code -->
-			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="frmApproval" method="post">
-			      	<div class="e-approval-form-box">
-				        <input class="btn btn-outline-primary btn-sm" type="button" value="검색"/>
-				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-				      	<select class="form-control form-control-sm e-approval-select-box">
-				      		<option selected> 문서 상태 </option>
-				      		<option value="0"> 진행중인 문서 </option>
-				      		<option value="1"> 임시저장한 문서 </option>
-				      		<option value="2"> 승인된 문서 </option>
-				      		<option value="3"> 반려된 문서 </option>
-				      		<option value="4"> 결재해야할 문서 </option>
-				      		<option value="5"> 승인한 문서 </option>
-				      		<option value="6"> 반려한 문서 </option>
-				      	</select>
-					</div>
-					<!-- hidden -->
-					<input type="hidden" name="formNo" value="">
-					<input type="hidden" name="formType" value="">
-					<input type="hidden" name="formState" value="">
-	     		</form>
-			</div>
-			<!-- ========== -->
-			
 			<!-- 최근 발신한 문서함 code -->
 			<div class="e-approval-table">
 			<%
@@ -92,8 +67,6 @@
 				</nav>
 			</div>
 			<!-- ========== -->
-			
-			
 
 <!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
