@@ -7,11 +7,12 @@ import java.util.List;
 
 public class MarketVo {
 	int marketNo ;
-	int categoryNo ;
+	String marketCategory;
 	String membersNo ;
 	String marketSubject ;
-	int marketPrice ;
+	String marketPrice ;
 	String marketAccount ;
+	String marketBank ;
 	String marketDoc ;
 	int marketHit ;
 	String marketDate ;
@@ -37,12 +38,15 @@ public class MarketVo {
 	public void setMarketNo(int marketNo) {
 		this.marketNo = marketNo;
 	}
-	public int getCategoryNo() {
-		return categoryNo;
+	
+	public String getMarketCategory() {
+		return marketCategory;
 	}
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
+
+	public void setMarketCategory(String marketCategory) {
+		this.marketCategory = marketCategory;
 	}
+
 	public String getMembersNo() {
 		return membersNo;
 	}
@@ -55,12 +59,15 @@ public class MarketVo {
 	public void setMarketSubject(String marketSubject) {
 		this.marketSubject = marketSubject;
 	}
-	public int getMarketPrice() {
+	
+	public String getMarketPrice() {
 		return marketPrice;
 	}
-	public void setMarketPrice(int marketPrice) {
+
+	public void setMarketPrice(String marketPrice) {
 		this.marketPrice = marketPrice;
 	}
+
 	public String getMarketAccount() {
 		return marketAccount;
 	}
@@ -84,6 +91,14 @@ public class MarketVo {
 	}
 	public void setMarketDate(String marketDate) {
 		this.marketDate = marketDate;
+	}
+
+	public String getMarketBank() {
+		return marketBank;
+	}
+
+	public void setMarketBank(String marketBank) {
+		this.marketBank = marketBank;
 	}
 	
 }

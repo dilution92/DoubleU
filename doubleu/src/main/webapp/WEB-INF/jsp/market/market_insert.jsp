@@ -56,14 +56,14 @@
 				<div class="form-group row">
 		   		 <label for="marketaCate" class="col-sm-2 col-form-label">카테고리</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control " name="categoryNo"  required>
+   					 <select class="form-control " name="marketCategory"  required>
 								<option value="">카테고리</option>
-								<option value="1">뷰티/미용</option>
-								<option value="2">식품</option>
-								<option value="3">의류</option>
-								<option value="4">전자제품</option>
-								<option value="5">도서/티켓</option>
-								<option value="6">기타 중고물품</option>
+								<option value="뷰티/미용">뷰티/미용</option>
+								<option value="식품">식품</option>
+								<option value="의류">의류</option>
+								<option value="전자제">전자제품</option>
+								<option value="도서/티켓">도서/티켓</option>
+								<option value="기타 중고물품">기타 중고물품</option>
 							</select>				    </div>
 				  </div>
 				  
@@ -97,13 +97,13 @@
 				<div class="form-group row">
 		   		 <label for="marketAccount" class="col-sm-2 col-form-label">계좌번호</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control" id="exampleFormControlSelect1" required>
+   					 <select class="form-control" id="exampleFormControlSelect1" required name="marketBank">
 								<option value="">은행</option>
-								<option value="0">신한</option>
-								<option value="1">국민</option>
-								<option value="2">농협</option>
-								<option value="3">카카오뱅크</option>
-								<option value="4">케이뱅크</option>
+								<option value="신한">신한</option>
+								<option value="국민">국민</option>
+								<option value="농협">농협</option>
+								<option value="카카오뱅크">카카오뱅크</option>
+								<option value="케이뱅크">케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
 				      <input type="text" class="form-control js-sms-content" id="marketAccount" name="marketAccount"value="23"onkeyup="accountCheck(this.value)" >
@@ -125,7 +125,6 @@
 				
 				<input name="membersNo" value = "1">
 				<input name="marketHit" value = "1">
-				<input name="marketDate" value = "2021-01-21">
 			</form>
 			</div>
 
