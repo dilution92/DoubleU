@@ -1,6 +1,7 @@
 package com.doubleu.email.vo;
 
 public class AttEmailVo {
+	
 	int filesNo;
 	int emailNo;
 	String sysFile;
@@ -12,11 +13,11 @@ public class AttEmailVo {
 	public void setFilesNo(int filesNo) {
 		this.filesNo = filesNo;
 	}
-	public int getFormNo() {
+	public int getEmailNo() {
 		return emailNo;
 	}
-	public void setFormNo(int formNo) {
-		this.emailNo = formNo;
+	public void setEmailNo(int emailNo) {
+		this.emailNo = emailNo;
 	}
 	public String getSysFile() {
 		return sysFile;
@@ -30,4 +31,8 @@ public class AttEmailVo {
 	public void setOriFile(String oriFile) {
 		this.oriFile = oriFile;
 	}
+	
+	
+	
+
 }

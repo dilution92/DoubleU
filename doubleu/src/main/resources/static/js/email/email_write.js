@@ -26,6 +26,7 @@ function sendToEmail() {
 		sendToAddress.focus();
 	}
 	
+	
 	frm.action = '/emailResult';
 	frm.submit();
 	

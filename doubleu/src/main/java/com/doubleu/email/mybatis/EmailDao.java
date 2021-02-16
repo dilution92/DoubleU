@@ -29,6 +29,8 @@ public class EmailDao {
 	// 메일 보내기
 	public int insertSendWrite(EmailMainVo vo) {
 		
+		System.out.println("insertSendWrite 시작");
+		
 		int cnt = mapper.insertSendWrite(vo);
 		
 		System.out.println("insertSendWrite() : " + cnt);
