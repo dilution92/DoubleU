@@ -18,24 +18,20 @@
 				<input class="btn btn-outline-primary btn-sm market-dib" 
 				onClick="location.href='marketPriceRange'" type="button" value="시세확인" />
 				<!-- 전자결재홈 검색바 code -->
-				<div class="e-approval-search-bar">
-					<form class="e-approval-search-form" action="" name="frm_approval"
-						method="post">
-						<div class="e-approval-form-box">
-							<input class="btn btn-outline-primary btn-sm" type="button"
-								value="검색" /> <input class="form-control form-control-sm"
-								type="text" placeholder="Search" aria-label="Search"
-								id="approvalFindStr"> <select
-								class="form-control form-control-sm e-approval-select-box">
-								<option selected>카테고리</option>
-								<option value="0">뷰티/미용</option>
-								<option value="1">생활/가공식품</option>
-								<option value="2">의류</option>
-								<option value="3">디지털/가전</option>
-								<option value="4">도서/티켓</option>
-								<option value="5">부동산</option>
+				<div class="market-search-bar">
+					<form class="market-search-form" action="/marketSelect" name="frm_market" method="post">
+						<div class="market-search-form-box" style="display:flex;">
+								<select class="form-control form-control-sm e-approval-select-box">
+								<option value="">카테고리</option>
+								<option value="1">뷰티/미용</option>
+								<option value="2">식품</option>
+								<option value="3">의류</option>
+								<option value="4">전자제품</option>
+								<option value="5">도서/티켓</option>
 								<option value="6">기타 중고물품</option>
 							</select>
+							<input class="form-control form-control-sm" type="text" placeholder="상품명" aria-label="Search" id='findStr'  name='findStr' style="margin-left:5px;"> 
+							<input class="btn btn-outline-primary btn-sm" type="submit" value="검색" style="margin-left:5px;"/> 
 						</div>
 					</form>
 				</div>

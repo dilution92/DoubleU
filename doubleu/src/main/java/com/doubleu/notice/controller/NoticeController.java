@@ -18,6 +18,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		msg = service.insert(vo);
+		mv.addObject("viewMsg", msg);
 		mv.setViewName("notice/notice_index");
 		return mv;
 	}

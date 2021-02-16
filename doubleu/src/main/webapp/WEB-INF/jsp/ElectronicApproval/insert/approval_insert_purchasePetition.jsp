@@ -21,7 +21,7 @@
 	 %>
 	
 	<div class="e-approval-form-container">
-		<form action="" name="frmApproval" id="frmApproval" method="post">
+		<form action="/approvalInsertR" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-choose">
 					</a><select class="form-control form-control-sm e-approval-work-form-change">
@@ -117,7 +117,7 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/E_Approval_form_btns.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/insert/approval_insert_btns.jsp"></jsp:include>
 				</div>
 			</div>
 			</main>

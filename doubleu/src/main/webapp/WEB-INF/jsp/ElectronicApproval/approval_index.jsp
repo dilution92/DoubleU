@@ -32,7 +32,7 @@
 <body>
 	<%
 		request.setCharacterEncoding("utf-8");
-		String mainJob = "E_Approval_select.jsp";
+		String mainJob = "select/approval_select.jsp";
 		if(request.getParameter("mainJob") != null) {
 			mainJob = request.getParameter("mainJob");
 		}
@@ -73,7 +73,7 @@
 		</nav>
 	<!-- lnb code 끝 -->
 		<main class="e-approval-article">
-			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/${empty mainJob ? 'E_Approval_select.jsp': mainJob }"></jsp:include>
+			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/${empty mainJob ? 'select/approval_select.jsp': mainJob }"></jsp:include>
 		</main>
 	</section>
 	

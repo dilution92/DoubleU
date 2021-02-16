@@ -4,10 +4,43 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.doubleu.market.mybatis.MarketMapper">
+	
+	
+<!-- select -->	
+	<select id="selectAtt" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo" parameterType="int">
+		select * from market_files where market_no = #{_parameter}
+	</select>
+	
+	<select id="totListSize" resultType='int' parameterType="com.doubleu.market.vo.MarketPage">
+		select count(market_no) from market
+		where market_subject like '%${findStr}%'
+	</select>
+	
+	<select id="select2" resultMap="marketList" >
+		select * from market
+	
+	</select>
+	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+  		select * from ( select rownum no, m.* from (
+			select * from market mk join market_files att on mk.market_no=att.market_no
+			 where market_subject like '%${findStr}%' order by mk.market_no desc ) m   
+			 ) where no between #{startNo} and #{endNo}
+	</select>
+	<!-- index게시글 총 갯수 -->
+	<select id="totalCount" resultType="int">
+		select count(*) from market
+	</select>
+	<!-- select게시글 총 갯수 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from market where market_subject like '%${findStr}%'
+	</select>
+
+<!-- insert -->
 	<insert id = 'insert' parameterType="com.doubleu.market.vo.MarketVo">
 		insert all
-		into market(market_no, category_no, members_no, market_subject, market_price, market_account, market_doc, market_hit, market_date)
-		values(market_seq.nextval, #{categoryNo}, #{membersNo}, #{marketSubject}, #{marketPrice},#{marketAccount}, #{marketDoc},#{marketHit},#{marketDate})
+		into market(market_no, market_category, members_no, market_subject, market_price, market_account, market_doc, market_hit, market_date, market_bank)
+		values(market_seq.nextval, #{marketCategory, jdbcType=VARCHAR}, #{membersNo}, #{marketSubject}, #{marketPrice}, #{marketAccount}, #{marketDoc},#{marketHit}, SYSDATE, #{marketBank})
 		<if test="attlist != null">
 			<foreach collection="attlist" item="att">
 				into market_files(files_no, market_no, files_sysfile, files_orifile)
@@ -25,13 +58,29 @@
 		</foreach>
 		SELECT * FROM dual
 	</insert>
+	
+	
+	
+	<!-- resultMap -->
+	<resultMap id="marketList" type="com.doubleu.market.vo.MarketVo">
+		<result property="marketSubject" column="market_subject" /> 	
+		<result property="marketNo" column="market_no" /> 	
+		<result property="marketCategory" column="market_category" /> 	
+		<result property="marketPrice" column="market_price" /> 	
+		<result property="marketAccount" column="market_account" /> 	
+		<result property="marketDoc" column="market_doc" /> 	
+		<result property="marketHit" column="market_hit" /> 	
+		<result property="marketDate" column="market_date" /> 	
+		<result property="membersNo" column="members_no" /> 	
+		<result property="marketBank" column="market_bank" /> 	
+	</resultMap>
+	
+	<resultMap type="com.doubleu.market.vo.MarketAttVo" id="attList">
+		<result property="fileNo" column="files_no"/>
+		<result property="MarketNo" column="market_no"/>
+		<result property="sysFile" column="files_sysfile"/>
+		<result property="oriFile" column="files_orifile"/>
+	</resultMap>
 </mapper>
 
 
-<!-- 사진업로드 오류 nested exception is org.apache.ibatis.type.TypeException: Could 
-	not set parameters for mapping: ParameterMapping{property='__frch_att_0.sysFile', 
-	mode=IN, javaType=class java.lang.String, jdbcType=null, numericScale=null, 
-	resultMapId='null', jdbcTypeName='null', expression='null'}. Cause: org.apache.ibatis.type.TypeException: 
-	Error setting null for parameter #9 with JdbcType OTHER . Try setting a different 
-	JdbcType for this parameter or a different jdbcTypeForNull configuration 
-	property. Cause: java.sql.SQLException: 부적합한 열 유형: 1111 -->

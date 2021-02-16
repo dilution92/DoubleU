@@ -19,7 +19,7 @@ public class emailURLController {
 	EmailDao service;
 	
 	// email_index.jsp
-	@RequestMapping(value="/emailIndex", method=RequestMethod.GET)
+	@RequestMapping(value="/emailIndex", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailIndex(EmailMainVo vo) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -35,7 +35,7 @@ public class emailURLController {
 
 
 	// email_important.jsp
-	@RequestMapping(value="/emailImportant", method=RequestMethod.GET)
+	@RequestMapping(value="/emailImportant", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailImportant() {
 		ModelAndView mv = new ModelAndView();
 
@@ -77,7 +77,7 @@ public class emailURLController {
 
 
 	// email_result.jsp
-	@RequestMapping(value="/emailResult", method=RequestMethod.GET)
+	@RequestMapping(value="/emailResult", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailResult() {
 		ModelAndView mv = new ModelAndView();
 
@@ -142,16 +142,18 @@ public class emailURLController {
 	public ModelAndView emailThash() {
 		ModelAndView mv = new ModelAndView();
 
-		mv.setViewName("email/ email_trash");
+		mv.setViewName("email/email_trash");
 
 		return mv;
 	}
 
 	// email_write.jsp
-	@RequestMapping(value="/emailWrite", method=RequestMethod.GET)
+	@RequestMapping(value="/emailWrite", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailWrite() {
 		ModelAndView mv = new ModelAndView();
 
+		
+		
 		mv.setViewName("email/email_write");
 
 		return mv;

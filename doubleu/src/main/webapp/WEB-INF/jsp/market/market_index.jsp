@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>중고 게시판</title>
-
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" 
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+		crossorigin="anonymous"></script>
 <!-- bootstrap CDN -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -19,7 +23,8 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전자결재용 CSS -->
 <link rel="stylesheet" href="/css/market/market.css">
-
+<!-- market javascript -->
+<script src='js/market/market.js'></script>
 </head>
 <body>
 
@@ -46,7 +51,7 @@
 			<!-- 글갯수/ 최신순 -->
 			<div class="market-subheader-container">
 				<div class='market-total'>
-					<p class="card-text">글 갯수 : 8</p>
+					<p class="card-text">글 갯수 : ${cnt }</p>
 				</div>
 				<div class="e-approval-dib">
 					<form class="e-approval-search-form" action="" name="frm_approval"
@@ -72,20 +77,15 @@
 				<nav aria-label="Page navigation example">
 					<ul
 						class="pagination pagination-sm text-muted justify-content-center">
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#"
+						<li class="page-item"><a class="page-link" onclick='brd.goPage(1)'style="font-size: 0.7em">first</a></li>
+						<li class="page-item"><a class="page-link" onclick='brd.goPage(${page.startPage-1})'style="font-size: 0.7em">&lt;</a></li>
+							
+							<c:forEach var='i' begin='${page.startPage }' end='${page.endPage }'>
+								<li class="page-item"><a class="page-link"  style="font-size: 0.7em">${i }</a></li>
+							</c:forEach>
+						<li class="page-item"><a class="page-link" onclick = 'brd.goPage(${page.endPage+1})'
 							style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#"
-							style="font-size: 0.7em">last</a></li>
+						<li class="page-item"><a class="page-link" onclick = 'brd.goPage(${page.totPage})' style="font-size: 0.7em">last</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -118,7 +118,5 @@
 		crossorigin="anonymous"></script>
 	<!-- ****************************** -->
 
-	<script type="text/javascript">
-</script>
 </body>
 </html>
