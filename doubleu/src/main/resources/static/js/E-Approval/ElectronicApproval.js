@@ -8,6 +8,10 @@
 	수정일자: 2021-02-11
 	수정자: 정해준
 	수정내역: append(zone, boxCnt), createMakerBox(makersZone) 정의 
+	
+	수정일자: 2021-02-14
+	수정자: 정해준
+	수정내역, checkFile()
  */
 
 
@@ -25,13 +29,42 @@ function funcApproval() {
 		var frm = document.frmApproval;
 		
 	/*정보 전송*/
-	$('#btnTest').on('click', function() {
-		frm.vacationCnt.value = 2;
-	})
-	
 	$('#btnApprovalSave').on('click', function() {
+		frm.enctype = 'multipart/form-data';
+		
+		var decisionMakerCnt = document.getElementsByName('makerName').length - 1;
+		alert(decisionMakerCnt);
+		var makerPosition = new Array();
+		var makerName = new Array();
+		var makerOrder = new Array();
+		
+		for(var i = 0; i<decisionMakerCnt;i++) {
+			makerPosition[i] = $('input[name=makerPosition]').eq(i).val();
+			makerName[i] = $('input[name=makerName]').eq(i).val();
+			makerOrder[i] = i+1;
+		}
+		frm.makerPositionArr.value = makerPosition;		
+		alert(frm.makerPositionArr.value);
+		frm.makerNameArr.value = makerName;		
+		frm.makerOrderArr.value = makerOrder;	
+		
+		var fileBoxSize =(document.getElementsByClassName('approval-file').length);
+		for(var i = 1; i<fileBoxSize ;i++) {
+			if($('input[name=approvalFile]').eq(i).val() == "") {
+				alert($('input[name=approvalFile]').eq(i).val());
+				$('input[name=approvalFile]').eq(i).remove();
+			}	
+		}
+		if(frm.formType.value == '휴가신청서') {
+			
+			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
+			if(frm.vacationType.value == '반차') {
+				frm.startDate.value = frm.halfDate.value;
+				frm.endDate.value = frm.halfDate.value;
+			}
+		}
+		
 		alert("정상적으로 등록되었습니다.")
-		frm.action = '/approvalInsert';
 		frm.submit();
 	})
 	
@@ -56,7 +89,7 @@ function append(zone, boxCnt) {
 	
 	//table 생성
 	var makerBox = document.createElement("table");
-	makerBox.setAttribute("class", "table table-sm table-bordered e-approval-form-decision-box-2");
+	makerBox.setAttribute("class", "table table-sm table-bordered e-approval-form-decision-box-2 makerBox");
 	makerBox.setAttribute("id", "makerBox");
 	
 	
@@ -67,9 +100,9 @@ function append(zone, boxCnt) {
 	tdPosition.setAttribute("id","makerPositionContent");
 	
 	var inputPosition = document.createElement("input");
-	inputPosition.setAttribute("name", "makerPosition" + boxCnt);
+	inputPosition.setAttribute("name", "makerPosition");
 	inputPosition.setAttribute("id", "makerContent");
-	inputPosition.setAttribute("value", "직급");
+	inputPosition.setAttribute("value", "");
 	inputPosition.setAttribute("readonly", "readonly");
 	
 	tdPosition.appendChild(inputPosition);
@@ -85,11 +118,14 @@ function append(zone, boxCnt) {
 	
 	var aSign= document.createElement("input");
 	aSign.setAttribute("id", "makerSignBtn");
+	aSign.setAttribute("name", "makerSignBtn" + boxCnt);
 	aSign.setAttribute("type", "button");
 	aSign.setAttribute("value", "직원조회");
 	
 	//직원 조회 버튼 생성
 	aSign.onclick = function() {   
+		var eventBtn = event.srcElement.name;
+		var checkSize = eventBtn.charAt(eventBtn.length-1);
 		
 		var winWidth = "500";
 		var winHeight = "600";
@@ -97,15 +133,17 @@ function append(zone, boxCnt) {
 		
 		var winLeft = Math.ceil((window.screen.width - winWidth)/2);
 		var winTop = Math.ceil((window.screen.height- winHeight)/2);
-		var win = window.open('/newPage', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
+		var win = window.open('/approvalChoosePage', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
 
 		win.onbeforeunload = function(){
 			inputName.value = $('#TempMakerName').val();
 			inputPosition.value = $('#TempMakerPosition').val();
-				
+			var checkName = $('.makerBox:last input[id=makerSignBtn]').attr('name');
 			var zone = document.getElementById("makersZone")
-			boxCnt++;
-			append(zone, boxCnt);
+			if(zone.childNodes.length === 2 || aSign.name === checkName) {
+				boxCnt++;
+				append(zone, boxCnt);
+			}
 		}
 	}
 	tdSign.appendChild(aSign);
@@ -121,9 +159,9 @@ function append(zone, boxCnt) {
 	tdName.setAttribute("height", "16.5px");
 	
 	var inputName= document.createElement("input");
-	inputName.setAttribute("name", "makerName"  + boxCnt);
+	inputName.setAttribute("name", "makerName");
 	inputName.setAttribute("id", "makerContent");
-	inputName.setAttribute("value", "이름");
+	inputName.setAttribute("value", "");
 	inputName.setAttribute("readonly", "readonly");
 	
 	tdName.appendChild(inputName);
@@ -152,6 +190,13 @@ function append(zone, boxCnt) {
 	}
 	tdSign.appendChild(delBtn);
 	zone.appendChild(makerBox)
+	
+	var makerOrder = document.createElement("input");
+	makerOrder.setAttribute("type", "hidden");
+	makerOrder.setAttribute("name", "makerOrder");
+	makerOrder.setAttribute("val", boxCnt);
+	tdSign.appendChild(makerOrder);
+	
 }
 
 function vacationCnt() {
@@ -165,17 +210,105 @@ function vacationCnt() {
 }
 function chooseVacationType() {
 	var frm = document.frmApproval;
-	var vacationType = $('#VacationType option:selected').val();
+	var vacationType = $('#selectVacationType option:selected').val();
+	
 	if(vacationType == '반차') {
-		$('#startDate').attr('disabled', 'disabled');
-		$('#endDate').attr('disabled', 'disabled');
+		$('#startDate').attr('readOnly', 'readOnly');
+		$('#endDate').attr('readOnly', 'readOnly');
+		$("#halfTimeType").removeAttr('disabled');
+		$("#halfDate").removeAttr('readOnly',);
 		frm.vacationCnt.value = 0.5;
 	}
 	else if( vacationType == '연차' || vacationType == '월차'){
-		$('#startDate').removeAttr('disabled');
-		$('#endDate').removeAttr('disabled');
+		$('#startDate').removeAttr('readOnly');
+		$('#endDate').removeAttr('readOnly');
+		$("#halfTimeType").attr('disabled', 'disabled');
+		$("#halfDate").attr('readOnly', 'readOnly');
 		frm.vacationCnt.value = null;
 	}
+}
 
 
+function appendFile(zone, fileCnt) {
+	var fileCnt = fileCnt;
+	var div = document.createElement('div');
+	div.setAttribute('class', 'fileContent');
+	
+	var fileInput = document.createElement('input');
+	fileInput.setAttribute('type', 'file');
+	fileInput.setAttribute('name', 'approvalFile');
+	fileInput.setAttribute('class', 'approval-file');
+	fileInput.setAttribute('id', 'approvalFile' + fileCnt);
+	fileInput.setAttribute('multiple', 'multiple');
+	
+	var createBtn = document.createElement('input');
+	createBtn.setAttribute('type', 'button');
+	createBtn.setAttribute('id', 'createBtnFile');
+	createBtn.setAttribute('value', '파일 추가');
+	createBtn.onclick = function() {
+		var checkId = $('.fileContent:last input[type=file]').attr('id');
+		if(zone.childNodes.length >= 2) {
+			 if(zone.childNodes.length == 5) {
+				alert('최대 4개까지 첨부 가능합니다.');
+				return;
+			}
+		else {
+			fileCnt++;
+			appendFile(zone,fileCnt)
+			}
+		}
+	}
+	
+	var delBtn = document.createElement('input');
+	delBtn.setAttribute('type', 'button');
+	delBtn.setAttribute('id', 'delBtnFile');
+	delBtn.setAttribute('value', '파일 삭제');
+	delBtn.onclick = function() {
+		if(zone.childNodes.length <= 2) {
+			return;
+		}
+		else if(zone.childNodes.length >= 6) {
+			ele = event.srcElement;
+			eleParent = ele.parentNode;
+			zone. removeChild(eleParent);
+			fileCnt++;
+			appendFile(zone,fileCnt)
+		}
+		else {
+			ele = event.srcElement;
+			eleParent = ele.parentNode;
+			zone. removeChild(eleParent);
+		}
+	}
+	div.appendChild(fileInput);	
+	div.appendChild(createBtn);	
+	div.appendChild(delBtn);	
+	zone.appendChild(div);
+}
+
+function createFile(fileZone) {
+	var zone = document.getElementById(fileZone);
+	var fileCnt = 1;
+	appendFile(zone, fileCnt)
+}
+
+function calculationDate() {
+	var frm = document.frmApproval;
+	var startDateStr = frm.startDate.value;
+	var endDateStr = frm.endDate.value;
+	
+	var startDateArr = startDateStr.split('-');
+	var endDateArr = endDateStr.split('-');
+	
+	var startDate = new Date(startDateArr[0], startDateArr[1]-1, startDateArr[2]);
+	var endDate = new Date(endDateArr[0], endDateArr[1]-1, endDateArr[2]);
+	if(startDate != "" && endDate != "") {
+		var dateDiff = Math.ceil((endDate.getTime() - startDate.getTime())/(1000*3600*24));
+		if(dateDiff < 0) {
+			alert('기간을 다시 입력해주세요.');
+		}
+		else if(dateDiff > 0) {
+			frm.vacationCnt.value = dateDiff;
+		}
+	}
 }

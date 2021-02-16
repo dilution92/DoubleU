@@ -1,18 +1,33 @@
 package com.doubleu.email.contorller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+import com.doubleu.email.mybatis.EmailDao;
+import com.doubleu.email.vo.EmailMainVo;
+
+@RestController
 public class emailURLController {
 
+	@Autowired
+	EmailDao service;
+	
 	// email_index.jsp
-	@RequestMapping(value="/emailIndex", method=RequestMethod.GET)
-	public ModelAndView emailIndex() {
+	@RequestMapping(value="/emailIndex", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView emailIndex(EmailMainVo vo) {
+		
 		ModelAndView mv = new ModelAndView();
 
+		
+		List<EmailMainVo> list = service.selectSendRead();
+		
+		mv.addObject("list", list);
 		mv.setViewName("email/email_index");
 
 		return mv;
@@ -20,7 +35,7 @@ public class emailURLController {
 
 
 	// email_important.jsp
-	@RequestMapping(value="/emailImportant", method=RequestMethod.GET)
+	@RequestMapping(value="/emailImportant", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailImportant() {
 		ModelAndView mv = new ModelAndView();
 
@@ -62,10 +77,16 @@ public class emailURLController {
 
 
 	// email_result.jsp
-	@RequestMapping(value="/emailResult", method=RequestMethod.GET)
-	public ModelAndView emailResult() {
+	@RequestMapping(value="/emailResult", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView emailResult(EmailMainVo vo) {
 		ModelAndView mv = new ModelAndView();
 
+		
+		int cnt = service.insertSendWrite(vo);
+		
+		System.out.println(vo.getEmailDate());
+		
+		
 		mv.setViewName("email/email_result");
 
 		return mv;
@@ -127,16 +148,18 @@ public class emailURLController {
 	public ModelAndView emailThash() {
 		ModelAndView mv = new ModelAndView();
 
-		mv.setViewName("email/ email_trash");
+		mv.setViewName("email/email_trash");
 
 		return mv;
 	}
 
 	// email_write.jsp
-	@RequestMapping(value="/emailWrite", method=RequestMethod.GET)
+	@RequestMapping(value="/emailWrite", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailWrite() {
 		ModelAndView mv = new ModelAndView();
 
+		
+		
 		mv.setViewName("email/email_write");
 
 		return mv;

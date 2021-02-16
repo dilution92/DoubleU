@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.doubleu.email.mybatis.EmailMapper">
+	
+
+	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
+ 
+	<result property="emailNo" column="email_no" /> 
+	<result property="emailMid" column="email_mid" /> 
+	<result property="emailAddress" column="email_address" /> 
+	<result property="emailName" column="email_name" /> 
+	<result property="emailTitle" column="email_title" /> 
+	<result property="emailDate" column="email_date"  /> 
+	<result property="emailContents" column="email_contents"/>  
+	<result property="emailMailBox" column="email_mailbox" />
+	<result property="emailFile" column="email_file" /> 
+	<result property="emailChk" column="email_chk" /> 
+	<result property="emailDelete" column="email_delete" /> 
+
+	</resultMap>
+	
+	<parameterMap type="com.doubleu.email.vo.EmailMainVo" id="getEmailListInsert">
+		<parameter property="emailNo" /> 
+		<parameter property="emailMid" /> 
+		<parameter property="emailAddress" />
+		<parameter property="emailName" />
+		<parameter property="emailTitle" />
+		<parameter property="emailDate" /> 
+		<parameter property="emailContents" /> 
+		<parameter property="emailMailBox"  /> 
+		<parameter property="emailFile"/>  
+		<parameter property="emailChk" />
+		<parameter property="emailDelete" /> 
+	</parameterMap>
+	
+	<!-- select -->
+	<select id="selectSendRead" resultMap="getEmailListSelect">
+		SELECT * FROM email ORDER BY email_date DESC
+	</select>
+	
+
+	<!-- insert -->
+	
+	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
+		
+		INSERT ALL
+		INTO email(email_no, email_mid, email_address, email_name, email_title, email_date, email_contents, email_chk) 
+		VALUES(email_main_seq.nextval,  );
+		<if test="attFileList != null">
+			<foreach collection="attFileList" item="att">
+				INTO email_files(files_no, email_no, files_sysfile, files_orifile)
+				VALUES (emailMainSeq(), email_main_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
+			</foreach>
+		</if>
+		select * from dual		
+	</insert>
+	
+	<insert id="insert_att" parameterType="com.doubleu.email.vo.EmailMainVo" >
+	INSERT ALL
+		<foreach collection="attFileList" item="att">
+			INTO email_files(files_no, email_no, files_sysfile, files_orifile)
+				VALUES (emailMainSeq(), email_main_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+</mapper>

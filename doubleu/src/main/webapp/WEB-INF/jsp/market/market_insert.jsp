@@ -45,7 +45,7 @@
 		
 		
 			<div class='market-insert-form'>
-			<form action = "/bInsertR" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
+			<form action = "/marketInsertR" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
 				<div class="form-group row">
 		   		 <label for="marketName" class="col-sm-2 col-form-label  is-invalid">상품명</label>
 				    <div class="col-sm-8">
@@ -56,15 +56,14 @@
 				<div class="form-group row">
 		   		 <label for="marketaCate" class="col-sm-2 col-form-label">카테고리</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control " name="categoryNo"  required>
+   					 <select class="form-control " name="marketCategory"  required>
 								<option value="">카테고리</option>
-								<option value="0">뷰티/미용</option>
-								<option value="1">생활/가공식품</option>
-								<option value="2">의류</option>
-								<option value="3">디지털/가전</option>
-								<option value="4">도서/티켓</option>
-								<option value="5">부동산</option>
-								<option value="6">기타 중고물품</option>
+								<option value="뷰티/미용">뷰티/미용</option>
+								<option value="식품">식품</option>
+								<option value="의류">의류</option>
+								<option value="전자제">전자제품</option>
+								<option value="도서/티켓">도서/티켓</option>
+								<option value="기타 중고물품">기타 중고물품</option>
 							</select>				    </div>
 				  </div>
 				  
@@ -86,7 +85,7 @@
 				 <label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
 				  <div class="col-sm-8" style="display : inline-block;">
 			   		<div class="custom-file">
-					  <input type="file" class="custom-file-input"  name="attList" onchange="previewImage(this,'View_area')" multiple='multiple'>
+					  <input type="file" class="custom-file-input" id="attList" name="attList" onchange="previewImage(this,'View_area')" multiple='multiple'>
 					  <label class="custom-file-label" for="customFile">Choose file</label>
 					</div>
 					<div id='View_area' class='View_area' style="display:flex;" >
@@ -98,16 +97,16 @@
 				<div class="form-group row">
 		   		 <label for="marketAccount" class="col-sm-2 col-form-label">계좌번호</label>
 				    <div class="col-sm-8">
-   					 <select class="form-control" id="exampleFormControlSelect1" name="marketAccount"required>
+   					 <select class="form-control" id="exampleFormControlSelect1" required name="marketBank">
 								<option value="">은행</option>
-								<option value="0">신한</option>
-								<option value="1">국민</option>
-								<option value="2">농협</option>
-								<option value="3">카카오뱅크</option>
-								<option value="4">케이뱅크</option>
+								<option value="신한">신한</option>
+								<option value="국민">국민</option>
+								<option value="농협">농협</option>
+								<option value="카카오뱅크">카카오뱅크</option>
+								<option value="케이뱅크">케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
-				      <input type="text" class="form-control js-sms-content" id="marketAccount" value="23"onkeyup="accountCheck(this.value)" >
+				      <input type="text" class="form-control js-sms-content" id="marketAccount" name="marketAccount"value="23"onkeyup="accountCheck(this.value)" >
 				    </div>
 				    </div>
 				  </div>
@@ -125,8 +124,7 @@
 				</div>
 				
 				<input name="membersNo" value = "1">
-				<input name="membersHit" value = "1">
-				<input name="membersDate" value = "2021-01-01">
+				<input name="marketHit" value = "1">
 			</form>
 			</div>
 

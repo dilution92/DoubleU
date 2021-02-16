@@ -382,6 +382,10 @@ body {
 .e-approval-reason > textarea {
 	margin-bottom: 1em;
 }
+.approval-readOnly[readOnly] {
+	background-color: #ffffff;
+}
+
 
 /* 결재권자 자동화 */
 #approval-amkers-zone > table {
@@ -396,7 +400,7 @@ body {
 	padding: 0;
 }
 
-#makerBox {
+.makerBox {
 	margin: 0;
 }
 
@@ -437,3 +441,17 @@ body {
 	margin-top: 18px;
 	
 }
+
+#fileZone {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	width: 96%;
+}
+.fileContent {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+

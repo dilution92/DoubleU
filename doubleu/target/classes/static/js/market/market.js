@@ -1,6 +1,21 @@
 /**
  * 
  */
+function goPage(page) {
+	var frm = document.frm_paging;
+	
+	
+	var nowPage = frm.nowPage.value;
+		nowPage = 1;
+	 if(page!=null){
+		nowPage = page;
+	}
+
+	console.log(nowPage);
+	frm.action = '/marketSelect';
+	frm.submit();
+
+}
 
 
 	//-----------사진미리보기------------------//

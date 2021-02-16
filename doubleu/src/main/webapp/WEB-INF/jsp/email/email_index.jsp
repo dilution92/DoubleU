@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -140,7 +140,7 @@
                 
 		<main class="e-approval-article">
 
-		
+			
 			<!-- 메일 검색바 code -->
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
@@ -251,15 +251,15 @@
 			<div class="e-approval-table">
 				<table class="table table-hover table-sm">
 					<tbody class="e-approval-list text-muted">
-						<c:forEach begin="1" end="20">
+						<c:forEach var="list" items="${list }">
 							<tr>
 								<td><input type="checkbox"/></td>
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
-                                <td><i class="bi bi-exclamation"></i></td>
-								<td>DoubleU Project</td>					
-								<td style=" text-align: left; text-indent: 2em;">프론트엔드 작업 중 입니다. 시간이 참 빨리 지나가네요 흑흑</td>					
-								<td>2021-02-23 23:55:45</td>							
+                                <td>${list.emailChk }</td>
+								<td>${list.emailAddress}</td>					
+								<td style=" text-align: left; text-indent: 2em;">${list.emailTitle }</td>					
+								<td>${list.emailDate }</td>		
 							</tr>
 						</c:forEach>
 					</tbody>
