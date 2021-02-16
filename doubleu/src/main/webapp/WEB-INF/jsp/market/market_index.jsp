@@ -94,7 +94,7 @@
 						
 					</ul>
 					
-						<input type='hidden' name='nowPage' value=''/>
+						<input type='hidden' name='nowPage' value='${(empty page.nowPage)? 1 : page.nowPage }'/>
 				</nav>
 			</div>
 			</form>
@@ -126,6 +126,5 @@
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
 	<!-- ****************************** -->
-	<script>goPage()</script>
 </body>
 </html>

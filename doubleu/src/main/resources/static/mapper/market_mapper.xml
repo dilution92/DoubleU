@@ -44,7 +44,7 @@
 		<if test="attlist != null">
 			<foreach collection="attlist" item="att">
 				into market_files(files_no, market_no, files_sysfile, files_orifile)
-				values (getMarketAttSeq(), market_no.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
+				values (getMarketAttSeq(), market_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
 			</foreach>
 		</if>
 		select * from dual		
