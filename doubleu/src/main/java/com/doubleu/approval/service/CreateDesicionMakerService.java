@@ -1,4 +1,4 @@
-package com.doubleu.approval.controller;
+package com.doubleu.approval.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.doubleu.approval.vo.DecisionMakerVo;
 
 @Service
-public class CreateDesicionMakerController {
+public class CreateDesicionMakerService {
 
 	public List<DecisionMakerVo> getMakerList(HttpServletRequest req) {
 		List<DecisionMakerVo> list = new ArrayList<>();

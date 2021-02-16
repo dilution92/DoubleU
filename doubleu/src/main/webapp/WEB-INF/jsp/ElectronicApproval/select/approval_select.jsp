@@ -53,16 +53,31 @@
 			<!-- ========== -->
 			
 			<!-- 리스트 페이징 아이콘 code -->
+			<form action="" name="frmApprovalPagination" >
 			<div class="e-approval-list-pagination">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(1)" >first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${outgoingPage.startPage-1})">&lt;</a></li>
+						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goOutgoingPage(1)" >first</a></li>
+						<c:choose>
+							<c:when test="${outgoingPage.startPage > 1}">
+								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goOutgoingPage(${outgoingPage.startPage-1})">&lt;</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goOutgoingPage(${outgoingPage.startPage})">&lt;</a></li>
+							</c:otherwise>
+						</c:choose>
 						<c:forEach var="i" begin="${outgoingPage.startPage}" end="${outgoingPage.endPage }">
-							<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${i})">${i}</a></li>
+							<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goOutgoingPage(${i})">${i}</a></li>
 						</c:forEach>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${outgoingPage.endPage+1})">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goPage(${outgoingPage.totPage})">last</a></li>
+						<c:choose>
+							<c:when test="${outgoingPage.endPage >  outgoingPage.totPage}">
+								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goOutgoingPage(${outgoingPage.endPage+1})">&gt;</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goOutgoingPage(${outgoingPage.totPage})">&gt;</a></li>
+							</c:otherwise>
+						</c:choose>
+						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goOutgoingPage(${outgoingPage.totPage})">last</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -112,6 +127,9 @@
 					</ul>
 				</nav>
 			</div>
+			
+			<input type="hidden" name="nowOutgoingPage" value="${(empty outgoingPage.nowPage) ? 1: outgoingPage.nowPage }">
+			</form>
 			<!-- ========= -->
 			
 			
