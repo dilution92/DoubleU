@@ -1,13 +1,12 @@
 /**
  * 
  */
-var goPage = function goPage(page) {
-	var frm = $('#frm_market')[0];
+function goPage(page) {
+	var frm = document.frm_paging;
 	frm.nowPage.value = page;
-	var param = $(frm).serialize();
-
-	frm.action = "/marketSelecct"
-	frm.submit();	
+	console.log(frm.nowPage.value);
+	frm.action = '/marketSelect';
+	frm.submit();
 
 }
 

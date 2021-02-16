@@ -1,64 +1,24 @@
 package com.doubleu.approval.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doubleu.approval.mybatis.ApprovalDao;
+import com.doubleu.approval.vo.IndexPage;
+import com.doubleu.approval.vo.SelectPage;
+
 @RestController
 public class URLController {
 
-	
-	@RequestMapping(value = "/approvalIndex")
-	public ModelAndView mainHeader() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("ElectronicApproval/approval_index");
-		return mv;
-	}
-	
-	@RequestMapping(value = "/approvalGoList")
-	public ModelAndView goList(HttpServletRequest req) {
-		ModelAndView mv = new ModelAndView();
-		String selectName = req.getParameter("selectName");
-		String mainJob = "select/approval_select_formState.jsp";
-		
-		switch(selectName) {
-		case "(발신)상신" :
-			selectName = "상신한 문서함";
-			mv.addObject("selectName", selectName);
-			break;
-		case "(발신)임시저장" :
-			selectName = "임시저장된 문서";
-			mv.addObject("selectName", selectName);
-			break;
-		case "(발신)승인" :
-			selectName = "승인완료된 문서";
-			mv.addObject("selectName", selectName);
-			break;
-		case "(발신)반려" :
-			selectName = "반려된 문서";
-			mv.addObject("selectName", selectName);
-			break;
-		case "(수신)결재예정" :
-			selectName = "결재할 문서";
-			mv.addObject("selectName", selectName);
-			break;
-		case "(수신)승인" :
-			selectName = "승인한 문서";
-			mv.addObject("selectName", selectName);
-			break;
-		case "(수신)반려" :
-			selectName = "반려한 문서";
-			mv.addObject("selectName", selectName);
-			break;
-		}
-		
-		mv.addObject("mainJob", mainJob);
-		mv.setViewName("ElectronicApproval/approval_index");
-		return mv;
-	}
+	@Autowired
+	ApprovalDao service;
 	
 	@RequestMapping(value = "/approvalGoFormType")
 	public ModelAndView goFormType(HttpServletRequest req) {
@@ -67,6 +27,7 @@ public class URLController {
 		String formType = req.getParameter("formType");
 		String mainJob = null;
 		String formName = null;
+
 		
 		switch(formType) {
 		case "업무기안" :

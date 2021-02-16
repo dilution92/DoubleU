@@ -15,12 +15,27 @@ public class EmailDao {
 	@Autowired
 	EmailMapper mapper;
 	
-	public List<EmailMainVo> select() {
+	
+	// 메일 읽기
+	public List<EmailMainVo> selectSendRead() {
 		
-		List<EmailMainVo> list = mapper.select();
-		System.out.println("EmailDao dao : " + list);
+		List<EmailMainVo> list = mapper.selectSendRead();
+		System.out.println("selectSendRead() : " + list);
 		
 		return list;
+	}
+	
+	
+	// 메일 보내기
+	public int insertSendWrite(EmailMainVo vo) {
+		
+		System.out.println("insertSendWrite 시작");
+		
+		int cnt = mapper.insertSendWrite(vo);
+		
+		System.out.println("insertSendWrite() : " + cnt);
+		
+		return cnt;
 	}
 	
 }

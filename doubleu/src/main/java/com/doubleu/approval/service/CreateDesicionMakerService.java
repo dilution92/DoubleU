@@ -1,4 +1,4 @@
-package com.doubleu.approval.controller;
+package com.doubleu.approval.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,13 +10,15 @@ import org.springframework.stereotype.Service;
 import com.doubleu.approval.vo.DecisionMakerVo;
 
 @Service
-public class CreateDesicionMakerController {
+public class CreateDesicionMakerService {
 
 	public List<DecisionMakerVo> getMakerList(HttpServletRequest req) {
 		List<DecisionMakerVo> list = new ArrayList<>();
 		String makerPositionStr = req.getParameter("makerPositionArr");
 		String makerNameStr = req.getParameter("makerNameArr");
 		String makerOrderStr = req.getParameter("makerOrderArr");
+		String makerComment = "";
+		
 		
 		String[] makerPosition = makerPositionStr.split(",");
 		String[] makerName = makerNameStr.split(",");
@@ -30,7 +32,7 @@ public class CreateDesicionMakerController {
 			decisionMaker.setMakerPosition(makerPosition[i]);
 			decisionMaker.setMakerName(makerName[i]);
 			decisionMaker.setMakerOrder(makerOrder[i]);
-			
+			decisionMaker.setMakerComment(makerComment);
 			list.add(decisionMaker);
 		}
 		

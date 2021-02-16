@@ -1,43 +1,62 @@
-package com.doubleu.market.vo;
+package com.doubleu.approval.vo;
 
-public class MarketPage {
-
-	int totListSize;
+public class SelectPage {
+	int totalListSize;
 	int totPage;
 	int startPage;
 	int endPage;
 	int startNo;
 	int endNo;
 	int nowPage;
-	int listSize=8;
-	int blockSize=4;
+	int listSize = 10;
+	int blockSize = 3;
+	int employeeNo;
+	
 	
 	String findStr;
+	String findType;
+	String findState;
 	
-	public MarketPage() {}
-	public MarketPage(int tot, int now) {
-		this.totListSize = tot;
-		this.nowPage = now;
+	public SelectPage() {}
+	
+	public SelectPage(int totalListSize, int nowPage) {
+		this.totalListSize = totalListSize;
+		this.nowPage = nowPage;
 		pageCompute();
 	}
 	
 	public void pageCompute() {
-		totPage = (int)(Math.ceil(totListSize/(double)listSize));
+		totPage = (int) (Math.ceil(totalListSize/(double)listSize));
 		endNo = nowPage * listSize;
-		startNo = endNo -listSize + 1;
-		if(endNo>totListSize) endNo = totListSize;
+		startNo = endNo - listSize + 1;
 		
-		endPage = (int)(Math.ceil(nowPage/(double)blockSize))*blockSize;
-		startPage = endPage-blockSize+1;
-		if(endPage>totPage) endPage = totPage;
+		if(endNo > totalListSize) {
+			endNo = totalListSize;
+		}
+		
+		endPage = (int) (Math.ceil(nowPage/(double)blockSize)) * blockSize;
+		startPage = endPage - blockSize + 1;
+		if(endPage > totPage) {
+			endPage = totPage;
+		}
+	}
+	
+	public int getTotalListSize() {
+		return totalListSize;
 	}
 
-	public int getTotListSize() {
-		return totListSize;
+	public void setTotalListSize(int totalListSize) {
+		this.totalListSize = totalListSize;
 	}
 
-	public void setTotListSize(int totListSize) {
-		this.totListSize = totListSize;
+	
+	
+	public int getEmployeeNo() {
+		return employeeNo;
+	}
+
+	public void setEmployeeNo(int employeeNo) {
+		this.employeeNo = employeeNo;
 	}
 
 	public int getTotPage() {
@@ -111,6 +130,18 @@ public class MarketPage {
 	public void setFindStr(String findStr) {
 		this.findStr = findStr;
 	}
-	
-	
+
+	public String getFindType() {
+		return findType;
+	}
+
+	public void setFindType(String findType) {
+		this.findType = findType;
+	}
+	public String getFindState() {
+		return findState;
+	}
+	public void setFindState(String findState) {
+		this.findState = findState;
+	}
 }

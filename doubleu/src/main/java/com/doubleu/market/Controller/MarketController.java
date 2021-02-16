@@ -32,6 +32,7 @@ public class MarketController {
 	public ModelAndView marketSelect(MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		
+		
 		if(page ==null || page.getNowPage()==0) {
 			page.setNowPage(1);
 		}

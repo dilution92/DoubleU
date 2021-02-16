@@ -10,6 +10,8 @@ import com.doubleu.email.vo.EmailMainVo;
 @Repository
 @Mapper
 public interface EmailMapper {
-	public List<EmailMainVo> select();
-
+	public List<EmailMainVo> selectSendRead();
+	public int insertSendWrite(EmailMainVo vo);
+	
+	
 }

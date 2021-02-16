@@ -13,7 +13,7 @@ body {
 }
 
 
-/* 전자결재 사이드바 CSS */
+/* 메일함 사이드바 CSS */
 .e-approval-container {
 	display: flex;	
 	flex-direction: row;
@@ -661,3 +661,4 @@ body {
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+

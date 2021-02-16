@@ -36,6 +36,10 @@
 		if(request.getParameter("mainJob") != null) {
 			mainJob = request.getParameter("mainJob");
 		}
+		
+		session.setAttribute("employeeNo", "3355");
+		session.setAttribute("employeeName", "정해준");
+		session.setAttribute("employeePosition", "주임");
 	%>	
 	
 	<!-- 그룹웨어 GNB -->
@@ -55,10 +59,10 @@
 				<div class="e-approval-approval-list">
 					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=발신된 문서">발신 문서함</a>
 					<ul>	<!-- /WEB-INF/ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함 -->
-						<li><a href="/approvalGoList?selectName=(발신)상신">상신한 문서함</a></li>
-						<li><a href="/approvalGoList?selectName=(발신)임시저장">임시 저장된 문서</a></li>
-						<li><a href="/approvalGoList?selectName=(발신)승인">승인 완료된 문서</a></li>
-						<li><a href="/approvalGoList?selectName=(발신)반려">반려된 문서</a></li>
+						<li><a href="/approvalGoList?findState=(발신)상신">상신한 문서함</a></li>
+						<li><a href="/approvalGoList?findState=(발신)임시저장">임시 저장된 문서</a></li>
+						<li><a href="/approvalGoList?findState=(발신)승인">승인 완료된 문서</a></li>
+						<li><a href="/approvalGoList?findState=(발신)반려">반려된 문서</a></li>
 					</ul>
 				</div>
 				<div class="e-approval-approval-list">
@@ -73,7 +77,32 @@
 		</nav>
 	<!-- lnb code 끝 -->
 		<main class="e-approval-article">
-			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/${empty mainJob ? 'select/approval_select.jsp': mainJob }"></jsp:include>
+		<c:if test="${mainJob eq 'select/approval_select_formState.jsp' or mainJob eq 'select/approval_select.jsp'}">
+		<!-- 전자결재홈 검색바 code -->
+			<div class="e-approval-search-bar">
+	      		<form class="e-approval-search-form" action="" name="frmApproval" method="post">
+			      	<div class="e-approval-form-box">
+				        <input class="btn btn-outline-primary btn-sm" type="button" value="검색"/>
+				        <input class="form-control form-control-sm" name="findStr" value="" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
+				      	<select class="form-control form-control-sm e-approval-select-box">
+				      		<option selected> 문서 상태 </option>
+				      		<option value="0"> 진행중인 문서 </option>
+				      		<option value="1"> 임시저장한 문서 </option>
+				      		<option value="2"> 승인된 문서 </option>
+				      		<option value="3"> 반려된 문서 </option>
+				      		<option value="4"> 결재해야할 문서 </option>
+				      		<option value="5"> 승인한 문서 </option>
+				      		<option value="6"> 반려한 문서 </option>
+				      	</select>
+					</div>
+					<!-- hidden 탭 -->
+					<input type="hidden" name="formNo" value="">
+					<input type="hidden" name="formType" value="">
+					<input type="hidden" name="formState" value="">
+	     		</form>
+			</div>
+		</c:if>
+			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/${(empty mainJob)? 'select/approval_select.jsp': mainJob }"></jsp:include>
 		</main>
 	</section>
 	

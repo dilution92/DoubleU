@@ -3,20 +3,29 @@ package com.doubleu.email.contorller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.email.mybatis.EmailDao;
+import com.doubleu.email.vo.AttEmailVo;
 import com.doubleu.email.vo.EmailMainVo;
+
 
 @RestController
 public class emailURLController {
 
 	@Autowired
 	EmailDao service;
+	
+	@Autowired
+	EmailUploadController fu;
+	
 	
 	// email_index.jsp
 	@RequestMapping(value="/emailIndex", method={RequestMethod.GET, RequestMethod.POST})
@@ -25,7 +34,7 @@ public class emailURLController {
 		ModelAndView mv = new ModelAndView();
 
 		
-		List<EmailMainVo> list = service.select();
+		List<EmailMainVo> list = service.selectSendRead();
 		
 		mv.addObject("list", list);
 		mv.setViewName("email/email_index");
@@ -78,9 +87,24 @@ public class emailURLController {
 
 	// email_result.jsp
 	@RequestMapping(value="/emailResult", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView emailResult() {
+	public ModelAndView emailResult(@RequestParam("attEmailFileList") List<MultipartFile> mul, 
+			EmailMainVo vo) {
+		
 		ModelAndView mv = new ModelAndView();
-
+		System.out.println("도착");
+		
+	
+		List<AttEmailVo> attList = fu.upload(mul);
+		mul.isEmpty();
+		if(mul.isEmpty()) { 
+			System.out.println("테스트 : " + mul.isEmpty());
+		}
+		
+		vo.setAttFileList(attList);
+		int cnt = service.insertSendWrite(vo);
+		
+		System.out.println(vo.getEmailDate());
+		
 		mv.setViewName("email/email_result");
 
 		return mv;

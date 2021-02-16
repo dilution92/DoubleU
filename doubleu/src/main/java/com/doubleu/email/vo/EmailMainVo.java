@@ -1,20 +1,24 @@
 package com.doubleu.email.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class EmailMainVo {
-
-	private int emailNo;
-	private String emailMid;
-	private String emailAddress;
-	private String emailName;
-	private String emailTitle;
-	private Date emailDate;
-	private String emailContents;
-	private int emailMailBox;
-	private String emailFile;
-	private String emailChk;
-	private int emailDelete;
+	
+	int emailNo;
+	String emailMid;
+	String emailAddress;
+	String emailName;
+	String emailTitle;
+	Date emailDate;
+	String emailContents;
+	int emailMailBox;
+	String emailFile;
+	String emailChk;
+	int emailDelete;
+		
+	List<AttEmailVo> attFileList;
+	
 	
 	public int getEmailNo() {
 		return emailNo;
@@ -83,11 +87,20 @@ public class EmailMainVo {
 		this.emailDelete = emailDelete;
 	}
 	
+	public List<AttEmailVo> getAttFileList() {
+		return attFileList;
+	}
+	
+	public void setAttFileList(List<AttEmailVo> attFileList) {
+		this.attFileList = attFileList;
+	}
+	
 	@Override
 	public String toString() {
 		return "EmailMainVo [emailNo=" + emailNo + ", emailMid=" + emailMid + ", emailAddress=" + emailAddress
 				+ ", emailName=" + emailName + ", emailTitle=" + emailTitle + ", emailDate=" + emailDate
 				+ ", emailContents=" + emailContents + ", emailMailBox=" + emailMailBox + ", emailFile=" + emailFile
-				+ ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + "]";
+				+ ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + ", attFileList=" + attFileList + "]";
 	}
+	
 }

@@ -101,9 +101,7 @@
 						<td colspan="6">
 							<div class="e-approval-file-zone">
 								<div class="input-group mb-3">
-								  <div class="custom-file">
-								    <input type="file" class="custom-file-input" id="inputGroupFile02">
-								    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+								  <div class="custom-file" id="fileZone" >
 								  </div>
 								</div>
 							</div>
@@ -120,15 +118,12 @@
 			</main>
 			
 			<!-- 공통 -->
-			<input type="text" name="formType" value="${formType}">
-			
-			<input type="hidden" id="TempMakerPosition" value="">
-			<input type="hidden" id="TempMakerName" value="">
 		</form>
 	</div>
 <script type="text/javascript">
 funcApproval();
 createMakerBox('makersZone');
+createFile('fileZone');
 </script>
 </body>
 </html>

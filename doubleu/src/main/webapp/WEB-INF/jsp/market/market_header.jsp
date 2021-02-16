@@ -32,6 +32,7 @@
 							</select>
 							<input class="form-control form-control-sm" type="text" placeholder="상품명" aria-label="Search" id='findStr'  name='findStr' style="margin-left:5px;"> 
 							<input class="btn btn-outline-primary btn-sm" type="submit" value="검색" style="margin-left:5px;"/> 
+							<!-- hidden -->
 						</div>
 					</form>
 				</div>
