@@ -9,8 +9,8 @@ public class MarketPage {
 	int startNo;
 	int endNo;
 	int nowPage;
-	int listSize=5;
-	int blockSize=5;
+	int listSize=8;
+	int blockSize=4;
 	
 	String findStr;
 	

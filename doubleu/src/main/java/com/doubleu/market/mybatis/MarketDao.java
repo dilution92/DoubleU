@@ -46,14 +46,12 @@ public class MarketDao {
 				System.out.println(page.getNowPage());
 				System.out.println(page.getFindStr());
 
-				
+				MarketVo vo = new MarketVo();
 				
 				list = mapper.select(page);
 				map.put("page", page);
-				System.out.println("page: " + page.toString());
-				
 				map.put("list", list);
-				System.out.println("list: " + list.toString());
+				System.out.println("att : "+ map.get(list));
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -62,8 +60,22 @@ public class MarketDao {
 		}
 		
 
-		
-		
+		//검색결과갯수
+		public int selectCount() {
+			
+			int cnt = mapper.selectCount();
+			System.out.println("검색글갯수 : " + cnt);
+			
+			return cnt;
+		}
+
+		//총 게시물 갯수
+		public int totalCount() {
+			int cnt = mapper.totalCount();
+			System.out.println("총글갯수 : " + cnt);
+			
+			return cnt;
+		}
 	//게시물 insert
 	public String insert(MarketVo vo) {
 		String msg = "게시물이 저장되었습니다.";
@@ -71,7 +83,6 @@ public class MarketDao {
 			int cnt = mapper.insert(vo);
 			
 			if(cnt<1) {
-				System.out.println("dao실패");
 				throw new Exception("게시물 저장중 오류 발생");
 			}
 		} catch (Exception ex) {
@@ -81,4 +92,7 @@ public class MarketDao {
 			return msg;
 		}
 	}
+
+
+
 }
