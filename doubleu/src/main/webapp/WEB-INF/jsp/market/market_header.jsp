@@ -19,22 +19,25 @@
 				onClick="location.href='marketPriceRange'" type="button" value="시세확인" />
 				<!-- 전자결재홈 검색바 code -->
 				<div class="market-search-bar">
-					<form class="market-search-form" action="/marketSelect" name="frm_market" method="post">
+					<form class="market-search-form" action="" name="frm_market" method="post">
 						<div class="market-search-form-box" style="display:flex;">
-								<select class="form-control form-control-sm e-approval-select-box">
+								<select class="form-control form-control-sm e-approval-select-box" name="marketCategory" id="market_category">
 								<option value="">카테고리</option>
-								<option value="1">뷰티/미용</option>
-								<option value="2">식품</option>
-								<option value="3">의류</option>
-								<option value="4">전자제품</option>
-								<option value="5">도서/티켓</option>
-								<option value="6">기타 중고물품</option>
+								<option value="뷰티/미용">뷰티/미용</option>
+								<option value="식품">식품</option>
+								<option value="의류">의류</option>
+								<option value="전자제품">전자제품</option>
+								<option value="도서/티켓">도서/티켓</option>
+								<option value="기타 중고물품">기타 중고물품</option>
 							</select>
-							<input class="form-control form-control-sm" type="text" placeholder="상품명" aria-label="Search" id='findStr'  name='findStr' style="margin-left:5px;"> 
-							<input class="btn btn-outline-primary btn-sm" type="submit" value="검색" style="margin-left:5px;"/> 
+							<input class="form-control form-control-sm" type="text" placeholder="상품명" aria-label="Search" id='findStr'  value='${param.findStr}'name='findStr' style="margin-left:5px;"> 
+							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" style="margin-left:5px;"id="market_btnFind"/> 
 							<!-- hidden -->
+							<input type='hidden' name='findCate'  value=''/>
+							
 						</div>
 					</form>
 				</div>
+				<script>brd()</script>
 </body>
 </html>
