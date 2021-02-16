@@ -65,7 +65,7 @@ public class Calender {
 		int lastDay[] = {31,28,31,30,31,30,31,31,30,31,30,31};
 		if(year%400==0) {
 				lastDay[1]=29;
-			}else if(year%100!=0) {
+			}else if(year%100==0) {
 				lastDay[1]=28;
 			}else if(year%4==0) {
 				lastDay[1]=29;
