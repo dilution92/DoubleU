@@ -25,7 +25,7 @@ public class emailURLController {
 		ModelAndView mv = new ModelAndView();
 
 		
-		List<EmailMainVo> list = service.select();
+		List<EmailMainVo> list = service.selectSendRead();
 		
 		mv.addObject("list", list);
 		mv.setViewName("email/email_index");
@@ -78,9 +78,15 @@ public class emailURLController {
 
 	// email_result.jsp
 	@RequestMapping(value="/emailResult", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView emailResult() {
+	public ModelAndView emailResult(EmailMainVo vo) {
 		ModelAndView mv = new ModelAndView();
 
+		
+		int cnt = service.insertSendWrite(vo);
+		
+		System.out.println(vo.getEmailDate());
+		
+		
 		mv.setViewName("email/email_result");
 
 		return mv;

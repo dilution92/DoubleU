@@ -234,11 +234,11 @@
 							
 							
 							<div class="form-group col-sm-1">
-							 	<input type="text" class="form-control" name="sendToPerson" id="exampleFormControlInput1" value="송" placeholder="송연주">
+							 	<input type="text" class="form-control" name="emailName" id="exampleFormControlInput1" value="송" placeholder="송연주">
 							</div>
 							
 							<div class="form-group col-sm-6">
-							 	<input type="email" class="form-control" name="sendToAddress" id="exampleFormControlInput1" value="name@example.com" placeholder="name@example.com">
+							 	<input type="email" class="form-control" name="emailAddress" id="exampleFormControlInput1" value="name@example.com" placeholder="name@example.com">
 							</div>
 							<button type="button" style="margin-left: 11px; height:37px;" class="btn btn-outline-primary btn-sm" onclick="sendToTemp()" data-toggle="modal" data-target="#temporaryEmailContents">임시 저장하기</button>
 					    </div>
@@ -249,7 +249,6 @@
 							<div class="form-group col-sm-2">
 							    <label for="exampleFormControlInput1">받는 사람</label>
 							</div>
-							
 							
 						
 							<div class="form-group col-sm-7 revEmail">
@@ -288,7 +287,7 @@
 							
 							<div class="form-group col-sm-1 importSend">
 								<div class="form-check">
-								  <input class="form-check-input" type="checkbox" name="importChk" value="" id="defaultCheck1">
+								  <input class="form-check-input" type="checkbox" name="emailChk" value="" id="defaultCheck1">
 								  <label class="form-check-label" for="defaultCheck1">
 								    중요!
 								  </label>
@@ -297,25 +296,25 @@
 							</div>
 							
 							<div class="form-group col-sm-7">
-							 	<input type="email" class="form-control" name="sendToContents" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
+							 	<input type="email" class="form-control" name="emailTitle" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
 							</div>
 							
 							
 					    </div>
 			
 						<!-- 내용 -->
-						<textarea name="emailDoc" id="summernote" value=""></textarea>
+						<textarea name="emailContents" id="summernote" value=""></textarea>
 							
 						
 						
 						<!-- 파일첨부 -->
 				
 						<div class="custom-file">
-							  <input type="file" class="custom-file-input" multiple="multiple" onchange="FileChoice()" id="customFile">
+							  <input type="file" class="custom-file-input" name="attFileList" multiple="multiple" onchange="FileChoice()" id="customFile">
 							  <label class="custom-file-label" for="customFile">Choose files</label>
 							  <div class="file_list" id="fileList">
 							  	<button type="button" class="btn btn-light">첨부파일</button>
-							  <!-- 파일 첨부 시 span 태그가 생김 -->
+							  	<!-- 파일 첨부 시 span 태그가 생김 -->
 							  </div>
 						</div>
 						

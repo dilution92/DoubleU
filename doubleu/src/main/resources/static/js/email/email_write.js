@@ -13,8 +13,8 @@ function sendToEmail() {
 	
 
 	var frm =  document.frm
-	var sendToPerson = frm.sendToPerson;
-	var sendToAddress = frm.sendToAddress;
+	var sendToPerson = frm.emailName;
+	var sendToAddress = frm.emailAddress;
 	
 	if(sendToPerson.value.trim().length == 0) {
 		swal("보내는 사람을 입력해주세요.");
@@ -26,6 +26,9 @@ function sendToEmail() {
 		sendToAddress.focus();
 	}
 	
+	frm.action = '/emailResult';
+	frm.submit();
+	
 }
 
 
@@ -33,9 +36,6 @@ function sendToEmail() {
 var FileChoice = function() {
 
 	var customFile = document.getElementById('customFile')		
-	var pTag = document.getElementById('fileContents')
-	
-	
 	var arrayValue = new Array();
 	
 	for(var i = 0; i < customFile.files.length; i++) {
@@ -44,9 +44,9 @@ var FileChoice = function() {
 		
 		// 자식
 		var spanTag = document.createElement("span");
-		var Contents = document.createTextNode(arrayValue[i]);
+		var contents = document.createTextNode(arrayValue[i]);
 		
-		spanTag.appendChild(Contents)
+		spanTag.appendChild(contents)
 		
 		// 부모
 		var FileListDiv = document.getElementById('fileList');
