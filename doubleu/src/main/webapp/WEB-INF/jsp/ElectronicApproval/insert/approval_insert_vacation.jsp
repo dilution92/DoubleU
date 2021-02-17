@@ -104,17 +104,18 @@
 						<td colspan="3">
 							<input type="date" name="halfDate" id="halfDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="checkAM" checked>
+							  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오전" checked>
 							  <label class="form-check-label" for="halfTimeAM">
 							   오전
 							  </label>
 							</div>
 							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="checkBM">
+							  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오후">
 							  <label class="form-check-label" for="halfTimePM">
 							    오후
 							  </label>
 							</div>
+							<input type="text" name="halfDayType" value="">
 						</td>
 					</tr>
 					<tr>
