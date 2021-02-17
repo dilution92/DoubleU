@@ -99,8 +99,6 @@
 					<input type="hidden" name="formNo" value="">
 					<input type="hidden" name="formType" value="">
 					<input type="hidden" name="formState" value="">
-					
-					<input type="hidden" name="nowPage" value="${(empty param.nowpage)? 1 : param.Page}">
 	     		</form>
 			</div>
 		</c:if>

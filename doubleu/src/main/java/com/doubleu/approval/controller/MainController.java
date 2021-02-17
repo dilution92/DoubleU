@@ -19,10 +19,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.approval.mybatis.ApprovalDao;
+import com.doubleu.approval.service.CreateDesicionMakerService;
+import com.doubleu.approval.service.SelectChooseService;
+import com.doubleu.approval.service.SelectOutgoingService;
+import com.doubleu.approval.service.UploadService;
 import com.doubleu.approval.vo.AttFileVo;
 import com.doubleu.approval.vo.DecisionMakerVo;
 import com.doubleu.approval.vo.FormVo;
 import com.doubleu.approval.vo.IndexPage;
+import com.doubleu.approval.vo.SelectPage;
 import com.doubleu.approval.vo.FormPetitionVo;
 import com.doubleu.approval.vo.FormVacationVo;
 
@@ -30,35 +35,24 @@ import com.doubleu.approval.vo.FormVacationVo;
 public class MainController {
 	@Autowired
 	ApprovalDao service;
-	
 	@Autowired
-	UploadController uploadController;
-	
+	UploadService uploadService;
 	@Autowired
-	CreateDesicionMakerController desicionMakerController;
+	CreateDesicionMakerService desicionMakerService;
+	@Autowired
+	SelectOutgoingService outgoingService;
+	@Autowired
+	SelectChooseService chooseService;
+	
 	
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
 	public ModelAndView mainHeader(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		IndexPage page = new IndexPage();
 		String mainJob = "select/approval_select.jsp";
-		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
-		String findStr = "";
-		int nowPage = 1;
 		
-		if(req.getParameter("findStr") != null) {
-			findStr = req.getParameter("findStr");
-		}
-		if(req.getParameter("nowPage") != null) {
-			findStr = req.getParameter("nowPage");
-		}
-		
-		page.setEmployeeNo(employeeNo);
-		page.setFindStr(findStr);
-		page.setNowPage(nowPage);
-		
-		Map<String, Object> outgoingMap = service.outgoingSelect(page);
+		//발신
+		Map<String, Object> outgoingMap = outgoingService.selectOutgoing(req);
 		mv.addObject("outgoingList", outgoingMap.get("list"));
 		mv.addObject("outgoingPage", outgoingMap.get("page"));
 		
@@ -84,13 +78,12 @@ public class MainController {
 		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
 		vo.setEmployeeNo(employeeNo);
 		
-		
 		//결재권자 list 작성
-		List<DecisionMakerVo> desitionMakerList = desicionMakerController.getMakerList(req);
+		List<DecisionMakerVo> desitionMakerList = desicionMakerService.getMakerList(req);
 		vo.setMakersList(desitionMakerList);
 		
 		//첨부파일 
-		List<AttFileVo> attList = uploadController.upload(mul);
+		List<AttFileVo> attList = uploadService.upload(mul);
 		vo.setAttFileList(attList);
 		
 		//결재 양식이 공통 범위보다 많은 정보를 담아야 할 경우.
@@ -128,4 +121,59 @@ public class MainController {
 		mv.setViewName("/ElectronicApproval/approval_index");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/approvalGoList")
+	public ModelAndView goList(HttpServletRequest req) {
+		System.out.println("approvalGoList.....................(start)");
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> selectChooseMap = null;
+		String findState = req.getParameter("findState");
+		String listName = null;
+		String mainJob = "select/approval_select_formState.jsp";
+
+		switch(findState) {
+		case "(발신)상신" :
+			selectChooseMap = chooseService.selectOutgoing(req);
+			listName = "상신한 문서";
+			mv.addObject("listName", listName);
+			break;
+		case "(발신)임시저장" :
+			selectChooseMap = chooseService.selectOutgoing(req);
+			listName = "임시저장된 문서";
+			mv.addObject("listName", listName);
+			break;
+		case "(발신)승인" :
+			selectChooseMap = chooseService.selectOutgoing(req);
+			listName = "승인완료된 문서";
+			mv.addObject("listName", listName);
+			break;
+		case "(발신)반려" :
+			selectChooseMap = chooseService.selectOutgoing(req);
+			listName = "반려된 문서";
+			mv.addObject("listName", listName);
+			break;
+			
+		case "(수신)결재예정" :
+			listName = "결재할 문서";
+			mv.addObject("listName", listName);
+			break;
+		case "(수신)승인" :
+			listName = "승인한 문서";
+			mv.addObject("listName", listName);
+			break;
+		case "(수신)반려" :
+			listName = "반려한 문서";
+			mv.addObject("listName", listName);
+			break;
+		}
+		mv.addObject("mainJob", mainJob);
+		mv.addObject("findState", findState);
+		mv.addObject("list", selectChooseMap.get("list"));
+		mv.addObject("page", selectChooseMap.get("page"));
+		mv.setViewName("ElectronicApproval/approval_index");
+		System.out.println("approvalGoList.....................(end)");
+		return mv;
+	}
+	
+	
 }

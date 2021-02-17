@@ -37,7 +37,7 @@ public class ApprovalDao {
 	 * }
 	 */	
 	
-	public Map<String, Object> outgoingSelect(IndexPage page) {
+	public Map<String, Object> selectOutgoing(IndexPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		System.out.println("findStr: " + page.getFindStr());
@@ -64,17 +64,19 @@ public class ApprovalDao {
 		return map;
 	}
 	
-	public Map<String, Object> chooseSelect(SelectPage page) {
+	public Map<String, Object> selectOutgoingChoose(SelectPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		int chooseTotalListSize = mapper.chooseTotalListSize(page);
-		System.out.println("chooseTotalListSize:" + chooseTotalListSize);
 		
+		System.out.println("chooseTotalListSize:" + chooseTotalListSize);
 		page.setTotalListSize(chooseTotalListSize);
 		page.pageCompute();
-		
+		System.out.println("마지막페이지:" + page.getEndPage());
+		System.out.println("지금페이지:" + page.getNowPage());
 		List<FormVo> list = mapper.chooseSelect(page);
-		
+		map.put("list", list);
+		map.put("page", page);
 		return map;
 	}
 	

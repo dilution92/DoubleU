@@ -315,3 +315,18 @@ function goPage(page) {
 	frm.action = '/approvalIndex';
 	frm.submit();
 }
+
+function goChooseSelectPage(page) {
+	var frm =document.frmApprovalPagination
+	frm.nowChooseSelectPage.value = page;
+	
+	frm.action = "/approvalGoList";
+	frm.submit();
+}
+
+function goOutgoingPage(page) {
+	var frm = document.frmApprovalPagination;
+	frm.nowOutgoingPage.value = page;
+	frm.action= "/approvalIndex";
+	frm.submit();
+}

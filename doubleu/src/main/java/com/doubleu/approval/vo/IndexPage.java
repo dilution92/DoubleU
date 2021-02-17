@@ -31,7 +31,7 @@ public class IndexPage {
 	public IndexPage() {}
 	public IndexPage(int totListSize, int now) {
 		this.totalListSize = totListSize;
-		this.nowPage = nowPage;
+		this.nowPage = now;
 		pageCompute();
 	}
 	

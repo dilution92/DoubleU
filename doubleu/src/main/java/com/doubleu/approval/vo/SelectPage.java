@@ -26,7 +26,7 @@ public class SelectPage {
 	}
 	
 	public void pageCompute() {
-		totPage = (int) (Math.ceil(totalListSize)/(double)listSize);
+		totPage = (int) (Math.ceil(totalListSize/(double)listSize));
 		endNo = nowPage * listSize;
 		startNo = endNo - listSize + 1;
 		

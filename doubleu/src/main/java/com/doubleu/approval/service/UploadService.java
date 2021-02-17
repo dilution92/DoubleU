@@ -1,4 +1,4 @@
-package com.doubleu.approval.controller;
+package com.doubleu.approval.service;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import com.doubleu.approval.vo.AttFileVo;
 import com.doubleu.market.vo.MarketAttVo;
 
 @Service
-public class UploadController {
+public class UploadService {
 	String saveDir = "C:\\Users\\정해준\\문서\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\approval\\";
 
 
