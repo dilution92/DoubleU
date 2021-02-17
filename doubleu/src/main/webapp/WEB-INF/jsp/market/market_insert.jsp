@@ -61,7 +61,7 @@
 								<option value="뷰티/미용">뷰티/미용</option>
 								<option value="식품">식품</option>
 								<option value="의류">의류</option>
-								<option value="전자제">전자제품</option>
+								<option value="전자제품">전자제품</option>
 								<option value="도서/티켓">도서/티켓</option>
 								<option value="기타 중고물품">기타 중고물품</option>
 							</select>				    </div>
