@@ -16,12 +16,6 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 </head>
 <body>
-<%
-	Calender cal = new Calender();
-	List<Integer> list = cal.getList();
-%>
-
-
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
 		<jsp:include page="../MainPage/header.jsp"></jsp:include>
@@ -37,8 +31,8 @@
 <main id="calender_main">
     <div style="height: 50px;" id="calender_main_top_btn"> <!-- 상단 버튼 -->
         <div style="float: left; margin-left: 30px;"> <!-- 좌측 이동 & 투데이 -->
-            <input type="button" class="btn btn-primary" value="이전" >
-            <input type="button" class="btn btn-primary" value="다음">
+            <input type="button" class="btn btn-primary" onclick="location.href='/calenderMonth?diff=(-1)'" value="이전" >
+            <input type="button" class="btn btn-primary" onclick="location.href='/calenderMonth?diff=1'" value="다음">
             <input type="button" class="btn btn-primary" value="오늘">
         </div>
         <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
@@ -93,13 +87,16 @@
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
 			
-			<% for(int i=0; i<6; i++) { %>
-        	<tr height="150px;"><!-- 일주일은 묶는곳 -->
+			<c:forEach items="${list}" var="list">
+			<c:set var="i" value="${i+1 }"/>
+			<c:if test="${i%7==1 }">
+			<tr height="150px;">
+			</c:if>
 			
-			<% for(int j=0; j<7; j++){ %>
+			
 			<td id="calender_content"><!-- 월간 달력 한칸 -->
 				<div><!-- 날자가 표시 될 곳 -->
-				<%=list.get(i*6+j+i) %>
+				${list}
 				</div>
 				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
 					여기에 일정이 표시
@@ -108,9 +105,12 @@
 				
 				</div>
 			</td>
-       <%} %>
-        	</tr>
-		<%} %>
+			<c:if test="${i%7==0 }">
+			</tr>
+			</c:if>
+			
+			
+			</c:forEach>
 			</tbody>
 		</table>
 	</div>
