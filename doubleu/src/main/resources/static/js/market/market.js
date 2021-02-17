@@ -15,7 +15,17 @@ $('#market_btnFind').on('click', function() {
 		});
 }
 	
+//-----------상세보기-----------//
 	
+function view(marketNo) {
+	var frm = document.frm_market;
+	frm.marketNo.value = marketNo;
+	console.log(frm.marketNo.value);
+
+	frm.action = '/marketView';
+	frm.submit();
+
+}
 //-----------페이징 처리-----------//
 function goPage(page) {
 	var frm = document.frm_paging;

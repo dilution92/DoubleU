@@ -20,5 +20,6 @@ public interface MarketMapper {
 	public List<MarketVo> select2();
 	public int selectCount();
 	public int totalCount();
+	public MarketVo view(int marketNo);
 
 }
