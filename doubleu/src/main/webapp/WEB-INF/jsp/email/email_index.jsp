@@ -252,8 +252,8 @@
 					<tbody class="e-approval-list text-muted">
 						<c:forEach var="list" items="${list }">
 							<tr>
-								<td><input name="chkBox" class="chkBoxClass" type="checkbox"/></td>
-								<td onclick="favoritesBtn()"><i class="bi bi-star"></i></td>
+								<td><input name="chkBox" class="chkBoxClass" id="test" type="checkbox"/></td>
+								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td>${list.emailChk }</td>
 								<td>${list.emailAddress}</td>					
@@ -285,7 +285,6 @@
 		</main>
 	</section>
 	
-
 <!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -299,6 +298,9 @@
 
 selectSideBtn();
 favoritesBtn();
+readBtn();
+sidebarReadBtn();
+
 </script>
 		
 </body>
