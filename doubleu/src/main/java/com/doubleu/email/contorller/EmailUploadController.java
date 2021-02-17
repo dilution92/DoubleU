@@ -18,9 +18,9 @@ public class EmailUploadController {
 
 	public List<AttEmailVo> upload(List<MultipartFile> mul) {
 		
-		System.out.println("오니??");
 		List<AttEmailVo> attFileList = new ArrayList<>();
 		String msg ;
+		
 		try {
 	    for(MultipartFile m : mul) {
 	    	File oriFile = new File(saveDir + m.getOriginalFilename());

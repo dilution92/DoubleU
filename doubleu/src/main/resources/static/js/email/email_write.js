@@ -11,7 +11,6 @@
 
 function sendToEmail() {
 	
-
 	var frm =  document.frm
 	var sendToPerson = frm.emailName;
 	var sendToAddress = frm.emailAddress;

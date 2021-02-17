@@ -43,10 +43,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<parameter property="emailDelete" /> 
 	</parameterMap>
 	
-	<!-- select
+	
 	<select id="selectSendRead" resultMap="getEmailListSelect">
 		SELECT * FROM email ORDER BY email_date DESC
-	</select> -->
+	</select>
 	
 
 	<!-- insert -->
@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(email_main_seq.nextval, #{emailMid, jdbcType=VARCHAR}, #{emailAddress}, #{emailName}, #{emailTitle}, systimestamp, #{emailContents}, default, default, default)
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
-				INTO email_files(files_no, email_no, files_sysfile, files_orifile)
+				INTO email_files(files_no, email_no, file_sysfile, file_orifile)
 				VALUES (emailMainSeq(), email_main_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
 			</foreach>
 		</if> 
