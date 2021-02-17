@@ -121,10 +121,6 @@
 			</div>
 			</main>
 			<!-- 공통 -->
-			<input type="hidden" name="formType" value="${formType }">
-			<input type="hidden" name="drafterPosition" value="사원">
-			<input type="hidden" id="TempMakerPosition" value="">
-			<input type="hidden" id="TempMakerName" value="">
 		</form>
 	</div>
 	

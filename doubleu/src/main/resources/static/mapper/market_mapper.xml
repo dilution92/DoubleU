@@ -22,10 +22,11 @@
 	</select>
 	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
 	resultMap="marketList">
-  		select * from ( select rownum no, m.* from (
-			select * from market mk join market_files att on mk.market_no=att.market_no
-			 where market_subject like '%${findStr}%' order by mk.market_no desc ) m   
-			 ) where no between #{startNo} and #{endNo}
+  		select * from ( 
+  			select rownum no, m.* from (
+				select * from market mk join market_files att on mk.market_no=att.market_no
+				 where market_subject like '%${findStr}%' order by mk.market_no desc ) m   
+				 ) where no between #{startNo} and #{endNo}
 	</select>
 	<!-- index게시글 총 갯수 -->
 	<select id="totalCount" resultType="int">
@@ -44,7 +45,7 @@
 		<if test="attlist != null">
 			<foreach collection="attlist" item="att">
 				into market_files(files_no, market_no, files_sysfile, files_orifile)
-				values (getMarketAttSeq(), market_no.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
+				values (getMarketAttSeq(), market_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
 			</foreach>
 		</if>
 		select * from dual		

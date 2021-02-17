@@ -32,11 +32,11 @@ function funcApproval() {
 	$('#btnApprovalSave').on('click', function() {
 		frm.enctype = 'multipart/form-data';
 		
-		var decisionMakerCnt = document.getElementsByName('makerName').length - 1;
-		alert(decisionMakerCnt);
+		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
 		var makerPosition = new Array();
 		var makerName = new Array();
 		var makerOrder = new Array();
+		alert(frm.formType.value);
 		
 		for(var i = 0; i<decisionMakerCnt;i++) {
 			makerPosition[i] = $('input[name=makerPosition]').eq(i).val();
@@ -44,26 +44,22 @@ function funcApproval() {
 			makerOrder[i] = i+1;
 		}
 		frm.makerPositionArr.value = makerPosition;		
-		alert(frm.makerPositionArr.value);
 		frm.makerNameArr.value = makerName;		
 		frm.makerOrderArr.value = makerOrder;	
 		
 		var fileBoxSize =(document.getElementsByClassName('approval-file').length);
 		for(var i = 1; i<fileBoxSize ;i++) {
 			if($('input[name=approvalFile]').eq(i).val() == "") {
-				alert($('input[name=approvalFile]').eq(i).val());
 				$('input[name=approvalFile]').eq(i).remove();
 			}	
 		}
 		if(frm.formType.value == '휴가신청서') {
-			
 			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
 			if(frm.vacationType.value == '반차') {
 				frm.startDate.value = frm.halfDate.value;
 				frm.endDate.value = frm.halfDate.value;
 			}
 		}
-		
 		alert("정상적으로 등록되었습니다.")
 		frm.submit();
 	})
@@ -311,4 +307,26 @@ function calculationDate() {
 			frm.vacationCnt.value = dateDiff;
 		}
 	}
+}
+
+function goPage(page) {
+	var frm = document.frmApproval;
+	frm.nowPage.value = page;
+	frm.action = '/approvalIndex';
+	frm.submit();
+}
+
+function goChooseSelectPage(page) {
+	var frm =document.frmApprovalPagination
+	frm.nowChooseSelectPage.value = page;
+	
+	frm.action = "/approvalGoList";
+	frm.submit();
+}
+
+function goOutgoingPage(page) {
+	var frm = document.frmApprovalPagination;
+	frm.nowOutgoingPage.value = page;
+	frm.action= "/approvalIndex";
+	frm.submit();
 }

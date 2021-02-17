@@ -1,7 +1,5 @@
 package com.doubleu.market.Controller;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +34,7 @@ public class MarketUrlController {
 		mv.addObject("page", map.get("page"));
 		mv.addObject("cnt", cnt);
 		mv.setViewName("market/market_index");
-		System.out.println("list size: " + map.get("list").toString());
+		//System.out.println("list size: " + map.get("list").toString());
 		return mv;
 	}
 	

@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Calender {
 	int year;
 	int month;
 	int day;
-	List<Integer> list = new ArrayList<Integer>();
-	
-	
 	
 	public int getYear() {
 		return year;
@@ -37,14 +37,6 @@ public class Calender {
 		this.day = day;
 	}
 
-	public List<Integer> getList() {
-		return list;
-	}
-
-	public void setList(List<Integer> list) {
-		this.list = list;
-	}
-
 	public Calender() {
 		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
@@ -53,19 +45,19 @@ public class Calender {
 		month = Integer.parseInt(time1.substring(5,7));
 		day = Integer.parseInt(time1.substring(8,10));
 		
-		setCalender();
+		setMonthCalender();
 	}
 	
-	public void setCalender() {
+	public List<Integer> setMonthCalender() {
 		
-		List<Integer> list1 = new ArrayList<>();
+		List<Integer> list = new ArrayList<>();
 		
 		//2017년 1월 1일 일요일이 기준
 		String week[] = {"일","월","화","수","목","금","토"};
 		int lastDay[] = {31,28,31,30,31,30,31,31,30,31,30,31};
 		if(year%400==0) {
 				lastDay[1]=29;
-			}else if(year%100!=0) {
+			}else if(year%100==0) {
 				lastDay[1]=28;
 			}else if(year%4==0) {
 				lastDay[1]=29;
@@ -99,20 +91,44 @@ public class Calender {
 		System.out.println(lastMonthday);
 		for(int i=0; i<monthweek; i++) {
 			int startNum = lastMonthday-monthweek;
-			list1.add(startNum);
+			list.add(startNum);
 			startNum++;
 		}
 		
 		for(int i=0; i<lastDay[month-1]; i++) {
-			list1.add(i+1);
+			list.add(i+1);
 		}
 		
 		int nextMonthday = 42-(monthweek+lastDay[month-1]);
 		for(int i=0; i<nextMonthday; i++) {
-			list1.add(i+1);
+			list.add(i+1);
 		}
 		
-		setList(list1);
+		return list;
 	}
 	
+	//Month 이전,다음
+	public List<Integer> changeMonth(int diff) {
+		System.out.println("월 변경 시작");
+		if((month+diff)>12) {
+			setMonth(1);
+			setYear(year+1);
+		}else if((month+diff)==0) {
+			setMonth(12);
+			setYear(year-1);
+		}else {
+			setMonth(month+diff);
+		}
+		System.out.println(month);
+		return setMonthCalender();
+	}
+	
+	//Week 이전,다음
+	public void changeWeek(int diff) {
+	}
+	
+	//Day 이전,다음
+	public void changeDay(int diff) {
+		setDay(day+diff);
+	}	
 }

@@ -4,7 +4,7 @@ public class FormPetitionVo {
 
 	int formNo;
 	String formPurpose;
-	int budget;
+	String budget;
 	
 	public int getFormNo() {
 		return formNo;
@@ -18,12 +18,10 @@ public class FormPetitionVo {
 	public void setFormPurpose(String formPurpose) {
 		this.formPurpose = formPurpose;
 	}
-	public int getBudget() {
+	public String getBudget() {
 		return budget;
 	}
-	public void setBudget(int budget) {
+	public void setBudget(String budget) {
 		this.budget = budget;
 	}
-	
-	
 }

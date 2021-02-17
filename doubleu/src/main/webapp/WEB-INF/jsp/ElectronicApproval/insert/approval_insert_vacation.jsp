@@ -151,12 +151,6 @@
 			</div>
 			</main>
 			<!-- 공통 -->
-			<input type="hidden" name="formType" value="${formType}">
-			<input type="hidden" name="drafterPosition" value="사원">
-			<input type="hidden" id="TempMakerPosition" value="">
-			<input type="hidden" id="TempMakerName" value="">
-			<input type="hidden" name="checkedHaifTime" value="">
-			<input type="hidden" name="vacationType" value="123123123">
 		</form>
 	</div>
 <script type="text/javascript">

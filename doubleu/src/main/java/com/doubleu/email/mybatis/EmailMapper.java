@@ -12,4 +12,6 @@ import com.doubleu.email.vo.EmailMainVo;
 public interface EmailMapper {
 	public List<EmailMainVo> selectSendRead();
 	public int insertSendWrite(EmailMainVo vo);
+	
+	
 }

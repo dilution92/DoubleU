@@ -1,19 +1,32 @@
 package com.doubleu.calender.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doubleu.calender.service.Calender;
+
 @Controller
 public class CalenderURLController {
 
+	@Autowired
+	Calender calender;
+	
 	@RequestMapping(value = "/calenderMonth", method = {RequestMethod.POST, RequestMethod.GET} )
 	public ModelAndView calenderMonth() {
 		ModelAndView mv = new ModelAndView();
-
+		List<Integer> list = new ArrayList<Integer>();
+		
+		list = calender.setMonthCalender();
+		
+		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_month");
-
+		
 		return mv;
 	}
 	

@@ -90,6 +90,7 @@ public class EmailMainVo {
 	public List<AttEmailVo> getAttFileList() {
 		return attFileList;
 	}
+	
 	public void setAttFileList(List<AttEmailVo> attFileList) {
 		this.attFileList = attFileList;
 	}

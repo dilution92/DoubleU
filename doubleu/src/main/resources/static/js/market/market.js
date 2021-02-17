@@ -1,17 +1,26 @@
 /**
  * 
  */
+
+
+//-----------검색-----------//
+brd = function() {
+	
+$('#market_btnFind').on('click', function() {
+		var frm = document.frm_market;
+
+			frm.findCate.value = $('#market_category option:selected').val();
+			frm.action = '/marketSelect';
+			frm.submit();
+		});
+}
+	
+	
+//-----------페이징 처리-----------//
 function goPage(page) {
 	var frm = document.frm_paging;
-	
-	
-	var nowPage = frm.nowPage.value;
-		nowPage = 1;
-	 if(page!=null){
-		nowPage = page;
-	}
-
-	console.log(nowPage);
+	frm.nowPage.value = page;
+	console.log(frm.nowPage.value);
 	frm.action = '/marketSelect';
 	frm.submit();
 
