@@ -25,8 +25,31 @@
 			  
 			</table>
 			<div class='market-view-container'>
-				<img src="../images/market/tum.jpeg" class="rounded float-left market-img" alt="...">
-				<div class='market-view-form'>			
+				
+				<!--  <img src="../images/market/tum.jpeg" class="rounded float-left market-img" alt="...">-->
+				<div class='market-view-form' style="display:flex;">	
+					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width:250px;">
+				  <div class="carousel-inner">
+				    <div class="carousel-item active">
+				      <img src="../images/market/tum.jpeg" class="d-block w-100" alt="...">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="../images/market/tum.jpeg" class="d-block w-100" alt="...">
+				    </div>
+				    <div class="carousel-item">
+				      <img src="../images/market/tum.jpeg" class="d-block w-100" alt="...">
+				    </div>
+				  </div>
+				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Previous</span>
+				  </a>
+				  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+				    <span class="sr-only">Next</span>
+				  </a>
+				</div>				
+					<div class="form-group-container" style="width:100%; margin-left:50px;">	
 					  <div class="form-group row">
 					    <label for="inputEmail3" class="col-sm-2 col-form-label">제품명</label>
 					    <div class="col-sm-8">
@@ -48,10 +71,11 @@
 					    
 					    <div class="col-sm-6" style="display: flex;">
 					      <div class="form-control" id="inputEmail3" >23</div>
-
-					    </div>
+						</div>
+						
   							<button type="submit"  id="godibModal"class="btn btn-primary mb-2">찜하기</button>
 					  </div>
+					    </div>
 					
 				</div>
 				
