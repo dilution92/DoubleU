@@ -21,6 +21,14 @@
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_main.css">
 
+<!-- alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<!-- js -->
+<script src="js/email/email_commoms.js"></script>
+
+
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
@@ -37,19 +45,12 @@
 				<div class="e-approval-lnb-content">
 					<h3>메일</h3>
 					<div class="e-approval-form-btn">
-						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기" onclick="location.href='email_write.jsp'">
+						<input type="button" class="btn btn-primary btn-lg" value="메일쓰기" onclick="location.href='/emailWrite'">
 					</div>
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
-						<ul>
-							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
-							<li><a href="email_important.jsp">중요 메일함</a></li>
-							<li><a href="email_temporary.jsp">임시 보관함</a></li>
-							<li><a href="email_sendEmail.jsp">보낸 메일함</a></li>
-							<li><a href="email_spam.jsp">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-							<li><a href="email_trash.jsp">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
-							
-						</ul>
+						<!-- 사이드바 링크 jsp page -->
+						<jsp:include page="commomCode/emailSidebarLink.jsp"></jsp:include>
 					</div>
 					<div class="e-approval-approval-list">
 						<span class="sendmail-align">
@@ -57,10 +58,8 @@
 						<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#moveEmailContents">+</button>
 						</span>
 						
-						<ul>
-							<li><a href="email_keep_one.jsp">NOTES</a></li>
-							<li><a href="email_keep_two.jsp">보관함</a></li>
-						</ul>
+						<!-- 사이드바 링크 jsp page -->
+						<jsp:include page="commomCode/emailSideBarLinkMy.jsp"></jsp:include>
 					</div>
 				</div>
 			</nav>
@@ -146,7 +145,7 @@
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
 			      		<span>받은 메일함</span>
-				        <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
+				        <input class="btn btn-outline-primary btn-sm" onclick="" name="onname" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	
 				      	
@@ -172,8 +171,8 @@
 						   
 						    <div class="dropdown-divider"></div>
 						    <div class="searchResetBtn">
-							    <input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="검색"/>
-								<input class="btn btn-outline-primary btn-sm" onclick="chk()" name="onname" type="button" value="내용 초기화"/>
+							    <input class="btn btn-outline-primary btn-sm"  name="onname" type="button" value="검색"/>
+								<input class="btn btn-outline-primary btn-sm" name="onname" type="button" value="내용 초기화"/>
 							</div>
 						</div>
 					</div>
@@ -194,26 +193,26 @@
 				<ul class="email-select-list">
 					<li>
 						<label class="btn btn-outline-primary btn-sm">
-						<input type="checkbox"/>전체선택
+						<input type="checkbox" name="chkBox" id="chkBoxId" onclick="selectChkBox(this)"/>전체선택
 						</label>
 					</li>
                     <li>
-                     	<span class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
+                     	<span class="btn btn-outline-primary btn-sm" id="emailSpamBlockBtn"  data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
                     </li>
                     <li>
-                          <span class="btn btn-outline-primary btn-sm">답장하기</span>
+                          <span class="btn btn-outline-primary btn-sm" id="emailSendBtn">답장하기</span>
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm">삭제하기</span>
+                         <span class="btn btn-outline-primary btn-sm" id="emailDeleteBtn">삭제하기</span>
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm">전달하기</span>
+                         <span class="btn btn-outline-primary btn-sm" id="emailPassBtn">전달하기</span>
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm">읽음</span>
+                         <span class="btn btn-outline-primary btn-sm" id="emailWriteBtn">읽음</span>
                      </li>
 
                      <li>
@@ -253,8 +252,8 @@
 					<tbody class="e-approval-list text-muted">
 						<c:forEach var="list" items="${list }">
 							<tr>
-								<td><input type="checkbox"/></td>
-								<td><i class="bi bi-star"></i></td>
+								<td><input name="chkBox" class="chkBoxClass" type="checkbox"/></td>
+								<td onclick="favoritesBtn()"><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td>${list.emailChk }</td>
 								<td>${list.emailAddress}</td>					
@@ -297,22 +296,9 @@
 		crossorigin="anonymous"></script>
 <!-- ****************************** -->
 <script>
-	
-	chk = function() {
-		console.log('하이')
-		var arr = ['zero', 'one', 'tow']; 
-		
-		let btn = document.getElementById('testType')
-		btn.value = arr
-		console.log(btn.value)
-		
-		/*
-		document.frm.action = "test.jsp";
-		document.frm.submit();	*/
-	}
-	
-	
-	
+
+selectSideBtn();
+favoritesBtn();
 </script>
 		
 </body>

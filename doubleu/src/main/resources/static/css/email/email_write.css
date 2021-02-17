@@ -624,10 +624,11 @@ body {
 	background-color: #fff;
 	color:#007bff;
 	border:1px solid #007bff;
+	
 }
 
 .swal-button:not([disabled]):hover {
-	background-color: #0069d9;
+	background-color: #007bff;
 	color:#fff;
 	border: none;
 
@@ -636,8 +637,10 @@ body {
 .swal-button:focus {
 	box-shadow: 0 0 0 0;
 }
+
 .swal-text {
 	font-size: 20px;
+	color:black;
 }
 
 /* 파일첨부 다중 css*/

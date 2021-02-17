@@ -28,6 +28,7 @@ public class emailURLController {
 	
 	
 	// email_index.jsp
+	
 	@RequestMapping(value="/emailIndex", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailIndex(EmailMainVo vo) {
 		
