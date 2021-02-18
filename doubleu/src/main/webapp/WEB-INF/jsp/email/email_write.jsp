@@ -265,7 +265,8 @@
 							<button type="button" style="margin-left: 11px; height: 37px;"
 								class="btn btn-outline-primary btn-sm" onclick="sendToTemp()"
 								data-toggle="modal" data-target="#temporaryEmailContents">임시
-								저장하기</button>
+								저장하기
+							</button>
 						</div>
 
 						<div class="emailSendContentsRev">
@@ -275,10 +276,11 @@
 								<label for="exampleFormControlInput1">받는 사람</label>
 							</div>
 
-
+							
 							<div class="form-group col-sm-7 revEmail">
-								<c:forEach begin="0" end="20">
-									<input type="text" readonly class="form-control col-sm-3"
+								<c:forEach begin="0" end="1">
+								<!-- 받는 사람 input -->
+									<input type="text" name="emailReceiverAddress" value="song1234567@gmail.com" readonly class="form-control col-sm-3"
 										id="exampleFormControlInput1"
 										placeholder="song1234567@gmail.com">
 								</c:forEach>
@@ -299,11 +301,13 @@
 								<label for="exampleFormControlInput1">참조</label>
 							</div>
 
-
+							
 							<div class="form-group col-sm-7 revRef">
-								<c:forEach begin="0" end="10">
-									<input type="email" readonly class="form-control col-sm-3"
+								<c:forEach begin="0" end="3">
+									<!-- 참조input -->
+									<input type="email" readonly name="emailReceiverRef" class="form-control col-sm-3"
 										id="exampleFormControlInput1"
+										value="name1234ho@example.com"
 										placeholder="name1234ho@example.com">
 								</c:forEach>
 							</div>
@@ -369,13 +373,8 @@
 
 	<script>
 		/* js */
-
 		summernote(); // text 에디터 함수
 
-		/* jQuery */
-		$(document).ready(function() {
-
-		});
 	</script>
 
 </body>

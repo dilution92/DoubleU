@@ -224,7 +224,7 @@ body {
 
 .emailSendContentsRev > .revEmail{
 	border: 1px solid #E5E5E5;
-	max-height: 100px;
+	height: 100px;
 	padding: 5px;
 	margin: 0 auto;
 	overflow: scroll;
@@ -287,12 +287,11 @@ body {
 	
 .emailSendContentsRef > .revRef{
 	border: 1px solid #E5E5E5;
+	height: 100px;
 	padding: 5px;
 	margin: 0 auto;
 	overflow: scroll;
 	overflow-x:hidden;
-	max-height: 100px;
-	
 }
 
 /* 참조 스크롤 바 */

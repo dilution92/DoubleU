@@ -21,12 +21,14 @@
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_main.css">
 
+<!-- js -->
+<script src="js/email/email_commoms.js"></script>
+
 <!-- alert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<!-- js -->
-<script src="js/email/email_commoms.js"></script>
+
 
 
 </head>
@@ -212,7 +214,7 @@
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm" id="emailWriteBtn">읽음</span>
+                         <span class="btn btn-outline-primary btn-sm" id="emailReadBtn">읽음</span>
                      </li>
 
                      <li>
@@ -252,7 +254,7 @@
 					<tbody class="e-approval-list text-muted">
 						<c:forEach var="list" items="${list }">
 							<tr>
-								<td><input name="chkBox" class="chkBoxClass" id="test" type="checkbox"/></td>
+								<td><input name="chkBox" class="chkBoxClass" type="checkbox"/></td>
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td>${list.emailChk }</td>
@@ -302,6 +304,5 @@ readBtn();
 sidebarReadBtn();
 
 </script>
-		
 </body>
 </html>

@@ -61,7 +61,7 @@ var selectSideBtn = function() {
 	     });
 	
 	// 읽음
-	$("#emailWriteBtn").click( function(){ 
+	$("#emailReadBtn").click( function(){ 
 	            if($(".chkBoxClass").is(":checked") == false){
 	                swal("메일을 선택해주세요.")
 	                return false;
@@ -90,10 +90,9 @@ var readBtn = function() {
 
 // 5. 읽음 버튼을 눌렀을 때 아이콘 변경 (전체 클릭되는 문제...)
 
-
 var sidebarReadBtn= function(){
 	
-	$("#emailWriteBtn").click( function(){ 
+	$("#emailReadBtn").click( function(){ 
 		$('input:checkbox[name=chkBox]:checked').each(function() {
 			
 			var test = $('input:checkbox[name=chkBox]:checked');
@@ -105,8 +104,4 @@ var sidebarReadBtn= function(){
      });
 	
 }
-
-
-
-
 

@@ -52,14 +52,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- insert -->
 	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
 		INSERT ALL
-		INTO email(email_no, email_mid, email_address, email_name, email_title, email_date, email_contents, email_mailbox, email_chk, email_delete) 
+		INTO email(
+		email_no, 
+		email_mid,
+		email_address, 
+		email_name, 
+		email_title, 
+		email_date, 
+		email_contents, 
+		email_mailbox, 
+		email_chk, email_delete) 
 		VALUES(email_main_seq.nextval, #{emailMid, jdbcType=VARCHAR}, #{emailAddress}, #{emailName}, #{emailTitle}, systimestamp, #{emailContents}, default, default, default)
+
+		
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO email_files(files_no, email_no, file_sysfile, file_orifile)
-				VALUES (emailMainSeq(), email_main_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
+				VALUES (
+				emailMainSeq(), 
+				email_main_seq.currval, 
+				#{att.sysFile, jdbcType=VARCHAR}, 
+				#{att.oriFile})
 			</foreach>
 		</if> 
+		
+		<if test="emailRevList != null">
+			<foreach collection="emailRevList" item="rev">
+				INTO email_receiver (
+					    email_rev_no,
+					    email_no,
+					    email_rev_address)
+				VALUES(emailMainSeq(), email_main_seq.currval, #{rev.emailReceiverAddress})
+				<!-- VALUES(emailMainSeq(), email_main_seq.currval, #{emailReceiverName}, #{emailReceiverAddress}, #{emailReceiverDept}, #{emailReceiverRef}, #{emailMid}) -->
+			</foreach>
+		</if>
 		SELECT * FROM dual
 	</insert>
 	
