@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class Calender {
 	int year;
 	int month;
@@ -81,18 +82,19 @@ public class Calender {
 		// 화면단에 뿌려질 날짜리스트
 		//첫번째 일요일 날짜부터 차례대로 입력한다.
 		//da의 수만큼 이전 달의 날짜를 입력한다.
-		int lastmonth = month-2; // 이전달 구하기
-		if((month-2)<0) {
-			lastmonth = 12-month-2;
+		int lastmonth = month-2; // 이전달 구하기 lastmonth는 이전달 index 값
+		if((month-1)==0) {
+			lastmonth = 11;
 		}else {
 			lastmonth = month-2;
 		}
 		int lastMonthday = lastDay[lastmonth]; // 이전달 마지막 일 구하기
 		System.out.println(lastMonthday);
+		
 		for(int i=0; i<monthweek; i++) {
-			int startNum = lastMonthday-monthweek;
+			int startNum = lastMonthday-monthweek+1;
+			startNum = startNum+i;
 			list.add(startNum);
-			startNum++;
 		}
 		
 		for(int i=0; i<lastDay[month-1]; i++) {
@@ -120,6 +122,28 @@ public class Calender {
 			setMonth(month+diff);
 		}
 		System.out.println(month);
+		return setMonthCalender();
+	}
+	
+	//Month오늘
+	public List<Integer> changeMonthToday() {
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		year = Integer.parseInt(time1.substring(0,4));
+		month = Integer.parseInt(time1.substring(5,7));
+		day = Integer.parseInt(time1.substring(8,10));
+		
+		return setMonthCalender();
+	}
+	
+	public List<Integer> selectChangeMonth(int changedMonth) {
+		setMonth(changedMonth);
+		return setMonthCalender();
+	}
+	
+	public List<Integer> selectChangeYear(int changedYear) {
+		setYear(changedYear);
 		return setMonthCalender();
 	}
 	

@@ -31,13 +31,14 @@
 <main id="calender_main">
     <div style="height: 50px;" id="calender_main_top_btn"> <!-- 상단 버튼 -->
         <div style="float: left; margin-left: 30px;"> <!-- 좌측 이동 & 투데이 -->
-            <input type="button" class="btn btn-primary" onclick="location.href='/calenderMonth?diff=(-1)'" value="이전" >
-            <input type="button" class="btn btn-primary" onclick="location.href='/calenderMonth?diff=1'" value="다음">
-            <input type="button" class="btn btn-primary" value="오늘">
+            <input type="button" class="btn btn-primary" onclick="location.href='/CalenderMonthDiff?diff=-1'" value="이전" >
+            <input type="button" class="btn btn-primary" onclick="location.href='/CalenderMonthDiff?diff=1'" value="다음">
+            <input type="button" class="btn btn-primary" onclick="location.href='/CalenderMonthToday'" value="오늘">
         </div>
         <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
-            <input type="number" id="year" value="2021" class="form-control">
-            <select id="month" class="form-control">
+            <input type="number" id="year" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
+            <input type="hidden" id="monthcome" value="${currentMonth }">
+            <select id="month" class="form-control" style="width:100px; display:initial;">
             	<option value="1">1월</option>
             	<option value="2">2월</option>
             	<option value="3">3월</option>
@@ -127,7 +128,48 @@ $(function(){
     $(".calender_modal").click(function(){
         $('#Calender_detail_modal').modal();
     })
+    
+   
+    $("#month").change(function(){
+    	var changedMonth = parseInt($('#month').val());
+    	console.log(month+"셀렉박스 월 값");
+    	var url = "/SelectChangedMonth?changedMonth="+changedMonth;
+    	location.href=url;
+    })
+    
+    $("#year").change(function(){
+    	var changedyear = parseInt($('#year').val());
+    	console.log(changedyear+"셀렉박스 년 값");
+    	var url = "/SelectChangedYear?changedYaer="+changedyear;
+    	location.href=url;
+    })
+    
 })
+
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	console.log(month);
+	 $("#month").val(month).attr("selected","selected");
+})
+
+
+
+/* function changeMonth(){
+	
+	var month = $("#month").val();
+	
+	$.ajax({
+	    type : "POST",
+	    url : "/CalenderChangeMonth", 
+	    data : month : month ,
+	    error : function(error) {
+	    	console.log("error");
+	    },
+	    success : function(data) {
+		console.log("success");
+	    }
+	});
+} */
 </script>
 
 
