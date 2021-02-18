@@ -17,7 +17,7 @@ Final-Project
 |　|Eclipse EE, Spring Tool Suite|back-end 공통|
 |　|Oracle SQL Developer |공통|
 |Framework|ajax|공통|
-|　|spring|공통|
+|　|spring boot|공통|
 |　|mybatis|공통
 |　|bootstrap|front-end
 |Library|jQuery, OJDBC, COS, JSTL|CRUD|

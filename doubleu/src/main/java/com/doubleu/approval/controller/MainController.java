@@ -22,6 +22,7 @@ import com.doubleu.approval.mybatis.ApprovalDao;
 import com.doubleu.approval.service.CreateDesicionMakerService;
 import com.doubleu.approval.service.SelectChooseService;
 import com.doubleu.approval.service.SelectOutgoingService;
+import com.doubleu.approval.service.SelectViewService;
 import com.doubleu.approval.service.UploadService;
 import com.doubleu.approval.vo.AttFileVo;
 import com.doubleu.approval.vo.DecisionMakerVo;
@@ -43,7 +44,8 @@ public class MainController {
 	SelectOutgoingService outgoingService;
 	@Autowired
 	SelectChooseService chooseService;
-	
+	@Autowired
+	SelectViewService viewService;
 	
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
@@ -80,7 +82,7 @@ public class MainController {
 		
 		//결재권자 list 작성
 		List<DecisionMakerVo> desitionMakerList = desicionMakerService.getMakerList(req);
-		vo.setMakersList(desitionMakerList);
+		vo.setDecisionMakersList(desitionMakerList);
 		
 		//첨부파일 
 		List<AttFileVo> attList = uploadService.upload(mul);
@@ -99,7 +101,7 @@ public class MainController {
 		
 		System.out.println(msg);
 		System.out.println("/approvalInsertR.......................(end)");
-		mv.setViewName("/ElectronicApproval/approval_index");
+		mv.setViewName("redirect:/approvalIndex");
 		//  클라언트 요청 컨트롤 > 서비스 > 다오 > 마이바티스 > 다오로 반환 > 서비스 반환 > 컨트롤로 리턴 > 뷰로 리턴 
 		return mv; 
 	}
@@ -174,6 +176,57 @@ public class MainController {
 		System.out.println("approvalGoList.....................(end)");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/approvalSelectView")
+	public ModelAndView goView(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		
+		int formNo = Integer.parseInt(req.getParameter("formNo"));
+		String formType = req.getParameter("formType");
+		String mainJob = null;
+
+		FormVo vo = viewService.select(req);
+		
+		switch(formType) {
+		case "업무기안" : 
+			mainJob = "view/approval_view_work.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		
+		case "업무협조" : 
+			mainJob = "view/approval_view_work.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		case "품의서" : 
+			mainJob = "view/approval_view_petition.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		case "구매품의서" : 
+			mainJob = "view/approval_view_purchasePetition.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		case "사유서" : 
+			mainJob = "view/approval_view_explanatory.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		case "휴가신청서" : 
+			mainJob = "view/approval_view_vacation.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		case "지각/결근사유서" : 
+			mainJob = "view/approval_view_explanatory.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		case "지출결의서" : 
+			mainJob = "view/approval_view_purchasePetition.jsp";
+			mv.addObject("mainJob", mainJob);
+			break;
+		}
+		mv.addObject("vo", vo);
+		mv.setViewName("/ElectronicApproval/approval_index");
+		return mv;
+	}
+	
 	
 	
 }

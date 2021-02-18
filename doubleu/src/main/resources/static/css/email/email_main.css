@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
+
 body {
 	height: 100%;
+
 }
 
 .main-gnb-content {
@@ -422,3 +424,34 @@ body {
 .searchResetBtn > input {
 	margin: 0px 35px;
 }
+
+/* alert */
+.swal-button {
+	background-color: #fff;
+	color:#007bff;
+	border:1px solid #007bff;
+}
+
+.swal-button:not([disabled]):hover {
+	background-color: #007bff;
+	color:#fff;
+	border: none;
+
+}
+
+.swal-button:focus {
+	box-shadow: 0 0 0 0;
+}
+.swal-text {
+	font-size: 20px;
+	color:black;
+}
+
+
+/* 즐겨찾기 */
+
+.bi-star-color {
+	background-color: yellow;
+	border-radius: 15px;
+}
+

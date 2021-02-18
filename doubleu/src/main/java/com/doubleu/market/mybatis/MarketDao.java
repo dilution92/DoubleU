@@ -1,5 +1,6 @@
 package com.doubleu.market.mybatis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.doubleu.market.vo.MarketAttVo;
 import com.doubleu.market.vo.MarketPage;
 import com.doubleu.market.vo.MarketVo;
 
@@ -90,6 +92,21 @@ public class MarketDao {
 			//delFile(vo.getAttList());
 		} finally {
 			return msg;
+		}
+	}
+
+
+	public MarketVo view(int marketNo) {
+		MarketVo vo = new MarketVo();
+		List<MarketAttVo> attList = new ArrayList<>();
+		try {
+			vo = mapper.view(marketNo);
+			attList = mapper.selectAtt(marketNo);
+			vo.setAttlist(attList);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			return vo;
 		}
 	}
 

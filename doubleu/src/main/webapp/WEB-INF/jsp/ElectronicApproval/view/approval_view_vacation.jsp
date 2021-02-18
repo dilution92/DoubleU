@@ -23,30 +23,13 @@
 	
 	<div class="e-approval-form-container">
 		<form action="">
-			<div class="e-approval-work-btns">
-				<div class="e-approval-work-form-choose">
-					</a><select class="form-control form-control-sm e-approval-work-form-change">
-						<option selected> 결재 양식 유형 </option>
-						<option value="업무일반"> 업무 기안 </option>
-						<option value="업무협조"> 업무 협조 </option>
-						<option value="휴가신청"> 휴가신청서 </option>
-						<option value="지각불참"> 지각/불참사유서 </option>
-						<option value="지출결의서"> 지출 결의서 </option>
-						<option value="업무일반"> 품의서 </option>
-						<option value="업무일반"> 품의서 </option>
-					</select>
-					<input type="button" class="btn btn-outline-primary btn-sm" value="변경">
-				</div>
-				<div class="e-approval-work-form-btns">
-					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
-				</div>
-			</div>
+		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/view/approval_view_btns.jsp"></jsp:include>
 		<hr style="margin-right: -3em; margin-left: -3em;">
 		
 		<main>
 			<div class="e-approval-form-workType-container">
 				<div class="e-approval-form-workType-title">
-					<h4 style="font-weight: bold"><%= formName %></h4>
+					<h4 style="font-weight: bold">${vo.formType}</h4>
 				</div>
 				
 				<div class="e-approval-form-workType-top">
@@ -54,84 +37,100 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> 정해준 </td>
+									<td> ${vo.drafterName} </td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td>기획부 </td>
+									<td>${vo.drafterDepartment } </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
-									<td><%= format.format(nowTime) %></td>
+									<td>${vo.formDate }</td>
 								</tr>
 								<tr>
 									<th>문서번호</th>
-									<td>  </td>
+									<td>${vo.formNo }</td>
 								</tr>
 						</table>
 					</div>
-					<div class="e-approval-form-approval-box">
-						<div class="e-approval-form-approval-box-1 table-bordered">
+					<div class="e-approval-form-decision-box">
+						<div class="e-approval-form-decision-box-1 table-bordered">
 							<p style="margin: 0;"> 결재란 </p>
 						</div>
-						<c:forEach begin="1" end="3">						
-							<table class="table table-sm table-bordered e-approval-form-approval-box-2">
-									<tr>
-										<td height="20px;"style="padding-top: 0; padding-bottom: 0;"> 직급 </td>
-									</tr>
-									<tr>
-										<td height="80px;" style="padding: 0; line-height: 80px"> <a href="#" style="font-weight: bold;">직원 조회</a> </td>
-									</tr>
-									<tr>
-										<td height="20px;" style="padding-top: 0; padding-bottom: 0;" > 결재 대기 </td>
-									</tr>
+						<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
+							<c:forEach var="makerVo" items="${vo.decisionMakersList }">
+							<table class="table table-sm table-bordered e-approval-form-decision-box-2 makerBox" id="makerBox">
+								<tr>
+									<td id="makerPositionContent">
+										<input name="makerPosition" id="makerContent" value="${makerVo.makerPosition }" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td height="80px;" width="80px;" style="padding-top: 28px;">
+										<c:choose>
+											<c:when test="${makerVo.decisionState == '1' }">
+												<h6><span class="badge badge-pill badge-primary">결재승인</span></h6>
+											</c:when>
+											<c:when test="${makerVo.decisionState == '0' }">
+												<h6><span class="badge badge-pill badge-dark">결재대기</span></h6>
+											</c:when>
+											<c:when test="${makerVo.decisionState == '2' }">
+												<h6><span class="badge badge-pill badge-primary">결재반려</span></h6>
+											</c:when>
+										</c:choose>
+									</td>
+								</tr>
+								<tr>
+									<td id="makerNameContent" height="16.5px">
+										<input name="makerName" id="makerContent" value="${makerVo.makerName }" readonly="readonly">
+									</td>
+								</tr>
 							</table>
-						</c:forEach>
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
 					 <th> 휴가 종류 </th>
 					 <td colspan="3"> 
-					 	<select class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
-					 		<option value="연차"> 연차 </option>
-					 		<option value="연차"> 월차 </option>
-					 		<option value="연차"> 반차 </option>
-					 	</select>
+						<input type="text" value="${vo.formVacationVo.vacationType }" class="form-control form-control-sm approval-select-view" readonly="readonly" >
 					 </td>
 					</tr>
 					<tr>
 						<th> 기간 및 일시 </th>
-						<td>
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="startDay" >
-						~
-						<input type="date" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;" name="endDay" >
-						</td>
+						<c:choose>
+							<c:when test="${vo.formVacationVo.vacationType == '반차' }">
+								<td>
+								<input type="text" value="${vo.formVacationVo.startDate}" class="form-control form-control-sm approval-select-view" style="display: inline-block; width: 150px;" readonly="readonly" >
+								</td>
+							</c:when>
+							<c:otherwise>
+								<td>
+								<input type="text" value="${vo.formVacationVo.startDate}" class="form-control form-control-sm approval-select-view" style="display: inline-block; width: 150px;" readonly="readonly" >
+								~
+								<input type="text" value="${vo.formVacationVo.endDate}" class="form-control form-control-sm approval-select-view" style="display: inline-block; width: 150px;" readonly="readonly">
+								</td>
+							</c:otherwise>
+						</c:choose>
 						<th> 일 수 </th>
-						<td> <input type="text" class="form-control form-control-sm" style="width: 50px; font-size: 1em; border: none; margin: 0 auto; " name="vacationCnt" value="총 1일"> </td>
+						<td> <input type="text" class="form-control form-control-sm approval-select-view" style="width: 30px; font-size: 1em; margin: 0 auto; display: inline-block; border: none; text-align: right; padding: 0;" readonly="readonly" value="${vo.formVacationVo.vacationCnt }">  <span>일</span>  </td>
 					</tr>
-					<tr>
-						<th> 반차 여부 </th>
-						<td colspan="3">
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimeAM" value="checkAM" checked>
-							  <label class="form-check-label" for="halfTimeAM">
-							   오전
-							  </label>
-							</div>
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeCheck" id="halfTimePM" value="checkBM">
-							  <label class="form-check-label" for="halfTimePM">
-							    오후
-							  </label>
-							</div>
-						</td>
-					</tr>
+					<c:choose>
+						<c:when test="${vo.formVacationVo.vacationType == '반차' }">
+							<tr>
+								<th> 오전/오후 </th>
+								<td colspan="3">
+									<input type="text" value="${vo.formVacationVo.halfDayType}" class="form-control form-control-sm approval-select-view" style="display: inline-block; width: 150px;" readonly="readonly">
+								</td>
+							</tr>
+						</c:when>
+					</c:choose>
 					
 					<tr>
 						<th style="line-height: 200px; padding: 0;"> 사유 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" style="height: 100%; overflow: auto ;" ></textarea>
+							<textarea class="form-control" style="font-size:1em; height: 100%; overflow: auto ; background-color: #ffffff" readonly="readonly">${vo.formDoc }</textarea>
 						</td>
 					</tr>		
 					<tr>
@@ -154,14 +153,11 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<input type="submit" class="btn btn-outline-primary btn-sm" value="상신요청">
-					<input type="button" class="btn btn-outline-primary btn-sm" value="임시저장">
 					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
 				</div>
 			</div>
 			</main>
 		</form>
 	</div>
-
 </body>
 </html>

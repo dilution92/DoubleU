@@ -34,6 +34,7 @@
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" style="margin-left:5px;"id="market_btnFind"/> 
 							<!-- hidden -->
 							<input type='hidden' name='findCate'  value=''/>
+							<input type='hidden' name='marketNo'  value=''/>
 							
 						</div>
 					</form>

@@ -41,15 +41,8 @@
 					</div>
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
-						<ul>
-							<li><a href="email_index.jsp">받은 메일함</a><span class="badge badge-pill badge-ligh">1566</span></li>
-							<li><a href="email_important.jsp">중요 메일함</a></li>
-							<li><a href="email_temporary.jsp">임시 보관함</a></li>
-							<li><a href="email_sendEmail.jsp">보낸 메일함</a></li>
-							<li><a href="email_spam.jsp">스팸 메일함</a> <button type="button" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-							<li><a href="email_trash.jsp">휴지통</a> <button type="button" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
-							
-						</ul>
+					<!-- 사이드바 링크 jsp page -->
+					<jsp:include page="commomCode/emailSidebarLink.jsp"></jsp:include>
 					</div>
 					<div class="e-approval-approval-list">
 						<span class="sendmail-align">
@@ -57,10 +50,8 @@
 						<button type="button" style="font-size: 5px; line-height: 13px;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#moveEmailContents">+</button>
 						</span>
 						
-						<ul>
-							<li><a href="email_keep_one.jsp">NOTES</a></li>
-							<li><a href="email_keep_two.jsp">보관함</a></li>
-						</ul>
+					<!-- 사이드바 링크 jsp page -->
+					<jsp:include page="commomCode/emailSideBarLinkMy.jsp"></jsp:include>
 					</div>
 				</div>
 			</nav>

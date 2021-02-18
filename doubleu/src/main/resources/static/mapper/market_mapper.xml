@@ -5,7 +5,9 @@
 	
 <mapper namespace="com.doubleu.market.mybatis.MarketMapper">
 	
-	
+	<select id="view" resultType="com.doubleu.market.vo.MarketVo" parameterType="int" resultMap="marketList">
+		select * from market where market_no = #{_parameter}
+	</select>
 <!-- select -->	
 	<select id="selectAtt" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo" parameterType="int">
 		select * from market_files where market_no = #{_parameter}
@@ -77,7 +79,7 @@
 	</resultMap>
 	
 	<resultMap type="com.doubleu.market.vo.MarketAttVo" id="attList">
-		<result property="fileNo" column="files_no"/>
+		<result property="filesNo" column="files_no"/>
 		<result property="MarketNo" column="market_no"/>
 		<result property="sysFile" column="files_sysfile"/>
 		<result property="oriFile" column="files_orifile"/>

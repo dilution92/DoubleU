@@ -94,7 +94,7 @@
 					<tr>
 						<th style="line-height: 400px; padding: 0;"> 상세 내용 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" name="formDoc" style="height: 100%; overflow: auto;" ></textarea>
+							<textarea class="form-control" name="formDoc" style=" font-size:1em; height: 100%; overflow: auto;" ></textarea>
 						</td>
 					</tr>		
 					<tr>
