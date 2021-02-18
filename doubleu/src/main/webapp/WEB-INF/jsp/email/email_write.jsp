@@ -359,9 +359,9 @@
 
 						<!-- 버튼 -->
 						<div class="send-and-cancel">
-							<button type="button" class="btn btn-primary btn-lg"
+							<button type="button" class="btn btn-primary btn-sm"
 								onclick="sendToEmail()">보내기</button>
-							<button type="button" class="btn btn-primary btn-lg">취소하기</button>
+							<button type="button" class="btn btn-primary btn-sm">취소하기</button>
 						</div>
 					</div>
 

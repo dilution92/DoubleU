@@ -40,7 +40,9 @@ public class EmailMainController {
 	
 	
 	//email_index.jsp	
-	@RequestMapping(value="/emailIndex", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/emailIndex", 
+			method={RequestMethod.GET, RequestMethod.POST})
+	
 	public ModelAndView emailIndex(EmailMainVo vo) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -57,7 +59,9 @@ public class EmailMainController {
 	
 	
 	// email_result.jsp
-	@RequestMapping(value="/emailResult", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/emailResult", 
+			method={RequestMethod.GET, RequestMethod.POST})
+	
 	public ModelAndView emailResult(
 			@RequestParam("attEmailFileList") 
 			List<MultipartFile> mul,
@@ -70,12 +74,15 @@ public class EmailMainController {
 		List<EmailReceiverVo> emailRevList = emailReveiverService.insertRev(req);
 		vo.setEmailRevList(emailRevList);
 		
+
 		// 파일 업로드 
 		List<AttEmailVo> attFileList = FileUpLoadService.upload(mul);
 		vo.setAttFileList(attFileList);
 		
+		System.out.println("DaoService.insertSendWrite(vo) 실행 전");
 		int cnt = DaoService.insertSendWrite(vo);
 		
+		mv.addObject("EmailMainVo", vo);
 		mv.setViewName("email/email_result");
 
 		return mv;

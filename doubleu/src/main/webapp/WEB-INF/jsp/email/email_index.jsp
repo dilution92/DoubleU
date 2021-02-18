@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/css/email/email_main.css">
 
 <!-- js -->
-<script src="js/email/email_commoms.js"></script>
+<script src="js/email/email_commons.js"></script>
 
 <!-- alert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

@@ -81,8 +81,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				INTO email_receiver (
 					    email_rev_no,
 					    email_no,
-					    email_rev_address)
-				VALUES(emailMainSeq(), email_main_seq.currval, #{rev.emailReceiverAddress})
+					    email_rev_address,
+					    email_ref)
+				VALUES(
+				emailMainSeq(), 
+				email_main_seq.currval, 
+				#{rev.emailReceiverAddress}, 
+				#{rev.emailReceiverRef})
+				
 				<!-- VALUES(emailMainSeq(), email_main_seq.currval, #{emailReceiverName}, #{emailReceiverAddress}, #{emailReceiverDept}, #{emailReceiverRef}, #{emailMid}) -->
 			</foreach>
 		</if>

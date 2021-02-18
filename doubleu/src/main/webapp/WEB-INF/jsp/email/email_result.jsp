@@ -21,6 +21,9 @@
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_result.css">
 
+<!-- js -->
+<script src="js/email/email_commons.js"></script>
+
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
@@ -87,17 +90,17 @@
 				  <div class="form-group row">
 				    <label for="staticEmail" class="col-sm-2 col-form-label">보낸 사람</label>
 				    <div class="col-sm-10">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="${EmailMainVo.emailName }">
 				    </div>
 				  
 				  	<label for="staticEmail" class="col-sm-2 col-form-label">제목</label>
 				    <div class="col-sm-10">
-				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="안녕하세요오우!!! 세이호우">
+				      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="${EmailMainVo.emailTitle }">
 				    </div>
 				  </div>
 				  
 		 		 <div class="form-group btnAlign">
-				    <button type="submit" class="btn btn-primary result-check-Btn">확인</button>
+				    <button type="button" id="goRevMailBtn" class="btn btn-primary result-check-Btn">확인</button>
 				    <button type="submit" class="btn btn-primary result-check-Btn">메일보기</button>
 				  </div>
 				</form>
@@ -122,22 +125,8 @@
 		crossorigin="anonymous"></script>
 <!-- ****************************** -->
 <script>
-	
-	chk = function() {
-		console.log('하이')
-		var arr = ['zero', 'one', 'tow']; 
-		
-		let btn = document.getElementById('testType')
-		btn.value = arr
-		console.log(btn.value)
-		
-		/*
-		document.frm.action = "test.jsp";
-		document.frm.submit();	*/
-	}
-	
-	
+goRevMainBtn();
 </script>
-		
+
 </body>
 </html>

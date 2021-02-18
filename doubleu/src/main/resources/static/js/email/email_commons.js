@@ -7,7 +7,12 @@
 	2. 항목을 눌렀을 때 체크박스가 클릭 되지 않았다면 alert창 띄우기
 	3. 메일 읽을 때 ☆ -> ★ 로 변경되기
 	4. 메일 편지 모양을 누르면 열림 표시로 변경
-	5. 체크박스를 클릭하고 읽음을 눌렀을 때 아이콘 변경
+	5. 체크박스를 클릭하고 읽음을 눌렀을 때 아이콘 변경(미완성)
+	   - 전체적으로 바뀌는 것들이 문제
+
+	추가 : 21.02.18
+	6. 메일쓰기 백엔드 작업
+	 - 메일 쓰고 result.jsp 확인 버튼 눌렀을 때 function() 추가;
  */
 
 
@@ -104,4 +109,30 @@ var sidebarReadBtn= function(){
      });
 	
 }
+
+
+
+// 6. result.jsp 확인 function()
+var goRevMainBtn = function() {
+		var goRevMailBtn = document.querySelector('#goRevMailBtn');
+		var goBtnHandler = function() {
+		location.href = "/emailIndex";
+	}
+	
+	goRevMailBtn.addEventListener('click', goBtnHandler);
+}
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
