@@ -13,9 +13,7 @@
 	<c:forEach var='vo' items='${list }'>
 					<div class="col mb-4">
 						<div class="card"  onclick="view(${vo.marketNo})">
-							<c:forEach items="${vo.attlist }" var="att">
-							<img src='images/market/${att.oriFile }'class="card-img-top" alt="...">
-							</c:forEach> 
+							<img src='images/market/${vo.attlist[0].oriFile}'class="card-img-top" alt="...">
 						
 							<!--  <img src='images/market/test.png'class="card-img-top" alt="...">-->
 							
