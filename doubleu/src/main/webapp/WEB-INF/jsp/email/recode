@@ -18,4 +18,6 @@
 	- 보내기, 취소하기 lg -> sm 버튼으로 변경
 	 - 나머지 파일도 lg-> sm으로 변경해야 함
 
+	commomCode -> commonsCode
+	폴더명 수정
 

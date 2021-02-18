@@ -13,7 +13,7 @@ import com.doubleu.email.vo.AttEmailVo;
 
 @Service
 public class EmailUploadService {
-	String saveDir = "C:\\Users\\user\\Desktop\\git\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\email";
+	String saveDir = "C:\\Users\\user\\Desktop\\git\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\email\\";
 
 
 	public List<AttEmailVo> upload(List<MultipartFile> mul) {
