@@ -95,7 +95,6 @@ public class URLController {
 		int formState = formNo;
 		String mainJob = null;
 		switch(formType) {
-		
 		case "업무기안" : 
 			mainJob = "view/approval_view_work.jsp";
 			mv.addObject("mainJob", mainJob);

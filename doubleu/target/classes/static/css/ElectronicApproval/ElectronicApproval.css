@@ -454,4 +454,13 @@ body {
 	width: 100%;
 }
 
+/* SELECT VIEW */
 
+.approval-select-view {
+	border: none;
+	background-color: #ffffff;
+	font-size: 1em;
+}
+.approval-select-view[readOnly] {
+	background-color: #ffffff;
+}

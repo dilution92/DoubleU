@@ -12,15 +12,19 @@
 	수정일자: 2021-02-14
 	수정자: 정해준
 	수정내역, checkFile()
+	
+	수정일자: 2021-02-17
+	수정자: 정해준
+	수정내역: goView()
  */
 
 
 /* 상세 보기 */
-var goView = function(formNo) {
+var goView = function(formNo, formType) {
 	var frm = document.frmApproval;
 	frm.formNo.value = formNo;
-	
-	frm.action = "/approvalGoView"
+	frm.formType.value = formType;
+	frm.action = "/approvalSelectView";
 	frm.submit();	
 }
 
@@ -58,6 +62,7 @@ function funcApproval() {
 			if(frm.vacationType.value == '반차') {
 				frm.startDate.value = frm.halfDate.value;
 				frm.endDate.value = frm.halfDate.value;
+				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
 			}
 		}
 		alert("정상적으로 등록되었습니다.")

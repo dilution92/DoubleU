@@ -25,7 +25,7 @@
 					<tbody class="e-approval-list text-muted">
 						<c:set var="no" value="1" />
 						<c:forEach var="outgoingVo" items="${outgoingList }">
-							<tr onclick="goView(${outgoingVo.formNo})">
+							<tr onclick="goView(${outgoingVo.formNo}, '${outgoingVo.formType }')">
 								<td>${outgoingVo.formDate}</td>
 								<td>${outgoingVo.formType}</td>					
 								<td style=" text-align: left; text-indent: 3em;">${outgoingVo.formTitle}</td>					
