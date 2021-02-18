@@ -1,4 +1,4 @@
-package com.doubleu.email.contorller;
+package com.doubleu.email.service;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import com.doubleu.email.vo.AttEmailVo;
 
 
 @Service
-public class EmailUploadController {
-	String saveDir = "C:\\Users\\user\\Desktop\\git\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\email";
+public class EmailUploadService {
+	String saveDir = "C:\\Users\\user\\Desktop\\git\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\email\\";
 
 
 	public List<AttEmailVo> upload(List<MultipartFile> mul) {

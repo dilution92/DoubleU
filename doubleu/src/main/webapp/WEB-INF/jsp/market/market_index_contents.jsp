@@ -12,23 +12,23 @@
 <body>
 	<c:forEach var='vo' items='${list }'>
 					<div class="col mb-4">
-						<div class="card"  onclick="brd.view(${vo.marketNo})">
-							<c:forEach items="${vo.attlist }" var="att">
-							<img src='../upload/market/${att.oriFile }'class="card-img-top" alt="...">
-							</c:forEach>
+						<div class="card"  onclick="view(${vo.marketNo})">
+							<img src='images/market/${vo.attlist[0].oriFile}'class="card-img-top" alt="...">
+						
+							<!--  <img src='images/market/test.png'class="card-img-top" alt="...">-->
+							
 							<div class="card-body">
-								<h5 class="card-title">${vo.marketSubject }, 번호 : ${vo.marketNo } </h5>
-								<p class="card-text">${vo.marketPrice}</p>
+								<h5 class="card-title">${vo.marketSubject } </h5>
+								<p class="card-text">${vo.marketPrice}원</p>
 								<p class="card-text">🤍 2
 								<p>
 								<p class="card-text-name">${vo.membersNo }
-								<input type='text' class='no' value='${vo.marketNo}'/>
+								<input type='text' class='marketNo' value='${vo.marketNo}'/>
 								<p>
 							</div>
 						</div>
 					</div>
 
 				</c:forEach>
-
 </body>
 </html>

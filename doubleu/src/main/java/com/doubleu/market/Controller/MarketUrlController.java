@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.market.mybatis.MarketDao;
 import com.doubleu.market.vo.MarketPage;
+import com.doubleu.market.vo.MarketVo;
 
 @Controller
 public class MarketUrlController {
@@ -60,10 +61,19 @@ public class MarketUrlController {
 	}
 	
 	// market_view.jsp
-	@RequestMapping(value="/marketView", method=RequestMethod.GET)
-	public ModelAndView marketView() {
+	@RequestMapping(value="/marketView", method={RequestMethod.GET , RequestMethod.POST})
+	public ModelAndView marketView(MarketVo v, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
+		System.out.println("marketNo: " + v.getMarketNo());
+		MarketVo vo = dao.view(v.getMarketNo());
 		
+		System.out.println("view컨트롤러......");
+		System.out.println("페이지:" + page.getNowPage());
+		System.out.println(page.getFindStr());
+		System.out.println(vo.getMarketSubject());
+		System.out.println("att:"+vo.getAttlist());
+		mv.addObject("vo", vo);
+		mv.addObject("page", page);
 		mv.setViewName("market/market_view");
 		
 		return mv;

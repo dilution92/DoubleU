@@ -21,12 +21,14 @@
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_main.css">
 
+<!-- js -->
+<script src="js/email/email_commons.js"></script>
+
 <!-- alert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<!-- js -->
-<script src="js/email/email_commoms.js"></script>
+
 
 
 </head>
@@ -50,7 +52,7 @@
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
 						<!-- 사이드바 링크 jsp page -->
-						<jsp:include page="commomCode/emailSidebarLink.jsp"></jsp:include>
+						<jsp:include page="commonsCode/emailSidebarLink.jsp"></jsp:include>
 					</div>
 					<div class="e-approval-approval-list">
 						<span class="sendmail-align">
@@ -59,7 +61,7 @@
 						</span>
 						
 						<!-- 사이드바 링크 jsp page -->
-						<jsp:include page="commomCode/emailSideBarLinkMy.jsp"></jsp:include>
+						<jsp:include page="commonsCode/emailSideBarLinkMy.jsp"></jsp:include>
 					</div>
 				</div>
 			</nav>
@@ -212,7 +214,7 @@
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm" id="emailWriteBtn">읽음</span>
+                         <span class="btn btn-outline-primary btn-sm" id="emailReadBtn">읽음</span>
                      </li>
 
                      <li>
@@ -253,7 +255,7 @@
 						<c:forEach var="list" items="${list }">
 							<tr>
 								<td><input name="chkBox" class="chkBoxClass" type="checkbox"/></td>
-								<td onclick="favoritesBtn()"><i class="bi bi-star"></i></td>
+								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td>${list.emailChk }</td>
 								<td>${list.emailAddress}</td>					
@@ -285,7 +287,6 @@
 		</main>
 	</section>
 	
-
 <!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -299,7 +300,9 @@
 
 selectSideBtn();
 favoritesBtn();
+readBtn();
+sidebarReadBtn();
+
 </script>
-		
 </body>
 </html>

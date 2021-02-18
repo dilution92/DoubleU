@@ -1,5 +1,6 @@
 package com.doubleu.approval.mybatis;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.doubleu.approval.vo.AttFileVo;
+import com.doubleu.approval.vo.DecisionMakerVo;
 import com.doubleu.approval.vo.FormVo;
 import com.doubleu.approval.vo.IndexPage;
 import com.doubleu.approval.vo.SelectPage;
@@ -48,7 +51,7 @@ public class ApprovalDao {
 		page.setTotalListSize(outgoingTotalListSize);
 		page.pageCompute();
 		
-		List<FormVo> list = mapper.outgoingSelect(page);
+		List<FormVo> list = mapper.selectOutgoing(page);
 		if(list.isEmpty()) {
 			System.out.println("검색된 정보가 없습니다.");
 		}
@@ -74,10 +77,35 @@ public class ApprovalDao {
 		page.pageCompute();
 		System.out.println("마지막페이지:" + page.getEndPage());
 		System.out.println("지금페이지:" + page.getNowPage());
-		List<FormVo> list = mapper.chooseSelect(page);
+		List<FormVo> list = mapper.selectChoose(page);
 		map.put("list", list);
 		map.put("page", page);
 		return map;
+	}
+
+	public FormVo selectView(FormVo vo) {
+		System.out.println("selectView 메소드 도착..");
+		FormVo formVo = new FormVo();
+		List<DecisionMakerVo> makerList = new ArrayList<>();
+		List<AttFileVo> attList = new ArrayList<>();
+		
+		formVo = mapper.selectView(vo);
+		makerList = mapper.selectDecisionMaker(formVo.getFormNo());
+		attList = mapper.selectAttFile(formVo.getFormNo());
+		
+		if(!makerList.isEmpty()) {
+			formVo.setDecisionMakersList(makerList);
+		}
+		else {
+			System.out.println("결재권자 리스트 출력 중 오류 발생");
+		}
+		
+		if(!attList.isEmpty()) {
+			formVo.setAttFileList(attList);
+		}
+		
+		
+		return formVo;
 	}
 	
 	

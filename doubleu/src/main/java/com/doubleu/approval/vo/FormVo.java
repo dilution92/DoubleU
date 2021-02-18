@@ -18,7 +18,7 @@ public class FormVo {
 	String approvalState;
 	
 	List<AttFileVo> attFileList; // 파일 첨부가 있을 경우  
-	List<DecisionMakerVo> makersList; // 결재권자 목록을 담을 인스턴스
+	List<DecisionMakerVo> decisionMakersList; // 결재권자 목록을 담을 인스턴스
 	FormPetitionVo formPetitionVo; // 품의서 관련 결재 양식일 경우
 	FormVacationVo formVacationVo; // 휴가 관련 결재 양식일 경우
 
@@ -40,11 +40,12 @@ public class FormVo {
 	public void setApprovalState(String approvalState) {
 		this.approvalState = approvalState;
 	}
-	public List<DecisionMakerVo> getMakersList() {
-		return makersList;
+	
+	public List<DecisionMakerVo> getDecisionMakersList() {
+		return decisionMakersList;
 	}
-	public void setMakersList(List<DecisionMakerVo> makersList) {
-		this.makersList = makersList;
+	public void setDecisionMakersList(List<DecisionMakerVo> decisionMakersList) {
+		this.decisionMakersList = decisionMakersList;
 	}
 	public String getDrafterPosition() {
 		return drafterPosition;

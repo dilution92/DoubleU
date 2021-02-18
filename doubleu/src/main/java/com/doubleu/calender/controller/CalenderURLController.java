@@ -23,7 +23,10 @@ public class CalenderURLController {
 		List<Integer> list = new ArrayList<Integer>();
 		
 		list = calender.setMonthCalender();
-		
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
 		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_month");
 		

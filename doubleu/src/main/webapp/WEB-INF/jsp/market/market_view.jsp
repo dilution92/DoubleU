@@ -6,7 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>중고 게시판</title>
-
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.5.1.js" 
+		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" 
+		crossorigin="anonymous"></script>
 <!-- bootstrap CDN -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
@@ -19,6 +22,7 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전자결재용 CSS -->
 <link rel="stylesheet" href="/css/market/market.css">
+<script src='js/market/market.js'></script>
 
 </head>
 <body>
@@ -41,7 +45,7 @@
 	
 			</div>
 			<!-- ========== -->
-			<span class="badge badge-pill badge-primary">2분 전</span>
+			<!--  <span class="badge badge-pill badge-primary">2분 전</span>-->
 			
 			<!-- market view contents -->
 			<div class='container' >
@@ -81,7 +85,6 @@
 		crossorigin="anonymous"></script>
 	<!-- ****************************** -->
 
-	<script type="text/javascript">
-</script>
+<script>brd()</script>
 </body>
 </html>
