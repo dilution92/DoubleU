@@ -14,12 +14,12 @@
 	
 %>
 	
-	<input type="button" id="btnApprovalInsertR" class="btn btn-outline-primary btn-sm" value="상신요청">
-	<input type="button" id="btnApprovalTempInsertR" class="btn btn-outline-primary btn-sm" value="임시저장">
+	<input type="button" id="btnApprovalUpdateR" class="btn btn-outline-primary btn-sm" value="상신요청">
+	<input type="button" id="btnApprovalTempUpdateR" class="btn btn-outline-primary btn-sm" value="임시저장">
 	<input type="button" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
-	<input type="hidden" name="makerPositionArr" value="">
-	<input type="hidden" name="makerNameArr" value="">
-	<input type="hidden" name="makerOrderArr" value="">
+	<input type="hidden" name="makerPositionArr">
+	<input type="hidden" name="makerNameArr">
+	<input type="hidden" name="makerOrderArr">
 	<input type="hidden" id="TempMakerPosition" value="">
 	<input type="hidden" id="TempMakerName" value="">
 	<input type="hidden" name="formType" value="${formType}">
@@ -30,5 +30,8 @@
 	<input type="hidden" name="vacationType" value="">
 	<input type="hidden" name="employeeNo" value="<%= employeeNo %>">
 	<input type="hidden" name="decisionMakerCnt" value="">
+	<input type="hidden" name="formNo" value="${vo.formNo }">
+<script type="text/javascript">
+</script>
 </body>
 </html>

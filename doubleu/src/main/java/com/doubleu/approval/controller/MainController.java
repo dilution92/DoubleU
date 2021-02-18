@@ -3,6 +3,7 @@ package com.doubleu.approval.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.doubleu.approval.mybatis.ApprovalDao;
 import com.doubleu.approval.service.CreateDesicionMakerService;
 import com.doubleu.approval.service.SelectChooseService;
+import com.doubleu.approval.service.SelectFormType;
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectViewService;
 import com.doubleu.approval.service.UploadService;
@@ -39,13 +41,15 @@ public class MainController {
 	@Autowired
 	UploadService uploadService;
 	@Autowired
-	CreateDesicionMakerService desicionMakerService;
+	CreateDesicionMakerService decisionMakerService;
 	@Autowired
 	SelectOutgoingService outgoingService;
 	@Autowired
 	SelectChooseService chooseService;
 	@Autowired
 	SelectViewService viewService;
+	@Autowired
+	SelectFormType CheckFormType;
 	
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
@@ -79,10 +83,13 @@ public class MainController {
 		//직원 번호 주입 형변환 후 주입
 		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
 		vo.setEmployeeNo(employeeNo);
-		
+		vo.setApprovalState("(발신)상신");
 		//결재권자 list 작성
-		List<DecisionMakerVo> desitionMakerList = desicionMakerService.getMakerList(req);
-		vo.setDecisionMakersList(desitionMakerList);
+		int decisionMakerCnt = Integer.parseInt(req.getParameter("decisionMakerCnt"));
+		if(decisionMakerCnt > 0) {
+			List<DecisionMakerVo> desitionMakerList = decisionMakerService.getMakerList(req);
+			vo.setDecisionMakersList(desitionMakerList);
+		}
 		
 		//첨부파일 
 		List<AttFileVo> attList = uploadService.upload(mul);
@@ -107,11 +114,43 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/approvalTempInsert", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView tempInsert(FormVo vo) {
+	public ModelAndView tempInsert( FormVo vo,
+									FormPetitionVo petitionVo, 
+									FormVacationVo vacationVo, 
+									@RequestParam("approvalFile") List<MultipartFile> mul,
+									HttpServletRequest req
+									) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("tempInsert 도착");
+		String msg = null;
 		
-		mv.setViewName("/ElectronicApproval/E_Approval_home");
+		//직원 번호 주입 형변환 후 주입
+		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
+		vo.setEmployeeNo(employeeNo);
+		vo.setApprovalState("(발신)임시저장");
+		//결재권자 list 작성
+		int decisionMakerCnt = Integer.parseInt(req.getParameter("decisionMakerCnt"));
+		if(decisionMakerCnt > 0) {
+			List<DecisionMakerVo> desitionMakerList = decisionMakerService.getMakerList(req);
+			vo.setDecisionMakersList(desitionMakerList);
+		}
+		
+		//첨부파일 
+		List<AttFileVo> attList = uploadService.upload(mul);
+		vo.setAttFileList(attList);
+		
+		//결재 양식이 공통 범위보다 많은 정보를 담아야 할 경우.
+		if(vo.getFormType().equals("품의서") || vo.getFormType().equals("구매품의서")) {
+			vo.setFormPetitionVo(petitionVo);
+		}
+		else if(vo.getFormType().equals("휴가신청서")) {
+			vo.setFormVacationVo(vacationVo);
+		}
+		msg = service.insert(vo);
+		
+		System.out.println(msg);
+		System.out.println("/tempInsert.......................(end)");
+		mv.setViewName("redirect:/approvalIndex");
 		return mv;
 	}
 	
@@ -120,7 +159,7 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("Goselect 도착");
 
-		mv.setViewName("/ElectronicApproval/approval_index");
+		mv.setViewName("redirect:/approvalIndex");
 		return mv;
 	}
 	
@@ -180,45 +219,66 @@ public class MainController {
 	@RequestMapping(value = "/approvalSelectView")
 	public ModelAndView goView(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
+		Map<String,Object> formMap = new HashMap<>();
+		String formType = req.getParameter("formType");
+		FormVo vo = viewService.select(req);
+		formMap = CheckFormType.checkFormType(vo);
+		vo = (FormVo) (formMap.get("convertVo"));
+		System.out.println("일시" + vo.getEventDate());
+		System.out.println("시작" + vo.getFormVacationVo().getStartDate());
+		System.out.println("끝" + vo.getFormVacationVo().getEndDate());
+		mv.addObject("mainJob", (String)(formMap.get("mainJob")));
+		mv.addObject("vo", vo);
+		mv.setViewName("/ElectronicApproval/approval_index");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "/approvalUpdate", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView goUpdate(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
 		int formNo = Integer.parseInt(req.getParameter("formNo"));
 		String formType = req.getParameter("formType");
+		
+		System.out.println("/approvalUpdate.......................start");
+		System.out.println("문서번호:" + formNo);
+		System.out.println("결재 양식:" + formType);
 		String mainJob = null;
 
 		FormVo vo = viewService.select(req);
 		
 		switch(formType) {
 		case "업무기안" : 
-			mainJob = "view/approval_view_work.jsp";
+			mainJob = "update/approval_update_work.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		
 		case "업무협조" : 
-			mainJob = "view/approval_view_work.jsp";
+			mainJob = "update/approval_update_work.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		case "품의서" : 
-			mainJob = "view/approval_view_petition.jsp";
+			mainJob = "update/approval_update_petition.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		case "구매품의서" : 
-			mainJob = "view/approval_view_purchasePetition.jsp";
+			mainJob = "update/approval_update_purchasePetition.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		case "사유서" : 
-			mainJob = "view/approval_view_explanatory.jsp";
+			mainJob = "update/approval_update_explanatory.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		case "휴가신청서" : 
-			mainJob = "view/approval_view_vacation.jsp";
+			mainJob = "update/approval_update_vacation.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		case "지각/결근사유서" : 
-			mainJob = "view/approval_view_explanatory.jsp";
+			mainJob = "update/approval_update_explanatory.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		case "지출결의서" : 
-			mainJob = "view/approval_view_purchasePetition.jsp";
+			mainJob = "update/approval_update_purchasePetition.jsp";
 			mv.addObject("mainJob", mainJob);
 			break;
 		}
@@ -227,6 +287,42 @@ public class MainController {
 		return mv;
 	}
 	
-	
-	
+	@RequestMapping(value = "/approvalUpdateR", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView updateR( FormVo vo,
+								FormPetitionVo petitionVo, 
+								FormVacationVo vacationVo, 
+								@RequestParam("approvalFile") List<MultipartFile> mul,
+								HttpServletRequest req
+								) {
+		System.out.println("approvalUpdate start..");
+		ModelAndView mv = new ModelAndView();
+		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
+		String msg = null;
+		System.out.println(petitionVo.getFormNo());
+		System.out.println(vacationVo.getFormNo());
+		vo.setApprovalState("(발신)상신");
+
+		
+		if(vo.getFormType().equals("품의서") || vo.getFormType().equals("구매품의서")) {
+			msg = service.updatePetition(petitionVo);
+			System.out.println(msg);
+		}
+		
+		else if(vo.getFormType().equals("휴가신청서")) {
+			msg = service.updateVacation(vacationVo);
+			System.out.println(msg);
+		}
+		
+		int decisionMakerCnt = Integer.parseInt(req.getParameter("decisionMakerCnt"));
+		if(decisionMakerCnt > 0) {
+			List<DecisionMakerVo> decisionMakerList = decisionMakerService.getMakerList(req);
+			msg = service.deleteDicisionMakers(decisionMakerList.get(0).getFormNo());
+			System.out.println(msg);
+			msg = service.insertDicisionMakers(decisionMakerList);
+		}
+		msg = service.updateR(vo);
+		
+		mv.setViewName("redirect:/approvalIndex");
+		return mv;
+	}
 }
