@@ -37,13 +37,13 @@
 					<div class="form-group row">
 					    <label for="inputEmail3" class="col-sm-3 col-form-label">은행</label>
 					    <div class="col-sm-8">
-					      <div class="form-control" id="inputEmail3" >신한</div>
+					      <div class="form-control" id="inputEmail3" >${vo.marketBank }</div>
 					    </div>
 					  </div>
 					<div class="form-group row">
 					    <label for="inputEmail3" class="col-sm-3 col-form-label">계좌번호</label>
 					    <div class="col-sm-8">
-					      <div class="form-control" id="inputEmail3" >356-4054-654565</div>
+					      <div class="form-control" id="inputEmail3" >${vo.marketAccount }</div>
 					    </div>
 					  </div>
 					<div class="form-group row">

@@ -17,7 +17,6 @@
 							<img src='images/market/${att.oriFile }'class="card-img-top" alt="...">
 							</c:forEach> 
 						
-							<img src='../upload/market/test.png'class="card-img-top" alt="...">
 							<!--  <img src='images/market/test.png'class="card-img-top" alt="...">-->
 							
 							<div class="card-body">

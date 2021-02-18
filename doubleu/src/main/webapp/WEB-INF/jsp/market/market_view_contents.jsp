@@ -1,6 +1,8 @@
+<%@page import="com.doubleu.market.vo.MarketAttVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -28,29 +30,37 @@
 			</table>
 			<div class='market-view-container'>
 				
-			
+		
 				<!--  <img src="../images/market/tum.jpeg" class="rounded float-left market-img" alt="...">-->
 				<div class='market-view-form' style="display:flex;">	
-					
-					<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width:250px;">
-				  <div class="carousel-inner">
-				      <c:forEach items="${vo.attlist }" var="att">
-					    <div class="carousel-item active">
-							<img src='images/market/${att.oriFile }' class='d-block w-100' alt="..."/>	
-					    </div>
-					  <!-- 사진 active결함 -->
-				   	</c:forEach>
-				    
+				
+						<div id="marketSlider" class="carousel slide" data-ride="carousel" style="width:250px;">
+					  <div class="carousel-inner">
+						    <div class="carousel-item active">
+								<img src='images/market/${vo.attlist[0].oriFile }' class='d-block w-100' alt="..."/>	
+							</div>
+							<c:choose>
+								<c:when test="${fn:length(vo.attlist) > 1 }">
+									<c:forEach  var="i" begin="1" end ="${fn:length(vo.attlist)-1 }" >
+										<div class="carousel-item ">
+											<img src='images/market/${vo.attlist[i].oriFile}' class='d-block w-100' alt="..."/>	
+										</div>
+									</c:forEach>
+								</c:when>
+							</c:choose>
 				  </div>
-				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Previous</span>
-				  </a>
-				  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Next</span>
-				  </a>
-				</div>				
+					  <a class="carousel-control-prev" href="#marketSlider" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					  </a>
+					  <a class="carousel-control-next" href="#marketSlider" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					</div>	
+				
+				
+							
 					<div class="form-group-container" style="width:100%; margin-left:50px;">	
 					  <div class="form-group row">
 					    <label for="inputEmail3" class="col-sm-2 col-form-label">제품명</label>
@@ -96,5 +106,6 @@
 					<button class="btn btn-primary" type="submit" id=''>목록</button>
 				</div>
 			 </div>
+			 
 </body>
 </html>
