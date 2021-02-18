@@ -32,9 +32,21 @@ public class EmailReveiverService {
 		for(int i=0; i < emailReceiverAddress.length; i++) {
 			
 			EmailReceiverVo rev = new EmailReceiverVo();
-			
+			// List
+			 
 			rev.setEmailReceiverAddress(emailReceiverAddress[i]);
-			rev.setEmailReceiverRef(emailReceiverRef[i]);
+			//rev.setEmailReceiverRef(emailReceiverRef[i]);
+			list.add(rev);
+		}
+		
+		for(int i=0; i < emailReceiverRef.length; i++) {
+			
+			EmailReceiverVo rev = new EmailReceiverVo();
+			// List
+			 
+			//rev.setEmailReceiverAddress(emailReceiverAddress[i]);
+			rev.setEmailReceiverAddress(emailReceiverRef[i]);
+			
 			list.add(rev);
 		}
 		
