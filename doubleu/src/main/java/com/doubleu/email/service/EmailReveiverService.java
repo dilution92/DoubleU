@@ -22,6 +22,7 @@ public class EmailReveiverService {
 		String[] emailReceiverAddress = req.getParameterValues("emailReceiverAddress");
 		String[] emailReceiverRef = req.getParameterValues("emailReceiverRef"); 
 		
+		
 		// 출력 테스트
 		for(String print : emailReceiverAddress) {
 			System.out.println(print);
@@ -48,6 +49,7 @@ public class EmailReveiverService {
 			rev.setEmailReceiverRef(1); // 1이면 참조
 			list.add(rev);
 		}
+		
 		
 		return list;
 
