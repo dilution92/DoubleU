@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +30,12 @@
 <main id="calender_main">
     <div style="height: 50px;" id="calender_main_top_btn"> <!-- 상단 버튼 -->
         <div style="float: left; margin-left: 30px;"> <!-- 좌측 이동 & 투데이 -->
-           <input type="button" class="btn btn-primary" value="이전" >
-            <input type="button" class="btn btn-primary" value="다음">
-            <input type="button" class="btn btn-primary" value="오늘">
+           <input type="button" class="btn btn-primary" onclick="location.href='/CalenderWeekDiff?diff=-7'" value="이전" >
+            <input type="button" class="btn btn-primary" onclick="location.href='/CalenderWeekDiff?diff=7'" value="다음">
+            <input type="button" class="btn btn-primary" onclick="location.href='/CalenderWeekToday'" value="오늘">
         </div>
         <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
-            <h3>2021년 3월</h3>
+            <h3>${currentYear }년 ${currentMonth }월</h3>
         </div>
         <div style="float: right; margin-right: 50px;" id="calender_main_top_sector"> <!-- 우측 표시 달력 -->
            <input type="button" class="btn btn-primary" value="월간" onclick="location.href='/calenderMonth'">
@@ -49,27 +50,13 @@
 					<th scope="col" width="8%">
 						#
 					</th>
+					<c:forEach var="list" items="${list }" >
 					<th scope="col" width="13.1%">
-						Sun
+						<span>${list.week }</span> 
+						<span>${list.day }</span> 
 					</th>
-					<th scope="col" width="13.1%">
-						Mon
-					</th>
-					<th scope="col" width="13.1%">
-						Tue
-					</th>
-					<th scope="col" width="13.1%">
-						Wen
-					</th>
-					<th scope="col" width="13.1%">
-						Thu
-					</th>
-					<th scope="col" width="13.1%">
-						Fri
-					</th>
-					<th scope="col" width="13.1%">
-						Sat
-					</th>
+					</c:forEach>
+					
 				</tr>
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
@@ -77,15 +64,11 @@
 		      		<th><!-- all-day 표시칸  -->
 		      			All-day
 		      		</th>
-		      	<%
-		      		for(int i=0; i<=6; i++){
-		      	%>
+		      <c:forEach var="temp" begin="1" end="7" >
 		      		<td id="calender_content"><!-- all-day 표시칸  -->
 		      			I can do this all day
 		      		</td>
-				<%
-		      		}
-				%>      			
+		      </c:forEach>
 		      	</tr>
 		      
 	      

@@ -147,8 +147,76 @@ public class Calender {
 		return setMonthCalender();
 	}
 	
+	//@@@@@@@@@@@@@@@@@@ CalenderWeek @@@@@@@@@@@@@@@@@@@
+	
+	
+	public List<CalenderWeekList> setCalenderWeek() {
+		String week[] = {"SUN","MON","TUE","WEN","THU","FRI","SAT"};
+		int lastDay[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+		if(year%400==0) {
+				lastDay[1]=29;
+			}else if(year%100==0) {
+				lastDay[1]=28;
+			}else if(year%4==0) {
+				lastDay[1]=29;
+			}
+		int totalyear = (year-2017-1)*365+((year-2017)/4); // 기준년부터 작년까지의 총 일수
+		
+		int totalmonth = 0;
+		for(int i=0;i<month-1;i++) // 올해의 오늘까지의 총 일수
+	       {
+			totalmonth+=lastDay[i];
+	       }
+		
+		int totaltoday = totalyear+totalmonth+day;
+		int totalweek = totaltoday%7; // 오늘 요일 계산하기
+		
+		List<CalenderWeekList> list = new ArrayList<>();
+		
+		for(int i=0; i<7; i++) {
+			CalenderWeekList weekList = new CalenderWeekList();
+			int startNum= day-totalweek;
+			startNum = startNum+i;
+			weekList.setDay(startNum);
+			weekList.setWeek(week[i]);
+			list.add(weekList);
+		}
+		
+		return list;
+	}
+	
+	
+	
 	//Week 이전,다음
-	public void changeWeek(int diff) {
+	public List<CalenderWeekList> changeWeek(int diff) {
+		List<CalenderWeekList> list = new ArrayList<>();
+		
+		int lastDay[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+		int monthIndex = month-1;
+		if((day+diff)<1) {
+			if(monthIndex==0) {
+				setMonth(12);
+				setYear(year-1);
+				monthIndex=11;
+			}else {
+				monthIndex = monthIndex-1;
+			}
+			setDay(lastDay[monthIndex]-(day+diff));
+			setMonth(monthIndex+1);
+		}else if(day+diff>lastDay[monthIndex]) {
+			if(monthIndex==11) {
+				setMonth(1);
+				setYear(year+1);
+				monthIndex=0;
+			}else {
+				monthIndex = monthIndex+1;
+			}
+			setDay(lastDay[monthIndex]-(day+diff));
+			setMonth(monthIndex+1);
+		}
+		
+		list = setCalenderWeek();
+		return list;
 	}
 	
 	//Day 이전,다음
