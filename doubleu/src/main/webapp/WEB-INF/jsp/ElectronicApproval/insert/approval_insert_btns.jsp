@@ -14,7 +14,7 @@
 	
 %>
 	
-	<input type="button" id="btnApprovalInsertR" class="btn btn-outline-primary btn-sm" value="상신요청">
+	<input type="submit" id="btnApprovalInsertR" class="btn btn-outline-primary btn-sm" value="상신요청">
 	<input type="button" id="btnApprovalTempInsertR" class="btn btn-outline-primary btn-sm" value="임시저장">
 	<input type="button" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 	<input type="hidden" name="makerPositionArr" value="">
@@ -30,5 +30,6 @@
 	<input type="hidden" name="vacationType" value="">
 	<input type="hidden" name="employeeNo" value="<%= employeeNo %>">
 	<input type="hidden" name="decisionMakerCnt" value="">
+	<input type="hidden" name="">
 </body>
 </html>

@@ -18,7 +18,9 @@
 	수정내역: goView()
  */
 
-
+function check() {
+	alert("check");
+}
 /* 상세 보기 */
 var goView = function(formNo, formType) {
 	var frm = document.frmApproval;
@@ -67,6 +69,7 @@ function funcApproval() {
 				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
 			}
 		}
+		
 		alert("정상적으로 등록되었습니다.")
 		frm.submit();
 	})
@@ -309,6 +312,8 @@ function chooseVacationType() {
 		$('#startDate').removeAttr('readOnly');
 		$('#endDate').removeAttr('readOnly');
 		$("#halfTimeType").attr('disabled', 'disabled');
+		$("input[name=halfTimeType]").eq(0).attr('disabled', 'disabled');
+		$("input[name=halfTimeType]").eq(1).attr('disabled', 'disabled');
 		$("#halfDate").attr('readOnly', 'readOnly');
 		frm.vacationCnt.value = null;
 	}
@@ -319,13 +324,24 @@ function appendFile(zone, fileCnt) {
 	var fileCnt = fileCnt;
 	var div = document.createElement('div');
 	div.setAttribute('class', 'fileContent');
-	
+	var divF = document.createElement('div');
+	var divS = document.createElement('div');
+
 	var fileInput = document.createElement('input');
 	fileInput.setAttribute('type', 'file');
 	fileInput.setAttribute('name', 'approvalFile');
 	fileInput.setAttribute('class', 'approval-file');
 	fileInput.setAttribute('id', 'approvalFile' + fileCnt);
 	fileInput.setAttribute('multiple', 'multiple');
+	fileInput.onchange = function() {
+		$(this).next().html($(this).val());
+	}
+	
+	var fileLabel = document.createElement('label');
+	fileLabel.setAttribute('for', 'approvalFile' + fileCnt);
+	fileLabel.setAttribute('class', 'approval-file-label');
+	fileLabel.innerText = "파일 선택";
+	var fileText = document.createElement('span');
 	
 	var createBtn = document.createElement('input');
 	createBtn.setAttribute('type', 'button');
@@ -366,9 +382,13 @@ function appendFile(zone, fileCnt) {
 			zone. removeChild(eleParent);
 		}
 	}
-	div.appendChild(fileInput);	
-	div.appendChild(createBtn);	
-	div.appendChild(delBtn);	
+	divF.appendChild(fileLabel);
+	divF.appendChild(fileInput);	
+	divF.appendChild(fileText);
+	div.appendChild(divF);
+	divS.appendChild(createBtn);	
+	divS.appendChild(delBtn);	
+	div.appendChild(divS);
 	zone.appendChild(div);
 }
 
