@@ -68,7 +68,7 @@
 				<div class="e-approval-approval-list">
 					<span>메일함</span>
 					<!-- 사이드바 링크 jsp page -->
-					<jsp:include page="commomCode/emailSidebarLink.jsp"></jsp:include>
+					<jsp:include page="commonsCode/emailSidebarLink.jsp"></jsp:include>
 				</div>
 				<div class="e-approval-approval-list">
 					<span class="sendmail-align"> <span>내 메일함</span>
@@ -78,7 +78,7 @@
 					</span>
 
 					<!-- 사이드바 링크 jsp page -->
-					<jsp:include page="commomCode/emailSideBarLinkMy.jsp"></jsp:include>
+					<jsp:include page="commonsCode/emailSideBarLinkMy.jsp"></jsp:include>
 				</div>
 			</div>
 		</nav>
@@ -359,9 +359,9 @@
 
 						<!-- 버튼 -->
 						<div class="send-and-cancel">
-							<button type="button" class="btn btn-primary btn-lg"
+							<button type="button" class="btn btn-primary btn-sm"
 								onclick="sendToEmail()">보내기</button>
-							<button type="button" class="btn btn-primary btn-lg">취소하기</button>
+							<button type="button" class="btn btn-primary btn-sm">취소하기</button>
 						</div>
 					</div>
 

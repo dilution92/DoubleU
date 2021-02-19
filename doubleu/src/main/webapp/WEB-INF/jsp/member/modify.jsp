@@ -36,25 +36,7 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전사게시판 CSS -->
 <link rel="stylesheet" href="/css/notice/notice.css">
-    
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
+ 
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
     <!-- main page CSS -->

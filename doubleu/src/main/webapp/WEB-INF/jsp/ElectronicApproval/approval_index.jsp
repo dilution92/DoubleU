@@ -185,6 +185,7 @@
 	</div>
 
 <script type="text/javascript">
+funcApproval();
 </script>
 
 </body>

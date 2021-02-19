@@ -6,7 +6,7 @@
 		$('#summernote').summernote({
         placeholder: 'Hello stand alone ui',
         tabsize: 2,
-        height: 500,
+        height: 300,
         toolbar: [
           ['style', ['style']],
           ['font', ['bold', 'underline', 'clear']],

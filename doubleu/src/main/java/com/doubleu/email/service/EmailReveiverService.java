@@ -22,33 +22,34 @@ public class EmailReveiverService {
 		String[] emailReceiverAddress = req.getParameterValues("emailReceiverAddress");
 		String[] emailReceiverRef = req.getParameterValues("emailReceiverRef"); 
 		
+		
 		// 출력 테스트
-		for(String a : emailReceiverAddress) {
-			System.out.println(emailReceiverAddress);
-			System.out.println(emailReceiverRef);
+		for(String print : emailReceiverAddress) {
+			System.out.println(print);
 		}
 		
+		for(String print : emailReceiverRef) {
+			System.out.println(print);
+		}
 		
+		// 받는 사람
 		for(int i=0; i < emailReceiverAddress.length; i++) {
 			
 			EmailReceiverVo rev = new EmailReceiverVo();
-			// List
-			 
 			rev.setEmailReceiverAddress(emailReceiverAddress[i]);
-			//rev.setEmailReceiverRef(emailReceiverRef[i]);
+			rev.setEmailReceiverRef(0); // 0이면 미참조
 			list.add(rev);
 		}
 		
+		// 참조
 		for(int i=0; i < emailReceiverRef.length; i++) {
 			
 			EmailReceiverVo rev = new EmailReceiverVo();
-			// List
-			 
-			//rev.setEmailReceiverAddress(emailReceiverAddress[i]);
 			rev.setEmailReceiverAddress(emailReceiverRef[i]);
-			
+			rev.setEmailReceiverRef(1); // 1이면 참조
 			list.add(rev);
 		}
+		
 		
 		return list;
 

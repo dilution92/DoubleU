@@ -664,3 +664,24 @@ body {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
+
+/* 텍스트 내용 스크롤 꾸미기 */
+
+.note-editable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note-editable::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.note-editable::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.note-editable::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+

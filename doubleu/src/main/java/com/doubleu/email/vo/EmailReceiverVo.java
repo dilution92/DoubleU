@@ -7,7 +7,7 @@ public class EmailReceiverVo {
 	String emailReceiverName;
 	String emailReceiverAddress;
 	String emailReceiverDept;
-	String emailReceiverRef;
+	int emailReceiverRef;
 	String emailMid;
 	
 	public int getEmailReceiverNo() {
@@ -40,10 +40,10 @@ public class EmailReceiverVo {
 	public void setEmailReceiverDept(String emailReceiverDept) {
 		this.emailReceiverDept = emailReceiverDept;
 	}
-	public String getEmailReceiverRef() {
+	public int getEmailReceiverRef() {
 		return emailReceiverRef;
 	}
-	public void setEmailReceiverRef(String emailReceiverRef) {
+	public void setEmailReceiverRef(int emailReceiverRef) {
 		this.emailReceiverRef = emailReceiverRef;
 	}
 	public String getEmailMid() {

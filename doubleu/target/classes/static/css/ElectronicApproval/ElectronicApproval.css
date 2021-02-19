@@ -464,3 +464,38 @@ body {
 .approval-select-view[readOnly] {
 	background-color: #ffffff;
 }
+
+/* 파일박스 생성. */
+
+.fileContent {
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+}
+.fileContent input[type=file] {
+	display: none;
+}
+#delBtnFile {
+	border-radius: 0 5px 5px 0;
+}
+.fileContent input[type=button] {
+	border: none;
+	padding: 0 20px 0 20px; 
+	height: 27.2px;
+	width: 100px;
+}
+.fileContent input[type=button]:last-child {
+	border-left: 1px solid #ced4da;
+}
+.approval-file-label {
+	width: 100px;
+	height: 27.2px;
+	margin: 0;
+	text-align: center;
+	line-height: 27.2px;
+	border-radius: 5px 0 0 5px;
+	background-color: rgb(239, 239, 239);
+	margin-right: 20px;
+}
+.approval-file-label:hover {
+	cursor: pointer;
+}

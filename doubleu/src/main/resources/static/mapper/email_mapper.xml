@@ -48,6 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM email ORDER BY email_date DESC
 	</select>
 	
+	<select id="selectSendEmail" resultType="int">
+		SELECT count(email_title) FROM email
+	</select>
+	
 
 	<!-- insert -->
 	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
@@ -62,9 +66,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		email_contents, 
 		email_mailbox, 
 		email_chk, email_delete) 
-		VALUES(email_main_seq.nextval, #{emailMid, jdbcType=VARCHAR}, #{emailAddress}, #{emailName}, #{emailTitle}, systimestamp, #{emailContents}, default, default, default)
+		VALUES(
+		email_main_seq.nextval, 
+		#{emailMid, jdbcType=VARCHAR}, 
+		#{emailAddress}, #{emailName}, 
+		#{emailTitle}, systimestamp, 
+		#{emailContents}, 
+		default, 
+		#{emailChk}, 
+		default)
 
-		
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO email_files(files_no, email_no, file_sysfile, file_orifile)
@@ -81,8 +92,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				INTO email_receiver (
 					    email_rev_no,
 					    email_no,
-					    email_rev_address)
-				VALUES(emailMainSeq(), email_main_seq.currval, #{rev.emailReceiverAddress})
+					    email_rev_address,
+					    email_ref)
+				VALUES(
+				emailMainSeq(), 
+				email_main_seq.currval, 
+				#{rev.emailReceiverAddress}, 
+				#{rev.emailReceiverRef})
+				
 				<!-- VALUES(emailMainSeq(), email_main_seq.currval, #{emailReceiverName}, #{emailReceiverAddress}, #{emailReceiverDept}, #{emailReceiverRef}, #{emailMid}) -->
 			</foreach>
 		</if>

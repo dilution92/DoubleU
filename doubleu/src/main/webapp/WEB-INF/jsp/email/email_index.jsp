@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="/css/email/email_main.css">
 
 <!-- js -->
-<script src="js/email/email_commoms.js"></script>
+<script src="js/email/email_commons.js"></script>
 
 <!-- alert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -52,7 +52,7 @@
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
 						<!-- 사이드바 링크 jsp page -->
-						<jsp:include page="commomCode/emailSidebarLink.jsp"></jsp:include>
+						<jsp:include page="commonsCode/emailSidebarLink.jsp"></jsp:include>
 					</div>
 					<div class="e-approval-approval-list">
 						<span class="sendmail-align">
@@ -61,7 +61,7 @@
 						</span>
 						
 						<!-- 사이드바 링크 jsp page -->
-						<jsp:include page="commomCode/emailSideBarLinkMy.jsp"></jsp:include>
+						<jsp:include page="commonsCode/emailSideBarLinkMy.jsp"></jsp:include>
 					</div>
 				</div>
 			</nav>
@@ -147,7 +147,7 @@
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 			      	<div class="e-approval-form-box">
 			      		<span>받은 메일함</span>
-				        <input class="btn btn-outline-primary btn-sm" onclick="" name="onname" type="button" value="검색"/>
+				        <input class="btn btn-outline-primary btn-sm" name="onname" type="button" value="검색"/>
 				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 				      	
 				      	
@@ -178,9 +178,6 @@
 							</div>
 						</div>
 					</div>
-					
-					<!-- 테스트 삭제해야함 -->
-					<input type="hidden" id="testType">
 	     		</form>
 			</div>
 			<!-- ========== -->

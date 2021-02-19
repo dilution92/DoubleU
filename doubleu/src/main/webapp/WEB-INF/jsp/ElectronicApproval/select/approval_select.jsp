@@ -35,13 +35,13 @@
 										<td><span class="badge badge-success">진행중</span></td>	
 									</c:when>
 									<c:when test="${outgoingVo.approvalState eq '(발신)임시저장'}">
-										<span class="badge badge-light">임시저장</span>
+										<td><span class="badge badge-light">임시저장</span></td>	
 									</c:when>
 									<c:when test="${outgoingVo.approvalState eq '(발신)승인'}">
-										<span class="badge badge-primary">승인</span>	
+										<td><span class="badge badge-primary">승인</span>	</td>
 									</c:when>
 									<c:when test="${outgoingVo.approvalState eq '(발신)반려'}">
-										<span class="badge badge-warning">반려</span>
+										<td><span class="badge badge-warning">반려</span></td>	
 									</c:when>
 								</c:choose>
 							</tr>

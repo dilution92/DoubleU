@@ -115,7 +115,7 @@
 							    오후
 							  </label>
 							</div>
-							<input type="text" name="halfDayType" value="">
+							<input type="hidden" name="halfDayType" value="">
 						</td>
 					</tr>
 					<tr>

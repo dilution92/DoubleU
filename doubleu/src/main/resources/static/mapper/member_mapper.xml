@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.doubleu.member.mybatis.MemberMapper">
+	<insert id="insert" parameterType="com.doubleu.member.vo.MemberVo">
+		insert into Member(member_no, member_mid, member_name, member_email, member_department, member_team, member_phoneNumber, member_roadAddress,member_jibunAddress) 
+		values(seq_member_no.nextval, #{member_mid}, #{member_name}, #{member_email}, #{member_department}, #{member_team}, #{member_phoneNumber},#{member_roadAddress}, #{member_jibunAddress})
+	</insert>
+
+
+
+</mapper>

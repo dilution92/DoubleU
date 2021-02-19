@@ -40,24 +40,28 @@ public class EmailMainController {
 	
 	
 	//email_index.jsp	
-	@RequestMapping(value="/emailIndex", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/emailIndex", 
+			method={RequestMethod.GET, RequestMethod.POST})
+	
 	public ModelAndView emailIndex(EmailMainVo vo) {
 		
 		ModelAndView mv = new ModelAndView();
 
-		
+		int cnt = DaoService.selectSendEmail();	
 		List<EmailMainVo> list = DaoService.selectSendRead();
 		
-		
+		mv.addObject("readCnt", cnt);
 		mv.addObject("list", list);
 		mv.setViewName("email/email_index");
-
+		
 		return mv;
 	}
 	
 	
 	// email_result.jsp
-	@RequestMapping(value="/emailResult", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/emailResult", 
+			method={RequestMethod.GET, RequestMethod.POST})
+	
 	public ModelAndView emailResult(
 			@RequestParam("attEmailFileList") 
 			List<MultipartFile> mul,
@@ -69,17 +73,32 @@ public class EmailMainController {
 		// 메일 쓰기 받은 사람
 		List<EmailReceiverVo> emailRevList = emailReveiverService.insertRev(req);
 		vo.setEmailRevList(emailRevList);
+
+		// 중요 표시 체크
+		String emailChk = req.getParameter("emailChk");
+		
+		if(emailChk == null) {
+			emailChk = "";
+			vo.setEmailChk(emailChk);
+		}else {
+			emailChk = "!";
+			vo.setEmailChk(emailChk);
+		}
+		
 		
 		// 파일 업로드 
 		List<AttEmailVo> attFileList = FileUpLoadService.upload(mul);
 		vo.setAttFileList(attFileList);
 		
+		System.out.println("DaoService.insertSendWrite(vo) 실행 전");
 		int cnt = DaoService.insertSendWrite(vo);
 		
+		mv.addObject("EmailMainVo", vo);
 		mv.setViewName("email/email_result");
 
 		return mv;
 	}
+	
 
 }
 
