@@ -21,3 +21,8 @@
 	commomCode -> commonsCode
 	폴더명 수정
 
+- 21.02.19
+
+	[/emailIndex]
+	- 메일함 사이드바 받은 메일함 -> SELECT
+	- 중요 메일 표시 로직 null -> '', not null일 때 '!' 표시
