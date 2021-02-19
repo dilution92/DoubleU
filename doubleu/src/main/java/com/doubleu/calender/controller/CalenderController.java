@@ -29,8 +29,15 @@ public class CalenderController {
 		System.out.println("controller 시작");
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
+		List<Integer> list = new ArrayList<Integer>();
 		
 		msg = service.insert(vo);
+		list = calender.setMonthCalender();
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
@@ -128,12 +135,39 @@ public class CalenderController {
 		
 		System.out.println(diff);
 		list = calender.changeWeek(diff);
+		for (int i = 0; i <6; i++) {
+			System.out.println(list.get(i).getDay());
+		}
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
 		mv.addObject("list", list);
 		mv.setViewName("calender/Calender_week");
+		
+		return mv;
+	}
+	
+	
+	// week 오늘 버튼
+	@RequestMapping(value = "/CalenderWeekToday", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView CalenderWeekToday() {
+		System.out.println("controller 시작");
+		
+		ModelAndView mv = new ModelAndView();
+		List<CalenderWeekList> list = new ArrayList<CalenderWeekList>();
+		
+		list = calender.changeWeekToday();
+		for (int i = 0; i <6; i++) {
+			System.out.println(list.get(i).getDay());
+		}
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("list", list);
+		mv.setViewName("calender/Calender_week");
+		
 		return mv;
 	}
 	
