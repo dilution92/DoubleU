@@ -83,7 +83,7 @@ public class MarketController {
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
 		mv.addObject("cnt", cnt);
-		mv.setViewName("market/market_index");
+		mv.setViewName("redirect:/marketIndex");
 		return mv;
 	}
 }

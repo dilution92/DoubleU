@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.Calender;
+import com.doubleu.calender.service.CalenderWeekList;
 
 @Controller
 public class CalenderURLController {
@@ -36,7 +37,14 @@ public class CalenderURLController {
 	@RequestMapping(value = "/calenderWeek", method = {RequestMethod.POST, RequestMethod.GET} )
 	public ModelAndView calenderWeek() {
 		ModelAndView mv = new ModelAndView();
-
+		List<CalenderWeekList> list = new ArrayList<CalenderWeekList>();
+		
+		list = calender.setCalenderWeek();
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_week");
 
 		return mv;

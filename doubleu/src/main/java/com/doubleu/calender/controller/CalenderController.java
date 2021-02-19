@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.Calender;
 import com.doubleu.calender.service.CalenderService;
+import com.doubleu.calender.service.CalenderWeekList;
 import com.doubleu.calender.vo.CalenderVo;
 
 @RestController
@@ -107,4 +108,34 @@ public class CalenderController {
 		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
+	
+	
+	
+	
+	//@@@@@@@@@@@@@@@@ week @@@@@@@@@@@@@@@@@@
+	
+	
+	
+	
+	
+	//week 이전/다음버튼
+	@RequestMapping(value = "/CalenderWeekDiff", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView CalenderWeekDiff(@RequestParam int diff) {
+		System.out.println("controller 시작");
+		
+		ModelAndView mv = new ModelAndView();
+		List<CalenderWeekList> list = new ArrayList<CalenderWeekList>();
+		
+		System.out.println(diff);
+		list = calender.changeWeek(diff);
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("list", list);
+		mv.setViewName("calender/Calender_week");
+		return mv;
+	}
+	
+	
 }

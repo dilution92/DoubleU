@@ -6,7 +6,14 @@ public class MarketAttVo {
 		int MarketNo;
 		String sysFile;
 		String oriFile;
+		int main;
 		
+		public int getMain() {
+			return main;
+		}
+		public void setMain(int main) {
+			this.main = main;
+		}
 		public int getFilesNo() {
 			return filesNo;
 		}

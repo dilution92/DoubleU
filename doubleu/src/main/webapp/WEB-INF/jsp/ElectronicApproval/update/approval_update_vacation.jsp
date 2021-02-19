@@ -115,7 +115,7 @@
 							    오후
 							  </label>
 							</div>
-							<input type="hidden" name="halfDayType" value="">
+							<input type="text" name="halfDayType" value="">
 						</td>
 					</tr>
 					<tr>
@@ -147,7 +147,7 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/insert/approval_insert_btns.jsp"></jsp:include>
+					<jsp:include page="/WEB-INF/jsp/ElectronicApproval/update/approval_update_btns.jsp"></jsp:include>
 				</div>
 			</div>
 			</main>

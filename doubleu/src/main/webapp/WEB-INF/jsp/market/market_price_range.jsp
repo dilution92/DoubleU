@@ -51,7 +51,7 @@
 								 <div class="market-search-bar" >
 									 <input class="form-control form-control-lg market-search"
 											type="text" placeholder="상품명" aria-label="Search"
-											id="approvalFindStr" value="${param.findStr }" name="findStr">
+											id="approvalFindStr" value="${param.findStr }" name="findStr" style="width:50%;">
 					                 <input class="btn btn-outline-primary btn-lg" type="button" value="검색" />
 					                    <input type="hidden" name="nowPage" value="${(empty param.nowPage)? 1: param.nowPage}" size="10">
 										<input type="hidden" name="serial" size="10" >

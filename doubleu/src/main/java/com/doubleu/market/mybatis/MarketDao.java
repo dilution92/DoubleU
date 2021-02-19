@@ -50,10 +50,17 @@ public class MarketDao {
 
 				MarketVo vo = new MarketVo();
 				
+				//List<MarketAttVo> attList = new ArrayList<>();
+
+				//attList = mapper.selectAttOne();
+				//MarketAttVo v = attList.get(0);
+				//System.out.println("v: " + v);
+				//System.out.println("attlist: " + attList);
+				
 				list = mapper.select(page);
 				map.put("page", page);
 				map.put("list", list);
-				System.out.println("att : "+ map.get(list));
+				//map.put("attList", attList);
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			} finally {
@@ -82,6 +89,7 @@ public class MarketDao {
 	public String insert(MarketVo vo) {
 		String msg = "게시물이 저장되었습니다.";
 		try {
+			//vo.getAttlist().get(0).setMain(1);
 			int cnt = mapper.insert(vo);
 			
 			if(cnt<1) {

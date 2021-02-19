@@ -22,7 +22,7 @@
 	
 	
 	<div class="e-approval-form-container">
-		<form action="">
+		<form name="frmApproval" action="" method="post">
 		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/view/approval_view_btns.jsp"></jsp:include>
 		<hr style="margin-right: -3em; margin-left: -3em;">
 		
@@ -100,7 +100,7 @@
 					<tr>
 						<th> 제목 </th>
 						<td colspan="3" align="left" style="">
-						<input type="text" value="${vo.formTitle }" class="form-control form-control-sm approval-select-view" readonly="readonly">
+						<input type="text" name="formTitle" value="${vo.formTitle }" class="form-control form-control-sm approval-select-view" readonly="readonly">
 						</td>
 					</tr>
 					<tr>
