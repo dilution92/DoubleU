@@ -8,7 +8,7 @@
 	<insert id="insert" parameterType="com.doubleu.approval.vo.FormVo">
 		INSERT ALL 
 		INTO approval_form(form_no, employee_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position,approval_state) 
-		VALUES(seq_approval_form.nextval, ${employeeNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}', '(발신)상신')
+		VALUES(seq_approval_form.nextval, ${employeeNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}', '${approvalState}')
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
@@ -37,9 +37,17 @@
 		</choose>
 		SELECT * FROM dual
 	</insert>
+	<insert id="insertDicisionMakers" parameterType="com.doubleu.approval.vo.FormVo" >
+		<foreach collection="decisionMakersList" item="maker">
+			INSERT INTO approval_decision_makers(employee_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
+			VALUES(getApprovalADMSeq(), ${maker.formNo}, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
+		</foreach>
+	</insert>	
+	
 	<select id="outgoingTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.IndexPage">
 		SELECT count(form_no) FROM approval_form WHERE employee_no = ${employeeNo} AND (form_title LiKE '%${findStr}%' OR form_doc LIKE '%${findStr}%')
 	</select>
+	
 	<select id="selectOutgoing" resultType="com.doubleu.approval.vo.FormVo" parameterType="com.doubleu.approval.vo.IndexPage" resultMap="resultFormVo">
 		SELECT * FROM (
 		SELECT ROWNUM rno, af.* FROM (
@@ -93,6 +101,48 @@
 	<select id="selectAttFile" parameterType="int" resultType="com.doubleu.approval.vo.AttFileVo" resultMap="resultFileVo">
 		SELECT * FROM approval_files WHERE form_no = ${_parameter}
 	</select>
+	
+	<update id="updateR" parameterType="com.doubleu.approval.vo.FormVo">
+		UPDATE approval_form
+		SET
+		form_date = sysdate,
+		form_title = '${formTitle}',
+		form_doc = '${formDoc}',
+		cooperation_department = '${cooperationDepartment}',
+		event_date = TO_DATE('${eventDate}', 'YYYY-MM-DD'),
+		approval_state = '${approvalState}'
+		WHERE form_no = ${formNo}
+	</update>
+	
+	<update id="updatePetition" parameterType="com.doubleu.approval.vo.FormPetitionVo">
+		UPDATE approval_form_petition
+		SET
+		form_purpose = '${formPurpose}',
+		budget = '${budget}'
+		WHERE form_no = ${formNo}			
+	</update>
+	<update id="updateVacation" parameterType="com.doubleu.approval.vo.FormVacationVo">
+		UPDATE approval_form_vacation
+		SET
+		start_date = TO_DATE('${startDate}', 'YYYY-MM-DD'),
+		end_date = TO_DATE('${endDate}', 'YYYY-MM-DD'),
+		vacation_cnt = '${vacationCnt}',
+		vacation_type = '${vacationType}',
+		half_day_type = '${halfDayType}'
+		WHERE form_no = ${formNo}
+	</update>
+	<delete id="deleteDicisionMakers" parameterType="int">
+		DELETE FROM approval_decision_makers WHERE form_no = ${_parameter}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	<resultMap type="com.doubleu.approval.vo.FormVo" id="resultFormVo">
 		<result property="formNo" column="FORM_NO"/>

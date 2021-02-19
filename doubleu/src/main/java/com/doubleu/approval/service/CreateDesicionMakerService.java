@@ -14,6 +14,8 @@ public class CreateDesicionMakerService {
 
 	public List<DecisionMakerVo> getMakerList(HttpServletRequest req) {
 		List<DecisionMakerVo> list = new ArrayList<>();
+		int formNo = Integer.parseInt(req.getParameter("formNo"));
+		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
 		String makerPositionStr = req.getParameter("makerPositionArr");
 		String makerNameStr = req.getParameter("makerNameArr");
 		String makerOrderStr = req.getParameter("makerOrderArr");
@@ -28,7 +30,8 @@ public class CreateDesicionMakerService {
 		
 		for(int i = 0; i < listSize; i++) {
 			DecisionMakerVo decisionMaker = new DecisionMakerVo();
-			
+			decisionMaker.setFormNo(formNo);
+			decisionMaker.setEmployeeNo(employeeNo);
 			decisionMaker.setMakerPosition(makerPosition[i]);
 			decisionMaker.setMakerName(makerName[i]);
 			decisionMaker.setMakerOrder(makerOrder[i]);

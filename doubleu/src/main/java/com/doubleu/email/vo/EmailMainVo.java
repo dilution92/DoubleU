@@ -18,6 +18,16 @@ public class EmailMainVo {
 	int emailDelete;
 		
 	List<AttEmailVo> attFileList;
+	List<EmailReceiverVo> emailRevList; // 받은 사람, 참조
+	
+	@Override
+	public String toString() {
+		return "EmailMainVo [emailNo=" + emailNo + ", emailMid=" + emailMid + ", emailAddress=" + emailAddress
+				+ ", emailName=" + emailName + ", emailTitle=" + emailTitle + ", emailDate=" + emailDate
+				+ ", emailContents=" + emailContents + ", emailMailBox=" + emailMailBox + ", emailFile=" + emailFile
+				+ ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + ", attFileList=" + attFileList
+				+ ", emailRevList=" + emailRevList + "]";
+	}
 	
 	
 	public int getEmailNo() {
@@ -95,12 +105,12 @@ public class EmailMainVo {
 		this.attFileList = attFileList;
 	}
 	
-	@Override
-	public String toString() {
-		return "EmailMainVo [emailNo=" + emailNo + ", emailMid=" + emailMid + ", emailAddress=" + emailAddress
-				+ ", emailName=" + emailName + ", emailTitle=" + emailTitle + ", emailDate=" + emailDate
-				+ ", emailContents=" + emailContents + ", emailMailBox=" + emailMailBox + ", emailFile=" + emailFile
-				+ ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + ", attFileList=" + attFileList + "]";
+
+	public List<EmailReceiverVo> getEmailRevList() {
+		return emailRevList;
+	}
+	public void setEmailRevList(List<EmailReceiverVo> emailRevList) {
+		this.emailRevList = emailRevList;
 	}
 	
 }

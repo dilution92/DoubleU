@@ -12,6 +12,9 @@
 	<select id="selectAtt" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo" parameterType="int">
 		select * from market_files where market_no = #{_parameter}
 	</select>
+	<select id="selectAttOne" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo">
+		select distinct market_no, files_orifile from market_files where market_no between 1 and 1000;
+	</select>
 	
 	<select id="totListSize" resultType='int' parameterType="com.doubleu.market.vo.MarketPage">
 		select count(market_no) from market
@@ -22,14 +25,22 @@
 		select * from market
 	
 	</select>
-	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+<!-- 	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+  		select * from ( 
+  			select rownum no, m.* from (
+				select * from market
+				 where market_subject like '%${findStr}%' order by market_no desc ) m   
+				 ) where no between #{startNo} and #{endNo}
+	</select> -->
+ 	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
 	resultMap="marketList">
   		select * from ( 
   			select rownum no, m.* from (
 				select * from market mk join market_files att on mk.market_no=att.market_no
 				 where market_subject like '%${findStr}%' order by mk.market_no desc ) m   
 				 ) where no between #{startNo} and #{endNo}
-	</select>
+	</select> 
 	<!-- index게시글 총 갯수 -->
 	<select id="totalCount" resultType="int">
 		select count(*) from market
@@ -46,8 +57,8 @@
 		values(market_seq.nextval, #{marketCategory, jdbcType=VARCHAR}, #{membersNo}, #{marketSubject}, #{marketPrice}, #{marketAccount}, #{marketDoc},#{marketHit}, SYSDATE, #{marketBank})
 		<if test="attlist != null">
 			<foreach collection="attlist" item="att">
-				into market_files(files_no, market_no, files_sysfile, files_orifile)
-				values (getMarketAttSeq(), market_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
+				into market_files(files_no, market_no, files_sysfile, files_orifile, files_main)
+				values (getMarketAttSeq(), market_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile}, DEFAULT)
 			</foreach>
 		</if>
 		select * from dual		
@@ -83,6 +94,7 @@
 		<result property="MarketNo" column="market_no"/>
 		<result property="sysFile" column="files_sysfile"/>
 		<result property="oriFile" column="files_orifile"/>
+		<result property="main" column="files_main"/>
 	</resultMap>
 </mapper>
 

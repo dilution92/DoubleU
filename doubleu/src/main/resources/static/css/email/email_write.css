@@ -224,7 +224,7 @@ body {
 
 .emailSendContentsRev > .revEmail{
 	border: 1px solid #E5E5E5;
-	max-height: 100px;
+	height: 100px;
 	padding: 5px;
 	margin: 0 auto;
 	overflow: scroll;
@@ -287,12 +287,11 @@ body {
 	
 .emailSendContentsRef > .revRef{
 	border: 1px solid #E5E5E5;
+	height: 100px;
 	padding: 5px;
 	margin: 0 auto;
 	overflow: scroll;
 	overflow-x:hidden;
-	max-height: 100px;
-	
 }
 
 /* 참조 스크롤 바 */
@@ -663,5 +662,26 @@ body {
     vertical-align: baseline;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+/* 텍스트 내용 스크롤 꾸미기 */
+
+.note-editable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note-editable::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.note-editable::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.note-editable::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
 }
 

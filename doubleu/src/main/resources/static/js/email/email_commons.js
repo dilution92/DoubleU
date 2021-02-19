@@ -7,7 +7,12 @@
 	2. 항목을 눌렀을 때 체크박스가 클릭 되지 않았다면 alert창 띄우기
 	3. 메일 읽을 때 ☆ -> ★ 로 변경되기
 	4. 메일 편지 모양을 누르면 열림 표시로 변경
-	5. 체크박스를 클릭하고 읽음을 눌렀을 때 아이콘 변경
+	5. 체크박스를 클릭하고 읽음을 눌렀을 때 아이콘 변경(미완성)
+	   - 전체적으로 바뀌는 것들이 문제
+
+	추가 : 21.02.18
+	6. 메일쓰기 백엔드 작업
+	 - 메일 쓰고 result.jsp 확인 버튼 눌렀을 때 function() 추가;
  */
 
 
@@ -61,7 +66,7 @@ var selectSideBtn = function() {
 	     });
 	
 	// 읽음
-	$("#emailWriteBtn").click( function(){ 
+	$("#emailReadBtn").click( function(){ 
 	            if($(".chkBoxClass").is(":checked") == false){
 	                swal("메일을 선택해주세요.")
 	                return false;
@@ -90,10 +95,9 @@ var readBtn = function() {
 
 // 5. 읽음 버튼을 눌렀을 때 아이콘 변경 (전체 클릭되는 문제...)
 
-
 var sidebarReadBtn= function(){
 	
-	$("#emailWriteBtn").click( function(){ 
+	$("#emailReadBtn").click( function(){ 
 		$('input:checkbox[name=chkBox]:checked').each(function() {
 			
 			var test = $('input:checkbox[name=chkBox]:checked');
@@ -105,6 +109,28 @@ var sidebarReadBtn= function(){
      });
 	
 }
+
+
+
+// 6. result.jsp 확인 function()
+var goRevMainBtn = function() {
+		var goRevMailBtn = document.querySelector('#goRevMailBtn');
+		var goBtnHandler = function() {
+		location.href = "/emailIndex";
+	}
+	
+	goRevMailBtn.addEventListener('click', goBtnHandler);
+}
+	
+	
+
+
+
+
+
+
+
+
 
 
 

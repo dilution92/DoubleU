@@ -32,7 +32,7 @@
 				
 		
 				<!--  <img src="../images/market/tum.jpeg" class="rounded float-left market-img" alt="...">-->
-				<div class='market-view-form' style="display:flex;">	
+				<div class='market-view-form' style="display:flex;min-height:350px;">	
 				
 						<div id="marketSlider" class="carousel slide" data-ride="carousel" style="width:250px;">
 					  <div class="carousel-inner">

@@ -16,6 +16,9 @@ public class EmailDao {
 	EmailMapper mapper;
 	
 	
+	// mybatis 실행
+	
+	
 	// 메일 읽기
 	public List<EmailMainVo> selectSendRead() {
 		
@@ -29,11 +32,11 @@ public class EmailDao {
 	// 메일 보내기
 	public int insertSendWrite(EmailMainVo vo) {
 		
-		System.out.println("insertSendWrite 시작");
+		System.out.println("insertSendWrite mybatis 데이터 실행 전");
 		
 		int cnt = mapper.insertSendWrite(vo);
 		
-		System.out.println("insertSendWrite() : " + cnt);
+		System.out.println("insertSendWrite mybatis 데이터 실행 후 : " + cnt);
 		
 		return cnt;
 	}

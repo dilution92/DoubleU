@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.approval.vo.AttFileVo;
 import com.doubleu.approval.vo.DecisionMakerVo;
+import com.doubleu.approval.vo.FormPetitionVo;
+import com.doubleu.approval.vo.FormVacationVo;
 import com.doubleu.approval.vo.FormVo;
 import com.doubleu.approval.vo.IndexPage;
 import com.doubleu.approval.vo.SelectPage;
@@ -29,7 +31,6 @@ public class ApprovalDao {
 		
 		return msg;
 	}
-	
 	/*
 	 * public int getTotalListSize(IndexPage page) { int totalListSize;
 	 * 
@@ -104,9 +105,54 @@ public class ApprovalDao {
 			formVo.setAttFileList(attList);
 		}
 		
-		
+		System.out.println("selectView 종료.....");
 		return formVo;
 	}
 	
+	public String updateR(FormVo vo) {
+		String msg = "정상적으로 상신되었습니다.";
+		
+		int resultCnt = mapper.updateR(vo);
+		if(resultCnt < 1) {
+			msg = "업데이트 중 오류가 발생하였습니다.";
+		}
+		return msg;
+	}
+	public String updateVacation(FormVacationVo vo) {
+		String msg = "정상적으로 휴가신청서 내용이 등록되었습니다.";
+		int resultCnt = mapper.updateVacation(vo);
+		if(resultCnt < 1) {
+			msg = "업데이트 중 오류가 발생하였습니다.";
+		}
+		return msg;
+	}
+	public String updatePetition(FormPetitionVo vo) {
+		String msg = "정상적으로 품의서 내용이 등록되었습니다.";
+		int resultCnt = mapper.updatePetition(vo);
+		if(resultCnt < 1) {
+			msg = "업데이트 중 오류가 발생하였습니다.";
+		}
+		return msg;
+	}
 	
+	public String insertDicisionMakers(List<DecisionMakerVo> decisionMakerList) {
+		String msg = "정상적으로 결재란 목록이 등록되었습니다.";
+		FormVo vo = new FormVo();
+		vo.setDecisionMakersList(decisionMakerList);
+		
+		int resultCnt = mapper.insertDicisionMakers(vo);
+		if(resultCnt < 1) {
+			msg = "업데이트 중 오류가 발생하였습니다.";
+		}
+		return msg;
+	}
+	
+	public String deleteDicisionMakers(int formNo) {
+		String msg = "정상적으로 결재란 목록이 삭제되었습니다.";
+		int resultCnt = mapper.deleteDicisionMakers(formNo);
+		if(resultCnt < 1) {
+			msg = "업데이트 중 오류가 발생하였습니다.";
+		}
+		return msg;
+	}
 }

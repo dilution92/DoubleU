@@ -57,7 +57,7 @@
 					<div class="e-approval-approval-list">
 						<span>메일함</span>
 					<!-- 사이드바 링크 jsp page -->
-					<jsp:include page="commomCode/emailSidebarLink.jsp"></jsp:include>
+					<jsp:include page="commonsCode/emailSidebarLink.jsp"></jsp:include>
 					</div>
 					<div class="e-approval-approval-list">
 						<span class="sendmail-align">
@@ -66,7 +66,7 @@
 						</span>
 						
 					<!-- 사이드바 링크 jsp page -->
-					<jsp:include page="commomCode/emailSideBarLinkMy.jsp"></jsp:include>
+					<jsp:include page="commonsCode/emailSideBarLinkMy.jsp"></jsp:include>
 					</div>
 				</div>
 			</nav>
