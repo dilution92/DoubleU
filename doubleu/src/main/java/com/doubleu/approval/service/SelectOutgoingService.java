@@ -21,7 +21,7 @@ public class SelectOutgoingService {
 		IndexPage page = new IndexPage();
 		String mainJob = "select/approval_select.jsp";
 		int employeeNo = 3355;
-		String findStr = "";
+		String findStr = " ";
 		int nowOutgoingPage = 1;
 		if(req.getParameter("nowOutgoingPage") != null) {
 			nowOutgoingPage = Integer.parseInt(req.getParameter("nowOutgoingPage"));
@@ -30,6 +30,7 @@ public class SelectOutgoingService {
 			employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
 		}
 		System.out.println("nowOutgoingPage: " + nowOutgoingPage);
+		System.out.println("findStr: "+ findStr);
 		page.setEmployeeNo(employeeNo);
 		page.setNowPage(nowOutgoingPage);
 		map = dao.selectOutgoing(page);

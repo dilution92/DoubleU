@@ -21,7 +21,7 @@
 	 %>
 	
 	<div class="e-approval-form-container">
-		<form action="">
+		<form name="frmApproval" action="" method="post">
 		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/view/approval_view_btns.jsp"></jsp:include>
 		<hr style="margin-right: -3em; margin-left: -3em;">
 		

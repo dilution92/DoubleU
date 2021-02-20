@@ -49,7 +49,7 @@
 	<section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
-		<jsp:include page="../market/side_menu.jsp"/>
+		<jsp:include page="side_menu.jsp"/>
 		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">

@@ -28,14 +28,31 @@ public class EmailDao {
 		return list;
 	}
 	
+	// 메일 왼쪽 사이드바 받은 메일함 count;
+	public int selectSendEmail() {
+		
+		int cnt = mapper.selectSendEmail();
+		System.out.println("받은 메일함 : " + cnt);
+		return cnt;
+		
+	}
+	
+	// 검색bar
+	
+	public List<EmailMainVo> selectSearch(String findStr) {
+		
+		List<EmailMainVo> list = mapper.selectFindStr(findStr);
+		System.out.println(list);
+		
+		return list;
+	}
+	
 	
 	// 메일 보내기
 	public int insertSendWrite(EmailMainVo vo) {
 		
 		System.out.println("insertSendWrite mybatis 데이터 실행 전");
-		
 		int cnt = mapper.insertSendWrite(vo);
-		
 		System.out.println("insertSendWrite mybatis 데이터 실행 후 : " + cnt);
 		
 		return cnt;

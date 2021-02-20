@@ -43,17 +43,38 @@ public class EmailMainController {
 	@RequestMapping(value="/emailIndex", 
 			method={RequestMethod.GET, RequestMethod.POST})
 	
-	public ModelAndView emailIndex(EmailMainVo vo) {
+	public ModelAndView emailIndex(
+			EmailMainVo vo,
+			HttpServletRequest req) {
 		
 		ModelAndView mv = new ModelAndView();
 
+		int cnt = DaoService.selectSendEmail();	
+		List<EmailMainVo> selectSendlist = DaoService.selectSendRead();
 		
-		List<EmailMainVo> list = DaoService.selectSendRead();
+		mv.addObject("readCnt", cnt);
 		
-		
-		mv.addObject("list", list);
+		mv.addObject("list", selectSendlist);
 		mv.setViewName("email/email_index");
-
+		
+		return mv;
+	}
+	
+	// 메일 검색 바 내용, email_name 으로 검색
+	@RequestMapping(value="/selectFindStr", 
+			method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView selectFindStr(
+			EmailMainVo vo,
+			HttpServletRequest req) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		String findStr = req.getParameter("emailFindStr");
+		List<EmailMainVo> selectFindStr = DaoService.selectSearch(findStr);
+	
+		mv.addObject("selectFindStr", selectFindStr);
+		mv.setViewName("email/ajax/email_select_search");
+	
 		return mv;
 	}
 	
@@ -73,8 +94,18 @@ public class EmailMainController {
 		// 메일 쓰기 받은 사람
 		List<EmailReceiverVo> emailRevList = emailReveiverService.insertRev(req);
 		vo.setEmailRevList(emailRevList);
-		
 
+		// 중요 표시 체크
+		String emailChk = req.getParameter("emailChk");
+		
+		if(emailChk == null) {
+			emailChk = "";
+			vo.setEmailChk(emailChk);
+		}else {
+			emailChk = "!";
+			vo.setEmailChk(emailChk);
+		}
+		
 		// 파일 업로드 
 		List<AttEmailVo> attFileList = FileUpLoadService.upload(mul);
 		vo.setAttFileList(attFileList);
@@ -87,6 +118,7 @@ public class EmailMainController {
 
 		return mv;
 	}
+	
 
 }
 

@@ -10,7 +10,6 @@
 </head>
 <body>
 			<!-- 최근 발신한 문서함 code -->
-		<form action="" name="frmApprovalPagination">
 			<div class="e-approval-table">
 			<%
 				String selectName = "검색 결과";
@@ -84,9 +83,9 @@
 					</ul>
 				</nav>
 			</div>
-			<input type="hidden" name="nowChooseSelectPage" value="${(empty page.startPage) ? 1 : page.startPage }">
+			<input type="hidden" name="nowChooseSelectPage" value="${(empty param.nowChooseSelectPage) ? 1 : param.nowChooseSelectPage }">
 			<input type="hidden" name="findState" value="${ findState }">
-		</form>
+			<input type="hidden" name="nowPlace" value="searchPlace">
 			<!-- ========== -->
 
 <!-- bootstrap script, Jquery CDN -->

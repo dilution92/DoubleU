@@ -51,7 +51,7 @@
 	<section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
-		<jsp:include page="../market/side_menu.jsp"/>
+		<jsp:include page="side_menu.jsp"/>
 		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
@@ -76,7 +76,7 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 상세보기 code -->
+			<!-- 전사게시판 사내공지 글쓰기 code -->
 			
 			<form action="/noticeInsertR" method="post">
 				<div class="row">
@@ -149,7 +149,7 @@
 				        <tr>
 				            <td colspan="4" class="text-center">
 								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
-								<input type="submit" class="btn btn-primary" value="저장" onclick="location.href=''">
+								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">저장</button>
 								<input type="reset" class="btn btn-primary" value="취소" onclick="location.href=''">
 				            </td>
 				        </tr>
