@@ -14,28 +14,24 @@ public class SelectFormType {
 		Map<String,Object> map = new HashMap<>();
 		String mainJob = null;
 		String eventDate = null;
+		
 		String formDate = convertDate(vo.getFormDate());
 		vo.setFormDate(formDate);
 		switch(vo.getFormType()) {
 		case "업무기안" : 
 			mainJob = "view/approval_view_work.jsp";
-			eventDate = convertDate(vo.getEventDate());
 			break;
 		case "업무협조" : 
 			mainJob = "view/approval_view_work.jsp";
-			eventDate = convertDate(vo.getEventDate());
 			break;
 		case "품의서" : 
 			mainJob = "view/approval_view_petition.jsp";
-			eventDate = convertDate(vo.getEventDate());
 			break;
 		case "구매품의서" : 
 			mainJob = "view/approval_view_purchasePetition.jsp";
-			eventDate = convertDate(vo.getEventDate());
 			break;
 		case "사유서" : 
 			mainJob = "view/approval_view_explanatory.jsp";
-			eventDate = convertDate(vo.getEventDate());
 			break;
 		case "휴가신청서" : 
 			if(vo.getFormVacationVo().getStartDate() != null) {
@@ -50,14 +46,13 @@ public class SelectFormType {
 			break;
 		case "지각/결근사유서" : 
 			mainJob = "view/approval_view_explanatory.jsp";
-			eventDate = convertDate(vo.getEventDate());
 			break;
 		case "지출결의서" : 
 			mainJob = "view/approval_view_purchasePetition.jsp";
-			eventDate = convertDate(vo.getEventDate());
 			break;
 		}
-		if(eventDate != null) {
+		if(vo.getFormDate() != null) {
+			eventDate = convertDate(vo.getFormDate());
 			vo.setEventDate(eventDate);
 		}
 		map.put("convertVo", vo);
@@ -66,8 +61,8 @@ public class SelectFormType {
 	}
 	
 	public String convertDate(String dateStr) {
-		int idx = dateStr.indexOf(" ");
-		String date = dateStr.substring(0, idx);
+		String[] array = dateStr.split(" ");
+		String date = array[0];
 		return date;
 	}
 } 

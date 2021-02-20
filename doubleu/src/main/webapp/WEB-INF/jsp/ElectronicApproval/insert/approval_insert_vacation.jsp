@@ -24,17 +24,18 @@
 		<form action="/approvalInsertR" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-choose">
-					</a><select class="form-control form-control-sm e-approval-work-form-change">
-						<option selected> 결재 양식 유형 </option>
-						<option value="업무일반"> 업무 기안 </option>
+					</a><select id="selectChangeFormType" class="form-control form-control-sm e-approval-work-form-change">
+						<option value="0"> 결재 양식 유형 </option>
+						<option value="업무기안"> 업무 기안 </option>
 						<option value="업무협조"> 업무 협조 </option>
-						<option value="휴가신청"> 휴가신청서 </option>
-						<option value="지각불참"> 지각/불참사유서 </option>
-						<option value="지출결의서"> 지출 결의서 </option>
-						<option value="업무일반"> 품의서 </option>
-						<option value="업무일반"> 품의서 </option>
+						<option value="품의서"> 품의서 </option>
+						<option value="구매품의서"> 구매품의서 </option>
+						<option value="사유서"> 사유서</option>
+						<option value="휴가신청서"> 휴가신청서 </option>
+						<option value="지각/결근사유서"> 지각/결근사유서 </option>
+						<option value="지출결의서"> 지각/결근사유서 </option>
 					</select>
-					<input type="button" class="btn btn-outline-primary btn-sm" value="변경">
+					<input type="button" id="btnChangeFormType" class="btn btn-outline-primary btn-sm" value="변경">
 				</div>
 				<div class="e-approval-work-form-btns">
 					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
@@ -81,7 +82,7 @@
 					<tr>
 					 <th> 휴가 종류 </th>
 					 <td colspan="3"> 
-					 	<select id="selectVacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
+					 	<select id="selectVacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;" required="required">
 					 		<option value=""> 휴가 선택 </option>
 					 		<option value="연차"> 연차 </option>
 					 		<option value="월차"> 월차 </option>
@@ -126,7 +127,7 @@
 					<tr>
 						<th style="line-height: 200px; padding: 0;"> 사유 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control"  name="formDoc" style="height: 100%; overflow: auto ;" ></textarea>
+							<textarea class="form-control" id="formDoc"  name="formDoc" style="height: 100%; overflow: auto ;" required="required"></textarea>
 						</td>
 					</tr>		
 					<tr>
@@ -155,7 +156,6 @@
 		</form>
 	</div>
 <script type="text/javascript">
-funcApproval();
 createMakerBox('makersZone');
 createFile('fileZone')
 </script>

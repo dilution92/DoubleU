@@ -44,9 +44,6 @@ public class ApprovalDao {
 	public Map<String, Object> selectOutgoing(IndexPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		System.out.println("findStr: " + page.getFindStr());
-		System.out.println("nowPage: " + page.getNowPage());
-		
 		int outgoingTotalListSize = mapper.outgoingTotalListSize(page);
 		System.out.println("outgoingTotalListSize: " + outgoingTotalListSize);
 		page.setTotalListSize(outgoingTotalListSize);
