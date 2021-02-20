@@ -8,7 +8,5 @@
 		insert into Notice(notice_no, notice_subject, notice_mid, notice_date, notice_type, notice_hit, notice_doc, notice_file) 
 		values(seq_notice_no.nextval, #{notice_subject}, #{notice_mid}, SYSDATE, #{notice_type}, #{notice_hit}, #{notice_doc}, #{notice_file})
 	</insert>
-
-
-
 </mapper>
+	

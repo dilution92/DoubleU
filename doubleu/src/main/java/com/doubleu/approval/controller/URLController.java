@@ -25,6 +25,20 @@ public class URLController {
 		ModelAndView mv = new ModelAndView();
 		
 		String formType = req.getParameter("formType");
+		
+		/*
+		 * String nowPlace = req.getParameter("nowPlace");
+		 * System.out.println("nowPlace: " + nowPlace);
+		 * if(nowPlace.equals("indexPlace")) { String nowOutgoingPage =
+		 * req.getParameter("nowOutgoingPage"); String nowReceiverPage =
+		 * req.getParameter("nowReceiverPage");
+		 * 
+		 * System.out.println("nowOutgoingPage: "+ nowOutgoingPage);
+		 * System.out.println("nowReceiverPage: "+ nowReceiverPage); } else { String
+		 * nowChooseSelectPage = req.getParameter("nowChooseSelectPage");
+		 * System.out.println("nowChooseSelectPage: " + nowChooseSelectPage); }
+		 */
+		System.out.println(formType);
 		String mainJob = null;
 		String formName = null;
 

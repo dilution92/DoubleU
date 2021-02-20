@@ -14,8 +14,9 @@
 	6. 메일쓰기 백엔드 작업
 	 - 메일 쓰고 result.jsp 확인 버튼 눌렀을 때 function() 추가;
 
-	추가 : 21.02.19
-	7. 메일 검색 Bar
+	수정 : 21.02.20
+	7. 메일 검색 시 메일 목록 ajax로 표시
+	
  */
 
 
@@ -33,7 +34,7 @@
 
 // 2.항목을 눌렀을 때 체크박스가 클릭 되지 않았다면 alert창 띄우기
 
-var selectSideBtn = function() {
+var selectChkBtn = function() {
 	
 	// 스팸차단
 	$("#emailSpamBlockBtn").click( function(){   
@@ -98,7 +99,7 @@ var readBtn = function() {
 
 // 5. 읽음 버튼을 눌렀을 때 아이콘 변경 (전체 클릭되는 문제...)
 
-var sidebarReadBtn= function(){
+var changeChkReadBtn = function(){
 	
 	$("#emailReadBtn").click( function(){ 
 		$('input:checkbox[name=chkBox]:checked').each(function() {
@@ -125,34 +126,25 @@ var goRevMainBtn = function() {
 	goRevMailBtn.addEventListener('click', goBtnHandler);
 }
 	
+
+// 7. 검색바 ajax
+emailSelectSearch = function() {
 	
-
-// 7. 검색Bar
-
-var searchEmailBar = function() {
-	
-	var emailFindStr = document.querySelector('#emailFindStr');
-	var emailSearchTitle = document.querySelector('#emailSearchTitle');
-	var emailForm = document.EmailForm;
-	
-	
-	// 이벤트 핸들러
-	var emailFindStrHandler = function() {
-		emailForm.action = '/selectFindStr';
-		emailForm.submit();
-	}
-	
-	emailSearchTitle.addEventListener('click', emailFindStrHandler);
-}
-
-
-
-
-
-
-
-
-
-
-
-
+	$('#emailSearchTitle').on('click', function(){
+		
+		var param = $('#emailFormId').serialize();
+		console.log(param);
+		
+		$.ajax ({
+			
+			url: '/selectFindStr',
+			data : param,
+			dataType: 'html',
+			method : 'POST',
+			success: function(data) {
+				console.log(data)
+				$('#selectFindStr').html(data);
+			}
+		});
+	});
+};

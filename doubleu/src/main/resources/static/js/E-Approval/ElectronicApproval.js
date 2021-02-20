@@ -18,9 +18,271 @@
 	수정내역: goView()
  */
 
-function check() {
-	alert("check");
+
+function checkFormData() {
+	$(document).ready(function() {
+		var frm = document.frmApproval;
+		var isChange = false;
+		
+		$('input[name=formTitle]').on('change', function() {
+			isChange = true;
+		})
+		
+		$('textarea[name=formDoc]').on('change', function() {
+			isChange = true;
+		})
+		$('input[name=cooperationDepartment]').on('change', function() {
+			isChange = true;    
+		})
+		$('input[name=eventDate]').on('change', function() {
+			isChange = true;
+		})
+		$('input[name=formPurpose]').on('change', function() {
+			isChange = true;
+		})
+		$('input[name=budget]').on('change', function() {
+			isChange = true;
+		})
+		$('input[name=startDate]').on('change', function() {
+			isChange = true;
+		})
+		$('input[name=endDate]').on('change', function() {
+			isChange = true;
+		})
+		$('input[name=halfDate]').on('change', function() {
+			isChange = true;
+		})
+		$('#selectVacationType').on('change', function() {
+			isChange = true;
+		})
+		
+		
+		
+		/*insert버튼 기능 구현*/
+		$('#btnApprovalInsertR').on('click', function() {
+			frm.enctype = 'multipart/form-data';
+			isChange = false;
+			var checkForm = true;
+		//유효성 검사
+	
+		if(!frm.formTitle.checkValidity()) {
+			alert("제목을 입력해주세요.")
+			checkForm = false;
+			return;
+		}
+		
+		if(!frm.formDoc.checkValidity()) {
+			alert("내용을 입력해주세요.")
+			checkForm = false;
+			return;
+		}
+		if($('input[name=formType]').val() == '품의서') {
+			if(!frm.formPurpose.checkValidity()) {
+				alert("품의목적을 입력해주세요.")
+				checkForm = false;
+				return;
+			}
+		}
+		if($('input[name=formType]').val() == '구매품의서') {
+			if(!frm.formPurpose.checkValidity()) {
+				alert("품의목적을 입력해주세요.")
+				checkForm = false;
+				return;
+			}
+			if(!frm.budget.checkValidity()) {
+				alert("예산을 입력해주세요.")
+				checkForm = false;
+				return;
+			}
+		}
+		if($('input[name=formType]').val() == '휴가신청서') {
+			if($('#selectVacationType option:selected').val() == '반차') {
+				if(!frm.halfDate.checkValidity()) {
+					alert("반차 일자를 선택해주세요.")
+					checkForm = false;
+					return;
+				}
+			}
+			if($('#selectVacationType option:selected').val() == ''){
+				alert("휴가 종류를 입력해주세요.")
+				checkForm = false;
+				return;
+			}
+			if($('#selectVacationType option:selected').val() == '연차' || $('selectVacationType option:selected').val() == '월차') {
+				if(!frm.startDate.checkValidity()) {
+					alert("휴가 시작 일을 선택해주세요.")
+					checkForm = false;
+					return;
+				}
+				if(!frm.endDate.checkValidity()) {
+					alert("휴가 마지막 일을 선택해주세요.")
+					checkForm = false;
+					return;
+				}
+			}
+		}
+		if($('input[name=formType]').val() == '사유서' || $('input[name=formType]').val() == '지각/결근사유서') {
+			if(!frm.drafterName.checkValidity()) {
+				alert("이름을 입력해주세요.");
+				checkForm = false;
+				return;
+			}
+			if(!frm.drafterDepartment.checkValidity()) {
+				alert("직급을 입력해주세요.");
+				checkForm = false;
+				return;
+			}
+		} 
+		
+		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
+		frm.decisionMakerCnt.value = decisionMakerCnt;
+		if(decisionMakerCnt > 0) {
+			for(var i = 0; i<decisionMakerCnt;i++) {
+				var makerPosition = new Array();
+				var makerName = new Array();
+				var makerOrder = new Array();
+				makerPosition[i] = $('input[name=makerPosition]').eq(i).val();
+				makerName[i] = $('input[name=makerName]').eq(i).val();
+				makerOrder[i] = i+1;
+			}
+			frm.makerPositionArr.value = makerPosition;		
+			frm.makerNameArr.value = makerName;		
+			frm.makerOrderArr.value = makerOrder;	
+		}
+		else {
+			alert("결재란을 작성해주세요.");
+			checkForm = false;
+		}
+		
+		var fileBoxSize =(document.getElementsByClassName('approval-file').length);
+		for(var i = 1; i<fileBoxSize ;i++) {
+			if($('input[name=approvalFile]').eq(i).val() == "") {
+				$('input[name=approvalFile]').eq(i).remove();
+			}	
+		}
+		
+		if(frm.formType.value == '휴가신청서') {
+			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
+			if(frm.vacationType.value == '반차') {
+				frm.startDate.value = frm.halfDate.value;
+				frm.endDate.value = frm.halfDate.value;
+				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
+			}
+		}
+		
+		if(checkForm) {
+			alert("정상적으로 등록되었습니다.");
+			frm.submit();
+		}
+		})
+		
+		
+		/*tempInsert 버튼 기능 구현*/
+		$('#btnApprovalTempInsertR').on('click', function() {
+		if(!isChange) {
+			alert("작성된 내용이 없습니다.");
+			return;
+		}
+		frm.enctype = 'multipart/form-data';
+		
+		//결재란 퍼블리싱
+		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
+		frm.decisionMakerCnt.value = decisionMakerCnt;
+		if(decisionMakerCnt > 0) {
+			for(var i = 0; i<decisionMakerCnt;i++) {
+				var makerPosition = new Array();
+				var makerName = new Array();
+				var makerOrder = new Array();
+				makerPosition[i] = $('input[name=makerPosition]').eq(i).val();
+				makerName[i] = $('input[name=makerName]').eq(i).val();
+				makerOrder[i] = i+1;
+			}
+			frm.makerPositionArr.value = makerPosition;		
+			frm.makerNameArr.value = makerName;		
+			frm.makerOrderArr.value = makerOrder;	
+		}
+		
+		//첨부파일 퍼블리싱
+		var fileBoxSize =(document.getElementsByClassName('approval-file').length);
+		for(var i = 1; i<fileBoxSize ;i++) {
+			if($('input[name=approvalFile]').eq(i).val() == "") {
+				$('input[name=approvalFile]').eq(i).remove();
+			}	
+		}
+		
+		//휴가신청서 퍼블리싱
+		if(frm.formType.value == '휴가신청서') {
+			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
+			if(frm.vacationType.value == '반차') {
+				frm.startDate.value = frm.halfDate.value;
+				frm.endDate.value = frm.halfDate.value;
+				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
+			}
+		}
+		
+		alert('임시저장함에 저장되었습니다.')
+		frm.action = '/approvalTempInsert';
+		frm.submit();
+	})
+		$(window).on('beforeunload', function() {
+			if(isChange) {
+				return "form에 변경사항이 생겼습니다.";
+			}
+		})
+	})
 }
+
+
+
+function checkFormValidity() {
+	var frm = document.frmApproval;
+	var checkForm = false;
+	
+	if(!frm.formTitle.checkValidity()) {
+		checkForm = true;
+	}
+	
+	if(frm.formDoc.checkValidity()) {
+		checkForm = true;
+	}
+	
+	if($('input[name=formType]').val() == '품의서') {
+		if(!frm.formPurpose.checkValidity()) {
+			checkForm = true;
+		}
+	}
+	
+	if($('input[name=formType]').val() == '구매품의서') {
+		if(!frm.formPurpose.checkValidity()) {
+			checkForm = true;
+		}
+		if(!frm.budget.checkValidity()) {
+			checkForm = true;
+		}
+	}
+	
+	if($('input[name=formType]').val() == '휴가신청서') {
+		if($('#selectVacationType option:selected').val() == '반차') {
+			if(!frm.halfDate.checkValidity()) {
+				checkForm = true;
+			}
+		}
+		if($('#selectVacationType option:selected').val() == ''){
+			checkForm = true;
+		}
+		if($('#selectVacationType option:selected').val() == '연차' || $('selectVacationType option:selected').val() == '월차') {
+			if(!frm.startDate.checkValidity()) {
+				checkForm = true;
+			}
+			if(!frm.endDate.checkValidity()) {
+				checkForm = true;
+			}
+		}
+	}
+	return checkForm;
+}
+
+
 /* 상세 보기 */
 var goView = function(formNo, formType) {
 	var frm = document.frmApproval;
@@ -35,89 +297,33 @@ function funcApproval() {
 		var frm = document.frmApproval;
 		
 	/*insert 버튼*/
-	$('#btnApprovalInsertR').on('click', function() {
-		frm.enctype = 'multipart/form-data';
-		
-		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
-		frm.decisionMakerCnt.value = decisionMakerCnt;
-		if(decisionMakerCnt > 0) {
-			for(var i = 0; i<decisionMakerCnt;i++) {
-				var makerPosition = new Array();
-				var makerName = new Array();
-				var makerOrder = new Array();
-				makerPosition[i] = $('input[name=makerPosition]').eq(i).val();
-				makerName[i] = $('input[name=makerName]').eq(i).val();
-				makerOrder[i] = i+1;
-			}
-			frm.makerPositionArr.value = makerPosition;		
-			frm.makerNameArr.value = makerName;		
-			frm.makerOrderArr.value = makerOrder;	
-		}
-		
-		var fileBoxSize =(document.getElementsByClassName('approval-file').length);
-		for(var i = 1; i<fileBoxSize ;i++) {
-			if($('input[name=approvalFile]').eq(i).val() == "") {
-				$('input[name=approvalFile]').eq(i).remove();
-			}	
-		}
-		
-		if(frm.formType.value == '휴가신청서') {
-			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
-			if(frm.vacationType.value == '반차') {
-				frm.startDate.value = frm.halfDate.value;
-				frm.endDate.value = frm.halfDate.value;
-				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
-			}
-		}
-		
-		alert("정상적으로 등록되었습니다.")
-		frm.submit();
+	$('#btnFind').on('click',function() {
+		frm.selectFormType.value = $('#selectFormType option:selected').val();
+		frm.selectFormState.value = $('#selectFormState option:selected').val();
+		frm.action = '/approvalIndex';
 	})
-	
-	/*tempInsert 버튼*/
-	$('#btnApprovalTempInsertR').on('click', function() {
-		frm.enctype = 'multipart/form-data';
-		
-		/*결재란 퍼블리싱*/
-		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
-		frm.decisionMakerCnt.value = decisionMakerCnt;
-		if(decisionMakerCnt > 0) {
-			for(var i = 0; i<decisionMakerCnt;i++) {
-				var makerPosition = new Array();
-				var makerName = new Array();
-				var makerOrder = new Array();
-				makerPosition[i] = $('input[name=makerPosition]').eq(i).val();
-				makerName[i] = $('input[name=makerName]').eq(i).val();
-				makerOrder[i] = i+1;
-			}
-			frm.makerPositionArr.value = makerPosition;		
-			frm.makerNameArr.value = makerName;		
-			frm.makerOrderArr.value = makerOrder;	
+	/*select 버튼*/
+	$('input[name=btnApprovalSelect]').on('click', function() {
+		var prevPlace = frm.nowPlace.value;
+		if(prevPlace == 'indexPlace') {
+			frm.action = '/approvalIndex';
 		}
-		
-		/*첨부 파일 퍼블리싱*/
-		var fileBoxSize =(document.getElementsByClassName('approval-file').length);
-		for(var i = 1; i<fileBoxSize ;i++) {
-			if($('input[name=approvalFile]').eq(i).val() == "") {
-				$('input[name=approvalFile]').eq(i).remove();
-			}	
+		else {
+			frm.action = '/approvalGoList';
 		}
-		
-		/*휴가신청서에서 휴가 유형에 따른 퍼블리싱*/
-		if(frm.formType.value == '휴가신청서') {
-			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
-			if(frm.vacationType.value == '반차') {
-				frm.startDate.value = frm.halfDate.value;
-				frm.endDate.value = frm.halfDate.value;
-				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
-			}
-		}
-		
-		alert('임시저장함에 저장되었습니다.')
-		frm.action = '/approvalTempInsert';
 		frm.submit();
-	}) 
-	
+	})	 
+
+		$('#btnChangeFormType').on('click', function() {
+			if( $('#selectChangeFormType option:selected').val() != '0') {
+				frm.formType.value = $('#selectChangeFormType option:selected').val();
+				frm.action = '/approvalGoFormType';
+				frm.submit();
+			}
+			else {
+				alert('결재 양식 종류를 선택해주세요.');
+			}
+		})
 		/*view > update 버튼	*/
 		$('#btnApprovalUpdate').on('click', function() {
 			frm.action = '/approvalUpdate';
@@ -427,7 +633,7 @@ function goPage(page) {
 }
 
 function goChooseSelectPage(page) {
-	var frm =document.frmApprovalPagination
+	var frm =document.frmApproval;
 	frm.nowChooseSelectPage.value = page;
 	
 	frm.action = "/approvalGoList";
@@ -435,7 +641,7 @@ function goChooseSelectPage(page) {
 }
 
 function goOutgoingPage(page) {
-	var frm = document.frmApprovalPagination;
+	var frm = document.frmApproval;
 	frm.nowOutgoingPage.value = page;
 	frm.action= "/approvalIndex";
 	frm.submit();
@@ -464,4 +670,12 @@ function deleteChooseMaker() {
 	var p = aaa.parentNode.parentNode.parentNode.parentNode;
 	var pp = p.parentNode;
 	pp.removeChild(p);
+}
+
+function goFormList(formType) {
+	var frm = document.frmApproval;
+	frm.formType.value = formType;
+	alert(frm.formType.value);
+	frm.action='/approvalGoFormType';
+	frm.submit();
 }

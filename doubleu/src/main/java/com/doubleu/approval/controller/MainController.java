@@ -49,7 +49,7 @@ public class MainController {
 	@Autowired
 	SelectViewService viewService;
 	@Autowired
-	SelectFormType CheckFormType;
+	SelectFormType CheckFormType;  
 	
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
