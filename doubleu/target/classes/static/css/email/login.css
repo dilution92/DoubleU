@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+/* 로그인 이미지 */
+
+
+.login-align {
+	width: 600px;
+	height: 500px;
+	margin: 100px auto;
+	
+}
+
+
+
+
+.login-img-align {
+	margin: 30px auto;
+	width: 200px;
+}
+
+.login-img-align > img {
+	widtH: 200px;
+	text-align: center;
+}
+
+.login-img-align > h2 {
+	widtH: 200px;
+	margin: 10px 0;
+	text-align: center;
+}
+
+
+/* 로그인 창 */
+
+.form-row {
+	width: 300px;
+	margin: 0 auto;
+}
+
+.form-row > .col-auto {
+	width: 300px;
+}
+
+.form-row > .col-auto > button{
+	width: 290px;
+}
+
+.form-row > .form-account {
+	text-align: right;
+}
+
+

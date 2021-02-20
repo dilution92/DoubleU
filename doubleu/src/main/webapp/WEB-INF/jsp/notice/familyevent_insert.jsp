@@ -49,7 +49,7 @@
 	<section class="e-approval-container">
 	
 		<!-- e-approval-lnb code -->
-		<jsp:include page="../market/side_menu.jsp"/>
+		<jsp:include page="side_menu.jsp"/>
 		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
@@ -74,9 +74,9 @@
 
 			<!-- ========== -->
 			
-			<!-- 경조사 상세보기 code -->
+			<!-- 경조사 글쓰기 code -->
 			
-			<form>
+			<form action="/familyeventInsertR" method="post">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -84,38 +84,38 @@
 				        <table class="table">
 				        <tr>
 				        	<th class="success"><label for="exampleFormControlSelect1">제목</label></th>
-			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요."></td>
+			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요." name="familyeventSubject"></td>
 				        </tr>
 				        <tr>
 				        	<div class="form-group">
 				            <th class="success">작성자</th>
-				            <td>관리자</td>
+				            <td><input type="text" id="mid" name="familyeventMid" value="관리자" readonly></td>
 				            <th class="success">작성일</th>
-				            <td>2021.02.07</td>
+				            <td><input type="date" id="mdate" name="familyeventReportingDate" readonly></td>
 				            </div>
 				        </tr>
 				        <tr>
 				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
 				            <td>
-					            <select class="form-control" id="exampleFormControlSelect4">
+					            <select class="form-control" id="exampleFormControlSelect4" name="familyeventType">
 							      <option class="familyevent-icon" id="결혼" selected>&#xf1fd 결혼</option>
 							      <option class="familyevent-icon">&#xf5b4 부고</option>
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
-				            <td>1</td>
+				            <td><input type="number" id="hit" name="familyeventHit" value="1" readonly></td>
 				        </tr>
 				        <tr>
 				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
-									<label for="searchDate"></label>
-										<input type="radio" name="searchDate" value="영구" checked>영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="radio" name="searchDate" value="설정">설정 &nbsp;&nbsp;
+									<label for="familyeventPostType"></label>
+										<input type="radio" name="familyeventPostType" value="영구" checked>영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<input type="radio" name="familyeventPostType" value="설정">설정 &nbsp;&nbsp;
 										
-											(시작일자 &nbsp;<input type="date" id="searchDateOne" class="success">
+											(시작일자 &nbsp;<input type="date" id="searchDateOne" class="success" name="familyeventPostStartDate">
 											&nbsp;~ &nbsp;
-											종료일자 &nbsp;<input type="date" id="searchDateTwo"> )
+											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="familyeventPostEndDate"> )
 								</div>
 							</td>
 				        </tr> 
@@ -123,7 +123,7 @@
 				        	<div class="form-group">
 					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
 					            <td colspan="3">
-					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요."></textarea>
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요." name="familyeventDoc"></textarea>
 					            </td>
 						  	</div>
 				        </tr>
@@ -131,7 +131,7 @@
 				        	<th class="success">첨부파일</th>
 				        	<td colspan="3">
 				        		<div class="custom-file mb-3">
-									<input type="file" class="custom-file-input" id="validatedCustomFile" required>
+									<input type="file" class="custom-file-input" id="validatedCustomFile" name="familyeventFile">
 				    				<label class="custom-file-label" for="validatedCustomFile">파일을 선택하세요.</label>
 			    					<div class="invalid-feedback">Example invalid custom file feedback</div>
 			  					</div>

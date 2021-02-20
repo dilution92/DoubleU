@@ -1,0 +1,407 @@
+@charset "UTF-8";
+
+body {
+	height: 100%;
+}
+
+.main-gnb-content {
+	padding: 1rem 1rem;
+}
+.main-gnb-menu > li > a {
+	margin-right: 1em;
+}
+
+
+/* 사이드바 CSS */
+.e-approval-container {
+	display: flex;	
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.e-approval-lnb {
+	background-color: #f8f9fa;
+	width: 20%;
+	text-align: center;
+	padding: 1.2em 1.5em 0em 1.5em;
+	min-height: 100%;
+}
+
+.e-approval-lnb-content {
+	width: 16%;
+	position: fixed;
+}
+
+.e-approval-lnb-content > h3{
+	margin-bottom: 1.5em;
+	font-size: 1.2em;
+}
+
+.e-approval-form-btn > input[type="button"] {
+	width: 100%;
+	font-size: 0.9em;
+}
+
+.e-approval-lnb-content ul {
+	list-style-type: none; 
+	padding-inline-start: 0;
+}
+
+.e-approval-lnb-content ul > li {
+	font-size: 0.9em;
+	padding: 5px 0 5px 40px;
+	text-align: left;
+}
+
+
+/* 메일함 */
+.e-approval-approval-list > ul > li > .test:hover {
+	visibility:visible;
+}
+
+.e-approval-approval-list > ul > li > a {
+	text-indent: 1em;
+	width: 100px;
+	font-size: 15px;
+}
+
+.e-approval-approval-list > ul > li > span {
+	margin-left: 5px;
+}
+
+.e-approval-approval-list  {
+	margin-top: 2em;
+}
+
+.e-approval-approval-list > span {
+	display: inline-block;
+	color: #000000;
+	margin-bottom: 0.7em;
+	font-size: 1.1em;
+	width: 200px;
+	text-align: left;	
+}
+
+
+.e-approval-approval-list > .sendmail-align {
+	width: 200px;
+	text-align: left;
+}
+
+.e-approval-approval-list a:visited{
+	text-decoration: none;
+	color: #000000;
+}
+.e-approval-approval-list a:link{
+	text-decoration: none;
+	color: #000000;
+}
+
+.e-approval-approval-list > ul > li:hover {
+	background-color: #e2e5de;
+}
+/* +++++++++++++++++++++++++++++++++++++++ */
+
+
+/*  main CSS */
+.e-approval-article {
+	width: 80%;
+	padding: 3em 5em 0 5em;
+	height: 800px;
+}
+
+/* e-approval-search-bar CSS */
+
+
+.e-approval-search-bar {
+	width: 100%;
+	min-height: 10%;
+	margin-bottom: 0.5rem; 
+}
+
+.e-approval-search-form {
+	width: 100%;
+	min-height: 10%;
+}
+
+.e-approval-form-box {
+	width: 100%;
+	min-height: 10%;
+
+}
+
+.e-approval-form-box > span{
+	font-size: 25px;
+}
+
+.e-approval-select-box:hover {
+	cursor: pointer;
+}
+
+.e-approval-form-box > select {
+	display: inline-block;
+	width: 15%;
+	float: right;
+	margin-left: 0.5em;
+}
+
+.e-approval-form-box > input[type="text"] {
+	display: inline-block;
+	margin-top: 0;
+	width: 30%;
+	float: right;
+	margin-left: 0.5em;
+}
+
+.e-approval-form-box > input[type="button"] {
+	display: inline-block;
+	margin-top: 0;
+	float: right;
+	margin-left: 0.5em;
+	}
+
+
+/* e-approval-table CSS */
+.e-approval-table {
+	width: 100%;	
+}
+.e-approval-table > strong {
+	display: inline-block;
+	font-size: 0.9em;
+	margin-bottom: 0.5em;
+}
+
+.e-approval-list {
+	font-size: 0.8em;
+}
+
+.e-approval-list > tr > td:nth-child(4){
+	color:red;
+}
+
+.e-approval-list td:hover {
+	cursor: pointer;
+}
+
+.e-approval-list tr {
+	text-align: center;
+}
+
+
+/* e-approval-list-pagination CSS (페이징처리)*/
+.e-approval-list-pagination a:link {
+	color: #6c757d;
+	text-decoration: none;
+} 
+
+.e-approval-list-pagination a:visited {
+	color: #6c757d;
+	text-decoration: none;
+}
+
+.e-approval-list-pagination a:hover {
+	color: #212529;
+}
+
+.e-approval-list-pagination {
+	margin-top: 1em;
+	margin-bottom: 4em;
+}
+
+.e-approval-list-pagination:last-child {
+	padding-bottom: 7em;
+}
+
+
+
+/* 내 메일함 모달창 */
+.modalEmail{
+    height: 350px;
+}
+
+.modalNewEmailFolder {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalNewEmailFolder > p{
+   margin-top: 30px;
+   width: 500px;
+}
+
+
+.modalNewEmailFolder > input {
+    text-indent: 20px;
+    margin: 50px auto;
+    width: 500px;
+    height: 30px;
+}
+
+.modalNewEmailFolder > .modalNewEmailFolderBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalNewEmailFolder > .modalNewEmailFolderBtn > button {
+    margin: 0 50px;
+}
+
+
+/* 스팸함 모달창 */
+
+.modalSpamEmail{
+    height: 350px;
+}
+
+.modalSpamEmailFolder {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalSpamEmailFolder > p{
+   margin-top: 30px;
+   width: 500px;
+}
+
+
+.modalSpamEmailFolder > input {
+    text-indent: 20px;
+    margin: 30px auto;
+    width: 500px;
+    height: 30px;
+}
+
+.modalSpamEmailFolder > .modalSpamEmailFolderBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalSpamEmailFolder > .modalSpamEmailFolderBtn > button {
+    margin: 0 50px;
+}
+
+
+/* 받은 메일함 선택 바*/
+
+.email-select-content {
+	width: 1000px;
+	margin: 20px auto;
+	height: 50px;
+}
+
+.email-select-content > .email-select-list {
+	display: flex;
+	margin-left: 0px;
+	margin-bottom: 2rem;
+	justify-content:space-around;
+	padding: 0px;
+	width: 650px;
+	
+}
+
+.email-select-content > ul > li {
+	cursor: pointer;
+	list-style: none;
+	margin: 0px 10px;
+}
+
+
+
+.email-select-content > ul > li > label {
+	cursor: pointer;
+	width: 100px;
+}
+
+
+.email-select-content > ul > li > label > input{
+	
+	margin-right: 10px;
+}
+
+.email-select-content > ul > li > span {
+	width:80px;
+}
+
+
+.email-select-content > ul > li div > div > button {
+	width:80px;
+}
+
+/* 이동 모달창 */
+
+.modalMoveContent {
+    height: 600px;
+}
+
+.modalMoveBtn {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalMoveBtn > h4 {
+	text-align: left;
+}
+.modalMoveBtn > ul{
+   margin-top: 30px;
+
+}
+
+.modalMoveBtn > ul > li {
+   width: 300px;
+   list-style:none;
+   text-indent: 15px;
+   display:block;
+   margin-bottom: 5px;
+}
+ 
+.modalMoveBtn > ul > li:nth-child(1) {
+ 	text-align:left;
+} 
+
+.modalMoveContent > input {
+    margin: 30px auto;
+    width: 400px;
+    height: 30px;
+}
+
+.modalMoveContent > .modalMoveBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalMoveContent > .modalMoveBtn > button {
+    margin: 0 50px;
+}
+
+.modalMoveEmailBtn {
+	text-align: center;
+	width: 400px;
+}
+
+.modalMoveEmailBtn > button {
+	margin: 0px 35px;
+}
+
+
+
+/* 상세보기 */
+
+.dropdown-align {
+	padding: 10px;
+}
+.dropdown-align > span > label{
+	width: 80px;
+}
+
+.dropdown-align > span > input {
+	width: 320px;
+}
+
+.searchResetBtn {
+	text-align: center;
+}
+
+.searchResetBtn > input {
+	margin: 0px 35px;
+}

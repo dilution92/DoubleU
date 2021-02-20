@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.doubleu.approval.mybatis.ApprovalMapper">
+	<insert id="insert" parameterType="com.doubleu.approval.vo.FormVo">
+		INSERT ALL 
+		INTO approval_form(form_no, employee_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position,approval_state) 
+		VALUES(seq_approval_form.nextval, ${employeeNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}', '${approvalState}')
+		<if test="attFileList != null">
+			<foreach collection="attFileList" item="att">
+				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
+				VALUES(getApprovalAttSeq(), seq_approval_form.currval, '${att.sysFile}', '${att.oriFile}')
+			</foreach>
+		</if>
+		<if test="decisionMakersList != null">
+			<foreach collection="decisionMakersList" item="maker">
+			INTO approval_decision_makers(employee_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
+			VALUES(getApprovalADMSeq(), seq_approval_form.currval, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
+			</foreach>
+		</if>
+		<choose>
+		<when test= "formType == '품의서'">
+			INTO approval_form_petition(form_no, form_purpose) 
+			VALUES (seq_approval_form.currval, '${formPetitionVo.formPurpose}')
+		</when>
+		<when test= "formType == '구매품의서'">
+			INTO approval_form_petition(form_no, form_purpose, budget) 
+			VALUES (seq_approval_form.currval, '${formPetitionVo.formPurpose}', ${formPetitionVo.budget})
+		</when>
+		<when test="formType == '휴가신청서'">
+			INTO approval_form_vacation(form_no, start_date, end_date, vacation_cnt, vacation_type, half_day_type)
+			VALUES(seq_approval_form.currval, TO_DATE('${formVacationVo.startDate}', 'YYYY-MM-DD'), TO_DATE('${formVacationVo.endDate}', 'YYYY-MM-DD'), ${formVacationVo.vacationCnt}, '${formVacationVo.vacationType}', '${formVacationVo.halfDayType}')
+		</when>
+		</choose>
+		SELECT * FROM dual
+	</insert>
+	<insert id="insertDicisionMakers" parameterType="com.doubleu.approval.vo.FormVo" >
+		<foreach collection="decisionMakersList" item="maker">
+			INSERT INTO approval_decision_makers(employee_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
+			VALUES(getApprovalADMSeq(), ${maker.formNo}, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
+		</foreach>
+	</insert>	
+	
+	<select id="outgoingTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.IndexPage">
+		SELECT count(form_no) FROM approval_form WHERE employee_no = ${employeeNo} AND (form_title LiKE '%${findStr}%' OR form_doc LIKE '%${findStr}%')
+	</select>
+	
+	<select id="selectOutgoing" resultType="com.doubleu.approval.vo.FormVo" parameterType="com.doubleu.approval.vo.IndexPage" resultMap="resultFormVo">
+		SELECT * FROM (
+		SELECT ROWNUM rno, af.* FROM (
+		SELECT * FROM approval_form 
+		<where>
+			employee_no = ${employeeNo} 
+			AND (form_title LIKE '%${findStr}%' OR form_doc LIKE '${findStr}')
+			<if test="findType != null">
+			AND	form_type = '${findType}'
+			</if>
+			<if test="findState != null">
+			AND form_state = '${findState}'
+			</if>
+		</where>
+		ORDER BY form_no DESC) af)
+		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
+	</select>
+	<select id="chooseTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.SelectPage">
+		SELECT count(form_no) FROM approval_form WHERE employee_no = ${employeeNo} AND approval_state = '${findState}'
+	</select>
+	<select id="selectChoose" resultType="com.doubleu.approval.vo.FormVo" parameterType="com.doubleu.approval.vo.SelectPage" resultMap="resultFormVo">
+		SELECT * FROM (
+		SELECT ROWNUM rno, af.* FROM (
+		SELECT * FROM approval_form 
+		WHERE employee_no = ${employeeNo} AND approval_state = '${findState}' ORDER BY form_no DESC) af)
+		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
+	</select>
+	
+	<select id="selectView" parameterType="com.doubleu.approval.vo.FormVo" resultType="com.doubleu.approval.vo.FormVo" resultMap="resultFormVo">
+		<choose>
+			<when test="formType == '품의서' or formType == '구매품의서'">
+				SELECT af.*, afj.FORM_PURPOSE, afj.BUDGET 
+				FROM approval_form af, approval_form_petition afj
+				WHERE (af.form_no = afj.form_no) AND
+			</when>
+			<when test="formType == '휴가신청서'">
+				SELECT af.*, afj.start_date, afj.end_date, afj.vacation_cnt, afj.vacation_type, afj.half_day_type 
+				FROM approval_form af, approval_form_vacation afj
+				WHERE (af.form_no = afj.form_no) AND
+			</when>
+			<otherwise>
+				SELECT af.* FROM approval_form af
+				WHERE
+			</otherwise>
+		</choose>
+			af.form_no = ${formNo}
+	</select>
+	<select id="selectDecisionMaker" parameterType="int" resultType="com.doubleu.approval.vo.DecisionMakerVo" resultMap="resultDMVo">
+		SELECT * FROM approval_decision_makers WHERE form_no = ${_parameter}
+	</select>
+	<select id="selectAttFile" parameterType="int" resultType="com.doubleu.approval.vo.AttFileVo" resultMap="resultFileVo">
+		SELECT * FROM approval_files WHERE form_no = ${_parameter}
+	</select>
+	
+	<update id="updateR" parameterType="com.doubleu.approval.vo.FormVo">
+		UPDATE approval_form
+		SET
+		form_date = sysdate,
+		form_title = '${formTitle}',
+		form_doc = '${formDoc}',
+		cooperation_department = '${cooperationDepartment}',
+		event_date = TO_DATE('${eventDate}', 'YYYY-MM-DD'),
+		approval_state = '${approvalState}'
+		WHERE form_no = ${formNo}
+	</update>
+	
+	<update id="updatePetition" parameterType="com.doubleu.approval.vo.FormPetitionVo">
+		UPDATE approval_form_petition
+		SET
+		form_purpose = '${formPurpose}',
+		budget = '${budget}'
+		WHERE form_no = ${formNo}			
+	</update>
+	<update id="updateVacation" parameterType="com.doubleu.approval.vo.FormVacationVo">
+		UPDATE approval_form_vacation
+		SET
+		start_date = TO_DATE('${startDate}', 'YYYY-MM-DD'),
+		end_date = TO_DATE('${endDate}', 'YYYY-MM-DD'),
+		vacation_cnt = '${vacationCnt}',
+		vacation_type = '${vacationType}',
+		half_day_type = '${halfDayType}'
+		WHERE form_no = ${formNo}
+	</update>
+	<delete id="deleteDicisionMakers" parameterType="int">
+		DELETE FROM approval_decision_makers WHERE form_no = ${_parameter}
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<resultMap type="com.doubleu.approval.vo.FormVo" id="resultFormVo">
+		<result property="formNo" column="FORM_NO"/>
+		<result property="employeeNo" column="EMPLOYEE_NO"/>
+		<result property="drafterName" column="DRAFTER_NAME"/>
+		<result property="formDate" column="FORM_DATE"/>
+		<result property="drafterDepartment" column="DRAFTER_DEPARTMENT"/>
+		<result property="drafterPosition" column="DRAFTER_POSITION"/>
+		<result property="formTitle" column="FORM_TITLE"/>
+		<result property="formDoc" column="FORM_DOC"/>
+		<result property="formType" column="FORM_TYPE"/>
+		<result property="cooperationDepartment" column="COOPERATION_DEPARTMENT"/>
+		<result property="eventDate" column="EVENT_DATE"/>
+		<result property="approvalState" column="APPROVAL_STATE"/>
+		<association property="formVacationVo" javaType="com.doubleu.approval.vo.FormVacationVo">
+			<result property="formNo" column="FORM_NO"/>
+			<result property="startDate" column="START_DATE"/>
+			<result property="endDate" column="END_DATE"/>
+			<result property="vacationCnt" column="VACATION_CNT"/>
+			<result property="vacationType" column="VACATION_TYPE"/>
+			<result property="halfDayType" column="HALF_DAY_TYPE"/>
+		</association>
+		<association property="formPetitionVo" javaType="com.doubleu.approval.vo.FormPetitionVo">
+			<result property="formNo" column="form_no"/>
+			<result property="formPurpose" column="form_purpose"/>
+			<result property="budget" column="budget"/>
+		</association>
+	</resultMap>	
+	<resultMap type="com.doubleu.approval.vo.DecisionMakerVo" id="resultDMVo">
+		<result property="employeeNo" column="EMPLOYEE_NO"/>
+		<result property="formNo" column="FORM_NO"/>
+		<result property="makerName" column="MAKER_NAME"/>
+		<result property="makerPosition" column="MAKER_POSITION"/>
+		<result property="makerOrder" column="DECISION_STATE"/>
+		<result property="decisionState" column="MAKER_COMMENT"/>
+		<result property="makerComment" column="MAKER_ORDER"/>
+	</resultMap>
+	
+	<resultMap type="com.doubleu.approval.vo.AttFileVo" id="resultFileVo">
+		<result property="filesNo" column="FILES_NO"/>
+		<result property="formNo" column="FORM_NO"/>
+		<result property="sysFile" column="FILE_SYSFILE"/>
+		<result property="oriFile" column="FILE_ORIFILE"/>
+	</resultMap>
+</mapper>

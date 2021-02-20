@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.doubleu.email.mybatis.EmailMapper">
+	
+
+	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
+ 
+	<result property="emailNo" column="email_no" /> 
+	<result property="emailMid" column="email_mid" /> 
+	<result property="emailAddress" column="email_address" /> 
+	<result property="emailName" column="email_name" /> 
+	<result property="emailTitle" column="email_title" /> 
+	<result property="emailDate" column="email_date"  /> 
+	<result property="emailContents" column="email_contents"/>  
+	<result property="emailMailBox" column="email_mailbox" />
+	<result property="emailChk" column="email_chk" /> 
+	<result property="emailDelete" column="email_delete" /> 
+
+	</resultMap>
+	
+	<resultMap id="attList" type="com.doubleu.email.vo.AttEmailVo">
+		<result property="filesNo" column="files_no"/>
+		<result property="emailNo" column="email_no"/>
+		<result property="fileSysFile" column="files_sysfile"/>
+		<result property="fileOriFile" column="files_orifile"/>
+	</resultMap>
+	
+	<parameterMap type="com.doubleu.email.vo.EmailMainVo" id="getEmailListInsert">
+		<parameter property="emailNo" /> 
+		<parameter property="emailMid" /> 
+		<parameter property="emailAddress" />
+		<parameter property="emailName" />
+		<parameter property="emailTitle" />
+		<parameter property="emailDate" /> 
+		<parameter property="emailContents" /> 
+		<parameter property="emailMailBox"  /> 
+		<parameter property="emailFile"/>  
+		<parameter property="emailChk" />
+		<parameter property="emailDelete" /> 
+	</parameterMap>
+	
+	
+	<select id="selectSendRead" resultMap="getEmailListSelect">
+		SELECT * FROM email ORDER BY email_date DESC
+	</select>
+	
+	<select id="selectSendEmail" resultType="int">
+		SELECT count(email_title) FROM email
+	</select>
+	
+	<select id="selectFindStr" parameterType="String" resultMap="getEmailListSelect">
+		SELECT * FROM email WHERE email_title LIKE '%${findStr}%'
+	</select>
+
+	<!-- insert -->
+	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
+		INSERT ALL
+		INTO email(
+		email_no, 
+		email_mid,
+		email_address, 
+		email_name, 
+		email_title, 
+		email_date, 
+		email_contents, 
+		email_mailbox, 
+		email_chk, email_delete) 
+		VALUES(
+		email_main_seq.nextval, 
+		#{emailMid, jdbcType=VARCHAR}, 
+		#{emailAddress}, #{emailName}, 
+		#{emailTitle}, systimestamp, 
+		#{emailContents}, 
+		default, 
+		#{emailChk}, 
+		default)
+
+		<if test="attFileList != null">
+			<foreach collection="attFileList" item="att">
+				INTO email_files(files_no, email_no, file_sysfile, file_orifile)
+				VALUES (
+				emailMainSeq(), 
+				email_main_seq.currval, 
+				#{att.sysFile, jdbcType=VARCHAR}, 
+				#{att.oriFile})
+			</foreach>
+		</if> 
+		
+		<if test="emailRevList != null">
+			<foreach collection="emailRevList" item="rev">
+				INTO email_receiver (
+					    email_rev_no,
+					    email_no,
+					    email_rev_address,
+					    email_ref)
+				VALUES(
+				emailMainSeq(), 
+				email_main_seq.currval, 
+				#{rev.emailReceiverAddress}, 
+				#{rev.emailReceiverRef})
+				
+				<!-- VALUES(emailMainSeq(), email_main_seq.currval, #{emailReceiverName}, #{emailReceiverAddress}, #{emailReceiverDept}, #{emailReceiverRef}, #{emailMid}) -->
+			</foreach>
+		</if>
+		SELECT * FROM dual
+	</insert>
+	
+	
+</mapper>

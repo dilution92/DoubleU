@@ -1,0 +1,412 @@
+@charset "UTF-8";
+
+body {
+	height: 100%;
+}
+
+.main-gnb-content {
+	padding: 1rem 1rem;
+}
+.main-gnb-menu > li > a {
+	margin-right: 1em;
+}
+
+
+/* 전자결재 사이드바 CSS */
+.e-approval-container {
+	display: flex;	
+	flex-direction: row;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.e-approval-lnb {
+	background-color: #f8f9fa;
+	width: 20%;
+	text-align: center;
+	padding: 1.2em 1.5em 0em 1.5em;
+	min-height: 100%;
+}
+
+.e-approval-lnb-content {
+	width: 16%;
+	position: fixed;
+}
+
+.e-approval-lnb-content > h3{
+	margin-bottom: 1.5em;
+	font-size: 1.2em;
+}
+
+.e-approval-form-btn > input[type="button"] {
+	width: 100%;
+	font-size: 0.9em;
+}
+
+.e-approval-lnb-content ul {
+	list-style-type: none; 
+	padding-inline-start: 0;
+}
+
+.e-approval-lnb-content ul > li {
+	font-size: 0.9em;
+	padding: 5px 0 5px 40px;
+	text-align: left;
+}
+
+
+/* 메일함 */
+.e-approval-approval-list > ul > li > .test:hover {
+	visibility:visible;
+}
+
+.e-approval-approval-list > ul > li > a {
+	text-indent: 1em;
+	width: 100px;
+	font-size: 15px;
+}
+
+.e-approval-approval-list > ul > li > span {
+	margin-left: 5px;
+}
+
+.e-approval-approval-list  {
+	margin-top: 2em;
+}
+
+.e-approval-approval-list > span {
+	display: inline-block;
+	color: #000000;
+	margin-bottom: 0.7em;
+	font-size: 1.1em;
+	width: 200px;
+	text-align: left;	
+}
+
+
+.e-approval-approval-list > .sendmail-align {
+	width: 200px;
+	text-align: left;
+}
+
+.e-approval-approval-list a:visited{
+	text-decoration: none;
+	color: #000000;
+}
+.e-approval-approval-list a:link{
+	text-decoration: none;
+	color: #000000;
+}
+
+.e-approval-approval-list > ul > li:hover {
+	background-color: #e2e5de;
+}
+/* +++++++++++++++++++++++++++++++++++++++ */
+
+
+/* 전자결재 main CSS */
+.e-approval-article {
+	width: 80%;
+	padding: 3em 5em 0 5em;
+}
+
+
+/* e-approval-search-bar CSS */
+
+
+.e-approval-search-bar {
+	width: 100%;
+	min-height: 10%;
+	margin-bottom: 0.5rem; 
+}
+
+.e-approval-search-form {
+	width: 1000px;
+	min-height: 10%;
+}
+
+.e-approval-form-box {
+	width: 100%;
+	min-height: 10%;
+
+}
+
+.e-approval-form-box > span{
+	font-size: 25px;
+}
+
+.e-approval-select-box:hover {
+	cursor: pointer;
+}
+
+.e-approval-form-box > select {
+	display: inline-block;
+	width: 15%;
+	float: right;
+	margin-left: 0.5em;
+}
+
+.e-approval-form-box > input[type="text"] {
+	display: inline-block;
+	margin-top: 0;
+	width: 30%;
+	float: right;
+	margin-left: 0.5em;
+}
+
+.e-approval-form-box > input[type="button"] {
+	display: inline-block;
+	margin-top: 0;
+	float: right;
+	margin-left: 0.5em;
+	}
+
+
+
+/* 내 메일함 모달창 */
+.modalEmail{
+    height: 350px;
+}
+
+.modalNewEmailFolder {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalNewEmailFolder > p{
+   margin-top: 30px;
+   width: 500px;
+}
+
+
+.modalNewEmailFolder > input {
+    text-indent: 20px;
+    margin: 50px auto;
+    width: 500px;
+    height: 30px;
+}
+
+.modalNewEmailFolder > .modalNewEmailFolderBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalNewEmailFolder > .modalNewEmailFolderBtn > button {
+    margin: 0 50px;
+}
+
+
+
+
+
+/* 받은 메일함 선택 바*/
+
+.form-group {
+	display: inline-block;
+}
+
+.email-select-content {
+	width: 100%;
+	margin: 30px auto;
+	padding: 10px;
+}
+
+.email-select-content > div {
+	font-size: 17px;
+}
+
+.email-select-content > .email-select-list {
+	display: flex;
+	margin-left: 0px;
+	justify-content:space-around;
+	padding: 0px;
+	width: 400px;
+	margin-bottom: 50px;
+	
+}
+
+.email-select-content > ul > li {
+	cursor: pointer;
+	list-style: none;
+	margin: 0px 10px;
+}
+
+
+
+.email-select-content > ul > li > label {
+	cursor: pointer;
+	width: 100px;
+}
+
+
+.email-select-content > ul > li > label > input{
+	margin-right: 10px;
+}
+
+.email-select-content > ul > li > span {
+	width:80px;
+}
+
+
+.email-select-content > ul > li div > div > button {
+	width:80px;
+}
+
+
+/* 메일 쓰기 */
+
+.emailSendContents div:nth-child(2) {
+	padding: 0px;
+}
+
+
+.emailSendContentsRev > .revEmail{
+	border: 1px solid #E5E5E5;
+	max-height: 300px;
+	padding: 5px;
+	margin: 0 auto;
+	
+}
+
+.emailSendContentsRev > .revEmail > input{
+	display: inline-block;
+	font-size: 10px;
+	margin: 5px 20px;
+	text-align: center;
+	
+
+} 
+
+/* 주소록 버튼 */
+
+.emailSendContentsRev div:nth-child(3)> input {
+	position: absolute;
+	top: -125px;
+}
+
+
+
+/* 참조 */
+.emailSendContentsRef {
+	margin-top : 10px;
+}
+
+.emailSendContentsRef div:nth-child(1)> label {
+	position: absolute;
+	top: -125px;
+}
+
+.emailSendContentsRef > .rev-to-me > input {
+	line-height: 2;
+} 
+
+.emailSendContentsRef > .revRef{
+	border: 1px solid #E5E5E5;
+	max-height: 300px;
+	padding: 5px;
+	margin: 0 auto;
+	
+}
+
+.emailSendContentsRef > .revRef > input{
+	display: inline-block;
+	font-size: 10px;
+	margin: 5px 20px;
+	text-align: center;
+
+} 
+
+
+/* 제목 */
+
+.emailSendContentsHeader div:nth-child(3) {
+	padding: 0px;
+	width: 720px;
+} 
+
+/* 보내기 취소 버튼 */
+.send-and-cancel {
+	margin: 50px auto;
+	text-align: center;
+}
+
+.send-and-cancel > button {
+	margin: 0 30px;	
+}
+
+
+
+/* 메일 내용 */
+
+.readContents {
+	border: 1px solid #E5E5E5;
+	min-height: 500px;
+	padding: 30px;
+}
+
+
+/* 파일 첨부 목록 */
+.custom-file {
+	border: 1px solid #E5E5E5;
+}
+
+/* 스팸함 모달창 */
+
+.modalSpamEmail{
+    height: 350px;
+}
+
+.modalSpamEmailFolder {
+    padding: 30px;
+    margin: 15px auto;
+}
+
+.modalSpamEmailFolder > p{
+   margin-top: 30px;
+   width: 500px;
+}
+
+
+.modalSpamEmailFolder > input {
+    text-indent: 20px;
+    margin: 30px auto;
+    width: 500px;
+    height: 30px;
+}
+
+.modalSpamEmailFolder > .modalSpamEmailFolderBtn {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.modalSpamEmailFolder > .modalSpamEmailFolderBtn > button {
+    margin: 0 50px;
+}
+
+/* 내용 */
+.send-read-contents {
+	border: 1px solid #E5E5E5;
+	height: 500px;
+	overflow: scroll;
+	overflow-x:hidden;
+	padding: 30px;
+	width: 100%;
+}
+
+.send-read-contents::-webkit-scrollbar {
+  width: 6px;
+}
+
+.send-read-contents::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.send-read-contents::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+
+.send-read-contents::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}

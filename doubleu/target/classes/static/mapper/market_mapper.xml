@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.doubleu.market.mybatis.MarketMapper">
+	
+	<select id="view" resultType="com.doubleu.market.vo.MarketVo" parameterType="int" resultMap="marketList">
+		select * from market where market_no = #{_parameter}
+	</select>
+<!-- select -->	
+	<select id="selectAtt" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo" parameterType="int">
+		select * from market_files where market_no = #{_parameter}
+	</select>
+	<select id="selectAttOne" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo">
+		select distinct market_no, files_orifile from market_files where market_no between 1 and 1000;
+	</select>
+	
+	<select id="totListSize" resultType='int' parameterType="com.doubleu.market.vo.MarketPage">
+		select count(market_no) from market
+		where market_subject like '%${findStr}%'
+	</select>
+	
+	<select id="select2" resultMap="marketList" >
+		select * from market
+	
+	</select>
+<!-- 	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+  		select * from ( 
+  			select rownum no, m.* from (
+				select * from market
+				 where market_subject like '%${findStr}%' order by market_no desc ) m   
+				 ) where no between #{startNo} and #{endNo}
+	</select> -->
+ 	<select id="select" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+  		select * from ( 
+  			select rownum no, m.* from (
+				select * from market mk join market_files att on mk.market_no=att.market_no
+				 where market_subject like '%${findStr}%' order by mk.market_no desc ) m   
+				 ) where no between #{startNo} and #{endNo}
+	</select> 
+	<!-- index게시글 총 갯수 -->
+	<select id="totalCount" resultType="int">
+		select count(*) from market
+	</select>
+	<!-- select게시글 총 갯수 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from market where market_subject like '%${findStr}%'
+	</select>
+
+<!-- insert -->
+	<insert id = 'insert' parameterType="com.doubleu.market.vo.MarketVo">
+		insert all
+		into market(market_no, market_category, members_no, market_subject, market_price, market_account, market_doc, market_hit, market_date, market_bank)
+		values(market_seq.nextval, #{marketCategory, jdbcType=VARCHAR}, #{membersNo}, #{marketSubject}, #{marketPrice}, #{marketAccount}, #{marketDoc},#{marketHit}, SYSDATE, #{marketBank})
+		<if test="attlist != null">
+			<foreach collection="attlist" item="att">
+				into market_files(files_no, market_no, files_sysfile, files_orifile, files_main)
+				values (getMarketAttSeq(), market_seq.currval, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile}, DEFAULT)
+			</foreach>
+		</if>
+		select * from dual		
+	</insert>
+	
+		<insert id="insert_att" parameterType="com.doubleu.market.vo.MarketVo" >
+		INSERT ALL
+		<foreach collection="attlist" item="att">
+			INTO market_files(files_no, market_no, files_sysfile, files_orifile)
+			VALUES (getMarketAttSeq(), ${marketNo}, #{att.sysFile}, #{att.oriFile})
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+	
+	
+	
+	<!-- resultMap -->
+	<resultMap id="marketList" type="com.doubleu.market.vo.MarketVo">
+		<result property="marketSubject" column="market_subject" /> 	
+		<result property="marketNo" column="market_no" /> 	
+		<result property="marketCategory" column="market_category" /> 	
+		<result property="marketPrice" column="market_price" /> 	
+		<result property="marketAccount" column="market_account" /> 	
+		<result property="marketDoc" column="market_doc" /> 	
+		<result property="marketHit" column="market_hit" /> 	
+		<result property="marketDate" column="market_date" /> 	
+		<result property="membersNo" column="members_no" /> 	
+		<result property="marketBank" column="market_bank" /> 	
+	</resultMap>
+	
+	<resultMap type="com.doubleu.market.vo.MarketAttVo" id="attList">
+		<result property="filesNo" column="files_no"/>
+		<result property="MarketNo" column="market_no"/>
+		<result property="sysFile" column="files_sysfile"/>
+		<result property="oriFile" column="files_orifile"/>
+		<result property="main" column="files_main"/>
+	</resultMap>
+</mapper>
+
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.doubleu.notice.mybatis.NoticeMapper">
+	<insert id="insert" parameterType="com.doubleu.notice.vo.NoticeVo">
+		insert into Notice(notice_no, notice_subject, notice_mid, notice_date, notice_type, notice_hit, notice_doc, notice_file) 
+		values(seq_notice_no.nextval, #{notice_subject}, #{notice_mid}, SYSDATE, #{notice_type}, #{notice_hit}, #{notice_doc}, #{notice_file})
+	</insert>
+
+
+
+</mapper>
