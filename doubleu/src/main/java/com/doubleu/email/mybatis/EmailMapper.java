@@ -13,5 +13,5 @@ public interface EmailMapper {
 	public List<EmailMainVo> selectSendRead();
 	public int insertSendWrite(EmailMainVo vo);
 	public int selectSendEmail();
-	
+	public List<EmailMainVo> selectFindStr(String findStr);
 }

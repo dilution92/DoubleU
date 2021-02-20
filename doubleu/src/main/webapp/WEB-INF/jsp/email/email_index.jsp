@@ -144,11 +144,11 @@
 			
 			<!-- 메일 검색바 code -->
 			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="frm" method="post">
+	      		<form class="e-approval-search-form" action="" name="EmailForm" method="post">
 			      	<div class="e-approval-form-box">
 			      		<span>받은 메일함</span>
-				        <input class="btn btn-outline-primary btn-sm" name="onname" type="button" value="검색"/>
-				        <input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
+				        <input class="btn btn-outline-primary btn-sm" name="onname" type="button" id="emailSearchTitle" value="검색"/>
+				        <input class="form-control form-control-sm" type="text" placeholder="Search" name="emailFindStr" aria-label="Search" id="emailFindStr">
 				      	
 				      	
 						<button class="btn btn-outline-primary btn-sm dropdown-toggle" style="display: inline-block; width: 7%; float: right; margin-left: 0.5em;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="">상세 </button>
@@ -299,7 +299,7 @@ selectSideBtn();
 favoritesBtn();
 readBtn();
 sidebarReadBtn();
-
+searchEmailBar();
 </script>
 </body>
 </html>

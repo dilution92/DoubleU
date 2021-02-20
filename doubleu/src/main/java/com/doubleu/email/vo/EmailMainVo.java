@@ -19,7 +19,8 @@ public class EmailMainVo {
 		
 	List<AttEmailVo> attFileList;
 	List<EmailReceiverVo> emailRevList; // 받은 사람, 참조
-	
+	List<EmailMainVo> emailReadList; // 메일 읽기
+
 	@Override
 	public String toString() {
 		return "EmailMainVo [emailNo=" + emailNo + ", emailMid=" + emailMid + ", emailAddress=" + emailAddress
@@ -112,5 +113,13 @@ public class EmailMainVo {
 	public void setEmailRevList(List<EmailReceiverVo> emailRevList) {
 		this.emailRevList = emailRevList;
 	}
+	
+	public List<EmailMainVo> getEmailReadList() {
+		return emailReadList;
+	}
+	public void setEmailReadList(List<EmailMainVo> emailReadList) {
+		this.emailReadList = emailReadList;
+	}
+
 	
 }

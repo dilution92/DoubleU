@@ -296,6 +296,7 @@ body {
 .email-select-content {
 	width: 1000px;
 	margin: 0 auto;
+	margin-top: 50px;
 }
 
 .email-select-content > .email-select-list {

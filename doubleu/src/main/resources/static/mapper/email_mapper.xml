@@ -52,6 +52,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT count(email_title) FROM email
 	</select>
 	
+	<select id="selectFindStr" parameterType="String" resultMap="getEmailListSelect">
+		SELECT * FROM email WHERE email_title LIKE '%${findStr}%'
+	</select>
 
 	<!-- insert -->
 	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">

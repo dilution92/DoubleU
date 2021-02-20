@@ -37,6 +37,15 @@ public class EmailDao {
 		
 	}
 	
+	// 검색bar
+	
+	public List<EmailMainVo> selectSearch(String findStr) {
+		
+		List<EmailMainVo> list = mapper.selectFindStr(findStr);
+		System.out.println(list);
+		
+		return list;
+	}
 	
 	
 	// 메일 보내기

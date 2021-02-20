@@ -13,6 +13,9 @@
 	추가 : 21.02.18
 	6. 메일쓰기 백엔드 작업
 	 - 메일 쓰고 result.jsp 확인 버튼 눌렀을 때 function() 추가;
+
+	추가 : 21.02.19
+	7. 메일 검색 Bar
  */
 
 
@@ -124,6 +127,23 @@ var goRevMainBtn = function() {
 	
 	
 
+// 7. 검색Bar
+
+var searchEmailBar = function() {
+	
+	var emailFindStr = document.querySelector('#emailFindStr');
+	var emailSearchTitle = document.querySelector('#emailSearchTitle');
+	var emailForm = document.EmailForm;
+	
+	
+	// 이벤트 핸들러
+	var emailFindStrHandler = function() {
+		emailForm.action = '/selectFindStr';
+		emailForm.submit();
+	}
+	
+	emailSearchTitle.addEventListener('click', emailFindStrHandler);
+}
 
 
 

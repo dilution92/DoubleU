@@ -43,17 +43,42 @@ public class EmailMainController {
 	@RequestMapping(value="/emailIndex", 
 			method={RequestMethod.GET, RequestMethod.POST})
 	
-	public ModelAndView emailIndex(EmailMainVo vo) {
+	public ModelAndView emailIndex(
+			EmailMainVo vo,
+			HttpServletRequest req) {
 		
 		ModelAndView mv = new ModelAndView();
 
 		int cnt = DaoService.selectSendEmail();	
-		List<EmailMainVo> list = DaoService.selectSendRead();
+		List<EmailMainVo> selectSendlist = DaoService.selectSendRead();
+		
+		
 		
 		mv.addObject("readCnt", cnt);
-		mv.addObject("list", list);
+		
+		mv.addObject("list", selectSendlist);
 		mv.setViewName("email/email_index");
 		
+		return mv;
+	}
+	
+	@RequestMapping(value="/selectFindStr", 
+			method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView selectFindStr(
+			EmailMainVo vo,
+			HttpServletRequest req) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+
+		String findStr = req.getParameter("emailFindStr");
+		System.out.println(findStr);
+		
+		List<EmailMainVo> selectFindStr = DaoService.selectSearch(findStr);
+		System.out.println("findStr " +selectFindStr);
+		
+		mv.addObject("selectFindStr", selectFindStr);
+		mv.setViewName("redirect:/emailIndex");
 		return mv;
 	}
 	
@@ -84,7 +109,6 @@ public class EmailMainController {
 			emailChk = "!";
 			vo.setEmailChk(emailChk);
 		}
-		
 		
 		// 파일 업로드 
 		List<AttEmailVo> attFileList = FileUpLoadService.upload(mul);
