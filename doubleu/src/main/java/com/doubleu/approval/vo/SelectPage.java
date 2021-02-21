@@ -10,7 +10,7 @@ public class SelectPage {
 	int nowPage;
 	int listSize = 10;
 	int blockSize = 3;
-	int employeeNo;
+	int memberNo;
 	
 	
 	String findStr;
@@ -49,14 +49,12 @@ public class SelectPage {
 		this.totalListSize = totalListSize;
 	}
 
-	
-	
-	public int getEmployeeNo() {
-		return employeeNo;
+	public int getMemberNo() {
+		return memberNo;
 	}
 
-	public void setEmployeeNo(int employeeNo) {
-		this.employeeNo = employeeNo;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 
 	public int getTotPage() {

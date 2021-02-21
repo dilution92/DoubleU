@@ -147,20 +147,4 @@ public class URLController {
 		mv.setViewName("/ElectronicApproval/approval_index");
 		return mv;
 	}
-	
-	@RequestMapping(value = "/approvalChoosePage")
-	public ModelAndView newPage() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("ElectronicApproval/insert/approval_choose_decisionMakers");
-		return mv;
-		
-	}
-	@RequestMapping(value = "/ApprovalBtns")
-	public ModelAndView formBtns() {
-		ModelAndView mv = new ModelAndView();
-		
-		mv.setViewName("ElectronicApproval/E_Approval_Form_btns");
-		return mv;
-	}
 }

@@ -66,7 +66,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td height="80px;" width="80px;" style="padding-top: 28px;">
+									<td height="80px;" width="75px" style="padding-top: 28px;">
 										<c:choose>
 											<c:when test="${makerVo.decisionState == '1' }">
 												<h6><span class="badge badge-pill badge-primary">결재승인</span></h6>

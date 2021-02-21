@@ -97,6 +97,8 @@
 						<input type='hidden' name='nowPage' value='${(empty page.nowPage)? 1 : page.nowPage }'/>
 				</nav>
 			</div>
+			<input  type="hidden"value='${param.findStr}'name='findStr' >                                                                                 
+			
 			</form>
 			<!-- ========== -->
 

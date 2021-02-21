@@ -13,8 +13,13 @@
 	<%
 		Date nowTime = new Date();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-	 %>
-	
+		String memberNo = (String) session.getAttribute("memberNo");
+		String memberPosition= (String) session.getAttribute("memberPosition");
+		String memberName= (String) session.getAttribute("memberName");
+		String memberDepartment= (String) session.getAttribute("memberDepartment");
+		
+	%>
+		
 	<div class="e-approval-form-container">
 		<form action="/approvalInsertR" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
@@ -49,11 +54,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> 정해준 </td>
+									<td> <%= memberName %></td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td>기획부 </td>
+									<td> <%= memberDepartment %> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
@@ -79,9 +84,9 @@
 						<th> 일시 </th>
 						<td> <input type="date" name="eventDate" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 						<th> 성명 </th>
-						<td> <input type="text" value="정해준" name="drafterName" class="form-control form-control-sm" style="font-size: 1em;" placeholder="성명" required> </td>
+						<td> <input type="text" value="<%= memberName %>" name="drafterName" class="form-control form-control-sm" style="font-size: 1em;" placeholder="성명" required readonly="readonly"> </td>
 						<th> 직급 </th>
-						<td> <input type="text" value="기획부" name="drafterPosition" class="form-control form-control-sm" style="font-size: 1em;" placeholder="직급" required> </td>
+						<td> <input type="text" value="<%= memberDepartment %>" name="drafterPosition" class="form-control form-control-sm" style="font-size: 1em;" placeholder="직급" required readonly="readonly"> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>

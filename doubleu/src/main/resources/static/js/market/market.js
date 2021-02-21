@@ -9,7 +9,7 @@ brd = function() {
 $('#market_btnFind').on('click', function() {
 		var frm = document.frm_market;
 
-			frm.findCate.value = $('#market_category option:selected').val();
+			frm.marketCategory.value = $('#market_category option:selected').val();
 			frm.action = '/marketSelect';
 			frm.submit();
 		});

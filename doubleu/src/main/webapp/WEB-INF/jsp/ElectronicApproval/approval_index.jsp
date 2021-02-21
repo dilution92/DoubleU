@@ -37,9 +37,10 @@
 			mainJob = request.getParameter("mainJob");
 		}
 		
-		session.setAttribute("employeeNo", "3355");
-		session.setAttribute("employeeName", "정해준");
-		session.setAttribute("employeePosition", "주임");
+		session.setAttribute("memberNo", "2");
+		session.setAttribute("memberName", "정해준");
+		session.setAttribute("memberPosition", "사원");
+		session.setAttribute("memberDepartment", "기획부");
 	%>	
 	
 <form class="e-approval-search-form" action="" name="frmApproval" method="post">
@@ -108,8 +109,8 @@
 				      	</select>
 					</div>
 					<!-- hidden 탭 -->
-					<input type="hidden" name="formNo" value="">
 					<input type="hidden" name="formType" value="">
+					<input type="hidden" name="formNo" value="">
 					<input type="hidden" name="formState" value="">
 					<input type="hidden" name="selectFormType" value="">
 					<input type="hidden" name="selectFormState" value="">
