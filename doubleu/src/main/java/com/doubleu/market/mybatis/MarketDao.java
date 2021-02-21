@@ -47,7 +47,7 @@ public class MarketDao {
 				System.out.println("BoardDao.select()..........................2");
 				System.out.println(page.getNowPage());
 				System.out.println(page.getFindStr());
-
+				System.out.println(page.getMarketCategory());
 				
 				List<MarketAttVo> attList = new ArrayList<>();
 				System.out.println("BoardDao.select()..........................3");
@@ -60,11 +60,11 @@ public class MarketDao {
 				//System.out.println("attlist: " + attList.get(0).getOriFile());
 				
 				list = mapper.select(page);
-				for (int j = 0; j < list.size(); j++) {
-					System.out.println(list.get(j).getMarketSubject());
-					System.out.println(list.get(j).getOriFile());
-					
-				}
+//				for (int j = 0; j < list.size(); j++) {
+//					System.out.println(list.get(j).getMarketSubject());
+//					System.out.println(list.get(j).getOriFile());
+//					
+//				}
 				map.put("page", page);
 				map.put("list", list);
 				//map.put("attList", attList);
