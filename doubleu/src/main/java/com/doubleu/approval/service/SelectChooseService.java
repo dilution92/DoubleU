@@ -23,13 +23,13 @@ public class SelectChooseService {
 		String findState = req.getParameter("findState");
 		HttpSession session = req.getSession();
 		int nowChooseSelectPage = 1;
-		String employeeNoStr = (String) session.getAttribute("employeeNo");
-		int employeeNo = Integer.parseInt(employeeNoStr);
+		String memberNoStr = (String) session.getAttribute("memberNo");
+		int memberNo = Integer.parseInt(memberNoStr);
 		if(req.getParameter("nowChooseSelectPage") != null) {
 			nowChooseSelectPage = Integer.parseInt(req.getParameter("nowChooseSelectPage"));
 		}
 		SelectPage page = new SelectPage(); 
-		page.setEmployeeNo(employeeNo);
+		page.setMemberNo(memberNo);
 		page.setFindState(findState);
 		page.setNowPage(nowChooseSelectPage);
 		

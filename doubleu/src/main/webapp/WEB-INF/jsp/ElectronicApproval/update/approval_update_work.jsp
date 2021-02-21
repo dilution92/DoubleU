@@ -85,7 +85,8 @@
 			                     <td height="80px;">
 			                        <input id="makerSignBtn" name="makerSignBtn1"  type="button" value="직원조회" onclick="updateChooseMaker()">
 			                        <input id="makerDelBtn" type="button" value="x" onclick="deleteChooseMaker()">
-			                        <input type="hidden" name="makerOrder" val="1">
+			                        <input type="hidden" name="makerOrder" value="1">
+			                        <input type="hidden" name="makerNo" value="${makerVo.memberNo }">
 			                     </td>
 							</tr>
 							<tr>
@@ -95,7 +96,7 @@
 							</tr>
 						</table>
 						</c:forEach>
-						<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
+						<div id="makersZone" class="approval-amkers-zone">
 						</div>
 					</div>
 				</div>
@@ -145,7 +146,6 @@
 	</div>
 	
 <script type="text/javascript">
-funcApproval();
 createMakerBox('makersZone');
 createFile('fileZone')
 </script>

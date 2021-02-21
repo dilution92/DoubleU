@@ -11,7 +11,7 @@ public class IndexPage {
 	int nowPage;
 	int listSize = 5;
 	int blockSize = 3;
-	int employeeNo;
+	int memberNo;
 	
 	String findStr;
 	String findType;
@@ -56,11 +56,11 @@ public class IndexPage {
 	public void setFindState(String findState) {
 		this.findState = findState;
 	}
-	public int getEmployeeNo() {
-		return employeeNo;
+	public int getMemberNo() {
+		return memberNo;
 	}
-	public void setEmployeeNo(int employeeNo) {
-		this.employeeNo = employeeNo;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 	public int getTotalListSize() {
 		return totalListSize;

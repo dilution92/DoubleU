@@ -56,7 +56,7 @@
 						<div class="e-approval-form-decision-box-1 table-bordered">
 							<p style="margin: 0;"> 결재란 </p>
 						</div>
-						<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
+						<div id="makersZone" class="approval-amkers-zone ">
 							<c:forEach var="makerVo" items="${vo.decisionMakersList }">
 							<table class="table table-sm table-bordered e-approval-form-decision-box-2 makerBox" id="makerBox">
 								<tr>
@@ -65,7 +65,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td height="80px;" width="80px;" style="padding-top: 28px;">
+									<td height="80px;" style="padding-top: 28px;">
 										<c:choose>
 											<c:when test="${makerVo.decisionState == '1' }">
 												<h6><span class="badge badge-pill badge-primary">결재승인</span></h6>

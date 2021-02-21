@@ -357,7 +357,7 @@ body {
 }
 
 .e-approval-form-decision-box-2 td {
-	width: 65px;
+	width: 75px;
 }
 
 .e-approval-form-table-3 th{
@@ -499,3 +499,51 @@ body {
 .approval-file-label:hover {
 	cursor: pointer;
 }
+
+
+/* ----------직원 조회 CSS ---------- */
+.chooseMaker-header {
+	margin: .5em 1em 0 1em;
+}
+
+.chooseMaker-header > h4 {
+	margin: 0;
+	font-weight: bold;
+}
+
+.chooseMaker-main {
+	width: 95%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+}
+.chooseMaker-search {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+	margin: 1em 0;
+}
+.e-approval-chooseMaker-input {
+	display: inline-block;
+	width: 55%;
+}
+.e-approval-chooseMaker-select {
+	display: inline-block;
+	width: 30%;
+}
+
+.chooseMaker-table {
+	margin-bottom: 1em;
+}
+
+/* e-approval-list-pagination CSS (페이징처리)*/
+.e-approval-chooseMaker-pagination a:link,
+.e-approval-chooseMaker-pagination a:visited {
+	color: #6c757d;
+	text-decoration: none;
+} 
+
+
+
+
+
