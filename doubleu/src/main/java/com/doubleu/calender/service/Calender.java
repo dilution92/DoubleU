@@ -181,54 +181,75 @@ public class Calender {
 		
 		List<CalenderWeekList> list = new ArrayList<>();
 		
-		if(day-7<0) { // 주간이 지난달을 포함할 경우
-			int totalweek = setWeekMethod(year, month-1, lastDay[month-2]);
-			int startNum= lastDay[month-2]-totalweek;
+		if(day-7<0 && day<=setWeekMethod(year, month, day)) { // 주간이 지난달을 포함할 경우
+			
+			int totalweek ;
+			int startNum ;
+			if((month-1)==0) {
+				totalweek = setWeekMethod(year, 12, lastDay[11]);
+				startNum= lastDay[11]-totalweek;
+				System.out.println(totalweek+"토탈위크");
+				System.out.println(startNum + "스타트넘");
+			}else {
+				totalweek = setWeekMethod(year, month-1, lastDay[month-2]);
+				startNum= lastDay[month-2]-totalweek;
+			}
 			for(int i=0; i<totalweek+1; i++) {
 				CalenderWeekList weekList = new CalenderWeekList();
-				startNum = startNum+i;
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
 				list.add(weekList);
+				startNum = startNum+1;
 			}
 			for(int i=0; i<7-(totalweek+1); i++) {
 				CalenderWeekList weekList = new CalenderWeekList();
 				startNum= 1;
-				startNum = startNum+i;
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
 				list.add(weekList);
+				startNum = startNum+1;
 			}
 			
-		}else if(day+7<lastDay[month-1]) { // 주간이 다음달을 포함할 경우
+		}else if(day+7>lastDay[month-1]) { // 주간이 다음달을 포함할 경우
 			int totalweek = setWeekMethod(year, month, lastDay[month-1]);
 			int startNum= lastDay[month-1]-totalweek;
+			if(month==12) {
+				
+			}
 			for(int i=0; i<(totalweek+1); i++) {
+				
+				System.out.println("aaaa");
+				
 				CalenderWeekList weekList = new CalenderWeekList();
-				startNum= day-totalweek;
-				startNum = startNum+i;
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
 				list.add(weekList);
+				startNum = startNum+1;
 			}
 			
 			for(int i=0; i<7-(totalweek+1); i++) {
 				CalenderWeekList weekList = new CalenderWeekList();
+				
+				System.out.println("bbbb");
+				
 				startNum= 1;
-				startNum = startNum+i;
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
 				list.add(weekList);
+				startNum = startNum+1;
 			}
 		}else {
 			for(int i=0; i<7; i++) {
+				
+				System.out.println("cccc");
+				
 				int totalweek = setWeekMethod(year, month, day);
 				CalenderWeekList weekList = new CalenderWeekList();
 				int startNum= day-totalweek;
-				startNum = startNum+i;
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
 				list.add(weekList);
+				startNum = startNum+1;
 			}
 		}
 		
@@ -254,9 +275,9 @@ public class Calender {
 				monthIndex=11;
 			}else {
 				monthIndex = monthIndex-1;
+				setMonth(monthIndex+1);
 			}
-			setDay(lastDay[monthIndex]-(day+diff));
-			setMonth(monthIndex+1);
+			setDay(lastDay[monthIndex]+(day+diff));
 		}else if((day+diff)>lastDay[monthIndex]) {  //변경된 day가 마지막일을 초과할 경우
 			if(monthIndex==11) {
 				setMonth(1);
@@ -272,6 +293,7 @@ public class Calender {
 		}
 		
 		list = setCalenderWeek();
+		System.out.println(day + "현재 설정날짜");
 		return list;
 	}
 	
