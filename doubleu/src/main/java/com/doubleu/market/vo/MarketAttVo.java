@@ -6,13 +6,14 @@ public class MarketAttVo {
 		int MarketNo;
 		String sysFile;
 		String oriFile;
-		int main;
+		int filesMain;
 		
-		public int getMain() {
-			return main;
+		
+		public int getFilesMain() {
+			return filesMain;
 		}
-		public void setMain(int main) {
-			this.main = main;
+		public void setFilesMain(int filesMain) {
+			this.filesMain = filesMain;
 		}
 		public int getFilesNo() {
 			return filesNo;
@@ -39,5 +40,6 @@ public class MarketAttVo {
 		public void setOriFile(String oriFile) {
 			this.oriFile = oriFile;
 		}
+	
 	
 }
