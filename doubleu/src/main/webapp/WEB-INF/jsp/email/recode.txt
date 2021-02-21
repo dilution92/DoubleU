@@ -27,3 +27,10 @@
 	- 메일함 사이드바 받은 메일함 -> SELECT
 	- 중요 메일 표시 로직 null -> '', not null일 때 '!' 표시
 
+- 21.02.20
+    [/emailIndex]
+    - 메일함 email_contents, email_name 기준으로 메일 목록 ajax
+    - 상세 버튼 dropdown -> commonsCode/searchDropDown.jsp 분리 
+    - 이동 버튼 dropdown -> commonsCode/selectAllDropDowns.jsp 분리 
+    - 모달창 스팸, 이동, 내메일함 + jsp 분리
+    	- spamModal.jsp, newFolderModal.jsp, moveFolderModal.jsp

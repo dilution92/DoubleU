@@ -52,8 +52,6 @@ public class EmailMainController {
 		int cnt = DaoService.selectSendEmail();	
 		List<EmailMainVo> selectSendlist = DaoService.selectSendRead();
 		
-		
-		
 		mv.addObject("readCnt", cnt);
 		
 		mv.addObject("list", selectSendlist);
@@ -62,6 +60,7 @@ public class EmailMainController {
 		return mv;
 	}
 	
+	// 메일 검색 바 내용, email_name 으로 검색
 	@RequestMapping(value="/selectFindStr", 
 			method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView selectFindStr(
@@ -70,15 +69,12 @@ public class EmailMainController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-
 		String findStr = req.getParameter("emailFindStr");
-		System.out.println(findStr);
-		
 		List<EmailMainVo> selectFindStr = DaoService.selectSearch(findStr);
-		System.out.println("findStr " +selectFindStr);
-		
+	
 		mv.addObject("selectFindStr", selectFindStr);
-		mv.setViewName("redirect:/emailIndex");
+		mv.setViewName("email/ajax/email_select_search");
+	
 		return mv;
 	}
 	

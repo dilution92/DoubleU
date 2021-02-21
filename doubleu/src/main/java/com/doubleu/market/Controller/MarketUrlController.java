@@ -33,7 +33,7 @@ public class MarketUrlController {
 		
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
-		//mv.addObject("attList", map.get("attList"));
+		mv.addObject("attList", map.get("attList"));
 		mv.addObject("cnt", cnt);
 		mv.setViewName("market/market_index");
 		//System.out.println("list size: " + map.get("list").toString());

@@ -37,11 +37,13 @@
 			mainJob = request.getParameter("mainJob");
 		}
 		
-		session.setAttribute("employeeNo", "3355");
-		session.setAttribute("employeeName", "정해준");
-		session.setAttribute("employeePosition", "주임");
+		session.setAttribute("memberNo", "2");
+		session.setAttribute("memberName", "정해준");
+		session.setAttribute("memberPosition", "사원");
+		session.setAttribute("memberDepartment", "기획부");
 	%>	
 	
+<form class="e-approval-search-form" action="" name="frmApproval" method="post">
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
 		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
@@ -80,11 +82,22 @@
 		<c:if test="${mainJob eq 'select/approval_select_formState.jsp' or mainJob eq 'select/approval_select.jsp'}">
 		<!-- 전자결재홈 검색바 code -->
 			<div class="e-approval-search-bar">
-	      		<form class="e-approval-search-form" action="" name="frmApproval" method="post">
 			      	<div class="e-approval-form-box">
-				        <input class="btn btn-outline-primary btn-sm" type="button" value="검색"/>
-				        <input class="form-control form-control-sm" name="findStr" value="" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-				      	<select class="form-control form-control-sm e-approval-select-box">
+				        <input class="btn btn-outline-primary btn-sm" id="btnFind" type="button" value="검색"/>
+			      		<input class="form-control form-control-sm" name="findStr" value="${param.findStr}" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
+		     			<select id="selectFormType" class="form-control form-control-sm e-approval-select-box">
+							<option value="0"> 결재 양식 유형 </option>
+							<option value="업무기안"> 업무 기안 </option>
+							<option value="업무협조"> 업무 협조 </option>
+							<option value="품의서"> 품의서 </option>
+							<option value="구매품의서"> 구매품의서 </option>
+							<option value="사유서"> 사유서</option>
+							<option value="휴가신청서"> 휴가신청서 </option>
+							<option value="지각/결근사유서"> 지각/결근사유서 </option>
+							<option value="지출결의서"> 지각/결근사유서 </option>
+						</select>
+				      	
+				      	<select id="selectFormState" class="form-control form-control-sm e-approval-select-box">
 				      		<option selected> 문서 상태 </option>
 				      		<option value="0"> 진행중인 문서 </option>
 				      		<option value="1"> 임시저장한 문서 </option>
@@ -96,94 +109,24 @@
 				      	</select>
 					</div>
 					<!-- hidden 탭 -->
-					<input type="hidden" name="formNo" value="">
 					<input type="hidden" name="formType" value="">
+					<input type="hidden" name="formNo" value="">
 					<input type="hidden" name="formState" value="">
-	     		</form>
+					<input type="hidden" name="selectFormType" value="">
+					<input type="hidden" name="selectFormState" value="">
 			</div>
 		</c:if>
-			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/${(empty mainJob)? 'select/approval_select.jsp': mainJob }"></jsp:include>
+			<div>
+			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/${(empty mainJob) ? 'select/approval_select.jsp' : mainJob }"></jsp:include>
+			</div>
 		</main>
 	</section>
 	
-	
 	<!-- 모달창 -->
-	<div class="modal fade e-approval-formChoose-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">결재 유형 선택</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="moadl-body e-approval-scroll">
-					<div class="accordion" id="accordionExample">
-						<div class="card">
-							<div class="card-header e-approval-formChoose-modal-tab" id="headingOne">
-								<h6 class="mb-0">
-									<button class="btn btn-link btn-block text-left e-approval-formChoose-btn" type="button" data-toggle="collapse" data-target="#collapseOne"
-									 aria-expanded="true" aria-controls="collapseOne">
-									 업무
-									 </button>
-								</h6>
-							</div>
-							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-								<div class="card-body">
-									<ul  class="e-approval-formChoose-modal-ul">
-										<li><a href="/approvalGoFormType?formType=업무기안">업무 기안</a></li>
-										<li><a href="/approvalGoFormType?formType=업무협조">업무 협조</a></li>
-										<li><a href="/approvalGoFormType?formType=품의서">품의서</a></li>
-										<li><a href="/approvalGoFormType?formType=구매품의서">구매품의서</a></li>
-										<li><a href="/approvalGoFormType?formType=사유서">사유서</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header e-approval-formChoose-modal-tab" id="headingTwo">
-								<h6 class="mb-0">
-									<button class="btn btn-link btn-block text-left e-approval-formChoose-btn" type="button" data-toggle="collapse" data-target="#collapseTwo"
-									 aria-expanded="true" aria-controls="collapseTwo" style="width: 100%;">
-									 인사
-									</button>
-								</h6>
-							</div>
-							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-								<div class="card-body">
-									<ul class="e-approval-formChoose-modal-ul">
-										<li><a href="/approvalGoFormType?formType=휴가신청서">휴가 신청서</a></li>
-										<li><a href="/approvalGoFormType?formType=지각/결근사유서">지각/결근 사유서</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header e-approval-formChoose-modal-tab" id="headingThree">
-								<h6 class="mb-0">
-									<button class="btn btn-link btn-block text-left e-approval-formChoose-btn" type="button" data-toggle="collapse" data-target="#collapseThree"
-									 aria-expanded="true" aria-controls="collapseThree">
-									 지출 결의
-									 </button>
-								</h6>
-							</div>
-							<div class="collapse" id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample">
-								<div class="card-body">
-									<ul  class="e-approval-formChoose-modal-ul">
-										<li><a href="/approvalGoFormType?formType=지출결의서">지출결의서</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-secondary" data-dismiss="modal" value="close">
-				</div>
-			</div>
-		</div>
+	<div>
+		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/modal/insertForm.jsp"></jsp:include>
 	</div>
-
+</form>
 <script type="text/javascript">
 funcApproval();
 </script>

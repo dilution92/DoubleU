@@ -1,7 +1,7 @@
 package com.doubleu.approval.vo;
 
 public class DecisionMakerVo {
-	int employeeNo;
+	int memberNo;
 	int formNo;
 	String makerName;
 	String makerPosition;
@@ -21,11 +21,11 @@ public class DecisionMakerVo {
 	public void setMakerComment(String makerComment) {
 		this.makerComment = makerComment;
 	}
-	public int getEmployeeNo() {
-		return employeeNo;
+	public int getMemberNo() {
+		return memberNo;
 	}
-	public void setEmployeeNo(int employeeNo) {
-		this.employeeNo = employeeNo;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 	public int getFormNo() {
 		return formNo;

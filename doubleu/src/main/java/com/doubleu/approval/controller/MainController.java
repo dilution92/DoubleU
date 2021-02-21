@@ -23,6 +23,7 @@ import com.doubleu.approval.mybatis.ApprovalDao;
 import com.doubleu.approval.service.CreateDesicionMakerService;
 import com.doubleu.approval.service.SelectChooseService;
 import com.doubleu.approval.service.SelectFormType;
+import com.doubleu.approval.service.SelectMemberService;
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectViewService;
 import com.doubleu.approval.service.UploadService;
@@ -49,7 +50,9 @@ public class MainController {
 	@Autowired
 	SelectViewService viewService;
 	@Autowired
-	SelectFormType CheckFormType;
+	SelectFormType CheckFormType;  
+	@Autowired
+	SelectMemberService serviceMberService;
 	
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
@@ -81,8 +84,9 @@ public class MainController {
 		String msg = null;
 		
 		//직원 번호 주입 형변환 후 주입
-		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
-		vo.setEmployeeNo(employeeNo);
+		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+		System.out.println("기안자 번호: " + memberNo);
+		vo.setMemberNo(memberNo);
 		vo.setApprovalState("(발신)상신");
 		//결재권자 list 작성
 		int decisionMakerCnt = Integer.parseInt(req.getParameter("decisionMakerCnt"));
@@ -125,8 +129,8 @@ public class MainController {
 		String msg = null;
 		
 		//직원 번호 주입 형변환 후 주입
-		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
-		vo.setEmployeeNo(employeeNo);
+		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+		vo.setMemberNo(memberNo);
 		vo.setApprovalState("(발신)임시저장");
 		//결재권자 list 작성
 		int decisionMakerCnt = Integer.parseInt(req.getParameter("decisionMakerCnt"));
@@ -296,13 +300,12 @@ public class MainController {
 								) {
 		System.out.println("approvalUpdate start..");
 		ModelAndView mv = new ModelAndView();
-		int employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
+		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
 		String msg = null;
 		System.out.println(petitionVo.getFormNo());
 		System.out.println(vacationVo.getFormNo());
 		vo.setApprovalState("(발신)상신");
 
-		
 		if(vo.getFormType().equals("품의서") || vo.getFormType().equals("구매품의서")) {
 			msg = service.updatePetition(petitionVo);
 			System.out.println(msg);
@@ -312,17 +315,32 @@ public class MainController {
 			msg = service.updateVacation(vacationVo);
 			System.out.println(msg);
 		}
-		
 		int decisionMakerCnt = Integer.parseInt(req.getParameter("decisionMakerCnt"));
+		System.out.println("decisionMakerCnt: " + decisionMakerCnt);
 		if(decisionMakerCnt > 0) {
 			List<DecisionMakerVo> decisionMakerList = decisionMakerService.getMakerList(req);
+			System.out.println("decisionMakerList 완료");
 			msg = service.deleteDicisionMakers(decisionMakerList.get(0).getFormNo());
 			System.out.println(msg);
 			msg = service.insertDicisionMakers(decisionMakerList);
 		}
 		msg = service.updateR(vo);
-		
+		System.out.println("update... 종료..");
 		mv.setViewName("redirect:/approvalIndex");
 		return mv;
 	}
+	
+	@RequestMapping(value = "/approvalSelectMember")
+	public ModelAndView newPage(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> map;
+		
+		map = serviceMberService.selectMember(req);
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("list"));
+		mv.setViewName("ElectronicApproval/insert/approval_choose_decisionMakers");
+		return mv;
+	}
+	
+	
 }

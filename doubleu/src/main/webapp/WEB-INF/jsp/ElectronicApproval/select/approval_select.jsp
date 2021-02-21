@@ -53,7 +53,6 @@
 			<!-- ========== -->
 			
 			<!-- 리스트 페이징 아이콘 code -->
-			<form action="" name="frmApprovalPagination" >
 			<div class="e-approval-list-pagination">
 				<nav aria-label="Page navigation example">
 					<ul class="pagination pagination-sm text-muted justify-content-center">  
@@ -127,9 +126,9 @@
 					</ul>
 				</nav>
 			</div>
-			
-			<input type="hidden" name="nowOutgoingPage" value="${(empty outgoingPage.nowPage) ? 1: outgoingPage.nowPage }">
-			</form>
+				<input type="hidden" name="nowOutgoingPage" value="${(empty param.nowOutgoingPage) ? 1: param.nowOutgoingPage }">
+				<input type="hidden" name="nowReceiverPage" value="${(empty param.nowReceiverPage) ? 1: pram.nowReceiverPage}"> 
+				<input type="hidden" name="nowPlace" value="indexPlace">
 			<!-- ========= -->
 			
 			

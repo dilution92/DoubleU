@@ -15,6 +15,7 @@ import com.doubleu.approval.vo.FormPetitionVo;
 import com.doubleu.approval.vo.FormVacationVo;
 import com.doubleu.approval.vo.FormVo;
 import com.doubleu.approval.vo.IndexPage;
+import com.doubleu.approval.vo.MemberVo;
 import com.doubleu.approval.vo.SelectPage;
 
 @Service
@@ -43,9 +44,6 @@ public class ApprovalDao {
 	
 	public Map<String, Object> selectOutgoing(IndexPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		
-		System.out.println("findStr: " + page.getFindStr());
-		System.out.println("nowPage: " + page.getNowPage());
 		
 		int outgoingTotalListSize = mapper.outgoingTotalListSize(page);
 		System.out.println("outgoingTotalListSize: " + outgoingTotalListSize);
@@ -154,5 +152,20 @@ public class ApprovalDao {
 			msg = "업데이트 중 오류가 발생하였습니다.";
 		}
 		return msg;
+	}
+	
+	public Map<String, Object> selectMember(IndexPage page) {
+		Map<String,Object> map = new HashMap<>();
+		List<MemberVo> list = new ArrayList<>();
+		int memberTotalListSize = mapper.memberTotalListSize(page);
+		page.setTotalListSize(memberTotalListSize);
+		page.pageCompute();
+		
+		list = mapper.selectMember(page);
+		
+		map.put("page", page);
+		map.put("list", list);
+		
+		return map;
 	}
 }
