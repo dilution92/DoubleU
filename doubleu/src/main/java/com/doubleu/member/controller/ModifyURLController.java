@@ -9,17 +9,4 @@ import org.springframework.web.servlet.ModelAndView;
 import com.doubleu.member.service.MemberService;
 import com.doubleu.member.vo.MemberVo;
 
-@RestController
-public class MemberController {
-	@Autowired
-	MemberService service;
-	@RequestMapping(value = "/memberInsertR", method= RequestMethod.POST)
-	public ModelAndView memberInsertR(MemberVo vo) {
-		ModelAndView mv = new ModelAndView();
-		String msg = "";
-		msg = service.insert(vo);
-		mv.addObject("viewMsg", msg);
-		mv.setViewName("member/member_index");
-		return mv;
-	}
-}
+

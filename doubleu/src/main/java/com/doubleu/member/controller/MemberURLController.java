@@ -1,5 +1,4 @@
 package com.doubleu.member.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,16 +9,19 @@ import com.doubleu.member.service.MemberService;
 import com.doubleu.member.vo.MemberVo;
 
 @RestController
-public class MemberController {
+public class MemberURLController  {
 	@Autowired
 	MemberService service;
-	@RequestMapping(value = "/memberInsertR", method= RequestMethod.POST)
+	@RequestMapping(value = "/memberIndex", method= RequestMethod.GET)
 	public ModelAndView memberInsertR(MemberVo vo) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
-		msg = service.insert(vo);
+		//msg = service.insert(vo);
 		mv.addObject("viewMsg", msg);
-		mv.setViewName("member/member_index");
+		mv.setViewName("member/modify");
 		return mv;
 	}
+	
+	
+	
 }
