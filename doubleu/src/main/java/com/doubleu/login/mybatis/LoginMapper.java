@@ -8,5 +8,5 @@ import com.doubleu.login.vo.LoginVo;
 @Repository
 @Mapper
 public interface LoginMapper {
-	public LoginVo selectLogin();
+	public LoginVo loginCheck(LoginVo vo);
 }

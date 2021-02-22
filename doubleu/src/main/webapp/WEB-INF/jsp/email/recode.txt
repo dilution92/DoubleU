@@ -34,3 +34,21 @@
     - 이동 버튼 dropdown -> commonsCode/selectAllDropDowns.jsp 분리 
     - 모달창 스팸, 이동, 내메일함 + jsp 분리
     	- spamModal.jsp, newFolderModal.jsp, moveFolderModal.jsp
+
+- 21.02.22
+	로그인 작업
+	
+	[/loginCheck]
+	 - login.jsp
+	 - 로그인 버튼을 눌렀을 때 loginCheck 컨트롤러로 이동하여 데이터가 null이라면
+	 /loginPost 로 이동한다.
+	 - 데이터 null 이 아닐 시, session에 저장된다.
+	
+	[/loginPost]
+	- alert창만 띄우고 확인 버튼을 눌렀을 시 location = "/login"
+	- loginPost.jsp
+	
+	[/loginOut]
+	- 로그아웃 시 세션 삭제하기 (추후에 햄버거 버튼에 이용)
+	
+	

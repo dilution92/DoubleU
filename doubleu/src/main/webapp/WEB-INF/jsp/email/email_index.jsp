@@ -96,7 +96,11 @@
                 
 		<main class="e-approval-article">
 
-			
+			<div class="test">
+			 테스트 <br>
+			 ${member} <br>
+			 <br>구현 시 DELETE
+			</div>
 			<!-- 메일 검색바 code -->
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" id="emailFormId" name="emailForm" method="post">
@@ -152,7 +156,7 @@
 		</main>
 	</section>
 	
-
+	
 <script>
 
 // 사이드바
