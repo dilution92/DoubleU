@@ -3,12 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.doubleu.email.mybatis.LoginMapper">
+<mapper namespace="com.doubleu.login.mybatis.LoginMapper">
 	<!-- select -->
-	<select id="loginCheck">
-		SELECT member_mid, member_pwd 
+	<select id="loginCheck" parameterType="com.doubleu.login.vo.LoginVo" resultMap="selectLoginData">
+		SELECT *
 		FROM member
-		WHERE member_mid=#{member_mid} and member_pwd=#{member_pwd}
+		WHERE member_mid=#{memberMid} AND member_pwd= #{memberPwd}
 	</select>
 
 	
@@ -19,12 +19,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result property="memberPwd" column="member_pwd" /> 
 	<result property="memberName" column="member_name" /> 
 	<result property="memberEmail" column="member_email" /> 
-	<result property="memberDepartment" column="member_department"  /> 
+	<result property="memberDepartment" column="member_department"  />
+	<result property="memberTeam" column="member_team"  /> 
 	<result property="memberPhoneNumber" column="member_phonenumber"/>  
 	<result property="memberZipcode" column="member_zipcode" />
 	<result property="memberAddress" column="member_address" /> 
-	<result property="memberPosition" column="member_postion" /> 
-
+	<result property="memberPosition" column="member_position" /> 
+	
 	</resultMap>
 	
 </mapper>
