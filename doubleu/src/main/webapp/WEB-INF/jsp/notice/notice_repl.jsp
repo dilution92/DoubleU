@@ -76,7 +76,7 @@
 	</div>
 	
  			<!-- 게시판 답글, 댓글 삭제 모달창 -->
- 			<jsp:include page="notice_comment_modal.jsp"/>
+ 			<jsp:include page="./modal/notice_comment_modal.jsp"/>
  			<!-- ========== -->
  			
 </div>
