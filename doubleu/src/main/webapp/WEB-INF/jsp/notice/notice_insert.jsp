@@ -34,9 +34,9 @@
 
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
-<!-- 전사게시판 CSS -->
+<!-- 게시판 CSS -->
 <link rel="stylesheet" href="/css/notice/notice.css">
-<!-- 전사게시판 JS -->
+<!-- 게시판 JS -->
 <script src='/js/notice/notice.js'></script>
 
 </head>
@@ -74,11 +74,10 @@
 					</form>
 				</div>
 
-			<!-- ========== -->
 			
 			<!-- 전사게시판 사내공지 글쓰기 code -->
 			
-			<form action="/noticeInsertR" method="post">
+			<form action="/noticeInsertR" method="post" id="noticeInsertForm">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -149,7 +148,7 @@
 				        <tr>
 				            <td colspan="4" class="text-center">
 								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
-								<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">저장</button>
+								<input type="button" class="btn btn-primary" id="noticeSubmit1" value="저장"/>
 								<input type="reset" class="btn btn-primary" value="취소" onclick="location.href=''">
 				            </td>
 				        </tr>
@@ -159,49 +158,16 @@
 			</div>
 			</form>
 			
-			
-			<!-- ========== -->
+			<!-- 저장하기 모달창 -->
+			<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	       		<jsp:include page="notice_comment_modal.jsp"/>
+			</div>   
 
  			<!-- 사내공지 댓글창 -->
  			<jsp:include page="notice_repl.jsp"/>
- 			<!-- ========== -->
  			
 		</main>
 	</section>
-	
-		<!-- 글쓰기 모달창 -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content" style="width: 80%; height: 300px; top: 200px;">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">글쓰기</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="moadl-body approval-scroll">
-					<div class="accordion" id="accordionExample">
-						<div class="card">
-							<div class="card-header" id="headingOne">
-								<h6 class="mb-0">
-									<select class="form-control form-control-sm e-approval-select-box">
-										<option selected>게시판 선택</option>
-										<option value="1">중고게시판</option>
-									</select>
-								</h6>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<input type="button" class="btn btn-secondary" data-dismiss="modal"
-						value="close"> <input type="button"
-						class="btn btn-primary" value="선택">
-				</div>
-			</div>
-		</div>
-	</div>
  
 </body>
 </html>

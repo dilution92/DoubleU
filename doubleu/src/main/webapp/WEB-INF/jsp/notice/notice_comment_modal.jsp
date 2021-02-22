@@ -73,7 +73,6 @@
 -->
 
 <!-- 저장 Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,12 +83,11 @@
       </div>
       <div class="modal-body">해당 게시물을 저장하시겠습니까?</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">저장</button>
+        <button type="button" class="btn btn-primary" id="noticeSubmit2">저장</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
       </div>
     </div>
   </div>
-</div>			
 
 </body>
 </html>
