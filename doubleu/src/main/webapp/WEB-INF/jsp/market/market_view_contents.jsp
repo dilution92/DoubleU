@@ -11,6 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form name="frm_market_view" method="get">
 <table  class="table table-striped market-view-table">
 			  <thead>
 			    <tr >
@@ -103,9 +104,11 @@
 				<input type='text' name='marketNo'  value='${vo.marketNo}'/>
 				
 				<div class="market-btn-zone">
-					<button class="btn btn-primary" type="submit" id=''>목록</button>
+					<button class="btn btn-primary" type="button" onclick = "goBack();">목록</button>
+					<button class="btn btn-primary" type="submit" onclick = "goModify(${vo.marketNo});">수정</button>
+					<button class="btn btn-primary" type="submit" id=''>삭제</button>
 				</div>
 			 </div>
-			 
+</form>			 
 </body>
 </html>

@@ -33,7 +33,7 @@ public class MarketUrlController {
 		
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
-		//mv.addObject("attList", map.get("attList"));
+		mv.addObject("attList", map.get("attList"));
 		mv.addObject("cnt", cnt);
 		mv.setViewName("market/market_index");
 		//System.out.println("list size: " + map.get("list").toString());
@@ -83,9 +83,11 @@ public class MarketUrlController {
 	
 	// market_update.jsp
 	@RequestMapping(value="/marketUpdate", method=RequestMethod.GET)
-	public ModelAndView marketUpdate() {
+	public ModelAndView marketUpdate(MarketVo v, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
-		
+		MarketVo vo = dao.view(v.getMarketNo());
+		mv.addObject("vo", vo);
+		mv.addObject("page", page);
 		mv.setViewName("market/market_update");
 		
 		return mv;

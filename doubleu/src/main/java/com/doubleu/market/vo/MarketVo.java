@@ -16,8 +16,16 @@ public class MarketVo {
 	String marketDoc ;
 	int marketHit ;
 	String marketDate ;
+	String oriFile;
 	
-	
+	public String getOriFile() {
+		return oriFile;
+	}
+
+	public void setOriFile(String oriFile) {
+		this.oriFile = oriFile;
+	}
+
 	List<MarketAttVo> attlist;
 	//erd photo->attlist
 	

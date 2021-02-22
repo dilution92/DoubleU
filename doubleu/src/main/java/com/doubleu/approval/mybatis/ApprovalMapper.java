@@ -11,6 +11,7 @@ import com.doubleu.approval.vo.FormPetitionVo;
 import com.doubleu.approval.vo.FormVacationVo;
 import com.doubleu.approval.vo.FormVo;
 import com.doubleu.approval.vo.IndexPage;
+import com.doubleu.approval.vo.MemberVo;
 import com.doubleu.approval.vo.SelectPage;
 
 @Repository
@@ -35,4 +36,7 @@ public interface ApprovalMapper {
 	
 	public int insertDicisionMakers(FormVo vo);
 	public int deleteDicisionMakers(int FormNo);
+	
+	public List<MemberVo> selectMember(IndexPage Page);
+	public int memberTotalListSize(IndexPage page);
 }

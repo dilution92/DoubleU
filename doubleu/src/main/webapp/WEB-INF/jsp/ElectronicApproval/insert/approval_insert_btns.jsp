@@ -9,8 +9,10 @@
 </head>
 <body>
 <%
-	String employeeNo = (String) session.getAttribute("employeeNo");
-	String employeePosition= (String) session.getAttribute("employeePosition");
+	String memberNo = (String) session.getAttribute("memberNo");
+	String memberPosition= (String) session.getAttribute("memberPosition");
+	String memberName= (String) session.getAttribute("memberName");
+	String memberDepartment= (String) session.getAttribute("memberDepartment");
 	
 %>
 	<input type="button" id="btnApprovalInsertR" class="btn btn-outline-primary btn-sm" value="상신요청">
@@ -19,17 +21,18 @@
 	<input type="hidden" name="makerPositionArr" value="">
 	<input type="hidden" name="makerNameArr" value="">
 	<input type="hidden" name="makerOrderArr" value="">
+	<input type="hidden" name="makerNoArr" value="">
 	<input type="hidden" id="TempMakerPosition" value="">
 	<input type="hidden" id="TempMakerName" value="">
+	<input type="hidden" id="TempMakerNo" value="">
 	<input type="hidden" name="formType" value="${formType}">
 	<c:if test="${formType != '사유서' and formType != '지각/결근사유서'}">
-		<input type="hidden" name="drafterPosition" value="<%= employeePosition %>">
+		<input type="hidden" name="drafterPosition" value="<%= memberPosition %>">
 	</c:if>
 	<input type="hidden" name="checkedHalfTime" value="">
 	<input type="hidden" name="vacationType" value="">
-	<input type="hidden" name="employeeNo" value="<%= employeeNo %>">
+	<input type="hidden" name="memberNo" value="<%= memberNo %>">
 	<input type="hidden" name="decisionMakerCnt" value="">
-	<input type="hidden" name="">
 	
 	<input type="hidden" name="findStr">	
 	<input type="hidden" name="nowOutgoingPage" value="${param.nowOutgoingPage }">
@@ -37,7 +40,7 @@
 	<input type="hidden" name="nowPlace" value="${param.nowPlace}">
 	<input type="hidden" name="nowChooseSelectPage"value="${param.nowChooseSelectPage }">
 	<input type="hidden" name="findState" value="${param.findState }">
-	
+	<input type="hidden" name="formNo" value="${(empty param.formNo) ? 1:param.formNo }">
 <script type="text/javascript">
 checkFormData();
 </script>

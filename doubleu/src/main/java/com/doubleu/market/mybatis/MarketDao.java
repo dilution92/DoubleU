@@ -47,17 +47,24 @@ public class MarketDao {
 				System.out.println("BoardDao.select()..........................2");
 				System.out.println(page.getNowPage());
 				System.out.println(page.getFindStr());
-
-				MarketVo vo = new MarketVo();
+				System.out.println(page.getMarketCategory());
 				
-				//List<MarketAttVo> attList = new ArrayList<>();
+				List<MarketAttVo> attList = new ArrayList<>();
+				System.out.println("BoardDao.select()..........................3");
 
-				//attList = mapper.selectAttOne();
-				//MarketAttVo v = attList.get(0);
-				//System.out.println("v: " + v);
-				//System.out.println("attlist: " + attList);
+//				attList = mapper.selectAttOne();
+//				//System.out.println("v: " + v);
+//				for (int i = 0; i < attList.size(); i++) {
+//					System.out.println(attList.get(i).getOriFile());
+//				}
+				//System.out.println("attlist: " + attList.get(0).getOriFile());
 				
 				list = mapper.select(page);
+//				for (int j = 0; j < list.size(); j++) {
+//					System.out.println(list.get(j).getMarketSubject());
+//					System.out.println(list.get(j).getOriFile());
+//					
+//				}
 				map.put("page", page);
 				map.put("list", list);
 				//map.put("attList", attList);
@@ -71,8 +78,8 @@ public class MarketDao {
 
 		//검색결과갯수
 		public int selectCount() {
-			
-			int cnt = mapper.selectCount();
+			int cnt = 0;
+			cnt = mapper.selectCount();
 			System.out.println("검색글갯수 : " + cnt);
 			
 			return cnt;
@@ -80,7 +87,8 @@ public class MarketDao {
 
 		//총 게시물 갯수
 		public int totalCount() {
-			int cnt = mapper.totalCount();
+			int cnt = 0;
+			cnt = mapper.totalCount();
 			System.out.println("총글갯수 : " + cnt);
 			
 			return cnt;
@@ -89,7 +97,7 @@ public class MarketDao {
 	public String insert(MarketVo vo) {
 		String msg = "게시물이 저장되었습니다.";
 		try {
-			//vo.getAttlist().get(0).setMain(1);
+			vo.getAttlist().get(0).setFilesMain(1);;
 			int cnt = mapper.insert(vo);
 			
 			if(cnt<1) {

@@ -20,18 +20,18 @@ public class SelectOutgoingService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		IndexPage page = new IndexPage();
 		String mainJob = "select/approval_select.jsp";
-		int employeeNo = 3355;
+		int memberNo = 2;
 		String findStr = " ";
 		int nowOutgoingPage = 1;
 		if(req.getParameter("nowOutgoingPage") != null) {
 			nowOutgoingPage = Integer.parseInt(req.getParameter("nowOutgoingPage"));
 		}
-		if(req.getParameter("employeeNo") != null) {
-			employeeNo = Integer.parseInt(req.getParameter("employeeNo"));
+		if(req.getParameter("memberNo") != null) {
+			memberNo = Integer.parseInt(req.getParameter("memberNo"));
 		}
 		System.out.println("nowOutgoingPage: " + nowOutgoingPage);
 		System.out.println("findStr: "+ findStr);
-		page.setEmployeeNo(employeeNo);
+		page.setMemberNo(memberNo);
 		page.setNowPage(nowOutgoingPage);
 		map = dao.selectOutgoing(page);
 		return map;

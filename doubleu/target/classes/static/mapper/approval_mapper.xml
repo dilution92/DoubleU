@@ -7,8 +7,8 @@
 <mapper namespace="com.doubleu.approval.mybatis.ApprovalMapper">
 	<insert id="insert" parameterType="com.doubleu.approval.vo.FormVo">
 		INSERT ALL 
-		INTO approval_form(form_no, employee_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position,approval_state) 
-		VALUES(seq_approval_form.nextval, ${employeeNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}', '${approvalState}')
+		INTO approval_form(form_no, member_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position,approval_state) 
+		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}', '${approvalState}')
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
@@ -17,8 +17,8 @@
 		</if>
 		<if test="decisionMakersList != null">
 			<foreach collection="decisionMakersList" item="maker">
-			INTO approval_decision_makers(employee_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
-			VALUES(getApprovalADMSeq(), seq_approval_form.currval, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
+			INTO approval_decision_makers(member_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
+			VALUES(${maker.memberNo}, seq_approval_form.currval, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
 			</foreach>
 		</if>
 		<choose>
@@ -37,23 +37,27 @@
 		</choose>
 		SELECT * FROM dual
 	</insert>
+	
+	<!-- 결재권자 추가 -->
 	<insert id="insertDicisionMakers" parameterType="com.doubleu.approval.vo.FormVo" >
 		<foreach collection="decisionMakersList" item="maker">
-			INSERT INTO approval_decision_makers(employee_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
-			VALUES(getApprovalADMSeq(), ${maker.formNo}, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
+			INSERT INTO approval_decision_makers(member_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
+			VALUES(${maker.memberNo}, ${maker.formNo}, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
 		</foreach>
 	</insert>	
 	
+	<!-- 발신 목록 count 출력 -->
 	<select id="outgoingTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.IndexPage">
-		SELECT count(form_no) FROM approval_form WHERE employee_no = ${employeeNo} AND (form_title LiKE '%${findStr}%' OR form_doc LIKE '%${findStr}%')
+		SELECT count(form_no) FROM approval_form WHERE member_no = ${memberNo} AND (form_title LiKE '%${findStr}%' OR form_doc LIKE '%${findStr}%')
 	</select>
 	
+	<!-- 발신 목록 출력 -->
 	<select id="selectOutgoing" resultType="com.doubleu.approval.vo.FormVo" parameterType="com.doubleu.approval.vo.IndexPage" resultMap="resultFormVo">
 		SELECT * FROM (
 		SELECT ROWNUM rno, af.* FROM (
 		SELECT * FROM approval_form 
 		<where>
-			employee_no = ${employeeNo} 
+			member_no = ${memberNo} 
 			AND (form_title LIKE '%${findStr}%' OR form_doc LIKE '${findStr}')
 			<if test="findType != null">
 			AND	form_type = '${findType}'
@@ -65,9 +69,13 @@
 		ORDER BY form_no DESC) af)
 		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
 	</select>
+	
+	<!-- 문서 상태별 목록 count출력 -->
 	<select id="chooseTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.SelectPage">
 		SELECT count(form_no) FROM approval_form WHERE employee_no = ${employeeNo} AND approval_state = '${findState}'
 	</select>
+	
+	<!-- 문서 상태별 목록 출력 -->
 	<select id="selectChoose" resultType="com.doubleu.approval.vo.FormVo" parameterType="com.doubleu.approval.vo.SelectPage" resultMap="resultFormVo">
 		SELECT * FROM (
 		SELECT ROWNUM rno, af.* FROM (
@@ -76,6 +84,7 @@
 		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
 	</select>
 	
+	<!-- 상세보기 출력 -->
 	<select id="selectView" parameterType="com.doubleu.approval.vo.FormVo" resultType="com.doubleu.approval.vo.FormVo" resultMap="resultFormVo">
 		<choose>
 			<when test="formType == '품의서' or formType == '구매품의서'">
@@ -95,13 +104,44 @@
 		</choose>
 			af.form_no = ${formNo}
 	</select>
+	
+	<!-- 상세보기에 따른 결재권자 출력 -->
 	<select id="selectDecisionMaker" parameterType="int" resultType="com.doubleu.approval.vo.DecisionMakerVo" resultMap="resultDMVo">
 		SELECT * FROM approval_decision_makers WHERE form_no = ${_parameter}
 	</select>
+	
+	<!-- 상세보기에 따른 첨부파일 출력 -->
 	<select id="selectAttFile" parameterType="int" resultType="com.doubleu.approval.vo.AttFileVo" resultMap="resultFileVo">
 		SELECT * FROM approval_files WHERE form_no = ${_parameter}
 	</select>
 	
+	<!-- 직원 목록 count출력 -->
+	<select id="memberTotalListSize" parameterType="com.doubleu.approval.vo.IndexPage" resultType="int">
+		SELECT count(member_no) FROM member
+		<where>
+			 member_name LIKE'%${findStr}%'
+			<if test="findType != ''">
+			AND member_department = '${findType}'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 직원 목록 출력 -->
+	<select id="selectMember" parameterType="com.doubleu.approval.vo.IndexPage" resultType="com.doubleu.approval.vo.MemberVo" resultMap="resultMemberVo">
+		SELECT * FROM (
+		SELECT ROWNUM rno, a.* FROM (
+		SELECT * FROM member
+		<where>
+		member_name LIKE '%${findStr}%'		
+		<if test="findType != ''">
+		AND member_department = '${findType}'
+		</if>
+		</where>
+		ORDER BY rownum DESC) a)
+		WHERE rno BETWEEN ${startNo} AND ${endNo}
+	</select>
+	
+	<!-- 기본 결재 form 수정 -->
 	<update id="updateR" parameterType="com.doubleu.approval.vo.FormVo">
 		UPDATE approval_form
 		SET
@@ -114,6 +154,7 @@
 		WHERE form_no = ${formNo}
 	</update>
 	
+	<!-- 품의서 form 수정 -->
 	<update id="updatePetition" parameterType="com.doubleu.approval.vo.FormPetitionVo">
 		UPDATE approval_form_petition
 		SET
@@ -121,6 +162,8 @@
 		budget = '${budget}'
 		WHERE form_no = ${formNo}			
 	</update>
+	
+	<!-- 휴가신청서 form 수정 -->
 	<update id="updateVacation" parameterType="com.doubleu.approval.vo.FormVacationVo">
 		UPDATE approval_form_vacation
 		SET
@@ -131,22 +174,16 @@
 		half_day_type = '${halfDayType}'
 		WHERE form_no = ${formNo}
 	</update>
+	
+	<!-- 결재권자 수정 시 목록 삭제 -->
 	<delete id="deleteDicisionMakers" parameterType="int">
 		DELETE FROM approval_decision_makers WHERE form_no = ${_parameter}
 	</delete>
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	<resultMap type="com.doubleu.approval.vo.FormVo" id="resultFormVo">
 		<result property="formNo" column="FORM_NO"/>
-		<result property="employeeNo" column="EMPLOYEE_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="drafterName" column="DRAFTER_NAME"/>
 		<result property="formDate" column="FORM_DATE"/>
 		<result property="drafterDepartment" column="DRAFTER_DEPARTMENT"/>
@@ -172,19 +209,31 @@
 		</association>
 	</resultMap>	
 	<resultMap type="com.doubleu.approval.vo.DecisionMakerVo" id="resultDMVo">
-		<result property="employeeNo" column="EMPLOYEE_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="formNo" column="FORM_NO"/>
 		<result property="makerName" column="MAKER_NAME"/>
 		<result property="makerPosition" column="MAKER_POSITION"/>
-		<result property="makerOrder" column="DECISION_STATE"/>
-		<result property="decisionState" column="MAKER_COMMENT"/>
-		<result property="makerComment" column="MAKER_ORDER"/>
+		<result property="makerOrder" column="MAKER_ORDER"/>
+		<result property="decisionState" column="DECISION_STATE"/>
+		<result property="makerComment" column="MAKER_COMMENT"/>
 	</resultMap>
-	
 	<resultMap type="com.doubleu.approval.vo.AttFileVo" id="resultFileVo">
 		<result property="filesNo" column="FILES_NO"/>
 		<result property="formNo" column="FORM_NO"/>
 		<result property="sysFile" column="FILE_SYSFILE"/>
 		<result property="oriFile" column="FILE_ORIFILE"/>
+	</resultMap>
+	
+	<resultMap type="com.doubleu.approval.vo.MemberVo" id="resultMemberVo">
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="memberMid" column="MEMBER_MID"/>
+		<result property="memberName" column="MEMBER_NAME"/>
+		<result property="memberEmail" column="MEMBER_EMAIL"/>
+		<result property="memberDepartment" column="MEMBER_DEPARTMENT"/>
+		<result property="memberTeam" column="MEMBER_TEAM"/>
+		<result property="memberPhoneNumber" column="MEMBER_PHONENUMBER"/>
+		<result property="roadAddress" column="MEMBER_ROADADDRESS"/>
+		<result property="jibunAddress" column="MEMBER_JIBUNADDRESS"/>
+		<result property="memberPosition" column="MEMBER_POSITION"/>
 	</resultMap>
 </mapper>
