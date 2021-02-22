@@ -7,9 +7,8 @@
 <mapper namespace="com.doubleu.approval.mybatis.ApprovalMapper">
 	<insert id="insert" parameterType="com.doubleu.approval.vo.FormVo">
 		INSERT ALL 
-		INTO approval_form(form_no, member_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position,approval_state) 
-		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate, jdbcType=VARCHAR}', 'YYYY-MM-DD'),
-		'${drafterPosition}', '${approvalState}')
+		INTO approval_form(form_no, member_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position, approval_state) 
+		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', '${eventDate}', '${drafterPosition}', '${approvalState}')
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
@@ -28,16 +27,12 @@
 			VALUES (seq_approval_form.currval, '${formPetitionVo.formPurpose}')
 		</when>
 		<when test= "formType == '구매품의서'">
-			INTO approval_form_petition(form_no, form_purpose, budget) 
+			INTO approval_form_petition(form_no, form_purpose, budget)
 			VALUES (seq_approval_form.currval, '${formPetitionVo.formPurpose}', ${formPetitionVo.budget})
 		</when>
 		<when test="formType == '휴가신청서'">
 			INTO approval_form_vacation(form_no, start_date, end_date, vacation_cnt, vacation_type, half_day_type)
-			VALUES(seq_approval_form.currval, 
-			<if test="formVacationVo.startDate != ''">TO_DATE('${formVacationVo.startDate}', 'YYYY-MM-DD')</if>
-			<if test="formVacationVo.startDate == ''">jdbcType=TIMESTAMP</if>,
-			<if test="formVacationVo.startDate != ''">TO_DATE('${formVacationVo.endDate, jdbcType=VARCHAR}', 'YYYY-MM-DD')</if>
-			<if test="formVacationVo.startDate == ''">jdbcType=VARCHAR</if>,
+			VALUES(seq_approval_form.currval,'${formVacationVo.startDate}', '${formVacationVo.endDate}',
 			${formVacationVo.vacationCnt}, '${formVacationVo.vacationType}', '${formVacationVo.halfDayType}')
 		</when>
 		</choose>
