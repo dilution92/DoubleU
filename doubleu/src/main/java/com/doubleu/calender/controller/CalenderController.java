@@ -81,14 +81,14 @@ public class CalenderController {
 	}
 	
 	//select 박스 월 선택시 변경
-	@RequestMapping(value = "/SelectChangedMonth", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView SelectChangedMonth(@RequestParam int changedMonth) {
+	@RequestMapping(value = "/MonthSelectedMonth", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MonthSelectedMonth(@RequestParam int changedMonth) {
 		System.out.println("controller 시작");
 		
 		ModelAndView mv = new ModelAndView();
 		List<Integer> list = new ArrayList<Integer>();
 		
-		list = calender.selectChangeMonth(changedMonth);
+		list = calender.monthSelectedMonth(changedMonth);
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		mv.addObject("currentYear", year);
@@ -99,14 +99,14 @@ public class CalenderController {
 	}
 	
 	//input 년 선택시 변경
-	@RequestMapping(value = "/SelectChangedYaer", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView SelectChangedYaer(@RequestParam int changedYear) {
+	@RequestMapping(value = "/MonthSelectedYear", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MonthSelectedYear(@RequestParam int changedYear) {
 		System.out.println("controller 시작");
 		
 		ModelAndView mv = new ModelAndView();
 		List<Integer> list = new ArrayList<Integer>();
 		
-		list = calender.selectChangeYear(changedYear);
+		list = calender.monthSelectedYear(changedYear);
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		mv.addObject("currentYear", year);
@@ -171,6 +171,44 @@ public class CalenderController {
 		return mv;
 	}
 	
+	//select 박스 월 선택시 변경
+			@RequestMapping(value = "/WeekSelectedMonth", method= {RequestMethod.POST, RequestMethod.GET})
+			public ModelAndView WeekSelectedMonth(@RequestParam int changedMonth) {
+				ModelAndView mv = new ModelAndView();
+				List<CalenderWeekList> list = new ArrayList<CalenderWeekList>();
+				
+				list = calender.weekSelectedMonth(changedMonth);
+				for (int i = 0; i <6; i++) {
+					System.out.println(list.get(i).getDay());
+				}
+				int year = calender.getYear();
+				int month = calender.getMonth();
+				mv.addObject("currentYear", year);
+				mv.addObject("currentMonth", month);
+				mv.addObject("list", list);
+				mv.setViewName("calender/Calender_week");
+				
+				return mv;
+			}
+			
+			//input 년 선택시 변경
+			@RequestMapping(value = "/WeekSelectedYear", method= {RequestMethod.POST, RequestMethod.GET})
+			public ModelAndView WeekSelectedYear(@RequestParam int changedYear) {
+				System.out.println("controller 시작");
+				
+				ModelAndView mv = new ModelAndView();
+				List<CalenderWeekList> list = new ArrayList<>();
+				
+				list = calender.weekSelectedYear(changedYear);
+				int year = calender.getYear();
+				int month = calender.getMonth();
+				mv.addObject("currentYear", year);
+				mv.addObject("currentMonth", month);
+				mv.addObject("list", list);
+				mv.setViewName("calender/Calender_week");
+				return mv;
+			}
+	
 	
 	
 	
@@ -205,6 +243,42 @@ public class CalenderController {
 			mv.addObject("listDay", listDay);
 			mv.setViewName("calender/Calender_day");
 			
+			return mv;
+		}
+		
+		//select 박스 월 선택시 변경
+		@RequestMapping(value = "/DaySelectedMonth", method= {RequestMethod.POST, RequestMethod.GET})
+		public ModelAndView DaySelectedMonth(@RequestParam int changedMonth) {
+			System.out.println("controller 시작");
+			
+			ModelAndView mv = new ModelAndView();
+			CalenderWeekList listDay = calender.changeDayToday();
+			
+			listDay = calender.daySelectedMonth(changedMonth);
+			int year = calender.getYear();
+			int month = calender.getMonth();
+			mv.addObject("currentYear", year);
+			mv.addObject("currentMonth", month);
+			mv.addObject("listDay", listDay);
+			mv.setViewName("calender/Calender_day");
+			return mv;
+		}
+		
+		//input 년 선택시 변경
+		@RequestMapping(value = "/DaySelectedYear", method= {RequestMethod.POST, RequestMethod.GET})
+		public ModelAndView DaySelectedYear(@RequestParam int changedYear) {
+			System.out.println("controller 시작");
+			
+			ModelAndView mv = new ModelAndView();
+			CalenderWeekList listDay = calender.changeDayToday();
+			
+			listDay = calender.daySelectedYear(changedYear);
+			int year = calender.getYear();
+			int month = calender.getMonth();
+			mv.addObject("currentYear", year);
+			mv.addObject("currentMonth", month);
+			mv.addObject("listDay", listDay);
+			mv.setViewName("calender/Calender_day");
 			return mv;
 		}
 }

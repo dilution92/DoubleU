@@ -133,14 +133,14 @@ $(function(){
     $("#month").change(function(){
     	var changedMonth = parseInt($('#month').val());
     	console.log(month+"셀렉박스 월 값");
-    	var url = "/SelectChangedMonth?changedMonth="+changedMonth;
+    	var url = "/MonthSelectedMonth?changedMonth="+changedMonth;
     	location.href=url;
     })
     
     $("#year").change(function(){
     	var changedyear = parseInt($('#year').val());
     	console.log(changedyear+"셀렉박스 년 값");
-    	var url = "/SelectChangedYear?changedYaer="+changedyear;
+    	var url = "/MonthSelectedYear?changedYaer="+changedyear;
     	location.href=url;
     })
     
