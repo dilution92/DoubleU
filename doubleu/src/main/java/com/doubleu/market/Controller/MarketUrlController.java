@@ -83,9 +83,11 @@ public class MarketUrlController {
 	
 	// market_update.jsp
 	@RequestMapping(value="/marketUpdate", method=RequestMethod.GET)
-	public ModelAndView marketUpdate() {
+	public ModelAndView marketUpdate(MarketVo v, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
-		
+		MarketVo vo = dao.view(v.getMarketNo());
+		mv.addObject("vo", vo);
+		mv.addObject("page", page);
 		mv.setViewName("market/market_update");
 		
 		return mv;
