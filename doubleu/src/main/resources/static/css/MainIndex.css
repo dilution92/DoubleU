@@ -70,3 +70,13 @@
 	margin: 0 auto;
 	width: 90%;
 }
+
+/*header name */
+.header-member-name{
+	color: cornflowerblue;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 40px;
+    height: 40px;
+    margin-right: 10px;
+}

@@ -8,7 +8,8 @@
 	<insert id="insert" parameterType="com.doubleu.approval.vo.FormVo">
 		INSERT ALL 
 		INTO approval_form(form_no, member_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position,approval_state) 
-		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate}', 'YYYY-MM-DD'), '${drafterPosition}', '${approvalState}')
+		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', TO_DATE('${eventDate, jdbcType=VARCHAR}', 'YYYY-MM-DD'),
+		'${drafterPosition}', '${approvalState}')
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
@@ -32,7 +33,12 @@
 		</when>
 		<when test="formType == '휴가신청서'">
 			INTO approval_form_vacation(form_no, start_date, end_date, vacation_cnt, vacation_type, half_day_type)
-			VALUES(seq_approval_form.currval, TO_DATE('${formVacationVo.startDate}', 'YYYY-MM-DD'), TO_DATE('${formVacationVo.endDate}', 'YYYY-MM-DD'), ${formVacationVo.vacationCnt}, '${formVacationVo.vacationType}', '${formVacationVo.halfDayType}')
+			VALUES(seq_approval_form.currval, 
+			<if test="formVacationVo.startDate != ''">TO_DATE('${formVacationVo.startDate}', 'YYYY-MM-DD')</if>
+			<if test="formVacationVo.startDate == ''">jdbcType=TIMESTAMP</if>,
+			<if test="formVacationVo.startDate != ''">TO_DATE('${formVacationVo.endDate, jdbcType=VARCHAR}', 'YYYY-MM-DD')</if>
+			<if test="formVacationVo.startDate == ''">jdbcType=VARCHAR</if>,
+			${formVacationVo.vacationCnt}, '${formVacationVo.vacationType}', '${formVacationVo.halfDayType}')
 		</when>
 		</choose>
 		SELECT * FROM dual
@@ -50,7 +56,6 @@
 	<select id="outgoingTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.IndexPage">
 		SELECT count(form_no) FROM approval_form WHERE member_no = ${memberNo} AND (form_title LiKE '%${findStr}%' OR form_doc LIKE '%${findStr}%')
 	</select>
-	
 	<!-- 발신 목록 출력 -->
 	<select id="selectOutgoing" resultType="com.doubleu.approval.vo.FormVo" parameterType="com.doubleu.approval.vo.IndexPage" resultMap="resultFormVo">
 		SELECT * FROM (
@@ -59,30 +64,44 @@
 		<where>
 			member_no = ${memberNo} 
 			AND (form_title LIKE '%${findStr}%' OR form_doc LIKE '${findStr}')
-			<if test="findType != null">
-			AND	form_type = '${findType}'
-			</if>
-			<if test="findState != null">
-			AND form_state = '${findState}'
-			</if>
 		</where>
 		ORDER BY form_no DESC) af)
 		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
 	</select>
+	<select id="receiverTotalListSize" parameterType="com.doubleu.approval.vo.IndexPage" resultType="int">
+		SELECT count(a.form_no) FROM
+		approval_form a,
+		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1)) b
+		WHERE a.form_no = b.form_no
+	</select>
+		<select id="selectReceiver" parameterType="com.doubleu.approval.vo.IndexPage" resultType="com.doubleu.approval.vo.FormVo" resultMap="resultFormVo">
+		SELECT * FROM (
+		SELECT ROWNUM rno, a.* FROM
+		approval_form a,
+		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1)) b
+		WHERE a.form_no = b.form_no
+		ORDER BY a.form_no DESC) c
+		WHERE rno BETWEEN ${startNo} AND ${endNo} 
+	</select>
+	
+	<select id="selectMaker" parameterType="com.doubleu.approval.vo.DecisionMakerVo" resultType="com.doubleu.approval.vo.DecisionMakerVo" resultMap="resultDMVo">
+		SELECT * FROM approval_decision_makers WHERE form_no = ${formNo} AND member_no = ${memberNo}
+	</select>
 	
 	<!-- 문서 상태별 목록 count출력 -->
 	<select id="chooseTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.SelectPage">
-		SELECT count(form_no) FROM approval_form WHERE employee_no = ${employeeNo} AND approval_state = '${findState}'
+		SELECT count(form_no) FROM approval_form WHERE member_no = ${memberNo} AND approval_state = '${findState}'
 	</select>
-	
 	<!-- 문서 상태별 목록 출력 -->
 	<select id="selectChoose" resultType="com.doubleu.approval.vo.FormVo" parameterType="com.doubleu.approval.vo.SelectPage" resultMap="resultFormVo">
 		SELECT * FROM (
 		SELECT ROWNUM rno, af.* FROM (
 		SELECT * FROM approval_form 
-		WHERE employee_no = ${employeeNo} AND approval_state = '${findState}' ORDER BY form_no DESC) af)
+		WHERE member_no = ${memberNo} AND approval_state = '${findState}' ORDER BY form_no DESC) af)
 		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
 	</select>
+	
+	
 	
 	<!-- 상세보기 출력 -->
 	<select id="selectView" parameterType="com.doubleu.approval.vo.FormVo" resultType="com.doubleu.approval.vo.FormVo" resultMap="resultFormVo">
@@ -104,12 +123,10 @@
 		</choose>
 			af.form_no = ${formNo}
 	</select>
-	
 	<!-- 상세보기에 따른 결재권자 출력 -->
 	<select id="selectDecisionMaker" parameterType="int" resultType="com.doubleu.approval.vo.DecisionMakerVo" resultMap="resultDMVo">
 		SELECT * FROM approval_decision_makers WHERE form_no = ${_parameter}
 	</select>
-	
 	<!-- 상세보기에 따른 첨부파일 출력 -->
 	<select id="selectAttFile" parameterType="int" resultType="com.doubleu.approval.vo.AttFileVo" resultMap="resultFileVo">
 		SELECT * FROM approval_files WHERE form_no = ${_parameter}
@@ -125,7 +142,6 @@
 			</if>
 		</where>
 	</select>
-	
 	<!-- 직원 목록 출력 -->
 	<select id="selectMember" parameterType="com.doubleu.approval.vo.IndexPage" resultType="com.doubleu.approval.vo.MemberVo" resultMap="resultMemberVo">
 		SELECT * FROM (
@@ -174,10 +190,26 @@
 		half_day_type = '${halfDayType}'
 		WHERE form_no = ${formNo}
 	</update>
+
+	<update id="updateFormState" parameterType="int">
+		update approval_form SET approval_state = '(발신)임시저장' WHERE form_no = ${_parameter}
+	</update>
 	
 	<!-- 결재권자 수정 시 목록 삭제 -->
 	<delete id="deleteDicisionMakers" parameterType="int">
 		DELETE FROM approval_decision_makers WHERE form_no = ${_parameter}
+	</delete>
+	<delete id="deleteForm" parameterType="int">
+		DELETE FROM approval_form WHERE form_no = ${_parameter}
+	</delete>
+	<delete id="deletePetition" parameterType="int">
+		DELETE FROM approval_form_petition WHERE form_no = ${_parameter}
+	</delete>
+	<delete id="deleteVacation" parameterType="int">
+		DELETE FROM approval_form_vacation WHERE form_no = ${_parameter}
+	</delete>
+	<delete id="deleteAttFileList" parameterType="int">
+		DELETE FROM approval_files WHERE form_no = ${_parameter}
 	</delete>
 	
 	
@@ -223,7 +255,6 @@
 		<result property="sysFile" column="FILE_SYSFILE"/>
 		<result property="oriFile" column="FILE_ORIFILE"/>
 	</resultMap>
-	
 	<resultMap type="com.doubleu.approval.vo.MemberVo" id="resultMemberVo">
 		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="memberMid" column="MEMBER_MID"/>

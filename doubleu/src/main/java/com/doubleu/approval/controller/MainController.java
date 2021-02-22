@@ -25,6 +25,7 @@ import com.doubleu.approval.service.SelectChooseService;
 import com.doubleu.approval.service.SelectFormType;
 import com.doubleu.approval.service.SelectMemberService;
 import com.doubleu.approval.service.SelectOutgoingService;
+import com.doubleu.approval.service.SelectReceiverService;
 import com.doubleu.approval.service.SelectViewService;
 import com.doubleu.approval.service.UploadService;
 import com.doubleu.approval.vo.AttFileVo;
@@ -52,11 +53,13 @@ public class MainController {
 	@Autowired
 	SelectFormType CheckFormType;  
 	@Autowired
-	SelectMemberService serviceMberService;
-	
+	SelectMemberService selectMemberService;
+	@Autowired
+	SelectReceiverService selectReceiverService; 
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
 	public ModelAndView mainHeader(HttpServletRequest req) {
+		System.out.println("approvalIndex메소드 시작....");
 		ModelAndView mv = new ModelAndView();
 		String mainJob = "select/approval_select.jsp";
 		
@@ -65,9 +68,15 @@ public class MainController {
 		mv.addObject("outgoingList", outgoingMap.get("list"));
 		mv.addObject("outgoingPage", outgoingMap.get("page"));
 		
+		//수신
+		Map<String, Object> receiverMap = selectReceiverService.selectReceiver(req);
+		mv.addObject("receiverList", receiverMap.get("list"));
+		mv.addObject("receiverPage", receiverMap.get("page"));
+		
 		/* Map<String, Object> receptionMap = service.receptionSelect(page); */
 		mv.addObject("mainJob", mainJob);
 		mv.setViewName("ElectronicApproval/approval_index");
+		System.out.println("approvalIndex메소드 종료....");
 		return mv;
 	}
 	
@@ -197,7 +206,6 @@ public class MainController {
 			listName = "반려된 문서";
 			mv.addObject("listName", listName);
 			break;
-			
 		case "(수신)결재예정" :
 			listName = "결재할 문서";
 			mv.addObject("listName", listName);
@@ -222,18 +230,24 @@ public class MainController {
 	
 	@RequestMapping(value = "/approvalSelectView")
 	public ModelAndView goView(HttpServletRequest req) {
+		System.out.println("approvalSelectView 메소드 시작........");
 		ModelAndView mv = new ModelAndView();
 		Map<String,Object> formMap = new HashMap<>();
-		String formType = req.getParameter("formType");
+		DecisionMakerVo makerVo = new DecisionMakerVo();
+		
+		makerVo = viewService.selectMaker(req);
 		FormVo vo = viewService.select(req);
 		formMap = CheckFormType.checkFormType(vo);
 		vo = (FormVo) (formMap.get("convertVo"));
+		
 		System.out.println("일시" + vo.getEventDate());
 		System.out.println("시작" + vo.getFormVacationVo().getStartDate());
 		System.out.println("끝" + vo.getFormVacationVo().getEndDate());
+		mv.addObject("makerVo", makerVo);
 		mv.addObject("mainJob", (String)(formMap.get("mainJob")));
 		mv.addObject("vo", vo);
 		mv.setViewName("/ElectronicApproval/approval_index");
+		System.out.println("approvalSelectView 메소드 종료........");
 		return mv;
 	}
 	
@@ -335,12 +349,37 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> map;
 		
-		map = serviceMberService.selectMember(req);
+		map = selectMemberService.selectMember(req);
 		mv.addObject("page", map.get("page"));
 		mv.addObject("list", map.get("list"));
 		mv.setViewName("ElectronicApproval/insert/approval_choose_decisionMakers");
 		return mv;
 	}
 	
+	@RequestMapping(value = "/approvalUpdateForm")
+	public ModelAndView approvalUpdateForm(HttpServletRequest req) {
+		System.out.println("approvalFormUpdate메소드 시작........");
+		ModelAndView mv = new ModelAndView();
+		String msg = "문서 상태 변경이 완료되었습니다.";
+		int formNo = Integer.parseInt(req.getParameter("formNo"));
+		msg = service.updateFormState(formNo);
+		
+		mv.setViewName("redirect:/approvalIndex");
+		System.out.println("approvalFormUpdate메소드 종료........");
+		return mv;
+	}
 	
+	@RequestMapping(value = "/approvalDeleteForm")
+	public ModelAndView approvalDeleteForm(FormVo formVo) {
+		System.out.println("approvalDeleteForm메소드 시작...");
+		ModelAndView mv = new ModelAndView();
+		String msg = "";
+		System.out.println(formVo.getFormNo());
+		System.out.println(formVo.getFormType());
+		msg = service.deleteForm(formVo);
+		
+		mv.setViewName("redirect:/approvalIndex");
+		System.out.println("approvalDeleteForm메소드 종료...");
+		return mv;
+	}
 }

@@ -126,7 +126,7 @@ function chooseMaker(memberNo, memberPosition, memberName) {
 	$(opener.document).find('#TempMakerPosition').val(makerPosition);
 	$(opener.document).find('#TempMakerName').val(makerName);
 	$(opener.document).find('#TempMakerNo').val(makerNo);
-	self.close();
+	window.close();
 };
 
 $('#btnSelectMaker').on('click', function() {

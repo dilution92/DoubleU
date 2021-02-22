@@ -12,7 +12,7 @@ public class ControllerMain {
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("index");
+		mv.setViewName("MainPage/login");
 		return mv;
 	}
 	

@@ -19,6 +19,14 @@
 
 <!-- 로그인 css -->
 <link rel="stylesheet" href="/css/email/login.css">
+<link rel="stylesheet" href="/css/email/email_main.css">
+
+<!-- alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- js -->
+<script src="js/login/login.js">
+</script>
 </head>
 
 <body>
@@ -35,27 +43,28 @@
 		   
 		    <!-- 아이디 -->
 		    <div class="col-auto">
-		      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+		      <label class="sr-only" for="inlineFormInputGroup">ID</label>
 		      <div class="input-group mb-2">
 		        <div class="input-group-prepend">
 		          <div class="input-group-text"><i class="bi bi-person-circle"></i></div>
 		        </div>
-		        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+		        <input type="text" class="form-control" name="memberMid" id="userId" placeholder="ID">
 		      </div>
 		    </div>
 		    
 		    <div class="col-auto">
-		      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+		      <label class="sr-only" for="inlineFormInputGroup">Password</label>
 		      <div class="input-group mb-2">
 		        <div class="input-group-prepend">
 		          <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
 		        </div>
-		        <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+		        <input type="password" class="form-control" name="memberPwd" id="userPwd" placeholder="Password">
 		      </div>
 		    </div>
 		    
 		    <div class="col-auto">
-		      <button type="submit" class="btn btn-primary mb-2">로그인</button>
+		      <button type="button" id="loginBtn" class="btn btn-primary mb-2">로그인
+		      </button>
 		    </div>
 		    
 		      <div class="form-check mb-2 mr-sm-2 form-account">
@@ -64,10 +73,16 @@
 			      계정 저장
 			    </label>
 			  </div>
-
 		    
 		  </div>
 		</form>
 	</div>
+
 </body>
+<script>
+
+// 데이터 유효성 검사
+btnLoginClick();
+
+</script>
 </html>
