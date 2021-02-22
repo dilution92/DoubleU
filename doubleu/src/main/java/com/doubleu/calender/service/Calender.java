@@ -357,7 +357,7 @@ public class Calender {
 				setDay(1);
 			}
 		}else {
-			setDay(day-1);
+			setDay(day+diff);
 		}
 		listDay.setDay(day);
 		listDay.setWeek(week[setWeekMethod(year, month, day)]);

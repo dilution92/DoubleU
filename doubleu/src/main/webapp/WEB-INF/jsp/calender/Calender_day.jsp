@@ -125,7 +125,7 @@ $(function(){
     $("#year").change(function(){
     	var changedyear = parseInt($('#year').val());
     	console.log(changedyear+"셀렉박스 년 값");
-    	var url = "/DaySelectedYear?changedYaer="+changedyear;
+    	var url = "/DaySelectedYear?changedYear="+changedyear;
     	location.href=url;
     })
 })
