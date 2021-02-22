@@ -35,22 +35,22 @@
 		   
 		    <!-- 아이디 -->
 		    <div class="col-auto">
-		      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+		      <label class="sr-only" for="inlineFormInputGroup">UserID</label>
 		      <div class="input-group mb-2">
 		        <div class="input-group-prepend">
 		          <div class="input-group-text"><i class="bi bi-person-circle"></i></div>
 		        </div>
-		        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+		        <input type="text" class="form-control" name="memberMid" id="inlineFormInputGroup" placeholder="UserId">
 		      </div>
 		    </div>
 		    
 		    <div class="col-auto">
-		      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+		      <label class="sr-only" for="inlineFormInputGroup">Password</label>
 		      <div class="input-group mb-2">
 		        <div class="input-group-prepend">
 		          <div class="input-group-text"><i class="bi bi-key-fill"></i></div>
 		        </div>
-		        <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+		        <input type="password" class="form-control" name="memberPwd" id="inlineFormInputGroup" placeholder="Password">
 		      </div>
 		    </div>
 		    
