@@ -172,4 +172,39 @@ public class CalenderController {
 	}
 	
 	
+	
+	
+	//@@@@@@@@@@@@@@@@@@@@ DAY @@@@@@@@@@@@@@@@@@
+	
+	
+	//day 이전/다음버튼
+		@RequestMapping(value = "/CalenderDayDiff", method= {RequestMethod.POST, RequestMethod.GET})
+		public ModelAndView CalenderDayDiff(@RequestParam int diff) {
+			
+			ModelAndView mv = new ModelAndView();
+			CalenderWeekList listDay = calender.changeDay(diff);
+			int year = calender.getYear();
+			int month = calender.getMonth();
+			mv.addObject("currentYear", year);
+			mv.addObject("currentMonth", month);
+			mv.addObject("listDay", listDay);
+			mv.setViewName("calender/Calender_day");
+			
+			return mv;
+		}
+		
+		@RequestMapping(value = "/CalenderDayToday", method= {RequestMethod.POST, RequestMethod.GET})
+		public ModelAndView CalenderDayToday() {
+			
+			ModelAndView mv = new ModelAndView();
+			CalenderWeekList listDay = calender.changeDayToday();
+			int year = calender.getYear();
+			int month = calender.getMonth();
+			mv.addObject("currentYear", year);
+			mv.addObject("currentMonth", month);
+			mv.addObject("listDay", listDay);
+			mv.setViewName("calender/Calender_day");
+			
+			return mv;
+		}
 }

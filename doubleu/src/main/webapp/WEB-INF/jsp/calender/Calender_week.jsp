@@ -66,7 +66,9 @@
 		      		</th>
 		      <c:forEach var="temp" begin="1" end="7" >
 		      		<td id="calender_content"><!-- all-day 표시칸  -->
-		      			I can do this all day
+		      			<div class="calender_modal" >
+							I can do this all day
+						</div>
 		      		</td>
 		      </c:forEach>
 		      	</tr>
@@ -77,7 +79,7 @@
 	        %>
 	        	<tr><!-- 일주일은 묶는곳 -->
 	        	<th ><!--  -->
-	        		<%=i-1 %>
+	        		<%=i-1 %> 시
 	        	</th>
 	        <%
 	        		for(int j=1; j<=7; j++){
@@ -96,7 +98,21 @@
 	        
 		</tbody>
 		</table>
+		</div>
+		
+		<!-- 모달창 -->
+	<div class="modal fade" id="Calender_detail_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ 		<jsp:include page="Calender_pop_modal.jsp"></jsp:include>
+	</div>
+	
 </main>
 
+<script type="text/javascript">
+$(function(){
+    $(".calender_modal").click(function(){
+        log.console("모달")
+    	$('#Calender_detail_modal').modal();
+    })
+</script>	
 </body>
 </html>

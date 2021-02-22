@@ -253,10 +253,6 @@ public class Calender {
 			}
 		}
 		
-		
-		
-		
-		
 		return list;
 	}
 	
@@ -308,8 +304,60 @@ public class Calender {
 		return setCalenderWeek();
 	}
 	
+	
+	public CalenderWeekList setCalenderDay() {
+		CalenderWeekList listDay = new CalenderWeekList();
+		listDay.setDay(day);
+		listDay.setWeek(week[setWeekMethod(year, month, day)]);
+		
+		return listDay;
+	}
+	
+	
 	//Day 이전,다음
-	public void changeDay(int diff) {
-		setDay(day+diff);
+	public CalenderWeekList changeDay(int diff) {
+		
+		CalenderWeekList listDay = new CalenderWeekList();
+		if(day+diff==0) {
+			if(month==1){
+				setYear(year-1);
+				setMonth(12);
+				setDay(31);
+			}else {
+				setMonth(month-1);
+				setDay(lastDay[month-1]);
+			}
+		}else if(day+diff>lastDay[month-1]) {
+			if(month==12) {
+				setYear(year+1);
+				setMonth(1);
+				setDay(1);
+			}else {
+				setMonth(month+1);
+				setDay(1);
+			}
+		}else {
+			setDay(day-1);
+		}
+		listDay.setDay(day);
+		listDay.setWeek(week[setWeekMethod(year, month, day)]);
+		
+		return listDay;
+	}	
+	
+	public CalenderWeekList changeDayToday() {
+		
+		CalenderWeekList listDay = new CalenderWeekList();
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		year = Integer.parseInt(time1.substring(0,4));
+		month = Integer.parseInt(time1.substring(5,7));
+		day = Integer.parseInt(time1.substring(8,10));
+		
+		listDay.setDay(day);
+		listDay.setWeek(week[setWeekMethod(year, month, day)]);
+		
+		return listDay;
 	}	
 }
