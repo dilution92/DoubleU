@@ -18,6 +18,11 @@
 		if(request.getParameter("formName") != null) {
 			formName = request.getParameter("formName");
 		}
+		
+		String memberNo = (String) session.getAttribute("memberNo");
+		String memberPosition= (String) session.getAttribute("memberPosition");
+		String memberName= (String) session.getAttribute("memberName");
+		String memberDepartment= (String) session.getAttribute("memberDepartment");
 	 %>
 	
 	<div class="e-approval-form-container">
@@ -38,7 +43,7 @@
 					<input type="button" id="btnChangeFormType" class="btn btn-outline-primary btn-sm" value="변경">
 				</div>
 				<div class="e-approval-work-form-btns">
-					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 				</div>
 			</div>
 		<hr style="margin-right: -3em; margin-left: -3em;">
@@ -54,11 +59,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> <input type="text" name="drafterName" value="정해준" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
+									<td> <input type="text" name="drafterName" value="<%= memberName %>" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td> <input type="text" name="drafterDepartment" value="기획부" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
+									<td> <input type="text" name="drafterDepartment" value="<%= memberDepartment %>" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>

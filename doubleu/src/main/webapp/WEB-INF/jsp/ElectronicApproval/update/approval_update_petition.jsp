@@ -37,7 +37,7 @@
 					<input type="button" class="btn btn-outline-primary btn-sm" value="변경">
 				</div>
 				<div class="e-approval-work-form-btns">
-					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<input type="button" name="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 				</div>
 			</div>
 		<hr style="margin-right: -3em; margin-left: -3em;">

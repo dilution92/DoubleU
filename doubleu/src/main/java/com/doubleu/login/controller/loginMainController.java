@@ -57,9 +57,9 @@ public class loginMainController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		// session.removeAttribute("memberMid"); 개별 초기화
+		System.out.println("세션 초기화 전 : " + session.getAttribute("member"));
 		session.invalidate(); // 세션 초기화
-		
+		mv.setViewName("redirect:/login");
 		return mv;
 	}
 

@@ -9,7 +9,7 @@ public class LoginVo {
 	String memberDepartment;
 	String memberTeam;
 	String memberPhoneNumber;
-	int memberZipcode;
+	String memberZipcode;
 	String memberAddress;
 	String memberPosition;
 	
@@ -61,10 +61,10 @@ public class LoginVo {
 	public void setMemberPhoneNumber(String memberPhoneNumber) {
 		this.memberPhoneNumber = memberPhoneNumber;
 	}
-	public int getMemberZipcode() {
+	public String getMemberZipcode() {
 		return memberZipcode;
 	}
-	public void setMemberZipcode(int memberZipcode) {
+	public void setMemberZipcode(String memberZipcode) {
 		this.memberZipcode = memberZipcode;
 	}
 	public String getMemberAddress() {
