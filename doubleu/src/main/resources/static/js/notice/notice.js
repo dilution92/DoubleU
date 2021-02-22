@@ -7,7 +7,7 @@
 
  */
 
-/* 게시판 insert 게시기한 radio 선택시 활성/비활성
+/* 게시판 insert 게시기한 radio 선택시 활성/비활성 */
 $(document).ready(function(){
  
     // 라디오버튼 클릭시 이벤트 발생
@@ -22,8 +22,8 @@ $(document).ready(function(){
         }
     });
 });
-안되네...............어휴.....................input type = text만 되는듯.,
-*/
+//안되네...............어휴.....................input type = text만 되는듯.,
+
 
 
 /* notice_insert 저장하기 모달 이후 submit*/

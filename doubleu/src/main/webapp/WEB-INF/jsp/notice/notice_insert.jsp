@@ -114,10 +114,11 @@
 									<label for="searchDate"></label>
 										<input type="radio" name="searchDate" value="영구" id="r1" checked><label for="r1">영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
 										<input type="radio" name="searchDate" value="설정" id="r2"><label for="r2">설정  &nbsp;&nbsp;</label>
-										
+											<div class="searchDate">
 											(시작일자 &nbsp;<input type="date" id="searchDateOne" name="searchDateOne">
 											&nbsp;~ &nbsp;
 											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="searchDateOne"> )
+											</div>
 								</div>
 							</td>
 				        </tr> 
