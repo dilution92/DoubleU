@@ -24,21 +24,8 @@
 	<div class="e-approval-form-container">
 		<form action="/approvalUpdateR" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
-				<div class="e-approval-work-form-choose">
-					<select class="form-control form-control-sm e-approval-work-form-change">
-						<option selected> 결재 양식 유형 </option>
-						<option value="업무일반"> 업무 기안 </option>
-						<option value="업무협조"> 업무 협조 </option>
-						<option value="휴가신청"> 휴가신청서 </option>
-						<option value="지각불참"> 지각/불참사유서 </option>
-						<option value="지출결의서"> 지출 결의서 </option>
-						<option value="업무일반"> 품의서 </option>
-						<option value="업무일반"> 품의서 </option>
-					</select>
-					<input type="button" class="btn btn-outline-primary btn-sm" value="변경">
-				</div>
 				<div class="e-approval-work-form-btns">
-					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<input type="button" name="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 				</div>
 			</div>
 		<hr style="margin-right: -3em; margin-left: -3em;">

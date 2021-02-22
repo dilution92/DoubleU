@@ -167,6 +167,7 @@ function checkFormData() {
 		if(frm.formType.value == '휴가신청서') {
 			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
 			if(frm.vacationType.value == '반차') {
+				alert('asd');
 				frm.startDate.value = frm.halfDate.value;
 				frm.endDate.value = frm.halfDate.value;
 				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
@@ -430,7 +431,25 @@ var goView = function(formNo, formType) {
 function funcApproval() {
 		var frm = document.frmApproval;
 		
-	/*insert 버튼*/
+	/*삭제 버튼 클릭*/
+	$('#btnApprovalDelete').on('click', function() {
+		var deleteConfirm = confirm("정말로 삭제하시겠습니까?");
+		if(deleteConfirm) {
+			frm.action = '/approvalDeleteForm';
+			frm.submit();
+		}
+	})
+	
+	
+	/*상신취소 버튼 클릭.*/
+	$('#btnApprovalCancelReport').on('click', function() {
+		var cancelConfirm = confirm("작성 문서는 임시저장 상태로 변경됩니다. 진행하시겠습니까?");
+		if(cancelConfirm) {
+			frm.action = '/approvalUpdateForm';
+			frm.submit();
+		}
+	})
+		
 	$('#btnFind').on('click',function() {
 		frm.selectFormType.value = $('#selectFormType option:selected').val();
 		frm.selectFormState.value = $('#selectFormState option:selected').val();
@@ -749,6 +768,13 @@ function goOutgoingPage(page) {
 	frm.action= "/approvalIndex";
 	frm.submit();
 }
+function receiverPage(page) {
+	var frm = document.frmApproval;
+	frm.nowReceiverPage.value = page;
+	frm.action= "/approvalIndex";
+	frm.submit();
+}
+
 function goMemberPage(page) {
 	var frm = document.frmMember;
 	frm.nowPage.value = page;
