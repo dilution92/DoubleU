@@ -16,7 +16,7 @@
 	
 	<input type="button" id="btnApprovalUpdateR" class="btn btn-outline-primary btn-sm" value="상신요청">
 	<input type="button" id="btnApprovalTempUpdateR" class="btn btn-outline-primary btn-sm" value="임시저장">
-	<input type="button" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
+	<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 	<input type="hidden" name="makerPositionArr">
 	<input type="hidden" name="makerNameArr">
 	<input type="hidden" name="makerOrderArr">
@@ -32,7 +32,15 @@
 	<input type="hidden" name="vacationType" value="">
 	<input type="hidden" name="memberNo" value="<%= memberNo %>">
 	<input type="hidden" name="decisionMakerCnt" value="">
-	<input type="hidden" name="formNo" value="${vo.formNo }">
+	
+	<input type="hidden" name="findStr">	
+	<input type="hidden" name="nowOutgoingPage" value="${(empty param.nowOutgoingPage)? 1:param.nowOutgoingPage }">
+	<input type="hidden" name="nowReceiverPage" value="${(empty param.nowReceiverpage)? 1:param.nowReceiverpage }"> 
+	<input type="hidden" name="nowPlace" value="${param.nowPlace}">
+	<input type="hidden" name="nowChooseSelectPage" value="${param.nowChooseSelectPage }">
+	<input type="hidden" name="findState" value="${param.findState }">
+	<input type="hidden" name="formNo" value="${(empty param.formNo) ? 1:param.formNo }">
+	
 <script type="text/javascript">
 checkFormData();
 </script>

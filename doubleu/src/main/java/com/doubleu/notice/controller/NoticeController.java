@@ -15,6 +15,8 @@ import com.doubleu.notice.vo.NoticeVo;
 public class NoticeController {
 	@Autowired
 	NoticeService service1;
+	
+	@Autowired
 	FamilyeventService service2;
 	
 	// 사내공지 글쓰기 -> index
@@ -29,8 +31,8 @@ public class NoticeController {
 	}
 	
 	// 경조사 글쓰기 -> index
-	@RequestMapping(value = "/familyeventIndexR", method= RequestMethod.POST)
-	public ModelAndView familyeventIndexR(FamilyeventVo vo) {
+	@RequestMapping(value = "/familyeventInsertR", method= RequestMethod.POST)
+	public ModelAndView familyeventInsertR(FamilyeventVo vo) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		msg = service2.insert(vo);

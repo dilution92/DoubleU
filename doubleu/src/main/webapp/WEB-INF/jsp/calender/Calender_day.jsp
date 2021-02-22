@@ -35,7 +35,22 @@
             <input type="button" class="btn btn-primary" onclick="location.href='/CalenderDayToday'" value="오늘">
         </div>
         <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
-            <h3>${currentYear }년 ${currentMonth }월 </h3>
+            <input type="number" id="year" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
+            <input type="hidden" id="monthcome" value="${currentMonth }">
+            <select id="month" class="form-control" style="width:100px; display:initial;">
+            	<option value="1">1월</option>
+            	<option value="2">2월</option>
+            	<option value="3">3월</option>
+            	<option value="4">4월</option>
+            	<option value="5">5월</option>
+            	<option value="6">6월</option>
+            	<option value="7">7월</option>
+            	<option value="8">8월</option>
+            	<option value="9">9월</option>
+            	<option value="10">10월</option>
+            	<option value="11">11월</option>
+            	<option value="12">12월</option>
+            </select>
         </div>
         <div style="float: right; margin-right: 50px;" id="calender_main_top_sector"> <!-- 우측 표시 달력 -->
             <input type="button" class="btn btn-primary" value="월간" onclick="location.href='/calenderMonth'">
@@ -99,6 +114,27 @@ $(function(){
     $(".calender_modal").click(function(){
         $('#Calender_detail_modal').modal();
     })
+    
+     $("#month").change(function(){
+    	var changedMonth = parseInt($('#month').val());
+    	console.log(month+"셀렉박스 월 값");
+    	var url = "/DaySelectedMonth?changedMonth="+changedMonth;
+    	location.href=url;
+    })
+    
+    $("#year").change(function(){
+    	var changedyear = parseInt($('#year').val());
+    	console.log(changedyear+"셀렉박스 년 값");
+    	var url = "/DaySelectedYear?changedYear="+changedyear;
+    	location.href=url;
+    })
+})
+
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	console.log(month);
+	 $("#month").val(month).attr("selected","selected");
+})
 </script>
 </body>
 </html>

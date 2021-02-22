@@ -30,7 +30,7 @@
 <main id="calender_main">
     <div id="calender_main_content">
     	<h2>일정 입력</h2>
-    	<form action="/CalenderInsertR" method="post">
+    	<form action="/CalenderInsertR" method="post" id="InsertForm">
     		<input type="hidden" value="writer" name="calenderWriter">
 			<table class="table table-bordered" >
     			<tr>
@@ -70,14 +70,29 @@
     			</tr>
 			</table>
 				<div>
-					<input type="submit" class="btn btn-primary" value="일정작성">
+					<input type="button" class="btn btn-primary" value="일정작성" id="InsertFormSubmit">
 					<input type="button" class="btn btn-primary" value="돌아가기">
 				</div>
     	</form>
     </div>
-</main>
+    
+    <!-- 모달창 -->
+	<div class="modal fade" id="Calender_insert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ 		<jsp:include page="Calender_write_pop_modal.jsp"></jsp:include>
+	</div>	
 	
-
+</main>
+<script type="text/javascript">
+$(function(){
+	$("#InsertFormSubmit").click(function(){
+        $('#Calender_insert_modal').modal();
+    });
+    
+    $("#modal_insert").click(function(){
+        $('#InsertForm').submit();
+    })
+})
+</script>
 
 </body>
 </html>

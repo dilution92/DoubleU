@@ -17,9 +17,9 @@ public class SelectOutgoingService {
 	@Autowired
 	ApprovalDao dao;
 	public Map<String, Object> selectOutgoing(HttpServletRequest req) {
+		System.out.println("selectOutgoing메소드 시작.....");
 		Map<String,Object> map = new HashMap<String,Object>();
 		IndexPage page = new IndexPage();
-		String mainJob = "select/approval_select.jsp";
 		int memberNo = 2;
 		String findStr = " ";
 		int nowOutgoingPage = 1;
@@ -34,6 +34,7 @@ public class SelectOutgoingService {
 		page.setMemberNo(memberNo);
 		page.setNowPage(nowOutgoingPage);
 		map = dao.selectOutgoing(page);
+		System.out.println("selectOutgoing메소드 종료.....");
 		return map;
 				
 				

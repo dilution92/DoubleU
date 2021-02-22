@@ -10,6 +10,7 @@
 <title>중고 게시판</title>
 </head>
 <body>
+
 	<c:forEach var='vo' items='${list }' >
 					<div class="col mb-4">
 						<div class="card"  onclick="view(${vo.marketNo})">	

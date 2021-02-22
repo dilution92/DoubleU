@@ -31,6 +31,7 @@
 			</ul>
 	
 			<ul class="navbar-nav my-2 my-lg-0">
+				<div class="header-member-name">${member.memberName }&nbsp<a style="color:#aaa;">님 </a> </div>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
 					aria-haspopup="true" aria-expanded="false">
@@ -39,7 +40,7 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="left:-100px;">
 						<a class="dropdown-item  " href="/member/modify.jsp">정보 수정</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item  " href="#">로그아웃</a>
+						<a class="dropdown-item  " href="/loginOut">로그아웃</a>
 					</div>
 				</li>
 			</ul>

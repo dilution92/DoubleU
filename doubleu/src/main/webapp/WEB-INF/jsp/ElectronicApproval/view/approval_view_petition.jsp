@@ -77,6 +77,8 @@
 												<h6><span class="badge badge-pill badge-primary">결재반려</span></h6>
 											</c:when>
 										</c:choose>
+										<input type="hidden" value="${makerVo.memberNo }">
+										<input type="hidden" value="${makerVo.makerOrder }">
 									</td>
 								</tr>
 								<tr>
@@ -128,7 +130,7 @@
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-btns" style="padding-bottom: 10em;">
-					<input type="button" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<input type="button" name="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 				</div>
 			</div>
 			</main>
