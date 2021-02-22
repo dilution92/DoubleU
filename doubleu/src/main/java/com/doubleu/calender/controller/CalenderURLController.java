@@ -53,9 +53,15 @@ public class CalenderURLController {
 	@RequestMapping(value = "/calenderDay", method = {RequestMethod.POST, RequestMethod.GET} )
 	public ModelAndView calenderDay() {
 		ModelAndView mv = new ModelAndView();
-
+		
+		CalenderWeekList listDay = calender.setCalenderDay();
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("listDay", listDay);
 		mv.setViewName("calender/Calender_day");
-
+ 
 		return mv;
 	}
 	

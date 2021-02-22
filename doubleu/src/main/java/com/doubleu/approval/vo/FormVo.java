@@ -5,7 +5,7 @@ import java.util.List;
 // 결재 양식에 공통으로 들어가는 내용을 담은 Vo
 public class FormVo {
 	int formNo;
-	int employeeNo;
+	int memberNo;
 	String drafterName;
 	String formDate;
 	String drafterDepartment;
@@ -22,11 +22,12 @@ public class FormVo {
 	FormPetitionVo formPetitionVo; // 품의서 관련 결재 양식일 경우
 	FormVacationVo formVacationVo; // 휴가 관련 결재 양식일 경우
 
-	public int getEmployeeNo() {
-		return employeeNo;
+
+	public int getMemberNo() {
+		return memberNo;
 	}
-	public void setEmployeeNo(int employeeNo) {
-		this.employeeNo = employeeNo;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
 	}
 	public List<AttFileVo> getAttFileList() {
 		return attFileList;

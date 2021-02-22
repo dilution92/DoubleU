@@ -10,13 +10,11 @@
 <title>중고 게시판</title>
 </head>
 <body>
-	<c:forEach var='vo' items='${list }'>
+	<c:forEach var='vo' items='${list }' >
 					<div class="col mb-4">
-						<div class="card"  onclick="view(${vo.marketNo})">
-							<img src='images/market/${attlist.oriFile}'class="card-img-top" alt="...">
-						
-							
+						<div class="card"  onclick="view(${vo.marketNo})">	
 							<div class="card-body">
+		<img src='images/market/${vo.oriFile}'class="card-img-top" alt="..." style="width:150px; height : 150px;">
 								<h5 class="card-title">${vo.marketSubject } </h5>
 								<p class="card-text">${vo.marketPrice}원</p>
 								<p class="card-text">🤍 2
@@ -27,7 +25,7 @@
 							</div>
 						</div>
 					</div>
-
 				</c:forEach>
+							
 </body>
 </html>

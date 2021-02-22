@@ -2,26 +2,38 @@
  * 
  */
 
-
-//-----------검색-----------//
 brd = function() {
+//-----------검색-----------//
 	
 $('#market_btnFind').on('click', function() {
 		var frm = document.frm_market;
-
-			frm.findCate.value = $('#market_category option:selected').val();
+			frm.marketCategory.value = $('#market_category option:selected').val();
 			frm.action = '/marketSelect';
 			frm.submit();
 		});
+		
 }
 	
+//-----------수정--------//
+function goModify(marketNo){
+	var frm = document.frm_market_view;
+	frm.marketNo.value = marketNo;
+	console.log(frm.marketNo.value);
+	frm.action = '/marketUpdate';
+	frm.submit();
+
+}
+
+//-----------목록--------//
+function goBack(){
+	window.history.back();
+}
 //-----------상세보기-----------//
 	
 function view(marketNo) {
 	var frm = document.frm_market;
 	frm.marketNo.value = marketNo;
 	console.log(frm.marketNo.value);
-
 	frm.action = '/marketView';
 	frm.submit();
 

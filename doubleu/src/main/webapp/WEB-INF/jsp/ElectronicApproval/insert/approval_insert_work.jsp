@@ -22,7 +22,6 @@
 	
 	
 	<div class="e-approval-form-container">
-		<form action="/approvalInsertR" name="frmApproval" id="frmApproval" method="post">
 			<div class="e-approval-work-btns">
 				<div class="e-approval-work-form-choose">
 					<select id="selectChangeFormType" class="form-control form-control-sm e-approval-work-form-change">
@@ -75,8 +74,7 @@
 						<div class="e-approval-form-decision-box-1 table-bordered">
 							<p style="margin: 0;"> 결재란 </p>
 						</div>
-							<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
-							
+							<div id="makersZone" class="approval-amkers-zone ">
 							</div>
 					</div>
 				</div>
@@ -122,7 +120,6 @@
 			</div>
 			</main>
 			<!-- 공통 -->
-		</form>
 	</div>
 	
 <script type="text/javascript">

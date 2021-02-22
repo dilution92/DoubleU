@@ -48,11 +48,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> <input type="text" name="drafterName" value="정해준" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
+									<td> ${vo.draferName}</td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td><input type="text" name="drafterDepartment" value="기획부" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
+									<td>${vo.drafterDepartment}</td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
@@ -68,9 +68,30 @@
 						<div class="e-approval-form-decision-box-1 table-bordered">
 							<p style="margin: 0;"> 결재란 </p>
 						</div>
-							<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
-							
-							</div>
+						<c:forEach var="makerVo" items="${vo.decisionMakersList }">
+						<table class="table table-sm table-bordered e-approval-form-decision-box-2 makerBox" id="makerBox">
+							<tr>
+								<td id="makerPositionContent">
+									<input name="makerPosition"  id="makerContent" value="${makerVo.makerPosition }" readonly="readonly">
+								</td>
+							</tr>
+							<tr>
+			                     <td height="80px;">
+			                        <input id="makerSignBtn" name="makerSignBtn1"  type="button" value="직원조회" onclick="updateChooseMaker()">
+			                        <input id="makerDelBtn" type="button" value="x" onclick="deleteChooseMaker()">
+			                        <input type="hidden" name="makerOrder" val="1">
+			                        <input type="hidden" name="makerNo" val="${makerVo.memberNo }">
+			                     </td>
+							</tr>
+							<tr>
+								<td id="makerNameContent" height="16.5px">
+									<input name="makerName" id="makerContent" value="${makerVo.makerName }" readonly="readonly">
+								</td>
+							</tr>
+						</table>
+						</c:forEach>
+						<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
+						</div>
 					</div>
 				</div>
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
@@ -78,9 +99,9 @@
 						<th> 일시 </th>
 						<td> <input type="date" name="eventDate" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 						<th> 성명 </th>
-						<td> <input type="text" name="name" class="form-control form-control-sm" style="font-size: 1em;" placeholder="성명" required> </td>
+						<td> <input type="text" name="name" value="${vo.drafterName}" class="form-control form-control-sm" style="font-size: 1em;" placeholder="성명" required> </td>
 						<th> 직급 </th>
-						<td> <input type="text" name="drafterPosition" class="form-control form-control-sm" style="font-size: 1em;" placeholder="직급" required> </td>
+						<td> <input type="text" name="drafterPosition" value="${vo.drafterDepartment}" class="form-control form-control-sm" style="font-size: 1em;" placeholder="직급" required> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>
@@ -121,7 +142,6 @@
 		</form>
 	</div>
 <script type="text/javascript">
-funcApproval();
 createMakerBox('makersZone');
 createFile('fileZone');
 </script>

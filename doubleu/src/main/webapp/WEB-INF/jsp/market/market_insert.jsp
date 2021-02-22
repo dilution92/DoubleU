@@ -74,7 +74,7 @@
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;"
 						onclick="window.open('/marketNewpage','window_name','width=600,height=182,location=no,status=no,scrollbars=yes');">시세 확인</button>
 				    	  <div style="display:flex;">
-				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="1"onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
+				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="1,000"onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
 				    	  <span class="input-group-text">원</span>
 				    	</div>
 				    </div>
@@ -106,7 +106,7 @@
 								<option value="케이뱅크">케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
-				      <input type="text" class="form-control js-sms-content" id="marketAccount" name="marketAccount"value="23"onkeyup="accountCheck(this.value)" >
+				      <input type="text" class="form-control js-sms-content" id="marketAccount" name="marketAccount"value="3256262585963"onkeyup="accountCheck(this.value)" >
 				    </div>
 				    </div>
 				  </div>
