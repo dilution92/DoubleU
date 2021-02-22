@@ -8,7 +8,7 @@ import java.util.List;
 public class MarketVo {
 	int marketNo ;
 	String marketCategory;
-	String membersNo ;
+	String marketWriter ;
 	String marketSubject ;
 	String marketPrice ;
 	String marketAccount ;
@@ -27,7 +27,6 @@ public class MarketVo {
 	}
 
 	List<MarketAttVo> attlist;
-	//erd photo->attlist
 	
 	
 
@@ -55,12 +54,15 @@ public class MarketVo {
 		this.marketCategory = marketCategory;
 	}
 
-	public String getMembersNo() {
-		return membersNo;
+	
+	public String getMarketWriter() {
+		return marketWriter;
 	}
-	public void setMembersNo(String membersNo) {
-		this.membersNo = membersNo;
+
+	public void setMarketWriter(String marketWriter) {
+		this.marketWriter = marketWriter;
 	}
+
 	public String getMarketSubject() {
 		return marketSubject;
 	}
