@@ -40,7 +40,7 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="left:-100px;">
 						<a class="dropdown-item  " href="/member/modify.jsp">정보 수정</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item  " href="#">로그아웃</a>
+						<a class="dropdown-item  " href="/loginOut">로그아웃</a>
 					</div>
 				</li>
 			</ul>
