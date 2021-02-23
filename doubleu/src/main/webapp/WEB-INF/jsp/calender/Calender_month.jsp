@@ -96,8 +96,8 @@
 			</c:if>
 			
 			
-			<td id="calender_content"><!-- 월간 달력 한칸 -->
-				<div id="${list.month}${list.day}"><!-- 날자가 표시 될 곳 -->
+			<td id="calender_content" class="${list.month}${list.day}"><!-- 월간 달력 한칸 -->
+				<div ><!-- 날자가 표시 될 곳 -->
 				${list.day}
 				</div>
 				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
@@ -157,8 +157,8 @@ $(document).ready(function(){
 $(document).ready(function(){
 	var month = $("#monthcome").val();
 	var day = $("#daycome").val();
-	var targetToday = 
-	 $("#month").val(month).attr("selected","selected");
+	var targetToday = document.getElementsByClassName(month+day)[0];
+	targetToday.style.border="5px skyblue solid";
 })
 
 

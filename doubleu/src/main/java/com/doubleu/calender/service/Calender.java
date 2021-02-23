@@ -212,6 +212,8 @@ public class Calender {
 				CalenderWeekList weekList = new CalenderWeekList();
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
+				weekList.setMonth(month-1);
+				weekList.setYear(year);
 				list.add(weekList);
 				startNum = startNum+1;
 			}
@@ -222,6 +224,8 @@ public class Calender {
 				CalenderWeekList weekList = new CalenderWeekList();
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
+				weekList.setMonth(month);
+				weekList.setYear(year);
 				list.add(weekList);
 				startNum = startNum+1;
 			}
@@ -244,6 +248,8 @@ public class Calender {
 				CalenderWeekList weekList = new CalenderWeekList();
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
+				weekList.setMonth(month);
+				weekList.setYear(year);
 				list.add(weekList);
 				startNum = startNum+1;
 			}
@@ -255,6 +261,8 @@ public class Calender {
 				System.out.println(startNum+"스타트넘");
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
+				weekList.setMonth(month+1);
+				weekList.setYear(year);
 				list.add(weekList);
 				startNum = startNum+1;
 			}
@@ -268,6 +276,8 @@ public class Calender {
 				CalenderWeekList weekList = new CalenderWeekList();
 				weekList.setDay(startNum);
 				weekList.setWeek(week[i]);
+				weekList.setMonth(month);
+				weekList.setYear(year);
 				list.add(weekList);
 				startNum = startNum+1;
 			}

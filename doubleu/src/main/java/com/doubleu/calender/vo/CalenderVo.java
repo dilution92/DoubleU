@@ -3,47 +3,87 @@ package com.doubleu.calender.vo;
 public class CalenderVo {
 
 	private int calenderNo;
-	private String calenderDateStart;
-	private String calenderTimeStart;
-	private String calenderDateEnd;
-	private String calenderTimeEnd;
+	private String calenderStartYear;
+	private String calenderStartMonth;
+	private String calenderStartDay;
+	private String calenderStartTime;
+	private String calenderStartMinute;
+	private String calenderEndYear;
+	private String calenderEndMonth;
+	private String calenderEndDay;
+	private String calenderEndTime;
+	private String calenderEndMinute;
 	private String calenderSubject;
 	private String calenderContent;
 	private String calenderPlace;
 	private String calenderWriter;
 	private String calenderGroup;
 	private String calenderTime;
-	
-	
 	public int getCalenderNo() {
 		return calenderNo;
 	}
 	public void setCalenderNo(int calenderNo) {
 		this.calenderNo = calenderNo;
 	}
-	public String getCalenderDateStart() {
-		return calenderDateStart;
+	public String getCalenderStartYear() {
+		return calenderStartYear;
 	}
-	public void setCalenderDateStart(String calenderDateStart) {
-		this.calenderDateStart = calenderDateStart;
+	public void setCalenderStartYear(String calenderStartYear) {
+		this.calenderStartYear = calenderStartYear;
 	}
-	public String getCalenderTimeStart() {
-		return calenderTimeStart;
+	public String getCalenderStartMonth() {
+		return calenderStartMonth;
 	}
-	public void setCalenderTimeStart(String calenderTimeStart) {
-		this.calenderTimeStart = calenderTimeStart;
+	public void setCalenderStartMonth(String calenderStartMonth) {
+		this.calenderStartMonth = calenderStartMonth;
 	}
-	public String getCalenderDateEnd() {
-		return calenderDateEnd;
+	public String getCalenderStartDay() {
+		return calenderStartDay;
 	}
-	public void setCalenderDateEnd(String calenderDateEnd) {
-		this.calenderDateEnd = calenderDateEnd;
+	public void setCalenderStartDay(String calenderStartDay) {
+		this.calenderStartDay = calenderStartDay;
 	}
-	public String getCalenderTimeEnd() {
-		return calenderTimeEnd;
+	public String getCalenderStartTime() {
+		return calenderStartTime;
 	}
-	public void setCalenderTimeEnd(String calenderTimeEnd) {
-		this.calenderTimeEnd = calenderTimeEnd;
+	public void setCalenderStartTime(String calenderStartTime) {
+		this.calenderStartTime = calenderStartTime;
+	}
+	public String getCalenderStartMinute() {
+		return calenderStartMinute;
+	}
+	public void setCalenderStartMinute(String calenderStartMinute) {
+		this.calenderStartMinute = calenderStartMinute;
+	}
+	public String getCalenderEndYear() {
+		return calenderEndYear;
+	}
+	public void setCalenderEndYear(String calenderEndYear) {
+		this.calenderEndYear = calenderEndYear;
+	}
+	public String getCalenderEndMonth() {
+		return calenderEndMonth;
+	}
+	public void setCalenderEndMonth(String calenderEndMonth) {
+		this.calenderEndMonth = calenderEndMonth;
+	}
+	public String getCalenderEndDay() {
+		return calenderEndDay;
+	}
+	public void setCalenderEndDay(String calenderEndDay) {
+		this.calenderEndDay = calenderEndDay;
+	}
+	public String getCalenderEndTime() {
+		return calenderEndTime;
+	}
+	public void setCalenderEndTime(String calenderEndTime) {
+		this.calenderEndTime = calenderEndTime;
+	}
+	public String getCalenderEndMinute() {
+		return calenderEndMinute;
+	}
+	public void setCalenderEndMinute(String calenderEndMinute) {
+		this.calenderEndMinute = calenderEndMinute;
 	}
 	public String getCalenderSubject() {
 		return calenderSubject;
@@ -81,5 +121,6 @@ public class CalenderVo {
 	public void setCalenderTime(String calenderTime) {
 		this.calenderTime = calenderTime;
 	}
+	
 	
 }

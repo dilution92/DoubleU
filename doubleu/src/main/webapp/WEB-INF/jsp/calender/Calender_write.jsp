@@ -44,6 +44,18 @@
     				<input type="time" name="calenderTimeStart">
     				<input type="date" name="calenderDateEnd"> 
     				<input type="time" name="calenderTimeEnd">
+    				
+    				
+    				<input type="hidden" name="calenderStartYear">
+    				<input type="hidden" name="calenderStartMonth">
+    				<input type="hidden" name="calenderStartDay">
+    				<input type="hidden" name="calenderStartTime">
+    				<input type="hidden" name="calenderStartMinute">
+    				<input type="hidden" name="calenderEndYear">
+    				<input type="hidden" name="calenderEndMonth">
+    				<input type="hidden" name="calenderEndDay">
+    				<input type="hidden" name="calenderEndTime">
+    				<input type="hidden" name="calenderEndMinute">
     				</td>
     			</tr>
     			<tr>
@@ -91,7 +103,18 @@ $(function(){
     $("#modal_insert").click(function(){
         $('#InsertForm').submit();
     })
+    
+    $("calenderDateStart").click(function(){
+        console.log(document.getElementsByName("calenderDateStart")[0].value);
+    })
 })
+
+var cds = document.getElementsByName("calenderDateStart")[0].value;
+var cts = document.getElementsByName("calenderTimeStart")[0].value;
+var cde = document.getElementsByName("calenderDateEnd")[0].value;
+var cte = document.getElementsByName("calenderDateEnd")[0].value;
+
+var cdsList = cds.split('-');
 </script>
 
 </body>
