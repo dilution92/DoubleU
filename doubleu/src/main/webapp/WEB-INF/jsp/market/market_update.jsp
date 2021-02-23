@@ -45,11 +45,12 @@
 		
 		
 			<div class='market-insert-form'>
-			<form action = "/marketInsertR" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
+			<form action = "/marketUpdateR" class="frm_market_insert" name="frm_market_update" method="post"enctype="multipart/form-data" >
 				<div class="form-group row">
 		   		 <label for="marketWriter" class="col-sm-2 col-form-label  is-invalid">작성자</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control "  name="marketWriter"required disabled value="${member.memberName }">
+				      <input type="text" class="form-control "  name="marketWriter"required readonly value="김재현">
+<%-- 				      <input type="text" class="form-control "  name="marketWriter"required readonly value="${member.memberName }"> --%>
 				    </div>
 				  </div>
 				
@@ -65,12 +66,12 @@
 				    <div class="col-sm-8">
    					 <select class="form-control " name="marketCategory"  required>
 								<option value="">카테고리</option>
-								<option value="뷰티/미용">뷰티/미용</option>
-								<option value="식품">식품</option>
-								<option value="의류">의류</option>
-								<option value="전자제품">전자제품</option>
-								<option value="도서/티켓">도서/티켓</option>
-								<option value="기타 중고물품">기타 중고물품</option>
+								<option value="뷰티/미용"<c:if test="${vo.marketCategory =='뷰티/미용'}">selected="selected"</c:if>>뷰티/미용</option>
+								<option value="식품"<c:if test="${vo.marketCategory== '식품'}">selected="selected"</c:if>>식품</option>
+								<option value="의류"<c:if test="${vo.marketCategory== '의류'}">selected="selected"</c:if>>의류</option>
+								<option value="전자제품"<c:if test="${vo.marketCategory== '전자제품'}">selected="selected"</c:if>>전자제품</option>
+								<option value="도서/티켓"<c:if test="${vo.marketCategory== '도서/티켓'}">selected="selected"</c:if>>도서/티켓</option>
+								<option value="기타 중고물품"<c:if test="${vo.marketCategory== '기타 중고물품'}">selected="selected"</c:if>>기타 중고물품</option>
 					</select>				    
 					</div>
 				  </div>
@@ -113,11 +114,11 @@
 				    <div class="col-sm-8">
    					 <select class="form-control" id="exampleFormControlSelect1" required name="marketBank">
 								<option value="">은행</option>
-								<option value="신한">신한</option>
-								<option value="국민">국민</option>
-								<option value="농협">농협</option>
-								<option value="카카오뱅크">카카오뱅크</option>
-								<option value="케이뱅크">케이뱅크</option>
+								<option value="신한"<c:if test="${vo.marketBank== '신한'}">selected="selected"</c:if>>신한</option>
+								<option value="국민"<c:if test="${vo.marketBank== '국민'}">selected="selected"</c:if>>국민</option>
+								<option value="농협"<c:if test="${vo.marketBank== '농협'}">selected="selected"</c:if>>농협</option>
+								<option value="카카오뱅크"<c:if test="${vo.marketBank== '카카오뱅크'}">selected="selected"</c:if>>카카오뱅크</option>
+								<option value="케이뱅크"<c:if test="${vo.marketBank== '케이뱅크'}">selected="selected"</c:if>>케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
 				      <input type="text" class="form-control js-sms-content" id="marketAccount" name="marketAccount"value="${vo.marketAccount }"onkeyup="accountCheck(this.value)" >
@@ -133,13 +134,14 @@
 				  </div>
 				  
 				<div class="market-btn-zone">
-					<input class="btn btn-primary" type="submit"   id = 'btnSave' value="수정">
+					<input class="btn btn-primary" type="submit"   id = 'btnModify' value="수정">
 					<input class="btn btn-primary" type="button" onclick = "goBack();" value = '취소' >
 				</div>
 				
 				<!-- hidden -->
 				<input type="hidden" name="marketHit" value = "1">
 				<input type="hidden" name="marketWriter" value = "${member.memberName }">
+				<input type='text' name='marketNo'  value='${vo.marketNo}'/>
 			</form>
 			</div>
 

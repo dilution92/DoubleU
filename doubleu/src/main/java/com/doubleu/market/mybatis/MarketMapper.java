@@ -22,5 +22,11 @@ public interface MarketMapper {
 	public int totalCount();
 	public MarketVo view(int marketNo);
 	public List<MarketAttVo> selectAttOne();
+	
+	public int update(MarketVo vo);
+	public int insertAtt(MarketVo vo);
+	public int deleteAtt(MarketVo vo);
+	public int delete(MarketVo vo);
+	public int deleteAttNo(int marketNo);
 
 }

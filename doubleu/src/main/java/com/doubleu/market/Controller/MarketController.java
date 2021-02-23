@@ -62,16 +62,7 @@ public class MarketController {
 		System.out.println("가격 : " +vo.getMarketPrice());
 		msg = dao.insert(vo);
 		System.out.println(msg);
-		/*System.out.println("catenum : " + vo.getCategoryNo());
-		System.out.println("membersno: "+ vo.getMembersNo());
-		System.out.println("subject : "+vo.getMarketSubject());
-		System.out.println("price: "+vo.getMarketPrice());
-		System.out.println("account: " +vo.getMarketAccount());
-		System.out.println("hit : " +vo.getMarketHit());
-		System.out.println("doc : " + vo.getMarketDoc());
-		System.out.println("date: " + vo.getMarketDate());
-		System.out.println("attList" + vo.getAttlist());*/
-		
+
 		if(page ==null || page.getNowPage()==0) {
 			page.setNowPage(1);
 		}
@@ -86,4 +77,35 @@ public class MarketController {
 		mv.setViewName("redirect:/marketIndex");
 		return mv;
 	}
+	
+	@RequestMapping(value="/marketUpdateR" , method= {RequestMethod.POST})
+	public ModelAndView marketUpdateR(@RequestParam("attList") List<MultipartFile> mul, 
+								@ModelAttribute MarketVo vo, @ModelAttribute MarketPage page) {
+		ModelAndView mv = new ModelAndView();
+		List<MarketAttVo> attList = fu.upload(mul);
+		System.out.println("확인1");
+		
+		vo.setAttlist(attList);
+		System.out.println("확인2");
+		
+		String msg = dao.update(vo);
+		System.out.println(msg);
+		mv.addObject("msg", msg);
+		mv.addObject("page", page);
+		mv.setViewName("redirect:/marketIndex");
+		return mv;
+	}
+	
+	@RequestMapping(value="/marketDelete" , method=  {RequestMethod.GET , RequestMethod.POST})
+	public ModelAndView deleteR(MarketVo vo, MarketPage page) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("delete controller...");
+		String msg = dao.delete(vo);
+		System.out.println(msg);
+		mv.addObject("msg", msg);
+		mv.addObject("page", page);
+		mv.setViewName("redirect:/marketIndex");
+		return mv;
+	}
+	
 }

@@ -1,5 +1,6 @@
 package com.doubleu.market.mybatis;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.doubleu.market.Controller.MarketUploadController;
 import com.doubleu.market.vo.MarketAttVo;
 import com.doubleu.market.vo.MarketPage;
 import com.doubleu.market.vo.MarketVo;
@@ -44,13 +46,13 @@ public class MarketDao {
 				page.setTotListSize(totListSize);
 				page.pageCompute();
 
-				System.out.println("BoardDao.select()..........................2");
-				System.out.println(page.getNowPage());
-				System.out.println(page.getFindStr());
-				System.out.println(page.getMarketCategory());
+				//System.out.println("BoardDao.select()..........................2");
+				//System.out.println(page.getNowPage());
+				//System.out.println(page.getFindStr());
+				//System.out.println(page.getMarketCategory());
 				
 				List<MarketAttVo> attList = new ArrayList<>();
-				System.out.println("BoardDao.select()..........................3");
+				//System.out.println("BoardDao.select()..........................3");
 
 //				attList = mapper.selectAttOne();
 //				//System.out.println("v: " + v);
@@ -127,5 +129,45 @@ public class MarketDao {
 	}
 
 
+	public String update(MarketVo vo) {
+		String msg = "게시물이 수정되었습니다.";
+		try {
+			int cnt = mapper.update(vo);
+			if(cnt>0) {
+				if(vo.getAttlist() != null) {
+					System.out.println("사진추가작업중...");
+					cnt = mapper.insertAtt(vo);
+					if(cnt<1) throw new Exception("첨부 저장중 오류 발생");
+				}
+				if(vo.getDelFiles() != null) {
+					System.out.println("사진삭제작업중...");
+					cnt = mapper.deleteAtt(vo);
+					if(cnt<1) throw new Exception("첨부 파일 삭제중 오류 발생"); 
+					//delFile(vo.getDelFiles());
+				}
+			}else {
+				throw new Exception("수정중 오류 발생");
+			}
+		} catch (Exception ex) {
+			msg = ex.getMessage();
+			//delFile(vo.getAttlist());
+		} finally {
+			return msg;
+		}
+	}
 
-}
+
+	public String delete(MarketVo vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+
+	
+	
+	}
+
+
+
