@@ -112,12 +112,12 @@
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
 									<label for="familyeventPostType"></label>
-										<input type="radio" name="familyeventPostType" value="영구" checked>영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-										<input type="radio" name="familyeventPostType" value="설정">설정 &nbsp;&nbsp;
+										<input type="radio" name="familyeventPostType" value="영구" checked><label for="r1">영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+										<input type="radio" name="familyeventPostType" value="설정"><label for="r2">설정  &nbsp;&nbsp;</label>
 										
-											(시작일자 &nbsp;<input type="date" id="searchDateOne" class="success" name="familyeventPostStartDate">
+											(시작일자 &nbsp;<input type="date" id="searchDateOne" name="familyeventPostStartDate" readOnly>
 											&nbsp;~ &nbsp;
-											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="familyeventPostEndDate"> )
+											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="familyeventPostEndDate" readOnly> )
 								</div>
 							</td>
 				        </tr> 
@@ -160,7 +160,7 @@
 			
 			<!-- 저장하기 모달창 -->
 			<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	       		<jsp:include page="notice_comment_modal.jsp"/>
+	       		<jsp:include page="./modal/save_modal.jsp"/>
 			</div>   
 
  			<!-- 사내공지 댓글창 -->

@@ -47,9 +47,9 @@
 			<div class='market-insert-form'>
 			<form action = "/marketInsertR" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
 				<div class="form-group row">
-		   		 <label for="marketName" class="col-sm-2 col-form-label  is-invalid">작성자</label>
+		   		 <label for="marketWriter" class="col-sm-2 col-form-label  is-invalid">작성자</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control "  name="marketSubject"required disabled value="${member.memberName }">
+				      <input type="text" class="form-control "  name="marketWriter"required disabled value="${member.memberName }">
 				    </div>
 				  </div>
 				<div class="form-group row">
@@ -82,6 +82,7 @@
 				    	  <div style="display:flex;">
 				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="1,000"onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
 				    	  <span class="input-group-text">원</span>
+				    
 				    	</div>
 				    </div>
 				  </div>
@@ -126,11 +127,11 @@
 				  
 				<div class="market-btn-zone">
 					<input class="btn btn-primary" type="submit"   id = 'btnSave' value="등록">
-					<input class="btn btn-primary" type = 'button' value = '취소' id = 'btnList'>
+					<input class="btn btn-primary" type = 'button' value = '취소' onclick = "goBack();">
 				</div>
-				
-				<input name="membersNo" value = "1">
-				<input name="marketHit" value = "1">
+				<!-- hidden -->
+				<input type="hidden" name="marketHit" value = "1">
+				<input type="hidden" name="marketWriter" value = "${member.memberName }">
 			</form>
 			</div>
 

@@ -59,11 +59,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> <input type="text" name="drafterName" value="<%= memberName %>" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
+									<td> <input type="text" name="drafterName" value="${member.memberName }" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td> <input type="text" name="drafterDepartment" value="<%= memberDepartment %>" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
+									<td> <input type="text" name="drafterDepartment" value="${member.memberDepartment }" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>

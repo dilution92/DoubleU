@@ -90,7 +90,7 @@
 							<th scope="col"  width="150px;">결재양식</th>
 							<th scope="col">제목</th>
 							<th scope="col">기안자</th>
-							<th scope="col" width="150px;">결재 상태</th>
+							<th scope="col" width="150px;">결재 여부</th>
 						</tr>
 					</thead>
 					<tbody class="e-approval-list text-muted">

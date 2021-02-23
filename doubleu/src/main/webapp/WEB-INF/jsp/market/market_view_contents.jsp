@@ -22,7 +22,7 @@
 			    </tr>
 			    <tr >
 			      <th scope="col"style="background-color:#f1f2f4;">작성자</th>
-			      <th scope="col" >김재현</th>
+			      <th scope="col" >${vo.marketWriter}</th>
 			      <th scope="col" style="background-color:#f1f2f4;">조회수</th>
 			      <th scope="col" >23</th>
 			    </tr>

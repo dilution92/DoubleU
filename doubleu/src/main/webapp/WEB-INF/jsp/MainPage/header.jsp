@@ -26,7 +26,7 @@
 				<li class="nav-item"><a class="nav-link" href="/member/organization.jsp">주소록</a></li>
 				<li class="nav-item"><a class="nav-link" href="/calenderMonth">캘린더</a></li>
 				<li class="nav-item"><a class="nav-link" href="/emailIndex">메일함</a></li>
-				<li class="nav-item"><a class="nav-link" href="/approvalIndex?employeeNo=3355">전자결재</a></li>
+				<li class="nav-item"><a class="nav-link" href="/approvalIndex?memberNo=${member.memberName }">전자결재</a></li>
 				<li class="nav-item"><a class="nav-link" href="/marketIndex">더블마켓</a></li>
 			</ul>
 	

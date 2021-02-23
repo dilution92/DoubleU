@@ -13,7 +13,6 @@ public class EmailMainVo {
 	Date emailDate;
 	String emailContents;
 	int emailMailBox;
-	String emailFile;
 	String emailChk;
 	int emailDelete;
 		
@@ -25,8 +24,7 @@ public class EmailMainVo {
 	public String toString() {
 		return "EmailMainVo [emailNo=" + emailNo + ", emailMid=" + emailMid + ", emailAddress=" + emailAddress
 				+ ", emailName=" + emailName + ", emailTitle=" + emailTitle + ", emailDate=" + emailDate
-				+ ", emailContents=" + emailContents + ", emailMailBox=" + emailMailBox + ", emailFile=" + emailFile
-				+ ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + ", attFileList=" + attFileList
+				+ ", emailContents=" + emailContents + ", emailMailBox=" + emailMailBox + ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + ", attFileList=" + attFileList
 				+ ", emailRevList=" + emailRevList + "]";
 	}
 	
@@ -79,12 +77,7 @@ public class EmailMainVo {
 	public void setEmailMailBox(int emailMailBox) {
 		this.emailMailBox = emailMailBox;
 	}
-	public String getEmailFile() {
-		return emailFile;
-	}
-	public void setEmailFile(String emailFile) {
-		this.emailFile = emailFile;
-	}
+	
 	public String getEmailChk() {
 		return emailChk;
 	}
@@ -106,7 +99,6 @@ public class EmailMainVo {
 		this.attFileList = attFileList;
 	}
 	
-
 	public List<EmailReceiverVo> getEmailRevList() {
 		return emailRevList;
 	}

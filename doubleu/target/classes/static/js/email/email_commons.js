@@ -17,6 +17,7 @@
 	수정 : 21.02.20
 	7. 메일 검색 시 메일 목록 ajax로 표시
 	
+	
  */
 
 
@@ -132,11 +133,11 @@ emailSelectSearch = function() {
 	
 	$('#emailSearchTitle').on('click', function(){
 		
-		var param = $('#emailFormId').serialize();
+		
+		var param = $('#emailFindStr').serialize();
 		console.log(param);
 		
 		$.ajax ({
-			
 			url: '/selectFindStr',
 			data : param,
 			dataType: 'html',
@@ -148,3 +149,38 @@ emailSelectSearch = function() {
 		});
 	});
 };
+
+
+// 8. goView()
+var goView =  function(EmailNo) {
+	var frm = document.emailForm;
+	frm.emailNo.value = EmailNo;
+	
+	console.log(frm.emailNo.value);
+	
+	frm.action = '/emailRead';
+	frm.submit();
+}
+
+
+// 9. 상세보기 검색
+
+
+var btnSearchDetail = function() {
+	var btn = document.querySelector('#searchBtn');
+
+	btn.onclick = function() {
+
+		var searchSend = document.querySelector('#searchSend')
+		var searchReceive = document.querySelector('#searchReceive');
+		var searchContents = document.querySelector('#searchContents');
+		var searchDateOne = document.querySelector('#searchDateOne');
+		var searchDateTwo = document.querySelector('#searchDateTwo')
+		
+		var frm = document.emailForm
+
+		frm.action = "/detail";
+		frm.submit();
+
+	}
+}

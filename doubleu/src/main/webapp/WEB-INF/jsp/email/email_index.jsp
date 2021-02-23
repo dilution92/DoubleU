@@ -106,7 +106,11 @@
 	      		<form class="e-approval-search-form" action="" id="emailFormId" name="emailForm" method="post">
 			      	<%--경로 -> ./commonsCode/emailDropDown.jsp --%>
 			      	<jsp:include page="./commonsCode/searchDropDown.jsp"></jsp:include>
-	     		</form>
+			      	
+			      		<!-- hidden-->
+						<input type="hidden" name="emailNo">
+		 			
+		 		</form>
 			</div>
 			<!-- ========== -->
 
@@ -126,8 +130,9 @@
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td>${list.emailChk }</td>
+                                <td>${list.emailName }</td>
 								<td>${list.emailAddress}</td>					
-								<td style=" text-align: left; text-indent: 2em;">${list.emailTitle }</td>					
+								<td style=" text-align: left; text-indent: 2em;"  onclick="goView(${list.emailNo})">${list.emailTitle }</td>					
 								<td>${list.emailDate }</td>		
 							</tr>
 						</c:forEach>
@@ -156,7 +161,7 @@
 		</main>
 	</section>
 	
-	
+
 <script>
 
 // 사이드바
@@ -173,6 +178,11 @@ changeChkReadBtn();
 
 // 메일 검색 bar
 emailSelectSearch();
+
+btnSearchDetail();
+
+
+
 </script>
 </body>
 </html>

@@ -26,11 +26,11 @@
 	<input type="hidden" id="TempMakerNo" value="">
 	<input type="hidden" name="formType" value="${formType}">
 	<c:if test="${formType != '사유서' and formType != '지각/결근사유서'}">
-		<input type="hidden" name="drafterPosition" value="<%= memberPosition %>">
+		<input type="hidden" name="drafterPosition" value="${member.memberPosition }">
 	</c:if>
 	<input type="hidden" name="checkedHaifTime" value="">
 	<input type="hidden" name="vacationType" value="">
-	<input type="hidden" name="memberNo" value="<%= memberNo %>">
+	<input type="hidden" name="memberNo" value="${member.memberNo }">
 	<input type="hidden" name="decisionMakerCnt" value="">
 	
 	<input type="hidden" name="findStr">	

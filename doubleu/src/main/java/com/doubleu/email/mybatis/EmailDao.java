@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.doubleu.email.vo.AttEmailVo;
 import com.doubleu.email.vo.EmailMainVo;
 
 @Service
@@ -48,6 +49,21 @@ public class EmailDao {
 	}
 	
 	
+	// 1.1 보낸 사람, 제목, 기간
+	public List<EmailMainVo> selectSearchName(
+			String findName, 
+			String findContents, 
+			String findDate
+			) {
+		
+		List<EmailMainVo> list = mapper.selectSearchDetail(
+				findName, findContents, findDate);
+		System.out.println(list);
+		
+		return list;
+		
+	}
+	
 	// 메일 보내기
 	public int insertSendWrite(EmailMainVo vo) {
 		
@@ -57,5 +73,24 @@ public class EmailDao {
 		
 		return cnt;
 	}
+	
+	public List<EmailMainVo> selectEmailNo(int emailNo) {
+		
+		System.out.println("selectEmailNo");
+		List<EmailMainVo> list = mapper.selectEmailNo(emailNo);
+		System.out.println(list);
+		
+		return list;
+	}
+	
+	public List<AttEmailVo> selectFiles(int emailNo) {
+		List<AttEmailVo> list = mapper.selectFiles(emailNo);
+		System.out.println(list);
+		
+		return list;
+	}
+	
+	
+	
 	
 }

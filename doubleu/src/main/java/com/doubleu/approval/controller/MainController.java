@@ -58,18 +58,18 @@ public class MainController {
 	SelectReceiverService selectReceiverService; 
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
-	public ModelAndView mainHeader(HttpServletRequest req) {
+	public ModelAndView mainHeader(HttpServletRequest req, HttpSession session) {
 		System.out.println("approvalIndex메소드 시작....");
 		ModelAndView mv = new ModelAndView();
 		String mainJob = "select/approval_select.jsp";
 		
 		//발신
-		Map<String, Object> outgoingMap = outgoingService.selectOutgoing(req);
+		Map<String, Object> outgoingMap = outgoingService.selectOutgoing(req, session);
 		mv.addObject("outgoingList", outgoingMap.get("list"));
 		mv.addObject("outgoingPage", outgoingMap.get("page"));
 		
 		//수신
-		Map<String, Object> receiverMap = selectReceiverService.selectReceiver(req);
+		Map<String, Object> receiverMap = selectReceiverService.selectReceiver(req, session);
 		mv.addObject("receiverList", receiverMap.get("list"));
 		mv.addObject("receiverPage", receiverMap.get("page"));
 		
@@ -139,6 +139,7 @@ public class MainController {
 		
 		//직원 번호 주입 형변환 후 주입
 		int memberNo = Integer.parseInt(req.getParameter("memberNo"));
+		System.out.println(memberNo);
 		vo.setMemberNo(memberNo);
 		vo.setApprovalState("(발신)임시저장");
 		//결재권자 list 작성
@@ -177,7 +178,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/approvalGoList")
-	public ModelAndView goList(HttpServletRequest req) {
+	public ModelAndView goList(HttpServletRequest req, HttpSession session ) {
 		System.out.println("approvalGoList.....................(start)");
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> selectChooseMap = null;
@@ -187,22 +188,22 @@ public class MainController {
 
 		switch(findState) {
 		case "(발신)상신" :
-			selectChooseMap = chooseService.selectOutgoing(req);
+			selectChooseMap = chooseService.selectOutgoing(req, session);
 			listName = "상신한 문서";
 			mv.addObject("listName", listName);
 			break;
 		case "(발신)임시저장" :
-			selectChooseMap = chooseService.selectOutgoing(req);
+			selectChooseMap = chooseService.selectOutgoing(req, session);
 			listName = "임시저장된 문서";
 			mv.addObject("listName", listName);
 			break;
 		case "(발신)승인" :
-			selectChooseMap = chooseService.selectOutgoing(req);
+			selectChooseMap = chooseService.selectOutgoing(req, session);
 			listName = "승인완료된 문서";
 			mv.addObject("listName", listName);
 			break;
 		case "(발신)반려" :
-			selectChooseMap = chooseService.selectOutgoing(req);
+			selectChooseMap = chooseService.selectOutgoing(req, session);
 			listName = "반려된 문서";
 			mv.addObject("listName", listName);
 			break;

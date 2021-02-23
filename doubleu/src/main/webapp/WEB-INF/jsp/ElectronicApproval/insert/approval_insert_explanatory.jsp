@@ -46,11 +46,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> <%= memberName %></td>
+									<td> ${member.memberName }</td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td> <input type="text" name="drafterDepartment" value="<%= memberDepartment %>" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
+									<td> <input type="text" name="drafterDepartment" value="${member.memberDepartment }" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
@@ -76,9 +76,9 @@
 						<th> 일시 </th>
 						<td> <input type="date" name="eventDate" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 						<th> 성명 </th>
-						<td> <input type="text" value="<%= memberName %>" name="drafterName" class="form-control form-control-sm" style="font-size: 1em;" placeholder="성명" required readonly="readonly"> </td>
+						<td> <input type="text" value="${member.memberName }" name="drafterName" class="form-control form-control-sm" style="font-size: 1em;" placeholder="성명" required readonly="readonly"> </td>
 						<th> 직급 </th>
-						<td> <input type="text" value="<%= memberPosition %>" name="drafterPosition" class="form-control form-control-sm" style="font-size: 1em;" placeholder="직급" required readonly="readonly"> </td>
+						<td> <input type="text" value="${member.memberPosition }" name="drafterPosition" class="form-control form-control-sm" style="font-size: 1em;" placeholder="직급" required readonly="readonly"> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>

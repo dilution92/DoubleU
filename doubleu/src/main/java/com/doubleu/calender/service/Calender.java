@@ -76,9 +76,9 @@ public class Calender {
 		return totalweek;
 	}
 	
-	public List<Integer> setMonthCalender() {
+	public List<CalenderWeekList> setMonthCalender() {
 		
-		List<Integer> list = new ArrayList<>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 		//2017년 1월 1일 일요일이 기준
 		String week[] = {"일","월","화","수","목","금","토"};
@@ -119,25 +119,37 @@ public class Calender {
 		System.out.println(lastMonthday);
 		
 		for(int i=0; i<monthweek; i++) {
+			CalenderWeekList cl = new CalenderWeekList();
 			int startNum = lastMonthday-monthweek+1;
 			startNum = startNum+i;
-			list.add(startNum);
+			cl.setDay(startNum);
+			cl.setMonth(month-1);
+			
+			list.add(cl);
 		}
 		
 		for(int i=0; i<lastDay[month-1]; i++) {
-			list.add(i+1);
+			CalenderWeekList cl = new CalenderWeekList();
+			cl.setDay(i+1);
+			cl.setMonth(month);
+			
+			list.add(cl);
 		}
 		
 		int nextMonthday = 42-(monthweek+lastDay[month-1]);
 		for(int i=0; i<nextMonthday; i++) {
-			list.add(i+1);
+			CalenderWeekList cl = new CalenderWeekList();
+			cl.setDay(i+1);
+			cl.setMonth(month+1);
+			
+			list.add(cl);
 		}
 		
 		return list;
 	}
 	
 	//Month 이전,다음
-	public List<Integer> changeMonth(int diff) {
+	public List<CalenderWeekList> changeMonth(int diff) {
 		System.out.println("월 변경 시작");
 		if((month+diff)>12) {
 			setMonth(1);
@@ -153,7 +165,7 @@ public class Calender {
 	}
 	
 	//Month오늘
-	public List<Integer> changeMonthToday() {
+	public List<CalenderWeekList> changeMonthToday() {
 		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
 		String time1 = format1.format(time);
@@ -164,12 +176,12 @@ public class Calender {
 		return setMonthCalender();
 	}
 	
-	public List<Integer> monthSelectedMonth(int changedMonth) {
+	public List<CalenderWeekList> monthSelectedMonth(int changedMonth) {
 		setMonth(changedMonth);
 		return setMonthCalender();
 	}
 	
-	public List<Integer> monthSelectedYear(int changedYear) {
+	public List<CalenderWeekList> monthSelectedYear(int changedYear) {
 		setYear(changedYear);
 		return setMonthCalender();
 	}
