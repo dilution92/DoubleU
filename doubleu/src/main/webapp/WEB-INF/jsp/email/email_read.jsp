@@ -175,7 +175,7 @@
 
 					<!-- 버튼 -->
 					<div class="send-and-cancel">
-					<button type="button" class="btn btn-primary btn-lg" onclick="location.href='/emailIndex'">목록으로</button>
+					<button type="button" class="btn btn-primary btn-sm" onclick="location.href='/emailIndex'">목록으로</button>
 					</div>
 				</div>
 				
@@ -197,8 +197,6 @@ readBtn();
 // 읽음 버튼을 눌렀을 때 아이콘 변경 
 changeChkReadBtn();
 
-// 메일 검색 bar
-emailSelectSearch();
 </script>
 	
 </body>

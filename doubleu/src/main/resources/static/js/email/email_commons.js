@@ -133,11 +133,11 @@ emailSelectSearch = function() {
 	
 	$('#emailSearchTitle').on('click', function(){
 		
-		var param = $('#emailFormId').serialize();
+		
+		var param = $('#emailFindStr').serialize();
 		console.log(param);
 		
 		$.ajax ({
-			
 			url: '/selectFindStr',
 			data : param,
 			dataType: 'html',
@@ -152,7 +152,6 @@ emailSelectSearch = function() {
 
 
 // 8. 
-
 var goView =  function(EmailNo) {
 	var frm = document.emailForm;
 	frm.emailNo.value = EmailNo;

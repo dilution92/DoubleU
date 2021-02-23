@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -46,7 +47,8 @@ public class EmailMainController {
 	
 	public ModelAndView emailIndex(
 			EmailMainVo vo,
-			HttpServletRequest req) {
+			HttpServletRequest req
+			) {
 		
 		ModelAndView mv = new ModelAndView();
 
@@ -136,7 +138,8 @@ public class EmailMainController {
 
 			String emailNo_ = req.getParameter("emailNo");
 			int emailNo = Integer.parseInt(emailNo_);
-						
+			
+			System.out.println(emailNo);
 			List<EmailMainVo> selectEmailNo = DaoService.selectEmailNo(emailNo);
 			List<AttEmailVo> selectFiles = DaoService.selectFiles(emailNo);
 			
