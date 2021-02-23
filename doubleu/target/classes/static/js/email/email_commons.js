@@ -148,3 +148,16 @@ emailSelectSearch = function() {
 		});
 	});
 };
+
+
+// 8. 
+
+var goView =  function(EmailNo) {
+	var frm = document.emailForm;
+	frm.emailNo.value = EmailNo;
+	
+	console.log(frm.emailNo.value);
+	
+	frm.action = '/emailRead';
+	frm.submit();
+}

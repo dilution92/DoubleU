@@ -44,7 +44,7 @@ public class emailURLController {
 	}	
 
 	// email_read.jsp
-	@RequestMapping(value="/emailRead", method=RequestMethod.GET)
+	@RequestMapping(value="/emailRead", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailRead() {
 		ModelAndView mv = new ModelAndView();
 

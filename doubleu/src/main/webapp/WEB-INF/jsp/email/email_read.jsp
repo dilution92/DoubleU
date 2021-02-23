@@ -148,7 +148,7 @@
 						<div class="form-group col-sm-1 importSend"></div>
 
 						<div class="form-group col-sm-9">
-						 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
+						 	<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="${list.emailTitle }">
 						</div>
 				    </div>
 				    					    
@@ -193,7 +193,6 @@
 					</div>
 				</div>
 					
-					
      		</form>
 		</div>
 	</main>
@@ -201,19 +200,6 @@
 
 <script>
 
-	chk = function() {
-		console.log('하이')
-		var arr = ['zero', 'one', 'tow']; 
-		
-		let btn = document.getElementById('testType')
-		btn.value = arr
-		console.log(btn.value)
-		
-		/*
-		document.frm.action = "test.jsp";
-		document.frm.submit();	*/
-	}
-	
 </script>
 	
 </body>
