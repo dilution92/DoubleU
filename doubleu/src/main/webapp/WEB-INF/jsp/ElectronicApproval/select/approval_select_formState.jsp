@@ -26,6 +26,9 @@
 							<th scope="col">제목</th>
 							<th scope="col">기안자</th>
 							<th scope="col">결재 상태</th>
+							<c:if test="${findState == '1' or findState == '0' or findState == '-1'}">
+								<th scope="col">결재 상태</th>
+							</c:if>
 						</tr>
 					</thead>
 					<tbody class="e-approval-list text-muted">
@@ -47,6 +50,18 @@
 									</c:when>
 									<c:when test="${vo.approvalState eq '(발신)반려'}">
 										<td><span class="badge badge-warning">반려</span></td>
+									</c:when>
+								</c:choose>
+								<c:choose>
+									<c:when test="${vo.decisionState== '0'}">
+										<td><span class="badge badge-success">결재대기</span></td>	
+									</c:when>
+									<c:when test="${vo.decisionState== '1'}"
+									>
+										<td><span class="badge badge-primary">결재승인</span>	</td>
+									</c:when>
+									<c:when test="${vo.decisionState== '-1'}">
+										<td><span class="badge badge-warning">결재반려</span></td>	
 									</c:when>
 								</c:choose>
 							</tr>

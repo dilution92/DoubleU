@@ -19,12 +19,12 @@
       <div class="modal-body">
           <div class="form-group">
             <label for="message-text" class="col-form-label">상세 사유</label>
-            <textarea class="form-control" id="message-text" style="height: 100px;"></textarea>
+            <textarea class="form-control" name="approvalComment" id="message-text" style="height: 100px;" required="required"></textarea>
           </div>
       </div>
       <div class="modal-footer">
-        <input type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" value="닫기">
-        <input type="button" name="btnFormApproval" class="btn btn-primary btn-sm" value="제출">
+        <input type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" value="취소">
+        <input type="button" name="btnFormApproval" id="btnFormApproval" class="btn btn-primary btn-sm" value="제출">
       </div>
     </div>
   </div>
@@ -41,12 +41,12 @@
       <div class="modal-body">
           <div class="form-group">
             <label for="message-text" class="col-form-label">상세 사유</label>
-            <textarea class="form-control" id="message-text" style="height: 100px;"></textarea>
+            <textarea class="form-control" name="rejectComment" id="message-text" style="height: 100px;" required="required"></textarea>
           </div>
       </div>
       <div class="modal-footer">
         <input type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" value="취소">
-        <input type="button" name="btnFormReject" class="btn btn-primary btn-sm" value="제출">
+        <input type="button" name="btnFormReject" id="btnFormReject" class="btn btn-primary btn-sm" value="제출">
       </div>
     </div>
   </div>

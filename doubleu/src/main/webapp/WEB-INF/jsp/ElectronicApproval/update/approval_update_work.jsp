@@ -90,7 +90,7 @@
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
 						<th> 일시 </th>
-						<td> <input type="date" name="eventDate" class="form-control form-control-sm" style="font-size: 1em;" > </td>
+						<td> <input type="date" name="eventDate" value="${vo.eventDate }" class="form-control form-control-sm" style="font-size: 1em;" > </td>
 						<th> 협조부서 </th>
 						<td> <input type="text" name="cooperationDepartment" value="${vo.cooperationDepartment }" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>

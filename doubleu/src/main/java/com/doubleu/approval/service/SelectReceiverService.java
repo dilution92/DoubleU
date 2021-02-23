@@ -24,15 +24,28 @@ public class SelectReceiverService {
 		System.out.println("selectReceiver-service메소드 시작....");
 		Map<String, Object> map = new HashMap<String, Object>();
 		LoginVo memberVo = (LoginVo) session.getAttribute("member");
-		int memberNo = memberVo.getMemberNo();
 		IndexPage page = new IndexPage();
+		int memberNo = memberVo.getMemberNo();
 		int nowReceiverPage = 1;
+		String findStr = "";
+		String findType = "";
+
+		
+		if(req.getParameter("findStr") != null) {
+			findStr = req.getParameter("findStr");
+		}
+		if(req.getParameter("findType") != null) {
+			findType = req.getParameter("findType");
+		}
 		
 		System.out.println(req.getParameter("nowReceiverPage"));
 		if(req.getParameter("nowReceiverPage")!=null || req.getParameter("nowReceiverPage")!=null) { 
-			System.out.println("1체크");
 			nowReceiverPage = Integer.parseInt(req.getParameter("nowReceiverPage")); 
 		}
+		System.out.println("findStr: "+ findStr);
+		System.out.println("findType: "+ findType);
+		page.setFindStr(findStr);
+		page.setFindType(findType);
 		page.setMemberNo(memberNo);
 		page.setNowPage(nowReceiverPage);
 		System.out.println("nowReceiverPage : " + nowReceiverPage);

@@ -5,17 +5,17 @@ public class DecisionMakerVo {
 	int formNo;
 	String makerName;
 	String makerPosition;
-	String makerOrder;
+	int makerOrder;
 	int decisionState;  
 	String makerComment;
 
 	public String getMakerComment() {
 		return makerComment;
 	}
-	public String getMakerOrder() {
+	public int getMakerOrder() {
 		return makerOrder;
 	}
-	public void setMakerOrder(String makerOrder) {
+	public void setMakerOrder(int makerOrder) {
 		this.makerOrder = makerOrder;
 	}
 	public void setMakerComment(String makerComment) {

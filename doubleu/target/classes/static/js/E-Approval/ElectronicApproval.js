@@ -431,6 +431,51 @@ var goView = function(formNo, formType) {
 function funcApproval() {
 		var frm = document.frmApproval;
 		
+		
+	/* 검색 버튼 클릭 시 퍼블리싱*/
+	$('#btnApprovalFind').on('click', function() {
+		frm.findType.value = $('#selectFormType option:selected').val();
+		if(frm.nowPlace.value == 'indexPlace') {
+			frm.acrion = '/approvalIndex';
+			frm.submit();
+		}
+		if(frm.nowPlace.value == 'searchPlace') {
+			frm.acrion = '/approvalGoList';
+			frm.submit();
+		}
+		
+	})
+		
+		
+	/*승인 버튼 클릭 시 퍼블리싱*/
+	$('#btnFormApproval').on('click', function() {
+		if(!frm.approvalComment.checkValidity()){
+			alert("상세 사유를 입력해주세요.");
+			return;
+		}
+		else {
+			frm.makerComment.value = frm.approvalComment.value;
+			frm.decisionState.value = 1;
+			frm.action = '/updateDecisionState';
+			frm.submit();
+		}
+	})
+
+	/*반려 버튼 클릭 시 퍼블리싱*/
+	
+	$('#btnFormReject').on('click', function() {
+		if(!frm.rejectComment.checkValidity()){
+			alert("상세 사유를 입력해주세요.");
+			return;
+		}
+		else {
+			frm.makerComment.value = frm.rejectComment.value;
+			frm.decisionState.value = -1;
+			frm.action = '/updateDecisionState';
+			frm.submit();
+		}
+	})
+	
 	/*삭제 버튼 클릭*/
 	$('#btnApprovalDelete').on('click', function() {
 		var deleteConfirm = confirm("정말로 삭제하시겠습니까?");
