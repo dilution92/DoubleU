@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.email.vo.AttEmailVo;
 import com.doubleu.email.vo.EmailMainVo;
+import com.doubleu.email.vo.EmailReceiverVo;
 
 @Service
 @Transactional
@@ -86,6 +87,21 @@ public class EmailDao {
 	public List<AttEmailVo> selectFiles(int emailNo) {
 		List<AttEmailVo> list = mapper.selectFiles(emailNo);
 		System.out.println(list);
+		
+		return list;
+	}
+
+	public List<EmailReceiverVo> selectSendPerson(int emailNo) {
+		List<EmailReceiverVo> list = mapper.selectSendPerson(emailNo);
+		System.out.println("selectSend : " + list);
+		
+		return list;
+
+	}
+
+	public List<EmailReceiverVo> selectRefPerson(int emailNo) {
+		List<EmailReceiverVo> list = mapper.selectRefPerson(emailNo);
+		System.out.println("selectRefPerson : " + list);
 		
 		return list;
 	}

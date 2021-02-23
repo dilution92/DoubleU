@@ -154,9 +154,9 @@
 						</div>
 
 						<div class="form-group col-sm-7 revEmail">
-							<c:forEach begin="0" end="1">
+							<c:forEach var="sendPerson" items="${selectSendList}">
 							<!-- 받는 사람 input -->
-								<input type="text" name="emailReceiverAddress" value="song1234567@gmail.com" readonly class="form-control col-sm-3"
+								<input type="text" name="emailReceiverAddress" value="${sendPerson.emailReceiverAddress}" readonly class="form-control col-sm-3"
 									id="exampleFormControlInput1"
 									placeholder="song1234567@gmail.com">
 							</c:forEach>
@@ -175,12 +175,11 @@
 
 						
 						<div class="form-group col-sm-7 revRef">
-							<c:forEach begin="0" end="3">
+							<c:forEach var="refPerson" items="${selectRefList }">
 								<!-- 참조input -->
 								<input type="email" readonly name="emailReceiverRef" class="form-control col-sm-3"
 									id="exampleFormControlInput1"
-									value="name1234ho@example.com"
-									placeholder="name1234ho@example.com">
+									value="${refPerson.emailReceiverAddress }">
 							</c:forEach>
 						</div>
 

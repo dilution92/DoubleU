@@ -6,7 +6,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.eclipse.jdt.internal.compiler.parser.ParserBasicInformation;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -143,7 +143,11 @@ public class EmailMainController {
 		System.out.println(emailNo);
 		List<EmailMainVo> selectEmailNo = DaoService.selectEmailNo(emailNo);
 		List<AttEmailVo> selectFiles = DaoService.selectFiles(emailNo);
-
+		List<EmailReceiverVo> selectSendList= DaoService.selectSendPerson(emailNo);
+		List<EmailReceiverVo> selectRefList= DaoService.selectRefPerson(emailNo);
+		
+		mv.addObject("selectRefList", selectRefList);
+		mv.addObject("selectSendList", selectSendList);
 		mv.addObject("selectRead", selectEmailNo);
 		mv.addObject("selectFiles", selectFiles);
 		mv.setViewName("email/email_read");
@@ -151,39 +155,17 @@ public class EmailMainController {
 		return mv;
 	}
 
-	// email_read.jsp
-	@RequestMapping(
-			value="/detailSearch", 
-			method= {RequestMethod.GET, RequestMethod.POST})
-
-	public ModelAndView detailSearch(
-			EmailMainVo vo,
-			HttpServletRequest req
-
-			) {
-
+	
+	// email_write.jsp
+	@RequestMapping(value="/emailWrite", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView emailWrite() {
 		ModelAndView mv = new ModelAndView();
-		String findStr = req.getParameter("searchSend");
-		System.out.println(findStr);
 
 		
-		mv.setViewName("email/test");
-
-		return mv;
-	}
-
-	@RequestMapping(
-			value="/detail", 
-			method= {RequestMethod.GET, RequestMethod.POST})
-
-	public ModelAndView detail(
-			HttpServletRequest req
-			) {
-
-		
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("email/test");
+		int cnt = DaoService.selectSendEmail();	
+	
+		mv.addObject("readCnt", cnt);
+		mv.setViewName("email/email_write");
 
 		return mv;
 	}

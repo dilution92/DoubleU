@@ -261,11 +261,13 @@ body {
 
 
 .emailSendContentsRev > .revEmail{
+	
 	border: 1px solid #E5E5E5;
 	height: 100px;
 	padding: 5px;
 	margin: 0 auto;
-	
+	overflow: scroll;
+	overflow-x:hidden;
 	
 }
 

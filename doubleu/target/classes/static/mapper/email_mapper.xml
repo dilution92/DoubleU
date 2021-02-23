@@ -39,6 +39,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<!-- 받는 사람 -->
+	<select id="selectSendPerson" parameterType="int" resultMap="revList">
+		SELECT c.*, a.email_no
+		FROM email a, email_receiver c 
+		WHERE a.email_no = c.email_no 
+		AND c.email_ref = 0 
+		AND a.email_no = #{emailNo}
+	</select>
+	
+	<!-- 참조 -->
+	<select id="selectRefPerson" parameterType="int" resultMap="revList">
+		SELECT c.*, a.email_no
+		FROM email a, email_receiver c 
+		WHERE a.email_no = c.email_no 
+		AND c.email_ref = 1
+		AND a.email_no = #{emailNo}
+	</select>
+	
 	
 	<!-- insert -->
 	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
@@ -115,16 +133,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="oriFile" column="file_orifile"/>
 	</resultMap>
 	
-	<parameterMap type="com.doubleu.email.vo.EmailMainVo" id="getEmailListInsert">
-		<parameter property="emailNo" /> 
-		<parameter property="emailMid" /> 
-		<parameter property="emailAddress" />
-		<parameter property="emailName" />
-		<parameter property="emailTitle" />
-		<parameter property="emailDate" /> 
-		<parameter property="emailContents" /> 
-		<parameter property="emailMailBox"  /> 
-		<parameter property="emailChk" />
-		<parameter property="emailDelete" /> 
-	</parameterMap>
+	
+	<resultMap id="revList" type="com.doubleu.email.vo.EmailReceiverVo">
+		<result property="emailReceiverNo" column="email_rev_no"/>
+		<result property="emailNo" column="email_no"/>
+		<result property="emailReceiverName" column="email_rev_name"/>
+		<result property="emailReceiverAddress" column="email_rev_address"/>
+		<result property="emailReceiverDept" column="email_rev_department"/>
+		<result property="emailReceiverRef" column="email_ref"/>
+		<result property="emailMid" column="email_mid"/>
+	</resultMap>
 </mapper>

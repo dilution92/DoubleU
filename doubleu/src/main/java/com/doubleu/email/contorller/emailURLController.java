@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doubleu.email.vo.EmailMainVo;
+
 
 
 @RestController
@@ -104,17 +106,7 @@ public class emailURLController {
 		return mv;
 	}
 
-	// email_write.jsp
-	@RequestMapping(value="/emailWrite", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView emailWrite() {
-		ModelAndView mv = new ModelAndView();
 
-		
-		
-		mv.setViewName("email/email_write");
-
-		return mv;
-	}
 
 
 
