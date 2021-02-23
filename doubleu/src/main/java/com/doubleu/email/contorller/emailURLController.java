@@ -43,19 +43,6 @@ public class emailURLController {
 		return mv;
 	}	
 
-	// email_read.jsp
-	@RequestMapping(value="/emailRead", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView emailRead() {
-		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("email/email_read");
-
-		return mv;
-	}
-
-
-	
-
 
 	// email_sendEmail.jsp
 	@RequestMapping(value="/emailSendEmail", method=RequestMethod.GET)

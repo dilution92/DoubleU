@@ -20,7 +20,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		OR email_name LIKE '%${findStr}%' 
 		ORDER BY email_date DESC
 	</select>
-
+	
+	<select id="selectEmailNo" parameterType="int" resultMap="getEmailListSelect">
+		SELECT * FROM email
+		WHERE email_no = #{emailNo}
+	</select>
+	
+	<select id="selectFiles" parameterType="int" resultMap="attList">
+		SELECT b.file_orifile, a.* 
+		FROM email a, email_files b 
+		WHERE a.email_no = b.email_no AND a.email_no = #{emailNo}
+	</select>
+	
+	
+	
 	<!-- insert -->
 	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
 		INSERT ALL
@@ -92,8 +105,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap id="attList" type="com.doubleu.email.vo.AttEmailVo">
 		<result property="filesNo" column="files_no"/>
 		<result property="emailNo" column="email_no"/>
-		<result property="fileSysFile" column="files_sysfile"/>
-		<result property="fileOriFile" column="files_orifile"/>
+		<result property="sysFile" column="file_sysfile"/>
+		<result property="oriFile" column="file_orifile"/>
 	</resultMap>
 	
 	<parameterMap type="com.doubleu.email.vo.EmailMainVo" id="getEmailListInsert">
@@ -105,7 +118,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<parameter property="emailDate" /> 
 		<parameter property="emailContents" /> 
 		<parameter property="emailMailBox"  /> 
-		<parameter property="emailFile"/>  
 		<parameter property="emailChk" />
 		<parameter property="emailDelete" /> 
 	</parameterMap>
