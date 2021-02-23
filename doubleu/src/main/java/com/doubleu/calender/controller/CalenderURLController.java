@@ -10,11 +10,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.Calender;
+import com.doubleu.calender.service.CalenderService;
 import com.doubleu.calender.service.CalenderWeekList;
+import com.doubleu.calender.vo.CalenderVo;
 
 @Controller
 public class CalenderURLController {
 
+	@Autowired
+	CalenderService service;
+	
 	@Autowired
 	Calender calender;
 	
@@ -22,6 +27,10 @@ public class CalenderURLController {
 	public ModelAndView calenderMonth() {
 		ModelAndView mv = new ModelAndView();
 		List<CalenderWeekList> list = new ArrayList<>();
+		
+		List<CalenderVo> cList = new ArrayList<CalenderVo>();
+		
+		cList = service.selectList();
 		
 		list = calender.setMonthCalender();
 		int year = calender.getYear();
@@ -41,11 +50,14 @@ public class CalenderURLController {
 		ModelAndView mv = new ModelAndView();
 		List<CalenderWeekList> list = new ArrayList<CalenderWeekList>();
 		
+		
 		list = calender.setCalenderWeek();
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
+		mv.addObject("currentDay", day);
 		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_week");
 

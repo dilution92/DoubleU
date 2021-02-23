@@ -12,7 +12,6 @@ public class SelectPage {
 	int blockSize = 3;
 	int memberNo;
 	
-	
 	String findStr;
 	String findType;
 	String findState;

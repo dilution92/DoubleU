@@ -37,6 +37,7 @@
         <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
             <input type="number" id="year" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
             <input type="hidden" id="monthcome" value="${currentMonth }">
+            <input type="hidden" id="daycome" value="${currentDay }">
             <select id="month" class="form-control" style="width:100px; display:initial;">
             	<option value="1">1월</option>
             	<option value="2">2월</option>
@@ -135,6 +136,14 @@ $(document).ready(function(){
 	console.log(month);
 	 $("#month").val(month).attr("selected","selected");
 })
+
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	var day = $("#daycome").val();
+	var targetToday = document.getElementsByClassName(month+day)[0];
+	targetToday.style.border="5px skyblue solid";
+})
+
 </script>
 </body>
 </html>

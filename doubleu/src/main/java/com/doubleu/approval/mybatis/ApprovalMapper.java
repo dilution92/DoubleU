@@ -13,6 +13,8 @@ import com.doubleu.approval.vo.FormVo;
 import com.doubleu.approval.vo.IndexPage;
 import com.doubleu.approval.vo.MemberVo;
 import com.doubleu.approval.vo.SelectPage;
+import com.doubleu.approval.vo.UpdateFormStateVo;
+import com.doubleu.approval.vo.UpdateMakerOrderVo;
 
 @Repository
 @Mapper
@@ -27,7 +29,8 @@ public interface ApprovalMapper {
 	//문서 상태 별 문서 목록 출력
 	public int chooseTotalListSize(SelectPage page);
 	public List<FormVo> selectChoose(SelectPage page);
-	
+	public int chooseTotalListSizeReceiver(SelectPage page);
+	public List<FormVo> selectChooseRecevier(SelectPage page);
 	//상세보기
 	public FormVo selectView(FormVo vo);
 	public List<DecisionMakerVo> selectDecisionMaker(int formNo);
@@ -55,11 +58,20 @@ public interface ApprovalMapper {
 	public DecisionMakerVo selectMaker(DecisionMakerVo vo);
 	
 	//상신 취소 버튼 클릭 시 상태 업데이트
-	public int updateFormState(int formNo);
+	public int updateFormState(UpdateFormStateVo vo);
 	
 	//삭제 버튼 클릭 시 문서 삭제	
 	public int deleteForm(int formNo);
 	public int deletePetition(int formNo);
 	public int deleteVacation(int formNo);
 	public int deleteAttFileList(int formNo);
+	
+	//승인-반려 버튼 클릭 시 문서 업데이트
+	public int updateDecisionApproval(DecisionMakerVo makerVo);
+	public int updateDecisionReject(DecisionMakerVo makerVo);
+	
+	//승인 결재 시 결재권자 순서 업데이트
+	public int updateMakerOrder(UpdateMakerOrderVo makerOrderVo);
+	
+	
 }

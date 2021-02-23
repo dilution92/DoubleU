@@ -16,13 +16,20 @@ public class FormVo {
 	String cooperationDepartment;
 	String eventDate;
 	String approvalState;
-	
+	String DecisionState;
 	List<AttFileVo> attFileList; // 파일 첨부가 있을 경우  
 	List<DecisionMakerVo> decisionMakersList; // 결재권자 목록을 담을 인스턴스
 	FormPetitionVo formPetitionVo; // 품의서 관련 결재 양식일 경우
 	FormVacationVo formVacationVo; // 휴가 관련 결재 양식일 경우
 
+	
 
+	public String getDecisionState() {
+		return DecisionState;
+	}
+	public void setDecisionState(String decisionState) {
+		DecisionState = decisionState;
+	}
 	public int getMemberNo() {
 		return memberNo;
 	}

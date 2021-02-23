@@ -6,9 +6,67 @@
 <mapper namespace="com.doubleu.calender.mybatis.CalenderMapper">
 	<insert id = 'insert' parameterType="com.doubleu.calender.vo.CalenderVo">
 		INSERT 
-		INTO CALENDER(calender_no, calender_date_start, calender_time_start, calender_date_end, calender_time_end, calender_subject, calender_content, calender_place, calender_writer, calender_group, calender_time)
-		values(seq_calender_no.nextval, #{calenderDateStart}, #{calenderTimeStart}, #{calenderDateEnd}, #{calenderTimeEnd}, #{calenderSubject}, #{calenderContent}, #{calenderPlace}, #{calenderWriter}, #{calenderGroup}, SYSDATE)
+		INTO CALENDER
+			(calender_no,
+			calender_start_year,
+			calender_start_month,
+			calender_start_day,
+			calender_start_time,
+			calender_start_minute,
+			calender_end_year,
+			calender_end_month,
+			calender_end_day,
+			calender_end_time,
+			calender_end_minute,
+			calender_subject,
+			calender_content, 
+			calender_place, 
+			calender_writer, 
+			calender_group, 
+			calender_time)
+		values
+			(seq_calender_no.nextval, 
+			#{calenderStartYear}, 
+			#{calenderStartMonth}, 
+			#{calenderStartDay}, 
+			#{calenderStartTime}, 
+			#{calenderStartMinute}, 
+			#{calenderEndYear}, 
+			#{calenderEndMonth}, 
+			#{calenderEndDay}, 
+			#{calenderEndTime}, 
+			#{calenderEndMinute}, 
+			#{calenderSubject}, 
+			#{calenderContent}, 
+			#{calenderPlace}, 
+			#{calenderWriter}, 
+			#{calenderGroup}, 
+			SYSDATE)
 	</insert>
-	 
 	
+	<select id = 'selectList' resultMap="ResultVo"  parameterType="com.doubleu.calender.vo.CalenderVo">
+		SELECT * FROM CALENDER
+	</select>
+	
+	
+	
+	<resultMap type="com.doubleu.calender.vo.CalenderVo" id="ResultVo">
+		<result property="calenderNo" column="calender_no"/>
+		<result property="calenderStartYear" column="calender_start_year"/>
+		<result property="calenderStartMonth" column="calender_start_month"/>
+		<result property="calenderStartDay" column="calender_start_day"/>
+		<result property="calenderStartTime" column="calender_start_time"/>
+		<result property="calenderStartMinute" column="calender_start_minute"/>
+		<result property="calenderEndYear" column="calender_end_year"/>
+		<result property="calenderEndMonth" column="calender_end_month"/>
+		<result property="calenderEndDay" column="calender_end_day"/>
+		<result property="calenderEndTime" column="calender_end_time"/>
+		<result property="calenderEndMinute" column="calender_end_minute"/>
+		<result property="calenderSubject" column="calender_subject"/>
+		<result property="calenderContent" column="calender_content"/>
+		<result property="calenderPlace" column="calender_place"/>
+		<result property="calenderWriter" column="calender_writer"/>
+		<result property="calenderGroup" column="calender_group"/>
+		<result property="calenderTime" column="calender_time"/>
+	</resultMap>
 </mapper>
