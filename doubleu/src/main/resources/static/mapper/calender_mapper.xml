@@ -44,7 +44,7 @@
 			SYSDATE)
 	</insert>
 	
-	<select id = 'insert' resultMap="ResultVo"  parameterType="com.doubleu.calender.vo.CalenderVo">
+	<select id = 'selectList' resultMap="ResultVo"  parameterType="com.doubleu.calender.vo.CalenderVo">
 		SELECT * FROM CALENDER
 	</select>
 	

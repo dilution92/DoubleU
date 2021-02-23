@@ -115,6 +115,8 @@ var cde = document.getElementsByName("calenderDateEnd")[0].value;
 var cte = document.getElementsByName("calenderDateEnd")[0].value;
 
 var cdsList = cds.split('-');
+
+
 </script>
 
 </body>

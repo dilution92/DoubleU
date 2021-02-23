@@ -19,6 +19,7 @@ public class CalenderVo {
 	private String calenderWriter;
 	private String calenderGroup;
 	private String calenderTime;
+	
 	public int getCalenderNo() {
 		return calenderNo;
 	}
