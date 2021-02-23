@@ -14,11 +14,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT count(email_title) FROM email
 	</select>
 	
+	<!-- 검색 바 -->
 	<select id="selectFindStr" parameterType="String" resultMap="getEmailListSelect">
 		SELECT * FROM email 
 		WHERE email_title LIKE '%${findStr}%' 
 		OR email_name LIKE '%${findStr}%' 
 		ORDER BY email_date DESC
+	</select>
+	
+	<!--1.1 검색 바 -->
+	<select id="selectSearchDetail" parameterType="String" resultMap="getEmailListSelect">
+		
 	</select>
 	
 	<select id="selectEmailNo" parameterType="int" resultMap="getEmailListSelect">
@@ -51,7 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		email_main_seq.nextval, 
 		#{emailMid, jdbcType=VARCHAR}, 
 		#{emailAddress}, #{emailName}, 
-		#{emailTitle}, systimestamp, 
+		#{emailTitle}, sysdate, 
 		#{emailContents}, 
 		default, 
 		#{emailChk}, 

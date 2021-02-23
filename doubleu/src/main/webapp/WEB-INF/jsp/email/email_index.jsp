@@ -108,9 +108,9 @@
 			      	<jsp:include page="./commonsCode/searchDropDown.jsp"></jsp:include>
 			      	
 			      		<!-- hidden-->
-						<input type="hidden" name="emailNo" value="">
-						
-	     		</form>
+						<input type="hidden" name="emailNo">
+		 			
+		 		</form>
 			</div>
 			<!-- ========== -->
 
@@ -130,8 +130,9 @@
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td>${list.emailChk }</td>
+                                <td>${list.emailName }</td>
 								<td>${list.emailAddress}</td>					
-								<td style=" text-align: left; text-indent: 2em;"  onclick="goView(${list.emailNo})"  id="test">${list.emailTitle }</td>					
+								<td style=" text-align: left; text-indent: 2em;"  onclick="goView(${list.emailNo})">${list.emailTitle }</td>					
 								<td>${list.emailDate }</td>		
 							</tr>
 						</c:forEach>
@@ -177,6 +178,10 @@ changeChkReadBtn();
 
 // 메일 검색 bar
 emailSelectSearch();
+
+btnSearchDetail();
+
+
 
 </script>
 </body>

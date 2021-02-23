@@ -50,6 +50,8 @@
 
 
 
+
+
 </head>
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
@@ -127,7 +129,65 @@
 				</ul>
 					<!-- 제목 -->
 					 <c:forEach var="list" items="${selectRead }">
-				    <div class="emailSendContentsHeader">
+				   
+					<div class="emailSendContents">
+						<div class="form-group col-sm-2">
+						    <label for="exampleFormControlInput1">보내는 사람</label>
+						</div>
+						
+						<div class="form-group col-sm-2">
+						 	<input type="text" class="form-control" id="exampleFormControlInput1" readOnly value="${list.emailName }">
+						</div>
+						
+						<div class="form-group col-sm-7">
+						 	<input type="email" class="form-control" id="exampleFormControlInput1" readOnly value="${list.emailAddress }">
+						</div>
+				    </div>
+				    
+				    
+				    
+				    <!--  받는 사람 -->
+				    <div class="emailSendContentsRev">
+
+						<div class="form-group col-sm-2">
+							<label for="exampleFormControlInput1">받는 사람</label>
+						</div>
+
+						<div class="form-group col-sm-7 revEmail">
+							<c:forEach begin="0" end="1">
+							<!-- 받는 사람 input -->
+								<input type="text" name="emailReceiverAddress" value="song1234567@gmail.com" readonly class="form-control col-sm-3"
+									id="exampleFormControlInput1"
+									placeholder="song1234567@gmail.com">
+							</c:forEach>
+
+						</div>
+
+					</div>
+				    
+				    
+				    
+				    <!-- 참조 -->
+				    <div class="emailSendContentsRef">
+						<div class="form-group col-sm-2">
+							<label for="exampleFormControlInput1">참조</label>
+						</div>
+
+						
+						<div class="form-group col-sm-7 revRef">
+							<c:forEach begin="0" end="3">
+								<!-- 참조input -->
+								<input type="email" readonly name="emailReceiverRef" class="form-control col-sm-3"
+									id="exampleFormControlInput1"
+									value="name1234ho@example.com"
+									placeholder="name1234ho@example.com">
+							</c:forEach>
+						</div>
+
+					</div>
+					
+					<!-- 제목 -->
+					<div class="emailSendContentsHeader">
 						<div class="form-group col-sm-1">
 						    <label for="exampleFormControlInput1">제목</label>
 						</div>
@@ -135,32 +195,19 @@
 						<div class="form-group col-sm-1 importSend"></div>
 						
 						<div class="form-group col-sm-9">
-						 	<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="${list.emailTitle }">
+						 	<input type="text" class="form-control" id="exampleFormControlInput1" readOnly value="${list.emailTitle }">
 						</div>
 				    	
 				    </div>
 				    
-				 	
-					<div class="emailSendContents">
-						<div class="form-group col-sm-2">
-						    <label for="exampleFormControlInput1">보내는 사람</label>
-						</div>
-						
-						<div class="form-group col-sm-2">
-						 	<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="${list.emailName }">
-						</div>
-						
-						<div class="form-group col-sm-7">
-						 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="${list.emailAddress }">
-						</div>
-				    </div>
-				    
 					<!-- 내용 -->
 					<div class="send-read-contents">
-					 	 <div class="badge badge-light">${list.emailContents }</div>
+						<div class="email-contents">
+							${list.emailContents }
+						</div>
+						<div class="badge badge-light test"></div>
 					</div>
 					</c:forEach>	
-					
 					
 					<!-- 파일첨부 -->
 					
@@ -197,6 +244,9 @@ readBtn();
 // 읽음 버튼을 눌렀을 때 아이콘 변경 
 changeChkReadBtn();
 
+
+// 텍스트 
+summernote();
 </script>
 	
 </body>

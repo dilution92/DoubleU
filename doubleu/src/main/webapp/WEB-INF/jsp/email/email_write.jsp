@@ -251,16 +251,14 @@
 								<label for="exampleFormControlInput1">보내는 사람</label>
 							</div>
 
-
 							<div class="form-group col-sm-1">
 								<input type="text" class="form-control" name="emailName"
-									id="exampleFormControlInput1" value="송" placeholder="송연주">
+									id="exampleFormControlInput1" value="${member.memberName }">
 							</div>
 
 							<div class="form-group col-sm-6">
 								<input type="email" class="form-control" name="emailAddress"
-									id="exampleFormControlInput1" value="name@example.com"
-									placeholder="name@example.com">
+									id="exampleFormControlInput1" value="${member.memberEmail }">
 							</div>
 							<button type="button" style="margin-left: 11px; height: 37px;"
 								class="btn btn-outline-primary btn-sm" onclick="sendToTemp()"
@@ -364,8 +362,6 @@
 							<button type="button" class="btn btn-primary btn-sm">취소하기</button>
 						</div>
 					</div>
-
-
 				</form>
 			</div>
 		</main>

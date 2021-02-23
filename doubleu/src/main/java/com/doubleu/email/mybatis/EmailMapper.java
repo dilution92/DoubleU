@@ -17,4 +17,5 @@ public interface EmailMapper {
 	public List<EmailMainVo> selectFindStr(String findStr);
 	public List<EmailMainVo> selectEmailNo(int emailNo);
 	public List<AttEmailVo> selectFiles(int emailNo);
+	public List<EmailMainVo> selectSearchDetail(String findName, String findContents, String findDate);
 }
