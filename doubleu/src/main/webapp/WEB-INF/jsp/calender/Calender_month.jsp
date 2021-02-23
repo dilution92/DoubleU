@@ -38,6 +38,7 @@
         <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
             <input type="number" id="year" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
             <input type="hidden" id="monthcome" value="${currentMonth }">
+            <input type="hidden" id="daycome" value="${currentDay }">
             <select id="month" class="form-control" style="width:100px; display:initial;">
             	<option value="1">1월</option>
             	<option value="2">2월</option>
@@ -96,8 +97,8 @@
 			
 			
 			<td id="calender_content"><!-- 월간 달력 한칸 -->
-				<div><!-- 날자가 표시 될 곳 -->
-				${list}
+				<div id="${list.month}${list.day}"><!-- 날자가 표시 될 곳 -->
+				${list.day}
 				</div>
 				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
 					여기에 일정이 표시
@@ -148,10 +149,17 @@ $(function(){
 
 $(document).ready(function(){
 	var month = $("#monthcome").val();
+	
 	console.log(month);
 	 $("#month").val(month).attr("selected","selected");
 })
 
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	var day = $("#daycome").val();
+	var targetToday = 
+	 $("#month").val(month).attr("selected","selected");
+})
 
 
 /* function changeMonth(){

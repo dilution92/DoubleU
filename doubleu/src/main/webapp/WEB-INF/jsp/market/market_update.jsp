@@ -47,6 +47,13 @@
 			<div class='market-insert-form'>
 			<form action = "/marketInsertR" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
 				<div class="form-group row">
+		   		 <label for="marketWriter" class="col-sm-2 col-form-label  is-invalid">작성자</label>
+				    <div class="col-sm-8">
+				      <input type="text" class="form-control "  name="marketWriter"required disabled value="${member.memberName }">
+				    </div>
+				  </div>
+				
+				<div class="form-group row">
 		   		 <label for="marketName" class="col-sm-2 col-form-label  is-invalid">상품명</label>
 				    <div class="col-sm-8">
 				      <input type="text" class="form-control "  name="marketSubject"required value="${vo.marketSubject }">
@@ -90,6 +97,12 @@
 					  <label class="custom-file-label" for="customFile">Choose file</label>
 					</div>
 					<div id='View_area' class='View_area' style="display:flex;" >
+					<c:forEach items="${vo.attlist }" var="att">
+						<div style="display:inline-block;position:relative;">
+							<img src='images/market/${att.oriFile }' style="width:100px; height:100px;"/>
+							<input type="button" value="X" onclick="delBtn(this)" style="position:absolute;border-width:0;right:5px;font-size:15px;color : white;opacity:0.3;background-color:grey;border-radius:10px;">
+						</div>
+					</c:forEach>
 					</div>
 					</div>
 				</div>
@@ -121,11 +134,12 @@
 				  
 				<div class="market-btn-zone">
 					<input class="btn btn-primary" type="submit"   id = 'btnSave' value="수정">
-					<input class="btn btn-primary" type="button" onclick = "goBack();">
+					<input class="btn btn-primary" type="button" onclick = "goBack();" value = '취소' >
 				</div>
 				
-				<input name="membersNo" value = "1">
-				<input name="marketHit" value = "1">
+				<!-- hidden -->
+				<input type="hidden" name="marketHit" value = "1">
+				<input type="hidden" name="marketWriter" value = "${member.memberName }">
 			</form>
 			</div>
 

@@ -21,13 +21,15 @@ public class CalenderURLController {
 	@RequestMapping(value = "/calenderMonth", method = {RequestMethod.POST, RequestMethod.GET} )
 	public ModelAndView calenderMonth() {
 		ModelAndView mv = new ModelAndView();
-		List<Integer> list = new ArrayList<Integer>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 		list = calender.setMonthCalender();
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
+		mv.addObject("currentDay", day);
 		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_month");
 		

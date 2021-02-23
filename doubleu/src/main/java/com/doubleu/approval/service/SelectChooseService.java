@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.doubleu.approval.mybatis.ApprovalDao;
 import com.doubleu.approval.vo.SelectPage;
+import com.doubleu.login.vo.LoginVo;
 
 @Service
 public class SelectChooseService {
@@ -18,13 +19,12 @@ public class SelectChooseService {
 	
 	@Autowired
 	ApprovalDao dao;
-	public Map<String, Object> selectOutgoing(HttpServletRequest req) {
+	public Map<String, Object> selectOutgoing(HttpServletRequest req, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		String findState = req.getParameter("findState");
-		HttpSession session = req.getSession();
 		int nowChooseSelectPage = 1;
-		String memberNoStr = (String) session.getAttribute("memberNo");
-		int memberNo = Integer.parseInt(memberNoStr);
+		LoginVo memberVo = (LoginVo) session.getAttribute("member");
+		int memberNo = memberVo.getMemberNo();
 		if(req.getParameter("nowChooseSelectPage") != null) {
 			nowChooseSelectPage = Integer.parseInt(req.getParameter("nowChooseSelectPage"));
 		}

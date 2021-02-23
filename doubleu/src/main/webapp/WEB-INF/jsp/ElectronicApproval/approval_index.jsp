@@ -37,10 +37,6 @@
 			mainJob = request.getParameter("mainJob");
 		}
 		
-		session.setAttribute("memberNo", "2");
-		session.setAttribute("memberName", "정해준");
-		session.setAttribute("memberPosition", "사원");
-		session.setAttribute("memberDepartment", "기획부");
 	%>	
 	
 <form class="e-approval-search-form" action="" name="frmApproval" method="post">
@@ -125,6 +121,7 @@
 	<!-- 모달창 -->
 	<div>
 		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/modal/insertForm.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/modal/approval_decision_modal.jsp"></jsp:include>
 	</div>
 </form>
 <script type="text/javascript">
