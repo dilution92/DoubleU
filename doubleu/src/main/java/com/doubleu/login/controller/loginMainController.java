@@ -43,7 +43,7 @@ public class loginMainController {
 			session.setAttribute("member", vo);
 			mv.setViewName("MainPage/index");
 		}
-		
+		session.setMaxInactiveInterval(-1);
 		return mv;
 	}
 	

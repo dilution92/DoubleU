@@ -44,11 +44,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> <input type="text" name="drafterName" value="<%= memberName %>" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
+									<td> <input type="text" name="drafterName" value="${member.memberName }" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td> <input type="text" name="drafterDepartment" value="<%= memberDepartment %>" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
+									<td> <input type="text" name="drafterDepartment" value="${member.memberDepartment }" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
@@ -84,12 +84,12 @@
 					<tr>
 						<th> 기간 및 일시 </th>
 						<td>
-						<input type="date" id="startDate" name="startDate" onchange="calculationDate()" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+						<input type="date" id="startDate" name="startDate" onchange="calculationDate()" value=" " class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						~
-						<input type="date" id="endDate" onchange="calculationDate()" name="endDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+						<input type="date" id="endDate" onchange="calculationDate()" name="endDate" value=" " class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
 						</td>
 						<th> 총 일 수 </th>
-						<td> <input type="text" name="vacationCnt" class="form-control form-control-sm approval-readOnly"  style="width: 30px; font-size: 1em; margin: 0 auto; display: inline-block; border: none; text-align: right; padding: 0;" readonly="readonly"> <span>일</span> </td>
+						<td> <input type="text" name="vacationCnt" value="0" class="form-control form-control-sm approval-readOnly"  style="width: 30px; font-size: 1em; margin: 0 auto; display: inline-block; border: none; text-align: right; padding: 0;" readonly="readonly"> <span>일</span> </td>
 					</tr>
 					<tr>
 						<th> 반차 여부 </th>
@@ -118,7 +118,7 @@
 					<tr>
 						<th style="line-height: 200px; padding: 0;"> 사유 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" id="formDoc"  name="formDoc" style="height: 100%; overflow: auto ;" required="required"></textarea>
+							<textarea class="form-control" id="formDoc"  name="formDoc" style="font-size: 1em; height: 100%; overflow: auto ;" required="required"></textarea>
 						</td>
 					</tr>		
 					<tr>

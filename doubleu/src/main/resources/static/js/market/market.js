@@ -69,16 +69,30 @@ function goPage(page) {
 				if (!file.type.match(imageType))
 					continue;
 				var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
-				if (prevImg) {
+		/*		if (prevImg) {
 					preview.removeChild(prevImg);
-				}
+				}*/
+
+				var div = document.createElement("div");
+				var style_div = "display:inline-block;position:relative;";
+				div.setAttribute("style", style_div);
 				var img = document.createElement("img"); 
+				var delBtn = document.createElement("input");
+				var style_delBtn = "position:absolute;border-width:0;right:5px;"
+				+ "font-size:15px;color : white;opacity:0.3;background-color:grey;border-radius:10px;";
+				delBtn.setAttribute("type", "button");
+				delBtn.setAttribute("value", "X");
+				delBtn.setAttribute("style", style_delBtn);
+				delBtn.setAttribute("onclick", "delBtn(this)");
 				img.id = "prev_"+ [i]; 
 				img.classList.add("obj");
 				img.file = file;
 				img.style.width = '100px'; 
 				img.style.height = '100px';
-				preview.appendChild(img);
+				
+				preview.appendChild(div);
+				div.appendChild(img);
+				div.appendChild(delBtn);
 				if (window.FileReader) { // FireFox, Chrome, Opera 확인.
 					var reader = new FileReader();
 					reader.onloadend = (function(aImg) {
@@ -102,7 +116,20 @@ function goPage(page) {
 						if(eleCount>5) return;
 			}
 			else $('#PhotoAlertModal').modal("show"); //5개 이상일시 경고모달창
+				
 		}
+				function delBtn(obj){
+					console.log("눌림	");
+				console.log(obj);
+				var p = obj.parentNode; //이벤트가 발생한 태그\
+				
+				console.log(p);
+				
+				var View_area2 = document.getElementById("View_area");
+				View_area2.removeChild(p);
+				
+			
+	}
 
 //------숫자 천단위 쉼표----------//
 	function numberWithCommas(x) {
@@ -122,8 +149,8 @@ function goPage(page) {
 		}
 		else{
 			
-		$('#marketPrice').val("0");
-		$('#marketPrice').attr("disabled", true); 
+		$('#marketPrice').val("무료나눔");
+		//$('#marketPrice').attr("disabled", true); 
 		$('#FreeText').html("무료나눔을 하는 당신, 멋져요👍");
 	
 		}

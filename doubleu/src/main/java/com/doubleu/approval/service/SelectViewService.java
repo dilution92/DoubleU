@@ -1,6 +1,7 @@
 package com.doubleu.approval.service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.doubleu.approval.mybatis.ApprovalDao;
 import com.doubleu.approval.vo.DecisionMakerVo;
 import com.doubleu.approval.vo.FormVo;
+import com.doubleu.login.vo.LoginVo;
 
 @Service
 public class SelectViewService {
@@ -30,10 +32,10 @@ public class SelectViewService {
 	public DecisionMakerVo selectMaker(HttpServletRequest req) {
 		DecisionMakerVo vo = new DecisionMakerVo();
 		int formNo = Integer.parseInt(req.getParameter("formNo"));
-		int memberNo = 2;
-		if(req.getParameter("memberNo") != null) {
-			memberNo = Integer.parseInt(req.getParameter("memberNo"));
-		}
+		HttpSession session = req.getSession();
+		LoginVo memberVo = (LoginVo) session.getAttribute("member");
+		int memberNo = memberVo.getMemberNo();
+		
 		vo.setFormNo(formNo);
 		vo.setMemberNo(memberNo);
 		vo = dao.selectMaker(vo);

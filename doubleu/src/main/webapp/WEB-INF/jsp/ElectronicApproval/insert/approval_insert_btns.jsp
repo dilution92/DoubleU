@@ -27,18 +27,18 @@
 	<input type="hidden" id="TempMakerNo" value="">
 	<input type="hidden" name="formType" value="${formType}">
 	<c:if test="${formType != '사유서' and formType != '지각/결근사유서'}">
-		<input type="hidden" name="drafterPosition" value="<%= memberPosition %>">
+		<input type="hidden" name="drafterPosition" value="${member.memberPosition }">
 	</c:if>
 	<input type="hidden" name="checkedHalfTime" value="">
 	<input type="hidden" name="vacationType" value="">
-	<input type="hidden" name="memberNo" value="<%= memberNo %>">
+	<input type="hidden" name="memberNo" value="${member.memberNo }">
 	<input type="hidden" name="decisionMakerCnt" value="">
 	
 	<input type="hidden" name="findStr">	
-	<input type="hidden" name="nowOutgoingPage" value="${param.nowOutgoingPage }">
-	<input type="hidden" name="nowReceiverPage" value="${param.nowReceiverpage }"> 
+	<input type="hidden" name="nowOutgoingPage" value="${(empty param.nowOutgoingPage)? 1: param.nowOutgoingPage }">
+	<input type="hidden" name="nowReceiverPage" value="${(empty param.nowReceiverpage)? 1: param.nowReceiverpage}"> 
 	<input type="hidden" name="nowPlace" value="${param.nowPlace}">
-	<input type="hidden" name="nowChooseSelectPage"value="${param.nowChooseSelectPage }">
+	<input type="hidden" name="nowChooseSelectPage"value="${(empty param.nowChooseSelectPage) ? 1: param.nowChooseSelectPage }">
 	<input type="hidden" name="findState" value="${param.findState }">
 	<input type="hidden" name="formNo" value="${(empty param.formNo) ? 1:param.formNo }">
 <script type="text/javascript">

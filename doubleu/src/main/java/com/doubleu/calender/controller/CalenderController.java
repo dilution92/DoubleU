@@ -29,7 +29,7 @@ public class CalenderController {
 		System.out.println("controller 시작");
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
-		List<Integer> list = new ArrayList<Integer>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 		msg = service.insert(vo);
 		list = calender.setMonthCalender();
@@ -49,7 +49,7 @@ public class CalenderController {
 		System.out.println("controller 시작");
 		
 		ModelAndView mv = new ModelAndView();
-		List<Integer> list = new ArrayList<Integer>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 		System.out.println(diff);
 		list = calender.changeMonth(diff);
@@ -68,7 +68,7 @@ public class CalenderController {
 		System.out.println("controller 시작");
 		
 		ModelAndView mv = new ModelAndView();
-		List<Integer> list = new ArrayList<Integer>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 		list = calender.changeMonthToday();
 		int year = calender.getYear();
@@ -86,7 +86,7 @@ public class CalenderController {
 		System.out.println("controller 시작");
 		
 		ModelAndView mv = new ModelAndView();
-		List<Integer> list = new ArrayList<Integer>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 		list = calender.monthSelectedMonth(changedMonth);
 		int year = calender.getYear();
@@ -104,7 +104,7 @@ public class CalenderController {
 		System.out.println("controller 시작");
 		
 		ModelAndView mv = new ModelAndView();
-		List<Integer> list = new ArrayList<Integer>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 		list = calender.monthSelectedYear(changedYear);
 		int year = calender.getYear();

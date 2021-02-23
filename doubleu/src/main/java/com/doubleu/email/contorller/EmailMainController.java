@@ -2,7 +2,9 @@ package com.doubleu.email.contorller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,7 +47,8 @@ public class EmailMainController {
 	
 	public ModelAndView emailIndex(
 			EmailMainVo vo,
-			HttpServletRequest req) {
+			HttpServletRequest req
+			) {
 		
 		ModelAndView mv = new ModelAndView();
 
@@ -118,6 +121,34 @@ public class EmailMainController {
 
 		return mv;
 	}
+	
+	
+	// email_read.jsp
+		@RequestMapping(
+				value="/emailRead", 
+				method= {RequestMethod.GET, RequestMethod.POST})
+		
+		public ModelAndView emailRead(
+				EmailMainVo vo,
+				HttpServletRequest req
+				
+				) {
+			
+			ModelAndView mv = new ModelAndView();
+
+			String emailNo_ = req.getParameter("emailNo");
+			int emailNo = Integer.parseInt(emailNo_);
+			
+			System.out.println(emailNo);
+			List<EmailMainVo> selectEmailNo = DaoService.selectEmailNo(emailNo);
+			List<AttEmailVo> selectFiles = DaoService.selectFiles(emailNo);
+			
+			mv.addObject("selectRead", selectEmailNo);
+			mv.addObject("selectFiles", selectFiles);
+			mv.setViewName("email/email_read");
+
+			return mv;
+		}
 	
 
 }

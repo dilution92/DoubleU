@@ -17,6 +17,7 @@
 	수정 : 21.02.20
 	7. 메일 검색 시 메일 목록 ajax로 표시
 	
+	
  */
 
 
@@ -132,11 +133,11 @@ emailSelectSearch = function() {
 	
 	$('#emailSearchTitle').on('click', function(){
 		
-		var param = $('#emailFormId').serialize();
+		
+		var param = $('#emailFindStr').serialize();
 		console.log(param);
 		
 		$.ajax ({
-			
 			url: '/selectFindStr',
 			data : param,
 			dataType: 'html',
@@ -148,3 +149,15 @@ emailSelectSearch = function() {
 		});
 	});
 };
+
+
+// 8. 
+var goView =  function(EmailNo) {
+	var frm = document.emailForm;
+	frm.emailNo.value = EmailNo;
+	
+	console.log(frm.emailNo.value);
+	
+	frm.action = '/emailRead';
+	frm.submit();
+}
