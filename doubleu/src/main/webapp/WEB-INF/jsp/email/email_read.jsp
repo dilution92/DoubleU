@@ -26,6 +26,11 @@
 		crossorigin="anonymous"></script>
 <!-- ****************************** -->	
 	
+<!-- JQuery -->
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
 	
 <!-- include summernote css/js-->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -35,6 +40,17 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 이메일 CSS -->
 <link rel="stylesheet" href="/css/email/email_read.css">
+
+
+<!-- js -->
+<script src="js/email/email_commons.js"></script>
+
+<!-- alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
 
 </head>
 <body>
@@ -52,7 +68,7 @@
 			<div class="e-approval-lnb-content">
 				<h3>메일</h3>
 				<div class="e-approval-form-btn">
-					<input type="button" class="btn btn-primary btn-lg" value="메일쓰기">
+					<input type="button" class="btn btn-primary btn-lg" value="메일쓰기" onclick="location.href='/emailWrite'">
 				</div>
 				<div class="e-approval-approval-list">
 					<!-- 사이드바 링크 jsp page -->
@@ -73,40 +89,11 @@
 
 <!-- 모달창 모음 -->
 	<!-- 1. 내 메일함 추가 모달창 -->
-                <div class="modal fade bs-example-modal-lg" id="moveEmailContents" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content modalEmail">
-                        <div class="modalNewEmailFolder">
-                            <h4>새 메일함 만들기</h4>
-                            <input type="text" placeholder="메일함 이름">
-                            <div class="modalNewEmailFolderBtn">
-                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">만들기</button>
-                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>  
-                </div>
+       <jsp:include page="./modal/newFolderModal.jsp"></jsp:include>
                 
    <!-- 2. 스팸 모달창 -->
          
-         <div class="modal fade bs-example-modal-lg"  id="spamEmailRev" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-	                <div class="modal-dialog modal-lg">
-	                    <div class="modal-content modalSpamEmail">
-	                        <div class="modalSpamEmailFolder">
-	                            <h4>스팸 차단</h4>
-	                            <p>선택한 메일의 정보를 차단 정보로 등록하고, 해당 정보로 오는 메일은 앞으로 받지 않고 자동 반송합니다.</p>
-	                            <input type="text" placeholder="song@gmail.com">
-	                            <div class="modalSpamEmailFolderBtn">
-	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">차단하기</button>
-	                                <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
-	                            </div>
-	                        </div>
-	                        
-	                    </div>
-	                </div>  
-	                </div>
+        <jsp:include page="./modal/spamModalRead.jsp"></jsp:include>
     <!-- 모달창 모음 끝 -->           
                
 	<main class="e-approval-article">
@@ -116,6 +103,7 @@
 		
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
+	      			
 			      	<div class="e-approval-form-box">
 			      		<span>받은 메일함</span>
 					</div>
@@ -140,80 +128,124 @@
 
 				</ul>
 					<!-- 제목 -->
-				    <div class="emailSendContentsHeader">
-						<div class="form-group col-sm-1">
-						    <label for="exampleFormControlInput1">제목</label>
-						</div>
-						
-						<div class="form-group col-sm-1 importSend"></div>
-
-						<div class="form-group col-sm-9">
-						 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="프론트 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
-						</div>
-				    </div>
-				    					    
+					 <c:forEach var="list" items="${selectRead }">
+				   
 					<div class="emailSendContents">
 						<div class="form-group col-sm-2">
 						    <label for="exampleFormControlInput1">보내는 사람</label>
 						</div>
 						
 						<div class="form-group col-sm-2">
-						 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="송연주">
+						 	<input type="text" class="form-control" id="exampleFormControlInput1" readOnly value="${list.emailName }">
 						</div>
 						
 						<div class="form-group col-sm-7">
-						 	<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+						 	<input type="email" class="form-control" id="exampleFormControlInput1" readOnly value="${list.emailAddress }">
 						</div>
 				    </div>
 				    
-				 
 				    
-		
+				    
+				    <!--  받는 사람 -->
+				    <div class="emailSendContentsRev">
+
+						<div class="form-group col-sm-2">
+							<label for="exampleFormControlInput1">받는 사람</label>
+						</div>
+
+						<div class="form-group col-sm-7 revEmail">
+							<c:forEach var="sendPerson" items="${selectSendList}">
+							<!-- 받는 사람 input -->
+								<input type="text" name="emailReceiverAddress" value="${sendPerson.emailReceiverAddress}" readonly class="form-control col-sm-3"
+									id="exampleFormControlInput1"
+									placeholder="song1234567@gmail.com">
+							</c:forEach>
+
+						</div>
+
+					</div>
+				    
+				    
+				    
+				    <!-- 참조 -->
+				    <div class="emailSendContentsRef">
+						<div class="form-group col-sm-2">
+							<label for="exampleFormControlInput1">참조</label>
+						</div>
+
+						
+						<div class="form-group col-sm-7 revRef">
+							<c:forEach var="refPerson" items="${selectRefList }">
+								<!-- 참조input -->
+								<input type="email" readonly name="emailReceiverRef" class="form-control col-sm-3"
+									id="exampleFormControlInput1"
+									value="${refPerson.emailReceiverAddress }">
+							</c:forEach>
+						</div>
+
+					</div>
+					
+					<!-- 제목 -->
+					<div class="emailSendContentsHeader">
+						<div class="form-group col-sm-1">
+						    <label for="exampleFormControlInput1">제목</label>
+						</div>
+						
+						<div class="form-group col-sm-1 importSend"></div>
+						
+						<div class="form-group col-sm-9">
+						 	<input type="text" class="form-control" id="exampleFormControlInput1" readOnly value="${list.emailTitle }">
+						</div>
+				    	
+				    </div>
+				    
 					<!-- 내용 -->
 					<div class="send-read-contents">
-					 <c:forEach begin="0" end="500">
-					 	 <div class="badge badge-light">내용</div>
-					 </c:forEach>
-						
+						<div class="email-contents">
+							${list.emailContents }
+						</div>
+						<div class="badge badge-light test"></div>
 					</div>
-						
-					
+					</c:forEach>	
 					
 					<!-- 파일첨부 -->
+					
 					<div class="custom-file">
 					  <button type="button" id="fileAdd"class="btn btn-light">첨부파일</button>	 
-				 	  <c:forEach begin="0" end="1">
-				 	  <span class="badge badge-light">Choose file.jpg</span>
-				 	  </c:forEach>
+				 	 	 <c:forEach var="selectFile" items="${selectFiles }">
+				 	  <span class="badge badge-light">${selectFile.oriFile }</span>
+				 	  	
+				 	 </c:forEach>	
+				 	  
 					</div>
 
 					<!-- 버튼 -->
 					<div class="send-and-cancel">
-					<button type="button" class="btn btn-primary btn-lg" onclick="location.href='email_index.jsp'">목록으로</button>
+					<button type="button" class="btn btn-primary btn-sm" onclick="location.href='/emailIndex'">목록으로</button>
 					</div>
 				</div>
-					
-					
+				
      		</form>
 		</div>
 	</main>
 </section>
 
 <script>
+//사이드바
+selectChkBtn();
 
-	chk = function() {
-		console.log('하이')
-		var arr = ['zero', 'one', 'tow']; 
-		
-		let btn = document.getElementById('testType')
-		btn.value = arr
-		console.log(btn.value)
-		
-		/*
-		document.frm.action = "test.jsp";
-		document.frm.submit();	*/
-	}
-	
+// 즐겨찾기 아이콘
+favoritesBtn();
+
+// 메일 읽음 아이콘
+readBtn();
+
+// 읽음 버튼을 눌렀을 때 아이콘 변경 
+changeChkReadBtn();
+
+
+// 텍스트 
+summernote();
 </script>
 	
 </body>

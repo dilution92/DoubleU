@@ -33,6 +33,10 @@ public class AttEmailVo {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return "AttEmailVo [filesNo=" + filesNo + ", emailNo=" + emailNo + ", sysFile=" + sysFile + ", oriFile="
+				+ oriFile + "]";
+	}
 
 }
