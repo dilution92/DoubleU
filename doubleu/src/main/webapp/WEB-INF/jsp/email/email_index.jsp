@@ -95,7 +95,10 @@
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
-
+			<div>
+			${test }
+			-------------------
+			</div>
 			<div class="test">
 			 테스트 <br>
 			 ${member} <br>
@@ -109,7 +112,7 @@
 			      	
 			      		<!-- hidden-->
 						<input type="hidden" name="emailNo">
-		 			
+		 				<input type="text" name="emailMid" value="${member.memberMid }">
 		 		</form>
 			</div>
 			<!-- ========== -->
