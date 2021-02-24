@@ -49,7 +49,8 @@
 				<div class="form-group row">
 		   		 <label for="marketWriter" class="col-sm-2 col-form-label  is-invalid">작성자</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control "  name="marketWriter"required disabled value="${member.memberName }">
+				      <input type="text" class="form-control "  name="marketWriter"required readonly value="김재현">
+<%-- 				      <input type="text" class="form-control "  name="marketWriter"required disabled value="${member.memberName }"> --%>
 				    </div>
 				  </div>
 				<div class="form-group row">
@@ -92,7 +93,7 @@
 				 <label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
 				  <div class="col-sm-8" style="display : inline-block;">
 			   		<div class="custom-file">
-					  <input type="file" class="custom-file-input" id="attList" name="attList" onchange="previewImage(this,'View_area')" multiple='multiple'>
+					  <input type="file" class="custom-file-input" id="attList" name="attList" onchange="previewImage(this,'View_area')" multiple='multiple' required>
 					  <label class="custom-file-label" for="customFile">Choose file</label>
 					</div>
 					<div id='View_area' class='View_area' style="display:flex;" >
@@ -131,7 +132,7 @@
 				</div>
 				<!-- hidden -->
 				<input type="hidden" name="marketHit" value = "1">
-				<input type="hidden" name="marketWriter" value = "${member.memberName }">
+<%-- 				<input type="hidden" name="marketWriter" value = "${member.memberName }"> --%>
 			</form>
 			</div>
 

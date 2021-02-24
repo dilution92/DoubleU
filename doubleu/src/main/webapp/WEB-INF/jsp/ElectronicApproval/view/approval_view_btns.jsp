@@ -56,34 +56,57 @@
 						<input type="button" name="btnFormReject" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_reject"  value="반려" style="float: left">
 						<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 					</div>
-				</div>
+				</div>	
 			</c:when>
-			<c:when test="${makerVo.decisionState == '1'}">
+			<c:when test="${makerVo.decisionState == '1' and makerVo.makerOrder == '0'}">
 				<div class="e-approval-view-btn-box">
 					<div class="e-approva-view-btn-content">
 						<input type="button" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
 					</div>
 					<div class="e-approva-view-btn-content">
-						<input type="button" id="btnFormReject" class="btn btn-outline-secondary btn-sm" value="반려" style="float: left">
+						<input type="button" name="btnFormReject" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_reject"  value="반려" style="float: left">
+						<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
+					</div>
+				</div>
+			</c:when>
+			<c:when test="${makerVo.decisionState == '1' and makerVo.makerOrder == '-1'}">
+				<div class="e-approval-view-btn-box">
+					<div class="e-approva-view-btn-content">
+						<input type="button" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
+					</div>
+					<div class="e-approva-view-btn-content">
 						<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 					</div>
 				</div>
 			</c:when>
 			<c:when test="${makerVo.decisionState == '-1'}">
 				<div class="e-approval-view-btn-box">
-					<input type="button" id="btnFormApproval" class="btn btn-outline-primary btn-sm" value="승인" style="float: left">
-					<input type="button"  name="btnApprovalSelect" id="btnApprovalSelect"  class="btn btn-outline-secondary btn-sm" value="목록으로">
+					<div class="e-approva-view-btn-content">
+					</div>
+					<div class="e-approva-view-btn-content">
+						<input type="button"  name="btnApprovalSelect" id="btnApprovalSelect"  class="btn btn-outline-secondary btn-sm" value="목록으로">
+						<input type="button" name="btnFormApproval" class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal_approval" value="승인" style="float: left" >
+					</div>
 				</div>
 			</c:when>
 		</c:choose>
-		<input type="hidden" name="findStr">	
+		<input type="hidden" name="findStr" value="${(empty param.findStr)? '':param.findStr }">	
+		<input type="hidden" name="findType" value="${(empty param.findType)? '':param.findType }">	
 		<input type="hidden" name="nowOutgoingPage" value="${(empty param.nowOutgoingPage)? 1: param.nowOutgoingPage }">
-		<input type="hidden" name="nowReceiverPage" value="${(empty param.nowReceiverpage)? 1: param.nowReceiverpage}"> 
+		<input type="hidden" name="nowReceiverPage" value="${(empty param.nowReceiverPage)? 1: param.nowReceiverPage}"> 
 		<input type="hidden" name="nowPlace" value="${param.nowPlace}">
 		<input type="hidden" name="nowChooseSelectPage"value="${(empty param.nowChooseSelectPage) ? 1: param.nowChooseSelectPage }">
 		<input type="hidden" name="findState" value="${param.findState }">
 		<input type="hidden" name="formNo" value="${vo.formNo }" >
 		<input type="hidden" name="formType" value="${vo.formType }">
 		<input type="hidden" name="decisionState" value="${makerVo.decisionState}">
+		<input type="hidden" name="makerComment" value="">
+		<input type="hidden" name="memberNo" value="${member.memberNo}">
+		<input type="hidden" name="makerOrder" value="${makerVo.makerOrder}">
+		
+		
+		<div class="approval-modal">
+			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/modal/approval_decision_modal.jsp"></jsp:include> 
+		</div>
 </body>
 </html>

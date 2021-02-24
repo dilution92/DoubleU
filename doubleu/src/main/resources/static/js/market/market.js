@@ -12,6 +12,14 @@ $('#market_btnFind').on('click', function() {
 			frm.submit();
 		});
 		
+//-----------삭제--------//
+$('#market_btnDel').on('click', function() {
+		var frm = frm_market_view;
+			frm.action = '/marketDelete';
+			frm.submit();
+		});
+
+		
 }
 	
 //-----------수정--------//
