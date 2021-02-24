@@ -48,12 +48,24 @@ public class NoticeController {
 		return mv;
 	}
 	
+	// 경조사 index select
 	@GetMapping("/familyevent_index")
 	public String familyevent_index(Model model) {
-		System.out.println("컨트롤러 시작");
+		System.out.println("select 컨트롤러 시작");
 		
 		List<FamilyeventVo> contentList = service2.select();
 		model.addAttribute("contentList", contentList);
 		return "notice/familyevent_index";
 	}
+	
+	// 경조사 index view
+	@RequestMapping(value = "/familyeventView", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView familyeventView(@RequestParam int no) {
+		ModelAndView mv = new ModelAndView();
+		FamilyeventVo vo = service2.view(no);
+		mv.addObject("obj", vo);
+		mv.setViewName("notice/familyevent_view");
+		return mv;
+	}
+	
 }
