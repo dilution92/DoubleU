@@ -28,5 +28,6 @@ public interface MarketMapper {
 	public int deleteAtt(MarketVo vo);
 	public int delete(MarketVo vo);
 	public int deleteAttNo(int marketNo);
+	public int selectPrice(String findStr);
 
 }

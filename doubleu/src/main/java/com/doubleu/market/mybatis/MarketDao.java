@@ -189,7 +189,16 @@ public class MarketDao {
 			if(f.exists()) f.delete();
 		}
 	}
-	
+
+
+	public int selectPrice(String findStr) {
+		int price = 1000;
+				//mapper.selectPrice(findStr);
+			System.out.println("dao가격: "+price);
+				
+		return price;
+	}
+
 
 	
 	

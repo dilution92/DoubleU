@@ -59,7 +59,8 @@ public class MarketController {
 		vo.setAttlist(attList);
 		System.out.println("attList: " + vo.getAttlist());
 		System.out.println("marketInsertR.....");
-		System.out.println("가격 : " +vo.getMarketPrice());
+		vo.setMarketPrice(vo.getMarketPrice().replaceAll("\\,",""));
+		//System.out.println("가격 : " +vo.getMarketPrice());
 		msg = dao.insert(vo);
 		System.out.println(msg);
 
