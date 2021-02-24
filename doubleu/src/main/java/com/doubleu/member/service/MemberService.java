@@ -11,12 +11,10 @@ public class MemberService {
 	@Autowired
 	MemberMapper mapper;
 	
-	public String insert(MemberVo vo) {
-		System.out.println("시작");
-		String msg = "입력되었습니다";
-		int cnt = mapper.insert(vo);
+	public String update(MemberVo vo) throws Exception{
+		//updateMember(vo);
 		System.out.println("종료");
-		return msg;
+		return "member_list.do";
 	}
 }
 

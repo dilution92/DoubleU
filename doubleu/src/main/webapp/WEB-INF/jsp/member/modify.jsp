@@ -113,8 +113,7 @@
 									<label for="department" class="form-label">부서<span
 										class="text-muted">(수정불가)</span></label>
 									<div class="input-group">
-										<label for="department" class="form-label">~~~부서이름 들어갈
-											곳~~~</label>
+										<label for="department" class="form-label">${memberDepartment}</label>
 									</div>
 								</div>
 
@@ -133,9 +132,7 @@
 									<input type="text" id="sample3_postcode" placeholder="우편번호">
 									<input type="button" onclick="sample3_execDaumPostcode()"
 										value="우편번호 찾기"><br> <input type="text"
-										id="sample3_address" placeholder="주소"><br> <input
-										type="text" id="sample3_detailAddress" placeholder="상세주소">
-									<input type="text" id="sample3_extraAddress" placeholder="참고항목">
+										id="sample3_address" placeholder="주소"><br> 
 
 									<div id="wrap"
 										style="display: none; border: 1px solid; width: 500px; height: 300px; margin: 5px 0; position: relative">

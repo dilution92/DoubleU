@@ -1,4 +1,4 @@
-package com.doubleu.member.vo;
+package com.doubleu.profile.vo;
 
 public class MemberVo {
 	int memberNo;

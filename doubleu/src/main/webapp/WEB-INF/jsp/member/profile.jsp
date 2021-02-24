@@ -135,51 +135,22 @@
   		<tr>
   			<th>이름</th>
   			<th>부서</th>
-  			<th>직급</th>
+  			<th>팀</th>
   			<th>이메일</th>
   			<th>전화번호</th>
   		</tr>
   	</thread>
   	<tbody>
+  	<c:forEach items='${member}' var='member'>
+  		<c:set var='i' value='${i+1}'/>
   		<tr>
-  			<td>정희석</td>
-  			<td>영업팀</td>
-  			<td>팀장</td>
-  			<td>~~~@~~~</td>
-  			<td>010-0000-0000</td>
+  			<td>${member.memberName}</td> 
+  			<td>${member.memberDepartment}</td>
+  			<td>${member.memberTeam}</td>
+  			<td>${member.memberEmail}</td>
+  			<td>${member.memberPhoneNumber}</td>
   		</tr>
-  		
-  		<tr>
-  			<td>강성연</td>
-  			<td>마케팅팀</td>
-  			<td>팀장</td>
-  			<td>~~~@~~~</td>
-  			<td>010-0000-0000</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>김재현</td>
-  			<td>경영지원팀</td>
-  			<td>부장</td>
-  			<td>~~~@~~~</td>
-  			<td>010-0000-0000</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>송연주</td>
-  			<td>디지털팀</td>
-  			<td>부장</td>
-  			<td>~~~@~~~</td>
-  			<td>010-0000-0000</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>정해준</td>
-  			<td>개발팀</td>
-  			<td>부장</td>
-  			<td>~~~@~~~</td>
-  			<td>010-0000-0000</td>
-  		</tr>
+  	</c:forEach>	
   	</tbody>
   </table>
 			
