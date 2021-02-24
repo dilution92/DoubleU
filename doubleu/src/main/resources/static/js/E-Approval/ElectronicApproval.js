@@ -582,12 +582,12 @@ function append(zone, boxCnt) {
 	aSign.onclick = function() {   
 		var winWidth = "500";
 		var winHeight = "600";
-		
+		var url = '/approvalSelectMember';
 		
 		var winLeft = Math.ceil((window.screen.width - winWidth)/2);
 		var winTop = Math.ceil((window.screen.height- winHeight)/2);
-		var win = window.open('/approvalSelectMember', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
-
+		var win = window.open(url, 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
+		
 		win.onbeforeunload = function(){
 			inputName.value = $('#TempMakerName').val();
 			inputPosition.value = $('#TempMakerPosition').val();

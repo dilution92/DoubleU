@@ -21,30 +21,29 @@
 <link rel="stylesheet" href="/css/ElectronicApproval/ElectronicApproval.css">
 <script type="text/javascript" src="/js/E-Approval/ElectronicApproval.js"></script>
 <!-- bootstrap script, Jquery CDN -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js" type="text/javascript"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
 <!-- ****************************** -->	
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous">
-</script>
+<script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
 
 
 
 </head>
 <body>
-<form action="" name="frmMember">
+<form action="" name="frmMember" id="frmMember">
 	<div class="chooseMaker-container">
 		<header class="chooseMaker-header">
 			<h4>직원 조회</h4>
 		</header>
 		<hr>
+		<div id=""></div>
 		<section class="chooseMaker-main">
 			<div class="chooseMaker-search">
 				<select name="makerPosition" class="form-control form-control-sm e-approval-chooseMaker-select">
@@ -63,6 +62,7 @@
 				<input type="button" value="검색" id="btnSelectMaker" class="btn btn-outline-primary btn-sm ">
 				<input type="hidden" value="${(empty param.nowPage) ? 1: param.nowPage}" name="nowPage">
 			</div>
+			<div>
 			<div class="chooseMaker-table">
 				<table class="table table-hover table-sm">
 					<thead class="e-approval-list text-muted text-gray-dark">
@@ -110,7 +110,7 @@
 					</ul>
 				</nav>
 			</div>
-			
+			</div>
 		</section>
 	</div>
 </form>
@@ -130,9 +130,18 @@ function chooseMaker(memberNo, memberPosition, memberName) {
 };
 
 $('#btnSelectMaker').on('click', function() {
-	var frm = document.frmMember;
-	frm.action = '/approvalSelectMember';
-	frm.submit();
+	var frm = $('#frmMember');
+	var param = $(frm).serialize();
+	alert(param)
+	$.ajax({
+		url: '/approvalSelectMember',
+		data: param,
+		dataType : 'html',
+		method : 'post',
+		success : function(data) {
+			$('#ajax_content').html(data)
+		}
+	})
 })
 
 </script>
