@@ -316,9 +316,17 @@
 	<select id="memberTotalListSize" parameterType="com.doubleu.approval.vo.IndexPage" resultType="int">
 		SELECT count(member_no) FROM member
 		<where>
-			 member_name LIKE'%${findStr}%'
-			<if test="findType != ''">
-			AND member_department = '${findType}'
+			<if test="findStr == '' and findType == ''">
+				member_name LIKE '%${findStr}%'
+			</if>
+			<if test="findStr != '' and findType == '' ">
+				member_name LIKE '%${findStr}%'
+			</if>
+			<if test="findStr != '' and findType != ''">
+				member_name LIKE '%${findStr}%' AND member_department = '${findType}'
+			</if>
+			<if test="findStr == '' and findType != ''">
+				member_department = '${findType}'
 			</if>
 		</where>
 	</select>
@@ -328,14 +336,23 @@
 		SELECT ROWNUM rno, a.* FROM (
 		SELECT * FROM member
 		<where>
-		member_name LIKE '%${findStr}%'		
-		<if test="findType != ''">
-		AND member_department = '${findType}'
-		</if>
+			<if test="findStr == '' and findType == ''">
+				member_name LIKE '%${findStr}%'
+			</if>
+			<if test="findStr != '' and findType == '' ">
+				member_name LIKE '%${findStr}%'
+			</if>
+			<if test="findStr != '' and findType != ''">
+				member_name LIKE '%${findStr}%' AND member_department = '${findType}'
+			</if>
+			<if test="findStr == '' and findType != ''">
+				member_department = '${findType}'
+			</if>
 		</where>
 		ORDER BY rownum DESC) a)
 		WHERE rno BETWEEN ${startNo} AND ${endNo}
 	</select>
+	
 	
 	
 	<!-- 기본 결재 form 수정 -->
