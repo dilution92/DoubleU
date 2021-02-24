@@ -90,6 +90,7 @@
 							<th scope="col"  width="150px;">결재양식</th>
 							<th scope="col">제목</th>
 							<th scope="col">기안자</th>
+							<th scope="col" width="150px;">결재 상태</th>
 							<th scope="col" width="150px;">결재 여부</th>
 						</tr>
 					</thead>
@@ -103,7 +104,7 @@
 								<td>${receiverVo.drafterName }</td>					
 								<c:choose>
 									<c:when test="${receiverVo.approvalState eq '(발신)상신'}">
-										<td><span class="badge badge-success">결재대기</span></td>	
+										<td><span class="badge badge-success">진행중</span></td>	
 									</c:when>
 									<c:when test="${receiverVo.approvalState eq '(발신)승인'}">
 										<td><span class="badge badge-primary">승인</span>	</td>
@@ -112,8 +113,19 @@
 										<td><span class="badge badge-warning">반려</span></td>	
 									</c:when>
 								</c:choose>
+								<c:choose>
+									<c:when test="${receiverVo.decisionState == '0'}">
+										<td><span class="badge badge-success">결재대기</span></td>	
+									</c:when>
+									<c:when test="${receiverVo.decisionState == '1'}">
+										<td><span class="badge badge-primary">결재승인</span>	</td>
+									</c:when>
+									<c:when test="${receiverVo.decisionState == '-1'}">
+										<td><span class="badge badge-warning">결재반려</span></td>	
+									</c:when>
+								</c:choose>
+								
 							</tr>
-							<c:set var= "no" value="${no+1 }"></c:set>
 						</c:forEach>
 					</tbody>
 				</table>

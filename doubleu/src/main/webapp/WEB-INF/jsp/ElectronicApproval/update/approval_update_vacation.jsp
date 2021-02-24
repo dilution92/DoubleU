@@ -32,7 +32,7 @@
 		<main>
 			<div class="e-approval-form-workType-container">
 				<div class="e-approval-form-workType-title">
-					<h4 style="font-weight: bold">${formName}</h4>
+					<h4 style="font-weight: bold">${vo.formType}</h4>
 				</div>
 				<div class="e-approval-form-workType-top">
 					<div class="e-approval-form-workType-top-1">
@@ -51,7 +51,7 @@
 								</tr>
 								<tr>
 									<th>문서번호</th>
-									<td>  </td>
+									<td> ${vo.formNo } </td>
 								</tr>
 						</table>
 					</div>
@@ -70,8 +70,8 @@
 			                     <td height="80px;">
 			                        <input id="makerSignBtn" name="makerSignBtn1"  type="button" value="직원조회" onclick="updateChooseMaker()">
 			                        <input id="makerDelBtn" type="button" value="x" onclick="deleteChooseMaker()">
-			                        <input type="hidden" name="makerOrder" val="1">
-			                        <input type="hidden" name="makerNo" val="${makerVo.memberNo }">
+			                        <input type="hidden" name="makerOrder" value="1">
+			                        <input type="hidden" name="makerNo" value="${makerVo.memberNo }">
 			                     </td>
 							</tr>
 							<tr>
@@ -80,6 +80,7 @@
 								</td>
 							</tr>
 						</table>
+						
 						</c:forEach>
 						<div id="makersZone" class="approval-amkers-zone e-approval-form-decision-box-2">
 						</div>
@@ -89,52 +90,113 @@
 					<tr>
 					 <th> 휴가 종류 </th>
 					 <td colspan="3"> 
-					 	<select id="selectVacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
-					 		<option value=""> 휴가 선택 </option>
-					 		<option value="연차"> 연차 </option>
-					 		<option value="월차"> 월차 </option>
-					 		<option value="반차"> 반차 </option>
-					 	</select>
+					 	<c:choose>
+							<c:when test="${vo.formVacationVo.vacationType == '월차' }">
+							 	<select id="selectVacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
+							 		<option value=""> 휴가 선택 </option>
+							 		<option value="연차"> 연차 </option>
+							 		<option value="월차" selected> 월차 </option>
+							 		<option value="반차"> 반차 </option>
+							 	</select>
+							</c:when>
+							<c:when test="${vo.formVacationVo.vacationType == '반차' }">
+							 	<select id="selectVacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
+							 		<option value=""> 휴가 선택 </option>
+							 		<option value="연차"> 연차 </option>
+							 		<option value="월차"> 월차 </option>
+							 		<option value="반차" selected> 반차 </option>
+							 	</select>
+							</c:when>
+							<c:when test="${vo.formVacationVo.vacationType == '연차' }">
+							 	<select id="selectVacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
+							 		<option value=""> 휴가 선택 </option>
+							 		<option value="연차" selected> 연차 </option>
+							 		<option value="월차"> 월차 </option>
+							 		<option value="반차"> 반차 </option>
+							 	</select>
+							</c:when>
+					 	
+					 	</c:choose>
 					 </td>
 					</tr>
-					<tr>
-						<th> 기간 및 일시 </th>
-						<td>
-						<input type="date" id="startDate" name="startDate" onchange="calculationDate()" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
-						~
-						<input type="date" id="endDate" onchange="calculationDate()" name="endDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
-						</td>
-						<th> 총 일 수 </th>
-						<td> <input type="text" name="vacationCnt" class="form-control form-control-sm approval-readOnly"  style="width: 30px; font-size: 1em; margin: 0 auto; display: inline-block; border: none; text-align: right; padding: 0;" readonly="readonly"> <span>일</span> </td>
-					</tr>
-					<tr>
-						<th> 반차 여부 </th>
-						<td colspan="3">
-							<input type="date" name="halfDate" id="halfDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오전" checked>
-							  <label class="form-check-label" for="halfTimeAM">
-							   오전
-							  </label>
-							</div>
-							<div class="form-check e-approval-form-vacationType-check-box">
-							  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오후">
-							  <label class="form-check-label" for="halfTimePM">
-							    오후
-							  </label>
-							</div>
-							<input type="text" name="halfDayType" value="">
-						</td>
-					</tr>
+					<c:choose>
+						<c:when test="${vo.formVacationVo.startDate != vo.formVacationVo.endDate}">
+							<tr>
+								<th> 기간 및 일시 </th>
+								<td>
+								<input type="date" id="startDate" name="startDate" onchange="calculationDate()" value="${vo.formVacationVo.startDate}" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+								~
+								<input type="date" id="endDate" onchange="calculationDate()" name="endDate" value="${vo.formVacationVo.endDate}" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+								</td>
+								<th> 총 일 수 </th>
+								<td> <input type="text" name="vacationCnt" value="${vo.formVacationVo.vacationCnt }" class="form-control form-control-sm approval-readOnly"  style="width: 30px; font-size: 1em; margin: 0 auto; display: inline-block; border: none; text-align: right; padding: 0;" readonly="readonly"> <span>일</span> </td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<th> 기간 및 일시 </th>
+								<td>
+								<input type="date" id="startDate" name="startDate" onchange="calculationDate()" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+								~
+								<input type="date" id="endDate" onchange="calculationDate()" name="endDate" value="" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+								</td>
+								<th> 총 일 수 </th>
+								<td> <input type="text" name="vacationCnt" value="${vo.formVacationVo.vacationCnt }" class="form-control form-control-sm approval-readOnly"  style="width: 30px; font-size: 1em; margin: 0 auto; display: inline-block; border: none; text-align: right; padding: 0;" readonly="readonly"> <span>일</span> </td>
+							</tr>
+						</c:otherwise>
+					
+					</c:choose>
+					<c:choose>
+						<c:when test="${vo.formVacationVo.startDate == vo.formVacationVo.endDate }">
+							<tr>
+								<th> 반차 여부 </th>
+								<td colspan="3">
+									<input type="date" name="halfDate" id="halfDate" value="${vo.formVacationVo.startDate}" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+									<div class="form-check e-approval-form-vacationType-check-box">
+									  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오전" checked>
+									  <label class="form-check-label" for="halfTimeAM">
+									   오전
+									  </label>
+									</div>
+									<div class="form-check e-approval-form-vacationType-check-box">
+									  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오후">
+									  <label class="form-check-label" for="halfTimePM">
+									    오후
+									  </label>
+									</div>
+								</td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<th> 반차 여부 </th>
+								<td colspan="3">
+									<input type="date" name="halfDate" id="halfDate" value="${vo.formVacationVo.startDate}" class="form-control form-control-sm" style="font-size: 1em; display: inline-block; width: 150px;"  >
+									<div class="form-check e-approval-form-vacationType-check-box">
+									  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오전" checked>
+									  <label class="form-check-label" for="halfTimeAM">
+									   오전
+									  </label>
+									</div>
+									<div class="form-check e-approval-form-vacationType-check-box">
+									  <input class="form-check-input" type="radio" name="halfTimeType" id="halfTimeType" value="오후">
+									  <label class="form-check-label" for="halfTimePM">
+									    오후
+									  </label>
+									</div>
+								</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 					<tr>
 						<th> 제목 </th>
-						<td colspan="3"> <input type="text" name="formTitle" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required> </td>
+						<td colspan="3"> <input type="text" name="formTitle" value="${vo.formTitle }" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required> </td>
 					</tr>
 					
 					<tr>
 						<th style="line-height: 200px; padding: 0;"> 사유 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control"  name="formDoc" style="height: 100%; overflow: auto ;" ></textarea>
+							<textarea class="form-control"  name="formDoc" style="height: 100%; overflow: auto ; font-size: 1em;" > ${vo.formDoc } </textarea>
 						</td>
 					</tr>		
 					<tr>

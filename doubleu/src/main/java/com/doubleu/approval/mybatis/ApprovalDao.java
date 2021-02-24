@@ -2,6 +2,7 @@ package com.doubleu.approval.mybatis;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ import com.doubleu.approval.vo.FormVo;
 import com.doubleu.approval.vo.IndexPage;
 import com.doubleu.approval.vo.MemberVo;
 import com.doubleu.approval.vo.SelectPage;
+import com.doubleu.approval.vo.UpdateFormStateVo;
+import com.doubleu.approval.vo.UpdateMakerOrderVo;
 
 @Service
 @Transactional
@@ -61,21 +64,21 @@ public class ApprovalDao {
 		
 		return map;
 	}
+	
 	public Map<String, Object> receptionSelect(IndexPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		return map;
 	}
 	
+	
 	public Map<String, Object> selectOutgoingChoose(SelectPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		int chooseTotalListSize = mapper.chooseTotalListSize(page);
-		
-		System.out.println("chooseTotalListSize:" + chooseTotalListSize);
+		System.out.println("chooseTotalListSize: " + chooseTotalListSize);
 		page.setTotalListSize(chooseTotalListSize);
 		page.pageCompute();
-		System.out.println("마지막페이지:" + page.getEndPage());
-		System.out.println("지금페이지:" + page.getNowPage());
+		
 		List<FormVo> list = mapper.selectChoose(page);
 		map.put("list", list);
 		map.put("page", page);
@@ -87,8 +90,8 @@ public class ApprovalDao {
 		FormVo formVo = new FormVo();
 		List<DecisionMakerVo> makerList = new ArrayList<>();
 		List<AttFileVo> attList = new ArrayList<>();
-		
 		formVo = mapper.selectView(vo);
+		System.out.println("문서번호 : " + formVo.getFormNo());
 		makerList = mapper.selectDecisionMaker(formVo.getFormNo());
 		attList = mapper.selectAttFile(formVo.getFormNo());
 		
@@ -116,6 +119,7 @@ public class ApprovalDao {
 		}
 		return msg;
 	}
+	
 	public String updateVacation(FormVacationVo vo) {
 		String msg = "정상적으로 휴가신청서 내용이 등록되었습니다.";
 		int resultCnt = mapper.updateVacation(vo);
@@ -124,6 +128,7 @@ public class ApprovalDao {
 		}
 		return msg;
 	}
+	
 	public String updatePetition(FormPetitionVo vo) {
 		String msg = "정상적으로 품의서 내용이 등록되었습니다.";
 		int resultCnt = mapper.updatePetition(vo);
@@ -157,6 +162,7 @@ public class ApprovalDao {
 	public Map<String, Object> selectMember(IndexPage page) {
 		Map<String,Object> map = new HashMap<>();
 		List<MemberVo> list = new ArrayList<>();
+		System.out.println("찾을 부서");
 		int memberTotalListSize = mapper.memberTotalListSize(page);
 		page.setTotalListSize(memberTotalListSize);
 		page.pageCompute();
@@ -173,8 +179,9 @@ public class ApprovalDao {
 		System.out.println("selectReceiver-Dao메소드 시작....");
 		Map<String,Object> map = new HashMap<>();
 		List<FormVo> list = new ArrayList<>();
+		
+		
 		int receiverTotalListSize = mapper.receiverTotalListSize(page);
-		System.out.println("receiverTotalListSize: " +receiverTotalListSize);
 		page.setTotalListSize(receiverTotalListSize);
 		page.pageCompute();
 
@@ -182,13 +189,14 @@ public class ApprovalDao {
 		if(!list.isEmpty()) {
 			System.out.println("출력 완료");
 			System.out.println("기안자: " + list.get(0).getDrafterName());
+			System.out.println("문서 결재 여부: " + list.get(0).getDecisionState());
 		}
 		map.put("page", page);
 		map.put("list", list);
 		System.out.println("selectReceiver-Dao메소드 종료....");
 		return map;
 	}
-	
+	 
 	public DecisionMakerVo selectMaker(DecisionMakerVo vo) {
 		DecisionMakerVo resultVo = new DecisionMakerVo();
 		resultVo = mapper.selectMaker(vo);
@@ -199,7 +207,11 @@ public class ApprovalDao {
 	public String updateFormState(int formNo) {
 		String msg = "정상적으로 변경되었습니다.";
 		
-		int cnt = mapper.updateFormState(formNo);
+		UpdateFormStateVo vo = new UpdateFormStateVo();
+		vo.setFormNo(formNo);
+		vo.setApprovalState("(발신)임시저장");
+				
+		int cnt = mapper.updateFormState(vo);
 		if(cnt < 1) {
 			System.out.println("업데이트 과정에서 오류가 발생했습니다.");
 		}
@@ -237,6 +249,113 @@ public class ApprovalDao {
 		}
 		
 		return msg;
+	} 
+	
+	public String updateDecisionApproval(DecisionMakerVo makerVo) {
+		String msg = "정상적으로 업데이트 되었습니다.";
+		int resultCnt = 0;
+		List<DecisionMakerVo> makerList = new ArrayList<>();
+		
+		System.out.println(" updateDecisionApproval 데이터 체크");
+		System.out.println("makerVo 직원 번호: " + makerVo.getMemberNo());
+		System.out.println("makerVo 문서 번호: " + makerVo.getFormNo());
+		
+		//결재 여부 업데이트(승인)
+		resultCnt = mapper.updateDecisionApproval(makerVo);
+		
+		//결재 상태가 반려일 경우 변경.
+		UpdateFormStateVo stateVo = new UpdateFormStateVo();
+		stateVo.setFormNo(makerVo.getFormNo());
+		stateVo.setApprovalState("(발신)상신");
+		resultCnt = mapper.updateFormState(stateVo);
+		
+		if(resultCnt < 1) {
+			msg = "업데이트 과정에서 오류가 발생했습니다.";
+		}
+		else {
+			//결재권자 목록 출력
+			makerList = mapper.selectDecisionMaker(makerVo.getFormNo());
+			System.out.println("첫번째 결재자 순서:" + makerList.get(0).getMakerOrder());
+			System.out.println("첫번째 결재자 이름:" + makerList.get(0).getMakerName());
+			
+			//결재 진행 여부.. 로직 마지막에 1일 경우 모든 결재권자 승인
+			int checkAllMaker = 1;
+			
+			//결재권자 순서 변경
+			for(DecisionMakerVo vo : makerList) {
+				if(vo.getMakerOrder() != 0 && vo.getMakerOrder() != -1) {
+					System.out.println("?왜 들어감?");
+					UpdateMakerOrderVo updateMakerOrderVo = new UpdateMakerOrderVo();
+					updateMakerOrderVo.setFormNo(makerVo.getFormNo());
+					updateMakerOrderVo.setMemberNo(vo.getMemberNo());
+					updateMakerOrderVo.setChangeOrder(1);
+					
+					checkAllMaker = -1;
+					
+					int resultUpdateOrder = mapper.updateMakerOrder(updateMakerOrderVo);
+					if(resultUpdateOrder < 1) {
+						msg = "결재 순서 업데이트 중 오류 발생";
+					}
+					break;
+				}
+			}
+			
+			System.out.println("첫번째 결재자 순서:" + makerList.get(0).getMakerOrder());
+			System.out.println("결재란 사이즈: " + makerList.size());
+			
+			//모든 결재권자가 승인했을 경우
+			if(checkAllMaker == 1) {
+				System.out.println("--------------ehckr-------------------------");
+				UpdateFormStateVo formStateVo = new UpdateFormStateVo();
+				
+				for(int i = 0; i<makerList.size()-1;i++) {
+					UpdateMakerOrderVo makerOrderVo = new UpdateMakerOrderVo();
+					makerOrderVo.setFormNo(makerVo.getFormNo());
+					makerOrderVo.setMemberNo(makerList.get(i).getMemberNo());
+					makerOrderVo.setChangeOrder(-1);
+					
+					int resultUpdateOrder = mapper.updateMakerOrder(makerOrderVo);
+				}
+				formStateVo.setFormNo(makerVo.getFormNo());
+				formStateVo.setApprovalState("(발신)승인");
+				int resultUpdateFormState = mapper.updateFormState(formStateVo);
+				System.out.println("모든 결재권자가 승인했습니다.");
+			}
+		}
+		return msg;
 	}
 	
+	public String updateDecisionReject(DecisionMakerVo makerVo) {
+		String msg = "정상적으로 업데이트 되었습니다.";
+		
+		int resultCnt = mapper.updateDecisionReject(makerVo); // 결재권자의 결재상태 변경  
+		if(resultCnt < 0) {
+			msg = "업데이트 과정에서 오류가 발생했습니다.";
+		}
+		
+		UpdateFormStateVo stateVo = new UpdateFormStateVo();
+		stateVo.setFormNo(makerVo.getFormNo());
+		stateVo.setApprovalState("(발신)반려");
+		
+		resultCnt = mapper.updateFormState(stateVo); //문서 상태 변경
+		
+		return msg;
+	}
+	
+	public Map<String, Object> selectReceiverChoose(SelectPage page) {
+		System.out.println("selectReceiverChoose메소드 시작..............................");
+		System.out.println("findState: " + page.getFindState());
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int totalListSize = mapper.chooseTotalListSizeReceiver(page);
+		page.setTotalListSize(totalListSize);
+		page.pageCompute();
+		
+		List<FormVo> list = mapper.selectChooseRecevier(page);
+		
+		map.put("list", list);
+		map.put("page", page);
+		return map;
+	}
 }

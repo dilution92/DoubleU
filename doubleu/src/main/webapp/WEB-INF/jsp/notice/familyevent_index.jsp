@@ -87,14 +87,14 @@
                     	</tr>
                 	</thead>
 					<tbody class="e-approval-list text-muted">
-	                		<c:forEach begin="1" end="10">
-	                    		<tr>
-			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;"><i class="fas fa-birthday-cake"></i> 결혼</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">관리부 누구 본인 결혼</td>
-			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">관리자</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
+	                		<c:forEach var='obj' items="${contentList }">
+	                    		<tr onClick="location.href='/familyeventView?no=${obj.familyeventNo }'">
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventNo }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventType }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventSubject }</td>
+			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">${obj.familyeventMid }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventReportingDate }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventHit }</td>
 		                        </tr>
 	                        </c:forEach>
 					</tbody>

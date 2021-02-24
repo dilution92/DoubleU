@@ -4,7 +4,55 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.doubleu.market.mybatis.MarketMapper">
+
+<!-- price range select -->
+	<select id="selectPrice" resultMap="marketList" parameterType="String" resultType="int" >
+		select avg(market_price) from market 
+		where market_price is not null and market_subject like '%${findStr}%'
+	</select>
+
+<!-- delete -->
+
+	<delete parameterType="com.doubleu.market.vo.MarketVo" id="delete">
+		delete from market where market_no=#{marketNo}
+	</delete>
 	
+	<delete parameterType="Integer" id="deleteAttNo">
+		delete from market_files where market_no = #{_parameter} 
+	</delete>
+	
+	
+<!-- update -->
+	<update id="update" parameterType="com.doubleu.market.vo.MarketVo" >
+		update market set market_category = #{marketCategory}, 
+						  market_subject=#{marketSubject},
+						  market_price = #{marketPrice}, 
+						  market_account=#{marketAccount}, 
+						  market_doc=#{marketDoc},  
+						  market_date = SYSDATE, 
+						  market_bank=#{marketBank}
+		where market_no = #{marketNo}
+	</update>
+	
+	<delete parameterType="com.doubleu.market.vo.MarketVo" id="deleteAtt">
+		delete from market_files 
+		<where>
+			<foreach item="att" collection="delFiles" separator="or">
+				files_sysfile = #{att.sysFile} 
+			</foreach>
+		</where>
+	</delete>
+	<insert id="insertAtt" parameterType="com.doubleu.market.vo.MarketVo" >
+		INSERT ALL
+		<foreach collection="attlist" item="att">
+			INTO market_files(files_no, market_no, files_sysfile, files_orifile)
+			VALUES (getMarketAttSeq(), ${marketNo}, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+	
+
+<!-- view -->
 	<select id="view" resultType="com.doubleu.market.vo.MarketVo" parameterType="int" resultMap="marketList">
 		select * from market where market_no = #{_parameter}
 	</select>
@@ -65,14 +113,7 @@
 		select * from dual		
 	</insert>
 	
-		<insert id="insert_att" parameterType="com.doubleu.market.vo.MarketVo" >
-		INSERT ALL
-		<foreach collection="attlist" item="att">
-			INTO market_files(files_no, market_no, files_sysfile, files_orifile)
-			VALUES (getMarketAttSeq(), ${marketNo}, #{att.sysFile}, #{att.oriFile})
-		</foreach>
-		SELECT * FROM dual
-	</insert>
+
 	
 	
 	

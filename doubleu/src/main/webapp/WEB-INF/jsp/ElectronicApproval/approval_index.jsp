@@ -55,7 +55,7 @@
 					<input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" value="새 결재 진행">
 				</div>
 				<div class="e-approval-approval-list">
-					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=발신된 문서">발신 문서함</a>
+					<a href="#">발신 문서함</a>
 					<ul>	<!-- /WEB-INF/ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함 -->
 						<li><a href="/approvalGoList?findState=(발신)상신">상신한 문서함</a></li>
 						<li><a href="/approvalGoList?findState=(발신)임시저장">임시 저장된 문서</a></li>
@@ -64,11 +64,11 @@
 					</ul>
 				</div>
 				<div class="e-approval-approval-list">
-					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=수신된 문서">수신 문서함</a>					
+					<a href="#">수신 문서함</a>					
 					<ul>
-						<li><a href="/approvalGoList?selectName=(수신)결재예정">결재할 문서</a></li>
-						<li><a href="/approvalGoList?selectName=(수신)승인">승인한 문서</a></li>
-						<li><a href="/approvalGoList?selectName=(수신)반려">반려한 문서</a></li>
+						<li><a href="/approvalGoList?findState=0">결재할 문서</a></li>
+						<li><a href="/approvalGoList?findState=1">승인한 문서</a></li>
+						<li><a href="/approvalGoList?findState=-1">반려한 문서</a></li>
 					</ul>
 				</div>
 			</div>
@@ -79,10 +79,10 @@
 		<!-- 전자결재홈 검색바 code -->
 			<div class="e-approval-search-bar">
 			      	<div class="e-approval-form-box">
-				        <input class="btn btn-outline-primary btn-sm" id="btnFind" type="button" value="검색"/>
-			      		<input class="form-control form-control-sm" name="findStr" value="${param.findStr}" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
+				        <input class="btn btn-outline-primary btn-sm" id="btnApprovalFind" type="button" value="검색"/>
+			      		<input class="form-control form-control-sm" name="findStr" value="${(empty param.findStr)? '':param.findStr}" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 		     			<select id="selectFormType" class="form-control form-control-sm e-approval-select-box">
-							<option value="0"> 결재 양식 유형 </option>
+							<option value=""> 결재 양식 유형 </option>
 							<option value="업무기안"> 업무 기안 </option>
 							<option value="업무협조"> 업무 협조 </option>
 							<option value="품의서"> 품의서 </option>
@@ -92,17 +92,6 @@
 							<option value="지각/결근사유서"> 지각/결근사유서 </option>
 							<option value="지출결의서"> 지각/결근사유서 </option>
 						</select>
-				      	
-				      	<select id="selectFormState" class="form-control form-control-sm e-approval-select-box">
-				      		<option selected> 문서 상태 </option>
-				      		<option value="0"> 진행중인 문서 </option>
-				      		<option value="1"> 임시저장한 문서 </option>
-				      		<option value="2"> 승인된 문서 </option>
-				      		<option value="3"> 반려된 문서 </option>
-				      		<option value="4"> 결재해야할 문서 </option>
-				      		<option value="5"> 승인한 문서 </option>
-				      		<option value="6"> 반려한 문서 </option>
-				      	</select>
 					</div>
 					<!-- hidden 탭 -->
 					<input type="hidden" name="formType" value="">
@@ -110,6 +99,7 @@
 					<input type="hidden" name="formState" value="">
 					<input type="hidden" name="selectFormType" value="">
 					<input type="hidden" name="selectFormState" value="">
+					<input type="hidden" name="findType" value="${(empty param.findType)? '':param.findType}">
 			</div>
 		</c:if>
 			<div>
@@ -117,12 +107,11 @@
 			</div>
 		</main>
 	</section>
-	
 	<!-- 모달창 -->
 	<div>
 		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/modal/insertForm.jsp"></jsp:include>
-		<jsp:include page="/WEB-INF/jsp/ElectronicApproval/modal/approval_decision_modal.jsp"></jsp:include>
 	</div>
+	
 </form>
 <script type="text/javascript">
 funcApproval();

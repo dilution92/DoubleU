@@ -83,7 +83,7 @@
 					    <label for="inputEmail3" class="col-sm-2 col-form-label">❤</label>
 					    
 					    <div class="col-sm-6" style="display: flex;">
-					      <div class="form-control" id="inputEmail3" >23</div>
+					      <div class="form-control" id="inputEmail3" >0</div>
 						</div>
 						
   							<button type="submit"  id="godibModal"class="btn btn-primary mb-2">찜하기</button>
@@ -105,10 +105,38 @@
 				
 				<div class="market-btn-zone">
 					<button class="btn btn-primary" type="button" onclick = "goBack();">목록</button>
-					<button class="btn btn-primary" type="submit" onclick = "goModify(${vo.marketNo});">수정</button>
-					<button class="btn btn-primary" type="submit" id=''>삭제</button>
+					
+					<c:if test="${vo.marketWriter==member.memberName }">
+						<button class="btn btn-primary" type="submit" onclick = "goModify(${vo.marketNo});">수정</button>
+						<button class="btn btn-primary" type="button" id='btnDelmodal' data-toggle="modal" data-target="#delModal">삭제</button>
+					</c:if>
 				</div>
 			 </div>
 </form>			 
+
+	<div class="modal fade" id="delModal" tabindex="-1" aria-labelledby="delModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"
+				style="width: 80%; height: 250px; top: 200px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="btnDelmodal">게시물 삭제</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-dialog modal-sm">정말 삭제하시겠습니까?  </div>
+				<div class="modal-footer">
+        			<button type="button" class="btn btn-primary" id = 'market_btnDel'>네</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">아니오</button>
+				</div>
+			</div>
+		</div>
+
+		
+	</div>
+
+
+
 </body>
 </html>

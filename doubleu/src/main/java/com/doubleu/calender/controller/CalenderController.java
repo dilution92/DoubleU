@@ -35,9 +35,11 @@ public class CalenderController {
 		list = calender.setMonthCalender();
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
-		mv.addObject("list",list);
+		mv.addObject("currentDay", day);
 		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
@@ -55,9 +57,11 @@ public class CalenderController {
 		list = calender.changeMonth(diff);
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
-		mv.addObject("list", list);
+		mv.addObject("currentDay", day);
 		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
@@ -73,9 +77,11 @@ public class CalenderController {
 		list = calender.changeMonthToday();
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
 		mv.addObject("list", list);
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
+		mv.addObject("currentDay", day);
 		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
@@ -91,9 +97,11 @@ public class CalenderController {
 		list = calender.monthSelectedMonth(changedMonth);
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
-		mv.addObject("list", list);
+		mv.addObject("currentDay", day);
 		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
@@ -109,9 +117,11 @@ public class CalenderController {
 		list = calender.monthSelectedYear(changedYear);
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
-		mv.addObject("list", list);
+		mv.addObject("currentDay", day);
 		mv.setViewName("calender/Calender_month");
 		return mv;
 	}
@@ -140,9 +150,11 @@ public class CalenderController {
 		}
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
-		mv.addObject("list", list);
+		mv.addObject("currentDay", day);
 		mv.setViewName("calender/Calender_week");
 		
 		return mv;
@@ -163,9 +175,11 @@ public class CalenderController {
 		}
 		int year = calender.getYear();
 		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
 		mv.addObject("currentYear", year);
 		mv.addObject("currentMonth", month);
-		mv.addObject("list", list);
+		mv.addObject("currentDay", day);
 		mv.setViewName("calender/Calender_week");
 		
 		return mv;
@@ -183,9 +197,11 @@ public class CalenderController {
 				}
 				int year = calender.getYear();
 				int month = calender.getMonth();
+				int day = calender.getDay();
+				mv.addObject("list", list);
 				mv.addObject("currentYear", year);
 				mv.addObject("currentMonth", month);
-				mv.addObject("list", list);
+				mv.addObject("currentDay", day);
 				mv.setViewName("calender/Calender_week");
 				
 				return mv;
@@ -202,9 +218,11 @@ public class CalenderController {
 				list = calender.weekSelectedYear(changedYear);
 				int year = calender.getYear();
 				int month = calender.getMonth();
+				int day = calender.getDay();
+				mv.addObject("list", list);
 				mv.addObject("currentYear", year);
 				mv.addObject("currentMonth", month);
-				mv.addObject("list", list);
+				mv.addObject("currentDay", day);
 				mv.setViewName("calender/Calender_week");
 				return mv;
 			}

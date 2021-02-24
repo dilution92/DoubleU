@@ -46,7 +46,7 @@ public class CreateDesicionMakerService {
 			}
 			decisionMaker.setMakerPosition(makerPosition[i]);
 			decisionMaker.setMakerName(makerName[i]);
-			decisionMaker.setMakerOrder(makerOrder[i]);
+			decisionMaker.setMakerOrder(Integer.parseInt(makerOrder[i]));
 			decisionMaker.setMemberNo(Integer.parseInt(makerNo[i]));
 			decisionMaker.setMakerComment(makerComment);
 			list.add(decisionMaker);

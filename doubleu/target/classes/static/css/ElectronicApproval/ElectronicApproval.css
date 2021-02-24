@@ -6,7 +6,6 @@ body {
 
 * {
 	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 }
 
@@ -357,7 +356,10 @@ body {
 }
 
 .e-approval-form-decision-box-2 td {
-	width: 75px;
+	width: 61px;
+}
+.e-approval-form-decision-box-2 input {
+	padding: 0;
 }
 
 .e-approval-form-table-3 th{
@@ -543,7 +545,13 @@ body {
 	text-decoration: none;
 } 
 
-
-
+.chooseMaker-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+.chooseMaker-header > a {
+	display: inline-block;
+}
 
 

@@ -24,13 +24,25 @@ public class SelectOutgoingService {
 		LoginVo memberVo = (LoginVo) session.getAttribute("member");
 		IndexPage page = new IndexPage();
 		int memberNo = memberVo.getMemberNo();
-		String findStr = " ";
 		int nowOutgoingPage = 1;
+		String findStr = "";
+		String findType = "";
+
+		
+		if(req.getParameter("findStr") != null) {
+			findStr = req.getParameter("findStr");
+		}
+		if(req.getParameter("findType") != null) {
+			findType = req.getParameter("findType");
+		}
 		if(req.getParameter("nowOutgoingPage") != null) {
 			nowOutgoingPage = Integer.parseInt(req.getParameter("nowOutgoingPage"));
 		}
-		System.out.println("nowOutgoingPage: " + nowOutgoingPage);
+		
 		System.out.println("findStr: "+ findStr);
+		System.out.println("findType: "+ findType);
+		page.setFindStr(findStr);
+		page.setFindType(findType);
 		page.setMemberNo(memberNo);
 		page.setNowPage(nowOutgoingPage);
 		map = dao.selectOutgoing(page);
