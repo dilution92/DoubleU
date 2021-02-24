@@ -39,7 +39,7 @@
 		INSERT ALL
 		<foreach collection="attlist" item="att">
 			INTO market_files(files_no, market_no, files_sysfile, files_orifile)
-			VALUES (getMarketAttSeq(), ${marketNo}, #{att.sysFile}, #{att.oriFile})
+			VALUES (getMarketAttSeq(), ${marketNo}, #{att.sysFile, jdbcType=VARCHAR}, #{att.oriFile})
 		</foreach>
 		SELECT * FROM dual
 	</insert>

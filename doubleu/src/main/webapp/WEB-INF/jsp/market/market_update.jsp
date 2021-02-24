@@ -94,7 +94,7 @@
 				 <label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
 				  <div class="col-sm-8" style="display : inline-block;">
 			   		<div class="custom-file">
-					  <input type="file" class="custom-file-input" id="attList" name="attList" onchange="previewImage(this,'View_area')" multiple='multiple'>
+					  <input type="file" class="custom-file-input" id="attList" name="attList" onchange="previewImage(this,'View_area')" multiple='multiple' >
 					  <label class="custom-file-label" for="customFile">Choose file</label>
 					</div>
 					<div id='View_area' class='View_area' style="display:flex;" >

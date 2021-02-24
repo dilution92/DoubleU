@@ -143,7 +143,7 @@ public class MarketDao {
 					System.out.println("사진삭제작업중...");
 					cnt = mapper.deleteAtt(vo);
 					if(cnt<1) throw new Exception("첨부 파일 삭제중 오류 발생"); 
-					//delFile(vo.getDelFiles());
+					delFile(vo.getDelFiles());
 				}
 			}else {
 				throw new Exception("수정중 오류 발생");
