@@ -1,13 +1,26 @@
 package com.doubleu.notice.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doubleu.notice.service.FamilyeventService;
+import com.doubleu.notice.service.NoticeService;
+import com.doubleu.notice.vo.FamilyeventVo;
+
 @Controller
 public class NoticeURLController {
    
+	@Autowired
+	NoticeService service1;
+	
+	@Autowired
+	FamilyeventService service2;
+	
    // notice_index.jsp
    @RequestMapping(value = "/noticeIndex", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView noticeIndex(){
@@ -36,6 +49,8 @@ public class NoticeURLController {
    @RequestMapping(value = "/familyeventIndex", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView familyeventIndex(){
       ModelAndView mv = new ModelAndView();
+      List<FamilyeventVo> contentList = service2.select();
+      mv.addObject("contentList", contentList);
       mv.setViewName("/notice/familyevent_index");
       return mv;
    }
