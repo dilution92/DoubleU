@@ -162,6 +162,7 @@ public class ApprovalDao {
 	public Map<String, Object> selectMember(IndexPage page) {
 		Map<String,Object> map = new HashMap<>();
 		List<MemberVo> list = new ArrayList<>();
+		System.out.println("찾을 부서");
 		int memberTotalListSize = mapper.memberTotalListSize(page);
 		page.setTotalListSize(memberTotalListSize);
 		page.pageCompute();

@@ -36,6 +36,7 @@ public class SelectMemberService {
 		page.setNowPage(nowPage);
 		page.setFindStr(findStr);
 		page.setFindType(findType);
+		System.out.println(findType);
 		map = dao.selectMember(page);
 		
 		return map;
