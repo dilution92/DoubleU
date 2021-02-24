@@ -69,13 +69,13 @@
 									<td height="80px;" style="padding-top: 28px;">
 										<c:choose>
 											<c:when test="${makerVo.decisionState == '1' }">
-													<h6 class="text-primary" style="font-weight: bold; font-size: 1.1em;">결재승인</h6>
+													<h6 class="text-primary" style="font-weight: bold; font-size: 1em;">결재승인</h6>
 											</c:when>
 											<c:when test="${makerVo.decisionState == '0' }">
-												<h6 class="text-muted" style="font-weight: bold; font-size: 1.1em;">결재대기</h6>
+												<h6 class="text-muted" style="font-weight: bold; font-size: 1em;">결재대기</h6>
 											</c:when>
 											<c:when test="${makerVo.decisionState == '-1' }">
-												<h6 class="text-warning" style="font-weight: bold; font-size: 1.1em;">결재반려</h6>
+												<h6 class="text-warning" style="font-weight: bold; font-size: 1em;">결재반려</h6>
 											</c:when>
 										</c:choose>
 										<input type="hidden" value="${makerVo.memberNo }">

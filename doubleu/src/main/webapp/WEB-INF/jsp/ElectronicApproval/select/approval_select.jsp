@@ -114,19 +114,18 @@
 									</c:when>
 								</c:choose>
 								<c:choose>
-									<c:when test="${receiverVo.decisionState== '0'}">
+									<c:when test="${receiverVo.decisionState == '0'}">
 										<td><span class="badge badge-success">결재대기</span></td>	
 									</c:when>
-									<c:when test="${receiverVo.decisionState== '1'}">
+									<c:when test="${receiverVo.decisionState == '1'}">
 										<td><span class="badge badge-primary">결재승인</span>	</td>
 									</c:when>
-									<c:when test="${receiverVo.decisionState== '-1'}">
+									<c:when test="${receiverVo.decisionState == '-1'}">
 										<td><span class="badge badge-warning">결재반려</span></td>	
 									</c:when>
 								</c:choose>
 								
 							</tr>
-							<c:set var= "no" value="${no+1 }"></c:set>
 						</c:forEach>
 					</tbody>
 				</table>

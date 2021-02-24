@@ -55,7 +55,7 @@
 					<input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" value="새 결재 진행">
 				</div>
 				<div class="e-approval-approval-list">
-					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=발신된 문서">발신 문서함</a>
+					<a href="#">발신 문서함</a>
 					<ul>	<!-- /WEB-INF/ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=상신한 문서함 -->
 						<li><a href="/approvalGoList?findState=(발신)상신">상신한 문서함</a></li>
 						<li><a href="/approvalGoList?findState=(발신)임시저장">임시 저장된 문서</a></li>
@@ -64,7 +64,7 @@
 					</ul>
 				</div>
 				<div class="e-approval-approval-list">
-					<a href="ElectronicApproval/E_Approval_home.jsp?mainJob=E_Approval_select_choose.jsp&selectName=수신된 문서">수신 문서함</a>					
+					<a href="#">수신 문서함</a>					
 					<ul>
 						<li><a href="/approvalGoList?findState=0">결재할 문서</a></li>
 						<li><a href="/approvalGoList?findState=1">승인한 문서</a></li>

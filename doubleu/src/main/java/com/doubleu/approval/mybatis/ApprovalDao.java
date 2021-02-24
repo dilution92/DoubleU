@@ -90,8 +90,8 @@ public class ApprovalDao {
 		FormVo formVo = new FormVo();
 		List<DecisionMakerVo> makerList = new ArrayList<>();
 		List<AttFileVo> attList = new ArrayList<>();
-		
 		formVo = mapper.selectView(vo);
+		System.out.println("문서번호 : " + formVo.getFormNo());
 		makerList = mapper.selectDecisionMaker(formVo.getFormNo());
 		attList = mapper.selectAttFile(formVo.getFormNo());
 		
