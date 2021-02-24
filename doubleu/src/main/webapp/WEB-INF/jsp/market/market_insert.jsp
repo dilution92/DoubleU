@@ -49,7 +49,7 @@
 				<div class="form-group row">
 		   		 <label for="marketWriter" class="col-sm-2 col-form-label  is-invalid">작성자</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control "  name="marketWriter"required disabled value="김재현">
+				      <input type="text" class="form-control "  name="marketWriter"required readonly value="김재현">
 <%-- 				      <input type="text" class="form-control "  name="marketWriter"required disabled value="${member.memberName }"> --%>
 				    </div>
 				  </div>
@@ -132,7 +132,7 @@
 				</div>
 				<!-- hidden -->
 				<input type="hidden" name="marketHit" value = "1">
-				<input type="hidden" name="marketWriter" value = "${member.memberName }">
+<%-- 				<input type="hidden" name="marketWriter" value = "${member.memberName }"> --%>
 			</form>
 			</div>
 

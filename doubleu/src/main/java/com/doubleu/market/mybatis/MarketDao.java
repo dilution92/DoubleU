@@ -158,12 +158,38 @@ public class MarketDao {
 
 
 	public String delete(MarketVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+			String msg = "게시물이 삭제되었습니다.";
+			List<MarketAttVo> attList = null;
+			try {
+				attList = mapper.selectAtt(vo.getMarketNo());
+				mapper.deleteAttNo(vo.getMarketNo());
+				int cnt = mapper.delete(vo);
+				if(cnt>0) {
+					msg = "삭제완료";
+					delFile(attList);
+				
+					
+				}else {
+					throw new Exception("게시물 삭제중 오류 발생");
+				}
+
+			} catch (Exception ex) {
+				msg = ex.getMessage();
+			} finally {
+				return msg;
+			}
+		}
+
+
+	public void delFile(List<MarketAttVo> delList) {
+		System.out.println("delFile");
+		for(MarketAttVo v : delList) {
+			System.out.println(v.getOriFile());
+			File f = new File(MarketUploadController.saveDir + v.getOriFile());
+			if(f.exists()) f.delete();
+		}
 	}
-
-
-
+	
 
 	
 	
