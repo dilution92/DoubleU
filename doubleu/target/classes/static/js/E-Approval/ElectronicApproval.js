@@ -135,6 +135,7 @@ function checkFormData() {
 		
 		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
 		frm.decisionMakerCnt.value = decisionMakerCnt;
+		alert(frm.decisionMakerCnt.value)
 		if(decisionMakerCnt > 0) {
 				var makerPosition = new Array();
 				var makerName = new Array();
@@ -569,7 +570,7 @@ function append(zone, boxCnt) {
 	
 	var tdSign= document.createElement("td");
 	tdSign.setAttribute("height", "80px;");
-	tdSign.setAttribute("width", "75px;");
+	tdSign.setAttribute("width", "80px;");
 	
 	
 	var aSign= document.createElement("input");
@@ -582,7 +583,7 @@ function append(zone, boxCnt) {
 	aSign.onclick = function() {   
 		var winWidth = "500";
 		var winHeight = "600";
-		var url = '/approvalSelectMember';
+		var url = '/approvalInsertDecisionMakers';
 		
 		var winLeft = Math.ceil((window.screen.width - winWidth)/2);
 		var winTop = Math.ceil((window.screen.height- winHeight)/2);
@@ -821,10 +822,18 @@ function receiverPage(page) {
 }
 
 function goMemberPage(page) {
-	var frm = document.frmMember;
-	frm.nowPage.value = page;
-	frm.action= "/approvalSelectMember";
-	frm.submit();
+	var frm = $('#frmMember');
+	document.frmMember.nowPage.value = page;
+	var temp = $(frm).serialize();
+	$.ajax({
+		url: '/approvalSelectMember',
+		data: temp,
+		dataType : 'html',
+		method : 'post',
+		success : function(data) {
+			$('#ajax_content').html(data)
+		}
+	})
 }
 function updateChooseMaker() {
 	var winWidth = "500";
@@ -834,9 +843,9 @@ function updateChooseMaker() {
 	
 	var winLeft = Math.ceil((window.screen.width - winWidth)/2);
 	var winTop = Math.ceil((window.screen.height- winHeight)/2);
-	var win = window.open('/approvalSelectMember', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
+	var win = window.open('/approval_insert_decisionMakers', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
 
-	win.onbeforeunload = function(){TempMakerPosition
+	win.onbeforeunload = function(){
 		$(ele).parent().parent().prev().children().children().val($('#TempMakerPosition').val());
 		$(ele).parent().parent().next().children().children().val($('#TempMakerName').val());
 		$(ele).next().next().next().val($('#TempMakerName').val());
@@ -856,3 +865,22 @@ function goFormList(formType) {
 	frm.action='/approvalGoFormType';
 	frm.submit();
 }
+
+function selectAllMember() {
+	var frm = $('#frmMember');
+	document.frmMember.nowPage.value = 1;
+	document.frmMember.findStr.value = '';
+	document.frmMember.findType.value = '';
+	
+	var temp = $(frm).serialize();
+	$.ajax({
+		url: '/approvalSelectMember',
+		data: temp,
+		dataType : 'html',
+		method : 'post',
+		success : function(data) {
+			$('#ajax_content').html(data)
+		}
+	})
+}
+

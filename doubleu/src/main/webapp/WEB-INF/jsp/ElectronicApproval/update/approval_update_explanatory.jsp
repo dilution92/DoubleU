@@ -67,8 +67,8 @@
 			                     <td height="80px;">
 			                        <input id="makerSignBtn" name="makerSignBtn1"  type="button" value="직원조회" onclick="updateChooseMaker()">
 			                        <input id="makerDelBtn" type="button" value="x" onclick="deleteChooseMaker()">
-			                        <input type="hidden" name="makerOrder" val="${makerVo.makerOrder }">
-			                        <input type="hidden" name="makerNo" val="${makerVo.memberNo }">
+			                        <input type="hidden" name="makerOrder" value="${makerVo.makerOrder }">
+			                        <input type="hidden" name="makerNo" value="${makerVo.memberNo }">
 			                     </td>
 							</tr>
 							<tr>

@@ -88,7 +88,7 @@
                 	</thead>
 					<tbody class="e-approval-list text-muted">
 	                		<c:forEach var='obj' items="${contentList }">
-	                    		<tr>
+	                    		<tr onClick="location.href='/familyeventView?no=${obj.familyeventNo }'">
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventNo }</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventType }</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.familyeventSubject }</td>

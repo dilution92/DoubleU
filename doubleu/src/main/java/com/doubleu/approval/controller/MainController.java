@@ -360,22 +360,20 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/approvalSelectMember")
+	@RequestMapping(value = "/approvalInsertDecisionMakers")
 	public ModelAndView newPage(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> map;
-		System.out.println(req.getParameter("findStr"));
 		map = selectMemberService.selectMember(req);
 		mv.addObject("page", map.get("page"));
 		mv.addObject("list", map.get("list"));
 		mv.setViewName("ElectronicApproval/insert/approval_insert_decisionMakers");
 		return mv;
 	}
-	@RequestMapping(value = "/approvalSelectMember2")
+	@RequestMapping(value = "/approvalSelectMember")
 	public ModelAndView newPage2(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> map;
-		System.out.println(req.getParameter("findStr"));
 		map = selectMemberService.selectMember(req);
 		mv.addObject("page", map.get("page"));
 		mv.addObject("list", map.get("list"));

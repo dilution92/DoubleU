@@ -19,4 +19,13 @@
 		]]>
 	</select>
 	
+	<select id="view" parameterType="Int" resultType="com.doubleu.notice.vo.FamilyeventVo">
+		<![CDATA[
+			select *
+			from FAMILYEVENT
+			where familyeventNo = ${_parameter}
+		]]>
+	
+	</select>
+	
 </mapper>

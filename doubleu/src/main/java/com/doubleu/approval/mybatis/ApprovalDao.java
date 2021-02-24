@@ -90,8 +90,8 @@ public class ApprovalDao {
 		FormVo formVo = new FormVo();
 		List<DecisionMakerVo> makerList = new ArrayList<>();
 		List<AttFileVo> attList = new ArrayList<>();
-		
 		formVo = mapper.selectView(vo);
+		System.out.println("문서번호 : " + formVo.getFormNo());
 		makerList = mapper.selectDecisionMaker(formVo.getFormNo());
 		attList = mapper.selectAttFile(formVo.getFormNo());
 		
@@ -162,6 +162,7 @@ public class ApprovalDao {
 	public Map<String, Object> selectMember(IndexPage page) {
 		Map<String,Object> map = new HashMap<>();
 		List<MemberVo> list = new ArrayList<>();
+		System.out.println("찾을 부서");
 		int memberTotalListSize = mapper.memberTotalListSize(page);
 		page.setTotalListSize(memberTotalListSize);
 		page.pageCompute();

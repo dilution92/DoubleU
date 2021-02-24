@@ -83,7 +83,7 @@
 					    <label for="inputEmail3" class="col-sm-2 col-form-label">❤</label>
 					    
 					    <div class="col-sm-6" style="display: flex;">
-					      <div class="form-control" id="inputEmail3" >23</div>
+					      <div class="form-control" id="inputEmail3" >0</div>
 						</div>
 						
   							<button type="submit"  id="godibModal"class="btn btn-primary mb-2">찜하기</button>
@@ -105,8 +105,11 @@
 				
 				<div class="market-btn-zone">
 					<button class="btn btn-primary" type="button" onclick = "goBack();">목록</button>
-					<button class="btn btn-primary" type="submit" onclick = "goModify(${vo.marketNo});">수정</button>
-					<button class="btn btn-primary" type="button" id='btnDelmodal' data-toggle="modal" data-target="#delModal">삭제</button>
+					
+					<c:if test="${vo.marketWriter==member.memberName }">
+						<button class="btn btn-primary" type="submit" onclick = "goModify(${vo.marketNo});">수정</button>
+						<button class="btn btn-primary" type="button" id='btnDelmodal' data-toggle="modal" data-target="#delModal">삭제</button>
+					</c:if>
 				</div>
 			 </div>
 </form>			 

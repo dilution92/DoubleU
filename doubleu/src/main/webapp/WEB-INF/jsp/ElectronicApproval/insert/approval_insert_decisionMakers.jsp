@@ -41,75 +41,23 @@
 	<div class="chooseMaker-container">
 		<header class="chooseMaker-header">
 			<h4>직원 조회</h4>
+			<a href="#" onclick="selectAllMember()">전체 조회</a>
 		</header>
 		<hr>
-		<div id=""></div>
 		<section class="chooseMaker-main">
 			<div class="chooseMaker-search">
-				<select name="makerPosition" class="form-control form-control-sm e-approval-chooseMaker-select">
-				<option value=""> 직급 선택 </option>
-				<option value="전무">전무</option>
-				<option value="상무">상무</option>
-				<option value="이사">이사</option>
-				<option value="부장">부장</option>
-				<option value="차장">차장</option>
-				<option value="과장">과장</option>
-				<option value="대리">대리</option>
-				<option value="주임">주임</option>
-				<option value="사원">사원</option>
+				<select id="makerPosition" class="form-control form-control-sm e-approval-chooseMaker-select">
+				<option value=""> 부서 선택 </option>
+				<option value="it기술부">it기술부</option>
+				<option value="영업부">영업부</option>
+				<option value="관리부">관리부</option>
 				</select>
-				<input type="text" value="" name="findStr" class="form-control form-control-sm e-approval-chooseMaker-input">
-				<input type="button" value="검색" id="btnSelectMaker" class="btn btn-outline-primary btn-sm ">
-				<input type="hidden" value="${(empty param.nowPage) ? 1: param.nowPage}" name="nowPage">
+				<input type="text" value="${param.findStr }" name="findStr" onkeyup="enterKey()" class="form-control form-control-sm e-approval-chooseMaker-input">
+				<input type="button" value="검색" id="btnSelectMaker" class="btn btn-outline-primary btn-sm">
+				<input type="hidden" value="${(empty param.nowPage)? 1: param.nowPage}" name="nowPage">
+				<input type="hidden" value="${param.findType }" name="findType">
 			</div>
-			<div>
-			<div class="chooseMaker-table">
-				<table class="table table-hover table-sm">
-					<thead class="e-approval-list text-muted text-gray-dark">
-						<tr>
-							<th scope="col" width="100px;"> 부서 </th>
-							<th scope="col"> 이름 </th>
-							<th scope="col" width="100px;"> 직급 </th>
-						</tr>
-					</thead>
-					<tbody class="e-approval-list text-muted">
-						 <c:forEach var="vo" items="${list }"> 
-							<tr onclick="chooseMaker('${vo.memberNo}','${vo.memberPosition}','${vo.memberName}')">
-								<td> ${vo.memberDepartment } </td>
-								<td> ${vo.memberName } </td>
-								<td> ${vo.memberPosition } </td> 
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(1)" >first</a></li>
-						<c:choose>
-							<c:when test="${page.startPage > 1}">
-								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${page.startPage-1})">&lt;</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${page.startPage})">&lt;</a></li>
-							</c:otherwise>
-						</c:choose>
-						<c:forEach var="i" begin="${page.startPage}" end="${page.endPage }">
-							<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${i})">${i}</a></li>
-						</c:forEach>
-						<c:choose>
-							<c:when test="${page.endPage >  page.totPage}">
-								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${page.endPage+1})">&gt;</a></li>
-							</c:when>
-							<c:otherwise>
-								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${page.totPage})">&gt;</a></li>
-							</c:otherwise>
-						</c:choose>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${page.totPage})">last</a></li>
-					</ul>
-				</nav>
-			</div>
+			<div id="ajax_content">
 			</div>
 		</section>
 	</div>
@@ -119,6 +67,9 @@
 
 
 <script type="text/javascript">
+$(document).ready(function() {
+	$('#ajax_content').load('/approvalSelectMember');
+})
 function chooseMaker(memberNo, memberPosition, memberName) {
 	var makerName = memberName;
 	var makerPosition = memberPosition;
@@ -131,8 +82,9 @@ function chooseMaker(memberNo, memberPosition, memberName) {
 
 $('#btnSelectMaker').on('click', function() {
 	var frm = $('#frmMember');
+	document.frmMember.findType.value = $('#makerPosition option:selected').val();
+	
 	var param = $(frm).serialize();
-	alert(param)
 	$.ajax({
 		url: '/approvalSelectMember',
 		data: param,
@@ -143,6 +95,33 @@ $('#btnSelectMaker').on('click', function() {
 		}
 	})
 })
+function noEvent() {
+if (event.keyCode == 116) {
+event.keyCode= 2;
+return false;
+}
+else if(event.ctrlKey && (event.keyCode==78 || event.keyCode == 82))
+{
+return false;
+}
+if(window.event.keyCode == 13) {
+	var frm = $('#frmMember');
+	document.frmMember.findType.value = $('#makerPosition option:selected').val();
+	
+	var param = $(frm).serialize();
+	$.ajax({
+		url: '/approvalSelectMember',
+		data: param,
+		dataType : 'html',
+		method : 'post',
+		success : function(data) {
+			$('#ajax_content').html(data)
+		}
+	})
+	return false
+}
+}
+document.onkeydown = noEvent;
 
 </script>
 </body>

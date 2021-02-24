@@ -63,11 +63,4 @@ public class NoticeURLController {
       return mv;
    }
    
-   // familyevent_view.jsp
-   @RequestMapping(value = "/familyeventView", method = {RequestMethod.POST, RequestMethod.GET})
-   public ModelAndView familyeventView(){
-      ModelAndView mv = new ModelAndView();
-      mv.setViewName("/notice/familyevent_view");
-      return mv;
-   }
 }

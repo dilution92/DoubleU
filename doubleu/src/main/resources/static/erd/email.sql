@@ -16,7 +16,8 @@ DROP TABLE email_files;
 CREATE TABLE email
 (
   email_no NUMBER ,
-  email_mid VARCHAR(20),
+  member_no NUMBER,
+  member_mid VARCHAR(20),
   email_address VARCHAR(200),
   email_name VARCHAR(100),
   email_title VARCHAR(300),
@@ -64,7 +65,8 @@ select * from email;
 
 INSERT ALL
 INTO email VALUES(
-    email_main_seq.nextval, 
+    email_main_seq.nextval,
+    1, 
     'song', 
     'song@gmail.com', 
     '송연주', 

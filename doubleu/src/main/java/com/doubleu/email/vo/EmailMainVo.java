@@ -4,9 +4,9 @@ import java.sql.Date;
 import java.util.List;
 
 public class EmailMainVo {
-	
 	int emailNo;
-	String emailMid;
+	int memberNo;
+	String memberMid;
 	String emailAddress;
 	String emailName;
 	String emailTitle;
@@ -20,14 +20,6 @@ public class EmailMainVo {
 	List<EmailReceiverVo> emailRevList; // 받은 사람, 참조
 	List<EmailMainVo> emailReadList; // 메일 읽기
 
-	@Override
-	public String toString() {
-		return "EmailMainVo [emailNo=" + emailNo + ", emailMid=" + emailMid + ", emailAddress=" + emailAddress
-				+ ", emailName=" + emailName + ", emailTitle=" + emailTitle + ", emailDate=" + emailDate
-				+ ", emailContents=" + emailContents + ", emailMailBox=" + emailMailBox + ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + ", attFileList=" + attFileList
-				+ ", emailRevList=" + emailRevList + "]";
-	}
-	
 	
 	public int getEmailNo() {
 		return emailNo;
@@ -35,11 +27,17 @@ public class EmailMainVo {
 	public void setEmailNo(int emailNo) {
 		this.emailNo = emailNo;
 	}
-	public String getEmailMid() {
-		return emailMid;
+	public int getMemberNo() {
+		return memberNo;
 	}
-	public void setEmailMid(String emailMid) {
-		this.emailMid = emailMid;
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+	public String getMemberMid() {
+		return memberMid;
+	}
+	public void setMemberMid(String memberMid) {
+		this.memberMid = memberMid;
 	}
 	public String getEmailAddress() {
 		return emailAddress;
@@ -77,7 +75,6 @@ public class EmailMainVo {
 	public void setEmailMailBox(int emailMailBox) {
 		this.emailMailBox = emailMailBox;
 	}
-	
 	public String getEmailChk() {
 		return emailChk;
 	}
@@ -90,28 +87,32 @@ public class EmailMainVo {
 	public void setEmailDelete(int emailDelete) {
 		this.emailDelete = emailDelete;
 	}
-	
 	public List<AttEmailVo> getAttFileList() {
 		return attFileList;
 	}
-	
 	public void setAttFileList(List<AttEmailVo> attFileList) {
 		this.attFileList = attFileList;
 	}
-	
 	public List<EmailReceiverVo> getEmailRevList() {
 		return emailRevList;
 	}
 	public void setEmailRevList(List<EmailReceiverVo> emailRevList) {
 		this.emailRevList = emailRevList;
 	}
-	
 	public List<EmailMainVo> getEmailReadList() {
 		return emailReadList;
 	}
 	public void setEmailReadList(List<EmailMainVo> emailReadList) {
 		this.emailReadList = emailReadList;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "EmailMainVo [emailNo=" + emailNo + ", memberNo=" + memberNo + ", memberMid=" + memberMid
+				+ ", emailAddress=" + emailAddress + ", emailName=" + emailName + ", emailTitle=" + emailTitle
+				+ ", emailDate=" + emailDate + ", emailContents=" + emailContents + ", emailMailBox=" + emailMailBox
+				+ ", emailChk=" + emailChk + ", emailDelete=" + emailDelete + ", attFileList=" + attFileList
+				+ ", emailRevList=" + emailRevList + ", emailReadList=" + emailReadList + "]";
+	}
 	
 }
