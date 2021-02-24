@@ -27,6 +27,7 @@ import com.doubleu.approval.service.SelectMemberService;
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectReceiverService;
 import com.doubleu.approval.service.SelectViewService;
+import com.doubleu.approval.service.UpdateService;
 import com.doubleu.approval.service.UploadService;
 import com.doubleu.approval.vo.AttFileVo;
 import com.doubleu.approval.vo.DecisionMakerVo;
@@ -51,11 +52,14 @@ public class MainController {
 	@Autowired
 	SelectViewService viewService;
 	@Autowired
-	SelectFormType CheckFormType;  
+	SelectFormType checkFormType;  
 	@Autowired
 	SelectMemberService selectMemberService;
 	@Autowired
 	SelectReceiverService selectReceiverService; 
+	@Autowired
+	UpdateService updateService;
+	
 	//indexPage select
 	@RequestMapping(value = "/approvalIndex")
 	public ModelAndView mainHeader(HttpServletRequest req, HttpSession session) {
@@ -72,6 +76,9 @@ public class MainController {
 		Map<String, Object> receiverMap = selectReceiverService.selectReceiver(req, session);
 		mv.addObject("receiverList", receiverMap.get("list"));
 		mv.addObject("receiverPage", receiverMap.get("page"));
+		
+		//문서 별 결재 여부 표시
+		/* List<DecisionMakerVo> makerVo = */
 		
 		/* Map<String, Object> receptionMap = service.receptionSelect(page); */
 		mv.addObject("mainJob", mainJob);
@@ -178,7 +185,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/approvalGoList")
-	public ModelAndView goList(HttpServletRequest req, HttpSession session ) {
+	public ModelAndView goList(HttpServletRequest req, HttpSession session) {
 		System.out.println("approvalGoList.....................(start)");
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> selectChooseMap = null;
@@ -207,16 +214,19 @@ public class MainController {
 			listName = "반려된 문서";
 			mv.addObject("listName", listName);
 			break;
-		case "(수신)결재예정" :
+		case "0" :
 			listName = "결재할 문서";
+			selectChooseMap = chooseService.selectRecevier(req);
 			mv.addObject("listName", listName);
 			break;
-		case "(수신)승인" :
+		case "1" :
 			listName = "승인한 문서";
+			selectChooseMap = chooseService.selectRecevier(req);
 			mv.addObject("listName", listName);
 			break;
-		case "(수신)반려" :
+		case "-1" :
 			listName = "반려한 문서";
+			selectChooseMap = chooseService.selectRecevier(req);
 			mv.addObject("listName", listName);
 			break;
 		}
@@ -238,7 +248,7 @@ public class MainController {
 		
 		makerVo = viewService.selectMaker(req);
 		FormVo vo = viewService.select(req);
-		formMap = CheckFormType.checkFormType(vo);
+		formMap = checkFormType.checkFormType(vo);
 		vo = (FormVo) (formMap.get("convertVo"));
 		
 		System.out.println("일시" + vo.getEventDate());
@@ -255,6 +265,8 @@ public class MainController {
 	
 	@RequestMapping(value = "/approvalUpdate", method = {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView goUpdate(HttpServletRequest req) {
+		Map<String,Object> map = new HashMap<>();
+		
 		ModelAndView mv = new ModelAndView();
 		int formNo = Integer.parseInt(req.getParameter("formNo"));
 		String formType = req.getParameter("formType");
@@ -265,6 +277,7 @@ public class MainController {
 		String mainJob = null;
 
 		FormVo vo = viewService.select(req);
+		map = checkFormType.checkFormTypeUpdate(vo);
 		
 		switch(formType) {
 		case "업무기안" : 
@@ -301,8 +314,10 @@ public class MainController {
 			mv.addObject("mainJob", mainJob);
 			break;
 		}
-		mv.addObject("vo", vo);
+		mv.addObject("vo", map.get("convertVo"));
+		mv.addObject("mainJob", map.get("mainJob"));
 		mv.setViewName("/ElectronicApproval/approval_index");
+		System.out.println("업데이트 페이지 조회");
 		return mv;
 	}
 	
@@ -349,11 +364,22 @@ public class MainController {
 	public ModelAndView newPage(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, Object> map;
-		
+		System.out.println(req.getParameter("findStr"));
 		map = selectMemberService.selectMember(req);
 		mv.addObject("page", map.get("page"));
 		mv.addObject("list", map.get("list"));
-		mv.setViewName("ElectronicApproval/insert/approval_choose_decisionMakers");
+		mv.setViewName("ElectronicApproval/insert/approval_insert_decisionMakers");
+		return mv;
+	}
+	@RequestMapping(value = "/approvalSelectMember2")
+	public ModelAndView newPage2(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, Object> map;
+		System.out.println(req.getParameter("findStr"));
+		map = selectMemberService.selectMember(req);
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("list"));
+		mv.setViewName("ElectronicApproval/insert/approval_select_member");
 		return mv;
 	}
 	
@@ -381,6 +407,21 @@ public class MainController {
 		
 		mv.setViewName("redirect:/approvalIndex");
 		System.out.println("approvalDeleteForm메소드 종료...");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/updateDecisionState", method = {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView updateDecisionState(DecisionMakerVo makerVo) {
+		ModelAndView mv = new ModelAndView();
+		String msg = "정상적으로 등록되었습니다.";
+		System.out.println("결재 여부: " + makerVo.getDecisionState());
+		System.out.println("상세 사유: " + makerVo.getMakerComment());
+		System.out.println("직원 번호: " + makerVo.getMemberNo());
+		System.out.println("문서 번호: " + makerVo.getFormNo());
+		
+		msg = updateService.updateDecisionState(makerVo);
+		
+		mv.setViewName("redirect:/approvalIndex");
 		return mv;
 	}
 }

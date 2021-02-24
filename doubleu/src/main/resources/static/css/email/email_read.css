@@ -261,10 +261,13 @@ body {
 
 
 .emailSendContentsRev > .revEmail{
+	
 	border: 1px solid #E5E5E5;
-	max-height: 300px;
+	height: 100px;
 	padding: 5px;
 	margin: 0 auto;
+	overflow: scroll;
+	overflow-x:hidden;
 	
 }
 
@@ -320,6 +323,7 @@ body {
 /* 제목 */
 
 .emailSendContentsHeader div:nth-child(3) {
+	margin-top: 10px;
 	padding: 0px;
 	width: 720px;
 } 
@@ -409,4 +413,94 @@ body {
 .send-read-contents::-webkit-scrollbar-button {
   width: 0;
   height: 0;
+}
+
+
+
+/*----------21.02.23 추가---------------------*/
+
+
+
+/* 받는 사람스크롤 바 */
+.revEmail::-webkit-scrollbar {
+  width: 6px;
+}
+.revEmail::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.revEmail::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+.revEmail::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+
+.emailSendContentsRev > .revEmail > input{
+	display: inline-block;
+	font-size: 10px;
+	margin: 5px 20px;
+	text-align: center;
+	
+} 
+
+/* 참조 */
+.emailSendContentsRef {
+	margin-top : 10px;
+
+}
+
+.emailSendContentsRef div:nth-child(1)> label {
+	position: absolute;
+	top: -80px;
+}
+
+.emailSendContentsRef > .rev-to-me > input {
+	line-height: 2;
+} 
+
+	
+.emailSendContentsRef > .revRef{
+	border: 1px solid #E5E5E5;
+	height: 100px;
+	padding: 5px;
+	margin: 0 auto;
+	overflow: scroll;
+	overflow-x:hidden;
+}
+
+/* 참조 스크롤 바 */
+
+.revRef::-webkit-scrollbar {
+  width: 6px;
+}
+.revRef::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.revRef::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: gray;
+}
+.revRef::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+
+.emailSendContentsRef > .revRef > input{
+	display: inline-block;
+	font-size: 10px;
+	margin: 5px 20px;
+	text-align: center;
+} 
+
+
+/* 내용 너비 */
+
+.email-contents {
+	width: 900px;
+	display: block;
+	text-align: center;
 }

@@ -1,5 +1,8 @@
 package com.doubleu.calender.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -21,6 +24,12 @@ public class CalenderServiceImpl implements CalenderService {
 		int cnt = mapper.insert(vo);
 		System.out.println("service 종료");
 		return msg;
+	}
+
+	@Override
+	public List<CalenderVo> selectList() {
+		List<CalenderVo> cList = new ArrayList<>();
+		return cList;
 	}
 	
 	

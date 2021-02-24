@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.email.vo.AttEmailVo;
 import com.doubleu.email.vo.EmailMainVo;
+import com.doubleu.email.vo.EmailReceiverVo;
 
 @Service
 @Transactional
@@ -49,6 +50,21 @@ public class EmailDao {
 	}
 	
 	
+	// 1.1 보낸 사람, 제목, 기간
+	public List<EmailMainVo> selectSearchName(
+			String findName, 
+			String findContents, 
+			String findDate
+			) {
+		
+		List<EmailMainVo> list = mapper.selectSearchDetail(
+				findName, findContents, findDate);
+		System.out.println(list);
+		
+		return list;
+		
+	}
+	
 	// 메일 보내기
 	public int insertSendWrite(EmailMainVo vo) {
 		
@@ -74,5 +90,23 @@ public class EmailDao {
 		
 		return list;
 	}
+
+	public List<EmailReceiverVo> selectSendPerson(int emailNo) {
+		List<EmailReceiverVo> list = mapper.selectSendPerson(emailNo);
+		System.out.println("selectSend : " + list);
+		
+		return list;
+
+	}
+
+	public List<EmailReceiverVo> selectRefPerson(int emailNo) {
+		List<EmailReceiverVo> list = mapper.selectRefPerson(emailNo);
+		System.out.println("selectRefPerson : " + list);
+		
+		return list;
+	}
+	
+	
+	
 	
 }

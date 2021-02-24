@@ -151,7 +151,7 @@ emailSelectSearch = function() {
 };
 
 
-// 8. 
+// 8. goView()
 var goView =  function(EmailNo) {
 	var frm = document.emailForm;
 	frm.emailNo.value = EmailNo;
@@ -160,4 +160,27 @@ var goView =  function(EmailNo) {
 	
 	frm.action = '/emailRead';
 	frm.submit();
+}
+
+
+// 9. 상세보기 검색
+
+
+var btnSearchDetail = function() {
+	var btn = document.querySelector('#searchBtn');
+
+	btn.onclick = function() {
+
+		var searchSend = document.querySelector('#searchSend')
+		var searchReceive = document.querySelector('#searchReceive');
+		var searchContents = document.querySelector('#searchContents');
+		var searchDateOne = document.querySelector('#searchDateOne');
+		var searchDateTwo = document.querySelector('#searchDateTwo')
+		
+		var frm = document.emailForm
+
+		frm.action = "/detail";
+		frm.submit();
+
+	}
 }

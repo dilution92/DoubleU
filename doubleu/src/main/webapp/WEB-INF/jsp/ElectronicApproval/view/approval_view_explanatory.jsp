@@ -69,13 +69,13 @@
 									<td height="80px;" style="padding-top: 28px;">
 										<c:choose>
 											<c:when test="${makerVo.decisionState == '1' }">
-												<h6><span class="badge badge-pill badge-primary">결재승인</span></h6>
+													<h6 class="text-primary" style="font-weight: bold; font-size: 1.1em;">결재승인</h6>
 											</c:when>
 											<c:when test="${makerVo.decisionState == '0' }">
-												<h6><span class="badge badge-pill badge-dark">결재대기</span></h6>
+												<h6 class="text-muted" style="font-weight: bold; font-size: 1.1em;">결재대기</h6>
 											</c:when>
-											<c:when test="${makerVo.decisionState == '2' }">
-												<h6><span class="badge badge-pill badge-primary">결재반려</span></h6>
+											<c:when test="${makerVo.decisionState == '-1' }">
+												<h6 class="text-warning" style="font-weight: bold; font-size: 1.1em;">결재반려</h6>
 											</c:when>
 										</c:choose>
 										<input type="hidden" value="${makerVo.memberNo }">
@@ -129,6 +129,25 @@
 						</td>
 					</tr>
 				</table>
+				<hr>
+				<div class="e-approval-reason">
+					<h6 style="font-size: 1.2em; font-weight: bold">결재 사유</h6>
+					<c:forEach var="makerVo" items="${vo.decisionMakersList }">
+						<c:choose>
+							<c:when test="${makerVo.decisionState == '1'}">
+								<span style="font-size: 1em; font-weight: bold;">&nbsp; ${makerVo.makerName}</span>
+								<span style="color: #007bff; font-weight: bold">(승인)</span>
+								<textarea rows="4" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px; margin-top: 0.6em; padding: 0.3em;">${makerVo.makerComment}</textarea>
+							</c:when>
+							<c:when test="${makerVo.decisionState == '-1'}">
+								<span style="font-size: 1em; font-weight: bold;">&nbsp; ${makerVo.makerName}</span>
+								<span style="color: #ffc107; font-weight: bold">(반려)</span>
+								<textarea rows="4" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px; margin-top: 0.6em; padding: 0.3em;">${makerVo.makerComment}</textarea>
+							</c:when>
+						</c:choose>					
+					</c:forEach>
+				</div>
+				<hr>
 			</div>
 			<hr style="margin-right: -3em; margin-left: -3em;">
 			<div class="e-approval-work-btns">

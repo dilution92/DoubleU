@@ -45,7 +45,7 @@
 		<main>
 			<div class="e-approval-form-workType-container">
 				<div class="e-approval-form-workType-title">
-					<h4 style="font-weight: bold">${formName}</h4>
+					<h4 style="font-weight: bold">${vo.formType}</h4>
 				</div>
 				
 				<div class="e-approval-form-workType-top">
@@ -53,11 +53,11 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> <input type="text" name="drafterName" value="정해준" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
+									<td> <input type="text" name="drafterName" value="${vo.drafterName }" class="form-control form-control-sm" style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center;"> </td>
 								</tr>
 								<tr>
 									<th>소속 </th>
-									<td> <input type="text" name="drafterDepartment" value="기획부" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
+									<td> <input type="text" name="drafterDepartment" value="${vo.drafterDepartment }" class="form-control form-control-sm"  style="font-size: 1em; padding: 0; border: none; height: 100%; text-align: center"> </td>
 								</tr>
 								<tr>
 									<th>기안일 </th>
@@ -65,7 +65,7 @@
 								</tr>
 								<tr>
 									<th>문서번호</th>
-									<td>  </td>
+									<td> ${vo.formNo } </td>
 								</tr>
 						</table>
 					</div>
@@ -102,20 +102,20 @@
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
 						<th> 품의 목적 </th>
-						<td width="350px;"> <input type="text" name="formPurpose" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<td width="350px;"> <input type="text" name="formPurpose" value="${vo.formPetitionVo.formPurpose}" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 						<th> 예산 </th>
-						<td> <input type="text" name="budget" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<td> <input type="text" name="budget" value="${vo.formPetitionVo.budget }"  class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 					</tr>
 					<tr>
 						<th> 제목 </th>
 						<td colspan="3" align="left" style="">
-						<input type="text" name="formTitle" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required>
+						<input type="text" name="formTitle" value="${vo.formTitle }" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력해주세요." required>
 						</td>
 					</tr>
 					<tr>
 						<th style="line-height: 400px; padding: 0;"> 상세 내역 </th>
 						<td colspan="3" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" name="formDoc" style=" font-size:1em; height: 100%; overflow: auto;" ></textarea>
+							<textarea class="form-control" name="formDoc" style=" font-size:1em; height: 100%; overflow: auto;" >${vo.formDoc }</textarea>
 						</td>
 					</tr>		
 					<tr>

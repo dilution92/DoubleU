@@ -69,13 +69,13 @@
 									<td height="80px;" width="75px" style="padding-top: 28px;">
 										<c:choose>
 											<c:when test="${makerVo.decisionState == '1' }">
-												<h6><span class="badge badge-pill badge-primary">결재승인</span></h6>
+													<h6 class="text-primary" style="font-weight: bold; font-size: 1.1em;">결재승인</h6>
 											</c:when>
 											<c:when test="${makerVo.decisionState == '0' }">
-												<h6><span class="badge badge-pill badge-dark">결재대기</span></h6>
+												<h6 class="text-muted" style="font-weight: bold; font-size: 1.1em;">결재대기</h6>
 											</c:when>
-											<c:when test="${makerVo.decisionState == '2' }">
-												<h6><span class="badge badge-pill badge-primary">결재반려</span></h6>
+											<c:when test="${makerVo.decisionState == '-1' }">
+												<h6 class="text-warning" style="font-weight: bold; font-size: 1.1em;">결재반려</h6>
 											</c:when>
 										</c:choose>
 										<input type="hidden" value="${makerVo.memberNo }">
@@ -130,10 +130,20 @@
 				<hr>
 				<div class="e-approval-reason">
 					<h6 style="font-size: 1.2em; font-weight: bold">결재 사유</h6>
-					<span style="font-size: 1em; font-weight: bold;">&nbsp; 정해준 사원</span> <span style="color: #007bff; font-weight: bold">(승인)</span>
-						<textarea rows="4" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px; margin-top: 0.6em; padding: 0.3em;"> 일단 승인하며, 자세한 사항은 출장 복귀 후에 보고 바랍니다.</textarea>
-					<span style="font-size: 1em; font-weight: bold">&nbsp; 정희석 대표 </span> <span style="color: #ffc107; font-weight: bold">(반려)</span>
-						<textarea rows="4" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px; margin-top: 0.6em; padding: 0.3em;"> 자네, 결재란 잘못 입력했네. </textarea>
+					<c:forEach var="makerVo" items="${vo.decisionMakersList }">
+						<c:choose>
+							<c:when test="${makerVo.decisionState == '1'}">
+								<span style="font-size: 1em; font-weight: bold;">&nbsp; ${makerVo.makerName}</span>
+								<span style="color: #007bff; font-weight: bold">(승인)</span>
+								<textarea rows="4" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px; margin-top: 0.6em; padding: 0.3em;">${makerVo.makerComment}</textarea>
+							</c:when>
+							<c:when test="${makerVo.decisionState == '-1'}">
+								<span style="font-size: 1em; font-weight: bold;">&nbsp; ${makerVo.makerName}</span>
+								<span style="color: #ffc107; font-weight: bold">(반려)</span>
+								<textarea rows="4" style="width: 100%; border: 1px solid #dee2e6; border-radius: 5px; margin-top: 0.6em; padding: 0.3em;">${makerVo.makerComment}</textarea>
+							</c:when>
+						</c:choose>					
+					</c:forEach>
 				</div>
 				<hr>
 				

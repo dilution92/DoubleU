@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.doubleu.email.vo.AttEmailVo;
 import com.doubleu.email.vo.EmailMainVo;
+import com.doubleu.email.vo.EmailReceiverVo;
 
 @Repository
 @Mapper
@@ -17,4 +18,7 @@ public interface EmailMapper {
 	public List<EmailMainVo> selectFindStr(String findStr);
 	public List<EmailMainVo> selectEmailNo(int emailNo);
 	public List<AttEmailVo> selectFiles(int emailNo);
+	public List<EmailMainVo> selectSearchDetail(String findName, String findContents, String findDate);
+	public List<EmailReceiverVo> selectSendPerson(int emailNo);
+	public List<EmailReceiverVo> selectRefPerson(int emailNo);
 }
