@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="com.doubleu.calender.service.Calender"%>
+<%@page import="com.doubleu.calender.service.CalenderService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
@@ -96,12 +96,13 @@
 			</c:if>
 			
 			
-			<td id="calender_content" class="${list.month}${list.day}"><!-- 월간 달력 한칸 -->
+			<td id="calender_content" class="${list.dateId}"><!-- 월간 달력 한칸 -->
 				<div ><!-- 날자가 표시 될 곳 -->
 				${list.day}
 				</div>
 				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
 					여기에 일정이 표시
+					${list.vo.getCalenderContent() }
 				</div>
 				<div><!-- 단기 일정이 표시 될 곳 -->
 				
@@ -155,9 +156,16 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
+	var year = $("#year").val();
 	var month = $("#monthcome").val();
+	if(month<10){
+		month = "0"+month;
+	}
 	var day = $("#daycome").val();
-	var targetToday = document.getElementsByClassName(month+day)[0];
+	if(day<10){
+		day = "0"+day;
+	}
+	var targetToday = document.getElementsByClassName(year+month+day)[0];
 	targetToday.style.border="5px skyblue solid";
 })
 
