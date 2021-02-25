@@ -121,9 +121,13 @@ public class EmailDao {
 	public Map<String, Object> selectPaging(
 			EmailPage page, HttpSession session, LoginVo loginVo) {
 
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+		
 		System.out.println(page.getNowPage());
 		System.out.println(page.getFindStr());
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<EmailMainVo> pageList = null;
 
@@ -142,8 +146,25 @@ public class EmailDao {
 		map.put("page", page);
 		map.put("pageList", pageList);
 
+		
 		return map;
 
+	}
+
+	// 임시저장
+	public int insertTemporary(
+			EmailMainVo vo, HttpSession session, LoginVo loginVo) {
+		
+		loginVo = (LoginVo) session.getAttribute("member");
+		String memberMid = loginVo.getMemberMid();
+		int memberNo = loginVo.getMemberNo();
+
+		vo.setMemberMid(memberMid);
+		vo.setMemberNo(memberNo);
+		
+		int cnt = mapper.insertTemporary(vo);
+		System.out.println("임시 저장 cnt : " + cnt);
+		return cnt;
 	}
 
 }

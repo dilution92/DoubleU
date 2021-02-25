@@ -1,6 +1,6 @@
 package com.doubleu.profile.vo;
 
-public class MemberVo {
+public class ProfileVo {
 	int memberNo;
 	String memberMid;
 	String memberPwd;
@@ -78,14 +78,6 @@ public class MemberVo {
 	}
 	public void setMemberPosition(String memberPosition) {
 		this.memberPosition = memberPosition;
-	}
-	@Override
-	public String toString() {
-		return "LoginVo [memberNo=" + memberNo + ", memberMid=" + memberMid + ", memberPwd=" + memberPwd
-				+ ", memberName=" + memberName + ", memberEmail=" + memberEmail + ", memberDepartment="
-				+ memberDepartment + ", memberTeam=" + memberTeam + ", memberPhoneNumber=" + memberPhoneNumber
-				+ ", memberZipcode=" + memberZipcode + ", memberAddress=" + memberAddress + ", memberPosition="
-				+ memberPosition + "]";
 	}
 	
 }

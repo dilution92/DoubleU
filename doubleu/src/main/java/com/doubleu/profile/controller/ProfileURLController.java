@@ -1,6 +1,5 @@
 package com.doubleu.profile.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,31 +9,51 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.profile.service.ProfileService;
-import com.doubleu.profile.vo.MemberVo;
+import com.doubleu.profile.service.VacationService;
+import com.doubleu.profile.vo.ProfileVo;
 
 
 @Controller
 public class ProfileURLController {
-   
+
 	@Autowired
-	ProfileService service;
-	
-   // profile.jsp
-   @RequestMapping(value = "/profileIndex", method = {RequestMethod.GET, RequestMethod.POST})
-   public ModelAndView profileIndex(MemberVo vo){
-      ModelAndView mv = new ModelAndView();
-      List<MemberVo> pList = new ArrayList<MemberVo>();
-      pList=service.selectList();
-      mv.setViewName("member/profile");
-      return mv;
-   }
-   
-   @RequestMapping(value = "/organizationIndex", method = {RequestMethod.POST, RequestMethod.GET}  )
-	public ModelAndView organizationIndex() {
+	ProfileService service1;
+
+	/*
+	 * @Autowired VacationService service2;
+	 */
+
+	//profile_index.jsp
+	@RequestMapping(value = "/profileIndex", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView profileIndex(){
 		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("member/organization");
-
+		List<ProfileVo> contentList = service1.select();
+		mv.addObject("contentList", contentList);
+		mv.setViewName("/member/profile_index");
 		return mv;
 	}
+	//organization.jsp
+		@RequestMapping(value = "/organizationIndex", method = {RequestMethod.POST, RequestMethod.GET}) 
+		public ModelAndView organizationIndex(){ 
+			ModelAndView mv = new ModelAndView(); 
+			mv.setViewName("/member/organization"); 
+			return mv; 
+		}
+		
+	//vacationStatus.jsp
+	@RequestMapping(value = "/vacationIndex", method = {RequestMethod.POST, RequestMethod.GET}) 
+	public ModelAndView vacationIndex(){ 
+		ModelAndView mv = new ModelAndView(); 
+		mv.setViewName("/member/vacationStatus"); 
+		return mv; 
+	}
+	
+	//workStatus.jsp
+		@RequestMapping(value = "/workIndex", method = {RequestMethod.POST, RequestMethod.GET}) 
+		public ModelAndView workIndex(){ 
+			ModelAndView mv = new ModelAndView(); 
+			mv.setViewName("/member/workStatus"); 
+			return mv; 
+		}
+
 }

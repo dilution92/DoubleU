@@ -21,13 +21,14 @@ CREATE TABLE email
   email_address VARCHAR(200),
   email_name VARCHAR(100),
   email_title VARCHAR(300),
-  email_date date,
+  email_date tempstamp,
   email_contents CLOB,
   email_mailbox NUMBER DEFAULT 3,
   email_chk CHAR(4),
   email_delete NUMBER DEFAULT 0,
 
 CONSTRAINT email_main_pk PRIMARY KEY (email_no)
+CONSTRAINT email_main_fk FOREIGN KEY (member_no) REFERENCES member (member_no)
 
 );
 
@@ -71,7 +72,7 @@ INTO email VALUES(
     'song@gmail.com', 
     '송연주', 
     '안녕하세요 프론트 작업 중입니다.', 
-    sysdate, 
+    systempsdate, 
     '내용', 
     DEFAULT, 
     '', 
@@ -97,5 +98,16 @@ SELECT * FROM dual;
 
  */
 
+
+
+-- 시퀀스 함수
+CREATE OR REPLACE FUNCTION emailMainSeq 
+RETURN NUMBER 
+IS
+    seq NUMBER;
+BEGIN
+    SELECT EMAIL_MAIN_SEQ.nextval INTO seq FROM dual;
+    RETURN seq;
+END;
 
 commit;

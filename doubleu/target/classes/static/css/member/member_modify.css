@@ -4,3 +4,29 @@ input{
 	padding : 4px;
 	margin-bottom : 6px;
 }
+
+/* e-approval-table CSS */
+.e-approval-table {
+	width: 100%;	
+}
+.e-approval-table > strong {
+	display: inline-block;
+	font-size: 0.9em;
+	margin-bottom: 0.5em;
+}
+
+.e-approval-list {
+	font-size: 0.8em;
+}
+
+.e-approval-list > tr > td:nth-child(4){
+	color:red;
+}
+
+.e-approval-list td:hover {
+	cursor: pointer;
+}
+
+.e-approval-list tr {
+	text-align: center;
+}

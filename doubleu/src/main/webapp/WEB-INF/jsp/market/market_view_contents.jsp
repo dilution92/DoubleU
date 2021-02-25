@@ -12,19 +12,19 @@
 </head>
 <body>
 <form name="frm_market_view" method="get">
-<table  class="table table-striped market-view-table">
+<table  class="table table-striped market-view-table" id="market_table">
 			  <thead>
 			    <tr >
 			      <th scope="col" style="background-color:#f1f2f4;">카테고리</th>
-			      <th scope="col" >${vo.marketCategory }</th>
+			      <td scope="col" >${vo.marketCategory }</td>
 			      <th scope="col" style="background-color:#f1f2f4;">날짜</th>
-			      <th scope="col" >${vo.marketDate}</th>
+			      <td scope="col" >${vo.marketDate}</td>
 			    </tr>
 			    <tr >
 			      <th scope="col"style="background-color:#f1f2f4;">작성자</th>
-			      <th scope="col" >${vo.marketWriter}</th>
+			      <td scope="col" style="border-bottom: 1px solid #dee2e6;">${vo.marketWriter}</td>
 			      <th scope="col" style="background-color:#f1f2f4;">조회수</th>
-			      <th scope="col" >23</th>
+			      <td scope="col" style="border-bottom: 1px solid #dee2e6;">23</td>
 			    </tr>
 			  </thead>
 			  
@@ -137,6 +137,6 @@
 	</div>
 
 
-
+<script>date()</script>
 </body>
 </html>

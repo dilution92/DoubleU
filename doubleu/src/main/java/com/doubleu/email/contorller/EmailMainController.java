@@ -67,11 +67,6 @@ public class EmailMainController {
 		int cnt = DaoService.selectSendEmail(memberMid);	
 	
 		// 페이징
-		if(page ==null || page.getNowPage()==0) {
-			page.setNowPage(1);
-		}
-
-		
 		Map<String, Object> map = DaoService.selectPaging(page, session, loginVo);
 		
 		mv.addObject("page", map.get("page"));
@@ -102,10 +97,6 @@ public class EmailMainController {
 		
 		String findStr = req.getParameter("emailFindStr");
 		page.setFindStr(findStr);
-		
-		if(page ==null || page.getNowPage()==0) {
-			page.setNowPage(1);
-		}
 		
 		Map<String, Object> map = DaoService.selectPaging(page, session, loginVo);
 		
@@ -143,9 +134,6 @@ public class EmailMainController {
 		List<EmailReceiverVo> emailRevList = emailReveiverService.insertRev(req);
 		vo.setEmailRevList(emailRevList);
 
-	
-		
-		
 		// 중요 표시 체크
 		String emailChk = req.getParameter("emailChk");
 
@@ -204,7 +192,9 @@ public class EmailMainController {
 
 	
 	// email_write.jsp
-	@RequestMapping(value="/emailWrite", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(
+			value="/emailWrite", 
+			method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailWrite(
 			EmailMainVo vo,
 			LoginVo loginVo,
@@ -218,7 +208,53 @@ public class EmailMainController {
 		vo.setMemberMid(memberMid);
 		
 		int cnt = DaoService.selectSendEmail(memberMid);	
+		
+		int tempCnt = DaoService.insertTemporary(vo, session, loginVo);
+		System.out.println(tempCnt);
+		
+		mv.addObject("readCnt", cnt);
+		mv.setViewName("email/email_write");
+
+		return mv;
+	}
 	
+	
+	// 임시저장
+	@RequestMapping(
+			value="/emailTemp", 
+			method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView emailTemp(
+			EmailMainVo vo,
+			LoginVo loginVo,
+			HttpServletRequest req,
+			HttpSession session
+			) {
+		
+		
+		ModelAndView mv = new ModelAndView();
+
+		loginVo = (LoginVo) session.getAttribute("member");	
+		String memberMid = loginVo.getMemberMid();
+		int memberNo = loginVo.getMemberNo();
+		
+		vo.setMemberMid(memberMid);
+		vo.setMemberNo(memberNo);
+		
+		System.out.println("테스트 ----------" + vo);
+		
+		String emailTitle = req.getParameter("emailTitle");
+		
+		if(emailTitle == null || emailTitle.equals("")) {
+			emailTitle = "제목없음";
+		}
+		
+		int cnt = DaoService.selectSendEmail(memberMid);	
+		
+		
+		int tempCnt = DaoService.insertTemporary(vo, session, loginVo);
+		System.out.println(tempCnt);
+		
+		mv.addObject("title", emailTitle);
 		mv.addObject("readCnt", cnt);
 		mv.setViewName("email/email_write");
 
