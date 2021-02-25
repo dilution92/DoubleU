@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.notice.service.FamilyeventService;
@@ -63,4 +64,13 @@ public class NoticeURLController {
       return mv;
    }
    
+   // familyevent_update
+   @RequestMapping(value = "/familyeventUpdate", method = {RequestMethod.POST, RequestMethod.GET})
+   public ModelAndView familyeventUpdate(@RequestParam int no){
+      ModelAndView mv = new ModelAndView();
+	  FamilyeventVo vo = service2.view(no);
+	  mv.addObject("obj", vo);
+      mv.setViewName("/notice/familyevent_update");
+      return mv;
+   }
 }

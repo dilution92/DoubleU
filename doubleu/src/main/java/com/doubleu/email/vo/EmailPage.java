@@ -14,8 +14,8 @@ public class EmailPage {
 	int startNo;
 	int endNo; 
 	int nowPage;
-	int listSize = 10;
-	int blockSize = 5;
+	int listSize = 8;
+	int blockSize = 3;
 	
 	String memberMid;
 	String findStr;

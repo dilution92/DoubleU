@@ -193,16 +193,15 @@
 
 							<div class="form-group col-sm-7">
 								<input type="email" class="form-control" name="emailTitle"
-									id="exampleFormControlInput1"
-									value="백엔드 작업중입니다. 테스트 부탁드립니다. 안녕하세요."
-									placeholder="백엔드 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
+									id="emailTitleId"
+									value="백엔드 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
 							</div>
 
 
 						</div>
 
 						<!-- 내용 -->
-						<textarea name="emailContents" id="summernote" value=""></textarea>
+						<textarea name="emailContents" id="summernote" ></textarea>
 
 
 
@@ -226,6 +225,9 @@
 							<button type="button" onclick="location.href='/emailIndex'" class="btn btn-primary btn-sm">취소하기</button>
 						</div>
 					</div>
+					
+					
+					<!-- hidden -->
 				</form>
 			</div>
 		</main>

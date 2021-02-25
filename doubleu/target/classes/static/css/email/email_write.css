@@ -349,11 +349,11 @@ body {
 /* 임시 저장 */
 
 .modalTemporaryEmail{
-    height: 380px;
+    height: 400px;
 }
 
 .modalTemporaryEmailFolder {
-    padding: 30px;
+    padding: 50px;
     margin: 15px auto;
 }
 
@@ -433,7 +433,7 @@ body {
 .search-btn {
 	width: 800px;
 	display: flex;
-	margin: 30px auto;
+	margin: 30px 0;
 }
 
 .search-btn-address {

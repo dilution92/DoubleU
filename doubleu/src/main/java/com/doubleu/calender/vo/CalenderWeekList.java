@@ -1,5 +1,8 @@
 package com.doubleu.calender.vo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CalenderWeekList {
 	String week;
 	int day;
@@ -7,23 +10,54 @@ public class CalenderWeekList {
 	int year;
 	String time;
 	String minute;
-	String dateId;
-	String timeId;
 	
-	CalenderVo vo; 
+	List<CalenderVo> vo; 
+	
+	// 컨텐츠 표시를 위한 멤버필드
+	int dateIdN;
+	int timeIdN;
+	List<Integer> period; // 표시기간 ListVo랑 index가 일치
+	
 	
 	
 	
 	public CalenderWeekList() {
-		vo = new CalenderVo();
+		vo = new ArrayList<>();
+		period = new ArrayList<>();
 	}
 	
-	public CalenderVo getVo() {
+	public List<Integer> getPeriod() {
+		return period;
+	}
+
+	public void setPeriod(int i) {
+		period.add(i);
+	}
+
+	public int getDateIdN() {
+		return dateIdN;
+	}
+
+	public void setDateIdN(int dateIdN) {
+		this.dateIdN = dateIdN;
+	}
+
+	public int getTimeIdN() {
+		return timeIdN;
+	}
+
+	public void setTimeIdN(int timeIdN) {
+		this.timeIdN = timeIdN;
+	}
+	
+	public List<CalenderVo> getVo() {
 		return vo;
 	}
-	public void setVo(CalenderVo vo) {
-		this.vo = vo;
+
+	public void setVo(CalenderVo o) {
+		vo.add(o);
 	}
+
 	public String getTime() {
 		return time;
 	}
@@ -35,18 +69,6 @@ public class CalenderWeekList {
 	}
 	public void setMinute(String minute) {
 		this.minute = minute;
-	}
-	public String getDateId() {
-		return dateId;
-	}
-	public void setDateId(String id) {
-		dateId = id;
-	}
-	public String getTimeId() {
-		return timeId;
-	}
-	public void setTimeId(String timeId) {
-		timeId = timeId;
 	}
 	
 	public int getMonth() {
@@ -73,6 +95,7 @@ public class CalenderWeekList {
 	public void setDay(int day) {
 		this.day = day;
 	}
+
 	
 	
 }
