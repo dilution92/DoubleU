@@ -22,11 +22,9 @@ public class UploadService {
 	    for(MultipartFile m : mul) {
 	    	if(m.getOriginalFilename() != "") {
 	    	File oriFile = new File(saveDir + m.getOriginalFilename());
-	    	System.out.println(oriFile.toString());
-	    	
+	    	System.out.println("oriFile : " +oriFile);
 	    	//file upload
 	    	m.transferTo(oriFile); //사용자가 선택한 파일을 서버어떤공간으로 transfer
-	   
 	    	AttFileVo vo = new AttFileVo();
 	    	vo.setOriFile(m.getOriginalFilename());
 	    
@@ -38,4 +36,7 @@ public class UploadService {
 		}
 		return attList;
 		}
+	
+	
+	public String upload
 	}
