@@ -15,13 +15,10 @@ import com.doubleu.email.vo.EmailReceiverVo;
 @Repository
 @Mapper
 public interface EmailMapper {
-	// 메인 페이지
-	public List<EmailMainVo> selectSendRead(String memberMid);
+	/*select*/
 	
-    // 메일 쓰기
-	public int insertSendWrite(EmailMainVo vo);
-	public int selectSendEmail();
-	public List<EmailMainVo> selectFindStr(String findStr);
+	// 메인함 사이드 바
+	public int selectSendEmail(String memberMid);
 	
 	public List<EmailMainVo> selectEmailNo(int emailNo);
 	// 파일 데이터 가져오기
@@ -37,6 +34,8 @@ public interface EmailMapper {
 	//페이지
 	public int totListSizeMain(EmailPage page);
 	public List<EmailMainVo> selectPaging(EmailPage page);
-	public int test(EmailPage page);
 	
+	
+	// 메일 쓰기
+	public int insertSendWrite(EmailMainVo vo);
 }
