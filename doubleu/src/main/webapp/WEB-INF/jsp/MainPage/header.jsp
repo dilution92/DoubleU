@@ -23,7 +23,7 @@
 					<a class="nav-link" href="/MainPage/index.jsp">홈<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="/noticeIndex">게시판</a></li>
-				<li class="nav-item"><a class="nav-link" href="/member/organization.jsp">주소록</a></li>
+				<li class="nav-item"><a class="nav-link" href="/profileIndex">주소록</a></li>
 				<li class="nav-item"><a class="nav-link" href="/calenderMonth">캘린더</a></li>
 				<li class="nav-item"><a class="nav-link" href="/emailIndex">메일함</a></li>
 				<li class="nav-item"><a class="nav-link" href="/approvalIndex?memberNo=${member.memberName }">전자결재</a></li>
@@ -38,7 +38,7 @@
 						<span class="navbar-toggler-icon"></span>
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="left:-100px;">
-						<a class="dropdown-item  " href="/member/modify.jsp">정보 수정</a>
+						<a class="dropdown-item  " href="/memberModifyIndex">정보 수정</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item  " href="/loginOut">로그아웃</a>
 					</div>
