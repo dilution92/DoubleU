@@ -100,8 +100,8 @@
 				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
 				            <td>
 					            <select class="form-control" id="exampleFormControlSelect4" name="familyeventType">
-							      <option class="familyevent-icon" id="결혼" selected>&#xf1fd 결혼</option>
-							      <option class="familyevent-icon">&#xf5b4 부고</option>
+							      <option id="결혼"> 결혼</option>
+							      <option> 부고</option>
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>

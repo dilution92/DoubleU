@@ -135,7 +135,6 @@ function checkFormData() {
 		
 		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
 		frm.decisionMakerCnt.value = decisionMakerCnt;
-		alert(frm.decisionMakerCnt.value)
 		if(decisionMakerCnt > 0) {
 				var makerPosition = new Array();
 				var makerName = new Array();
@@ -151,7 +150,6 @@ function checkFormData() {
 			frm.makerNameArr.value = makerName;		
 			frm.makerOrderArr.value = makerOrder;
 			frm.makerNoArr.value = makerNo;
-			alert(makerNo);
 		}
 		else {
 			alert("결재란을 작성해주세요.");
@@ -168,7 +166,6 @@ function checkFormData() {
 		if(frm.formType.value == '휴가신청서') {
 			frm.vacationType.value = $('#selectVacationType option:selected').val(); 
 			if(frm.vacationType.value == '반차') {
-				alert('asd');
 				frm.startDate.value = frm.halfDate.value;
 				frm.endDate.value = frm.halfDate.value;
 				frm.halfDayType.value = $('input:radio[name=halfTimeType]:checked').val();
@@ -632,7 +629,6 @@ function append(zone, boxCnt) {
 	delBtn.setAttribute("type", "button");
 	delBtn.setAttribute("value", "x");
 	delBtn.onclick = function(ev) {
-		alert(zone.childNodes.length);
 		if(zone.childNodes.length <= 2) {
 			return;
 		}
@@ -689,7 +685,7 @@ function chooseVacationType() {
 		$("input[name=halfTimeType]").eq(0).attr('disabled', 'disabled');
 		$("input[name=halfTimeType]").eq(1).attr('disabled', 'disabled');
 		$("#halfDate").attr('readOnly', 'readOnly');
-		frm.vacationCnt.value = null;
+		frm.vacationCnt.value = 0;
 	}
 }
 
@@ -724,8 +720,8 @@ function appendFile(zone, fileCnt) {
 	createBtn.onclick = function() {
 		var checkId = $('.fileContent:last input[type=file]').attr('id');
 		if(zone.childNodes.length >= 2) {
-			 if(zone.childNodes.length == 5) {
-				alert('최대 4개까지 첨부 가능합니다.');
+			 if(zone.childNodes.length == 11) {
+				alert('최대 10개까지 첨부 가능합니다.');
 				return;
 			}
 		else {
@@ -746,14 +742,16 @@ function appendFile(zone, fileCnt) {
 		else if(zone.childNodes.length >= 6) {
 			ele = event.srcElement;
 			eleParent = ele.parentNode;
-			zone. removeChild(eleParent);
+			eleParentParent = eleParent.parentNode;
+			zone.removeChild(eleParentParent);
 			fileCnt++;
 			appendFile(zone,fileCnt)
 		}
 		else {
 			ele = event.srcElement;
 			eleParent = ele.parentNode;
-			zone. removeChild(eleParent);
+			eleParentParent = eleParent.parentNode;
+			zone.removeChild(eleParentParent);
 		}
 	}
 	divF.appendChild(fileLabel);
@@ -883,4 +881,20 @@ function selectAllMember() {
 		}
 	})
 }
+
+function delFile(sysFile, no) {
+	var frm = document.frmApproval;
+	var checkDelete = confirm("정말로 삭제하시겠습니까?");
+	
+	if(checkDelete) {
+	ele = event.srcElement;
+	eleParent = ele.parentNode;
+	eleParentParent = eleParent.parentNode;
+	var delSysFile = document.getElementsByName('delSysFile')[no];
+	delSysFile.value = sysFile;
+	eleParentParent.removeChild(eleParent);
+	}
+}
+
+
 

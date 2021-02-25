@@ -67,7 +67,7 @@ $(function(){
 /* notice_update 수정하기 모달 이후 submit */
 $(function(){
    $("#noticeUpdate1").click(function(){
-        $('#staticBackdrop').modal();
+        $('#staticBackdrop1').modal();
     });
     
     $("#noticeUpdate2").click(function(){
@@ -77,7 +77,7 @@ $(function(){
 
 $(function(){
    $("#familyevnetUpdate1").click(function(){
-        $('#staticBackdrop').modal();
+        $('#staticBackdrop1').modal();
     });
     
     $("#noticeUpdate2").click(function(){
@@ -96,9 +96,9 @@ $(document).ready(function(){
 
 /* notice_update 분류 값 끌어오기 */
 $(document).ready(function(){
-	if($("#exampleFormControlSelect4").val() == "결혼"){
-   	   $("#r3").attr("selected",true);
-    }else if($("#exampleFormControlSelect4").val() != "결혼"){
-       $("#r4").attr("selected",true);
+	if($("#familyeventTypehidden").val() == "결혼"){
+   	   $("#결혼").attr("selected",true);
+    }else if($("#familyeventTypehidden").val() != "결혼"){
+       $("#부고").attr("selected",true);
     }
 });
