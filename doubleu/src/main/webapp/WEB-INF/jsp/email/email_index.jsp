@@ -95,14 +95,11 @@
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
-			<div>
-			${test }
-			-------------------
-			</div>
 			<div class="test">
 			 테스트 <br>
 			 ${member} <br>
 			 <br>구현 시 DELETE
+			 <input type="text" name="emailMid" value="${member.memberMid }">
 			</div>
 			<!-- 메일 검색바 code -->
 			<div class="e-approval-search-bar">
@@ -110,9 +107,11 @@
 			      	<%--경로 -> ./commonsCode/emailDropDown.jsp --%>
 			      	<jsp:include page="./commonsCode/searchDropDown.jsp"></jsp:include>
 			      	
-			      		<!-- hidden-->
-						<input type="hidden" name="emailNo">
-		 				<input type="text" name="emailMid" value="${member.memberMid }">
+			      		<!-- hidden
+						-->
+		 				<input type="hidden" name="emailNoBtn">
+		 				<input  type="hidden"value='${param.findStr}'name='findStr' >         
+		 				<input type='hidden' name='nowPage' value='${(empty page.nowPage)? 1 : page.nowPage }'/>
 		 		</form>
 			</div>
 			<!-- ========== -->
@@ -126,7 +125,7 @@
 			<!-- 메일함 -->
 			<div class="e-approval-table" >
 				<table class="table table-hover table-sm" id="selectFindStr">
-					<tbody class="e-approval-list text-muted">
+					<tbody class="e-approval-list text-muted">						
 						<c:forEach var="list" items="${list }">
 							<tr>
 								<td><input name="chkBox" class="chkBoxClass" type="checkbox"/></td>
@@ -147,15 +146,24 @@
 			
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
+				<nav aria-label="Page navigation example">  
+						<ul
+						class="pagination pagination-sm text-muted justify-content-center">
+						
+						<c:if test="${page.startPage>1 }">
+							<li class="page-item"><a class="page-link" onclick='goPage(1)'style="font-size: 0.7em">first</a></li>
+							<li class="page-item"><a class="page-link" onclick='goPage(${page.startPage-1})'style="font-size: 0.7em">&lt;</a></li>
+						</c:if>	
+							<c:forEach var='i' begin='${page.startPage }' end='${page.endPage }'>
+								<li class="page-item"><a class="page-link" onclick='goPage(${i})' style="font-size: 0.7em">${i }</a></li>
+							</c:forEach>
+							
+						<c:if test="${page.endPage<page.totPage }">
+							<li class="page-item"><a class="page-link" onclick = 'goPage(${page.endPage+1})'
+								style="font-size: 0.7em">&gt;</a></li>
+							<li class="page-item"><a class="page-link" onclick = 'goPage(${page.totPage})' style="font-size: 0.7em">last</a></li>
+						</c:if>
+						
 					</ul>
 				</nav>
 			</div>

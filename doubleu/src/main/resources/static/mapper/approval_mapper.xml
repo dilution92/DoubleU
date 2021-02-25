@@ -88,9 +88,9 @@
 	<select id="receiverTotalListSize" parameterType="com.doubleu.approval.vo.IndexPage" resultType="int">
 		SELECT count(a.form_no) FROM
 		approval_form a,
-		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1)) b
+		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1, -1)) b
 		<where>
-			 a.form_no = b.form_no AND approval_state != '(발신)임시저장'
+			 a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 		 	<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -108,7 +108,7 @@
 		approval_form a,
 		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1, -1)) b
 		<where>
-			 a.form_no = b.form_no AND approval_state != '(발신)임시저장'
+			 a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 		 	<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -131,7 +131,7 @@
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order = 1) b
 				<where>
-					a.form_no = b.form_no
+					a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 					<if test="findStr != '' and findType == '' ">
 						AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 					</if>
@@ -151,7 +151,7 @@
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = 1) b
 				<where>
-					a.form_no = b.form_no
+					a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 					<if test="findStr != '' and findType == '' ">
 						AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 					</if>
@@ -171,7 +171,7 @@
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = -1) b
 				<where>
-					a.form_no = b.form_no
+					a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 					<if test="findStr != '' and findType == '' ">
 						AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 					</if>
@@ -195,7 +195,7 @@
 			FROM approval_form a,
 			(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order = 1) b
 			<where>
-				a.form_no = b.form_no
+				a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 			<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -212,7 +212,7 @@
 			FROM approval_form a,
 			(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = 1) b
 			<where>
-				a.form_no = b.form_no
+				a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 			<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -229,7 +229,7 @@
 			FROM approval_form a,
 			(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = -1) b
 			<where>
-				a.form_no = b.form_no
+				a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 			<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>

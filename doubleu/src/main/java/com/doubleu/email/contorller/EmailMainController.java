@@ -58,44 +58,60 @@ public class EmailMainController {
 
 		ModelAndView mv = new ModelAndView();
 		
-		// 받은 메일함 count 
-		int cnt = DaoService.selectSendEmail();	
-		
 		// 세션값 가져오기
 		loginVo = (LoginVo) session.getAttribute("member");	
 		String memberMid = loginVo.getMemberMid();
 		vo.setMemberMid(memberMid);
 		
-		List<EmailMainVo> selectSendlist = DaoService.selectSendRead(memberMid);
-		System.out.println(selectSendlist);
+		// 받은 메일함 count 
+		int cnt = DaoService.selectSendEmail(memberMid);	
 	
-		int test = DaoService.totListSizeMain(page, session, loginVo);
-		System.out.println(test);
+		// 페이징
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+
 		
-		// 현재는 0
-		List<EmailMainVo> selectPaginglist = DaoService.selectPaging(page, session, loginVo);
+		Map<String, Object> map = DaoService.selectPaging(page, session, loginVo);
 		
-		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
 		mv.addObject("readCnt", cnt);
-		mv.addObject("list", selectSendlist);
 		mv.setViewName("email/email_index");
 
 		return mv;
 	}
+	
+	
 
 	// 메일 검색 바 내용, email_name 으로 검색
 	@RequestMapping(value="/selectFindStr", 
 			method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView selectFindStr(
 			EmailMainVo vo,
-			HttpServletRequest req) {
+			HttpServletRequest req,
+			EmailPage page,
+			LoginVo loginVo,
+			HttpSession session
+			) {
 
 		ModelAndView mv = new ModelAndView();
 
+		String memberMid = loginVo.getMemberMid();
+		vo.setMemberMid(memberMid);
+		
 		String findStr = req.getParameter("emailFindStr");
-		List<EmailMainVo> selectFindStr = DaoService.selectSearch(findStr);
-
-		mv.addObject("selectFindStr", selectFindStr);
+		page.setFindStr(findStr);
+		
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+		
+		Map<String, Object> map = DaoService.selectPaging(page, session, loginVo);
+		
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("findStrResult", map.get("pageList"));
 		mv.setViewName("email/ajax/email_select_search");
 
 		return mv;
@@ -110,14 +126,26 @@ public class EmailMainController {
 			@RequestParam("attEmailFileList") 
 			List<MultipartFile> mul,
 			@ModelAttribute EmailMainVo vo, 
-			HttpServletRequest req) {
+			HttpServletRequest req,
+			LoginVo loginVo,
+			HttpSession session
+			) {
 
 		ModelAndView mv = new ModelAndView();
 
+		loginVo = (LoginVo) session.getAttribute("member");	
+		String memberMid = loginVo.getMemberMid();
+		int memberNo = loginVo.getMemberNo();
+		vo.setMemberMid(memberMid);
+		vo.setMemberNo(memberNo);
+		
 		// 메일 쓰기 받은 사람
 		List<EmailReceiverVo> emailRevList = emailReveiverService.insertRev(req);
 		vo.setEmailRevList(emailRevList);
 
+	
+		
+		
 		// 중요 표시 체크
 		String emailChk = req.getParameter("emailChk");
 
@@ -156,7 +184,7 @@ public class EmailMainController {
 
 		ModelAndView mv = new ModelAndView();
 
-		String emailNo_ = req.getParameter("emailNo");
+		String emailNo_ = req.getParameter("emailNoBtn");
 		int emailNo = Integer.parseInt(emailNo_);
 
 		System.out.println(emailNo);
@@ -177,11 +205,19 @@ public class EmailMainController {
 	
 	// email_write.jsp
 	@RequestMapping(value="/emailWrite", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView emailWrite() {
+	public ModelAndView emailWrite(
+			EmailMainVo vo,
+			LoginVo loginVo,
+			HttpSession session
+			) {
+	
 		ModelAndView mv = new ModelAndView();
 
+		loginVo = (LoginVo) session.getAttribute("member");	
+		String memberMid = loginVo.getMemberMid();
+		vo.setMemberMid(memberMid);
 		
-		int cnt = DaoService.selectSendEmail();	
+		int cnt = DaoService.selectSendEmail(memberMid);	
 	
 		mv.addObject("readCnt", cnt);
 		mv.setViewName("email/email_write");

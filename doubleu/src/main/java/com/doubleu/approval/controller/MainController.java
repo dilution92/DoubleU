@@ -114,7 +114,8 @@ public class MainController {
 		//첨부파일 
 		List<AttFileVo> attList = uploadService.upload(mul);
 		vo.setAttFileList(attList);
-		
+		System.out.println("파일 여부: " + attList.isEmpty());
+		System.out.println("파일 여부: " + attList.size());
 		//결재 양식이 공통 범위보다 많은 정보를 담아야 할 경우.
 		if(vo.getFormType().equals("품의서") || vo.getFormType().equals("구매품의서")) {
 			System.out.println(petitionVo.getFormPurpose()+"123");

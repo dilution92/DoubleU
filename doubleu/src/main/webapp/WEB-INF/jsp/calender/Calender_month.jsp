@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="com.doubleu.calender.service.Calender"%>
+<%@page import="com.doubleu.calender.service.CalenderService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
@@ -96,16 +96,38 @@
 			</c:if>
 			
 			
-			<td id="calender_content" class="${list.month}${list.day}"><!-- 월간 달력 한칸 -->
+			<td id="calender_content" class="${list.dateIdN}"><!-- 월간 달력 한칸 -->
 				<div ><!-- 날자가 표시 될 곳 -->
 				${list.day}
 				</div>
-				<div class="calender_modal" ><!-- 장기 일정이 표시 될 곳 -->
-					여기에 일정이 표시
-				</div>
-				<div><!-- 단기 일정이 표시 될 곳 -->
 				
-				</div>
+				<c:forEach items="${list.vo }" var="listVo1"> <!-- 일정 타입 -->
+					<input type="text" value="${listVo1.getCalenderType()}" class="insertCalenderType"> 
+				</c:forEach>
+				
+				<c:forEach items="${list.period }" var="listPeriod"> <!-- 장기 일정이 표시 될 곳 -->
+					<input type="hidden" value="${listPeriod}" class="longPeriodCheck">
+				</c:forEach>
+				
+				<c:forEach items="${list.vo }" var="listVo2"> <!-- 장기 일정이 표시 될 곳 -->
+					<div class="calender_modal" >
+						<div class="longPeriod"  style ="display:none">
+							장기 일정
+							${listVo2.getCalenderContent() }
+						</div>
+						
+						
+					</div>
+				</c:forEach>
+				
+				<c:forEach items="${list.vo }" var="listVo3"> <!-- 단기 일정이 표시 될 곳 -->
+					<div class="calender_modal">
+						<div class="shortPeriod" style ="display:none" >
+							단기 일정
+							${listVo3.getCalenderContent() }
+						</div>
+					</div>
+				</c:forEach>
 			</td>
 			<c:if test="${i%7==0 }">
 			</tr>
@@ -155,12 +177,34 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
+	var year = $("#year").val();
 	var month = $("#monthcome").val();
+	if(month<10){
+		month = "0"+month;
+	}
 	var day = $("#daycome").val();
-	var targetToday = document.getElementsByClassName(month+day)[0];
+	if(day<10){
+		day = "0"+day;
+	}
+	var targetToday = document.getElementsByClassName(year+month+day)[0];
 	targetToday.style.border="5px skyblue solid";
 })
 
+$(document).ready(function(){
+	var ictype = $('.insertCalenderType').val();
+	var sp = document.getElementsByClassName("shortPeriod")[0];
+	var lp = document.getElementsByClassName("longPeriod")[0];
+	
+	if( ictype !=null){
+		
+		if(ictype == "장기"){
+			$(".longPeriod").show();
+		}
+		if(ictype == "단기"){
+			$(".shortPeriod").show();
+		}
+	}
+})
 
 /* function changeMonth(){
 	

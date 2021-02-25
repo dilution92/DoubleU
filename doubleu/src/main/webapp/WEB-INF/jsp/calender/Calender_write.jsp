@@ -56,6 +56,8 @@
     				<input type="hidden" name="calenderEndDay">
     				<input type="hidden" name="calenderEndTime">
     				<input type="hidden" name="calenderEndMinute">
+    				
+    				<input type="hidden" name="calenderType" value="">
     				</td>
     			</tr>
     			<tr>
@@ -97,6 +99,66 @@
 <script type="text/javascript">
 $(function(){
 	$("#InsertFormSubmit").click(function(){
+		/* 기간 쪼개기 */
+		var cds = document.getElementsByName("calenderDateStart")[0].value;
+		var cts = document.getElementsByName("calenderTimeStart")[0].value;
+		var cde = document.getElementsByName("calenderDateEnd")[0].value;
+		var cte = document.getElementsByName("calenderTimeEnd")[0].value;
+
+		var cdsList = cds.split('-');
+		var cds1 =  cdsList[0];
+		var cds2 =  cdsList[1];
+		var cds3 =  cdsList[2];
+
+		var ctsList = cts.split(':');
+		var cts1 = ctsList[0];
+		var cts2 = ctsList[1];
+
+		var cdeList = cde.split('-');
+		var cde1 =  cdeList[0];
+		var cde2 =  cdeList[1];
+		var cde3 =  cdeList[2];
+
+		var cteList = cte.split(':');
+		var cte1 = cteList[0];
+		var cte2 = cteList[1];
+
+		document.getElementsByName("calenderStartYear")[0].value = cds1;
+		document.getElementsByName("calenderStartMonth")[0].value = cds2;
+		document.getElementsByName("calenderStartDay")[0].value = cds3;
+
+		document.getElementsByName("calenderStartTime")[0].value = cts1;
+		document.getElementsByName("calenderStartMinute")[0].value = cts2;
+
+		document.getElementsByName("calenderEndYear")[0].value = cde1;
+		document.getElementsByName("calenderEndMonth")[0].value = cde2;
+		document.getElementsByName("calenderEndDay")[0].value = cde3;
+
+		document.getElementsByName("calenderEndTime")[0].value = cte1;
+		document.getElementsByName("calenderEndMinute")[0].value = cte2;
+		
+		
+		var c1 = cde1+cde2+cde3;
+		var c2 = cds1+cds2+cds3;
+		console.log(c1+"c1");
+		console.log(c2+"c2");
+		
+		if(cds!=null){
+			
+			var chkperiod = parseInt(c1)-parseInt(c2);
+			
+			var c3 = parseInt(chkperiod);
+			
+			var v1 = "장기";
+			var v2 = "단기";
+			if(c3>0){
+				document.getElementsByName("calenderType")[0].value = v1;
+			}else{
+				document.getElementsByName("calenderType")[0].value = v2;
+			}
+			
+		}
+		
         $('#Calender_insert_modal').modal();
     });
     
@@ -109,12 +171,6 @@ $(function(){
     })
 })
 
-var cds = document.getElementsByName("calenderDateStart")[0].value;
-var cts = document.getElementsByName("calenderTimeStart")[0].value;
-var cde = document.getElementsByName("calenderDateEnd")[0].value;
-var cte = document.getElementsByName("calenderDateEnd")[0].value;
-
-var cdsList = cds.split('-');
 
 
 </script>

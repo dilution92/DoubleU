@@ -18,6 +18,7 @@
 			calender_end_day,
 			calender_end_time,
 			calender_end_minute,
+			calender_type,
 			calender_subject,
 			calender_content, 
 			calender_place, 
@@ -36,6 +37,7 @@
 			#{calenderEndDay}, 
 			#{calenderEndTime}, 
 			#{calenderEndMinute}, 
+			#{calenderType},
 			#{calenderSubject}, 
 			#{calenderContent}, 
 			#{calenderPlace}, 
@@ -62,6 +64,7 @@
 		<result property="calenderEndDay" column="calender_end_day"/>
 		<result property="calenderEndTime" column="calender_end_time"/>
 		<result property="calenderEndMinute" column="calender_end_minute"/>
+		<result property="calenderType" column="calender_type"/>
 		<result property="calenderSubject" column="calender_subject"/>
 		<result property="calenderContent" column="calender_content"/>
 		<result property="calenderPlace" column="calender_place"/>
