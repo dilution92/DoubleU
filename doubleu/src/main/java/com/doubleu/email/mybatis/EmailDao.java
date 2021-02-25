@@ -1,6 +1,9 @@
 package com.doubleu.email.mybatis;
 
+
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.email.vo.AttEmailVo;
 import com.doubleu.email.vo.EmailMainVo;
+import com.doubleu.email.vo.EmailPage;
 import com.doubleu.email.vo.EmailReceiverVo;
+import com.doubleu.login.vo.LoginVo;
+
 
 @Service
 @Transactional
@@ -22,10 +28,9 @@ public class EmailDao {
 	
 	
 	// 메일 읽기
-	public List<EmailMainVo> selectSendRead() {
+	public List<EmailMainVo> selectSendRead(String memberMid) {
 		
-		List<EmailMainVo> list = mapper.selectSendRead();
-		System.out.println("selectSendRead() : " + list);
+		List<EmailMainVo> list = mapper.selectSendRead(memberMid);
 		
 		return list;
 	}
@@ -91,6 +96,7 @@ public class EmailDao {
 		return list;
 	}
 
+	// 받는 사람
 	public List<EmailReceiverVo> selectSendPerson(int emailNo) {
 		List<EmailReceiverVo> list = mapper.selectSendPerson(emailNo);
 		System.out.println("selectSend : " + list);
@@ -99,6 +105,7 @@ public class EmailDao {
 
 	}
 
+	// 참조
 	public List<EmailReceiverVo> selectRefPerson(int emailNo) {
 		List<EmailReceiverVo> list = mapper.selectRefPerson(emailNo);
 		System.out.println("selectRefPerson : " + list);
@@ -107,6 +114,34 @@ public class EmailDao {
 	}
 	
 	
+	
+	// 페이징 처리
+	public int totListSizeMain(EmailPage page, HttpSession session, LoginVo vo) {
+		
+		vo = (LoginVo) session.getAttribute("member");
+		String memberMid = vo.getMemberMid();
+		page.setMemberMid(memberMid);
+		
+		int totListSize = mapper.totListSizeMain(page);
+		System.out.println(page);
+		
+		page.setTotListSize(totListSize);
+		page.pageCompute();
+		return totListSize;
+		
+	}
+	
+	// 페이징 처리
+	public List<EmailMainVo> selectPaging(EmailPage page, HttpSession session, LoginVo vo) {
+		
+		vo = (LoginVo) session.getAttribute("member");
+		String memberMid = vo.getMemberMid();
+		page.setMemberMid(memberMid);
+		List<EmailMainVo> list = mapper.selectPaging(page);
+		System.out.println("selectP : " + list);
+		
+		return list;
+	}
 	
 	
 }

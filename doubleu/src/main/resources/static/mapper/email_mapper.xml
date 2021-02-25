@@ -6,12 +6,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.doubleu.email.mybatis.EmailMapper">
 	<!-- select -->
-	<select id="selectSendRead" resultMap="getEmailListSelect">
-		SELECT * FROM email ORDER BY email_date DESC
+	<select id="selectSendRead" parameterType="com.doubleu.login.vo.LoginVo"  resultMap="getEmailListSelect">
+		SELECT a.*, b.member_mid 
+			FROM email a, member b
+				WHERE b.member_no = a.member_no
+				AND b.member_mid = #{memberMid}
+				ORDER BY a.email_date ASC
 	</select>
 	
 	<select id="selectSendEmail" resultType="int">
 		SELECT count(email_title) FROM email
+	</select>
+
+
+	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.email.vo.EmailPage">
+		SELECT count(email_no) FROM email
+		WHERE email_title LIKE '%${findStr}%'
+	</select>
+	
+	 <select id="selectPaging" 
+	 resultType="com.doubleu.email.vo.EmailMainVo" 
+	 parameterType="com.doubleu.email.vo.EmailPage">
+    SELECT * from (
+        SELECT rownum no, m.* from (  
+           SELECT * from email em join member mem on em.member_no=mem.member_no
+           WHERE email_title LIKE '%${findStr}%'
+           AND mem.member_mid = #{memberMid}
+           ) m   
+        ) WHERE no between ${startNo} and ${endNo}
 	</select>
 	
 	<!-- 검색 바 -->
@@ -113,8 +135,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
  
-	<result property="emailNo" column="email_no" /> 
-	<result property="emailMid" column="email_mid" /> 
+	<result property="emailNo" column="email_no" />
+	<result property="memberNo" column="member_no" />
+	<result property="memberMid" column="member_mid" /> 
 	<result property="emailAddress" column="email_address" /> 
 	<result property="emailName" column="email_name" /> 
 	<result property="emailTitle" column="email_title" /> 

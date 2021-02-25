@@ -5,8 +5,27 @@
 
 <mapper namespace="com.doubleu.notice.mybatis.FamilyeventMapper">
 	<insert id="insert" parameterType="com.doubleu.notice.vo.FamilyeventVo">
-		insert into FAMILYEVENT(familyeventNo, familyeventSubject, familyeventMid, familyeventReportingDate, familyeventPostType, familyeventPostStartDate, familyeventPostEndDate, familyeventType, familyeventHit, familyeventDoc, familyeventFile) 
-		values(seq_familyeventNo.nextval, #{familyeventSubject}, #{familyeventMid}, SYSDATE, #{familyeventPostType}, #{familyeventPostStartDate}, #{familyeventPostEndDate}, #{familyeventType}, #{familyeventHit}, #{familyeventDoc}, #{familyeventFile})
+		<![CDATA[
+			insert into FAMILYEVENT(familyeventNo, familyeventSubject, familyeventMid, familyeventReportingDate, familyeventPostType, familyeventPostStartDate, familyeventPostEndDate, familyeventType, familyeventHit, familyeventDoc, familyeventFile) 
+			values(seq_familyeventNo.nextval, #{familyeventSubject}, #{familyeventMid}, SYSDATE, #{familyeventPostType}, #{familyeventPostStartDate}, #{familyeventPostEndDate}, #{familyeventType}, #{familyeventHit}, #{familyeventDoc}, #{familyeventFile})
+		]]>
 	</insert>
-</mapper>
 	
+	<select id="select" resultType="com.doubleu.notice.vo.FamilyeventVo">
+		<![CDATA[
+			select *
+			from FAMILYEVENT
+			ORDER BY familyeventNo desc
+		]]>
+	</select>
+	
+	<select id="view" parameterType="Int" resultType="com.doubleu.notice.vo.FamilyeventVo">
+		<![CDATA[
+			select *
+			from FAMILYEVENT
+			where familyeventNo = ${_parameter}
+		]]>
+	
+	</select>
+	
+</mapper>

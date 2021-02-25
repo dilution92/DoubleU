@@ -1,8 +1,13 @@
 package com.doubleu.notice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,6 +43,29 @@ public class NoticeController {
 		msg = service2.insert(vo);
 		mv.addObject("viewMsg", msg);
 		mv.setViewName("notice/familyevent_index");
+		
+		
 		return mv;
 	}
+	
+	// 경조사 index select
+	@GetMapping("/familyevent_index")
+	public String familyevent_index(Model model) {
+		System.out.println("select 컨트롤러 시작");
+		
+		List<FamilyeventVo> contentList = service2.select();
+		model.addAttribute("contentList", contentList);
+		return "notice/familyevent_index";
+	}
+	
+	// 경조사 index view
+	@RequestMapping(value = "/familyeventView", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView familyeventView(@RequestParam int no) {
+		ModelAndView mv = new ModelAndView();
+		FamilyeventVo vo = service2.view(no);
+		mv.addObject("obj", vo);
+		mv.setViewName("notice/familyevent_view");
+		return mv;
+	}
+	
 }

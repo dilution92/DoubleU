@@ -28,7 +28,7 @@
 		<main>
 			<div class="e-approval-form-workType-container">
 				<div class="e-approval-form-workType-title">
-					<h4 style="font-weight: bold">${formName}</h4>
+					<h4 style="font-weight: bold">${vo.formType}</h4>
 				</div>
 				
 				<div class="e-approval-form-workType-top">
@@ -36,7 +36,7 @@
 						<table class="table table-sm table-bordered">
 								<tr>
 									<th> 기안자 </th>
-									<td> ${vo.draferName}</td>
+									<td> ${vo.drafterName}</td>
 								</tr>
 								<tr>
 									<th>소속 </th>
@@ -48,7 +48,7 @@
 								</tr>
 								<tr>
 									<th>문서번호</th>
-									<td>  </td>
+									<td> ${vo.formNo } </td>
 								</tr>
 						</table>
 					</div>
@@ -67,8 +67,8 @@
 			                     <td height="80px;">
 			                        <input id="makerSignBtn" name="makerSignBtn1"  type="button" value="직원조회" onclick="updateChooseMaker()">
 			                        <input id="makerDelBtn" type="button" value="x" onclick="deleteChooseMaker()">
-			                        <input type="hidden" name="makerOrder" val="1">
-			                        <input type="hidden" name="makerNo" val="${makerVo.memberNo }">
+			                        <input type="hidden" name="makerOrder" value="${makerVo.makerOrder }">
+			                        <input type="hidden" name="makerNo" value="${makerVo.memberNo }">
 			                     </td>
 							</tr>
 							<tr>
@@ -85,7 +85,7 @@
 				<table class="table table-sm e-approval-form-table-3 table-bordered">
 					<tr>
 						<th> 일시 </th>
-						<td> <input type="date" name="eventDate" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
+						<td> <input type="date" name="eventDate" value="${vo.eventDate }" class="form-control form-control-sm" style="font-size: 1em;" required> </td>
 						<th> 성명 </th>
 						<td> <input type="text" name="name" value="${vo.drafterName}" class="form-control form-control-sm" style="font-size: 1em;" placeholder="성명" required> </td>
 						<th> 직급 </th>
@@ -94,13 +94,13 @@
 					<tr>
 						<th> 제목 </th>
 						<td colspan="5" align="left" style="">
-						<input type="text" name="formTitle" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력하세요." required>
+						<input type="text" name="formTitle" value="${vo.formTitle }" class="form-control form-control-sm" style="font-size: 1em;" placeholder="제목을 입력하세요." required>
 						</td>
 					</tr>
 					<tr>
 						<th style="line-height: 400px; padding: 0;"> 상세 내용 </th>
 						<td colspan="5" height="200px" style="padding: 0.5em;">
-							<textarea class="form-control" name="formDoc" style=" font-size:1em; height: 100%; overflow: auto;" ></textarea>
+							<textarea class="form-control" name="formDoc" style=" font-size:1em; height: 100%; overflow: auto;" >${vo.formDoc }</textarea>
 						</td>
 					</tr>		
 					<tr>

@@ -12,7 +12,7 @@ import com.doubleu.market.vo.MarketAttVo;
 
 @Service
 public class MarketUploadController {
-	String saveDir = "C:\\Users\\wotjd\\Documents\\DoubleU\\doubleu\\src\\main\\resources\\static\\images\\market\\";
+	public static String saveDir = "C:\\Users\\wotjd\\Documents\\DoubleU\\doubleu\\src\\main\\resources\\static\\images\\market\\";
 
 
 	public  List<MarketAttVo> upload(List<MultipartFile> mul) {
@@ -22,6 +22,7 @@ public class MarketUploadController {
 	    for(MultipartFile m : mul) {
 	    	File oriFile = new File(saveDir + m.getOriginalFilename());
 	    	System.out.println(oriFile.toString());
+	    	
 	    	
 	    	//file upload
 	    	m.transferTo(oriFile); //사용자가 선택한 파일을 서버어떤공간으로 transfer

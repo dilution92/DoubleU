@@ -68,11 +68,11 @@ public class MarketUrlController {
 		System.out.println("marketNo: " + v.getMarketNo());
 		MarketVo vo = dao.view(v.getMarketNo());
 		
-		System.out.println("view컨트롤러......");
-		System.out.println("페이지:" + page.getNowPage());
-		System.out.println(page.getFindStr());
-		System.out.println(vo.getMarketSubject());
-		System.out.println("att:"+vo.getAttlist());
+		//System.out.println("view컨트롤러......");
+		//System.out.println("페이지:" + page.getNowPage());
+		//System.out.println(page.getFindStr());
+		//System.out.println(vo.getMarketSubject());
+		//System.out.println("att:"+vo.getAttlist());
 		mv.addObject("vo", vo);
 		mv.addObject("page", page);
 		mv.setViewName("market/market_view");

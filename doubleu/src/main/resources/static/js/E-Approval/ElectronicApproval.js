@@ -135,6 +135,7 @@ function checkFormData() {
 		
 		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
 		frm.decisionMakerCnt.value = decisionMakerCnt;
+		alert(frm.decisionMakerCnt.value)
 		if(decisionMakerCnt > 0) {
 				var makerPosition = new Array();
 				var makerName = new Array();
@@ -431,6 +432,51 @@ var goView = function(formNo, formType) {
 function funcApproval() {
 		var frm = document.frmApproval;
 		
+		
+	/* 검색 버튼 클릭 시 퍼블리싱*/
+	$('#btnApprovalFind').on('click', function() {
+		frm.findType.value = $('#selectFormType option:selected').val();
+		if(frm.nowPlace.value == 'indexPlace') {
+			frm.acrion = '/approvalIndex';
+			frm.submit();
+		}
+		if(frm.nowPlace.value == 'searchPlace') {
+			frm.acrion = '/approvalGoList';
+			frm.submit();
+		}
+		
+	})
+		
+		
+	/*승인 버튼 클릭 시 퍼블리싱*/
+	$('#btnFormApproval').on('click', function() {
+		if(!frm.approvalComment.checkValidity()){
+			alert("상세 사유를 입력해주세요.");
+			return;
+		}
+		else {
+			frm.makerComment.value = frm.approvalComment.value;
+			frm.decisionState.value = 1;
+			frm.action = '/updateDecisionState';
+			frm.submit();
+		}
+	})
+
+	/*반려 버튼 클릭 시 퍼블리싱*/
+	
+	$('#btnFormReject').on('click', function() {
+		if(!frm.rejectComment.checkValidity()){
+			alert("상세 사유를 입력해주세요.");
+			return;
+		}
+		else {
+			frm.makerComment.value = frm.rejectComment.value;
+			frm.decisionState.value = -1;
+			frm.action = '/updateDecisionState';
+			frm.submit();
+		}
+	})
+	
 	/*삭제 버튼 클릭*/
 	$('#btnApprovalDelete').on('click', function() {
 		var deleteConfirm = confirm("정말로 삭제하시겠습니까?");
@@ -524,7 +570,7 @@ function append(zone, boxCnt) {
 	
 	var tdSign= document.createElement("td");
 	tdSign.setAttribute("height", "80px;");
-	tdSign.setAttribute("width", "75px;");
+	tdSign.setAttribute("width", "80px;");
 	
 	
 	var aSign= document.createElement("input");
@@ -537,12 +583,12 @@ function append(zone, boxCnt) {
 	aSign.onclick = function() {   
 		var winWidth = "500";
 		var winHeight = "600";
-		
+		var url = '/approvalInsertDecisionMakers';
 		
 		var winLeft = Math.ceil((window.screen.width - winWidth)/2);
 		var winTop = Math.ceil((window.screen.height- winHeight)/2);
-		var win = window.open('/approvalSelectMember', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
-
+		var win = window.open(url, 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
+		
 		win.onbeforeunload = function(){
 			inputName.value = $('#TempMakerName').val();
 			inputPosition.value = $('#TempMakerPosition').val();
@@ -776,10 +822,18 @@ function receiverPage(page) {
 }
 
 function goMemberPage(page) {
-	var frm = document.frmMember;
-	frm.nowPage.value = page;
-	frm.action= "/approvalSelectMember";
-	frm.submit();
+	var frm = $('#frmMember');
+	document.frmMember.nowPage.value = page;
+	var temp = $(frm).serialize();
+	$.ajax({
+		url: '/approvalSelectMember',
+		data: temp,
+		dataType : 'html',
+		method : 'post',
+		success : function(data) {
+			$('#ajax_content').html(data)
+		}
+	})
 }
 function updateChooseMaker() {
 	var winWidth = "500";
@@ -789,9 +843,9 @@ function updateChooseMaker() {
 	
 	var winLeft = Math.ceil((window.screen.width - winWidth)/2);
 	var winTop = Math.ceil((window.screen.height- winHeight)/2);
-	var win = window.open('/approvalSelectMember', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
+	var win = window.open('/approval_insert_decisionMakers', 'win', 'width=' + winWidth + ', height=' + winHeight + ', left=' + winLeft + ', top = ' + winTop );
 
-	win.onbeforeunload = function(){TempMakerPosition
+	win.onbeforeunload = function(){
 		$(ele).parent().parent().prev().children().children().val($('#TempMakerPosition').val());
 		$(ele).parent().parent().next().children().children().val($('#TempMakerName').val());
 		$(ele).next().next().next().val($('#TempMakerName').val());
@@ -811,3 +865,22 @@ function goFormList(formType) {
 	frm.action='/approvalGoFormType';
 	frm.submit();
 }
+
+function selectAllMember() {
+	var frm = $('#frmMember');
+	document.frmMember.nowPage.value = 1;
+	document.frmMember.findStr.value = '';
+	document.frmMember.findType.value = '';
+	
+	var temp = $(frm).serialize();
+	$.ajax({
+		url: '/approvalSelectMember',
+		data: temp,
+		dataType : 'html',
+		method : 'post',
+		success : function(data) {
+			$('#ajax_content').html(data)
+		}
+	})
+}
+

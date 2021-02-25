@@ -27,9 +27,18 @@ public class MarketVo {
 	}
 
 	List<MarketAttVo> attlist;
+	List<MarketAttVo> delFiles;
 	
 	
 
+
+	public List<MarketAttVo> getDelFiles() {
+		return delFiles;
+	}
+
+	public void setDelFiles(List<MarketAttVo> delFiles) {
+		this.delFiles = delFiles;
+	}
 
 	public List<MarketAttVo> getAttlist() {
 		return attlist;
