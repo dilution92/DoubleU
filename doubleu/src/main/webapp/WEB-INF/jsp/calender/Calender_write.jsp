@@ -56,6 +56,8 @@
     				<input type="hidden" name="calenderEndDay">
     				<input type="hidden" name="calenderEndTime">
     				<input type="hidden" name="calenderEndMinute">
+    				
+    				<input type="hidden" name="calenderType" value="">
     				</td>
     			</tr>
     			<tr>
@@ -97,7 +99,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#InsertFormSubmit").click(function(){
-		
+		/* 기간 쪼개기 */
 		var cds = document.getElementsByName("calenderDateStart")[0].value;
 		var cts = document.getElementsByName("calenderTimeStart")[0].value;
 		var cde = document.getElementsByName("calenderDateEnd")[0].value;
@@ -134,6 +136,28 @@ $(function(){
 
 		document.getElementsByName("calenderEndTime")[0].value = cte1;
 		document.getElementsByName("calenderEndMinute")[0].value = cte2;
+		
+		
+		var c1 = cde1+cde2+cde3;
+		var c2 = cds1+cds2+cds3;
+		console.log(c1+"c1");
+		console.log(c2+"c2");
+		
+		if(cds!=null){
+			
+			var chkperiod = parseInt(c1)-parseInt(c2);
+			
+			var c3 = parseInt(chkperiod);
+			
+			var v1 = "장기";
+			var v2 = "단기";
+			if(c3>0){
+				document.getElementsByName("calenderType")[0].value = v1;
+			}else{
+				document.getElementsByName("calenderType")[0].value = v2;
+			}
+			
+		}
 		
         $('#Calender_insert_modal').modal();
     });

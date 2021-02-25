@@ -13,6 +13,7 @@ public class CalenderVo {
 	private String calenderEndDay;
 	private String calenderEndTime;
 	private String calenderEndMinute;
+	private String calenderType;
 	private String calenderSubject;
 	private String calenderContent;
 	private String calenderPlace;
@@ -20,6 +21,14 @@ public class CalenderVo {
 	private String calenderGroup;
 	private String calenderTime;
 	
+	
+	
+	public String getCalenderType() {
+		return calenderType;
+	}
+	public void setCalenderType(String calenderType) {
+		this.calenderType = calenderType;
+	}
 	public int getCalenderNo() {
 		return calenderNo;
 	}
