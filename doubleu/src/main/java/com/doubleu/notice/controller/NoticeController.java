@@ -2,6 +2,8 @@ package com.doubleu.notice.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ public class NoticeController {
 	
 	@Autowired
 	FamilyeventService service2;
+	
 	
 	// 사내공지 글쓰기 -> index
 	@RequestMapping(value = "/noticeInsertR", method= RequestMethod.POST)
@@ -48,15 +51,6 @@ public class NoticeController {
 		return mv;
 	}
 	
-	// 경조사 index select
-	@GetMapping("/familyevent_index")
-	public String familyevent_index(Model model) {
-		System.out.println("select 컨트롤러 시작");
-		
-		List<FamilyeventVo> contentList = service2.select();
-		model.addAttribute("contentList", contentList);
-		return "notice/familyevent_index";
-	}
 	
 	// 경조사 index view
 	@RequestMapping(value = "/familyeventView", method= {RequestMethod.POST, RequestMethod.GET})
@@ -67,5 +61,15 @@ public class NoticeController {
 		mv.setViewName("notice/familyevent_view");
 		return mv;
 	}
+   
+   // 경조사 index update
+   @RequestMapping(value = "/familyeventUpdateR", method = {RequestMethod.POST, RequestMethod.GET})
+   public ModelAndView familyeventUpdate(FamilyeventVo vo){
+      ModelAndView mv = new ModelAndView();
+	  String msg = service2.update(vo);
+	  System.out.println(msg);
+      mv.setViewName("/notice/familyevent_update");
+      return mv;
+   }
 	
 }

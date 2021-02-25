@@ -12,5 +12,6 @@ public interface FamilyeventMapper {
 	public int insert(FamilyeventVo vo);
 	public List<FamilyeventVo> select();
 	public FamilyeventVo view(int no);
+	public int update(FamilyeventVo vo); 
 }
 

@@ -63,3 +63,42 @@ $(function(){
         $('#familyeventInsertForm').submit();
     })
 })
+
+/* notice_update 수정하기 모달 이후 submit */
+$(function(){
+   $("#noticeUpdate1").click(function(){
+        $('#staticBackdrop').modal();
+    });
+    
+    $("#noticeUpdate2").click(function(){
+        $('#noticeUpdateForm').submit();
+    })
+})
+
+$(function(){
+   $("#familyevnetUpdate1").click(function(){
+        $('#staticBackdrop').modal();
+    });
+    
+    $("#noticeUpdate2").click(function(){
+        $('#familyeventUpdateForm').submit();
+    })
+})
+
+/* notice_update 게시기한 값 끌어오기 */
+$(document).ready(function(){
+	if($("#familyeventPostTypehidden").val() == "설정"){
+   	   $("#r2").attr("checked",true);
+    }else if($("familyeventPostTypehidden").val() != "설정"){
+       $("#r1").attr("checked",true);
+    }
+});
+
+/* notice_update 분류 값 끌어오기 */
+$(document).ready(function(){
+	if($("#exampleFormControlSelect4").val() == "결혼"){
+   	   $("#r3").attr("selected",true);
+    }else if($("#exampleFormControlSelect4").val() != "결혼"){
+       $("#r4").attr("selected",true);
+    }
+});

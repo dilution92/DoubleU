@@ -24,11 +24,6 @@ public class CalenderURLController {
 		
 
 		list = calender.setMonthCalender();
-		System.out.println("리스트 출력");
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i).getVo().getCalenderContent());
-		}
-		System.out.println("리스트 종료");
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		int day = calender.getDay();
