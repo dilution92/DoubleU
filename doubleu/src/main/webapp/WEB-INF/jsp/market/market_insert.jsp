@@ -79,7 +79,7 @@
 				    <div class="col-sm-8" style="display : inline-block;">
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;" id='btnFree' data-toggle="modal" data-target="#FreeModal">무료 나눔</button>
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;"
-						onclick="window.open('/marketNewpage','window_name','width=600,height=182,location=no,status=no,scrollbars=yes');">시세 확인</button>
+						onclick="window.open('/marketNewpage','window_name','width=650,height=650,location=no,status=no,scrollbars=yes');">시세 확인</button>
 				    	  <div style="display:flex;">
 				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="1,000"onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
 				    	  <span class="input-group-text">원</span>

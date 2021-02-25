@@ -29,4 +29,5 @@ public interface MarketMapper {
 	public int delete(MarketVo vo);
 	public int deleteAttNo(int marketNo);
 
+
 }

@@ -10,19 +10,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doubleu.calender.service.Calender;
 import com.doubleu.calender.service.CalenderService;
-import com.doubleu.calender.service.CalenderWeekList;
+import com.doubleu.calender.vo.CalenderWeekList;
 import com.doubleu.calender.vo.CalenderVo;
 
 @RestController
 public class CalenderController {
 
 	@Autowired
-	CalenderService service;
-	
-	@Autowired
-	Calender calender;
+	CalenderService calender;
 	
 	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
 	public ModelAndView calenderInsertR(CalenderVo vo) {
@@ -31,7 +27,7 @@ public class CalenderController {
 		String msg = "";
 		List<CalenderWeekList> list = new ArrayList<>();
 		
-		msg = service.insert(vo);
+		msg = calender.insert(vo);
 		list = calender.setMonthCalender();
 		int year = calender.getYear();
 		int month = calender.getMonth();

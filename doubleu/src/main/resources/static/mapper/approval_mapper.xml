@@ -7,8 +7,8 @@
 <mapper namespace="com.doubleu.approval.mybatis.ApprovalMapper">
 	<insert id="insert" parameterType="com.doubleu.approval.vo.FormVo">
 		INSERT ALL 
-		INTO approval_form(form_no, member_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position, approval_state) 
-		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', '${eventDate}', '${drafterPosition}', '${approvalState}')
+		INTO approval_form(form_no, member_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position, approval_state, modify_date) 
+		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', '${eventDate}', '${drafterPosition}', '${approvalState}', SYSDATE)
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
@@ -40,10 +40,12 @@
 	
 	<!-- 결재권자 추가 -->
 	<insert id="insertDicisionMakers" parameterType="com.doubleu.approval.vo.FormVo" >
+			INSERT ALL
 		<foreach collection="decisionMakersList" item="maker">
-			INSERT INTO approval_decision_makers(member_no, form_no, maker_name, maker_position, decision_state, maker_comment, maker_order)
+			INTO approval_decision_makers(MEMBER_NO, FORM_NO, MAKER_NAME, MAKER_POSITION, DECISION_STATE, MAKER_COMMENT, MAKER_ORDER)
 			VALUES(${maker.memberNo}, ${maker.formNo}, '${maker.makerName}', '${maker.makerPosition}', 0, '${maker.makerComment}', ${maker.makerOrder})
 		</foreach>
+		SELECT * FROM dual
 	</insert>	
 	
 	<!-- 발신 목록 count 출력 -->
@@ -86,9 +88,9 @@
 	<select id="receiverTotalListSize" parameterType="com.doubleu.approval.vo.IndexPage" resultType="int">
 		SELECT count(a.form_no) FROM
 		approval_form a,
-		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1)) b
+		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1, -1)) b
 		<where>
-			 a.form_no = b.form_no
+			 a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 		 	<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -106,7 +108,7 @@
 		approval_form a,
 		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1, -1)) b
 		<where>
-			 a.form_no = b.form_no
+			 a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 		 	<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -129,7 +131,7 @@
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order = 1) b
 				<where>
-					a.form_no = b.form_no
+					a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 					<if test="findStr != '' and findType == '' ">
 						AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 					</if>
@@ -149,7 +151,7 @@
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = 1) b
 				<where>
-					a.form_no = b.form_no
+					a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 					<if test="findStr != '' and findType == '' ">
 						AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 					</if>
@@ -169,7 +171,7 @@
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = -1) b
 				<where>
-					a.form_no = b.form_no
+					a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 					<if test="findStr != '' and findType == '' ">
 						AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 					</if>
@@ -184,8 +186,8 @@
 				WHERE rno BETWEEN ${startNo} AND ${endNo}
 			</when>
 		</choose>
-		
 	</select>
+
 	<select id="chooseTotalListSizeReceiver" parameterType="com.doubleu.approval.vo.SelectPage" resultType="int">
 		<choose>
 		<when test="findState == 0">
@@ -193,7 +195,7 @@
 			FROM approval_form a,
 			(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order = 1) b
 			<where>
-				a.form_no = b.form_no
+				a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 			<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -210,7 +212,7 @@
 			FROM approval_form a,
 			(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = 1) b
 			<where>
-				a.form_no = b.form_no
+				a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 			<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -227,7 +229,7 @@
 			FROM approval_form a,
 			(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = -1) b
 			<where>
-				a.form_no = b.form_no
+				a.form_no = b.form_no AND a.approval_state != '(발신)임시저장'
 			<if test="findStr != '' and findType == '' ">
 				AND (a.form_title LiKE '%${findStr}%' OR a.form_doc LIKE '%${findStr}%')
 			</if>
@@ -359,12 +361,13 @@
 	<update id="updateR" parameterType="com.doubleu.approval.vo.FormVo">
 		UPDATE approval_form
 		SET
-		form_date = sysdate,
+		form_date = SYSDATE,
 		form_title = '${formTitle}',
 		form_doc = '${formDoc}',
 		cooperation_department = '${cooperationDepartment}',
-		event_date = TO_DATE('${eventDate}', 'YYYY-MM-DD'),
-		approval_state = '${approvalState}'
+		event_date = '${eventDate}',
+		approval_state = '${approvalState}',
+		modify_date = SYSDATE
 		WHERE form_no = ${formNo}
 	</update>
 	
@@ -391,7 +394,11 @@
 
 	<!-- 결재버튼 클릭 시 -->
 	<update id="updateFormState" parameterType="com.doubleu.approval.vo.UpdateFormStateVo">
-		update approval_form SET approval_state = '${approvalState}' WHERE form_no = ${formNo}
+		update approval_form
+		SET
+		approval_state = '${approvalState}',
+		modify_date = SYSDATE
+		WHERE form_no = ${formNo}
 	</update>
 	<update id="updateDecisionReject" parameterType="com.doubleu.approval.vo.DecisionMakerVo">
 		UPDATE approval_decision_makers
@@ -401,6 +408,7 @@
 		maker_comment = '${makerComment}'
 		WHERE member_no = ${memberNo} AND form_no = ${formNo}
 	</update>
+	
 	<update id="updateDecisionApproval" parameterType="com.doubleu.approval.vo.DecisionMakerVo">
 		UPDATE approval_decision_makers
 		SET
@@ -422,7 +430,6 @@
 	<delete id="deleteDicisionMakers" parameterType="int">
 		DELETE FROM approval_decision_makers WHERE form_no = ${_parameter}
 	</delete>
-	
 	<delete id="deleteForm" parameterType="int">
 		DELETE FROM approval_form WHERE form_no = ${_parameter}
 	</delete>

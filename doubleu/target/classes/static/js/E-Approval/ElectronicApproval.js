@@ -135,6 +135,7 @@ function checkFormData() {
 		
 		var decisionMakerCnt = (document.getElementsByName('makerName').length - 1);
 		frm.decisionMakerCnt.value = decisionMakerCnt;
+		alert(frm.decisionMakerCnt.value)
 		if(decisionMakerCnt > 0) {
 				var makerPosition = new Array();
 				var makerName = new Array();
@@ -569,7 +570,7 @@ function append(zone, boxCnt) {
 	
 	var tdSign= document.createElement("td");
 	tdSign.setAttribute("height", "80px;");
-	tdSign.setAttribute("width", "75px;");
+	tdSign.setAttribute("width", "80px;");
 	
 	
 	var aSign= document.createElement("input");
@@ -864,3 +865,22 @@ function goFormList(formType) {
 	frm.action='/approvalGoFormType';
 	frm.submit();
 }
+
+function selectAllMember() {
+	var frm = $('#frmMember');
+	document.frmMember.nowPage.value = 1;
+	document.frmMember.findStr.value = '';
+	document.frmMember.findType.value = '';
+	
+	var temp = $(frm).serialize();
+	$.ajax({
+		url: '/approvalSelectMember',
+		data: temp,
+		dataType : 'html',
+		method : 'post',
+		success : function(data) {
+			$('#ajax_content').html(data)
+		}
+	})
+}
+

@@ -31,19 +31,14 @@ public class ApprovalDao {
 	public String insert(FormVo vo) {
 		String msg = "정상적으로 등록되었습니다.";
 		System.out.println("service도착");
+		if(vo.getAttFileList().get(0) != null) {
+			System.out.println("파일명" + vo.getAttFileList().get(0).getSysFile());
+			System.out.println("파일명" + vo.getAttFileList().get(0).getOriFile());
+		}
 		int cnt = mapper.insert(vo);
-		
 		return msg;
 	}
-	/*
-	 * public int getTotalListSize(IndexPage page) { int totalListSize;
-	 * 
-	 * totalListSize = mapper.totalListSize(page);
-	 * 
-	 * return totalListSize;
-	 * 
-	 * }
-	 */	
+
 	
 	public Map<String, Object> selectOutgoing(IndexPage page) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -90,8 +85,8 @@ public class ApprovalDao {
 		FormVo formVo = new FormVo();
 		List<DecisionMakerVo> makerList = new ArrayList<>();
 		List<AttFileVo> attList = new ArrayList<>();
-		
 		formVo = mapper.selectView(vo);
+		System.out.println("문서번호 : " + formVo.getFormNo());
 		makerList = mapper.selectDecisionMaker(formVo.getFormNo());
 		attList = mapper.selectAttFile(formVo.getFormNo());
 		
