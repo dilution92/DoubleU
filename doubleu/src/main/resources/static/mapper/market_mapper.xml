@@ -82,7 +82,7 @@
   			select rownum no, m.* from (  
 					select * from market mk join market_files att on mk.market_no=att.market_no
 				 	where market_subject like '%${findStr}%'	and files_main = 1 
-				 	 order by mk.market_no desc ) m   
+				 	 order by mk.market_date desc ) m   
 				 	) where no between #{startNo} and #{endNo}
 	</select> 
 	<!-- index게시글 총 갯수 -->
@@ -97,8 +97,8 @@
 <!-- insert -->
 	<insert id = 'insert' parameterType="com.doubleu.market.vo.MarketVo">
 		insert all
-		into market(market_no, market_category, market_writer, market_subject, market_price, market_account, market_doc, market_hit, market_date, market_bank)
-		values(market_seq.nextval, #{marketCategory, jdbcType=VARCHAR}, #{marketWriter, jdbcType=VARCHAR}, #{marketSubject}, #{marketPrice}, #{marketAccount}, #{marketDoc},#{marketHit}, SYSDATE, #{marketBank})
+		into market(market_no, market_category, market_writer, market_subject, market_price, market_account, market_doc, market_hit, market_date, market_bank, market_dib)
+		values(market_seq.nextval, #{marketCategory, jdbcType=VARCHAR}, #{marketWriter, jdbcType=VARCHAR}, #{marketSubject}, #{marketPrice}, #{marketAccount}, #{marketDoc},#{marketHit}, SYSDATE, #{marketBank}, #{marketDib})
 		<if test="attlist != null">
 			<foreach collection="attlist" item="att">
 				into market_files(files_no, market_no, files_sysfile, files_orifile, files_main)
@@ -125,6 +125,7 @@
 		<result property="marketWriter" column="market_writer" /> 	
 		<result property="marketBank" column="market_bank" /> 	
 		<result property="oriFile" column="files_orifile" /> 	
+		<result property="marketDib" column="market_dib" /> 	
 		
 	</resultMap>
 	

@@ -23,7 +23,7 @@
 									<c:otherwise>${vo.marketPrice}원</c:otherwise>
 								</c:choose>
 								</p>
-								<p class="card-text">🤍 2
+								<p class="card-text">🤍 ${vo.marketDib }
 								<p>
 								<p class="card-text-name">${vo.marketWriter}
 								<input type='hidden' class='marketNo' value='${vo.marketNo}'/>

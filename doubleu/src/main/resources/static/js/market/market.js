@@ -2,6 +2,30 @@
  * 
  */
 
+ $(function() {
+	var frm = document.frm_market_view;
+		var dib = $("#dibVal").val();
+		console.log(dib);
+    $("#btnDib").click(function() { 
+		if(dib=0){
+			$('#btnDib').html("❤"); //채운하트
+			$('#dibVal').attr("disabled", false); 
+			frm.action = '/marketDib';
+			frm.submit();
+		}
+		
+		else if(dib>0){
+			$('#btnDib').html("🤍")	
+			$('#dibVal').attr("disabled", true); 
+			frm.action = '/marketDibdown';
+			frm.submit();
+			
+			}
+		});
+	})
+	
+	
+
     function date(){
         var table = document.getElementById("market_table");
 		
@@ -20,7 +44,7 @@
 			result = Math.floor(minsAgo / 60 / 24) + '일 전';
 		};
 
-		console.log(result)
+		//console.log(result)
 		
 		var marketDate = document.getElementById("market_date")
 		marketDate.innerText = result;

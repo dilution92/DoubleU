@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.doubleu.market.mybatis.MarketDibMapper">
+	<select id="selectDib" parameterType="com.doubleu.market.vo.MarketDibVo" resultType="int" >
+		select count(*) from market_dib where dib_user like #{dibUser} and market_no = #{marketNo}
+	</select>
+
+	<insert id="insertDib" parameterType="com.doubleu.market.vo.MarketDibVo" >
+		insert into market_dib values(market_dib_seq.nextval, ${marketNo}, #{dibUser})
+	</insert>
+	<update id="updateDib" parameterType="com.doubleu.market.vo.MarketVo" >
+		update market set market_dib = #{marketDib}
+					  where market_no = #{marketNo}
+	</update>
+	<delete id='deleteDib' parameterType="com.doubleu.market.vo.MarketDibVo">
+	delete from market_dib where dib_user like #{dibUser} and market_no =#{marketNo}
+	</delete>
+</mapper>

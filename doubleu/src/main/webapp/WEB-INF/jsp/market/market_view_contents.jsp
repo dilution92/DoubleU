@@ -49,6 +49,7 @@
 									</c:forEach>
 								</c:when>
 							</c:choose>
+							
 				  </div>
 					  <a class="carousel-control-prev" href="#marketSlider" role="button" data-slide="prev">
 					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -59,7 +60,6 @@
 					    <span class="sr-only">Next</span>
 					  </a>
 					</div>	
-				
 				
 							
 					<div class="form-group-container" style="width:100%; margin-left:50px;">	
@@ -79,14 +79,23 @@
 					    </div>
   							<button data-toggle="modal" 	data-target="#goAccount" type="button" value="찜목록" class="btn btn-primary mb-2">계좌보기</button>
 					  </div>
+						    <div  class="col-sm-2 col-form-label" id="btnDib" style="cursor:pointer;font-size:2em; text-align:center;left:300px;">
+					  <c:choose>
+						  <c:when test="${cnt >0}">&nbsp ❤  </c:when>
+						  <c:otherwise>&nbsp 🤍</c:otherwise> 
+						   </c:choose>
+						    </div>
+						  
+					  	<input type = "text" id="dibVal" value='${cnt }' />
 					  <div class="form-group row">
-					    <label for="inputEmail3" class="col-sm-2 col-form-label">❤</label>
 					    
-					    <div class="col-sm-6" style="display: flex;">
-					      <div class="form-control" id="inputEmail3" >0</div>
+					    <%-- <div class="col-sm-6" style="display: flex;">
+					      <div class="form-control" id="market_dib" >${vo.marketDib }</div>
 						</div>
-						
-  							<button type="submit"  id="godibModal"class="btn btn-primary mb-2">찜하기</button>
+						<!--  onclick = "btnDib(${vo.marketDib});" -->
+  							<button  id="btnDib"class="btn btn-primary mb-2">찜하기</button>
+  							<input type='hidden' name='marketDib' value='${vo.marketDib}'/>
+  							  --%>
 					  </div>
 					    </div>
 					
@@ -102,9 +111,11 @@
 				<input type='text' name='findStr' value='${page.findStr }'/>
 				<input type='text' name='nowPage' value='${page.nowPage }'/>
 				<input type='text' name='marketNo'  value='${vo.marketNo}'/>
+				<input type='text' name='dibUser'  value='${member.memberName}'/>
 				
 				<div class="market-btn-zone">
 					<button class="btn btn-primary" type="button" onclick = "goBack();">목록</button>
+					
 					
 					<c:if test="${vo.marketWriter==member.memberName }">
 						<button class="btn btn-primary" type="submit" onclick = "goModify(${vo.marketNo});">수정</button>

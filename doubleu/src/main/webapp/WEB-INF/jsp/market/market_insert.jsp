@@ -130,7 +130,8 @@
 					<input class="btn btn-primary" type = 'button' value = '취소' onclick = "goBack();">
 				</div>
 				<!-- hidden -->
-				<input type="hidden" name="marketHit" value = "1">
+				<input type="hidden" name="marketHit" value = "0">
+				<input type="hidden" name="marketDib" value = "0">
 <%-- 				<input type="hidden" name="marketWriter" value = "${member.member식Name }"> --%>
 			</form>
 			</div>
