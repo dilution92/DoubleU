@@ -32,5 +32,18 @@ public class FamilyeventService {
 		System.out.println("view mapper 반환");
 		return vo;
 	}
-
+	
+	public String update(FamilyeventVo vo) {
+		System.out.println("update 시작");
+		String msg = "";
+		int cnt =  mapper.update(vo);
+		if(cnt<0) {
+			msg = "수정중 오류 발생";
+		}else {
+			msg = "정상적으로 수정되었습니다.";
+		}
+		System.out.println("update mapper 반환");
+		return msg;
+	}
+	
 }
