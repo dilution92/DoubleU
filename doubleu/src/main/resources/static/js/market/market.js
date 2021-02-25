@@ -2,6 +2,34 @@
  * 
  */
 
+    function date(){
+        var table = document.getElementById("market_table");
+		
+		var min = 60 * 1000;
+		var c = new Date()
+		var d = new Date(table.rows[0].cells[3].innerHTML)
+		var minsAgo = Math.floor((c - d) / (min));
+		//console.log(minsAgo);
+
+		var result;
+		if (minsAgo < 60){
+			result = minsAgo + '분 전';
+		}else if (minsAgo < 60 * 24) { // 하루 내
+			result = Math.floor(minsAgo / 60) + '시간 전';
+		} else { // 하루 이상
+			result = Math.floor(minsAgo / 60 / 24) + '일 전';
+		};
+
+		console.log(result)
+		
+		var marketDate = document.getElementById("market_date")
+		marketDate.innerText = result;
+
+	
+	};
+    
+
+
 sort = function() {
 	
 //----------낮은 가격순 -------//
