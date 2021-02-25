@@ -6,47 +6,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.doubleu.email.mybatis.EmailMapper">
 	<!-- select -->
-	<select id="selectSendRead" parameterType="com.doubleu.login.vo.LoginVo"  resultMap="getEmailListSelect">
-		SELECT a.*, b.member_mid 
-			FROM email a, member b
-				WHERE b.member_no = a.member_no
-				AND b.member_mid = #{memberMid}
-				ORDER BY a.email_date ASC
-	</select>
 	
+	<!-- 메일함 사이드 바 cnt -->
 	<select id="selectSendEmail" resultType="int">
-		SELECT count(email_title) FROM email
+		SELECT count(*) FROM(
+			SELECT a.*, b.member_mid 
+			FROM email a, member b
+				WHERE a.member_no = b.member_no
+				AND b.member_mid = #{memberMid}
+				ORDER BY a.email_date DESC)
 	</select>
 
-
+    <!-- 페이지 -->
 	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.email.vo.EmailPage">
 		SELECT count(email_no) FROM email
 		WHERE email_title LIKE '%${findStr}%'
 	</select>
 	
 	 <select id="selectPaging" 
-	 resultType="com.doubleu.email.vo.EmailMainVo" 
+	 resultMap="getEmailListSelect" 
 	 parameterType="com.doubleu.email.vo.EmailPage">
     SELECT * from (
         SELECT rownum no, m.* from (  
            SELECT * from email em join member mem on em.member_no=mem.member_no
            WHERE email_title LIKE '%${findStr}%'
            AND mem.member_mid = #{memberMid}
+           ORDER BY em.email_date DESC
            ) m   
         ) WHERE no between ${startNo} and ${endNo}
-	</select>
-	
-	<!-- 검색 바 -->
-	<select id="selectFindStr" parameterType="String" resultMap="getEmailListSelect">
-		SELECT * FROM email 
-		WHERE email_title LIKE '%${findStr}%' 
-		OR email_name LIKE '%${findStr}%' 
-		ORDER BY email_date DESC
-	</select>
-	
-	<!--1.1 검색 바 -->
-	<select id="selectSearchDetail" parameterType="String" resultMap="getEmailListSelect">
-		
 	</select>
 	
 	<select id="selectEmailNo" parameterType="int" resultMap="getEmailListSelect">
@@ -85,7 +72,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT ALL
 		INTO email(
 		email_no, 
-		email_mid,
+		member_no,
+		member_mid,
 		email_address, 
 		email_name, 
 		email_title, 
@@ -94,10 +82,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		email_mailbox, 
 		email_chk, email_delete) 
 		VALUES(
-		email_main_seq.nextval, 
-		#{emailMid, jdbcType=VARCHAR}, 
+		email_main_seq.nextval,
+		#{memberNo},
+		#{memberMid}, 
 		#{emailAddress}, #{emailName}, 
-		#{emailTitle}, sysdate, 
+		#{emailTitle}, SYSTIMESTAMP, 
 		#{emailContents}, 
 		default, 
 		#{emailChk}, 

@@ -154,9 +154,9 @@ emailSelectSearch = function() {
 // 8. goView()
 var goView =  function(EmailNo) {
 	var frm = document.emailForm;
-	frm.emailNo.value = EmailNo;
+	frm.emailNoBtn.value = EmailNo;
 	
-	console.log(frm.emailNo.value);
+	console.log(frm.emailNoBtn.value);
 	
 	frm.action = '/emailRead';
 	frm.submit();
@@ -183,4 +183,13 @@ var btnSearchDetail = function() {
 		frm.submit();
 
 	}
+}
+
+// 10. 페이징
+function goPage(page) {
+	var frm = document.emailForm;
+	frm.nowPage.value = page;
+	frm.action = '/emailIndex';
+	frm.submit();
+
 }
