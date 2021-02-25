@@ -12,7 +12,7 @@ import com.doubleu.member.vo.MemberVo;
 public class ModifyURLController  {
 	@Autowired
 	MemberService service;
-	@RequestMapping(value = "/memberIndex", method= RequestMethod.GET)
+	@RequestMapping(value = "/memberModifyIndex", method= RequestMethod.GET)
 	public ModelAndView memberInsertR(MemberVo vo) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";

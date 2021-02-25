@@ -28,4 +28,20 @@
 	
 	</select>
 	
+	<update id="update" parameterType="com.doubleu.notice.vo.FamilyeventVo" >
+		<![CDATA[
+			update familyevent
+			set
+				familyeventsubject = ${familyeventsubject},
+				familyeventreportingdate = ${familyeventreportingdate},
+				familyeventposttype = ${familyeventposttype},
+				familyeventpoststartdate = ${familyeventpoststartdate},
+				familyeventpostenddate = ${familyeventpostenddate},
+				familyeventtype = ${familyeventtype},
+				familyeventdoc = ${familyeventdoc},
+				familyeventfile = ${familyeventfile}
+			where familyeventno = ${familyeventno}
+		]]>
+	</update>
+	
 </mapper>

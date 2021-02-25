@@ -50,7 +50,9 @@ public class CalenderService {
 	public void setDay(int day) {
 		this.day = day;
 	}
-
+	
+	
+	// insert 
 	public String insert(CalenderVo vo) {
 		return dao.insert(vo);
 	}
@@ -64,7 +66,7 @@ public class CalenderService {
 		day = Integer.parseInt(time1.substring(8, 10));
 	}
 
-	public String MakeCalenderId(int year, int month, int day) {
+	public int MakeCalenderId(int year, int month, int day) {
 		String syear = Integer.toString(year);
 		String smonth;
 		String sday;
@@ -80,16 +82,29 @@ public class CalenderService {
 		} else {
 			sday = Integer.toString(day);
 		}
-		return syear + smonth + sday;
+		
+		int sum = Integer.parseInt(syear + smonth + sday);
+		
+		return sum;
 	}
 
-	public String MakeVoId(CalenderVo vo) {
+	public int MakeVoId(CalenderVo vo) {
 
 		String year = vo.getCalenderStartYear();
 		String month = vo.getCalenderStartMonth();
 		String day = vo.getCalenderStartDay();
-
-		return year + month + day;
+		int sum = Integer.parseInt(year + month + day);
+		
+		return sum;
+	}
+	
+	public int MakeVoEndId(CalenderVo vo) {
+		String year = vo.getCalenderEndYear();
+		String month = vo.getCalenderEndMonth();
+		String day = vo.getCalenderEndDay();
+		int sum = Integer.parseInt(year + month + day);
+		
+		return sum;
 	}
 
 	public int setWeekMethod(int year, int month, int day) {
@@ -168,13 +183,22 @@ public class CalenderService {
 				cl.setDay(startNum);
 				cl.setMonth(12);
 				cl.setYear(year - 1);
-				cl.setDateId(MakeCalenderId(year - 1, 12, startNum));
-				System.out.println(cl.getDateId());
+				cl.setDateIdN(MakeCalenderId(year - 1, 12, startNum));
+				
 				for(int j=0; j<cList.size(); j++) {
-					System.out.println(MakeVoId(cList.get(j)));
-				 if(MakeVoId(cList.get(j)).equals(cl.getDateId())) { 
-					 cl.setVo(cList.get(j)); }
-				 }
+					if(MakeVoEndId(cList.get(j))>= cl.getDateIdN() && cl.getDateIdN()>=MakeVoId(cList.get(j))) {
+						
+						 if(cList.get(j).getCalenderType().equals("장기")) {
+							 cl.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+							 cl.setVo(cList.get(j));
+						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 if(cl.getDateIdN()==MakeVoId(cList.get(j))) {
+								 cl.setVo(cList.get(j));
+							 }
+						 }
+						
+					}
+				}
 
 				list.add(cl);
 			}
@@ -186,13 +210,22 @@ public class CalenderService {
 				cl.setDay(startNum);
 				cl.setMonth(month - 1);
 				cl.setYear(year);
-				cl.setDateId(MakeCalenderId(year, month - 1, startNum));
+				cl.setDateIdN(MakeCalenderId(year, month - 1, startNum));
 
-				
-				 for(int j=0; j<cList.size(); j++) {
-				 if(MakeVoId(cList.get(j)).equals(cl.getDateId())) { cl.setVo(cList.get(j)); }
-				 }
-				
+				for(int j=0; j<cList.size(); j++) {
+					if(MakeVoEndId(cList.get(j))>= cl.getDateIdN() && cl.getDateIdN()>=MakeVoId(cList.get(j))) {
+						
+						 if(cList.get(j).getCalenderType().equals("장기")) {
+							 cl.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+							 cl.setVo(cList.get(j));
+						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 if(cl.getDateIdN()==MakeVoId(cList.get(j))) {
+								 cl.setVo(cList.get(j));
+							 }
+						 }
+						
+					}
+				}
 
 				list.add(cl);
 			}
@@ -203,14 +236,22 @@ public class CalenderService {
 			cl.setDay(i + 1);
 			cl.setMonth(month);
 			cl.setYear(year);
-			cl.setDateId(MakeCalenderId(year, month, i + 1));
-			System.out.println(cl.getDateId()+" 달력값");
+			cl.setDateIdN(MakeCalenderId(year, month, i + 1));
 			
 			for(int j=0; j<cList.size(); j++) {
-				System.out.println(MakeVoId(cList.get(j)) + "DB값");
-			if(MakeVoId(cList.get(j)).equals(cl.getDateId())) { cl.setVo(cList.get(j)); }
+				if(MakeVoEndId(cList.get(j))>= cl.getDateIdN() && cl.getDateIdN()>=MakeVoId(cList.get(j))) {
+					
+					 if(cList.get(j).getCalenderType().equals("장기")) {
+						 cl.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+						 cl.setVo(cList.get(j));
+					 }else if(cList.get(j).getCalenderType().equals("단기")) {
+						 if(cl.getDateIdN()==MakeVoId(cList.get(j))) {
+							 cl.setVo(cList.get(j));
+						 }
+					 }
+					
+				}
 			}
-			
 
 			list.add(cl);
 		}
@@ -222,13 +263,22 @@ public class CalenderService {
 				cl.setDay(i + 1);
 				cl.setMonth(1);
 				cl.setYear(year + 1);
-				cl.setDateId(MakeCalenderId(year + 1, 1, i + 1));
+				cl.setDateIdN(MakeCalenderId(year + 1, 1, i + 1));
 
-				
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j)).equals(cl.getDateId())) { cl.setVo(cList.get(j)); }
+					if(MakeVoEndId(cList.get(j))>= cl.getDateIdN() && cl.getDateIdN()>=MakeVoId(cList.get(j))) {
+						
+						 if(cList.get(j).getCalenderType().equals("장기")) {
+							 cl.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+							 cl.setVo(cList.get(j));
+						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 if(cl.getDateIdN()==MakeVoId(cList.get(j))) {
+								 cl.setVo(cList.get(j));
+							 }
+						 }
+						
+					}
 				}
-				
 
 				list.add(cl);
 			}
@@ -240,13 +290,22 @@ public class CalenderService {
 				cl.setDay(i + 1);
 				cl.setMonth(month + 1);
 				cl.setYear(year);
-				cl.setDateId(MakeCalenderId(year, month + 1, i + 1));
+				cl.setDateIdN(MakeCalenderId(year, month + 1, i + 1));
 
-				
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j)).equals(cl.getDateId())) { cl.setVo(cList.get(j)); }
+					if(MakeVoEndId(cList.get(j))>= cl.getDateIdN() && cl.getDateIdN()>=MakeVoId(cList.get(j))) {
+						
+						 if(cList.get(j).getCalenderType().equals("장기")) {
+							 cl.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+							 cl.setVo(cList.get(j));
+						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 if(cl.getDateIdN()==MakeVoId(cList.get(j))) {
+								 cl.setVo(cList.get(j));
+							 }
+						 }
+						
+					}
 				}
-				
 
 				list.add(cl);
 			}
@@ -315,10 +374,10 @@ public class CalenderService {
 					weekList.setWeek(week[i]);
 					weekList.setMonth(month - 1);
 					weekList.setYear(year - 1);
-					weekList.setDateId(MakeCalenderId(year - 1, 12, startNum));
+					weekList.setDateIdN(MakeCalenderId(year - 1, 12, startNum));
 
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j)).equals(weekList.getDateId())) {
+					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
 					weekList.setVo(cList.get(j)); } }
 					
 					list.add(weekList);
@@ -334,11 +393,11 @@ public class CalenderService {
 					weekList.setWeek(week[i]);
 					weekList.setMonth(month - 1);
 					weekList.setYear(year);
-					weekList.setDateId(MakeCalenderId(year, month - 1, startNum));
+					weekList.setDateIdN(MakeCalenderId(year, month - 1, startNum));
 
 					
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j)).equals(weekList.getDateId())) {
+					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
 					weekList.setVo(cList.get(j)); } }
 					
 
@@ -355,11 +414,11 @@ public class CalenderService {
 				weekList.setWeek(week[i]);
 				weekList.setMonth(month);
 				weekList.setYear(year);
-				weekList.setDateId(MakeCalenderId(year, month, day));
+				weekList.setDateIdN(MakeCalenderId(year, month, day));
 
 				
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j)).equals(weekList.getDateId())) {
+				if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
 				weekList.setVo(cList.get(j)); } }
 				
 
@@ -377,11 +436,11 @@ public class CalenderService {
 				weekList.setWeek(week[i]);
 				weekList.setMonth(month);
 				weekList.setYear(year);
-				weekList.setDateId(MakeCalenderId(year, month, startNum));
+				weekList.setDateIdN(MakeCalenderId(year, month, startNum));
 
 				
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j)).equals(weekList.getDateId())) {
+				if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
 				weekList.setVo(cList.get(j)); } }
 				
 
@@ -399,10 +458,10 @@ public class CalenderService {
 					weekList.setWeek(week[i]);
 					weekList.setMonth(1);
 					weekList.setYear(year + 1);
-					weekList.setDateId(MakeCalenderId(year + 1, 1, startNum));
+					weekList.setDateIdN(MakeCalenderId(year + 1, 1, startNum));
 
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j)).equals(weekList.getDateId())) {
+					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
 					weekList.setVo(cList.get(j)); } }
 
 					list.add(weekList);
@@ -419,10 +478,10 @@ public class CalenderService {
 					weekList.setWeek(week[i]);
 					weekList.setMonth(month + 1);
 					weekList.setYear(year);
-					weekList.setDateId(MakeCalenderId(year, month + 1, startNum));
+					weekList.setDateIdN(MakeCalenderId(year, month + 1, startNum));
 
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j)).equals(weekList.getDateId())) {
+					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
 					weekList.setVo(cList.get(j)); } }
 
 					list.add(weekList);
@@ -442,10 +501,10 @@ public class CalenderService {
 				weekList.setWeek(week[i]);
 				weekList.setMonth(month);
 				weekList.setYear(year);
-				weekList.setDateId(MakeCalenderId(year, month, startNum));
+				weekList.setDateIdN(MakeCalenderId(year, month, startNum));
 
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j)).equals(weekList.getDateId())) {
+				if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
 				weekList.setVo(cList.get(j)); } }
 
 				list.add(weekList);
@@ -513,10 +572,10 @@ public class CalenderService {
 		listDay.setMonth(month);
 		listDay.setDay(day);
 		listDay.setWeek(week[setWeekMethod(year, month, day)]);
-		listDay.setDateId(MakeCalenderId(year, month, day));
+		listDay.setDateIdN(MakeCalenderId(year, month, day));
 
 		for(int j=0; j<cList.size(); j++) {
-		if(MakeVoId(cList.get(j)).equals(listDay.getDateId())) {
+		if(MakeVoId(cList.get(j))==(listDay.getDateIdN())) {
 		listDay.setVo(cList.get(j)); } }
 		
 
@@ -563,10 +622,10 @@ public class CalenderService {
 
 		listDay.setDay(day);
 		listDay.setWeek(week[setWeekMethod(year, month, day)]);
-		listDay.setDateId(MakeCalenderId(year, month, day));
+		listDay.setDateIdN(MakeCalenderId(year, month, day));
 		
 		for(int j=0; j<cList.size(); j++) {
-		if(MakeVoId(cList.get(j)).equals(listDay.getDateId())) {
+		if(MakeVoId(cList.get(j))==(listDay.getDateIdN())) {
 		listDay.setVo(cList.get(j)); } }
 		return listDay;
 	}
@@ -586,10 +645,10 @@ public class CalenderService {
 		listDay.setMonth(month);
 		listDay.setDay(day);
 		listDay.setWeek(week[setWeekMethod(year, month, day)]);
-		listDay.setDateId(MakeCalenderId(year, month, day));
+		listDay.setDateIdN(MakeCalenderId(year, month, day));
 		
 		for(int j=0; j<cList.size(); j++) {
-		if(MakeVoId(cList.get(j)).equals(listDay.getDateId())) {
+		if(MakeVoId(cList.get(j))==(listDay.getDateIdN())) {
 		listDay.setVo(cList.get(j)); } 
 		}
 		

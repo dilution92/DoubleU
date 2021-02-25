@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.doubleu.profile.mybatis.ProfileMapper">
+	<select id="select" parameterType="com.doubleu.profile.vo.ProfileVo" resultMap="selectProfileData">
+		SELECT * FROM member
+	</select>
+
+	<resultMap id="selectProfileData" type="com.doubleu.profile.vo.ProfileVo">
+ 
+	<result property="memberNo" column="member_no" /> 
+	<result property="memberMid" column="member_mid" /> 
+	<result property="memberPwd" column="member_pwd" /> 
+	<result property="memberName" column="member_name" /> 
+	<result property="memberEmail" column="member_email" /> 
+	<result property="memberDepartment" column="member_department"  />
+	<result property="memberTeam" column="member_team"  /> 
+	<result property="memberPhoneNumber" column="member_phonenumber"/>  
+	<result property="memberZipcode" column="member_zipcode" />
+	<result property="memberAddress" column="member_address" /> 
+	<result property="memberPosition" column="member_position" /> 
+	
+	</resultMap>
+	
+	
+	
+</mapper>
+	
