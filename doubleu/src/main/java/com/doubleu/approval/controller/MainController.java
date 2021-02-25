@@ -332,6 +332,7 @@ public class MainController {
 
 		delFileList = uploadService.deleteSystemFile(req);
 		vo.setDelFileList(delFileList);
+		msg = service.deleteAttFile(vo);
 
 		if (!attFileList.isEmpty() && attFileList != null) {
 			System.out.println("attFileList check");

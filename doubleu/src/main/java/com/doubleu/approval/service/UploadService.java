@@ -36,8 +36,8 @@ public class UploadService {
 					File oriFile = new File(realPath + m.getOriginalFilename());
 					System.out.println("저장 경로 : " +oriFile);
 					String uploadFileName = m.getOriginalFilename();
+					
 					uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
-
 					UUID uuid = UUID.randomUUID();
 					uploadFileName = uuid.toString() + "_" + uploadFileName;
 					File saveFile = new File(realPath, uploadFileName);
@@ -55,7 +55,7 @@ public class UploadService {
 				throw new Exception();
 			}
 		}catch(Exception ex) {
-			System.out.println("업로드된 파일이 없습니다.");
+			System.out.println("업로드할 파일이 없습니다.");
 		}
 		return attList;
 	}
