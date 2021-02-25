@@ -89,6 +89,7 @@
 			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" value="${obj.familyeventSubject }" name="familyeventSubject"></td>
 				        </tr>
 				        <tr>
+				        	<input type="hidden" name="familyeventNo" value="${obj.familyeventNo }">
 				        	<div class="form-group">
 				            <th class="success">작성자</th>
 				            <td><input type="text" id="mid" name="familyeventMid" value="${obj.familyeventMid }" readonly></td>
@@ -99,9 +100,10 @@
 				        <tr>
 				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
 				            <td>
-					            <select class="form-control" id="exampleFormControlSelect4" name="familyeventType" selected="${obj.familyeventType}">
-							      <option id="r3" value="결혼"> 결혼</option>
-							      <option id="r4" value="부고"> 부고</option>
+				            	<input type="hidden" id="familyeventTypehidden" value="${obj.familyeventType}">
+					            <select class="form-control" id="exampleFormControlSelect4" name="familyeventType" >
+							      <option id="결혼" value="결혼">결혼</option>
+							      <option id="부고" value="부고">부고</option>
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
@@ -149,7 +151,7 @@
 				        <tr>
 				            <td colspan="4" class="text-center">
 								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" id="noticeUpdate1" value="저장"/>
+								<input type="button" class="btn btn-primary" id="familyevnetUpdate1" value="저장"/>
 								<input type="button" class="btn btn-primary" value="삭제" onclick="location.href=''">
 				            </td>
 				        </tr>
@@ -160,12 +162,10 @@
 			</form>
 			
 			<!-- 수정하기 모달창 -->
-			<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal fade" id="staticBackdrop1" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	       		<jsp:include page="./modal/update_modal.jsp"/>
 			</div>   
 
- 			<!-- 사내공지 댓글창 -->
- 			<jsp:include page="notice_repl.jsp"/>
  			
 		</main>
 	</section>
