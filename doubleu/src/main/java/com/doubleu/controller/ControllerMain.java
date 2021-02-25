@@ -23,4 +23,11 @@ public class ControllerMain {
 		mv.setViewName("MainPage/");
 		return mv;
 	}
+	@RequestMapping(value = "/mainPage")
+	public ModelAndView mainPage() {
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("MainPage/index");
+		return mv;
+	}
 }
