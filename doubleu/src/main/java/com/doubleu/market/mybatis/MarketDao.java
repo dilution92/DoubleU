@@ -46,13 +46,8 @@ public class MarketDao {
 				page.setTotListSize(totListSize);
 				page.pageCompute();
 
-				//System.out.println("BoardDao.select()..........................2");
-				//System.out.println(page.getNowPage());
-				//System.out.println(page.getFindStr());
-				//System.out.println(page.getMarketCategory());
-				
-				List<MarketAttVo> attList = new ArrayList<>();
-				//System.out.println("BoardDao.select()..........................3");
+		
+	//			List<MarketAttVo> attList = new ArrayList<>();
 
 //				attList = mapper.selectAttOne();
 //				//System.out.println("v: " + v);
@@ -180,7 +175,7 @@ public class MarketDao {
 			}
 		}
 
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 	public void delFile(List<MarketAttVo> delList) {
 		System.out.println("delFile");
 		for(MarketAttVo v : delList) {
@@ -191,13 +186,6 @@ public class MarketDao {
 	}
 
 
-	public int selectPrice(String findStr) {
-		int price = 1000;
-				//mapper.selectPrice(findStr);
-			System.out.println("dao가격: "+price);
-				
-		return price;
-	}
 
 
 	

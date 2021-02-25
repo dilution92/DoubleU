@@ -9,30 +9,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doubleu.calender.service.Calender;
 import com.doubleu.calender.service.CalenderService;
-import com.doubleu.calender.service.CalenderWeekList;
-import com.doubleu.calender.vo.CalenderVo;
+import com.doubleu.calender.vo.CalenderWeekList;
 
 @Controller
 public class CalenderURLController {
-
 	@Autowired
-	CalenderService service;
-	
-	@Autowired
-	Calender calender;
+	CalenderService calender;
 	
 	@RequestMapping(value = "/calenderMonth", method = {RequestMethod.POST, RequestMethod.GET} )
 	public ModelAndView calenderMonth() {
 		ModelAndView mv = new ModelAndView();
 		List<CalenderWeekList> list = new ArrayList<>();
 		
-		List<CalenderVo> cList = new ArrayList<CalenderVo>();
-		
-		cList = service.selectList();
-		
+
 		list = calender.setMonthCalender();
+		System.out.println("리스트 출력");
+		for(int i=0; i<list.size(); i++) {
+			System.out.println(list.get(i).getVo().getCalenderContent());
+		}
+		System.out.println("리스트 종료");
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		int day = calender.getDay();

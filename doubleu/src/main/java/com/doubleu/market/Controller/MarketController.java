@@ -69,7 +69,7 @@ public class MarketController {
 		}
 		
 		Map<String, Object> map = dao.select(page);
-		
+
 		int cnt = dao.totalCount();
 		
 		mv.addObject("list", map.get("list"));

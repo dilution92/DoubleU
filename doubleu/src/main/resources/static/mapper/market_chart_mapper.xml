@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doubleu.market.mybatis.ChartMapper">
+
+<!-- price range select -->
+	<select id="selectfindCnt" parameterType="String" resultType="int"  >
+		select count(*) from market where market_subject like '${findStr}'
+		
+	</select>
+	
+	<select id="selectPriceChart" parameterType="String" 
+	resultType="HashMap" >
+		select  TRUNC(AVG(market_price), 1) priceAVG, market_date from market 
+		where  market_subject like '%${findStr}%' 
+		group by market_date
+		
+	</select>
+	
+	<select id="selectPrice" parameterType="String" resultType="int" >
+		select avg(market_price) from market 
+		where market_subject like '%${findStr}%'
+	</select>
+
+
+</mapper>

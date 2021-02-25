@@ -22,96 +22,9 @@
 <!-- 전자결재용 CSS -->
 <link rel="stylesheet" href="/css/market/market.css">
 <!-- 차트 링크 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
-
-<script>
-    
- 
-    
- 
- 
-    $(document).ready(function() {
- 
-        
-        var chartLabels = []; // 받아올 데이터를 저장할 배열 선언
-        var chartData = []; 
-        var month="";
-    
-        var cooContractNo = '<c:out value="${no}"/>';
-        
-        function createChart() {
-            
-            var ctx = document.getElementById("canvas").getContext("2d");
-            LineChartDemo = Chart.Line(ctx, {
-                data : lineChartData,
-                options : {
-                    scales : {
-                        yAxes : [ {
-                            ticks : {
-                                beginAtZero : true
-                            }
-                        } ]
-                    }
-                }
-            });
-        }
- 
- 
-        
-        //selectList로 월을 선택해서 ajax로 받는다.
-        $('#selectMonth').change(function() {
-            var changeMonth = $('#selectMonth option:selected').val();
-            month = changeMonth;
-            console.log('month:'+month);
-            
-            
-             
-        });
-        
-        //버튼을 클릭하면 차트가 그려진다. createChart()함수를 안에다 선언해야지 차트값을 받더라...
-        $('#btn').click(function(){
-            
-            chartLabels = [];
-            chartData=[];
-            
-            //getJson으로 데이터 
-            $.getJSON("./getDailyVisitor", {
-                cooContractNo : cooContractNo,
-                month : month
-            }, function(data) {
-                $.each(data, function(key, value) {
-                    
-                    chartLabels.push(value.statsDate);
-                    chartData.push(value.statsAmount);
-                });
-                
-                lineChartData = {
-                        labels : chartLabels,
-                        datasets : [ {
-                            label : "일별 방문자 수",
-                            backgroundColor:"#bfdaf9",
-                            borderColor: "#80b6f4",
-                            pointBorderColor: "#80b6f4",
-                            pointBackgroundColor: "#80b6f4",
-                            pointHoverBackgroundColor: "#80b6f4",
-                            pointHoverBorderColor: "#80b6f4",
-                            fill: false,
-                            borderWidth: 4,
-                            data : chartData
-                        } ]
- 
-                    }
-                createChart();
-                
-            });
-        })
- 
-        
-    })
-    
-</script>
-
+<!-- 튤립 -->
+ <script src="https://https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script> 
 <body>
 
 	<!-- main-GNB -->
@@ -129,7 +42,7 @@
 
 		<main class="e-approval-article">
 			<div class="market-header" style="height: 2%;  margin-bottom: 50px;">
-				<h3 style="width: 200px; height: 30px;">중고게시판</h3>
+				<h3 style="width: 200px; height: 30px;">중고게시판 </h3>
 			</div>
 			<!-- ========== -->
 			<div class='container market-price-search-container 'id = "content">
@@ -142,59 +55,36 @@
 								 <div class="market-search-bar" >
 									 <input class="form-control form-control-lg market-search"
 											type="text" placeholder="상품명" aria-label="Search"
-											id="approvalFindStr" value="${param.findStr }" name="selectPrice" style="width:50%;">
+											id="approvalFindStr" value="${param.selectPrice }" name="selectPrice" style="width:50%;">
 					                 <input class="btn btn-outline-primary btn-lg" type="submit" value="검색" />
 					                    <input type="hidden" name="nowPage" value="${(empty param.nowPage)? 1: param.nowPage}" size="10">
-										<input type="hidden" name="serial" size="10" >
-										<input type="hidden" name="search" value="select">
 									</div>
 			                 </form>
 			       	 </div>
 			     </div>
 			     
-			     
-
- <div class="row">
+      <div id="chart-container">
+      			<c:choose>
+      				<c:when test="${!empty priceList }">
+                        <canvas id="priceChart" style="width: 80%; height: 300px;text-align:center;"></canvas>
+      					<div class="price-chart-detail">
+      						
+      						${param.selectPrice }의 시세 :<span class="badge badge-primary"> ${price }</span>원 <br><br><br>
+      						<button type="button" class="btn btn-primary" onclick="location.href='/marketSelect?findStr=${param.selectPrice }'"
+      						data-toggle="tooltip" data-placement="left" title="바로검색" id="example">${param.selectPrice }게시물 보기</button>
+      					</div>
+      				</c:when>
+      				<c:otherwise>
+      					<div class="price-chart-detail">
+						  ${msg}
+						</div>
+      				</c:otherwise>
+      			
+      			</c:choose>
+                    </div>
  
-            <div class="container">
- 
- 
- 
-                <div style="margin-top:20px; margin-left:80px">
-                    <select name="selectMonth" id="selectMonth">
- 
-                        <option value="1">JAN</option>
-                        <option value="2">FEB</option>
-                        <option value="3">MAR</option>
-                        <option value="4">APR</option>
-                        <option value="5">MAY</option>
-                        <option value="6">JUN</option>
-                        <option value="7">JUL</option>
-                        <option value="8">AUG</option>
-                        <option value="9">SEP</option>
-                        <option value="10">OCT</option>
-                        <option value="11">NOV</option>
-                        <option value="12">DEC</option>
-                    </select>
-                    <button id="btn">보기</button>
-                </div>
-            </div>
- 
- 				<h1>시세 : ${price }</h1>
- 
-            <div id="graph" style="width: 80%; margin: 30px;">
-                <div>
-                    <canvas id="canvas" height="350" width="600"></canvas>
-                </div>
-            </div>
         </div>
  
-    </div>
- 
- 			    
-				
-
-
 		</main>
 	</section>
 
@@ -208,9 +98,54 @@
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
 	<!-- ****************************** -->
-
 <script>
-	
-		</script>
+$( function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  } );
+</script>
+<script>
+var marketDate = [];
+var marketPrice = [];
+
+<c:forEach var="priceList" items="${priceList}">
+	marketDate.push('${priceList.MARKET_DATE}');
+	marketPrice.push('${priceList.PRICEAVG}');
+</c:forEach>
+
+var ctx = document.getElementById("priceChart");
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: marketDate,
+        datasets: [{
+            label: '가격',
+            data: marketPrice,
+            backgroundColor: [
+                'rgba(54, 162 , 235, 0.2)',
+               
+            ],
+            borderColor: [
+                'rgba(54, 162 , 235, 0.2)',
+              
+            ]
+        }]
+    },
+    options: {
+    
+        scales: {
+            xAxes: [{
+
+                ticks: {
+                    beginAtZero: true,
+                  
+                }
+            }]
+        }
+    }
+}
+);   
+    
+</script>
+
 </body>
 </html>
