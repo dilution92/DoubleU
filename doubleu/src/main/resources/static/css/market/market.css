@@ -290,19 +290,10 @@ margin-top: 30px;
 	position: relative;
 }
 
-.price-chart{
-    width: 500px;
-    height: 500px;
-    border: 1px solid #aaa;
-    text-align: center;
-    margin: auto;
-    margin-top: 50px;
-}
 
 .price-chart-detail{
     width: 500px;
     height: 300px;
-    border: 1px solid #aaa;
     text-align: center;
     margin: auto;
     margin-top: 50px;

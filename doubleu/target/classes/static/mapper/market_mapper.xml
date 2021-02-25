@@ -5,11 +5,6 @@
 	
 <mapper namespace="com.doubleu.market.mybatis.MarketMapper">
 
-<!-- price range select -->
-	<select id="selectPrice" resultMap="marketList" parameterType="String" resultType="int" >
-		select avg(market_price) from market 
-		where market_price is not null and market_subject like '%${findStr}%'
-	</select>
 
 <!-- delete -->
 
@@ -140,6 +135,7 @@
 		<result property="oriFile" column="files_orifile"/>
 		<result property="filesMain" column="files_main"/>
 	</resultMap>
+
 </mapper>
 
 
