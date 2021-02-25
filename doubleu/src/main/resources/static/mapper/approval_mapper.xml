@@ -9,6 +9,7 @@
 		INSERT ALL 
 		INTO approval_form(form_no, member_no, drafter_name, form_date, drafter_department, form_title, form_doc, form_type, cooperation_department, event_date, drafter_position, approval_state, modify_date) 
 		VALUES(seq_approval_form.nextval, ${memberNo}, '${drafterName}', SYSDATE, '${drafterDepartment}', '${formTitle}', '${formDoc}', '${formType}', '${cooperationDepartment}', '${eventDate}', '${drafterPosition}', '${approvalState}', SYSDATE)
+		
 		<if test="attFileList != null">
 			<foreach collection="attFileList" item="att">
 				INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
@@ -81,7 +82,7 @@
 				AND form_type = '${findType}'
 			</if>
 		</where>
-		ORDER BY form_no DESC) af)
+		ORDER BY modify_date DESC) af)
 		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
 	</select>
 	
@@ -103,8 +104,9 @@
 		</where>
 	</select>
 	<select id="selectReceiver" parameterType="com.doubleu.approval.vo.IndexPage" resultType="com.doubleu.approval.vo.FormVo" resultMap="resultFormVo">
-		SELECT * FROM (
-		SELECT ROWNUM rno, a.*, b.decision_state FROM
+		SELECT * FROM(
+		SELECT ROWNUM rno, c.* FROM (
+		SELECT a.*, b.decision_state FROM
 		approval_form a,
 		(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order IN(0, 1, -1)) b
 		<where>
@@ -119,7 +121,7 @@
 				AND a.form_type = '${findType}'
 			</if>
 		</where>
-		ORDER BY a.form_no DESC) c
+		ORDER BY a.modify_date DESC) c)
 		WHERE rno BETWEEN ${startNo} AND ${endNo} 
 	</select>
 	
@@ -127,7 +129,8 @@
 		<choose>
 			<when test="findState == 0">
 				SELECT * FROM (
-				SELECT a.*, ROWNUM rno, b.decision_state FROM
+				SELECT c.*, ROWNUM rno FROM (
+				SELECT a.*, b.decision_state FROM
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND maker_order = 1) b
 				<where>
@@ -142,12 +145,13 @@
 						AND a.form_type = '${findType}'
 					</if>
 				</where>
-				ORDER BY a.form_no DESC) c
+				ORDER BY a.modify_date DESC) c)
 				WHERE rno BETWEEN ${startNo} AND ${endNo}
 			</when>
 			<when test="findState == 1">
 				SELECT * FROM (
-				SELECT a.*, ROWNUM rno, b.decision_state FROM
+				SELECT c.*, ROWNUM rno FROM (
+				SELECT a.*, b.decision_state FROM
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = 1) b
 				<where>
@@ -162,12 +166,13 @@
 						AND a.form_type = '${findType}'
 					</if>
 				</where>
-				ORDER BY a.form_no DESC) c
+				ORDER BY a.form_no DESC) c)
 				WHERE rno BETWEEN ${startNo} AND ${endNo}
 			</when>
 			<when test="findState == -1">
 				SELECT * FROM (
-				SELECT a.*, ROWNUM rno, b.decision_state FROM
+				SELECT c.*, ROWNUM rno FROM (
+				SELECT a.*, b.decision_state FROM
 				approval_form a,
 				(SELECT * FROM approval_decision_makers WHERE member_no = ${memberNo} AND decision_state = -1) b
 				<where>
@@ -182,7 +187,7 @@
 						AND a.form_type = '${findType}'
 					</if>
 				</where>
-				ORDER BY a.form_no DESC) c
+				ORDER BY a.form_no DESC) c)
 				WHERE rno BETWEEN ${startNo} AND ${endNo}
 			</when>
 		</choose>
@@ -281,7 +286,7 @@
 				AND form_type = '${findType}'
 			</if>
 		</where>
-		ORDER BY form_no DESC) af)
+		ORDER BY modify_date DESC) af)
 		WHERE rno BETWEEN '${startNo}' AND '${endNo}'
 	</select>
 	

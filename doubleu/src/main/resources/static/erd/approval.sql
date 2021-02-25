@@ -49,6 +49,7 @@ CREATE TABLE approval_form
 	event_date date,
 	drafter_position varchar2(50) NOT NULL,
 	approval_state varchar2(100) NOT NULL,
+	modify_date timestamp,
 	PRIMARY KEY (form_no)
 );
 
@@ -102,3 +103,26 @@ ALTER TABLE approval_form_vacation
 
 
 
+CREATE SEQUENCE seq_approval_form;
+CREATE SEQUENCE seq_approval_decision_makers;
+CREATE SEQUENCE seq_approval_files;
+
+-- 첨부파일 함수
+--create or replace FUNCTION getApprovalAttSeq
+--RETURN number
+--IS
+--    seq NUMBER;
+--BEGIN
+--    SELECT seq_approval_files.nextval into seq FROM dual;
+--    RETURN seq;
+--END;
+
+-- 결재권자 함수
+--create or replace FUNCTION getApprovalADMSeq
+--RETURN number
+--IS
+--    seq NUMBER;
+--BEGIN
+--    SELECT seq_approval_decision_makers.nextval into seq FROM dual;
+--    RETURN seq;
+--END;
