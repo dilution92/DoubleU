@@ -2,6 +2,24 @@
  * 
  */
 
+sort = function() {
+	
+//----------낮은 가격순 -------//
+$('#btnLowprice').on('click', function() {
+		var frm = frm_market_sort;
+			frm.action = '/marketLowprice';
+			frm.submit();
+		});
+//---------최신순-------//
+$('#btnLatest').on('click', function() {
+		var frm = frm_market_sort;
+			frm.action = '/marketLatest';
+			frm.submit();
+		});
+	
+}
+
+
 brd = function() {
 //-----------검색-----------//
 	
@@ -19,7 +37,6 @@ $('#market_btnDel').on('click', function() {
 			frm.submit();
 		});
 
-		
 }
 	
 //-----------수정--------//
@@ -157,7 +174,7 @@ function goPage(page) {
 		}
 		else{
 			
-		$('#marketPrice').val("무료나눔");
+		$('#marketPrice').val("0");
 		//$('#marketPrice').attr("disabled", true); 
 		$('#FreeText').html("무료나눔을 하는 당신, 멋져요👍");
 	
