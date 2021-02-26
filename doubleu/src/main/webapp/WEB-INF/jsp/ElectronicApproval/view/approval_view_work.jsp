@@ -1,3 +1,4 @@
+<%@ page import="java.io.File" %>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,6 +19,10 @@
 		if(request.getParameter("formName") != null) {
 			formName = request.getParameter("formName");
 		}
+
+		String directory = application.getRealPath("WEB-INF/upload/approval/");
+		String files[] = new File(directory).list();
+		
 	 %>
 	
 	
@@ -117,23 +122,25 @@
 					<tr>
 						<td colspan="4">
 							<div class="e-approval-file-zone">
-								<div class="fileContent">
 								<c:forEach var="att" items="${vo.attFileList }">
+								<div class="fileContent">
 									<div class="fileContent-first">
-										<a download href="/approval/${att.sysFile }">
+										<a href="/FileDownload?file=${att.sysFile }">
 											<span>${att.oriFile}</span>
 											<input type="button" id="delBtnFile" value="다운로드">
 										</a>
 									</div>
-								</c:forEach>
 								</div>
+								</c:forEach>
 							</div>
 						</td>
 					</tr>
 				</table>
 				<hr>
 				<div class="e-approval-reason">
-					<h6 style="font-size: 1.2em; font-weight: bold">결재 사유</h6>
+					<c:if test="${vo.decisionMakersList != '' }">
+						<h6 style="font-size: 1.2em; font-weight: bold">결재 사유</h6>
+					</c:if>
 					<c:forEach var="makerVo" items="${vo.decisionMakersList }">
 						<c:choose>
 							<c:when test="${makerVo.decisionState == '1'}">

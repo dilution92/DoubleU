@@ -10,7 +10,7 @@
   			select rownum no, m.* from (  
 					select * from market mk join market_files att on mk.market_no=att.market_no
 				 	where market_subject like '%${findStr}%'	and files_main = 1 
-				 	 order by mk.market_no desc  ) m   
+				 	 order by mk.market_date desc  ) m   
 				 	) where no between #{startNo} and #{endNo}
 	</select> 
 		

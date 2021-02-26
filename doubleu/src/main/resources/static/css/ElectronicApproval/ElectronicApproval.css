@@ -458,6 +458,7 @@ body {
 .fileContent-first {
 	width: 100%;
 	height: 100%;
+	display: block;
 }
 .fileContent-first a {
 	display: inline-block;
@@ -492,6 +493,7 @@ body {
 .fileContent {
 	border: 1px solid #ced4da;
 	border-radius: 5px;
+	margin-bottom: 5px;
 }
 .fileContent input[type=file] {
 	display: none;
@@ -574,4 +576,20 @@ body {
 	display: inline-block;
 }
 
+/* 첨부파일 삭제 */
 
+
+.delFile-content input[type=button] {
+	border-radius: 5px;
+	border: none;
+	width: 15px;
+	height: 20px;
+	padding: 0 0 3px 0;
+	background-color: #5a6268;
+	color: #fff;
+}
+
+.delFile-content {
+	text-align: center;
+	margin-bottom: 5px;
+}

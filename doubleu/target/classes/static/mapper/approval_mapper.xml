@@ -49,6 +49,16 @@
 		SELECT * FROM dual
 	</insert>	
 	
+	<!-- 파일 업데이트 -->
+	<insert id="updateAttFile" parameterType="com.doubleu.approval.vo.FormVo">
+		INSERT ALL
+		<foreach collection="attFileList" item="att">
+			INTO approval_files(files_no, form_no, file_sysfile, file_orifile)
+				VALUES(getApprovalAttSeq(), ${formNo}, '${att.sysFile}', '${att.oriFile}')
+		</foreach>
+		SELECT * FROM dual
+	</insert>
+	
 	<!-- 발신 목록 count 출력 -->
 	<select id="outgoingTotalListSize" resultType="int" parameterType="com.doubleu.approval.vo.IndexPage">
 		SELECT count(form_no) FROM approval_form
@@ -360,8 +370,6 @@
 		WHERE rno BETWEEN ${startNo} AND ${endNo}
 	</select>
 	
-	
-	
 	<!-- 기본 결재 form 수정 -->
 	<update id="updateR" parameterType="com.doubleu.approval.vo.FormVo">
 		UPDATE approval_form
@@ -446,6 +454,15 @@
 	</delete>
 	<delete id="deleteAttFileList" parameterType="int">
 		DELETE FROM approval_files WHERE form_no = ${_parameter}
+	</delete>
+	
+	<delete id="deleteAttFile" parameterType="com.doubleu.approval.vo.FormVo">
+		DELETE FROM approval_files
+		<where>
+			<foreach collection="delFileList" item="att" separator="or">
+				FILE_SYSFILE = #{att.sysFile}
+			</foreach>		
+		</where>	
 	</delete>
 	
 	

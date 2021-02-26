@@ -84,10 +84,8 @@ public class MarketController {
 								@ModelAttribute MarketVo vo, @ModelAttribute MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		List<MarketAttVo> attList = fu.upload(mul);
-		System.out.println("확인1");
 		
 		vo.setAttlist(attList);
-		System.out.println("확인2");
 		
 		String msg = dao.update(vo);
 		System.out.println(msg);

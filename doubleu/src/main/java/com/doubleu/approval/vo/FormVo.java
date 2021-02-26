@@ -18,12 +18,19 @@ public class FormVo {
 	String approvalState;
 	String DecisionState;
 	List<AttFileVo> attFileList; // 파일 첨부가 있을 경우  
+	List<AttFileVo> delFileList; // 파일 첨부가 있을 경우  
 	List<DecisionMakerVo> decisionMakersList; // 결재권자 목록을 담을 인스턴스
 	FormPetitionVo formPetitionVo; // 품의서 관련 결재 양식일 경우
 	FormVacationVo formVacationVo; // 휴가 관련 결재 양식일 경우
 
 	
 
+	public List<AttFileVo> getDelFileList() {
+		return delFileList;
+	}
+	public void setDelFileList(List<AttFileVo> delFileList) {
+		this.delFileList = delFileList;
+	}
 	public String getDecisionState() {
 		return DecisionState;
 	}

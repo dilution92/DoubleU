@@ -31,10 +31,6 @@ public class ApprovalDao {
 	public String insert(FormVo vo) {
 		String msg = "정상적으로 등록되었습니다.";
 		System.out.println("service도착");
-		if(vo.getAttFileList().get(0) != null) {
-			System.out.println("파일명" + vo.getAttFileList().get(0).getSysFile());
-			System.out.println("파일명" + vo.getAttFileList().get(0).getOriFile());
-		}
 		int cnt = mapper.insert(vo);
 		return msg;
 	}
@@ -153,6 +149,25 @@ public class ApprovalDao {
 		}
 		return msg;
 	}
+	
+	public String updateAttFile(FormVo vo) {
+		String msg = "정상적으로 파일이 업로드 되었습니다.";
+		
+		int resultCnt = mapper.updateAttFile(vo);
+		
+		return msg;
+	}
+	
+	public String deleteAttFile(FormVo vo) {
+		String msg = "정상적으로 파일이 삭제되었습니다.";
+		
+		int resultCnt = mapper.deleteAttFile(vo);
+		if(resultCnt < 1) {
+			msg = "삭제된 파일이 없습니다.";
+		}
+		return msg;
+	}
+	
 	
 	public Map<String, Object> selectMember(IndexPage page) {
 		Map<String,Object> map = new HashMap<>();

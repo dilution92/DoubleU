@@ -119,12 +119,16 @@
 					<tr>
 						<td colspan="6">
 							<div class="e-approval-file-zone">
-								<div class="input-group mb-3">
-								  <div class="custom-file">
-								    <input type="file" class="custom-file-input" id="inputGroupFile02">
-								    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
-								  </div>
+								<c:forEach var="att" items="${vo.attFileList }">
+								<div class="fileContent">
+									<div class="fileContent-first">
+										<a href="/FileDownload?file=${att.sysFile }">
+											<span>${att.oriFile}</span>
+											<input type="button" id="delBtnFile" value="다운로드">
+										</a>
+									</div>
 								</div>
+								</c:forEach>
 							</div>
 						</td>
 					</tr>

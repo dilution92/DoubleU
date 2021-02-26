@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +16,14 @@
 		        	<span aria-hidden="true">&times;</span>
 		        </button>
 		</div>
+		
 		<div class="modal-body">
+		
 			<form action="">
 				<table class="table table-bordered" >
 		    		<tr>
 		    			<td width="20%">제목</td>
-		    			<td>제목</td>
+		    			<td>${selectVo.getCalenderSubject() }</td>
 		    		</tr>
 		    		<tr>
 		    			<td>기간</td>
@@ -33,7 +36,7 @@
 		    		</tr>
 		    		<tr>
 		    			<td>그룹분류</td>
-		    			<td>그룹분류</td>
+		    			<td></td>
 		    		</tr>
 		    		<tr>
 		    			<td>참석자</td>
@@ -41,7 +44,7 @@
 		    		</tr>
 		    		<tr>
 		    			<td>장소</td>
-		    			<td> <input type="text" name="calender_place"> </td>
+		    			<td> <input type="text" name="calender_place" value=""> </td>
 		    		</tr>
 		    		<tr>
 		    			<td>내용</td>
