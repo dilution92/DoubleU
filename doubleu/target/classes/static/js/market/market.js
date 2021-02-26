@@ -2,10 +2,27 @@
  * 
  */
 
+/*--------찜목록으로 가기 ----------*/
+function godib(memberName) {
+	var frm = document.frm_market;
+	frm.dibUser.value = memberName;
+	frm.marketNo.value = 0;
+	console.log(frm.dibUser.value);
+	frm.action = '/marketDiblist';
+	frm.submit();
+	
+	$("#dibModal").modal();
+
+}
+
+
+
+
+/*---------찜하기버튼-----------*/
  $(function() {
 	var frm = document.frm_market_view;
 		var dib = $("#dibVal").val();
-		console.log(dib);
+		//console.log(dib);
 		
     $("#btnDib").click(function() { 
 		if(dib==0){
@@ -28,7 +45,7 @@
 	})
 	
 	
-
+/*----------올린지 몇분전 --------*/
     function date(){
         var table = document.getElementById("market_table");
 		

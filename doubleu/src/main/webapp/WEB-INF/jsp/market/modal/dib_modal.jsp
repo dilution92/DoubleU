@@ -25,16 +25,13 @@
 						<div class="card">
 							<div class="card-header" id="headingOne" style="display : inline-block;">
 								<div class="list-group">
-								<c:forEach begin="1" end="4">
+								<c:forEach var='vo' items='${list }' >
 									  <button type="button" class="list-group-item list-group-item-action" >
-									  	<h6 class="card-title"style="float: left;">수분 크림</h6>
-										<p class="card-text" style="float: right;">4,000원</p>
+									  	<h6 class="card-title"style="float: left;">${vo.marketSubject }</h6>
+										<p class="card-text" style="float: right;">${vo.marketPrice }</p>
 									  </button>
 									  
-									  <button type="button" class="list-group-item list-group-item-action" >
-									  	<h6 class="card-title"style="float: left;">텀블러</h6>
-										<p class="card-text" style="float: right;">8,000원</p>
-									  </button>
+								
 								  </c:forEach>
 								</div>
 							</div>
