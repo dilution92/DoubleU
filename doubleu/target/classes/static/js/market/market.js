@@ -6,17 +6,20 @@
 	var frm = document.frm_market_view;
 		var dib = $("#dibVal").val();
 		console.log(dib);
+		
     $("#btnDib").click(function() { 
-		if(dib=0){
+		if(dib==0){
+			
 			$('#btnDib').html("❤"); //채운하트
-			$('#dibVal').attr("disabled", false); 
+			//$('#dibVal').attr("disabled", false);
 			frm.action = '/marketDib';
 			frm.submit();
+		
 		}
 		
-		else if(dib>0){
+		if(dib>0){
 			$('#btnDib').html("🤍")	
-			$('#dibVal').attr("disabled", true); 
+			//$('#dibVal').attr("disabled", true); 
 			frm.action = '/marketDibdown';
 			frm.submit();
 			
