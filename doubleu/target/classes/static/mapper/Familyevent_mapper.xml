@@ -88,4 +88,10 @@
 		]]>
 	</update>
 	
+	<select id="delete" parameterType="int">
+		<![CDATA[
+			delete from FAMILYEVENT where familyeventNo = #{_parameter}
+		]]>
+	</select>
+	
 </mapper>

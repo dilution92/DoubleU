@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.doubleu.calender.service.CalenderService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,9 +10,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+<!-- bootstrap CDN -->
+<link rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+   integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+   crossorigin="anonymous">
+<link rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+<!-- bootstrap script, Jquery CDN -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"></script>
+
+<!-- ajax -->
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+
 <link rel="stylesheet" href="/css/calender/Calender.css">
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
@@ -88,6 +111,7 @@
 				</tr>
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
+			<form>
 			
 			<c:forEach items="${list}" var="list">
 			<c:set var="i" value="${i+1 }"/>
@@ -101,33 +125,35 @@
 				${list.day}
 				</div>
 				
-				<c:forEach items="${list.vo }" var="listVo1"> <!-- 일정 타입 -->
-					<input type="text" value="${listVo1.getCalenderType()}" class="insertCalenderType"> 
-				</c:forEach>
-				
-				<c:forEach items="${list.period }" var="listPeriod"> <!-- 장기 일정이 표시 될 곳 -->
-					<input type="hidden" value="${listPeriod}" class="longPeriodCheck">
-				</c:forEach>
-				
-				<c:forEach items="${list.vo }" var="listVo2"> <!-- 장기 일정이 표시 될 곳 -->
-					<div class="calender_modal" >
-						<div class="longPeriod"  style ="display:none">
-							장기 일정
-							${listVo2.getCalenderContent() }
-						</div>
+				<div><!-- 일정이 표시 될 곳 -->
+					<c:forEach items="${list.vo }" var="listVo"> <!-- 일정 타입 -->
 						
-						
-					</div>
-				</c:forEach>
-				
-				<c:forEach items="${list.vo }" var="listVo3"> <!-- 단기 일정이 표시 될 곳 -->
-					<div class="calender_modal">
-						<div class="shortPeriod" style ="display:none" >
-							단기 일정
-							${listVo3.getCalenderContent() }
+						<input type="hidden" value="${listVo.getCalenderType()}" class="insertCalenderType"> 
+					</c:forEach>
+					<c:forEach items="${list.vo }" var="listVo"> <!-- 장기 일정이 표시 될 곳 -->
+						<div class="calender_modal" id="${listVo.getCalenderNo() }">
+						<c:choose>
+							<c:when test="${listVo.getCalenderType() eq '장기'}">
+								장기 ::
+									${listVo.getCalenderSubject() }
+									
+							</c:when>
+						</c:choose>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+					<c:forEach items="${list.vo }" var="listVo"> <!-- 단기 일정이 표시 될 곳 -->
+						<div class="calender_modal" >
+							<c:choose>
+							<c:when test="${listVo.getCalenderType() eq '단기'}">
+								단기 ::
+									${listVo.getCalenderSubject() }
+									
+							</c:when>
+						</c:choose>
+						</div>
+					</c:forEach>
+				</div>
+				
 			</td>
 			<c:if test="${i%7==0 }">
 			</tr>
@@ -135,6 +161,7 @@
 			
 			
 			</c:forEach>
+			</form>
 			</tbody>
 		</table>
 	</div>
@@ -146,23 +173,36 @@
 		
 </main>
  
-<script type="text/javascript">
+<script>
 $(function(){
     $(".calender_modal").click(function(){
+    	var param = $(this).attr("id");
+    	var idUrl = "/CalenderMonthModal?id="+param;
+    	console.log(param);
+    	location.href=idUrl;
+    	/* 
+    	$.ajax ({
+            url: '/CalenderMonthModal',
+            data : param,
+            dataType: 'html',
+            method : 'POST',
+            success: function(data) {
+               console.log(data)
+            }
+         }); */
+    	
         $('#Calender_detail_modal').modal();
     })
     
    
     $("#month").change(function(){
     	var changedMonth = parseInt($('#month').val());
-    	console.log(month+"셀렉박스 월 값");
     	var url = "/MonthSelectedMonth?changedMonth="+changedMonth;
     	location.href=url;
     })
     
     $("#year").change(function(){
     	var changedyear = parseInt($('#year').val());
-    	console.log(changedyear+"셀렉박스 년 값");
     	var url = "/MonthSelectedYear?changedYear="+changedyear;
     	location.href=url;
     })
@@ -172,7 +212,6 @@ $(function(){
 $(document).ready(function(){
 	var month = $("#monthcome").val();
 	
-	console.log(month);
 	 $("#month").val(month).attr("selected","selected");
 })
 
@@ -191,7 +230,27 @@ $(document).ready(function(){
 })
 
 $(document).ready(function(){
-	var ictype = $('.insertCalenderType').val();
+	
+	/* var ctn = $('.insertCalenderType').length;// 갯수카운트
+	
+	for(var i=0; i<ctn; i++){
+		if(document.getElementsByClassName("insertCalenderType")[i].value == "장기"){
+			var tvalue = document.getElementsByClassName("calNo")[i].value;
+			$('.longPeriod').children(tvalue).css('display','');
+		}
+		else if(document.getElementsByClassName("insertCalenderType")[i].value == "단기"){
+			var tvalue = document.getElementsByClassName("calNo")[i].value;
+			$('.shortPeriod').children(tvalue).css('display','');
+		}
+		else{
+			$('.longPeriod').children(tvalue).css('display','none');
+			$('.shortPeriod').children(tvalue).css('display','none');
+		}
+	}
+	 */
+	
+	
+	/* var ictype = $('.insertCalenderType').val();
 	var sp = document.getElementsByClassName("shortPeriod")[0];
 	var lp = document.getElementsByClassName("longPeriod")[0];
 	
@@ -203,7 +262,7 @@ $(document).ready(function(){
 		if(ictype == "단기"){
 			$(".shortPeriod").show();
 		}
-	}
+	} */
 })
 
 /* function changeMonth(){

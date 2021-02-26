@@ -38,7 +38,7 @@ public class FamilyeventService {
 		String msg = "";
 		int cnt =  mapper.update(vo);
 		if(cnt<0) {
-			msg = "수정중 오류 발생";
+			msg = "수정 중 오류 발생";
 		}else {
 			msg = "정상적으로 수정되었습니다.";
 		}
@@ -46,4 +46,13 @@ public class FamilyeventService {
 		return msg;
 	}
 	
+	public String delete(int no) {
+		System.out.println("delete 시작");
+		String msg = "";  
+		mapper.delete(no);
+	
+		System.out.println("delete mapper 반환");
+		return msg;
+	}
+
 }

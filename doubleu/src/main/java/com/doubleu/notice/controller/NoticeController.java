@@ -34,7 +34,7 @@ public class NoticeController {
 		String msg = "";
 		msg = service1.insert(vo);
 		mv.addObject("viewMsg", msg);
-		mv.setViewName("notice/notice_index");
+		mv.setViewName("redirect:/noticeIndex");
 		return mv;
 	}
 	
@@ -45,9 +45,7 @@ public class NoticeController {
 		String msg = "";
 		msg = service2.insert(vo);
 		mv.addObject("viewMsg", msg);
-		mv.setViewName("notice/familyevent_index");
-		
-		
+		mv.setViewName("redirect:/familyeventIndex");
 		return mv;
 	}
 	
@@ -73,5 +71,16 @@ public class NoticeController {
       mv.setViewName("/notice/familyevent_index");
 	  return mv;
    }
-	
+   
+   // 경조사 index delete
+   @RequestMapping(value = "/familyeventDeleteR", method = {RequestMethod.POST, RequestMethod.GET})
+   public ModelAndView familyeventDelete(@RequestParam int no){
+	  System.out.println("히이ㅣㅇㅠㅠㅠ");
+      ModelAndView mv = new ModelAndView();
+	  String msg = "";
+	  msg = service2.delete(no);
+	  mv.setViewName("redirect:/familyeventIndex");
+	  System.out.println(msg);
+	  return mv;
+   }
 }

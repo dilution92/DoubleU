@@ -50,6 +50,9 @@
 		SELECT * FROM CALENDER
 	</select>
 	
+	<select id="selectOne" parameterType="int" resultMap="ResultVo" >
+		SELECT * FROM CALENDER WHERE calender_no=#{_parameter}
+	</select>
 	
 	
 	<resultMap type="com.doubleu.calender.vo.CalenderVo" id="ResultVo">
