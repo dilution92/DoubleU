@@ -54,10 +54,11 @@ public class MarketDibController {
 									MarketDibVo dibvo,MarketVo vo, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		String msg= null;
+		int cnt = 0;
 		dibvo.setMarketNo(marketNo);
 		dibvo.setDibUser(dibUser);
 		
-		int cnt = dao.deleteDib(dibvo);
+		cnt = dao.deleteDib(dibvo);
 		
 		
 		vo.setMarketNo(marketNo);

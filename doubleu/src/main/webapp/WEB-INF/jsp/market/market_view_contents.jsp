@@ -77,14 +77,15 @@
 					      <div class="form-control" id="inputEmail3" >${vo.marketPrice }</div>
 
 					    </div>
-  							<button data-toggle="modal" 	data-target="#goAccount" type="button" value="찜목록" class="btn btn-primary mb-2">계좌보기</button>
+  							<button data-toggle="modal" 	data-target="#goAccount" type="button"  class="btn btn-primary mb-2">계좌보기</button>
 					  </div>
 						    <div  class="col-sm-2 col-form-label" id="btnDib" style="cursor:pointer;font-size:2em; text-align:center;left:300px;">
 					  <c:choose>
-						  <c:when test="${cnt >0}">&nbsp ❤  </c:when>
-						  <c:otherwise>&nbsp 🤍</c:otherwise> 
+						  <c:when test="${cnt >0}">&nbsp❤</c:when>
+						  <c:otherwise>&nbsp🤍</c:otherwise> 
 						   </c:choose>
 						    </div>
+						    
 						  
 					  	<input type = "text" id="dibVal" value='${cnt }' />
 					  <div class="form-group row">
@@ -143,8 +144,28 @@
 				</div>
 			</div>
 		</div>
-
-		
+	</div>
+	
+	
+	
+	<div class="modal fade" id="DibheartModal" tabindex="-1" aria-labelledby="DibheartModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"
+				style="width: 80%; height: 200px; top: 200px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="btnDib">찜</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="heart" ></div>
+				<div class="modal-dialog modal-sm">찜 완료! </div>
+				<div class="modal-footer">
+				</div>
+				
+			</div>
+		</div>
 	</div>
 
 
