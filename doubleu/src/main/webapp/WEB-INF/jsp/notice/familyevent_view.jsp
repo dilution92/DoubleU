@@ -131,7 +131,7 @@
 					            <td colspan="4" class="text-center">
 									<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
 									<input type="button" class="btn btn-primary" value="수정" onclick="location.href='/familyeventUpdate?no=${obj.familyeventNo }'">
-									<input type="button" class="btn btn-primary" value="삭제" onclick="location.href='/familyeventDelete?no=${obj.familyeventNo }'">
+									<input type="button" class="btn btn-primary" value="목록가기" onclick="location.href='/familyeventIndex'">
 					            </td>
 					        </tr>
 				        </table>

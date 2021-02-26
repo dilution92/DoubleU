@@ -68,7 +68,7 @@
 		    </tr>
 	        <tr>
 				<td colspan="4" class="text-right">
-					<input type="button" class="btn btn-secondary" value="목록보기" onclick="location.href='noticeIndex'">
+					<input type="button" class="btn btn-secondary" value="목록보기" onclick="location.href='familyeventIndex'">
 		        </td>
 		    </tr>
 		</table>

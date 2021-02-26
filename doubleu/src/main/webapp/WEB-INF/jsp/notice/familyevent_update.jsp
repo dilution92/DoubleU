@@ -151,8 +151,8 @@
 				        <tr>
 				            <td colspan="4" class="text-center">
 								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" id="familyevnetUpdate1" value="저장"/>
-								<input type="button" class="btn btn-primary" value="삭제" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" id="familyevnetUpdate1" value="저장">
+								<input type="button" class="btn btn-primary" id="familyevnetdelete1" value="삭제">
 				            </td>
 				        </tr>
 				        </table>
@@ -166,6 +166,10 @@
 	       		<jsp:include page="./modal/update_modal.jsp"/>
 			</div>   
 
+			<!-- 삭제하기 모달창 -->
+			<div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	       		<jsp:include page="./modal/delete_modal.jsp"/>
+			</div>   
  			
 		</main>
 	</section>

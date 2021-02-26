@@ -102,3 +102,22 @@ $(document).ready(function(){
        $("#부고").attr("selected",true);
     }
 });
+
+/* notice_delete 삭제하기 모달 이후 submit */
+$(function(){
+   $("#noticeUpdate1").click(function(){
+        $('#staticBackdrop1').modal();
+    });
+    
+    $("#noticeUpdate2").click(function(){
+        $('#noticeUpdateForm').submit();
+    })
+})
+
+$(function(){
+   $("#familyevnetdelete1").click(function(){
+        $('#staticBackdrop2').modal();
+    });
+    
+  
+})
