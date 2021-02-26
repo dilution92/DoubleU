@@ -20,6 +20,31 @@ public class CalenderController {
 	@Autowired
 	CalenderService calender;
 	
+	@RequestMapping(value = "/CalenderMonthModal", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView CalenderMonthModal(@RequestParam int id) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(id);
+		
+		CalenderVo vo = calender.selectOne(id);
+		System.out.println(vo.getCalenderNo());
+		
+List<CalenderWeekList> list = new ArrayList<>();
+		
+
+		list = calender.setMonthCalender();
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("currentDay", day);
+		mv.addObject("list",list);
+		
+		mv.addObject("selectVo", vo);
+		mv.setViewName("calender/Calender_month");
+		return mv;
+	}
+	
 	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
 	public ModelAndView calenderInsertR(CalenderVo vo) {
 		System.out.println("controller 시작");

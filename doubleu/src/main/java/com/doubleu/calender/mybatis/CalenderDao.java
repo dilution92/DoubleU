@@ -28,5 +28,9 @@ public class CalenderDao {
 		return cList;
 	}
 	
+	public CalenderVo selectOne(int id) {
+		return mapper.selectOne(id);
+	}
+	
 	
 }

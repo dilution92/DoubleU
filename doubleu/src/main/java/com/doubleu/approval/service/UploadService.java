@@ -14,7 +14,7 @@ import com.doubleu.market.vo.MarketAttVo;
 
 @Service
 public class UploadService {
-	String saveDir = "C:\\Users\\정해준\\문서\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\approval\\";
+	String saveDir = "C:\\Users\\USER\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\approval\\";
 
 
 	public  List<AttFileVo> upload(List<MultipartFile> mul) {

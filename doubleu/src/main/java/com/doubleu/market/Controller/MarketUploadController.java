@@ -12,7 +12,7 @@ import com.doubleu.market.vo.MarketAttVo;
 
 @Service
 public class MarketUploadController {
-	public static String saveDir = "C:\\Users\\wotjd\\Documents\\DoubleU\\doubleu\\src\\main\\resources\\static\\images\\market\\";
+	public static String saveDir = "C:\\Users\\USER\\DoubleU\\doubleu\\src\\main\\resources\\static\\images\\market\\";
 
 
 	public  List<MarketAttVo> upload(List<MultipartFile> mul) {
