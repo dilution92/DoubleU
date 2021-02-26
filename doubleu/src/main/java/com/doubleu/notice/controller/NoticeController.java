@@ -68,8 +68,10 @@ public class NoticeController {
       ModelAndView mv = new ModelAndView();
 	  String msg = service2.update(vo);
 	  System.out.println(msg);
-      mv.setViewName("/notice/familyevent_update");
-      return mv;
+	  List<FamilyeventVo> contentList = service2.select();
+      mv.addObject("contentList", contentList);
+      mv.setViewName("/notice/familyevent_index");
+	  return mv;
    }
 	
 }

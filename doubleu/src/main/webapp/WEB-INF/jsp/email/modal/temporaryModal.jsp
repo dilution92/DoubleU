@@ -14,16 +14,17 @@
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content modalTemporaryEmail">
 					<div class="modalTemporaryEmailFolder">
-
+						<div>
+						</div>
 						<h4>작성하신 메일이 임시 저장되었습니다.</h4>
-						<h6>제목 : 제목없음</h6>
+						<h6><span>제목 : </span><span id="emailTemp"></span></h6>
 						<p>
 							<strong>임시저장된 메일 보내기</strong><br /> <br /> 1. 왼쪽 메뉴에서 ‘임시보관함’을
 							선택하세요.
 						</p>
 						<div class="modalTemporaryEmailFolderBtn">
 							<button class="btn btn-primary btn-lg btn-primary btn-sm"
-								role="button">확인</button>
+								role="button" name="tempBtn" onclick="tempSendEmail()" >확인</button>
 							<button class="btn btn-primary btn-lg btn-primary btn-sm"
 								role="button">쓰던 페이지로 가기</button>
 						</div>

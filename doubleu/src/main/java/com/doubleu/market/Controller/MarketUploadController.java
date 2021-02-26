@@ -14,6 +14,8 @@ import com.doubleu.market.vo.MarketAttVo;
 public class MarketUploadController {
 	public static String saveDir = "C:\\Users\\USER\\DoubleU\\doubleu\\src\\main\\resources\\static\\images\\market\\";
 
+	//재현 경로 : C:\Users\wotjd\Documents\DoubleU\doubleu\src\main\resources\static\images\market\\
+	//연주 경로 : C:\\Users\\user\\Desktop\\git\\DoubleU\\doubleu\\src\\main\\resources\\static\\images\\market\\
 
 	public  List<MarketAttVo> upload(List<MultipartFile> mul) {
 		List<MarketAttVo> attList = new ArrayList<>();

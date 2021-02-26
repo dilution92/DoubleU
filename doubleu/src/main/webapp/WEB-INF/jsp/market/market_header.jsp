@@ -35,6 +35,7 @@
 							<!-- hidden -->
 							<input type='hidden' name='marketCategory'  value='null'/>
 							<input type='hidden' name='marketNo'  value=''/>
+							<input type='hidden' name='dibUser'  value='${member.memberName }'/>
 							
 							
 						</div>

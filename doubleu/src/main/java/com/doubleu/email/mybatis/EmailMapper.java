@@ -38,4 +38,5 @@ public interface EmailMapper {
 	
 	// 메일 쓰기
 	public int insertSendWrite(EmailMainVo vo);
+	public int insertTemporary(EmailMainVo vo);
 }

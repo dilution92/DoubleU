@@ -115,7 +115,14 @@
 							 		<option value="반차"> 반차 </option>
 							 	</select>
 							</c:when>
-					 	
+					 		<c:otherwise>
+							 	<select id="selectVacationType" onchange="chooseVacationType()" class="form-control form-control-sm" style="width: 100px; font-size: 1em;">
+							 		<option value="" selected> 휴가 선택 </option>
+							 		<option value="연차" > 연차 </option>
+							 		<option value="월차"> 월차 </option>
+							 		<option value="반차"> 반차 </option>
+							 	</select>
+					 		</c:otherwise>
 					 	</c:choose>
 					 </td>
 					</tr>
@@ -200,14 +207,32 @@
 						</td>
 					</tr>		
 					<tr>
-						<th colspan="4"  style="padding: 0.5em; ">파일 첨부</th>
+						<th colspan="4"  style="padding: 0.5em; ">기존 첨부 파일</th>
+					</tr>		
+					<tr>
+						<td colspan="4" class="approval-delFile">
+							<c:set var="no" value="0"></c:set>
+								 <c:forEach var="att" items="${vo.attFileList }">
+										<div class="delFile-content">
+											<div>
+												<span>${att.oriFile}</span>
+												<input type="button" name="btnDeleteAtt"  value="x" onclick="delFile('${att.sysFile}', ${no } )">
+											</div>
+											<input type="hidden" name="delSysFile" value=""> 
+										</div>
+										<c:set var="no" value="${no+1 }"></c:set>
+						  		</c:forEach> 
+						</td>
+					</tr>		
+					<tr>
+						<th colspan="4"  style="padding: 0.5em; ">새 파일 첨부</th>
 					</tr>		
 					<tr>
 						<td colspan="4">
 							<div class="e-approval-file-zone">
 								<div class="input-group mb-3">
-								  <div class="custom-file" id="fileZone">
-								  </div>
+									<div class="custom-file" id="fileZone">
+								  	</div>
 								</div>
 							</div>
 						</td>

@@ -15,7 +15,6 @@
 %>
 	
 	<input type="button" id="btnApprovalUpdateR" class="btn btn-outline-primary btn-sm" value="상신요청">
-	<input type="button" id="btnApprovalTempUpdateR" class="btn btn-outline-primary btn-sm" value="임시저장">
 	<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
 	<input type="hidden" name="makerPositionArr">
 	<input type="hidden" name="makerNameArr">

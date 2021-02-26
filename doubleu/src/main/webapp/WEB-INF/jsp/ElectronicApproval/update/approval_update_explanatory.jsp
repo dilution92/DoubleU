@@ -104,14 +104,32 @@
 						</td>
 					</tr>		
 					<tr>
-						<th colspan="6"  style="padding: 0.5em; ">파일 첨부 </th>
+						<th colspan="6"  style="padding: 0.5em; ">기존 첨부 파일</th>
+					</tr>		
+					<tr>
+							<td colspan="6" class="approval-delFile">
+							<c:set var="no" value="0"></c:set>
+								 <c:forEach var="att" items="${vo.attFileList }">
+										<div class="delFile-content">
+											<div>
+												<span>${att.oriFile}</span>
+												<input type="button" name="btnDeleteAtt"  value="x" onclick="delFile('${att.sysFile}', ${no } )">
+											</div>
+											<input type="hidden" name="delSysFile" value=""> 
+										</div>
+										<c:set var="no" value="${no+1 }"></c:set>
+						  		</c:forEach> 
+							 </td>
+					</tr>		
+					<tr>
+						<th colspan="6"  style="padding: 0.5em; ">새 파일 첨부</th>
 					</tr>		
 					<tr>
 						<td colspan="6">
 							<div class="e-approval-file-zone">
 								<div class="input-group mb-3">
-								  <div class="custom-file" id="fileZone" >
-								  </div>
+									<div class="custom-file" id="fileZone">
+								  	</div>
 								</div>
 							</div>
 						</td>

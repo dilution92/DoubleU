@@ -1,8 +1,14 @@
 package com.doubleu.approval.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +25,43 @@ public class URLController {
 
 	@Autowired
 	ApprovalDao service;
+	
+	@RequestMapping(value = "/FileDownload")
+	public String FileDownload(HttpServletRequest req, HttpServletResponse resp) throws Exception  {
+		String msg = "정상적으로 다운로드 되었습니다.";
+		String fileName = req.getParameter("file");
+		String directory = req.getServletContext().getRealPath("/WEB-INF/upload/approval");
+		File file = new File(directory + "/" + fileName);
+		
+		String mimeType = req.getServletContext().getMimeType(file.toString());
+		if(mimeType == null) {
+			resp.setContentType("application/octet-stream"); //2진 데이터 형식을 전달할 때 사용
+		}
+		
+		String downloadName = null;
+		if(req.getHeader("user-agent").indexOf("MSIE") == -1) {
+			downloadName = new String(fileName.getBytes("UTF-8"), "8859_1");
+		}
+		else {
+			downloadName = new String(fileName.getBytes("EUC-KR"), "8859_1");
+		}
+		resp.setHeader("Content_disposition", "attachment;filename=\"" + downloadName+"\";");
+		
+		FileInputStream fileInputStream = new FileInputStream(file); 
+		ServletOutputStream servletOutputStream = resp.getOutputStream();
+		
+		byte b[] = new byte[1024];
+		int data = 0;
+		while((data = (fileInputStream.read(b,0,b.length))) != -1) {
+			System.out.println(data);
+			servletOutputStream.write(b, 0, data);
+		}
+		servletOutputStream.flush();
+		servletOutputStream.close();
+		fileInputStream.close();
+		return msg;
+	}
+	
 	
 	@RequestMapping(value = "/approvalGoFormType")
 	public ModelAndView goFormType(HttpServletRequest req) {

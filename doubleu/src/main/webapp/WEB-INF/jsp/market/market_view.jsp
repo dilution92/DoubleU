@@ -45,7 +45,7 @@
 	
 			</div>
 			<!-- ========== -->
-			<!--  <span class="badge badge-pill badge-primary">2분 전</span>-->
+			<span class="badge badge-pill badge-primary" id="market_date"></span>
 			
 			<!-- market view contents -->
 			<div class='container' >
