@@ -7,7 +7,7 @@
 
  */
 
-/* 게시판 insert 게시기한 radio 선택시 활성/비활성 */
+/* 게시판 insert 게시기한 radio 선택시 활성/비활성 => 수정해야한다ㅏ */ 
 $(document).ready(function(){
  
     // 라디오버튼 클릭시 이벤트 발생
@@ -29,13 +29,15 @@ $(document).ready(function(){
 $(document).ready(function(){
  
     // 라디오버튼 클릭시 이벤트 발생
-    $("input:radio[name=familyeventPostType]").click(function(){
+    $("input[name=familyeventPostType]").click(function(){
         if($("input[name=familyeventPostType]:checked").val() == "설정"){
            $("#searchDateOne").attr("readonly",false);
 		   $("#searchDateTwo").attr("readonly",false);
             // radio 버튼의 value 값이 설정이면 활성화
  
         }else if($("input[name=familyeventPostType]:checked").val() == "영구"){
+			  $("#searchDateOne").val('');
+			  $("#searchDateTwo").val('');
               $("#searchDateOne").attr("readonly",true);
               $("#searchDateTwo").attr("readonly",true);
             // radio 버튼의 value 값이 영구면 비활성화
