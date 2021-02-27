@@ -5,7 +5,12 @@
 	
 <mapper namespace="com.doubleu.market.mybatis.MarketMapper">
 
+<!-- 조회수 -->
 
+	<update id="updateHit" parameterType="com.doubleu.market.vo.MarketVo" >
+		update market set market_hit = #{marketHit}
+					  where market_no = #{marketNo}
+	</update>
 <!-- delete -->
 
 	<delete parameterType="com.doubleu.market.vo.MarketVo" id="delete">

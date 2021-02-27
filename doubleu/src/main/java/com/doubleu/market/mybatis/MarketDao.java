@@ -186,9 +186,28 @@ public class MarketDao {
 	}
 
 
+	public String updateHit(MarketVo vo) {
+		String msg = null ;
+		int cnt = 0;
+		try {
+			cnt = mapper.updateHit(vo);
+			
+			if (cnt>0) {
+				msg="업데이트완료";
+			}else {
+				msg = "업데이트오류";
+			}
+		} catch (Exception ex) {
+			msg = ex.getMessage();
+			//delFile(vo.getAttlist());
+		} finally {
+			return msg;
+	}
 
 
-	
+
+
+	}
 	
 	}
 
