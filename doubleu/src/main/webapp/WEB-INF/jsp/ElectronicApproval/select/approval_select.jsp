@@ -12,23 +12,23 @@
 			<!-- 최근 발신한 문서함 code -->
 			<div class="e-approval-table">
 				<strong class="text-gray-dark">최근 발신한 문서</strong>
-				<table class="table table-hover table-sm">
-					<thead class="e-approval-list text-muted text-gray-dark">
+				<table class="table table-hover table-sm e-approval-list">
+					<thead class=" text-muted text-gray-dark ">
 						<tr>
-							<th scope="col"  width="180px;">기안일</th>
-							<th scope="col"  width="150px;">결재양식</th>
-							<th scope="col">제목</th>
-							<th scope="col">기안자</th>
-							<th scope="col" width="150px;">결재 상태</th>
+							<th scope="col"  width="120px">기안일</th>
+							<th scope="col"  width="120px;">결재양식</th>
+							<th scope="col" width="350px;">제목</th>
+							<th scope="col" width="120px;">기안자</th>
+							<th scope="col" width="120px;">결재 상태</th>
 						</tr>
 					</thead>
-					<tbody class="e-approval-list text-muted">
+					<tbody class=" text-muted">
 						<c:set var="no" value="1" />
 						<c:forEach var="outgoingVo" items="${outgoingList }">
 							<tr onclick="goView(${outgoingVo.formNo}, '${outgoingVo.formType }')">
 								<td>${outgoingVo.formDate}</td>
 								<td>${outgoingVo.formType}</td>					
-								<td style=" text-align: left; text-indent: 3em;">${outgoingVo.formTitle}</td>					
+								<td  class="table-title-fixed-length" style=" text-align: left;">${outgoingVo.formTitle}</td>					
 								<td>${outgoingVo.drafterName }</td>					
 								<c:choose>
 									<c:when test="${outgoingVo.approvalState eq '(발신)상신'}">
@@ -84,24 +84,24 @@
 			
 			<!-- 최근 수신한 문서함 code -->
 							<strong class="text-gray-dark">최근 수신한 문서</strong>
-				<table class="table table-hover table-sm">
-					<thead class="e-approval-list text-muted text-gray-dark">
+				<table class="table table-hover table-sm e-approval-list">
+					<thead class="text-muted text-gray-dark">
 						<tr>
-							<th scope="col"  width="180px;">기안일</th>
+							<th scope="col"  width="120px;">기안일</th>
 							<th scope="col"  width="150px;">결재양식</th>
 							<th scope="col">제목</th>
-							<th scope="col">기안자</th>
-							<th scope="col" width="150px;">결재 상태</th>
-							<th scope="col" width="150px;">결재 여부</th>
+							<th scope="col" width="100px;">기안자</th>
+							<th scope="col" width="100px;">결재 상태</th>
+							<th scope="col" width="120px;">결재 여부</th>
 						</tr>
 					</thead>
-					<tbody class="e-approval-list text-muted">
+					<tbody class="text-muted">
 						<c:set var="no" value="1" />
 						<c:forEach var="receiverVo" items="${receiverList }">
 							<tr onclick="goView(${receiverVo.formNo}, '${receiverVo.formType }')">
 								<td>${receiverVo.formDate}</td>
 								<td>${receiverVo.formType}</td>					
-								<td style=" text-align: left; text-indent: 3em;">${receiverVo.formTitle}</td>					
+								<td class="table-title-fixed-length" style=" text-align: left;">${receiverVo.formTitle}</td>					
 								<td>${receiverVo.drafterName }</td>					
 								<c:choose>
 									<c:when test="${receiverVo.approvalState eq '(발신)상신'}">

@@ -234,11 +234,18 @@
 	margin-top: 3px;
 	font-size: 0.8em;
 	text-align: center;
+	table-layout: fixed;
 }
 .main-approval-table th {
 	border-top: none;
+	
 }
 
+.table-title-fixed-length {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
 
 
 

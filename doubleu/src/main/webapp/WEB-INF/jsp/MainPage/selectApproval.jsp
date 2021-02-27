@@ -23,11 +23,11 @@
 					<table class="table table-hover table-sm main-approval-table">
 						<thead class="text-muted text-gray-dark">
 							<tr>
-								<th scope="col"  width="100px;">기안일</th>
+								<th scope="col"  width="90px;">기안일</th>
 								<th scope="col" width="100px;">결재양식</th>
 								<th scope="col">제목</th>
-								<th scope="col" width="100px">기안자</th>
-								<th scope="col" width="100px;">결재 상태</th>
+								<th scope="col" width="100px;">기안자</th>
+								<th scope="col" width="90px;">결재 상태</th>
 							</tr>
 						</thead>
 						<tbody class="text-muted">
@@ -36,7 +36,7 @@
 								<tr onclick="goView(${outgoingVo.formNo}, '${outgoingVo.formType }')">
 									<td>${outgoingVo.formDate}</td>
 									<td>${outgoingVo.formType}</td>					
-									<td>${outgoingVo.formTitle}</td>
+									<td class="table-title-fixed-length">${outgoingVo.formTitle}</td>
 									<td>${outgoingVo.drafterName }</td>						
 									<c:choose>
 										<c:when test="${outgoingVo.approvalState eq '(발신)상신'}">
@@ -65,11 +65,11 @@
 					<table class="table table-hover table-sm main-approval-table">
 						<thead class="e-approval-list text-muted text-gray-dark">
 							<tr>
-								<th scope="col" width="100px;">기안일</th>
+								<th scope="col" width="90px;">기안일</th>
 								<th scope="col" width="100px;">결재양식</th>
-								<th scope="col">제목</th>
+								<th scope="col" class="table-title-fixed-length">제목</th>
 								<th scope="col" width="100px">기안자</th>
-								<th scope="col" width="70px;">결재 여부</th>
+								<th scope="col" width="90px;">결재 여부</th>
 							</tr>
 						</thead>
 						<tbody class="e-approval-list text-muted">

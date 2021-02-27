@@ -214,15 +214,18 @@ body {
 }
 
 .e-approval-list {
-	font-size: 0.8em;
+	font-size: 0.9em;
+	table-layout: fixed;
 }
-
 .e-approval-list td:hover {
 	cursor: pointer;
 }
 
 .e-approval-list tr {
 	text-align: center;
+}
+.e-approval-list tbody {
+	font-size: .85em;
 }
 
 /* e-approval-list-pagination CSS (페이징처리)*/

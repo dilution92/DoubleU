@@ -77,5 +77,4 @@ public class loginMainController {
 		mv.setViewName("redirect:/login");
 		return mv;
 	}
-
 }

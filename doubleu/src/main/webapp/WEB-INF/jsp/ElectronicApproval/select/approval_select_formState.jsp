@@ -18,25 +18,25 @@
 				}
 			%>
 				<strong class="text-gray-dark">${ listName }</strong>
-				<table class="table table-hover table-sm">
-					<thead class="e-approval-list text-muted text-gray-dark">
+				<table class="table table-hover table-sm e-approval-list">
+					<thead class="text-muted text-gray-dark">
 						<tr>
-							<th scope="col">기안일 </th>
-							<th scope="col">결재양식</th>
-							<th scope="col">제목</th>
-							<th scope="col">기안자</th>
-							<th scope="col">결재 상태</th>
+							<th scope="col" width="120px;">기안일 </th>
+							<th scope="col"  width="150px;">결재양식</th>
+							<th scope="col" width="350px;" ">제목</th>
+							<th scope="col"  width="100px;">기안자</th>
+							<th scope="col"  width="120px;">결재 상태</th>
 							<c:if test="${findState == '1' or findState == '0' or findState == '-1'}">
-								<th scope="col">결재 상태</th>
+								<th scope="col"  width="120px;">결재 여부</th>
 							</c:if>
 						</tr>
 					</thead>
-					<tbody class="e-approval-list text-muted">
+					<tbody class="text-muted">
 						<c:forEach var="vo" items="${list}">
 							<tr onclick="goView(${vo.formNo})">
 								<td>${vo.formDate}</td>
 								<td>${vo.formType }</td>					
-								<td style=" text-align: left; text-indent: 2em;">${vo.formTitle}</td>					
+								<td class="table-title-fixed-length" style="text-align: left;">${vo.formTitle}</td>					
 								<td>${vo.drafterName}</td>					
 								<c:choose>
 									<c:when test="${vo.approvalState eq '(발신)상신'}">
