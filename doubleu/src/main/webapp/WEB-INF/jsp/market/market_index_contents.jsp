@@ -19,11 +19,11 @@
 								<h5 class="card-title">${vo.marketSubject } </h5>
 								<p class="card-text">
 								<c:choose>
-									<c:when test="${vo.marketPrice == '무료나눔' }">${vo.marketPrice}</c:when>
+									<c:when test="${vo.marketPrice == '0' }">무료나눔</c:when>
 									<c:otherwise>${vo.marketPrice}원</c:otherwise>
 								</c:choose>
 								</p>
-								<p class="card-text">🤍 2
+								<p class="card-text">👁${vo.marketHit }
 								<p>
 								<p class="card-text-name">${vo.marketWriter}
 								<input type='hidden' class='marketNo' value='${vo.marketNo}'/>

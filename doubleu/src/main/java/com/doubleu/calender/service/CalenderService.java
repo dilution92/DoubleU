@@ -51,6 +51,11 @@ public class CalenderService {
 		this.day = day;
 	}
 	
+	//selectOne
+	
+	public CalenderVo selectOne(int id) {
+		return dao.selectOne(id);
+	}
 	
 	// insert 
 	public String insert(CalenderVo vo) {
@@ -172,8 +177,6 @@ public class CalenderService {
 		System.out.println(lastMonthday);
 
 		List<CalenderVo> cList = dao.selectList();
-
-		System.out.println(cList);
 
 		if (month == 1) {
 			for (int i = 0; i < monthweek; i++) {
@@ -377,8 +380,19 @@ public class CalenderService {
 					weekList.setDateIdN(MakeCalenderId(year - 1, 12, startNum));
 
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
-					weekList.setVo(cList.get(j)); } }
+						if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
+							
+							 if(cList.get(j).getCalenderType().equals("장기")) {
+								 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+								 weekList.setVo(cList.get(j));
+							 }else if(cList.get(j).getCalenderType().equals("단기")) {
+								 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
+									 weekList.setVo(cList.get(j));
+								 }
+							 }
+							
+						}
+					}
 					
 					list.add(weekList);
 					startNum = startNum + 1;
@@ -394,13 +408,21 @@ public class CalenderService {
 					weekList.setMonth(month - 1);
 					weekList.setYear(year);
 					weekList.setDateIdN(MakeCalenderId(year, month - 1, startNum));
-
 					
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
-					weekList.setVo(cList.get(j)); } }
-					
-
+						if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
+							
+							 if(cList.get(j).getCalenderType().equals("장기")) {
+								 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+								 weekList.setVo(cList.get(j));
+							 }else if(cList.get(j).getCalenderType().equals("단기")) {
+								 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
+									 weekList.setVo(cList.get(j));
+								 }
+							 }
+							
+						}
+					}
 					list.add(weekList);
 					startNum = startNum + 1;
 				}
@@ -416,10 +438,20 @@ public class CalenderService {
 				weekList.setYear(year);
 				weekList.setDateIdN(MakeCalenderId(year, month, day));
 
-				
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
-				weekList.setVo(cList.get(j)); } }
+					if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
+						
+						 if(cList.get(j).getCalenderType().equals("장기")) {
+							 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+							 weekList.setVo(cList.get(j));
+						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
+								 weekList.setVo(cList.get(j));
+							 }
+						 }
+						
+					}
+				}
 				
 
 				list.add(weekList);
@@ -438,10 +470,20 @@ public class CalenderService {
 				weekList.setYear(year);
 				weekList.setDateIdN(MakeCalenderId(year, month, startNum));
 
-				
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
-				weekList.setVo(cList.get(j)); } }
+					if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
+						
+						 if(cList.get(j).getCalenderType().equals("장기")) {
+							 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+							 weekList.setVo(cList.get(j));
+						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
+								 weekList.setVo(cList.get(j));
+							 }
+						 }
+						
+					}
+				}
 				
 
 				list.add(weekList);
@@ -459,10 +501,22 @@ public class CalenderService {
 					weekList.setMonth(1);
 					weekList.setYear(year + 1);
 					weekList.setDateIdN(MakeCalenderId(year + 1, 1, startNum));
-
+					
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
-					weekList.setVo(cList.get(j)); } }
+						if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
+							
+							 if(cList.get(j).getCalenderType().equals("장기")) {
+								 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+								 weekList.setVo(cList.get(j));
+							 }else if(cList.get(j).getCalenderType().equals("단기")) {
+								 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
+									 weekList.setVo(cList.get(j));
+								 }
+							 }
+							
+						}
+					}
+					
 
 					list.add(weekList);
 					startNum = startNum + 1;
@@ -481,8 +535,20 @@ public class CalenderService {
 					weekList.setDateIdN(MakeCalenderId(year, month + 1, startNum));
 
 					for(int j=0; j<cList.size(); j++) {
-					if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
-					weekList.setVo(cList.get(j)); } }
+						if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
+							
+							 if(cList.get(j).getCalenderType().equals("장기")) {
+								 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+								 weekList.setVo(cList.get(j));
+							 }else if(cList.get(j).getCalenderType().equals("단기")) {
+								 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
+									 weekList.setVo(cList.get(j));
+								 }
+							 }
+							
+						}
+					}
+					
 
 					list.add(weekList);
 					startNum = startNum + 1;
@@ -504,9 +570,20 @@ public class CalenderService {
 				weekList.setDateIdN(MakeCalenderId(year, month, startNum));
 
 				for(int j=0; j<cList.size(); j++) {
-				if(MakeVoId(cList.get(j))==(weekList.getDateIdN())) {
-				weekList.setVo(cList.get(j)); } }
-
+					if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
+						
+						 if(cList.get(j).getCalenderType().equals("장기")) {
+							 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+							 weekList.setVo(cList.get(j));
+						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
+								 weekList.setVo(cList.get(j));
+							 }
+						 }
+						
+					}
+				}
+				
 				list.add(weekList);
 				startNum = startNum + 1;
 			}
@@ -575,8 +652,19 @@ public class CalenderService {
 		listDay.setDateIdN(MakeCalenderId(year, month, day));
 
 		for(int j=0; j<cList.size(); j++) {
-		if(MakeVoId(cList.get(j))==(listDay.getDateIdN())) {
-		listDay.setVo(cList.get(j)); } }
+			if(MakeVoEndId(cList.get(j))>= listDay.getDateIdN() && listDay.getDateIdN()>=MakeVoId(cList.get(j))) {
+				
+				 if(cList.get(j).getCalenderType().equals("장기")) {
+					 listDay.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+					 listDay.setVo(cList.get(j));
+				 }else if(cList.get(j).getCalenderType().equals("단기")) {
+					 if(listDay.getDateIdN()==MakeVoId(cList.get(j))) {
+						 listDay.setVo(cList.get(j));
+					 }
+				 }
+				
+			}
+		}
 		
 
 		return listDay;
@@ -625,8 +713,20 @@ public class CalenderService {
 		listDay.setDateIdN(MakeCalenderId(year, month, day));
 		
 		for(int j=0; j<cList.size(); j++) {
-		if(MakeVoId(cList.get(j))==(listDay.getDateIdN())) {
-		listDay.setVo(cList.get(j)); } }
+			if(MakeVoEndId(cList.get(j))>= listDay.getDateIdN() && listDay.getDateIdN()>=MakeVoId(cList.get(j))) {
+				
+				 if(cList.get(j).getCalenderType().equals("장기")) {
+					 listDay.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+					 listDay.setVo(cList.get(j));
+				 }else if(cList.get(j).getCalenderType().equals("단기")) {
+					 if(listDay.getDateIdN()==MakeVoId(cList.get(j))) {
+						 listDay.setVo(cList.get(j));
+					 }
+				 }
+				
+			}
+		}
+		
 		return listDay;
 	}
 
@@ -648,8 +748,18 @@ public class CalenderService {
 		listDay.setDateIdN(MakeCalenderId(year, month, day));
 		
 		for(int j=0; j<cList.size(); j++) {
-		if(MakeVoId(cList.get(j))==(listDay.getDateIdN())) {
-		listDay.setVo(cList.get(j)); } 
+			if(MakeVoEndId(cList.get(j))>= listDay.getDateIdN() && listDay.getDateIdN()>=MakeVoId(cList.get(j))) {
+				
+				 if(cList.get(j).getCalenderType().equals("장기")) {
+					 listDay.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
+					 listDay.setVo(cList.get(j));
+				 }else if(cList.get(j).getCalenderType().equals("단기")) {
+					 if(listDay.getDateIdN()==MakeVoId(cList.get(j))) {
+						 listDay.setVo(cList.get(j));
+					 }
+				 }
+				
+			}
 		}
 		
 		return listDay;

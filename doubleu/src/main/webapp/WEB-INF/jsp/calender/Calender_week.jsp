@@ -80,13 +80,26 @@
 		      		<th><!-- all-day 표시칸  -->
 		      			All-day
 		      		</th>
-		      <c:forEach var="temp" begin="1" end="7" >
+		      		<c:forEach var="list" items="${list }" >
 		      		<td id="calender_content"><!-- all-day 표시칸  -->
-		      			<div class="calender_modal" >
-							I can do this all day
-						</div>
+		      			<c:forEach items="${list.vo }" var="listVo1"> <!-- 장기 일정이 표시 될 곳 -->
+							<div class="calender_modal" >
+								<c:choose>
+									<c:when test="${listVo1.getCalenderType() eq '장기'}">
+										장기 ::
+											${listVo1.getCalenderSubject() }
+									</c:when>
+								</c:choose>
+								<c:choose>
+									<c:when test="${listVo1.getCalenderType() eq '단기'}">
+										단기 ::
+											${listVo1.getCalenderSubject() }
+									</c:when>
+								</c:choose>
+							</div>
+						</c:forEach>
 		      		</td>
-		      </c:forEach>
+					</c:forEach>
 		      	</tr>
 		      
 	      
@@ -131,14 +144,12 @@ $(function(){
     
     $("#month").change(function(){
     	var changedMonth = parseInt($('#month').val());
-    	console.log(month+"셀렉박스 월 값");
     	var url = "/WeekSelectedMonth?changedMonth="+changedMonth;
     	location.href=url;
     })
     
     $("#year").change(function(){
     	var changedyear = parseInt($('#year').val());
-    	console.log(changedyear+"셀렉박스 년 값");
     	var url = "/WeekSelectedYear?changedYear="+changedyear;
     	location.href=url;
     })
@@ -146,7 +157,6 @@ $(function(){
 
 $(document).ready(function(){
 	var month = $("#monthcome").val();
-	console.log(month);
 	 $("#month").val(month).attr("selected","selected");
 })
 
@@ -155,6 +165,18 @@ $(document).ready(function(){
 	var day = $("#daycome").val();
 	var targetToday = document.getElementsByClassName(month+day)[0];
 	targetToday.style.border="5px skyblue solid";
+})
+
+$(document).ready(function(){
+	var ictype = $('.insertCalenderType').val();
+	var lp = document.getElementsByClassName("longPeriod")[0];
+	
+	if( ictype !=null){
+		
+		if(ictype == "장기"){
+			$(".longPeriod").show();
+		}
+	}
 })
 
 </script>

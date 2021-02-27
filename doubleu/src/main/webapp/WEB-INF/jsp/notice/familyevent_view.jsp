@@ -98,7 +98,7 @@
 					            <th class="success">조회수</th>
 					            <td>${obj.familyeventHit }</td>
 					        </tr>
-					        <tr>
+<%-- 					        <tr>
 					        	<th>게시기한</th>
 					        	<td colspan="3">
 									<!-- <input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -108,7 +108,7 @@
 										&nbsp;~ &nbsp;
 										종료일자 &nbsp;<input type="date" id="searchDateTwo" name="familyeventPostEndDate" value="${obj.familyeventPostEndDate }" readOnly> )
 								</td>
-					        </tr> 
+					        </tr>  --%>
 					        <tr>
 					        	<div class="form-group">
 						            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
@@ -131,7 +131,7 @@
 					            <td colspan="4" class="text-center">
 									<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
 									<input type="button" class="btn btn-primary" value="수정" onclick="location.href='/familyeventUpdate?no=${obj.familyeventNo }'">
-									<input type="button" class="btn btn-primary" value="삭제" onclick="location.href='/familyeventDelete?no=${obj.familyeventNo }'">
+									<input type="button" class="btn btn-primary" value="목록가기" onclick="location.href='/familyeventIndex'">
 					            </td>
 					        </tr>
 				        </table>

@@ -2,13 +2,18 @@ package com.doubleu.market.Controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.market.mybatis.MarketDao;
+import com.doubleu.market.mybatis.MarketDibDao;
+import com.doubleu.market.vo.MarketDibVo;
 import com.doubleu.market.vo.MarketPage;
 import com.doubleu.market.vo.MarketVo;
 
@@ -17,9 +22,13 @@ public class MarketUrlController {
 	@Autowired
 	MarketDao dao;
 	
+	@Autowired
+	MarketDibDao Ddao;
+	
 	// market_index.jsp
 	@RequestMapping(value="/marketIndex",method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView marketIndex(MarketPage page) {
+	public ModelAndView marketIndex(HttpServletRequest req, 
+			MarketDibVo dibvo,MarketVo vo, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		
 
@@ -31,6 +40,19 @@ public class MarketUrlController {
 		
 		int cnt = dao.totalCount();
 		
+		
+		String dibUser = req.getParameter("dibUser");
+		System.out.println("index user :"+dibUser);
+		dibvo.setDibUser(dibUser);
+		Map<String, Object> dMap = Ddao.selectDiblist(dibvo);
+
+		int hitCnt = vo.getMarketHit();
+		hitCnt = hitCnt+1;
+		vo.setMarketHit(hitCnt);
+		String msg = dao.updateHit(vo);
+		System.out.println(msg);
+		
+		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
 		mv.addObject("attList", map.get("attList"));
@@ -63,17 +85,26 @@ public class MarketUrlController {
 	
 	// market_view.jsp
 	@RequestMapping(value="/marketView", method={RequestMethod.GET , RequestMethod.POST})
-	public ModelAndView marketView(MarketVo v, MarketPage page) {
+	public ModelAndView marketView(@RequestParam("dibUser") String dibUser,
+			MarketDibVo dibvo,MarketVo v, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("marketNo: " + v.getMarketNo());
 		MarketVo vo = dao.view(v.getMarketNo());
 		
-		//System.out.println("view컨트롤러......");
-		//System.out.println("페이지:" + page.getNowPage());
-		//System.out.println(page.getFindStr());
-		//System.out.println(vo.getMarketSubject());
-		//System.out.println("att:"+vo.getAttlist());
+		int hitCnt = vo.getMarketHit();
+		hitCnt = hitCnt+1;
+		vo.setMarketHit(hitCnt);
+		String msg = dao.updateHit(vo);
+		System.out.println(msg);
+		int cnt = Ddao.selectDib(dibvo);
+		
+		dibvo.setDibUser(dibUser);
+		Map<String, Object> dMap = Ddao.selectDiblist(dibvo);
+		
+		vo.setMarketHit(hitCnt);
+		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("vo", vo);
+		mv.addObject("cnt", cnt);
 		mv.addObject("page", page);
 		mv.setViewName("market/market_view");
 		

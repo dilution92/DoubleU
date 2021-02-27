@@ -3,6 +3,8 @@ package com.doubleu.calender.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,38 @@ public class CalenderController {
 
 	@Autowired
 	CalenderService calender;
+	
+	@RequestMapping(value = "/CalenderMonthModal", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView CalenderMonthModal(@RequestParam int id) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("@@ 컨트롤러 시작");
+		
+		CalenderVo vo = calender.selectOne(id);
+		System.out.println(vo.getCalenderNo());
+		
+		List<CalenderWeekList> list = new ArrayList<>();
+		
+
+		list = calender.setMonthCalender();
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("currentDay", day);
+		mv.addObject("list",list);
+		
+		System.out.println(vo.getCalenderNo()+"컨트롤러 VO.NO");
+		System.out.println(vo.getCalenderSubject()+"컨트롤러 VO.SUBJECT");
+		
+		mv.addObject("selectVo", vo);
+		mv.setViewName("calender/Calender_month");
+		
+		
+		
+		System.out.println("@@@ 컨트롤러 종료");
+		return mv;
+	}
 	
 	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
 	public ModelAndView calenderInsertR(CalenderVo vo) {

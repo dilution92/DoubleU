@@ -144,10 +144,7 @@
 			</form>
 			<!-- ========== -->
 			
- 			<!-- 경조사 댓글창 -->
- 			<jsp:include page="notice_repl.jsp"/>
- 			<!-- ========== -->
- 			
+  			
 		</main>
 	</section>
 	

@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="com.doubleu.calender.service.CalenderService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -7,15 +9,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>일정</title>
+
+<!-- JQuery -->
+
+
+<!-- bootstrap CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+
+
+<!-- ****************************** -->
+
+<!-- JS -->
+<script src="/js/calender/CalenderMonth.js"></script>
 <link rel="stylesheet" href="/css/calender/Calender.css">
+
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
+
 </head>
 <body>
+
 	<!-- 그룹웨어 GNB -->
 	<header class="container-fluid main-gnb">
 		<jsp:include page="../MainPage/header.jsp"></jsp:include>
@@ -88,6 +108,7 @@
 				</tr>
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
+			<form>
 			
 			<c:forEach items="${list}" var="list">
 			<c:set var="i" value="${i+1 }"/>
@@ -101,33 +122,46 @@
 				${list.day}
 				</div>
 				
-				<c:forEach items="${list.vo }" var="listVo1"> <!-- 일정 타입 -->
-					<input type="text" value="${listVo1.getCalenderType()}" class="insertCalenderType"> 
-				</c:forEach>
-				
-				<c:forEach items="${list.period }" var="listPeriod"> <!-- 장기 일정이 표시 될 곳 -->
-					<input type="hidden" value="${listPeriod}" class="longPeriodCheck">
-				</c:forEach>
-				
-				<c:forEach items="${list.vo }" var="listVo2"> <!-- 장기 일정이 표시 될 곳 -->
-					<div class="calender_modal" >
-						<div class="longPeriod"  style ="display:none">
-							장기 일정
-							${listVo2.getCalenderContent() }
-						</div>
+				<div><!-- 일정이 표시 될 곳 -->
+					<c:forEach items="${list.vo }" var="listVo"> <!-- 일정 타입 -->
 						
-						
-					</div>
-				</c:forEach>
-				
-				<c:forEach items="${list.vo }" var="listVo3"> <!-- 단기 일정이 표시 될 곳 -->
-					<div class="calender_modal">
-						<div class="shortPeriod" style ="display:none" >
-							단기 일정
-							${listVo3.getCalenderContent() }
+						<input type="hidden" value="${listVo.getCalenderType()}" class="insertCalenderType"> 
+					</c:forEach>
+					<c:forEach items="${list.vo }" var="listVo"> <!-- 장기 일정이 표시 될 곳 -->
+						<div class="calender_modal" id="${listVo.getCalenderNo() }" data-toggle="modal" data-target="#Calender_detail_modal">
+						<c:choose>
+							<c:when test="${listVo.getCalenderType() eq '장기'}">
+								장기 ::
+									${listVo.getCalenderSubject() }
+									<input type="text" value="${listVo.getCalenderNo() }"> <!-- 0 -->
+									<input type="text" value="${listVo.getStartDate() }"> <!-- 1 -->
+									<input type="text" value="${listVo.getStartTime() }"> <!-- 2 -->
+									<input type="text" value="${listVo.getEndDate() }"> <!-- 3 -->
+									<input type="text" value="${listVo.getEndTime() }"> <!-- 4 -->
+									<input type="text" value="${listVo.getCalenderType() }"> <!-- 5 -->
+									<input type="text" value="${listVo.getCalenderSubject() }"> <!-- 6 -->
+									<input type="text" value="${listVo.getCalenderContent() }"> <!-- 7 -->
+									<input type="text" value="${listVo.getCalenderPlace() }"> <!-- 8 -->
+									<input type="text" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
+									<input type="text" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
+									<input type="text" value="${listVo.getCalenderTime() }"> <!-- 11 -->
+							</c:when>
+						</c:choose>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+					<c:forEach items="${list.vo }" var="listVo"> <!-- 단기 일정이 표시 될 곳 -->
+						<div class="calender_modal" >
+							<c:choose>
+							<c:when test="${listVo.getCalenderType() eq '단기'}">
+								단기 ::
+									${listVo.getCalenderSubject() }
+									
+							</c:when>
+						</c:choose>
+						</div>
+					</c:forEach>
+				</div>
+				
 			</td>
 			<c:if test="${i%7==0 }">
 			</tr>
@@ -135,94 +169,21 @@
 			
 			
 			</c:forEach>
+			</form>
 			</tbody>
 		</table>
 	</div>
 	
-	<!-- 모달창 -->
+	
+	<input type="text" value="${selectVo.getCalenderNo() }" id="modalchk">
+	
+		<!-- 모달창 -->
 	<div class="modal fade" id="Calender_detail_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
  		<jsp:include page="Calender_pop_modal.jsp"></jsp:include>
-	</div>	
-		
+	</div>
 </main>
  
-<script type="text/javascript">
-$(function(){
-    $(".calender_modal").click(function(){
-        $('#Calender_detail_modal').modal();
-    })
-    
-   
-    $("#month").change(function(){
-    	var changedMonth = parseInt($('#month').val());
-    	console.log(month+"셀렉박스 월 값");
-    	var url = "/MonthSelectedMonth?changedMonth="+changedMonth;
-    	location.href=url;
-    })
-    
-    $("#year").change(function(){
-    	var changedyear = parseInt($('#year').val());
-    	console.log(changedyear+"셀렉박스 년 값");
-    	var url = "/MonthSelectedYear?changedYear="+changedyear;
-    	location.href=url;
-    })
-    
-})
 
-$(document).ready(function(){
-	var month = $("#monthcome").val();
-	
-	console.log(month);
-	 $("#month").val(month).attr("selected","selected");
-})
-
-$(document).ready(function(){
-	var year = $("#year").val();
-	var month = $("#monthcome").val();
-	if(month<10){
-		month = "0"+month;
-	}
-	var day = $("#daycome").val();
-	if(day<10){
-		day = "0"+day;
-	}
-	var targetToday = document.getElementsByClassName(year+month+day)[0];
-	targetToday.style.border="5px skyblue solid";
-})
-
-$(document).ready(function(){
-	var ictype = $('.insertCalenderType').val();
-	var sp = document.getElementsByClassName("shortPeriod")[0];
-	var lp = document.getElementsByClassName("longPeriod")[0];
-	
-	if( ictype !=null){
-		
-		if(ictype == "장기"){
-			$(".longPeriod").show();
-		}
-		if(ictype == "단기"){
-			$(".shortPeriod").show();
-		}
-	}
-})
-
-/* function changeMonth(){
-	
-	var month = $("#month").val();
-	
-	$.ajax({
-	    type : "POST",
-	    url : "/CalenderChangeMonth", 
-	    data : month : month ,
-	    error : function(error) {
-	    	console.log("error");
-	    },
-	    success : function(data) {
-		console.log("success");
-	    }
-	});
-} */
-</script>
 
 
 </body>

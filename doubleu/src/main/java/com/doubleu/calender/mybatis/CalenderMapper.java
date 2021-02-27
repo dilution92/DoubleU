@@ -12,4 +12,5 @@ import com.doubleu.calender.vo.CalenderVo;
 public interface CalenderMapper {
 	public int insert(CalenderVo vo);
 	public List<CalenderVo> selectList();
+	public CalenderVo selectOne(int id);
 }

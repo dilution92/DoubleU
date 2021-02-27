@@ -12,19 +12,19 @@
 </head>
 <body>
 <form name="frm_market_view" method="get">
-<table  class="table table-striped market-view-table">
+<table  class="table table-striped market-view-table" id="market_table">
 			  <thead>
 			    <tr >
 			      <th scope="col" style="background-color:#f1f2f4;">카테고리</th>
-			      <th scope="col" >${vo.marketCategory }</th>
+			      <td scope="col" >${vo.marketCategory }</td>
 			      <th scope="col" style="background-color:#f1f2f4;">날짜</th>
-			      <th scope="col" >${vo.marketDate}</th>
+			      <td scope="col" >${vo.marketDate}</td>
 			    </tr>
 			    <tr >
 			      <th scope="col"style="background-color:#f1f2f4;">작성자</th>
-			      <th scope="col" >${vo.marketWriter}</th>
+			      <td scope="col" style="border-bottom: 1px solid #dee2e6;">${vo.marketWriter}</td>
 			      <th scope="col" style="background-color:#f1f2f4;">조회수</th>
-			      <th scope="col" >23</th>
+			      <td scope="col" style="border-bottom: 1px solid #dee2e6;">${vo.marketHit}</td>
 			    </tr>
 			  </thead>
 			  
@@ -49,6 +49,7 @@
 									</c:forEach>
 								</c:when>
 							</c:choose>
+							
 				  </div>
 					  <a class="carousel-control-prev" href="#marketSlider" role="button" data-slide="prev">
 					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -59,7 +60,6 @@
 					    <span class="sr-only">Next</span>
 					  </a>
 					</div>	
-				
 				
 							
 					<div class="form-group-container" style="width:100%; margin-left:50px;">	
@@ -77,16 +77,26 @@
 					      <div class="form-control" id="inputEmail3" >${vo.marketPrice }</div>
 
 					    </div>
-  							<button data-toggle="modal" 	data-target="#goAccount" type="button" value="찜목록" class="btn btn-primary mb-2">계좌보기</button>
+  							<button data-toggle="modal" 	data-target="#goAccount" type="button"  class="btn btn-primary mb-2">계좌보기</button>
 					  </div>
+						    <div  class="col-sm-2 col-form-label" id="btnDib" style="cursor:pointer;font-size:2em; text-align:center;left:300px;">
+					  <c:choose>
+						  <c:when test="${cnt >0}">&nbsp❤</c:when>
+						  <c:otherwise>&nbsp🤍</c:otherwise> 
+						   </c:choose>
+						    </div>
+						    
+						  
+					  	<input type = "hidden" id="dibVal" value='${cnt }' />
 					  <div class="form-group row">
-					    <label for="inputEmail3" class="col-sm-2 col-form-label">❤</label>
 					    
-					    <div class="col-sm-6" style="display: flex;">
-					      <div class="form-control" id="inputEmail3" >0</div>
+					    <%-- <div class="col-sm-6" style="display: flex;">
+					      <div class="form-control" id="market_dib" >${vo.marketDib }</div>
 						</div>
-						
-  							<button type="submit"  id="godibModal"class="btn btn-primary mb-2">찜하기</button>
+						<!--  onclick = "btnDib(${vo.marketDib});" -->
+  							<button  id="btnDib"class="btn btn-primary mb-2">찜하기</button>
+  							<input type='hidden' name='marketDib' value='${vo.marketDib}'/>
+  							  --%>
 					  </div>
 					    </div>
 					
@@ -99,12 +109,14 @@
 				</div>
 				
 				<!-- hidden -->
-				<input type='text' name='findStr' value='${page.findStr }'/>
-				<input type='text' name='nowPage' value='${page.nowPage }'/>
-				<input type='text' name='marketNo'  value='${vo.marketNo}'/>
+				<input type='hidden' name='findStr' value='${page.findStr }'/>
+				<input type='hidden' name='nowPage' value='${page.nowPage }'/>
+				<input type='hidden' name='marketNo'  value='${vo.marketNo}'/>
+				<input type='hidden' name='dibUser'  value='${member.memberName}'/>
 				
 				<div class="market-btn-zone">
-					<button class="btn btn-primary" type="button" onclick = "goBack();">목록</button>
+					<button class="btn btn-primary" type="button" onclick = "location.href='marketIndex?dibUser=${member.memberName}'">목록</button>
+					
 					
 					<c:if test="${vo.marketWriter==member.memberName }">
 						<button class="btn btn-primary" type="submit" onclick = "goModify(${vo.marketNo});">수정</button>
@@ -132,11 +144,38 @@
 				</div>
 			</div>
 		</div>
-
-		
+	</div>
+	
+	
+	
+	<div class="modal fade" id="DibheartModal" tabindex="-1" aria-labelledby="DibheartModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"
+				style="width: 80%; height: 200px; top: 200px;">
+				<div class="modal-header">
+					<h5 class="modal-title" id="btnDib">찜</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="heart" ></div>
+				<div class="modal-dialog modal-sm">찜 완료! </div>
+				<div class="modal-footer">
+				</div>
+				
+			</div>
+		</div>
 	</div>
 
+<!-- hidden -->
+<c:forEach var='vo' items='${marketlist }' >
+	<input type ="hidden" name = "dibMarketSubject" value="'${vo.marketSubject }'"/>
+	<input type ="hidden" name = "dibMarketPrice" value="${vo.marketPrice }"/>
+		<input type ="hidden" name = "dibMarketNo" value="${vo.marketNo }"/>
+	
+ </c:forEach>
 
-
+<script>date()</script>
 </body>
 </html>

@@ -37,9 +37,12 @@ public interface ApprovalMapper {
 	public List<AttFileVo> selectAttFile(int formNo);
 	
 	//업데이트
-	public int updateR(FormVo Vo);
+	public int updateR(FormVo vo);
 	public int updatePetition(FormPetitionVo vo);
 	public int updateVacation(FormVacationVo vo);
+	public int updateAttFile(FormVo vo); // 파일 추가
+	public int deleteAttFile(FormVo vo); // 파일 삭제
+	
 	
 	//결재란 수정
 	public int insertDicisionMakers(FormVo vo);
@@ -72,6 +75,5 @@ public interface ApprovalMapper {
 	
 	//승인 결재 시 결재권자 순서 업데이트
 	public int updateMakerOrder(UpdateMakerOrderVo makerOrderVo);
-	
 	
 }

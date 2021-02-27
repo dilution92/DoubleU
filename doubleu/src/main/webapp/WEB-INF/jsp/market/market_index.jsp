@@ -54,12 +54,11 @@
 					<p class="card-text">글 갯수 : ${cnt }</p>
 				</div>
 				<div class="e-approval-dib">
-					<form class="e-approval-search-form" action="" name="frm_market-sort"
+					<form class="e-approval-search-form" action="" name="frm_market_sort"
 						method="post">
 						<div class="e-approval-form-box" style="float: right;">
-							<input class="btn btn-outline-primary btn-sm" type="button"
-								value="최신순" /> <input class="btn btn-outline-primary btn-sm"
-								type="button" value="낮은 가격순" />
+							<input class="btn btn-outline-primary btn-sm" type="button"value="최신순" id="btnLatest"/> 
+							<input class="btn btn-outline-primary btn-sm"type="button" value="낮은 가격순" id="btnLowprice"/>
 
 						</div>
 					</form>
@@ -102,6 +101,12 @@
 			</form>
 			<!-- ========== -->
 
+<!-- hidden -->
+<c:forEach var='vo' items='${marketlist }' >
+	<input type ="hidden" name = "dibMarketSubject" value="'${vo.marketSubject }'"/>
+	<input type ="hidden" name = "dibMarketPrice" value="${vo.marketPrice }"/>
+	<input type ="hidden" name = "dibMarketNo" value="${vo.marketNo }"/>
+ </c:forEach>
 
 
 
@@ -128,5 +133,6 @@
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
 	<!-- ****************************** -->
+	<script>sort()</script>
 </body>
 </html>

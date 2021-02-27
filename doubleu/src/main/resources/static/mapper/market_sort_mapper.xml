@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.doubleu.market.mybatis.SortMapper">
+ 	<select id="selectLatest" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+  		select * from (
+  			select rownum no, m.* from (  
+					select * from market mk join market_files att on mk.market_no=att.market_no
+				 	where market_subject like '%${findStr}%'	and files_main = 1 
+				 	 order by mk.market_date desc  ) m   
+				 	) where no between #{startNo} and #{endNo}
+	</select> 
+		
+ 	<select id="selectLowprice" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+  		select * from (
+  			select rownum no, m.* from (  
+					select * from market mk join market_files att on mk.market_no=att.market_no
+				 	where market_subject like '%${findStr}%'	and files_main = 1 
+				 	 order by mk.market_price  ) m   
+				 	) where no between #{startNo} and #{endNo}
+	</select> 
+		
+	<select id="totListSize" resultType='int' parameterType="com.doubleu.market.vo.MarketPage">
+		select count(market_no) from market
+		where market_subject like '%${findStr}%'
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+		<!-- resultMap -->
+	<resultMap id="marketList" type="com.doubleu.market.vo.MarketVo">
+		<result property="marketSubject" column="market_subject" /> 	
+		<result property="marketNo" column="market_no" /> 	
+		<result property="marketCategory" column="market_category" /> 	
+		<result property="marketPrice" column="market_price" /> 	
+		<result property="marketAccount" column="market_account" /> 	
+		<result property="marketDoc" column="market_doc" /> 	
+		<result property="marketHit" column="market_hit" /> 	
+		<result property="marketDate" column="market_date" /> 	
+		<result property="marketWriter" column="market_writer" /> 	
+		<result property="marketBank" column="market_bank" /> 	
+		<result property="oriFile" column="files_orifile" /> 	
+		
+	</resultMap>
+	
+	<resultMap type="com.doubleu.market.vo.MarketAttVo" id="attList">
+		<result property="filesNo" column="files_no"/>
+		<result property="MarketNo" column="market_no"/>
+		<result property="sysFile" column="files_sysfile"/>
+		<result property="oriFile" column="files_orifile"/>
+		<result property="filesMain" column="files_main"/>
+	</resultMap>
+</mapper>

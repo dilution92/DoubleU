@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.doubleu.market.mybatis.MarketDibMapper">
+
+	<select id="selectDiblist" parameterType="String" 
+	resultMap="marketList">
+	select distinct dib.dib_no dib_no, mk.market_subject market_subject, 
+					mk.market_price market_price, mk.market_no market_no
+	from market_dib dib 
+	join market mk on mk.market_no = dib.market_no
+	where dib.dib_user=#{dibUser}
+	order by dib_no desc
+	
+	</select>
+	<select id="selectDib" parameterType="com.doubleu.market.vo.MarketDibVo" resultType="int" >
+		select count(*) from market_dib where dib_user like #{dibUser} and market_no = #{marketNo}
+	</select>
+
+	<insert id="insertDib" parameterType="com.doubleu.market.vo.MarketDibVo" >
+		insert into market_dib values(market_dib_seq.nextval, ${marketNo}, #{dibUser})
+	</insert>
+	<update id="updateDib" parameterType="com.doubleu.market.vo.MarketVo" >
+		update market set market_dib = #{marketDib}
+					  where market_no = #{marketNo}
+	</update>
+	<delete id='deleteDib' parameterType="com.doubleu.market.vo.MarketDibVo">
+	delete from market_dib where dib_user like #{dibUser} and market_no =#{marketNo}
+	</delete>
+	
+		<!-- resultMap -->
+	<resultMap id="marketList" type="com.doubleu.market.vo.MarketVo">
+		<result property="marketSubject" column="market_subject" /> 	
+		<result property="marketNo" column="market_no" /> 	
+		<result property="marketCategory" column="market_category" /> 	
+		<result property="marketPrice" column="market_price" /> 	
+		<result property="marketAccount" column="market_account" /> 	
+		<result property="marketDoc" column="market_doc" /> 	
+		<result property="marketHit" column="market_hit" /> 	
+		<result property="marketDate" column="market_date" /> 	
+		<result property="marketWriter" column="market_writer" /> 	
+		<result property="marketBank" column="market_bank" /> 	
+		<result property="oriFile" column="files_orifile" /> 	
+		<result property="marketDib" column="market_dib" /> 	
+		<result property="dibNo" column="dib_no" /> 	
+		
+	</resultMap>
+</mapper>

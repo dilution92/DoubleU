@@ -2,6 +2,103 @@
  * 
  */
 
+
+
+
+
+/*--------찜에서 상세보기----------*/
+
+
+/*--------찜목록으로 가기 ----------*/
+/*function godib(memberName) {
+	var frm = document.frm_market;
+	frm.dibUser.value = memberName;
+	frm.marketNo.value = 0;
+	console.log(frm.dibUser.value);
+	//frm.action = '/marketDiblist';
+	//frm.submit();
+	
+	$("#dibModal").modal();
+
+}*/
+
+
+
+
+/*---------찜하기버튼-----------*/
+ $(function() {
+	var frm = document.frm_market_view;
+		var dib = $("#dibVal").val();
+		//console.log(dib);
+		
+    $("#btnDib").click(function() { 
+		if(dib==0){
+			
+			$('#btnDib').html("❤"); //채운하트
+			//$('#dibVal').attr("disabled", false);
+			frm.action = '/marketDib';
+			frm.submit();
+		
+		}
+		
+		if(dib>0){
+			$('#btnDib').html("🤍")	
+			//$('#dibVal').attr("disabled", true); 
+			frm.action = '/marketDibdown';
+			frm.submit();
+			
+			}
+		});
+	})
+	
+	
+/*----------올린지 몇분전 --------*/
+    function date(){
+        var table = document.getElementById("market_table");
+		
+		var min = 60 * 1000;
+		var c = new Date()
+		var d = new Date(table.rows[0].cells[3].innerHTML)
+		var minsAgo = Math.floor((c - d) / (min));
+		//console.log(minsAgo);
+
+		var result;
+		if (minsAgo < 60){
+			result = minsAgo + '분 전';
+		}else if (minsAgo < 60 * 24) { // 하루 내
+			result = Math.floor(minsAgo / 60) + '시간 전';
+		} else { // 하루 이상
+			result = Math.floor(minsAgo / 60 / 24) + '일 전';
+		};
+
+		//console.log(result)
+		
+		var marketDate = document.getElementById("market_date")
+		marketDate.innerText = result;
+
+	
+	};
+    
+
+
+sort = function() {
+	
+//----------낮은 가격순 -------//
+$('#btnLowprice').on('click', function() {
+		var frm = frm_market_sort;
+			frm.action = '/marketLowprice';
+			frm.submit();
+		});
+//---------최신순-------//
+$('#btnLatest').on('click', function() {
+		var frm = frm_market_sort;
+			frm.action = '/marketLatest';
+			frm.submit();
+		});
+	
+}
+
+
 brd = function() {
 //-----------검색-----------//
 	
@@ -19,7 +116,6 @@ $('#market_btnDel').on('click', function() {
 			frm.submit();
 		});
 
-		
 }
 	
 //-----------수정--------//
@@ -157,7 +253,7 @@ function goPage(page) {
 		}
 		else{
 			
-		$('#marketPrice').val("무료나눔");
+		$('#marketPrice').val("0");
 		//$('#marketPrice').attr("disabled", true); 
 		$('#FreeText').html("무료나눔을 하는 당신, 멋져요👍");
 	
