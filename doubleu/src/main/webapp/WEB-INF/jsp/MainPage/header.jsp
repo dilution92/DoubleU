@@ -33,17 +33,17 @@
 					<a>${member.memberName }&nbsp님</a>
 				 </div>
 				 <div class="header-member-toggle-menu">
-						<div class="nav-item dropdown dropdown-content">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
-							aria-haspopup="true" aria-expanded="false">
-							<span><i class="bi bi-justify" style="font-size: 25px;"></i></span>
-							</a>
-							<div class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown" style="left:-100px;">
-								<a class="dropdown-item  " href="/memberModifyIndex">정보 수정</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item  " href="/loginOut">로그아웃</a>
-							</div>
+					<div class="nav-item dropdown dropdown-content">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" 
+						aria-haspopup="true" aria-expanded="false">
+						<span><i class="bi bi-justify" style="font-size: 25px;"></i></span>
+						</a>
+						<div class="dropdown-menu dropdown-content" aria-labelledby="navbarDropdown" style="left:-100px;">
+							<a class="dropdown-item  " href="/memberModifyIndex">정보 수정</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item  " href="/loginOut">로그아웃</a>
 						</div>
+					</div>
 				</div>
 			</div>
 		</div>
