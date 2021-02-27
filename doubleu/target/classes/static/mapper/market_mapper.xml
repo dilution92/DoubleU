@@ -57,6 +57,13 @@
 		select * from market where market_no = #{_parameter}
 	</select>
 <!-- select -->	
+
+	<select id="selectMarketMain" resultMap="marketList" resultType="com.doubleu.market.vo.MarketVo" >
+		select mk.market_no market_no, mk.market_category market_category, mk.market_writer market_writer , mk.market_subject market_subject, mk.market_price market_price, mk.market_hit market_hit 
+		from market mk join market_files att on mk.market_no=att.market_no
+		where files_main = 1 
+		order by mk.market_date desc
+	</select>
 	<select id="selectAtt" resultMap="attList" resultType="com.doubleu.market.vo.MarketAttVo" parameterType="int">
 		select * from market_files where market_no = #{_parameter}
 	</select>

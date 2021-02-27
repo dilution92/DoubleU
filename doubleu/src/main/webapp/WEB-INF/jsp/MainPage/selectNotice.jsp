@@ -41,12 +41,36 @@
 			 	 </div>
 			 	 <div class="tab-pane fade" id="market" role="tabpanel" aria-labelledby="market-tab">
 					<div>
-						더블마켓 내용
+					<table class="table table-hover table-sm main-approval-table">
+						<thead class="text-muted text-gray-dark">
+							<tr>
+								<th scope="col"  width="120px;">카테고리</th>
+								<th scope="col" width="150px;">상품명</th>
+								<th scope="col" width="150px;">가격</th>
+								<th scope="col" width="100px;">작성자</th>
+								<th scope="col" width="90px;">조회수</th>
+							</tr>
+						</thead>
+						
+						<tbody class="text-muted">
+						<c:set var="size" value="5" />
+							<c:forEach var="list" items="${marketList }" end="${size }" >
+								<tr onclick="location.href='marketView?marketNo=${list.marketNo}&dibUser=${member.memberName }'">
+									<td>${list.marketCategory}</td>
+									<td>${list.marketSubject}</td>					
+									<td >${list.marketPrice}</td>
+									<td>${list.marketWriter}</td>						
+									<td>${list.marketHit}</td>						
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 					</div>					
 					<div class="main-go-page">
-						<a href="#">자세히 보기</a>
+						<a href="/marketIndex?dibUser=${member.memberName }">자세히 보기</a>
 					</div>
 			 	 </div>
 			</div>
+
 </body>
 </html>

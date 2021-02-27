@@ -68,7 +68,6 @@
 			</div>
 		</div>
 	</nav>
-	
 	<main class="main-content-article">
 		<!-- 전자결재 -->
 		<div class="main-article">
@@ -79,7 +78,6 @@
 		</div>
 	
 	</main>
-	
 	<aside class="main-content-calender">
 		<div class="content-schedule">
 			<h6 class="article-title">전사 일정</h6>

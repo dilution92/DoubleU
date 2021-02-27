@@ -208,6 +208,17 @@ public class MarketDao {
 
 
 	}
+
+
+	public List<MarketVo> selectMarketMain() {
+		List<MarketVo> list = null;
+		try {
+			list = mapper.selectMarketMain();
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		return list;
+	}
 	
 	}
 
