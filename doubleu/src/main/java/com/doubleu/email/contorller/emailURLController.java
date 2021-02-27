@@ -1,14 +1,10 @@
 package com.doubleu.email.contorller;
 
-import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.doubleu.email.vo.EmailMainVo;
-
 
 
 @RestController
@@ -85,16 +81,17 @@ public class emailURLController {
 
 		return mv;
 	}
-
+	
 	// email_temporary.jsp
-	@RequestMapping(value="/emailTemp", method=RequestMethod.GET)
-	public ModelAndView emailTemp() {
+	@RequestMapping(value="/emailTempList", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView emailTempList() {
 		ModelAndView mv = new ModelAndView();
 
 		mv.setViewName("email/email_temporary");
 
 		return mv;
 	}
+	
 
 	// email_trash.jsp
 	@RequestMapping(value="/emailThash", method=RequestMethod.GET)
