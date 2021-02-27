@@ -2,6 +2,10 @@ package com.doubleu.market.Controller;
 
 
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -54,10 +58,11 @@ public class MarketDibController {
 									MarketDibVo dibvo,MarketVo vo, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		String msg= null;
+		int cnt = 0;
 		dibvo.setMarketNo(marketNo);
 		dibvo.setDibUser(dibUser);
 		
-		int cnt = dao.deleteDib(dibvo);
+		cnt = dao.deleteDib(dibvo);
 		
 		
 		vo.setMarketNo(marketNo);
@@ -66,6 +71,26 @@ public class MarketDibController {
 		mv.addObject("vo", vo);
 		mv.addObject("page", page);
 		mv.setViewName("/market/market_view");
+		
+		return mv;
+	}
+	
+	
+	
+	@RequestMapping(value="/marketDiblist", method= {RequestMethod.GET , RequestMethod.POST})
+	public ModelAndView marketDiblist(HttpServletRequest req, 
+			MarketDibVo dibvo,MarketVo vo, MarketPage page) {
+		ModelAndView mv = new ModelAndView();
+		
+		String dibUser = req.getParameter("dibUser");
+		System.out.println("dibuser: " + dibUser);
+		//dibvo.setDibUser(dibUser);
+		
+		Map<String, Object> map = dao.selectDiblist(dibvo);
+		
+		
+		mv.addObject("list", map.get("list"));
+		mv.setViewName("/market/market_index");
 		
 		return mv;
 	}

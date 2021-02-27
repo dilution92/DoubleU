@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
@@ -77,7 +79,9 @@
 			<!-- ========== -->
 			
 			<!-- 경조사 글쓰기 code -->
-			
+<% Date nowTime = new Date();
+   SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); %>
+   			
 			<form action="/familyeventInsertR" method="post" id="familyeventInsertForm">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
@@ -93,7 +97,7 @@
 				            <th class="success">작성자</th>
 				            <td><input type="text" id="mid" name="familyeventMid" value="관리자" readonly></td>
 				            <th class="success">작성일</th>
-				            <td><input type="date" id="mdate" name="familyeventReportingDate" readonly></td>
+				            <td><input type="date" id="mdate" name="familyeventReportingDate" value="<%= format.format(nowTime) %>" readonly></td>
 				            </div>
 				        </tr>
 				        <tr>

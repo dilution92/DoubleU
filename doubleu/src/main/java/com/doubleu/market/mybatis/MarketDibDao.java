@@ -1,5 +1,9 @@
 package com.doubleu.market.mybatis;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -82,5 +86,21 @@ public class MarketDibDao {
 		return cnt;
 	}
 
+	public Map<String, Object> selectDiblist(MarketDibVo dibvo) {
 
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<MarketVo> list = null;
+		try {
+			
+			list = mapper.selectDiblist(dibvo);
+
+			map.put("list", list);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			return map;
+	}
+
+
+}
 }
