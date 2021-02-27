@@ -21,7 +21,7 @@
 <body>
 	<!-- main-GNB -->
 	<header class="container-fluid main-gnb">
-			<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"/>
+			<jsp:include page="header.jsp"/>
 	</header>
 	<!-- main-GNB code 끝 -->
 
@@ -37,10 +37,9 @@
 					</div>
 					
 					<div class="card-body text-center border-top index-profile-text">
-					<strong class="text-muted">정해준</strong> <br>
-					<span class="small text-muted">직급: 사원</span> <br>
-					<span class="small text-muted">부서: 기획부</span> <br>
-					
+						<strong class="text-muted">정해준</strong> <br>
+						<span class="small text-muted">직급: 사원</span> <br>
+						<span class="small text-muted">부서: 기획부</span> <br>
 					</div> 
 				</div>
 				
