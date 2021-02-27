@@ -12,14 +12,14 @@
 			<h6 class="article-title">최근 결재함</h6>
 			<ul class="nav nav-tabs ariticle-aTag-ms" id="myTab" role="tablist">
 			 	<li class="nav-item" role="presentation">
-			   		<a class="nav-link active" id="#outgoing-tab" data-toggle="tab" href="#outgoing" role="tab" aria-controls="#outgoing" aria-selected="true">발신</a>
+			   		<a class="nav-link active" id="#outgoingApproval-tab" data-toggle="tab" href="#outgoingApproval" role="tab" aria-controls="#outgoingApproval" aria-selected="true">발신</a>
 			  	</li>
 			  	<li class="nav-item" role="presentation">
-			    	<a class="nav-link" id="profile-tab" data-toggle="tab" href="#receiver" role="tab" aria-controls="receiver" aria-selected="false">수신</a>
+			    	<a class="nav-link" id="receiverApproval-tab" data-toggle="tab" href="#receiverApproval" role="tab" aria-controls="receiverApproval" aria-selected="false">수신</a>
 			  	</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
-			 	<div class="tab-pane fade show active" id="outgoing" role="tabpanel" aria-labelledby="#outgoing-tab">
+			 	<div class="tab-pane fade show active" id="outgoingApproval" role="tabpanel" aria-labelledby="#outgoingApproval-tab">
 					<table class="table table-hover table-sm main-approval-table">
 						<thead class="text-muted text-gray-dark">
 							<tr>
@@ -33,7 +33,7 @@
 						<tbody class="text-muted">
 							<c:set var="no" value="1" />
 							<c:forEach var="outgoingVo" items="${outgoingApprovalList }">
-								<tr onclick="goView(${outgoingVo.formNo}, '${outgoingVo.formType }')">
+								<tr onclick="location.href='/approvalSelectView?formNo=${outgoingVo.formNo}&&formType=${outgoingVo.formType}'">
 									<td>${outgoingVo.formDate}</td>
 									<td>${outgoingVo.formType}</td>					
 									<td class="table-title-fixed-length">${outgoingVo.formTitle}</td>
@@ -61,7 +61,7 @@
 						<a href="#">자세히 보기</a>
 					</div>
 			  	</div>
-			 	 <div class="tab-pane fade" id="receiver" role="tabpanel" aria-labelledby="profile-t\b">
+			 	 <div class="tab-pane fade" id="receiverApproval" role="tabpanel" aria-labelledby="receiverApproval-tab">
 					<table class="table table-hover table-sm main-approval-table">
 						<thead class="e-approval-list text-muted text-gray-dark">
 							<tr>
@@ -75,7 +75,7 @@
 						<tbody class="e-approval-list text-muted">
 							<c:set var="no" value="1" />
 							<c:forEach var="receiverVo" items="${receiverApprovalList }">
-								<tr onclick="goView(${receiverVo.formNo}, '${receiverVo.formType }')">
+								<tr onclick="goApprovalView(${receiverVo.formNo}, '${receiverVo.formType }')">
 									<td>${receiverVo.formDate}</td>
 									<td>${receiverVo.formType}</td>					
 									<td>${receiverVo.formTitle}</td>					

@@ -40,7 +40,7 @@ public class loginMainController {
 			) {
 		session.setMaxInactiveInterval(-1);
 		ModelAndView mv = new ModelAndView();
-		
+		String profileImg;
 		
 		System.out.println("컨트롤 :  " + loginVo);
 		loginVo = LoginService.loginCheck(loginVo, session);
@@ -54,7 +54,14 @@ public class loginMainController {
 			mv.setViewName("MainPage/index");
 		}
 		
+		if(loginVo.getMemberName().equals("정해준") || loginVo.getMemberName().equals("정희석")) {
+			 profileImg = "/img/profilem.jpg";
+		}
+		else {
+			 profileImg = "/img/profileg.jpg";
+		}
 		//전자결재 불러오기
+		mv.addObject("profileImg", profileImg);
 		Map<String, Object> receiverMap = selectApprovalReceiver.selectReceiver(req, session);
 		mv.addObject("receiverApprovalList", receiverMap.get("list"));
 		Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);

@@ -38,6 +38,8 @@ public class ControllerMain {
 		mv.setViewName("MainPage/");
 		return mv;
 	}
+	
+	
 	@RequestMapping(value = "/mainPage")
 	public ModelAndView mainPage(
 			HttpServletRequest req,
@@ -45,6 +47,7 @@ public class ControllerMain {
 			) {
 		ModelAndView mv = new ModelAndView();
 		
+		// 전자결재 조회
 		Map<String, Object> receiverMap = selectApprovalReceiver.selectReceiver(req, session);
 		mv.addObject("receiverApprovalList", receiverMap.get("list"));
 		Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);

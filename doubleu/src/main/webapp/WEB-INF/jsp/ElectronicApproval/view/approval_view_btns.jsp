@@ -94,7 +94,7 @@
 		<input type="hidden" name="findType" value="${(empty param.findType)? '':param.findType }">	
 		<input type="hidden" name="nowOutgoingPage" value="${(empty param.nowOutgoingPage)? 1: param.nowOutgoingPage }">
 		<input type="hidden" name="nowReceiverPage" value="${(empty param.nowReceiverPage)? 1: param.nowReceiverPage}"> 
-		<input type="hidden" name="nowPlace" value="${param.nowPlace}">
+		<input type="hidden" name="nowPlace" value="${(empty param.nowPlace)? 'indexPlace': param.nowPlace}">
 		<input type="hidden" name="nowChooseSelectPage"value="${(empty param.nowChooseSelectPage) ? 1: param.nowChooseSelectPage }">
 		<input type="hidden" name="findState" value="${param.findState }">
 		<input type="hidden" name="formNo" value="${vo.formNo }" >
@@ -103,8 +103,6 @@
 		<input type="hidden" name="makerComment" value="">
 		<input type="hidden" name="memberNo" value="${member.memberNo}">
 		<input type="hidden" name="makerOrder" value="${makerVo.makerOrder}">
-		
-		
 		<div class="approval-modal">
 			<jsp:include page="/WEB-INF/jsp/ElectronicApproval/modal/approval_decision_modal.jsp"></jsp:include> 
 		</div>
