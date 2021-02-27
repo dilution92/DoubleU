@@ -168,6 +168,13 @@
 		</div>
 	</div>
 
+<!-- hidden -->
+<c:forEach var='vo' items='${marketlist }' >
+	<input type ="text" name = "dibMarketSubject" value="'${vo.marketSubject }'"/>
+	<input type ="text" name = "dibMarketPrice" value="${vo.marketPrice }"/>
+		<input type ="hidden" name = "dibMarketNo" value="${vo.marketNo }"/>
+	
+ </c:forEach>
 
 <script>date()</script>
 </body>

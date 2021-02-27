@@ -27,7 +27,7 @@
 				<li class="nav-item"><a class="nav-link" href="/calenderMonth">캘린더</a></li>
 				<li class="nav-item"><a class="nav-link" href="/emailIndex">메일함</a></li>
 				<li class="nav-item"><a class="nav-link" href="/approvalIndex?memberNo=${member.memberName }">전자결재</a></li>
-				<li class="nav-item"><a class="nav-link" href="/marketIndex">더블마켓</a></li>
+				<li class="nav-item"><a class="nav-link" href="/marketIndex?dibUser=${member.memberName }">더블마켓</a></li>
 			</ul>
 	
 			<ul class="navbar-nav my-2 my-lg-0">

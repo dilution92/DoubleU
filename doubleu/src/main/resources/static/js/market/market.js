@@ -2,18 +2,25 @@
  * 
  */
 
+
+
+
+
+/*--------찜에서 상세보기----------*/
+
+
 /*--------찜목록으로 가기 ----------*/
-function godib(memberName) {
+/*function godib(memberName) {
 	var frm = document.frm_market;
 	frm.dibUser.value = memberName;
 	frm.marketNo.value = 0;
 	console.log(frm.dibUser.value);
-	frm.action = '/marketDiblist';
-	frm.submit();
+	//frm.action = '/marketDiblist';
+	//frm.submit();
 	
 	$("#dibModal").modal();
 
-}
+}*/
 
 
 

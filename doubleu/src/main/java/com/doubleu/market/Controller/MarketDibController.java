@@ -43,6 +43,10 @@ public class MarketDibController {
 		System.out.println(cnt);
 		vo.setMarketNo(marketNo);
 		vo = Mdao.view(marketNo);
+		dibvo.setDibUser(dibUser);
+		Map<String, Object> dMap = dao.selectDiblist(dibvo);
+
+		mv.addObject("marketlist", dMap.get("list"));
 		
 		
 		
@@ -64,6 +68,10 @@ public class MarketDibController {
 		
 		cnt = dao.deleteDib(dibvo);
 		
+		dibvo.setDibUser(dibUser);
+		Map<String, Object> dMap = dao.selectDiblist(dibvo);
+
+		mv.addObject("marketlist", dMap.get("list"));
 		
 		vo.setMarketNo(marketNo);
 		vo = Mdao.view(marketNo);
@@ -88,10 +96,9 @@ public class MarketDibController {
 		
 		Map<String, Object> map = dao.selectDiblist(dibvo);
 		
-		
-		mv.addObject("list", map.get("list"));
-		mv.setViewName("/market/market_index");
-		
+		req.setAttribute("marketlist", map.get("list"));
+		//mv.addObject("list", map.get("list"));
+		mv.setViewName("market/market_index");
 		return mv;
 	}
 }
