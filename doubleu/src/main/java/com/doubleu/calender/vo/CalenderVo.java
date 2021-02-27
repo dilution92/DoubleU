@@ -22,7 +22,35 @@ public class CalenderVo {
 	private String calenderTime;
 	
 	
-	
+	public String getStartDate() {
+		String date;
+		date = getCalenderStartYear()+"-"
+			+ getCalenderStartMonth()+"-"
+			+ getCalenderStartDay();
+		return date;
+	}
+	public String getStartTime() {
+		String date;
+		date = 
+			getCalenderStartTime()+":"
+			+ getCalenderStartMinute();
+		return date;
+	}
+	public String getEndDate() {
+		String date;
+		date = getCalenderEndYear()+"-"
+				+ getCalenderEndMonth()+"-"
+				+ getCalenderEndDay();
+				
+		return date;
+	}
+	public String getEndTime() {
+		String date;
+		date = 
+				getCalenderEndTime()+":"
+				+ getCalenderEndMinute();
+		return date;
+	}
 	public String getCalenderType() {
 		return calenderType;
 	}

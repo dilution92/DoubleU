@@ -18,7 +18,17 @@ public class MarketVo {
 	String marketDate ;
 	String oriFile;
 	int marketDib;
+	int dibNo;
 	
+	
+	public int getDibNo() {
+		return dibNo;
+	}
+
+	public void setDibNo(int dibNo) {
+		this.dibNo = dibNo;
+	}
+
 	public int getMarketDib() {
 		return marketDib;
 	}

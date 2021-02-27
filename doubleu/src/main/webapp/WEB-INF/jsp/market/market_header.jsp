@@ -12,14 +12,14 @@
 		<h3 style="width: 200px; height: 30px;">중고게시판</h3>
 
 				<!-- 찜목록 -->
-				<input class="btn btn-outline-primary btn-sm market-dib" data-toggle="modal"
-					data-target="#dibModal" type="button" value="찜목록" />
+					<form class="market-search-form" action="" name="frm_market" method="post">
+				<input class="btn btn-outline-primary btn-sm market-dib" type="button" onclick="godib('${member.memberName}')" value="찜목록"
+				  />
 				<!-- 시세확인 -->
 				<input class="btn btn-outline-primary btn-sm market-dib" 
 				onClick="location.href='marketPriceRange'" type="button" value="시세확인" />
 				<!-- 전자결재홈 검색바 code -->
 				<div class="market-search-bar">
-					<form class="market-search-form" action="" name="frm_market" method="post">
 						<div class="market-search-form-box" style="display:flex;">
 								<select class="form-control form-control-sm e-approval-select-box" name="marketCategory" id="market_category" >
 								<option value="" >카테고리</option>
@@ -39,8 +39,8 @@
 							
 							
 						</div>
-					</form>
 				</div>
+					</form>
 				<script>brd()</script>
 </body>
 </html>
