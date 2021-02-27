@@ -1,4 +1,6 @@
 package com.doubleu.login.controller;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doubleu.approval.service.SelectOutgoingService;
+import com.doubleu.approval.service.SelectReceiverService;
 import com.doubleu.login.mybatis.LoginDao;
 import com.doubleu.login.service.LoginService;
 import com.doubleu.login.vo.LoginVo;
@@ -21,29 +25,40 @@ public class loginMainController {
 	@Autowired
 	LoginDao daoService;
 	
+	@Autowired
+	SelectReceiverService selectApprovalReceiver;
+	
+	@Autowired
+	SelectOutgoingService selectApprovalOutgoing;
+	
 	// 로그인 체크
 	@RequestMapping(value="/loginCheck", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView LoginResult(
-			LoginVo vo,
+			LoginVo loginVo,
 			HttpServletRequest req,
 			HttpSession session
 			) {
-		
+		session.setMaxInactiveInterval(-1);
 		ModelAndView mv = new ModelAndView();
 		
 		
-		System.out.println("컨트롤 :  " + vo);
-		vo = LoginService.loginCheck(vo, session);
-		System.out.println("컨트롤 후 :  " + vo);
+		System.out.println("컨트롤 :  " + loginVo);
+		loginVo = LoginService.loginCheck(loginVo, session);
+		System.out.println("컨트롤 후 :  " + loginVo);
 		
-		if(vo == null) {
+		if(loginVo == null) {
 			session.setAttribute("member", null);
 			mv.setViewName("redirect:/loginPost");
 		}else {
-			session.setAttribute("member", vo);
+			session.setAttribute("member", loginVo);
 			mv.setViewName("MainPage/index");
 		}
-		session.setMaxInactiveInterval(-1);
+		
+		//전자결재 불러오기
+		Map<String, Object> receiverMap = selectApprovalReceiver.selectReceiver(req, session);
+		mv.addObject("receiverApprovalList", receiverMap.get("list"));
+		Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);
+		mv.addObject("outgoingApprovalList", outgoingMap.get("list"));
 		return mv;
 	}
 	

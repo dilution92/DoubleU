@@ -83,6 +83,7 @@
 			<!-- ========== -->
 			
 			<!-- 최근 수신한 문서함 code -->
+							<strong class="text-gray-dark">최근 수신한 문서</strong>
 				<table class="table table-hover table-sm">
 					<thead class="e-approval-list text-muted text-gray-dark">
 						<tr>
