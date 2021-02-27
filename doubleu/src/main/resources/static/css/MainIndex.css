@@ -7,7 +7,6 @@
 /* main영역 스타일 정의 */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
-
 .main-gnb {
 	width: 100%;
 	height: 70px;
@@ -60,25 +59,25 @@
 	padding: 0;
 	text-align: center;
 }
-
 .header-member-toggle-menu .dropdown-menu.show {
 	 left: -120px; 
 }
 .header-member-toggle-menu .dropdown-toggle::after {
 	display: none;
 }
-
 .main-container {
 	display: flex;
 	width: 92%;
-	margin: 1rem auto 0 auto;
+	margin: 1.5rem auto 0 auto;
 	justify-content: space-between;
 	height: 100%;
 }
-
 .main-content-personnel {
 	width: 18%;
 }
+
+
+
 /* 프로필 CSS */
 .content-profile {
 	width: 100%;
@@ -99,14 +98,11 @@
 	padding-top: 1em;
 }
 .main-content-article {
-	background-color: aqua;	
 	width: 47%;
 }
 .main-content-calender {
-	background-color: green;
 	width: 30%;	
 }
-
 /* 근태관리 CSS */
 .content-workManagement {
 	display: flex;
@@ -119,12 +115,10 @@
 	padding: 1.5em;
 	border-radius: 5px;
 }
-
 .content-workManagement span {
 	display: inline-block;
 	color: #6c757d;
 	font-size: .9em;
-	
 }
 .content-workManagement input[type=text] {
 	border: none;
@@ -135,7 +129,6 @@
 .content-workManagement input[type=text]:focus {
 	outline:none;
 }
-
 .WM-header {
 	margin-bottom: 2em;
 	padding-left: .7em;
@@ -169,6 +162,7 @@
 	width: 95%;
 	margin: 0 auto;
 }
+
 
 /* 캘린더 CSS  */
 .content-schedule {
@@ -206,21 +200,23 @@
 	font-size: .8em;
 }
 
+
 /* 기능별 article */
-.main-approval {
+.main-article {
 	border: 1px solid #dee2e6;
 	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 	background-color: #fff;
 	border-radius: 0.25rem;
 	padding: 1rem;
+	margin-bottom: 1rem;
 }
-.main-approval a:link,
-.main-approval a:visited {
+.main-article a:link,
+.main-article a:visited {
 	text-decoration: none;
 	color: #6c757d;
 }
 
-.main-approval .article-title {
+.main-article .article-title {
 	border: none;
 }
 
@@ -238,7 +234,6 @@
 }
 .main-approval-table th {
 	border-top: none;
-	
 }
 
 .table-title-fixed-length {
@@ -247,46 +242,6 @@
 	white-space: nowrap;
 }
 
-
-
-.index-body {
-	padding: 0 50px 0 50px;
-}
-.index-first-row {
-	width: 100%;
-}
-
-.index-notice {
-	margin-top: 1em;
-}
-
-.index-mail-box {
-	margin-top: 1em;
-}
-
-.index-profile {
-	height: 250px;
-	text-align: center;
-	padding-bottom: 0; 
-}
-.index-attendance {
-	margin-top: 1em;
-}
-
-.index-gnb {
-	padding: 0;
-}
-
-.index-attendance-select-box {
-	width: 90%;
-	margin-top: 0.5em;
-	margin-left: 10px;
-}
-
-.index-attendance-btns {
-	margin: 0 auto;
-	width: 90%;
-}
 
 /*header name */
 .header-member-name{

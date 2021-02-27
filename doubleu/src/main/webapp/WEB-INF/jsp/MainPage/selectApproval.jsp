@@ -96,7 +96,6 @@
 							</c:forEach>
 						</tbody>
 					</table>
-
 					<div class="main-go-page">
 						<a href="#">자세히 보기</a>
 					</div>

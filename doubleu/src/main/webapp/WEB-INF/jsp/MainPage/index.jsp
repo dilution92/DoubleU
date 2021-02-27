@@ -71,10 +71,12 @@
 	
 	<main class="main-content-article">
 		<!-- 전자결재 -->
-		<div class="main-approval">
+		<div class="main-article">
 			<jsp:include page="selectApproval.jsp"/>
 		</div>
-	
+		<div class="main-article">
+			<jsp:include page="selectNotice.jsp"/>
+		</div>
 	
 	</main>
 	
