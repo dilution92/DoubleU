@@ -1,4 +1,5 @@
 package com.doubleu.login.controller;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import com.doubleu.approval.service.SelectReceiverService;
 import com.doubleu.login.mybatis.LoginDao;
 import com.doubleu.login.service.LoginService;
 import com.doubleu.login.vo.LoginVo;
+import com.doubleu.market.mybatis.MarketDao;
+import com.doubleu.market.vo.MarketVo;
 
 @Controller
 public class loginMainController {
@@ -31,6 +34,10 @@ public class loginMainController {
 	@Autowired
 	SelectOutgoingService selectApprovalOutgoing;
 	
+	//market
+	@Autowired
+	MarketDao marketDao;
+		
 	// 로그인 체크
 	@RequestMapping(value="/loginCheck", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView LoginResult(
@@ -66,6 +73,12 @@ public class loginMainController {
 		mv.addObject("receiverApprovalList", receiverMap.get("list"));
 		Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);
 		mv.addObject("outgoingApprovalList", outgoingMap.get("list"));
+		
+		//market
+		List<MarketVo> marketlist = marketDao.selectMarketMain();
+		mv.addObject("marketList", marketlist);
+		
+		
 		return mv;
 	}
 	

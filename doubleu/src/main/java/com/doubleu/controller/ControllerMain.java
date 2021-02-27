@@ -1,5 +1,6 @@
 package com.doubleu.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectReceiverService;
 import com.doubleu.login.vo.LoginVo;
+import com.doubleu.market.mybatis.MarketDao;
+import com.doubleu.market.mybatis.MarketDibDao;
+import com.doubleu.market.vo.MarketPage;
+import com.doubleu.market.vo.MarketVo;
 
 @RestController
 public class ControllerMain {
@@ -22,6 +27,10 @@ public class ControllerMain {
 	
 	@Autowired
 	SelectOutgoingService selectApprovalOutgoing;
+	
+	//market
+	@Autowired
+	MarketDao marketDao;
 	
 	@RequestMapping(value = "/")
 	public ModelAndView index() {
@@ -38,8 +47,6 @@ public class ControllerMain {
 		mv.setViewName("MainPage/");
 		return mv;
 	}
-	
-	
 	@RequestMapping(value = "/mainPage")
 	public ModelAndView mainPage(
 			HttpServletRequest req,
@@ -47,11 +54,20 @@ public class ControllerMain {
 			) {
 		ModelAndView mv = new ModelAndView();
 		
-		// 전자결재 조회
+		
+		//approval
 		Map<String, Object> receiverMap = selectApprovalReceiver.selectReceiver(req, session);
 		mv.addObject("receiverApprovalList", receiverMap.get("list"));
 		Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);
 		mv.addObject("outgoingApprovalList", outgoingMap.get("list"));
+		
+		
+		
+		//market
+		List<MarketVo> marketlist = marketDao.selectMarketMain();
+		mv.addObject("marketList", marketlist);
+		
+		
 		
 		mv.setViewName("MainPage/index");
 		return mv;

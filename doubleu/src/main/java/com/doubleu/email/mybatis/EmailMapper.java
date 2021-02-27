@@ -18,7 +18,8 @@ public interface EmailMapper {
 	/*select*/
 	
 	// 메인함 사이드 바
-	public int selectSendEmail(String memberMid);
+	public int selectSendEmail(EmailMainVo vo);
+	
 	
 	public List<EmailMainVo> selectEmailNo(int emailNo);
 	// 파일 데이터 가져오기
@@ -39,4 +40,6 @@ public interface EmailMapper {
 	// 메일 쓰기
 	public int insertSendWrite(EmailMainVo vo);
 	public int insertTemporary(EmailMainVo vo);
+	
+
 }

@@ -140,11 +140,12 @@
 
 							
 							<div class="form-group col-sm-7 revEmail">
-								<c:forEach begin="0" end="5">
+								<c:forEach begin="0" end="0">
 								<!-- 받는 사람 input -->
-									<input type="text" name="emailReceiverAddress" value="song1234567@gmail.com" readonly class="form-control col-sm-3"
-										id="exampleFormControlInput1"
-										placeholder="song1234567@gmail.com">
+									<input type="text" name="emailReceiverAddress" value="angel@gmail.com" readonly class="form-control col-sm-3"
+										id="exampleFormControlInput1">
+										<input type="text" name="emailReceiverAddress" value="gamcho@gmail.com" readonly class="form-control col-sm-3"
+										id="exampleFormControlInput1">
 								</c:forEach>
 
 							</div>
@@ -165,12 +166,11 @@
 
 							
 							<div class="form-group col-sm-7 revRef">
-								<c:forEach begin="0" end="5">
+								<c:forEach begin="0" end="0">
 									<!-- 참조input -->
 									<input type="email" readonly name="emailReceiverRef" class="form-control col-sm-3"
 										id="exampleFormControlInput1"
-										value="name1234ho@example.com"
-										placeholder="name1234ho@example.com">
+										value="bose@gmail.com"/>
 								</c:forEach>
 							</div>
 

@@ -46,6 +46,12 @@ public class MarketUrlController {
 		dibvo.setDibUser(dibUser);
 		Map<String, Object> dMap = Ddao.selectDiblist(dibvo);
 
+		int hitCnt = vo.getMarketHit();
+		hitCnt = hitCnt+1;
+		vo.setMarketHit(hitCnt);
+		String msg = dao.updateHit(vo);
+		System.out.println(msg);
+		
 		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
@@ -85,12 +91,17 @@ public class MarketUrlController {
 		System.out.println("marketNo: " + v.getMarketNo());
 		MarketVo vo = dao.view(v.getMarketNo());
 		
-		
+		int hitCnt = vo.getMarketHit();
+		hitCnt = hitCnt+1;
+		vo.setMarketHit(hitCnt);
+		String msg = dao.updateHit(vo);
+		System.out.println(msg);
 		int cnt = Ddao.selectDib(dibvo);
-
+		
 		dibvo.setDibUser(dibUser);
 		Map<String, Object> dMap = Ddao.selectDiblist(dibvo);
-
+		
+		vo.setMarketHit(hitCnt);
 		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("vo", vo);
 		mv.addObject("cnt", cnt);

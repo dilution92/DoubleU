@@ -129,7 +129,7 @@
 				</ul>
 					<!-- 제목 -->
 					 <c:forEach var="list" items="${selectRead }">
-				   
+				  
 					<div class="emailSendContents">
 						<div class="form-group col-sm-2">
 						    <label for="exampleFormControlInput1">보내는 사람</label>
@@ -155,10 +155,12 @@
 
 						<div class="form-group col-sm-7 revEmail">
 							<c:forEach var="sendPerson" items="${selectSendList}">
-							<!-- 받는 사람 input -->
-								<input type="text" name="emailReceiverAddress" value="${sendPerson.emailReceiverAddress}" readonly class="form-control col-sm-3"
+							 	 	<input type="email" name="emailReceiverAddress" 
+							 	 	value="${sendPerson.emailReceiverAddress}" readonly class="form-control col-sm-3"
 									id="exampleFormControlInput1"
 									placeholder="song1234567@gmail.com">
+							<!-- 받는 사람 input -->
+								
 							</c:forEach>
 
 						</div>

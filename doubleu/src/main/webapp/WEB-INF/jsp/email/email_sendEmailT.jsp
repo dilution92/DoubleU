@@ -95,11 +95,12 @@
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
+			
 			<!-- 메일 검색바 code -->
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" id="emailFormId" name="emailForm" method="post">
-			      	<h3>받은 메일함</h3>
 			      	<%--경로 -> ./commonsCode/emailDropDown.jsp --%>
+			      	<h3>보낸 메일함</h3>
 			      	<jsp:include page="./commonsCode/searchDropDown.jsp"></jsp:include>
 			      	
 			      		<!-- hidden
