@@ -160,5 +160,13 @@ public class EmailDao {
 		return cnt;
 	}
 
-
+	
+	// 주소록 멤버 조회
+	public List<LoginVo> selectMembers() {
+		
+		List<LoginVo> loginList = mapper.selectMembers();
+		System.out.println("loginList --->" + loginList); 
+		return loginList;
+		
+	}
 }

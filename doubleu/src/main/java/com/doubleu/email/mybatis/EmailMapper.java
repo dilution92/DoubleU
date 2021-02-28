@@ -11,6 +11,7 @@ import com.doubleu.email.vo.AttEmailVo;
 import com.doubleu.email.vo.EmailMainVo;
 import com.doubleu.email.vo.EmailPage;
 import com.doubleu.email.vo.EmailReceiverVo;
+import com.doubleu.login.vo.LoginVo;
 
 @Repository
 @Mapper
@@ -41,5 +42,7 @@ public interface EmailMapper {
 	public int insertSendWrite(EmailMainVo vo);
 	public int insertTemporary(EmailMainVo vo);
 	
+	// 멤버 조회
+	public List<LoginVo> selectMembers();
 
 }
