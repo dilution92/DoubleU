@@ -5,34 +5,48 @@
 
 <mapper namespace="com.doubleu.notice.mybatis.FamilyeventMapper">
 	<insert id="insert" parameterType="com.doubleu.notice.vo.FamilyeventVo">
-		<![CDATA[
-			insert into FAMILYEVENT(
-				familyeventNo, 
-				familyeventSubject, 
-				familyeventMid, 
-				familyeventReportingDate, 
-				familyeventPostType, 
-				familyeventPostStartDate, 
-				familyeventPostEndDate, 
-				familyeventType, 
-				familyeventHit, 
-				familyeventDoc, 
-				familyeventFile
+		insert all
+		into FAMILYEVENT(
+			familyeventNo, 
+			familyeventSubject, 
+			familyeventMid, 
+			familyeventReportingDate, 
+			familyeventPostType, 
+			familyeventPostStartDate, 
+			familyeventPostEndDate, 
+			familyeventType, 
+			familyeventHit, 
+			familyeventDoc 
+			)
+		values(
+			seq_familyeventNo.nextval, 
+			#{familyeventSubject}, 
+			#{familyeventMid}, 
+			SYSDATE, 
+			#{familyeventPostType}, 
+			#{familyeventPostStartDate}, 
+			#{familyeventPostEndDate}, 
+			#{familyeventType}, 
+			#{familyeventHit}, 
+			#{familyeventDoc} 
+			)
+		<if test="attList != null">
+			<foreach collection="attList" item="att">
+				into familyevent_files(
+					files_no, 
+					familyevent_no, 
+					file_sysfile, 
+					file_orifile
 				)
-			values(
-				seq_familyeventNo.nextval, 
-				#{familyeventSubject}, 
-				#{familyeventMid}, 
-				SYSDATE, 
-				#{familyeventPostType}, 
-				#{familyeventPostStartDate}, 
-				#{familyeventPostEndDate}, 
-				#{familyeventType}, 
-				#{familyeventHit}, 
-				#{familyeventDoc}, 
-				#{familyeventFile}
+				values(
+					seq_files_no.nextval,
+					seq_familyeventNo.currval,
+					#{att.sysFile, jdbcType=VARCHAR},
+					#{att.oriFile, jdbcType=VARCHAR}
 				)
-		]]>
+			</foreach>
+		</if>	
+		SELECT * FROM dual
 	</insert>
 	
 	<select id="select" resultType="com.doubleu.notice.vo.FamilyeventVo">
@@ -46,8 +60,7 @@
 				   familyeventPostEndDate, 
 				   familyeventType, 
 				   familyeventHit, 
-				   familyeventDoc, 
-				   familyeventFile 
+				   familyeventDoc 
 			from FAMILYEVENT 
 			order by familyeventNo desc 
 		]]>
@@ -64,15 +77,31 @@
 				   familyeventPostEndDate, 
 				   familyeventType, 
 				   familyeventHit, 
-				   familyeventDoc, 
-				   familyeventFile
+				   familyeventDoc 
 			from FAMILYEVENT
 			where familyeventNo = #{_parameter}
 		]]>
-	
 	</select>
 	
-	<update id="update" parameterType="com.doubleu.notice.vo.FamilyeventVo" >
+ 	<select id="view1" parameterType="int" resultMap="attList">
+		<![CDATA[
+			select files_no, 
+				   familyevent_no, 
+				   file_sysfile, 
+				   file_orifile 
+			from familyevent_files
+			where familyevent_no = #{_parameter}
+		]]>
+	</select>
+	
+	<resultMap id="attList" type="com.doubleu.notice.vo.FamilyeventAttVo">
+		<result property="filesNo" column="files_no"/>
+		<result property="familyeventNo" column="familyevent_no"/>
+		<result property="sysFile" column="file_sysfile"/>
+		<result property="oriFile" column="file_orifile"/>
+	</resultMap>
+	
+	<update id="update" parameterType="attList1" >
 		<![CDATA[
 			update FAMILYEVENT
 			set
@@ -82,12 +111,18 @@
 				familyeventPostStartDate = #{familyeventPostStartDate}, 
 				familyeventPostEndDate = #{familyeventPostEndDate},
 				familyeventType = #{familyeventType}, 
-				familyeventDoc = #{familyeventDoc}, 
-				familyeventFile = #{familyeventFile} 
+				familyeventDoc = #{familyeventDoc} 
 			where familyeventNo = #{familyeventNo} 
 		]]>
 	</update>
 	
+	<resultMap id="attList" type="attList1">
+		<result property="filesNo" column="files_no"/>
+		<result property="familyeventNo" column="familyevent_no"/>
+		<result property="sysFile" column="file_sysfile"/>
+		<result property="oriFile" column="file_orifile"/>
+	</resultMap>
+		
 	<select id="delete" parameterType="int">
 		<![CDATA[
 			delete from FAMILYEVENT where familyeventNo = #{_parameter}

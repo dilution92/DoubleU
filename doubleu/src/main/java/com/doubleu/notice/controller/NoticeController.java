@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.notice.service.FamilyeventService;
 import com.doubleu.notice.service.NoticeService;
+import com.doubleu.notice.service.NoticeUploadService;
+import com.doubleu.notice.vo.FamilyeventAttVo;
 import com.doubleu.notice.vo.FamilyeventVo;
 import com.doubleu.notice.vo.NoticeVo;
 
@@ -25,6 +28,9 @@ public class NoticeController {
 	
 	@Autowired
 	FamilyeventService service2;
+	
+	@Autowired
+	NoticeUploadService file;
 	
 	
 	// 사내공지 글쓰기 -> index
@@ -40,9 +46,13 @@ public class NoticeController {
 	
 	// 경조사 글쓰기 -> index
 	@RequestMapping(value = "/familyeventInsertR", method= RequestMethod.POST)
-	public ModelAndView familyeventInsertR(FamilyeventVo vo) {
+	public ModelAndView familyeventInsertR(FamilyeventVo vo,
+										@RequestParam("familyeventFile") List<MultipartFile> mul) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
+		List<FamilyeventAttVo> attList = file.upload(mul);
+		vo.setAttList(attList);
+		
 		msg = service2.insert(vo);
 		mv.addObject("viewMsg", msg);
 		mv.setViewName("redirect:/familyeventIndex");
@@ -54,8 +64,11 @@ public class NoticeController {
 	@RequestMapping(value = "/familyeventView", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView familyeventView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
+		
 		FamilyeventVo vo = service2.view(no);
+		List<FamilyeventAttVo> att = service2.view1(no);
 		mv.addObject("obj", vo);
+		mv.addObject("att", att);
 		mv.setViewName("notice/familyevent_view");
 		return mv;
 	}
@@ -75,7 +88,7 @@ public class NoticeController {
    // 경조사 index delete
    @RequestMapping(value = "/familyeventDeleteR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView familyeventDelete(@RequestParam int no){
-	  System.out.println("히이ㅣㅇㅠㅠㅠ");
+	  System.out.println("delete");
       ModelAndView mv = new ModelAndView();
 	  String msg = "";
 	  msg = service2.delete(no);

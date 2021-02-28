@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.doubleu.notice.mybatis.FamilyeventMapper;
+import com.doubleu.notice.vo.FamilyeventAttVo;
 import com.doubleu.notice.vo.FamilyeventVo;
 
 @Service
@@ -25,11 +26,19 @@ public class FamilyeventService {
 		System.out.println("select mapper 반환");
 		return list;
 	}
-
+	
 	public FamilyeventVo view(int no) {
 		System.out.println("view 시작");
 		FamilyeventVo vo =  mapper.view(no);
 		System.out.println("view mapper 반환");
+		return vo;
+	}
+	
+	public List<FamilyeventAttVo> view1(int no) {
+		System.out.println("files view 시작");
+		List<FamilyeventAttVo> vo =  mapper.view1(no);
+		System.out.println(vo);
+		System.out.println("files view mapper 반환");
 		return vo;
 	}
 	

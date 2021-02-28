@@ -75,6 +75,9 @@
 			<!-- ========== -->
 			
 			<!-- 경조사 상세보기 code -->
+			<div>
+				${att }
+			</div>
 			<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -98,7 +101,7 @@
 					            <th class="success">조회수</th>
 					            <td>${obj.familyeventHit }</td>
 					        </tr>
-<%-- 					        <tr>
+ 					        <tr>
 					        	<th>게시기한</th>
 					        	<td colspan="3">
 									<!-- <input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -108,7 +111,7 @@
 										&nbsp;~ &nbsp;
 										종료일자 &nbsp;<input type="date" id="searchDateTwo" name="familyeventPostEndDate" value="${obj.familyeventPostEndDate }" readOnly> )
 								</td>
-					        </tr>  --%>
+					        </tr>
 					        <tr>
 					        	<div class="form-group">
 						            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
@@ -119,17 +122,18 @@
 					        </tr>
 					        <tr style="border-color: #ffffff;">
 					        	<th class="success">첨부파일</th>
-					        	<td colspan="3">${obj.familyeventFile }</td>
+					        	<td colspan="3"></td>
 					        </tr>
 					        <tr>
-					        	<td style="border:none"></td>
-					        	<td colspan="3" style="border:none">
-					        		<img src="https://item.kakaocdn.net/do/c102cefcee683173508c5fee9f6869c9f43ad912ad8dd55b04db6a64cddaf76d">
-					        	</td>
+					        	<c:forEach var="att" items="${att}">
+						        	<td style="border:none"></td>
+						        	<td colspan="3" style="border:none">
+						        		${att.oriFile }
+						        	</td>
+					        	</c:forEach>
 					        </tr>
 					        <tr>
 					            <td colspan="4" class="text-center">
-									<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
 									<input type="button" class="btn btn-primary" value="수정" onclick="location.href='/familyeventUpdate?no=${obj.familyeventNo }'">
 									<input type="button" class="btn btn-primary" value="목록가기" onclick="location.href='/familyeventIndex'">
 					            </td>
