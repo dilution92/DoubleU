@@ -149,7 +149,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{emailAddress, jdbcType=VARCHAR}, #{emailName, jdbcType=VARCHAR}, 
 		#{emailTitle, jdbcType=VARCHAR}, SYSTIMESTAMP, 
 		#{emailContents, jdbcType=VARCHAR}, 
-		3, 
+		2, 
 		#{emailChk, jdbcType=VARCHAR}, 
 		default)
 

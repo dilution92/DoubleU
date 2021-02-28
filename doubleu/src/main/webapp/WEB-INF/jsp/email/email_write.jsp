@@ -131,34 +131,40 @@
 							</button>
 						</div>
 
-						<div class="emailSendContentsRev">
 
-							<!--  받는 사람 -->
+						
+						<div class="emailSendContentsRev">
 							<div class="form-group col-sm-2">
 								<label for="exampleFormControlInput1">받는 사람</label>
 							</div>
 
 							
 							<div class="form-group col-sm-7 revEmail">
+								<div class="emailBtnList" id="parah">
+									<!-- input자리 -->
+								</div>
 								<c:forEach begin="0" end="0">
 								<!-- 받는 사람 input -->
+									<input type="text" name="emailReceiverAddress" value="gamcho@gmail.com" readonly class="form-control col-sm-3"
+										id="exampleFormControlInput1">
 									<input type="text" name="emailReceiverAddress" value="angel@gmail.com" readonly class="form-control col-sm-3"
 										id="exampleFormControlInput1">
-										<input type="text" name="emailReceiverAddress" value="gamcho@gmail.com" readonly class="form-control col-sm-3"
-										id="exampleFormControlInput1">
 								</c:forEach>
+								
 
 							</div>
 
 							<!-- 주소록 버튼 -->
+							
 							<div class="form-group col-sm-2 rev-to-me">
-								<input type="button" class="btn btn-outline-primary btn-sm"
+								<input type="button" class="btn btn-outline-primary btn-sm" id="addBtn" value="추가" onclick="addInput()"><br/>	
+								<input type="button" id="addBtnAddress" class="btn btn-outline-primary btn-sm"
 									data-toggle="modal" data-target="#EmailAddress" role="button"
 									value="주소록">
 							</div>
 						</div>
 
-						<!-- 참조 -->
+						<!-- 참조1 -->
 						<div class="emailSendContentsRef">
 							<div class="form-group col-sm-2">
 								<label for="exampleFormControlInput1">참조</label>
@@ -166,6 +172,9 @@
 
 							
 							<div class="form-group col-sm-7 revRef">
+								<div class="emailBtnRefList" id="Refparah">
+									<!-- input자리 -->
+								</div>
 								<c:forEach begin="0" end="0">
 									<!-- 참조input -->
 									<input type="email" readonly name="emailReceiverRef" class="form-control col-sm-3"
@@ -173,9 +182,15 @@
 										value="bose@gmail.com"/>
 								</c:forEach>
 							</div>
+							
+							<!-- 참조 추가 버튼 -->
+							<div class="form-group col-sm-2 rev-to-me">
+								<input type="button" class="btn btn-outline-primary btn-sm" id="addRefBtn" value="추가" onclick="addInputRef()"><br/>	
+							</div>
 
 						</div>
-
+					
+						
 						<!-- 제목 -->
 						<div class="emailSendContentsHeader">
 							<div class="form-group col-sm-1">
@@ -220,7 +235,7 @@
 
 						<!-- 버튼 -->
 						<div class="send-and-cancel">
-							<button type="button" class="btn btn-primary btn-sm"
+							<button type="button"  class="btn btn-primary btn-sm"
 								onclick="sendToEmail()">보내기</button>
 							<button type="button" onclick="location.href='/emailIndex'" class="btn btn-primary btn-sm">취소하기</button>
 						</div>
@@ -237,6 +252,8 @@
 		/* js */
 		summernote(); // text 에디터 함수
 
+		addAddressPeronal();
+		addAddressPeronalRef();
 	</script>
 
 </body>
