@@ -12,28 +12,38 @@
 <body>
 <div class="tree">
     <ul>
-        <li><a href="#">대표이사 정희석</a>
+        <li><a href="#">Double U</a>
             <ul>
-                <li><a href="#">~~~부서</a>
+                <li><a href="#">관리부</a>
                     <ul>
-                        <li><a href="#">Accountant 1</a></li>
-                        <li><a href="#">Accountant 2</a></li>
+                        <li><a href="#">경영지원팀</a></li>
+                        <li><a href="#">인사관리팀</a></li>
                     </ul>
 
                 </li>
-                <li><a href="#">~~~부서</a>
+                <li><a href="#">영업부</a>
                     <ul>
-                        <li><a href="#">Sales</a>
+                        <li><a href="#">영업기획팀</a>
                             <ul>
-                                <li><a href="#">Sales1</a></li>
-                                <li><a href="#">Sales2</a></li>
-                                <li><a href="#">Sales3</a></li>
+                                <li><a href="#">영업1팀</a></li>
+                                <li><a href="#">영업2팀</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Production1</a></li>
-                        <li><a href="#">Production2</a></li>
+                        <li><a href="#">영업지원팀</a></li>
                     </ul>
                   </li>
+                  <li><a href="#">it기술부</a>
+                    <ul>
+                        <li><a href="#">개발팀</a>
+                        <ul>
+                                <li><a href="#">시스템개발팀</a></li>
+                                <li><a href="#">웹개발팀</a></li>
+                            </ul>
+                        </li>
+                         <li><a href="#">유지보수팀</a></li>
+                    </ul>
+
+                </li>
             </ul>
 
         </li>

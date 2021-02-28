@@ -13,9 +13,9 @@ public class ProfileService {
 	@Autowired
 	ProfileMapper mapper;
 	
-	public List<ProfileVo> select(){
+	public List<ProfileVo> selectProfile(){
 		System.out.println("select 시작");
-		List<ProfileVo> list = mapper.select();
+		List<ProfileVo> list = mapper.selectProfile();
 		System.out.println("select mapper 반환");
 		return list;
 	}

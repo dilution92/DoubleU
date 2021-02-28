@@ -24,7 +24,7 @@
 			      <th scope="col"style="background-color:#f1f2f4;">작성자</th>
 			      <td scope="col" style="border-bottom: 1px solid #dee2e6;">${vo.marketWriter}</td>
 			      <th scope="col" style="background-color:#f1f2f4;">조회수</th>
-			      <td scope="col" style="border-bottom: 1px solid #dee2e6;">23</td>
+			      <td scope="col" style="border-bottom: 1px solid #dee2e6;">${vo.marketHit}</td>
 			    </tr>
 			  </thead>
 			  
@@ -87,7 +87,7 @@
 						    </div>
 						    
 						  
-					  	<input type = "text" id="dibVal" value='${cnt }' />
+					  	<input type = "hidden" id="dibVal" value='${cnt }' />
 					  <div class="form-group row">
 					    
 					    <%-- <div class="col-sm-6" style="display: flex;">
@@ -109,13 +109,13 @@
 				</div>
 				
 				<!-- hidden -->
-				<input type='text' name='findStr' value='${page.findStr }'/>
-				<input type='text' name='nowPage' value='${page.nowPage }'/>
-				<input type='text' name='marketNo'  value='${vo.marketNo}'/>
-				<input type='text' name='dibUser'  value='${member.memberName}'/>
+				<input type='hidden' name='findStr' value='${page.findStr }'/>
+				<input type='hidden' name='nowPage' value='${page.nowPage }'/>
+				<input type='hidden' name='marketNo'  value='${vo.marketNo}'/>
+				<input type='hidden' name='dibUser'  value='${member.memberName}'/>
 				
 				<div class="market-btn-zone">
-					<button class="btn btn-primary" type="button" onclick = "goBack();">목록</button>
+					<button class="btn btn-primary" type="button" onclick = "location.href='marketIndex?dibUser=${member.memberName}'">목록</button>
 					
 					
 					<c:if test="${vo.marketWriter==member.memberName }">
@@ -168,6 +168,13 @@
 		</div>
 	</div>
 
+<!-- hidden -->
+<c:forEach var='vo' items='${marketlist }' >
+	<input type ="hidden" name = "dibMarketSubject" value="'${vo.marketSubject }'"/>
+	<input type ="hidden" name = "dibMarketPrice" value="${vo.marketPrice }"/>
+		<input type ="hidden" name = "dibMarketNo" value="${vo.marketNo }"/>
+	
+ </c:forEach>
 
 <script>date()</script>
 </body>

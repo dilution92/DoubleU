@@ -4,7 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.doubleu.profile.mybatis.ProfileMapper">
-	<select id="select" parameterType="com.doubleu.profile.vo.ProfileVo" resultMap="selectProfileData">
+
+	<select id="selectProfile" parameterType="com.doubleu.profile.vo.ProfileVo" resultMap="selectProfileData">
 		SELECT * FROM member
 	</select>
 
@@ -25,6 +26,22 @@
 	</resultMap>
 	
 	
+	<select id="selectWork" parameterType="com.doubleu.profile.vo.WorkVo" resultMap="selectWorkData">
+		SELECT * FROM WORK
+	</select>
+
+	<resultMap id="selectWorkData" type="com.doubleu.profile.vo.WorkVo">
+ 
+	<result property="workNo" column="work_no" /> 
+	<result property="memberNo" column="member_no" /> 
+	<result property="workMid" column="member_mid" /> 
+	<result property="workDate" column="work_date" /> 
+	<result property="workStart" column="work_start" /> 
+	<result property="workFinish" column="work_finish"  />
+	<result property="workTotal" column="work_total"  /> 
+	<result property="workPlus" column="work_plus"/>  
+	
+	</resultMap>
 	
 </mapper>
 	

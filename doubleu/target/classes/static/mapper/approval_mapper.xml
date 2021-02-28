@@ -134,7 +134,8 @@
 		ORDER BY a.modify_date DESC) c)
 		WHERE rno BETWEEN ${startNo} AND ${endNo} 
 	</select>
-	
+	<!-- 
+	 -->
 	<select id="selectChooseRecevier" parameterType="com.doubleu.approval.vo.SelectPage" resultMap="resultFormVo" resultType="com.doubleu.approval.vo.FormVo">
 		<choose>
 			<when test="findState == 0">
@@ -421,7 +422,6 @@
 		maker_comment = '${makerComment}'
 		WHERE member_no = ${memberNo} AND form_no = ${formNo}
 	</update>
-	
 	<update id="updateDecisionApproval" parameterType="com.doubleu.approval.vo.DecisionMakerVo">
 		UPDATE approval_decision_makers
 		SET

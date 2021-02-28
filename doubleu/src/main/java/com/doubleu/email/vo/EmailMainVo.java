@@ -3,6 +3,8 @@ package com.doubleu.email.vo;
 import java.sql.Date;
 import java.util.List;
 
+import com.doubleu.login.vo.LoginVo;
+
 public class EmailMainVo {
 	int emailNo;
 	int memberNo;
@@ -19,7 +21,7 @@ public class EmailMainVo {
 	List<AttEmailVo> attFileList;
 	List<EmailReceiverVo> emailRevList; // 받은 사람, 참조
 	List<EmailMainVo> emailReadList; // 메일 읽기
-
+	List<LoginVo> memberList;
 	
 	public int getEmailNo() {
 		return emailNo;

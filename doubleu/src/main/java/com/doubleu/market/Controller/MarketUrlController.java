@@ -2,6 +2,8 @@ package com.doubleu.market.Controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +27,8 @@ public class MarketUrlController {
 	
 	// market_index.jsp
 	@RequestMapping(value="/marketIndex",method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView marketIndex(MarketPage page) {
+	public ModelAndView marketIndex(HttpServletRequest req, 
+			MarketDibVo dibvo,MarketVo vo, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		
 
@@ -37,6 +40,19 @@ public class MarketUrlController {
 		
 		int cnt = dao.totalCount();
 		
+		
+		String dibUser = req.getParameter("dibUser");
+		System.out.println("index user :"+dibUser);
+		dibvo.setDibUser(dibUser);
+		Map<String, Object> dMap = Ddao.selectDiblist(dibvo);
+
+		int hitCnt = vo.getMarketHit();
+		hitCnt = hitCnt+1;
+		vo.setMarketHit(hitCnt);
+		String msg = dao.updateHit(vo);
+		System.out.println(msg);
+		
+		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
 		mv.addObject("attList", map.get("attList"));
@@ -75,14 +91,18 @@ public class MarketUrlController {
 		System.out.println("marketNo: " + v.getMarketNo());
 		MarketVo vo = dao.view(v.getMarketNo());
 		
-		
+		int hitCnt = vo.getMarketHit();
+		hitCnt = hitCnt+1;
+		vo.setMarketHit(hitCnt);
+		String msg = dao.updateHit(vo);
+		System.out.println(msg);
 		int cnt = Ddao.selectDib(dibvo);
-
-		//System.out.println("view컨트롤러......");
-		//System.out.println("페이지:" + page.getNowPage());
-		//System.out.println(page.getFindStr());
-		//System.out.println(vo.getMarketSubject());
-		//System.out.println("att:"+vo.getAttlist());
+		
+		dibvo.setDibUser(dibUser);
+		Map<String, Object> dMap = Ddao.selectDiblist(dibvo);
+		
+		vo.setMarketHit(hitCnt);
+		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("vo", vo);
 		mv.addObject("cnt", cnt);
 		mv.addObject("page", page);

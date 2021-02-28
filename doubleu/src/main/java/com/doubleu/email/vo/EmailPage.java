@@ -17,7 +17,16 @@ public class EmailPage {
 	int listSize = 8;
 	int blockSize = 3;
 	
-	String memberMid;
+	
+	String memberMid; 
+	int emailMailBox; // 메일 종류
+	String emailAddress; // 주소
+	int memberNo;
+	
+	
+	public EmailMainVo vo;
+	
+	
 	String findStr;
 	List<String> findStrList = new ArrayList<>();
 	
@@ -148,12 +157,41 @@ public class EmailPage {
 	public void setMemberMid(String memberMid) {
 		this.memberMid = memberMid;
 	}
+	
+	public int getEmailMailBox() {
+		return emailMailBox;
+	}
+
+	public void setEmailMailBox(int emailMailBox) {
+		this.emailMailBox = emailMailBox;
+	}
+
 
 	@Override
 	public String toString() {
 		return "EmailPage [totListSize=" + totListSize + ", totPage=" + totPage + ", startPage=" + startPage
 				+ ", endPage=" + endPage + ", startNo=" + startNo + ", endNo=" + endNo + ", nowPage=" + nowPage
 				+ ", listSize=" + listSize + ", blockSize=" + blockSize + ", memberMid=" + memberMid + ", findStr="
-				+ findStr + ", findStrList=" + findStrList + "]";
+				+ findStr + ", findStrList=" + findStrList + ", emailMailBox=" + emailMailBox +"]"+ ", emailAddress="
+				+ emailAddress +"]" +", MemberNo=" + memberNo +"]";
 	}
+	
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+	
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+	
+
+
 }

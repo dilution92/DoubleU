@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.CalenderService;
 import com.doubleu.calender.vo.CalenderWeekList;
+import com.doubleu.calender.vo.CalenderParticiptant;
 import com.doubleu.calender.vo.CalenderVo;
 
 @RestController
@@ -27,9 +28,6 @@ public class CalenderController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("@@ 컨트롤러 시작");
 		
-		CalenderVo vo = calender.selectOne(id);
-		System.out.println(vo.getCalenderNo());
-		
 		List<CalenderWeekList> list = new ArrayList<>();
 		
 
@@ -42,10 +40,6 @@ public class CalenderController {
 		mv.addObject("currentDay", day);
 		mv.addObject("list",list);
 		
-		System.out.println(vo.getCalenderNo()+"컨트롤러 VO.NO");
-		System.out.println(vo.getCalenderSubject()+"컨트롤러 VO.SUBJECT");
-		
-		mv.addObject("selectVo", vo);
 		mv.setViewName("calender/Calender_month");
 		
 		
@@ -55,13 +49,13 @@ public class CalenderController {
 	}
 	
 	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
-	public ModelAndView calenderInsertR(CalenderVo vo) {
+	public ModelAndView calenderInsertR(@RequestParam("calPartiList1") List<String> cp ,CalenderVo vo) {
 		System.out.println("controller 시작");
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		List<CalenderWeekList> list = new ArrayList<>();
 		
-		msg = calender.insert(vo);
+		msg = calender.insert(vo, cp);
 		list = calender.setMonthCalender();
 		int year = calender.getYear();
 		int month = calender.getMonth();

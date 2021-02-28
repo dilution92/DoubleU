@@ -11,11 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.CalenderService;
 import com.doubleu.calender.vo.CalenderWeekList;
+import com.doubleu.profile.service.ProfileService;
+import com.doubleu.profile.vo.ProfileVo;
 
 @Controller
 public class CalenderURLController {
 	@Autowired
 	CalenderService calender;
+	
+	@Autowired
+	ProfileService profile;
 	
 	@RequestMapping(value = "/calenderMonth", method = {RequestMethod.POST, RequestMethod.GET} )
 	public ModelAndView calenderMonth() {
@@ -73,7 +78,10 @@ public class CalenderURLController {
 	@RequestMapping(value = "/calenderWrite", method = {RequestMethod.POST, RequestMethod.GET}  )
 	public ModelAndView calenderWrite() {
 		ModelAndView mv = new ModelAndView();
-
+		
+		
+		List<ProfileVo> profile1 = profile.selectProfile();
+		mv.addObject("profile", profile1);
 		mv.setViewName("calender/Calender_write");
 
 		return mv;
