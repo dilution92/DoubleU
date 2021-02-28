@@ -9,6 +9,9 @@
 
 	추가 : 21.02.25
 	임시 저장 버튼 js
+	
+	추가 : 21.02.28
+	받는 사람, 참조 개별적으로 작성할 때 추가하기
  */
 
 
@@ -80,3 +83,93 @@ var tempSendEmail = function() {
 
 
 
+/* 받는 사람 추가 function */
+
+var addAddressPeronal = function() {
+	var arrInput = new Array(0);
+	var arrInputValue = new Array(0);
+		 
+addInput = function() {
+	  arrInput.push(arrInput.length); // 배열의 끝에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환
+	  console.log(arrInput.length); 
+	  arrInputValue.push(""); // input value값은 ""
+	  display();
+	}
+	
+	
+function display() {
+	  document.getElementById('parah').innerHTML="";
+	  for (intI=0;intI<arrInput.length;intI++) {
+	    document.getElementById('parah').innerHTML+=createInput(arrInput[intI], arrInputValue[intI]);
+	  }
+	}
+	
+function saveValue(intId,strValue) {
+	  arrInputValue[intId]=strValue;
+	}  
+			
+function createInput(id,value) {
+	  return "<input type='text' style='width: 150px;' class='emailBtnList > input' name='emailReceiverAddress' value='' style='border: 1px solid #ced4da;' id='emailBtn "+ id +"' onChange='javascript:saveValue("+ id +",this.value)' value='"+ 
+	 
+	value +"'>"
+	+"<input type='button' class='emailBtnList > input' onclick='deleteInput()' value='x' style='width:20px; margin-right:5px'  id='del "+ id +"' onChange='javascript:saveValue("+ id +",this.value)' value='"+ 
+	 
+	value +"'>";
+	}
+
+// 삭제
+deleteInput = function() {
+	  if (arrInput.length > 0) { 
+	     arrInput.pop(); 
+	     arrInputValue.pop();
+	  }
+	  display(); 
+	}
+	
+}
+
+
+/* 받는 사람 참조 function */
+var addAddressPeronalRef = function() {
+	var arrInputRef = new Array(0);
+	var arrInputValueRef = new Array(0);
+		 
+addInputRef = function() {
+	  arrInputRef.push(arrInputRef.length); // 배열의 끝에 하나 이상의 요소를 추가하고, 배열의 새로운 길이를 반환
+	  console.log(arrInputRef.length); 
+	  arrInputValueRef.push(""); // input value값은 ""
+	  displayRef(); // displayRef()실행
+	}
+	
+	
+function displayRef() {
+	  document.getElementById('Refparah').innerHTML="";
+	  for (intI=0;intI<arrInputRef.length;intI++) {
+	    document.getElementById('Refparah').innerHTML+=createInputRef(arrInputRef[intI], arrInputValueRef[intI]);
+	  }
+	}
+
+function saveValueRef(intId,strValue) {
+	  arrInputValueRef[intId]=strValue;
+	}  
+			
+function createInputRef(id,value) {
+	  return "<input type='text' style='width: 150px;' class='emailBtnList > input' name='emailReceiverRef' value='' style='border: 1px solid #ced4da;' id='emailRefBtn "+ id +"' onChange='javascript:saveValueRef("+ id +",this.value)' value='"+ 
+	 
+	value +"'>"
+	+"<input type='button' class='emailBtnList > input' onclick='deleteInputRef()' value='x' style='width:20px; margin-right:5px'  id='delRef "+ id +"' onChange='javascript:saveValueRef("+ id +",this.value)' value='"+ 
+	 
+	value +"'>";
+	}
+
+
+// 삭제
+deleteInputRef = function() {
+	  if (arrInputRef.length > 0) { 
+	     arrInputRef.pop(); 
+	     arrInputValueRef.pop();
+	  }
+	  displayRef(); 
+	}
+
+}

@@ -1,5 +1,7 @@
 package com.doubleu.calender.vo;
 
+import java.util.List;
+
 public class CalenderVo {
 
 	private int calenderNo;
@@ -21,8 +23,44 @@ public class CalenderVo {
 	private String calenderGroup;
 	private String calenderTime;
 	
+	private List<CalenderParticiptant> calPartiList;
 	
 	
+	public List<CalenderParticiptant> getCalPartiList() {
+		return calPartiList;
+	}
+	public void setCalPartiList(List<CalenderParticiptant> calPartiList) {
+		this.calPartiList = calPartiList;
+	}
+	public String getStartDate() {
+		String date;
+		date = getCalenderStartYear()+"-"
+			+ getCalenderStartMonth()+"-"
+			+ getCalenderStartDay();
+		return date;
+	}
+	public String getStartTime() {
+		String date;
+		date = 
+			getCalenderStartTime()+":"
+			+ getCalenderStartMinute();
+		return date;
+	}
+	public String getEndDate() {
+		String date;
+		date = getCalenderEndYear()+"-"
+				+ getCalenderEndMonth()+"-"
+				+ getCalenderEndDay();
+				
+		return date;
+	}
+	public String getEndTime() {
+		String date;
+		date = 
+				getCalenderEndTime()+":"
+				+ getCalenderEndMinute();
+		return date;
+	}
 	public String getCalenderType() {
 		return calenderType;
 	}

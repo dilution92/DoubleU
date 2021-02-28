@@ -5,7 +5,7 @@
 	
 <mapper namespace="com.doubleu.calender.mybatis.CalenderMapper">
 	<insert id = 'insert' parameterType="com.doubleu.calender.vo.CalenderVo">
-		INSERT 
+		INSERT ALL
 		INTO CALENDER
 			(calender_no,
 			calender_start_year,
@@ -44,10 +44,29 @@
 			#{calenderWriter}, 
 			#{calenderGroup}, 
 			SYSDATE)
+			
+			<if test="calPartiList != null">
+				<foreach collection="calPartiList" item="parti">
+					INTO calender_participtant
+					(calender_parti_no,
+					calender_no,
+					calender_partiMember
+					)
+					values
+					(CalenderpartiSeq(),
+					seq_calender_no.currval,
+					#{parti.calenderPartiMember})
+				</foreach>
+			</if>
+			SELECT * FROM dual
 	</insert>
 	
 	<select id = 'selectList' resultMap="ResultVo"  parameterType="com.doubleu.calender.vo.CalenderVo">
 		SELECT * FROM CALENDER
+	</select>
+	
+	<select id="selectPartiList" resultMap="partiList" parameterType="int">
+		SELECT * FROM CALENDER_PARTICIPTANT where calender_no=#{_parameter}
 	</select>
 	
 	<select id="selectOne" parameterType="int" resultMap="ResultVo" >
@@ -74,5 +93,11 @@
 		<result property="calenderWriter" column="calender_writer"/>
 		<result property="calenderGroup" column="calender_group"/>
 		<result property="calenderTime" column="calender_time"/>
+	</resultMap>
+	
+	<resultMap type="com.doubleu.calender.vo.CalenderParticiptant" id="partiList">
+		<result property="calenderPartiNo" column="calender_parti_no"/>
+		<result property="calenderNo" column="calender_no"/>
+		<result property="calenderPartiMember" column="calender_partiMember"/>
 	</resultMap>
 </mapper>

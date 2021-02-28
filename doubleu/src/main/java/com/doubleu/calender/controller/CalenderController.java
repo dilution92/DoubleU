@@ -3,6 +3,8 @@ package com.doubleu.calender.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.CalenderService;
 import com.doubleu.calender.vo.CalenderWeekList;
+import com.doubleu.calender.vo.CalenderParticiptant;
 import com.doubleu.calender.vo.CalenderVo;
 
 @RestController
@@ -23,12 +26,9 @@ public class CalenderController {
 	@RequestMapping(value = "/CalenderMonthModal", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView CalenderMonthModal(@RequestParam int id) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(id);
+		System.out.println("@@ 컨트롤러 시작");
 		
-		CalenderVo vo = calender.selectOne(id);
-		System.out.println(vo.getCalenderNo());
-		
-List<CalenderWeekList> list = new ArrayList<>();
+		List<CalenderWeekList> list = new ArrayList<>();
 		
 
 		list = calender.setMonthCalender();
@@ -40,19 +40,22 @@ List<CalenderWeekList> list = new ArrayList<>();
 		mv.addObject("currentDay", day);
 		mv.addObject("list",list);
 		
-		mv.addObject("selectVo", vo);
 		mv.setViewName("calender/Calender_month");
+		
+		
+		
+		System.out.println("@@@ 컨트롤러 종료");
 		return mv;
 	}
 	
 	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
-	public ModelAndView calenderInsertR(CalenderVo vo) {
+	public ModelAndView calenderInsertR(@RequestParam("calPartiList1") List<String> cp ,CalenderVo vo) {
 		System.out.println("controller 시작");
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		List<CalenderWeekList> list = new ArrayList<>();
 		
-		msg = calender.insert(vo);
+		msg = calender.insert(vo, cp);
 		list = calender.setMonthCalender();
 		int year = calender.getYear();
 		int month = calender.getMonth();
