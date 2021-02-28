@@ -122,7 +122,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				email_main_seq.currval, 
 				#{rev.emailReceiverAddress}, 
 				#{rev.emailReceiverRef})
-			
 			</foreach>
 		</if>
 		SELECT * FROM dual

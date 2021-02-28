@@ -196,7 +196,7 @@ public class EmailMainController {
 		}
 
 		// 파일 업로드 
-		List<AttEmailVo> attFileList = FileUpLoadService.upload(mul);
+		List<AttEmailVo> attFileList = FileUpLoadService.upload(mul, req);
 		vo.setAttFileList(attFileList);
 
 		System.out.println("DaoService.insertSendWrite(vo) 실행 전");
