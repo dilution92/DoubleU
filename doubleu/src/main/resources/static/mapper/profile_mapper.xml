@@ -5,7 +5,7 @@
 
 <mapper namespace="com.doubleu.profile.mybatis.ProfileMapper">
 
-	<select id="select" parameterType="com.doubleu.profile.vo.ProfileVo" resultMap="selectProfileData">
+	<select id="selectProfile" parameterType="com.doubleu.profile.vo.ProfileVo" resultMap="selectProfileData">
 		SELECT * FROM member
 	</select>
 
