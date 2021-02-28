@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.doubleu.calender.vo.CalenderParticiptant;
 import com.doubleu.calender.vo.CalenderVo;
 
 @Service
@@ -30,6 +31,11 @@ public class CalenderDao {
 	
 	public CalenderVo selectOne(int id) {
 		return mapper.selectOne(id);
+	}
+	
+	public List<CalenderParticiptant> selectPartiList(int no) {
+		List<CalenderParticiptant> pList = mapper.selectPartiList(no);
+		return pList;
 	}
 	
 	

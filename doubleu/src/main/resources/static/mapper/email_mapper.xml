@@ -200,7 +200,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="oriFile" column="file_orifile"/>
 	</resultMap>
 	
-	
 	<resultMap id="revList" type="com.doubleu.email.vo.EmailReceiverVo">
 		<result property="emailReceiverNo" column="email_rev_no"/>
 		<result property="emailNo" column="email_no"/>
