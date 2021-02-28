@@ -786,7 +786,7 @@ function calculationDate() {
 			alert('기간을 다시 입력해주세요.');
 		}
 		else if(dateDiff > 0) {
-			frm.vacationCnt.value = dateDiff;
+			frm.vacationCnt.value = dateDiff + 1;
 		}
 	}
 }

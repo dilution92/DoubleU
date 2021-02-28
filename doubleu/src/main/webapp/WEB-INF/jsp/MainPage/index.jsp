@@ -38,9 +38,9 @@
 			</div>
 			</div>
 			<div class="profile-body">
-				<strong class="text-muted">정해준</strong> <br>
-				<span class="small text-muted">직급: 사원</span> <br>
-				<span class="small text-muted">부서: 기획부</span> <br>
+				<strong class="text-muted">${member.memberName}</strong><br>
+				<span class="small text-muted">직급: ${member.memberPosition}</span><br>
+				<span class="small text-muted">부서: ${member.memberDepartment}</span><br>
 			</div>
 		</div>
 		<div class="content-workManagement">
