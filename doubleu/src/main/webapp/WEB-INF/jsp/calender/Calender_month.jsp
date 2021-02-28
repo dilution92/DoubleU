@@ -133,18 +133,18 @@
 							<c:when test="${listVo.getCalenderType() eq '장기'}">
 								장기 ::
 									${listVo.getCalenderSubject() }
-									<input type="text" value="${listVo.getCalenderNo() }"> <!-- 0 -->
-									<input type="text" value="${listVo.getStartDate() }"> <!-- 1 -->
-									<input type="text" value="${listVo.getStartTime() }"> <!-- 2 -->
-									<input type="text" value="${listVo.getEndDate() }"> <!-- 3 -->
-									<input type="text" value="${listVo.getEndTime() }"> <!-- 4 -->
-									<input type="text" value="${listVo.getCalenderType() }"> <!-- 5 -->
-									<input type="text" value="${listVo.getCalenderSubject() }"> <!-- 6 -->
-									<input type="text" value="${listVo.getCalenderContent() }"> <!-- 7 -->
-									<input type="text" value="${listVo.getCalenderPlace() }"> <!-- 8 -->
-									<input type="text" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
-									<input type="text" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
-									<input type="text" value="${listVo.getCalenderTime() }"> <!-- 11 -->
+									<input type="hidden" value="${listVo.getCalenderNo() }"> <!-- 0 -->
+									<input type="hidden" value="${listVo.getStartDate() }"> <!-- 1 -->
+									<input type="hidden" value="${listVo.getStartTime() }"> <!-- 2 -->
+									<input type="hidden" value="${listVo.getEndDate() }"> <!-- 3 -->
+									<input type="hidden" value="${listVo.getEndTime() }"> <!-- 4 -->
+									<input type="hidden" value="${listVo.getCalenderType() }"> <!-- 5 -->
+									<input type="hidden" value="${listVo.getCalenderSubject() }"> <!-- 6 -->
+									<input type="hidden" value="${listVo.getCalenderContent() }"> <!-- 7 -->
+									<input type="hidden" value="${listVo.getCalenderPlace() }"> <!-- 8 -->
+									<input type="hidden" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
+									<input type="hidden" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
+									<input type="hidden" value="${listVo.getCalenderTime() }"> <!-- 11 -->
 							</c:when>
 						</c:choose>
 						</div>
@@ -152,13 +152,24 @@
 					<c:forEach items="${list.vo }" var="listVo"> <!-- 단기 일정이 표시 될 곳 -->
 						<div class="calender_modal" >
 							<c:choose>
-							<c:when test="${listVo.getCalenderType() eq '단기'}">
-								단기 ::
-									${listVo.getCalenderSubject() }
-									
-							</c:when>
+								<c:when test="${listVo.getCalenderType() eq '단기'}">
+									단기 ::
+										${listVo.getCalenderSubject() }
+										<input type="hidden" value="${listVo.getCalenderNo() }"> <!-- 0 -->
+										<input type="hidden" value="${listVo.getStartDate() }"> <!-- 1 -->
+										<input type="hidden" value="${listVo.getStartTime() }"> <!-- 2 -->
+										<input type="hidden" value="${listVo.getEndDate() }"> <!-- 3 -->
+										<input type="hidden" value="${listVo.getEndTime() }"> <!-- 4 -->
+										<input type="hidden" value="${listVo.getCalenderType() }"> <!-- 5 -->
+										<input type="hidden" value="${listVo.getCalenderSubject() }"> <!-- 6 -->
+										<input type="hidden" value="${listVo.getCalenderContent() }"> <!-- 7 -->
+										<input type="hidden" value="${listVo.getCalenderPlace() }"> <!-- 8 -->
+										<input type="hidden" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
+										<input type="hidden" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
+										<input type="hidden" value="${listVo.getCalenderTime() }"> <!-- 11 -->
+								</c:when>
 						</c:choose>
-						</div>
+					</div>
 					</c:forEach>
 				</div>
 				
