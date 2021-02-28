@@ -397,6 +397,7 @@ body {
 
 /* 주소록 */
 .modalEmailAddressEmail{
+	margin-top: 90px;
 	width: 1000px;
     height: 650px;
 }
@@ -519,7 +520,7 @@ body {
 
 .rev-mail-one {
 	border: 1px solid #E5E5E5;
-    max-height: 150px;
+    height: 150px;
     overflow: scroll;
     overflow-x:hidden;
 }
@@ -559,7 +560,7 @@ body {
 /* 주소록 참조 */
 .ref-mail-two {
 	border: 1px solid #E5E5E5;
-    max-height: 150px;
+    height: 150px;
     overflow: scroll;
     overflow-x:hidden;
 }

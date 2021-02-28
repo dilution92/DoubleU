@@ -275,7 +275,15 @@ public class EmailMainController {
 		page.setEmailAddress(emailAddress);
 		
 		int cnt = DaoService.selectSendEmail(vo);
+		
+		
+		
+		List<LoginVo> memberList = DaoService.selectMembers();
+		
+		
+		
 		mv.addObject("readCnt", cnt);
+		mv.addObject("memberList", memberList);
 		mv.setViewName("email/email_write");
 
 		return mv;

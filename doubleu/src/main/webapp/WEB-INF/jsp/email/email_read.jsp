@@ -56,7 +56,7 @@
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
 
-	<header>
+	<header class="container-fluid main-gnb">
 		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->

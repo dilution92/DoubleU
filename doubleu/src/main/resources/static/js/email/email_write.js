@@ -173,3 +173,16 @@ deleteInputRef = function() {
 	}
 
 }
+
+
+
+/* 체크박스 모달창 */
+
+selectChkBox = function(selectAll) {
+	console.log(selectAll)
+	var check_count = document.getElementsByName("emailAddressChk");
+	check_count.forEach((checkbox) => {
+		checkbox.checked = selectAll.checked;
+	})
+		
+}

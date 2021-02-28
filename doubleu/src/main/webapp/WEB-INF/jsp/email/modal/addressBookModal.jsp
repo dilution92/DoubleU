@@ -15,10 +15,8 @@
 				<div class="modal-content modalEmailAddressEmail"
 					style="margin-left: -30px;">
 					<div class="modalAddressEmailFolder">
-
-
 						<h4>주소록</h4>
-
+					
 						<div class="search-btn">
 							<select class="form-control form-control-sm" style="width: 70px;">
 								<option value="">이름</option>
@@ -31,32 +29,33 @@
 
 						<div class="search-btn-address">
 							<div class="search-btn-address-btn-one col-5">
-								<label class="btn btn-outline-primary btn-sm"> <input
-									type="checkbox" style="margin-right: 5px;" /> 전체선택
+								<label class="btn btn-outline-primary btn-sm"> 
+								<input type="checkbox" onclick="selectChkBox(this)" style="margin-right: 5px;" /> 전체선택
 								</label>
-								<c:forEach begin="0" end="20">
+								<c:forEach var="listMember" items="${memberList }">
 									<div class="address-name">
-										<input type="checkbox" name="emailAddressChk" /> <span
-											class="badge rounded-pill bg-light text-dark">송연주</span> <span
-											class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
-										<span class="badge rounded-pill bg-light text-dark">더블유
-											조리팀</span>
+										<input type="checkbox" name="emailAddressChk"
+										value="${listMember.memberName } ${listMember.memberEmail} ${listMember.memberTeam }"/>
+										
+										<span class="badge rounded-pill bg-light text-dark">${listMember.memberName }</span>  
+										<span class="badge rounded-pill bg-light text-dark">${listMember.memberEmail}</span>
+										<span class="badge rounded-pill bg-light text-dark">${listMember.memberTeam }</span>
 									</div>
 								</c:forEach>
 							</div>
 
 							<div class="search-btn-address-btn-two col-1">
 								<div class="search-btn-address-btn-two-align">
-									<button type="button" class="btn btn-outline-primary btn-sm">
+									<button type="button" onclick="getCheckboxValue()" class="btn btn-outline-primary btn-sm">
 										<i class="bi bi-plus"></i>
 									</button>
-									<button type="button" class="btn btn-outline-primary btn-sm">
+									<button type="button" onclick="getCheckboxValue()" class="btn btn-outline-primary btn-sm">
 										<i class="bi bi-dash"></i>
 									</button>
 								</div>
 
 								<div class="search-btn-address-btn-two-ref-align">
-									<button type="button" class="btn btn-outline-primary btn-sm">
+									<button type="button"  class="btn btn-outline-primary btn-sm">
 										<i class="bi bi-plus"></i>
 									</button>
 									<button type="button" class="btn btn-outline-primary btn-sm">
@@ -71,10 +70,10 @@
 								<div class="rev-mail-one">
 									<div class="rev-align-scroll">
 										<c:forEach begin="0" end="20">
-											<span class="badge rounded-pill bg-light text-dark">송연주</span>
-											<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
-											<span class="badge rounded-pill bg-light text-dark">더블유
-												조리팀</span>
+											<!-- 받는 사람 -->
+											<div id="result">
+											
+											</div>
 										</c:forEach>
 									</div>
 								</div>
@@ -83,10 +82,7 @@
 								<div class="ref-mail-two">
 									<div class="rev-align-scroll">
 										<c:forEach begin="0" end="20">
-											<span class="badge rounded-pill bg-light text-dark">송연주</span>
-											<span class="badge rounded-pill bg-light text-dark">song@gmail.com</span>
-											<span class="badge rounded-pill bg-light text-dark">더블유
-												조리팀</span>
+											<!-- 참조 -->
 										</c:forEach>
 									</div>
 								</div>
@@ -105,4 +101,34 @@
 			</div>
 		</div>
 </body>
+<script>
+
+//1.전체 선택을 눌렀을 때 모든 체크박스 클릭
+
+
+function getCheckboxValue()  {
+	  // 선택된 목록 가져오기
+	  console.log('하이')
+	  
+	  const query = 'input[name="emailAddressChk"]:checked';
+	  const selectedEls = 
+	      document.querySelectorAll(query);
+	  
+	  // 선택된 목록에서 value 찾기
+	  let result = '';
+	  selectedEls.forEach((el) => {
+	    result += el.value + ' ';
+	  });
+
+	  var node = document.createElement("span");                 // Create a <li> node
+	  var textnode = document.createTextNode(result);         // Create a text node
+	  node.appendChild(textnode);                              // Append the text to <li>
+	  document.getElementById("result").appendChild(node); 
+
+	  // 출력
+	  //document.getElementById('result').innerText
+	   // = result;
+	}
+
+</script>
 </html>
