@@ -40,13 +40,13 @@
 						</tr>
 						<tr height="500px">
 							<td width="350px">
-								<c:forEach begin="0" end="10"><!-- 왼쪽 주소록 리스트 -->
-									<div class="address-name">
-										<input type="checkbox" name="emailAddressChk" /> 
-										<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
-										<span class="badge rounded-pill bg-light text-dark">송연주</span> 
-										<span class="badge rounded-pill bg-light text-dark">사원</span>
-									</div>
+								<c:forEach items="${profile}" var="profile"><!-- 왼쪽 주소록 리스트 -->
+									<div class="inputMember" >
+										<input type="checkbox" name="memberchk" /> 
+										<span class="badge rounded-pill bg-light text-dark">${profile.memberTeam }</span>
+										<span class="badge rounded-pill bg-light text-dark">${profile.memberName }</span> 
+										<span class="badge rounded-pill bg-light text-dark">${profile.memberPosition }</span>
+									</div> 
 								</c:forEach>
 							</td>
 							
@@ -63,7 +63,7 @@
 							
 							<td width="350px">
 								<c:forEach begin="0" end="10">
-									<div class="address-name">
+									<div class="outputMember">
 										<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
 										<span class="badge rounded-pill bg-light text-dark">송연주</span> 
 										<span class="badge rounded-pill bg-light text-dark">사원</span>
