@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,10 +15,14 @@ import com.doubleu.email.vo.AttEmailVo;
 
 @Service
 public class EmailUploadService {
-	String saveDir = "C:\\Users\\USER\\DoubleU\\doubleu\\src\\main\\webapp\\WEB-INF\\upload\\email\\";
+	
+	String saveDir;
 
 
-	public List<AttEmailVo> upload(List<MultipartFile> mul) {
+	public List<AttEmailVo> upload(List<MultipartFile> mul, HttpServletRequest req) {
+		
+		String realPath = req.getServletContext().getRealPath("WEB-INF/upload/email/");
+		this.saveDir = realPath;
 		
 		List<AttEmailVo> attFileList = new ArrayList<>();
 		String msg ;

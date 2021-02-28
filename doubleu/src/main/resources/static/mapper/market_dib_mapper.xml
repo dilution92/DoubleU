@@ -7,7 +7,8 @@
 
 	<select id="selectDiblist" parameterType="String" 
 	resultMap="marketList">
-	select distinct dib.dib_no dib_no, mk.market_subject market_subject, mk.market_price market_price
+	select distinct dib.dib_no dib_no, mk.market_subject market_subject, 
+					mk.market_price market_price, mk.market_no market_no
 	from market_dib dib 
 	join market mk on mk.market_no = dib.market_no
 	where dib.dib_user=#{dibUser}

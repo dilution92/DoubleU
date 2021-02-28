@@ -122,6 +122,7 @@
 											(시작일자 &nbsp;<input type="date" id="searchDateOne" name="familyeventPostStartDate" readOnly>
 											&nbsp;~ &nbsp;
 											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="familyeventPostEndDate" readOnly> )
+
 								</div>
 							</td>
 				        </tr> 

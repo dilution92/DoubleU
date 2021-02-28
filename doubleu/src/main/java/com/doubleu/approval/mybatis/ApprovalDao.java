@@ -45,6 +45,10 @@ public class ApprovalDao {
 		page.pageCompute();
 		
 		List<FormVo> list = mapper.selectOutgoing(page);
+		for(FormVo vo : list) {
+			String convertDate = convertDate(vo.getFormDate());
+			vo.setFormDate(convertDate);
+		}
 		if(list.isEmpty()) {
 			System.out.println("검색된 정보가 없습니다.");
 		}
@@ -66,11 +70,14 @@ public class ApprovalDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		int chooseTotalListSize = mapper.chooseTotalListSize(page);
-		System.out.println("chooseTotalListSize: " + chooseTotalListSize);
 		page.setTotalListSize(chooseTotalListSize);
 		page.pageCompute();
 		
 		List<FormVo> list = mapper.selectChoose(page);
+		for(FormVo vo : list) {
+			String convertDate = convertDate(vo.getFormDate());
+			vo.setFormDate(convertDate);
+		}
 		map.put("list", list);
 		map.put("page", page);
 		return map;
@@ -172,7 +179,6 @@ public class ApprovalDao {
 	public Map<String, Object> selectMember(IndexPage page) {
 		Map<String,Object> map = new HashMap<>();
 		List<MemberVo> list = new ArrayList<>();
-		System.out.println("찾을 부서");
 		int memberTotalListSize = mapper.memberTotalListSize(page);
 		page.setTotalListSize(memberTotalListSize);
 		page.pageCompute();
@@ -196,14 +202,15 @@ public class ApprovalDao {
 		page.pageCompute();
 
 		list = mapper.selectReceiver(page);
+		for(FormVo vo : list) {
+			String convertDate = convertDate(vo.getFormDate());
+			vo.setFormDate(convertDate);
+		}
+		
 		if(!list.isEmpty()) {
-			System.out.println("출력 완료");
-			System.out.println("기안자: " + list.get(0).getDrafterName());
-			System.out.println("문서 결재 여부: " + list.get(0).getDecisionState());
 		}
 		map.put("page", page);
 		map.put("list", list);
-		System.out.println("selectReceiver-Dao메소드 종료....");
 		return map;
 	}
 	 
@@ -294,7 +301,6 @@ public class ApprovalDao {
 			//결재권자 순서 변경
 			for(DecisionMakerVo vo : makerList) {
 				if(vo.getMakerOrder() != 0 && vo.getMakerOrder() != -1) {
-					System.out.println("?왜 들어감?");
 					UpdateMakerOrderVo updateMakerOrderVo = new UpdateMakerOrderVo();
 					updateMakerOrderVo.setFormNo(makerVo.getFormNo());
 					updateMakerOrderVo.setMemberNo(vo.getMemberNo());
@@ -363,9 +369,20 @@ public class ApprovalDao {
 		page.pageCompute();
 		
 		List<FormVo> list = mapper.selectChooseRecevier(page);
+		for(FormVo vo : list) {
+			String convertDate = convertDate(vo.getFormDate());
+			vo.setFormDate(convertDate);
+		}
 		
 		map.put("list", list);
 		map.put("page", page);
 		return map;
+	}
+	
+	public String convertDate(String date) {
+		String dateStr[] = date.split(" ");
+		String convertDate = dateStr[0];
+		return convertDate;
+		
 	}
 }

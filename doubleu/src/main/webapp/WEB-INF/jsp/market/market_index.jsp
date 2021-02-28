@@ -101,6 +101,12 @@
 			</form>
 			<!-- ========== -->
 
+<!-- hidden -->
+<c:forEach var='vo' items='${marketlist }' >
+	<input type ="hidden" name = "dibMarketSubject" value="'${vo.marketSubject }'"/>
+	<input type ="hidden" name = "dibMarketPrice" value="${vo.marketPrice }"/>
+	<input type ="hidden" name = "dibMarketNo" value="${vo.marketNo }"/>
+ </c:forEach>
 
 
 

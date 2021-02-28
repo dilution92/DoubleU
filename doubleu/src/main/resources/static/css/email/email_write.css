@@ -259,7 +259,7 @@ body {
 
 /* 주소록 버튼 */
 
-.emailSendContentsRev div:nth-child(3)> input {
+.emailSendContentsRev div:nth-child(3)> #addBtn {
 	position: absolute;
 	top: -80px;
 	width: 105px;
@@ -267,6 +267,13 @@ body {
 	
 }
 
+.emailSendContentsRev div:nth-child(3)> #addBtnAddress {
+	position: absolute;
+	top: -30px;
+	width: 105px;
+	height: 37px;
+	
+}
 
 
 /* 참조 */
@@ -685,3 +692,25 @@ body {
   height: 0;
 }
 
+
+
+/* 받는 사람 직접 작성 */
+.emailBtnList > input {
+	width: 100px;
+	border: 1px solid #ced4da;
+}
+
+/* 참조 */
+.emailBtnRefList > input {
+	width: 100px;
+	border: 1px solid #ced4da;
+}
+
+
+#addRefBtn {
+	position: absolute;
+	top: -80px;
+	width: 105px;
+	height: 37px;
+	
+}

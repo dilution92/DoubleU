@@ -37,7 +37,7 @@ public class EmailReveiverService {
 			
 			EmailReceiverVo rev = new EmailReceiverVo();
 			rev.setEmailReceiverAddress(emailReceiverAddress[i]);
-			rev.setEmailReceiverRef(0); // 0이면 미참조
+			rev.setEmailReceiverRef(0); // 0이면 받는 사람
 			list.add(rev);
 		}
 		

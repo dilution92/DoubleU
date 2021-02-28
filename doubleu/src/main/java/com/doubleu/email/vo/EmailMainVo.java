@@ -19,7 +19,6 @@ public class EmailMainVo {
 	List<AttEmailVo> attFileList;
 	List<EmailReceiverVo> emailRevList; // 받은 사람, 참조
 	List<EmailMainVo> emailReadList; // 메일 읽기
-
 	
 	public int getEmailNo() {
 		return emailNo;

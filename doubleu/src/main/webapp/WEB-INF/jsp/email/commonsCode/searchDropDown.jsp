@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="e-approval-form-box">
-  	   <span>받은 메일함</span>
+  	  
        <input class="btn btn-outline-primary btn-sm" name="onname" type="button" id="emailSearchTitle" value="검색"/>
        <input class="form-control form-control-sm" type="text" placeholder="Search" name="emailFindStr" aria-label="Search" id="emailFindStr">
      	

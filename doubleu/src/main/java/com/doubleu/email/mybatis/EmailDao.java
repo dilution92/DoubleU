@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,12 +33,11 @@ public class EmailDao {
 
 	// 메일 왼쪽 사이드바 받은 메일함 count;
 
-	public int selectSendEmail(String memberMid) {
-
-		int cnt = mapper.selectSendEmail(memberMid);
+	public int selectSendEmail(EmailMainVo vo) {
+		
+		int cnt = mapper.selectSendEmail(vo);		
 		System.out.println("받은 메일함 : " + cnt);
 		return cnt;
-
 	}
 
 
@@ -104,10 +104,6 @@ public class EmailDao {
 	// 페이징 처리
 	public int totListSizeMain(EmailPage page, HttpSession session, LoginVo vo) {
 
-		vo = (LoginVo) session.getAttribute("member");
-		String memberMid = vo.getMemberMid();
-		page.setMemberMid(memberMid);
-
 		int totListSize = mapper.totListSizeMain(page);
 		System.out.println(page);
 
@@ -119,30 +115,35 @@ public class EmailDao {
 
 	// 페이징 처리
 	public Map<String, Object> selectPaging(
-			EmailPage page, HttpSession session, LoginVo loginVo) {
+			EmailPage page, HttpSession session) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<EmailMainVo> pageList = null;
+		
+		LoginVo loginVo = (LoginVo) session.getAttribute("member");
+		
+		String emailAddress = loginVo.getMemberEmail();
+		
+		page.setEmailAddress(emailAddress);
 
 		if(page ==null || page.getNowPage()==0) {
 			page.setNowPage(1);
 		}
+	
 		
 		System.out.println(page.getNowPage());
 		System.out.println(page.getFindStr());
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		List<EmailMainVo> pageList = null;
-
-		loginVo = (LoginVo) session.getAttribute("member");
-		String memberMid = loginVo.getMemberMid();
-		page.setMemberMid(memberMid);
-
-
 		int totListSize = mapper.totListSizeMain(page);
+		
 		page.setTotListSize(totListSize);
 		page.pageCompute();
 
+		System.out.println("totListSize " + totListSize);
 
 		pageList = mapper.selectPaging(page);
-
+		System.out.println("테스트 pageList" + pageList);
+		
 		map.put("page", page);
 		map.put("pageList", pageList);
 
@@ -152,19 +153,12 @@ public class EmailDao {
 	}
 
 	// 임시저장
-	public int insertTemporary(
-			EmailMainVo vo, HttpSession session, LoginVo loginVo) {
-		
-		loginVo = (LoginVo) session.getAttribute("member");
-		String memberMid = loginVo.getMemberMid();
-		int memberNo = loginVo.getMemberNo();
-
-		vo.setMemberMid(memberMid);
-		vo.setMemberNo(memberNo);
-		
+	public int insertTemporary(EmailMainVo vo) {
+	
 		int cnt = mapper.insertTemporary(vo);
 		System.out.println("임시 저장 cnt : " + cnt);
 		return cnt;
 	}
+
 
 }

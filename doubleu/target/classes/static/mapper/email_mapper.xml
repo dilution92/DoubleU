@@ -7,33 +7,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.doubleu.email.mybatis.EmailMapper">
 	<!-- select -->
 	
-	<!-- 메일함 사이드 바 cnt -->
-	<select id="selectSendEmail" resultType="int">
-		SELECT count(*) FROM(
-			SELECT a.*, b.member_mid 
-			FROM email a, member b
-				WHERE a.member_no = b.member_no
-				AND b.member_mid = #{memberMid}
-				ORDER BY a.email_date DESC)
+	<!-- 메일함 사이드 바 받은 메일함 cnt -->
+	<select id="selectSendEmail" resultType="int" parameterType="com.doubleu.email.vo.EmailMainVo">
+		SELECT count(a.email_no) FROM 
+			email a,
+			email_receiver b
+			WHERE a.email_no = b.email_no
+			AND b.email_rev_address = #{emailAddress}
 	</select>
-
+	
+	
     <!-- 페이지 -->
 	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.email.vo.EmailPage">
-		SELECT count(email_no) FROM email
-		WHERE email_title LIKE '%${findStr}%'
+		SELECT count(a.email_no) FROM 
+			email a,
+			email_receiver b
+			WHERE a.email_no = b.email_no
+			AND b.email_rev_address = #{emailAddress}
 	</select>
 	
 	 <select id="selectPaging" 
 	 resultMap="getEmailListSelect" 
 	 parameterType="com.doubleu.email.vo.EmailPage">
-    SELECT * from (
-        SELECT rownum no, m.* from (  
-           SELECT * from email em join member mem on em.member_no=mem.member_no
-           WHERE email_title LIKE '%${findStr}%'
-           AND mem.member_mid = #{memberMid}
-           ORDER BY em.email_date DESC
-           ) m   
-        ) WHERE no between ${startNo} and ${endNo}
+	    SELECT * FROM (
+	        SELECT rownum no, m.* from (  
+	           SELECT a.* FROM 
+				email a,
+				email_receiver b
+				WHERE a.email_title LIKE '%${findStr}%'
+				AND a.email_no = b.email_no
+				AND b.email_rev_address = #{emailAddress}
+				AND a.email_mailBox = ${emailMailBox}
+				ORDER BY a.email_date DESC
+	           ) m
+	        ) WHERE no between ${startNo} and ${endNo}
 	</select>
 	
 	<select id="selectEmailNo" parameterType="int" resultMap="getEmailListSelect">
@@ -88,7 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{emailAddress}, #{emailName}, 
 		#{emailTitle}, SYSTIMESTAMP, 
 		#{emailContents}, 
-		default, 
+		3, 
 		#{emailChk}, 
 		default)
 
@@ -115,8 +122,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				email_main_seq.currval, 
 				#{rev.emailReceiverAddress}, 
 				#{rev.emailReceiverRef})
-				
-				<!-- VALUES(emailMainSeq(), email_main_seq.currval, #{emailReceiverName}, #{emailReceiverAddress}, #{emailReceiverDept}, #{emailReceiverRef}, #{emailMid}) -->
 			</foreach>
 		</if>
 		SELECT * FROM dual
