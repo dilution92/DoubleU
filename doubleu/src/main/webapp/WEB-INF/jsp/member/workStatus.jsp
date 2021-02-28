@@ -141,69 +141,16 @@
   		</tr>
   	</thread>
   	<tbody>
+  		<c:forEach items='${contentList}' var='work'>
+  		<c:set var='i' value='${i+1}'/>
   		<tr>
-  			<td>1(월)</td>
-  			<td>08:45:00</td>
-  			<td>18:50:00</td>
-  			<td>10시간 21분 38초</td>
-  			<td>1시간 21분 38초</td>
+  			<td>${work.memberName}</td> 
+  			<td>${work.memberDepartment}</td>
+  			<td>${work.memberTeam}</td>
+  			<td>${work.memberEmail}</td>
+  			<td>${work.memberPhoneNumber}</td>
   		</tr>
-  		
-  		<tr>
-  			<td>2(화)</td>
-  			<td>08:45:00</td>
-  			<td>18:45:00</td>
-  			<td>10시간 00분 00초</td>
-  			<td>1시간 00분 00초</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>3(수)</td>
-  			<td>08:45:00</td>
-  			<td>18:50:22</td>
-  			<td>10시간 05분 22초</td>
-  			<td>1시간 05분 22초</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>4(목)</td>
-  			<td>08:49:00</td>
-  			<td>18:50:02</td>
-  			<td>10시간 01분 02초</td>
-  			<td>1시간 21분 38초</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>5(금)</td>
-  			<td>08:45:00</td>
-  			<td>19:50:00</td>
-  			<td>11시간 21분 38초</td>
-  			<td>2시간 21분 38초</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>8(월)</td>
-  			<td>08:45:00</td>
-  			<td>18:50:00</td>
-  			<td>11시간 21분 38초</td>
-  			<td>3시간 21분 38초</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>9(화)</td>
-  			<td>08:49:00</td>
-  			<td>18:50:02</td>
-  			<td>10시간 01분 02초</td>
-  			<td>1시간 01분 02초</td>
-  		</tr>
-  		
-  		<tr>
-  			<td>10(수)</td>
-  			<td>08:49:00</td>
-  			<td>17:50:02</td>
-  			<td>9시간 01분 02초</td>
-  			<td>0시간 01분 02초</td>
-  		</tr>
+  	</c:forEach>
   	</tbody>
   </table>
 			

@@ -1,5 +1,9 @@
 package com.doubleu.notice.vo;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class FamilyeventVo {
 	int familyeventNo;
 	String familyeventSubject;
@@ -11,7 +15,8 @@ public class FamilyeventVo {
 	String familyeventType;
 	int familyeventHit;
 	String familyeventDoc;
-	String familyeventFile;
+
+	List<FamilyeventAttVo> attList;
 	
 	public int getFamilyeventNo() {
 		return familyeventNo;
@@ -73,12 +78,12 @@ public class FamilyeventVo {
 	public void setFamilyeventDoc(String familyeventDoc) {
 		this.familyeventDoc = familyeventDoc;
 	}
-	public String getFamilyeventFile() {
-		return familyeventFile;
+
+	public List<FamilyeventAttVo> getAttList() {
+		return attList;
 	}
-	public void setFamilyeventFile(String familyeventFile) {
-		this.familyeventFile = familyeventFile;
+	public void setAttList(List<FamilyeventAttVo> attList) {
+		this.attList = attList;
 	}
-	
 	
 }

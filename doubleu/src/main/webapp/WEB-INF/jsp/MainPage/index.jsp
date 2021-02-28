@@ -15,23 +15,27 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link rel="stylesheet" href="/css/MainIndex.css">
+
+<script type="text/javascript" src="/js/MainPage.js"></script>
 </head>
 
-
 <body>
-<form action="">
+<form action="" name="frmMainIndex">
 	<!-- main-GNB -->
 	<header class="container-fluid main-gnb">
 			<jsp:include page="header.jsp"/>
 	</header>
 	<!-- main-GNB code 끝 -->
 
-
 	<!-- main-body code -->
 <div class="main-container">
 	<nav class="main-content-personnel">
+		<div class="main-content-fixed">
 		<div class="content-profile rounded rounded">
 			<div class="profile-header">
+			<div style="width: 150px; height: 150px; display: inline-block; border-radius: 10000px; background-image: url(${profileImg });
+			background-size: 106% 106%" >
+			</div>
 			</div>
 			<div class="profile-body">
 				<strong class="text-muted">정해준</strong> <br>
@@ -42,7 +46,7 @@
 		<div class="content-workManagement">
 			<div class="WM-header">
 				<strong class="text-muted">근태 관리</strong><br>
-				<p class="small lh-sm text-muted">2021-01-31(일) 21:58</p>
+				<p class="small lh-sm text-muted" id="clock"></p>
 			</div>
 			<div class="WM-timeTable">
 				<div class="WM-timeTable-attendance">
@@ -67,6 +71,7 @@
 				</select>
 			</div>
 		</div>
+		</div>
 	</nav>
 	<main class="main-content-article">
 		<!-- 전자결재 -->
@@ -75,6 +80,9 @@
 		</div>
 		<div class="main-article">
 			<jsp:include page="selectNotice.jsp"/>
+		</div>
+		<div class="main-article">
+			<jsp:include page="selectMailBox.jsp"/>
 		</div>
 	
 	</main>
@@ -121,6 +129,36 @@
 		integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 		crossorigin="anonymous"></script>
 </body>
+<script type="text/javascript">
 
+
+function clock() {
+	var clockTarget = document.getElementById("clock");
+    var date = new Date();
+    var month = date.getMonth();
+    var clockDate = date.getDate();
+    var day = date.getDay();
+    var week = ['일', '월', '화', '수', '목', '금', '토'];
+    var hours = date.getHours();
+    var hoursTime = (hours<10)? '0'+hours:hours; 
+    var minutes = date.getMinutes();
+    var minutesTime = (minutes<10)? '0'+minutes:minutes; 
+    var seconds = date.getSeconds();
+    var secondsTime = (seconds<10)? '0'+seconds:seconds; 
+
+    clockTarget.innerText = month + '월 ' + clockDate + '일 ' + week[day] + '요일 ' + hoursTime + ':' + minutesTime + ':' + secondsTime;
+    // 월은 0부터 1월이기때문에 +1일을 해주고 
+    // 시간 분 초는 한자리수이면 시계가 어색해보일까봐 10보다 작으면 앞에0을 붙혀주는 작업을 3항연산으로 했습니다. 
+}
+function init() {
+clock();
+// 최초에 함수를 한번 실행시켜주고 
+setInterval(clock, 1000);
+// setInterval이라는 함수로 매초마다 실행을 해줍니다.
+// setInterval은 첫번째 파라메터는 함수이고 두번째는 시간인데 밀리초단위로 받습니다. 1000 = 1초 
+}
+init();
+
+</script>
 </html>
 

@@ -116,5 +116,4 @@ public class IndexPage {
 	public void setBlockSize(int blockSize) {
 		this.blockSize = blockSize;
 	}
-	
 }

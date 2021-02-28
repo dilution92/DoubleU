@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.profile.service.ProfileService;
-import com.doubleu.profile.service.VacationService;
+import com.doubleu.profile.service.WorkService;
 import com.doubleu.profile.vo.ProfileVo;
+import com.doubleu.profile.vo.WorkVo;
 
 
 @Controller
@@ -19,16 +20,15 @@ public class ProfileURLController {
 	@Autowired
 	ProfileService service1;
 
-	/*
-	 * @Autowired VacationService service2;
-	 */
+	@Autowired
+	WorkService service2;
 
 	//profile_index.jsp
 	@RequestMapping(value = "/profileIndex", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView profileIndex(){
 		ModelAndView mv = new ModelAndView();
-		List<ProfileVo> contentList = service1.select();
-		mv.addObject("contentList", contentList);
+		List<ProfileVo> contentList1 = service1.selectProfile();
+		mv.addObject("contentList1", contentList1);
 		mv.setViewName("/member/profile_index");
 		return mv;
 	}
@@ -51,7 +51,9 @@ public class ProfileURLController {
 	//workStatus.jsp
 		@RequestMapping(value = "/workIndex", method = {RequestMethod.POST, RequestMethod.GET}) 
 		public ModelAndView workIndex(){ 
-			ModelAndView mv = new ModelAndView(); 
+			ModelAndView mv = new ModelAndView();
+			List<WorkVo> contentList2 = service2.selectWork();
+			mv.addObject("contentList2", contentList2);
 			mv.setViewName("/member/workStatus"); 
 			return mv; 
 		}

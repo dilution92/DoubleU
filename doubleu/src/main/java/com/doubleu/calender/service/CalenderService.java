@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.calender.mybatis.CalenderDao;
+import com.doubleu.calender.vo.CalenderParticiptant;
 import com.doubleu.calender.vo.CalenderVo;
 import com.doubleu.calender.vo.CalenderWeekList;
 
@@ -51,16 +52,37 @@ public class CalenderService {
 		this.day = day;
 	}
 	
-	//selectOne
 	
+	//selectList
+	public List<CalenderVo> selectList(){
+		return dao.selectList();
+	}
+	
+	//selectOne
 	public CalenderVo selectOne(int id) {
+		CalenderVo cList = dao.selectOne(id);
+		int no = cList.getCalenderNo();
+		List<CalenderParticiptant> pList = dao.selectPartiList(no);
+		cList.setCalPartiList(pList);
 		return dao.selectOne(id);
 	}
 	
 	// insert 
-	public String insert(CalenderVo vo) {
+	public String insert(CalenderVo vo, List<String> cp) {
+		
+		 List<CalenderParticiptant> calpartiList = new ArrayList<>(); 
+		 for(int i=0; i<cp.size(); i++) { 
+			 CalenderParticiptant cp1 = new CalenderParticiptant();
+			 cp1.setCalenderPartiMember(cp.get(i));
+			 calpartiList.add(cp1); 
+			 }
+			 vo.setCalPartiList(calpartiList);
+		 
+		
 		return dao.insert(vo);
 	}
+	
+	
 
 	public CalenderService() {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

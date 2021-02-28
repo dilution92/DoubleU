@@ -9,7 +9,8 @@
 		</label>
 	</li>
      <li>
-      	<span class="btn btn-outline-primary btn-sm" id="emailSpamBlockBtn"  data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
+      	<span class="btn btn-outline-primary btn-sm" id="emailSpamBlockBtn"  
+      	data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
      </li>
      <li>
            <span class="btn btn-outline-primary btn-sm" id="emailSendBtn">답장하기</span>

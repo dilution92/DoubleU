@@ -3,7 +3,6 @@
 * {margin: 0; padding: 0;}
 .tree{
 	padding-top : 60px;
-	padding-left : 30px;
 }
 .tree ul {
     padding-top: 20px; position: relative;
@@ -74,11 +73,11 @@ right connector from last child*/
 
 .tree li a{
 	border: 1px solid #ccc;
-	padding: 5px 10px;
+	padding: 8px 8px;
 	text-decoration: none;
 	color: #666;
 	font-family: arial, verdana, tahoma;
-	font-size: 17px;
+	font-size: 15px;
 	display: inline-block;
 	
 	border-radius: 5px;

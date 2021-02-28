@@ -8,12 +8,8 @@
 $(function(){
 	$(".calender_modal").click(function(){
     	var param = $(this).attr("id");
-    	var urlId = "/CalenderMonthModal?id="+param;
-    	var chk = $('#modalchk').val();
-		 console.log(chk);
-    	console.log(urlId);
-
-
+    	/*var urlId = "/CalenderMonthModal?id="+param;
+*/
 		var no = $(this).children().eq(0).val();
 		var startDate = $(this).children().eq(1).val();
 		var startTime = $(this).children().eq(2).val();
@@ -27,7 +23,7 @@ $(function(){
 		var group = $(this).children().eq(10).val();
 		var time = $(this).children().eq(11).val();
 		
-    	$.ajax({
+    	$/*.ajax({
     		type: "GET",
     		url: urlId,
     		success: function(){
@@ -36,7 +32,7 @@ $(function(){
     			alert('모달 실패')
     		}
     		
-    	})
+    	})*/
 		$('#modalCalenderNo').val(no);
 		$('#modalCalenderDateStart').val(startDate);
 		$('#modalCalenderTimeStart').val(startTime);

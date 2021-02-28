@@ -47,7 +47,7 @@
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
 
-	<header>
+	<header class="container-fluid main-gnb">
 		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
@@ -95,15 +95,10 @@
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
-			<div class="test">
-			 테스트 <br>
-			 ${member} <br>
-			 <br>구현 시 DELETE
-			 <input type="text" name="emailMid" value="${member.memberMid }">
-			</div>
 			<!-- 메일 검색바 code -->
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" id="emailFormId" name="emailForm" method="post">
+			      	<h3>받은 메일함</h3>
 			      	<%--경로 -> ./commonsCode/emailDropDown.jsp --%>
 			      	<jsp:include page="./commonsCode/searchDropDown.jsp"></jsp:include>
 			      	
@@ -175,7 +170,7 @@
 
 <script>
 
-// 사이드바
+// 선택바
 selectChkBtn();
 
 // 즐겨찾기 아이콘
