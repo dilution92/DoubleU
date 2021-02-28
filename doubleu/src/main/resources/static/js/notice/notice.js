@@ -37,16 +37,6 @@ $(document).ready(function(){
 });
 
 /* notice_insert 게시기한 날짜 비교 */
-/*var date1 = document.getElementById("#searchDateOne").value;
-var date2 = document.getElementById("#searchDateTwo").value;
-
-console.log(date1);
-console.log(date2.getTime());
-
-
-if(date1.getTime() > date2.getTime()){
-	alert("날짜를 다시 확인해주세요!!");
-}*/
 $(function(){
     $('#searchDateTwo').change(function (){
         var date1 = $('#searchDateOne').val();
@@ -137,3 +127,27 @@ $(function(){
         $('#staticBackdrop2').modal();
     	})
     })
+
+/* 파일명 읽기 */
+$(function(){
+	$('#validatedCustomFile').on('change',function(){
+	    //get the file name
+	    var fileName = $(this).val();
+	    //replace the "Choose a file" label
+	    $(this).next('.custom-file-label').html(fileName);
+	})
+})
+
+/* 임시저장 -> 해야함..*/
+$(function(){
+   $("#temporaryStorage").click(function(){
+	alert("'ㅅ'");
+	localStorage.setItem(temporaryStorage, temporaryStorageArr);
+	temporaryStorageArr = [{
+		"#exampleFormControlSelect1":"${obj.familyeventSubject }",
+		
+		}]
+		alert("${obj.familyeventSubject }")
+
+	})
+})
