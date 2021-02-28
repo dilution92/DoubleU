@@ -94,14 +94,8 @@
 		]]>
 	</select>
 	
-	<resultMap id="attList" type="com.doubleu.notice.vo.FamilyeventAttVo">
-		<result property="filesNo" column="files_no"/>
-		<result property="familyeventNo" column="familyevent_no"/>
-		<result property="sysFile" column="file_sysfile"/>
-		<result property="oriFile" column="file_orifile"/>
-	</resultMap>
 	
-	<update id="update" parameterType="attList1" >
+	<update id="update" parameterType="com.doubleu.notice.vo.FamilyeventVo" >
 		<![CDATA[
 			update FAMILYEVENT
 			set
@@ -116,17 +110,19 @@
 		]]>
 	</update>
 	
-	<resultMap id="attList" type="attList1">
-		<result property="filesNo" column="files_no"/>
-		<result property="familyeventNo" column="familyevent_no"/>
-		<result property="sysFile" column="file_sysfile"/>
-		<result property="oriFile" column="file_orifile"/>
-	</resultMap>
-		
 	<select id="delete" parameterType="int">
 		<![CDATA[
 			delete from FAMILYEVENT where familyeventNo = #{_parameter}
 		]]>
 	</select>
+
+	<resultMap id="attList" type="com.doubleu.notice.vo.FamilyeventAttVo">
+		<result property="filesNo" column="files_no"/>
+		<result property="familyeventNo" column="familyevent_no"/>
+		<result property="sysFile" column="file_sysfile"/>
+		<result property="oriFile" column="file_orifile"/>
+	</resultMap>
 	
 </mapper>
+
+		
