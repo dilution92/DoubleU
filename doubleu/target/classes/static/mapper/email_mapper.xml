@@ -48,12 +48,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE email_no = #{emailNo}
 	</select>
 	
+	<!-- 주소록 -->
+	<select id="selectMembers" resultMap="memberList">
+		SELECT member_name, member_email, member_team FROM member
+	</select>
+	
+	
 	<select id="selectFiles" parameterType="int" resultMap="attList">
 		SELECT b.file_orifile, a.* 
 		FROM email a, email_files b 
 		WHERE a.email_no = b.email_no AND a.email_no = #{emailNo}
 	</select>
-	
 	
 	<!-- 받는 사람 -->
 	<select id="selectSendPerson" parameterType="int" resultMap="revList">
@@ -213,5 +218,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="emailReceiverDept" column="email_rev_department"/>
 		<result property="emailReceiverRef" column="email_ref"/>
 		<result property="emailMid" column="email_mid"/>
+	</resultMap>
+	
+	
+	<resultMap id="memberList" type="com.doubleu.login.vo.LoginVo">
+ 
+	<result property="memberNo" column="member_no" /> 
+	<result property="memberMid" column="member_mid" /> 
+	<result property="memberPwd" column="member_pwd" /> 
+	<result property="memberName" column="member_name" /> 
+	<result property="memberEmail" column="member_email" /> 
+	<result property="memberDepartment" column="member_department"  />
+	<result property="memberTeam" column="member_team"  /> 
+	<result property="memberPhoneNumber" column="member_phonenumber"/>  
+	<result property="memberZipcode" column="member_zipcode" />
+	<result property="memberAddress" column="member_address" /> 
+	<result property="memberPosition" column="member_position" /> 
+	
 	</resultMap>
 </mapper>
