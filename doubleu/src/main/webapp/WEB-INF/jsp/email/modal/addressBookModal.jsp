@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="/js/email/email_write.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -18,23 +19,27 @@
 						<h4>주소록</h4>
 					
 						<div class="search-btn">
-							<select class="form-control form-control-sm" style="width: 70px;">
-								<option value="">이름</option>
-								<option value="">부서</option>
-							</select> <input class="form-control form-control-sm col-3" type="text"
-								placeholder="Search" aria-label="Search" id="approvalFindStr">
+							<select class="form-control form-control-sm" name="selectFindStr" id="selectFindStr" style="width: 70px;">
+								<option value="이름">이름</option>
+								<option value="부서">부서</option>
+							</select> 
+							<input class="form-control form-control-sm col-3" type="text"
+								placeholder="Search" aria-label="Search" id="memberFindStr" name="memberFindStr">
 							<input class="btn btn-outline-primary btn-sm " name="onname"
-								type="button" value="검색" />
+								type="button" value="검색"
+								id="test"
+								onclick="memberFindStr()"
+								 />
 						</div>
 
-						<div class="search-btn-address">
+						<div class="search-btn-address" id="selectMemberStr">
 							<div class="search-btn-address-btn-one col-5">
 								<label class="btn btn-outline-primary btn-sm"> 
 								<input type="checkbox" onclick="selectChkBox(this)" style="margin-right: 5px;" /> 전체선택
 								</label>
 								<c:forEach var="listMember" items="${memberList }">
 									<div class="address-name">
-										<input type="checkbox" name="emailAddressChk"
+										<input type="checkbox" name="emailAddressChk" id="test"
 										value="${listMember.memberName } ${listMember.memberEmail} ${listMember.memberTeam }"/>
 										
 										<span class="badge rounded-pill bg-light text-dark">${listMember.memberName }</span>  
@@ -49,16 +54,16 @@
 									<button type="button" onclick="getCheckboxValue()" class="btn btn-outline-primary btn-sm">
 										<i class="bi bi-plus"></i>
 									</button>
-									<button type="button" onclick="getCheckboxValue()" class="btn btn-outline-primary btn-sm">
+									<button type="button" onclick="getSendDel()" class="btn btn-outline-primary btn-sm">
 										<i class="bi bi-dash"></i>
 									</button>
 								</div>
 
 								<div class="search-btn-address-btn-two-ref-align">
-									<button type="button"  class="btn btn-outline-primary btn-sm">
+									<button type="button"  onclick="getCheckboxValueRef()" class="btn btn-outline-primary btn-sm">
 										<i class="bi bi-plus"></i>
 									</button>
-									<button type="button" class="btn btn-outline-primary btn-sm">
+									<button type="button" onclick="getSendDelRef()" class="btn btn-outline-primary btn-sm">
 										<i class="bi bi-dash"></i>
 									</button>
 								</div>
@@ -69,10 +74,11 @@
 								<div>받는 사람</div>
 								<div class="rev-mail-one">
 									<div class="rev-align-scroll">
-										<c:forEach begin="0" end="20">
+										<c:forEach begin="0" end="30">
 											<!-- 받는 사람 -->
-											<div id="result">
-											
+											<div id="resultDual">
+												<div id="result">
+												</div>
 											</div>
 										</c:forEach>
 									</div>
@@ -81,9 +87,12 @@
 								<div style="margin-top: 10px">참조</div>
 								<div class="ref-mail-two">
 									<div class="rev-align-scroll">
-										<c:forEach begin="0" end="20">
-											<!-- 참조 -->
-										</c:forEach>
+										<div id="resultRefDual">
+										<c:forEach begin="0" end="30">
+											<div id="resultRef">
+											</div>
+										</c:forEach>	
+										</div>
 									</div>
 								</div>
 							</div>
@@ -103,32 +112,117 @@
 </body>
 <script>
 
-//1.전체 선택을 눌렀을 때 모든 체크박스 클릭
+var memberFindStr = function() {
+
+	var findValueOne = $('#memberFindStr').val();
+	var findValueTwo = $('#selectFindStr').val();
+	
+	
+	var frm = document.frm;
+	
+	frm.memberFindStr.value = findValueOne;
+	frm.memberOption.value = findValueTwo;
+
+	frm.action = "/selectMemberFindStr"
+	frm.submit();
+}
+
 
 
 function getCheckboxValue()  {
 	  // 선택된 목록 가져오기
-	  console.log('하이')
 	  
 	  const query = 'input[name="emailAddressChk"]:checked';
 	  const selectedEls = 
 	      document.querySelectorAll(query);
-	  
+
+	  var ResultContents = new Array();  
 	  // 선택된 목록에서 value 찾기
-	  let result = '';
-	  selectedEls.forEach((el) => {
-	    result += el.value + ' ';
-	  });
+	  
+	   for(var i=0; i<selectedEls.length; i++) {
+		   ResultContents[i] = selectedEls[i].value;
 
-	  var node = document.createElement("span");                 // Create a <li> node
-	  var textnode = document.createTextNode(result);         // Create a text node
-	  node.appendChild(textnode);                              // Append the text to <li>
-	  document.getElementById("result").appendChild(node); 
+		  var node = document.createElement('span');              
+		  var textnode = document.createTextNode(ResultContents[i]);         
+		  var appendNode = node.appendChild(textnode);
 
-	  // 출력
-	  //document.getElementById('result').innerText
-	   // = result;
-	}
+			//부모
+		  document.getElementById('result').appendChild(node); 
+	  }
+		  console.log(ResultContents)
+
+}
+
+function getSendDel()  {
+	  // 선택된 목록 가져오기
+	  
+	  const query = 'input[name="emailAddressChk"]:checked';
+	  const selectedEls = 
+	      document.querySelectorAll(query);
+
+	  var ResultContents = new Array();  
+
+	   for(var i=0; i<selectedEls.length; i++) {
+		   ResultContents[i] = selectedEls[i].value;
+
+		  var parent = document.getElementById('result');
+		  var child = parent.getElementsByTagName('span');      
+		   parent.remove();
+	  }
+
+}
+
+
+
+
+function getCheckboxValueRef()  {
+	  // 선택된 목록 가져오기
+	  
+	  const query = 'input[name="emailAddressChk"]:checked';
+	  const selectedEls = 
+	      document.querySelectorAll(query);
+
+	  var ResultContents = new Array();  
+	
+	   for(var i=0; i<selectedEls.length; i++) {
+		   ResultContents[i] = selectedEls[i].value;
+
+		  var node = document.createElement('span');
+		  console.log("node " + node)              
+		  var textnode = document.createTextNode(ResultContents[i]);         
+		  var appendNode = node.appendChild(textnode);
+
+		  //부모
+		  document.getElementById('resultRef').appendChild(node); 
+	  }
+		
+}
+
+
+function getSendDelRef()  {
+	  // 선택된 목록 가져오기
+	  
+	  const query = 'input[name="emailAddressChk"]:checked';
+	  const selectedEls = 
+	      document.querySelectorAll(query);
+		
+	  var ResultContents = new Array();  
+
+
+	   for(var i=0; i<selectedEls.length; i++) {
+		   ResultContents[i] = selectedEls[i].value;
+
+		  var parent = document.getElementById('resultRef');
+		  var child = parent.getElementsByTagName('span');  
+		  console.log("child" + child);    
+		  parent.remove();
+	  }
+
+}
+
+
+
+
 
 </script>
 </html>

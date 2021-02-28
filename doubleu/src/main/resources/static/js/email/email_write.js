@@ -186,3 +186,32 @@ selectChkBox = function(selectAll) {
 	})
 		
 }
+
+
+/* ajax 
+
+
+emailMemberSearch = function() {
+	
+	$('#test').on('click', function(){
+		
+		
+		var param = $('#memberFindStr').serialize();
+		console.log(param);
+		
+		$.ajax ({
+			url: '/selectMemberFindStr',
+			data : param,
+			dataType: 'html',
+			method : 'POST',
+			success: function(data) {
+				console.log(data)
+				$('#selectMemberStr').html(data);
+			}
+		});
+	});
+};
+
+*/
+
+
