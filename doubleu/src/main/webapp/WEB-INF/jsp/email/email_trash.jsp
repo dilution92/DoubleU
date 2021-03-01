@@ -92,7 +92,9 @@
 	   	 	<jsp:include page="./modal/moveFolderModal.jsp"></jsp:include>
 	     
 	    <!--  4.삭제하기 모달창 -->	
-			<jsp:include page="./modal/deleteModal.jsp"></jsp:include>
+			
+			<jsp:include page="./modal/DeleteAllModal.jsp"></jsp:include>
+			
      <!-- 모달창 모음 끝 -->           
                 
 		<main class="e-approval-article">
@@ -101,8 +103,11 @@
 	      		<form class="e-approval-search-form" action="" id="emailFormId" name="emailForm" method="post">
 			      	<h3>휴지통</h3>
 			      	<%--경로 -> ./commonsCode/emailDropDown.jsp --%>
+			      		
 			      	<jsp:include page="./commonsCode/searchDropDown.jsp"></jsp:include>
 			      	
+          
+      
 			      		<!-- hidden
 						-->
 		 				<input type="hidden" name="emailNoBtn">
@@ -116,7 +121,7 @@
 			<!-- 선택 -->
 						
 			<div class="email-select-content">
-				<jsp:include page="./commonsCode/selectAllDropDowns.jsp"></jsp:include>
+				<jsp:include page="./commonsCode/selectDeleteAll.jsp"></jsp:include>
 			</div>
 
 			<!-- 메일함 -->
@@ -124,6 +129,7 @@
 				<table class="table table-hover table-sm" id="selectFindStr">
 					<tbody class="e-approval-list text-muted">						
 						<c:forEach var="list" items="${list }">
+						
 							<tr>
 								<td><input name="chkBox" class="chkBoxClass" type="checkbox"
 								value="${list.emailNo}"/></td>
@@ -135,6 +141,7 @@
 								<td style=" text-align: left; text-indent: 2em;"  onclick="goView(${list.emailNo})">${list.emailTitle }</td>					
 								<td>${list.emailDate }</td>		
 							</tr>
+					
 						</c:forEach>
 					</tbody>
 				</table>
@@ -187,6 +194,7 @@ changeChkReadBtn();
 
 // 메일 검색 bar
 emailSelectSearch();
+
 
 </script>
 </body>

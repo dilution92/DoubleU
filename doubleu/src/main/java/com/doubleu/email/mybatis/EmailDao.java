@@ -236,4 +236,12 @@ public class EmailDao {
 		return map;
 
 	}
+	
+	// 삭제하기
+	public int updateAllDelete(EmailMainVo vo) {
+		int cnt = mapper.updateAllDelete(vo);
+		System.out.println("삭제행 " + cnt);
+		return cnt;
+	}
+
 }
