@@ -103,6 +103,11 @@
 			<div class="e-approval-search-bar">
 				<form class="e-approval-search-form" enctype="multipart/form-data" action="" id="sendToEmail"
 					name="frm" method="post">
+					
+					<!-- hidden -->
+					<input type="text" name="memberFindStr">
+					<input type="text" name="memberOption">
+					<!-- hidden 끝 -->
 					<div class="e-approval-form-box">
 						<span>메일쓰기</span>
 
@@ -254,6 +259,7 @@
 
 		addAddressPeronal();
 		addAddressPeronalRef();
+		
 	</script>
 
 </body>

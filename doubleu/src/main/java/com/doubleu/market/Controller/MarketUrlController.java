@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.market.mybatis.MarketDao;
 import com.doubleu.market.mybatis.MarketDibDao;
+import com.doubleu.market.mybatis.MarketReplDao;
 import com.doubleu.market.vo.MarketDibVo;
 import com.doubleu.market.vo.MarketPage;
+import com.doubleu.market.vo.MarketReplVo;
 import com.doubleu.market.vo.MarketVo;
 
 @Controller
@@ -24,6 +26,9 @@ public class MarketUrlController {
 	
 	@Autowired
 	MarketDibDao Ddao;
+	
+	@Autowired
+	MarketReplDao replDao;
 	
 	// market_index.jsp
 	@RequestMapping(value="/marketIndex",method= {RequestMethod.GET,RequestMethod.POST})
@@ -86,7 +91,7 @@ public class MarketUrlController {
 	// market_view.jsp
 	@RequestMapping(value="/marketView", method={RequestMethod.GET , RequestMethod.POST})
 	public ModelAndView marketView(@RequestParam("dibUser") String dibUser,
-			MarketDibVo dibvo,MarketVo v, MarketPage page) {
+			MarketDibVo dibvo,MarketVo v, MarketPage page, MarketReplVo rvo) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("marketNo: " + v.getMarketNo());
 		MarketVo vo = dao.view(v.getMarketNo());
@@ -102,6 +107,12 @@ public class MarketUrlController {
 		Map<String, Object> dMap = Ddao.selectDiblist(dibvo);
 		
 		vo.setMarketHit(hitCnt);
+		System.out.println("dibuser:"+dibUser);
+		
+		int marketNo = v.getMarketNo();
+		Map<String, Object> replMap  = replDao.select(marketNo);
+		mv.addObject("marketRepllist", replMap.get("list"));
+		
 		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("vo", vo);
 		mv.addObject("cnt", cnt);

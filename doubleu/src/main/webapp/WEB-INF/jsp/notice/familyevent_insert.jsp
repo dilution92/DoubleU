@@ -82,7 +82,7 @@
 <% Date nowTime = new Date();
    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); %>
    			
-			<form action="/familyeventInsertR" method="post" id="familyeventInsertForm">
+			<form action="/familyeventInsertR" method="post" id="familyeventInsertForm"  enctype="multipart/form-data">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -138,7 +138,7 @@
 				        	<th class="success">첨부파일</th>
 				        	<td colspan="3">
 				        		<div class="custom-file mb-3">
-									<input type="file" class="custom-file-input" id="validatedCustomFile" name="familyeventFile">
+									<input type="file" class="custom-file-input" id="validatedCustomFile" name="familyeventFile" multiple="multiple">
 				    				<label class="custom-file-label" for="validatedCustomFile">파일을 선택하세요.</label>
 			    					<div class="invalid-feedback">Example invalid custom file feedback</div>
 			  					</div>
@@ -147,12 +147,12 @@
 				        <tr>
 				        	<td style="border:none"></td>
 				        	<td colspan="3" style="border:none">
-
+							
 				        	</td>
 				        </tr>
 				        <tr>
 				            <td colspan="4" class="text-center">
-								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" id="temporaryStorage" value="임시저장">
 								<input type="button" class="btn btn-primary" id="familyevnetSubmit1" value="저장"/>
 								<input type="button" class="btn btn-primary" value="취소" onclick="location.href=''">
 				            </td>

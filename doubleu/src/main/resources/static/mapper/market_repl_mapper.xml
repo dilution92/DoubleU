@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.doubleu.market.mybatis.MarketReplMapper">
+
+	<delete id="delete" parameterType="com.doubleu.market.vo.MarketReplVo">
+	delete from market_repl where repl_no = #{replNo}
+	</delete>
+	<update id="update"  parameterType="com.doubleu.market.vo.MarketReplVo">
+	update market_repl set repl_doc = #{replDoc} 
+	where repl_no =#{replNo}
+	</update>
+	<select id="select" parameterType="int" resultMap="marketReplList">
+	select * from market_repl 
+	where market_no = #{marketNo}
+	
+	</select>
+	
+	<insert id="insert" parameterType="com.doubleu.market.vo.MarketReplVo">
+	insert into market_repl 
+	values(market_repl_seq.nextval, #{marketNo}, #{replWriter}, #{replDoc}, SYSDATE)
+	
+	</insert>
+	
+	
+	<!-- resultMap -->
+	<resultMap id="marketReplList" type="com.doubleu.market.vo.MarketReplVo">
+		<result property="replNo" column="repl_no" /> 	
+		<result property="marketNo" column="market_no" /> 	
+		<result property="replWriter" column="repl_writer" /> 	
+		<result property="replDoc" column="repl_doc" /> 	
+		<result property="replDate" column="repl_date" /> 	
+		
+	</resultMap>
+	
+</mapper>
