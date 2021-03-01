@@ -33,10 +33,10 @@ public class NoticeController {
 	@Autowired
 	NoticeUploadService file;
 	
-/* -------------------- 사내공지 -------------------- */
+/* -------------------- 공지사항 -------------------- */
 
 	
-	// 사내공지 글쓰기 -> index
+	// 공지사항 글쓰기 -> index
 	@RequestMapping(value = "/noticeInsertR", method= RequestMethod.POST)
 	public ModelAndView noticeInsertR(NoticeVo vo) {
 		ModelAndView mv = new ModelAndView();
@@ -47,7 +47,7 @@ public class NoticeController {
 		return mv;
 	}
 
-	// 사내공지 index view
+	// 공지사항 view
 	@RequestMapping(value = "/noticeView", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView noticeView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
@@ -61,7 +61,7 @@ public class NoticeController {
 		return mv;
 	}
    
-   // 사내공지 index update
+   // 공지사항 update
    @RequestMapping(value = "/noticeUpdateR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView noticeUpdate(NoticeVo vo){
       ModelAndView mv = new ModelAndView();
@@ -73,7 +73,7 @@ public class NoticeController {
 	  return mv;
    }
    
-   // 사내공지 index delete
+   // 공지사항 delete
    @RequestMapping(value = "/noticeDeleteR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView noticeDelete(@RequestParam int no){
 	  System.out.println("delete");
@@ -105,7 +105,7 @@ public class NoticeController {
 	}
 	
 	
-	// 경조사 index view
+	// 경조사 view
 	@RequestMapping(value = "/familyeventView", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView familyeventView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
@@ -119,7 +119,7 @@ public class NoticeController {
 		return mv;
 	}
    
-   // 경조사 index update
+   // 경조사 update
    @RequestMapping(value = "/familyeventUpdateR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView familyeventUpdate(FamilyeventVo vo){
       ModelAndView mv = new ModelAndView();
@@ -131,7 +131,7 @@ public class NoticeController {
 	  return mv;
    }
    
-   // 경조사 index delete
+   // 경조사 delete
    @RequestMapping(value = "/familyeventDeleteR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView familyeventDelete(@RequestParam int no){
 	  System.out.println("delete");

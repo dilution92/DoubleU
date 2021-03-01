@@ -167,7 +167,7 @@
 	       		<jsp:include page="./modal/save_modal.jsp"/>
 			</div>   
 
- 			<!-- 사내공지 댓글창 -->
+ 			<!-- 공지사항 댓글창 -->
  			<jsp:include page="notice_repl.jsp"/>
  			
 		</main>
