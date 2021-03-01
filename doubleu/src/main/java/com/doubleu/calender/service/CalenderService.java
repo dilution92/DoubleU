@@ -499,15 +499,18 @@ public class CalenderService {
 				weekList.setMonth(month);
 				weekList.setYear(year);
 				weekList.setDay1(MakeDaytoString(startNum));
-				weekList.setDateIdN(MakeCalenderId(year, month, day));
+				weekList.setDateIdN(MakeCalenderId(year, month, startNum));
 
 				for(int j=0; j<cList.size(); j++) {
 					if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
 						
 						 if(cList.get(j).getCalenderType().equals("장기")) { // 리스트와 일치하는 날짜에 vo 넣기
+							 System.out.println("장기 등록");
 							 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
 							 weekList.setVo(cList.get(j));
 						 }else if(cList.get(j).getCalenderType().equals("단기")) {
+							 System.out.println("@@@ 단기 : 달력 아이디 :" +weekList.getDateIdN());
+							 System.out.println("@@@ 단기 : 디비 아이디 :" +MakeVoId(cList.get(j)));
 							 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
 								 weekList.setVo(cList.get(j));
 							 }
@@ -779,7 +782,15 @@ public class CalenderService {
 			}
 		}
 		
-
+		/* 시간 별 일정 정리 */
+		List<String> timeList = new ArrayList<>();
+		for(int j=0; j<24; j++) {
+			String time11 = Integer.toString(j);
+			timeList.add(time11);
+			
+		}
+		listDay.setTime(timeList);
+		
 		return listDay;
 	}
 
@@ -839,6 +850,14 @@ public class CalenderService {
 				
 			}
 		}
+		/* 시간 별 일정 정리 */
+		List<String> timeList = new ArrayList<>();
+		for(int j=0; j<24; j++) {
+			String time1 = Integer.toString(j);
+			timeList.add(time1);
+			
+		}
+		listDay.setTime(timeList);
 		
 		return listDay;
 	}
@@ -874,6 +893,15 @@ public class CalenderService {
 				
 			}
 		}
+		
+		/* 시간 별 일정 정리 */
+		List<String> timeList = new ArrayList<>();
+		for(int j=0; j<24; j++) {
+			String time11 = Integer.toString(j);
+			timeList.add(time11);
+			
+		}
+		listDay.setTime(timeList);
 		
 		return listDay;
 	}
