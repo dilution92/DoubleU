@@ -3,6 +3,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -74,7 +75,9 @@
 					    <label for="inputEmail3" class="col-sm-2 col-form-label">가격</label>
 					    
 					    <div class="col-sm-6" style="display: flex;">
-					      <div class="form-control" id="inputEmail3" >${vo.marketPrice }</div>
+					      <div class="form-control" id="inputEmail3" >
+					      	<fmt:formatNumber value="${vo.marketPrice}" pattern="#,###원" />
+					     </div>
 
 					    </div>
   							<button data-toggle="modal" 	data-target="#goAccount" type="button"  class="btn btn-primary mb-2">계좌보기</button>
