@@ -597,3 +597,7 @@ body {
 	text-align: center;
 	margin-bottom: 5px;
 }
+
+.modal-dialog {
+	margin: 6rem auto;	
+}
