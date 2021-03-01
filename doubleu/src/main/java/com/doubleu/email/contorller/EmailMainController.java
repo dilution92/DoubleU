@@ -351,6 +351,46 @@ public class EmailMainController {
 
 		return mv;
 	}
+	
+	// 메인 index에서 메일 휴지통으로 보내기
+	@RequestMapping(
+			value="/DeleteSendTrash", 
+			method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView DeleteSendTrash(
+			EmailMainVo vo,
+			LoginVo loginVo,
+			EmailPage page,
+			HttpServletRequest req,
+			HttpSession session) {
+
+		ModelAndView mv = new ModelAndView();
+		
+		String values[] = req.getParameterValues("deleteBtnList");
+		
+		int mailBox = 5; // 스팸메일함
+		
+		String[] array = null;
+		
+		for(int i=0; i<values.length; i++) {
+			String str = values[i];
+			array = str.split(",");
+		}
+		
+		for(String arrayList : array) {
+			System.out.println(arrayList);
+			int arrayListInt = Integer.parseInt(arrayList);
+			
+			vo.setEmailMailBox(mailBox);
+			vo.setEmailNo(arrayListInt);
+			int cnt = DaoService.updateSendTrash(vo);
+			System.out.println(cnt);
+		}
+		
+		mv.setViewName("redirect:/emailIndex");
+		return mv;
+	
+	}
+	
 }
 
 

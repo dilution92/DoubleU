@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
@@ -168,5 +169,13 @@ public class EmailDao {
 		System.out.println("loginList --->" + loginList); 
 		return loginList;
 		
+	}
+	
+	// 삭제하기
+	public int updateSendTrash(EmailMainVo vo) {
+		
+		int cnt = mapper.updateSendTrash(vo);
+		System.out.println("업데이트 행 " + cnt);
+		return cnt;
 	}
 }

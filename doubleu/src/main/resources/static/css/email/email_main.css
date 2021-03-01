@@ -260,6 +260,7 @@ body {
 /* 스팸함 모달창 */
 
 .modalSpamEmail{
+	margin-top: 100px;
     height: 350px;
 }
 

@@ -17,7 +17,8 @@
       </li>
 
       <li>
-          <span class="btn btn-outline-primary btn-sm" id="emailDeleteBtn">삭제하기</span>
+          	<span class="btn btn-outline-primary btn-sm" id="deleteBtn"  
+      	data-toggle="modal" data-target="#deleteEmail">삭제하기</span>
       </li>
 
       <li>
