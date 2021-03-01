@@ -95,6 +95,9 @@
    <!-- 2. 스팸 모달창 -->
          
         <jsp:include page="./modal/spamModalRead.jsp"></jsp:include>
+        
+      <!--  3.삭제하기 모달창 -->	
+			<jsp:include page="./modal/deleteModal.jsp"></jsp:include>    
     <!-- 모달창 모음 끝 -->           
                
 	<main class="e-approval-article">
@@ -121,7 +124,7 @@
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm">삭제하기</span>
+                         <span class="btn btn-outline-primary btn-sm" onclick="DeleteBtn()">삭제하기</span>
                      </li>
 
                      <li>

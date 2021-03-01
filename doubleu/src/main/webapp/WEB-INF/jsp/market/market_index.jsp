@@ -60,13 +60,17 @@
 						<div class="e-approval-form-box" style="float: right;">
 							<input class="btn btn-outline-primary btn-sm" type="button"value="최신순" id="btnLatest"/> 
 							<input class="btn btn-outline-primary btn-sm"type="button" value="낮은 가격순" id="btnLowprice"/>
-
+			<input  type="hidden"value='${param.findStr}'name='findStr' >                                                                                 
+			<input  type="hidden"value='${param.findType}'name='findType' >   
 						</div>
 					</form>
 				</div>
 			</div>
 			
 			<!-- 중고게시판 게시글  -->
+			<c:if test="${!empty msg }">
+				<div class="alert alert-danger" role="alert"> ${msg }</div>
+			</c:if>
 			<div class="row row-cols-1 row-cols-md-4" id="here">
 				<jsp:include page="market_index_contents.jsp"/>
 			</div>
@@ -98,6 +102,7 @@
 				</nav>
 			</div>
 			<input  type="hidden"value='${param.findStr}'name='findStr' >                                                                                 
+			<input  type="hidden"value='${param.findType}'name='findType' >                                                                                 
 			
 			</form>
 			<!-- ========== -->

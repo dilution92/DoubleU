@@ -9,7 +9,16 @@
   		select * from (
   			select rownum no, m.* from (  
 					select * from market mk join market_files att on mk.market_no=att.market_no
-				 	where market_subject like '%${findStr}%'	and files_main = 1 
+				 	where files_main = 1 
+				 	<if test="findStr != '' and findType == '' ">
+				 	and market_subject like '%${findStr}%'	 
+				 	</if>
+				 	<if test="findStr != '' and findType != ''">
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>
+					<if test="findStr == '' and findType != ''">
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>				 	
 				 	 order by mk.market_date desc  ) m   
 				 	) where no between #{startNo} and #{endNo}
 	</select> 
@@ -19,7 +28,16 @@
   		select * from (
   			select rownum no, m.* from (  
 					select * from market mk join market_files att on mk.market_no=att.market_no
-				 	where market_subject like '%${findStr}%'	and files_main = 1 
+				 	where files_main = 1 
+				 	<if test="findStr != '' and findType == '' ">
+				 	and market_subject like '%${findStr}%'	 
+				 	</if>
+				 	<if test="findStr != '' and findType != ''">
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>
+					<if test="findStr == '' and findType != ''">
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>				 	
 				 	 order by mk.market_price  ) m   
 				 	) where no between #{startNo} and #{endNo}
 	</select> 

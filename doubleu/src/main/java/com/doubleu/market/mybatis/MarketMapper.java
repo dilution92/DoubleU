@@ -18,7 +18,7 @@ public interface MarketMapper {
 
 	public int insert(MarketVo vo);
 	public List<MarketVo> select2();
-	public int selectCount();
+	public int selectCount(MarketPage page);
 	public int totalCount();
 	public MarketVo view(int marketNo);
 	public List<MarketAttVo> selectAttOne();

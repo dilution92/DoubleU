@@ -78,7 +78,7 @@
 				    <div class="col-sm-8" style="display : inline-block;">
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;" id='btnFree' data-toggle="modal" data-target="#FreeModal">무료 나눔</button>
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;"
-						onclick="window.open('/marketNewpage','window_name','width=650,height=650,location=no,status=no,scrollbars=yes');">시세 확인</button>
+						onclick="window.open('/marketNewpage','window_name','width=580,height=700,location=no,status=no,scrollbars=yes');">시세 확인</button>
 				    	  <div style="display:flex;">
 				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="0" onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
 				    	  <span class="input-group-text">원</span>
@@ -93,7 +93,7 @@
 				  <div class="col-sm-8" style="display : inline-block;">
 			   		<div class="custom-file">
 					  <input type="file" class="custom-file-input" id="attList" name="attList" onchange="previewImage(this,'View_area')" multiple='multiple' required>
-					  <label class="custom-file-label" for="customFile">Choose file</label>
+					  <label class="custom-file-label" for="customFile">최대 5장 첨부가능</label>
 					</div>
 					<div id='View_area' class='View_area' style="display:flex;" >
 					</div>

@@ -73,7 +73,15 @@
 	
 	<select id="totListSize" resultType='int' parameterType="com.doubleu.market.vo.MarketPage">
 		select count(market_no) from market
-		where market_subject like '%${findStr}%'
+		<if test="findStr != '' and findType == '' ">
+			where market_subject like '%${findStr}%'	 
+		</if>
+		<if test="findStr != '' and findType != ''">
+			where market_category = '${findType}' and market_subject like '%${findStr}%'
+		</if>
+		<if test="findStr == '' and findType != ''">
+			where market_category = '${findType}' and market_subject like '%${findStr}%'
+		</if>
 	</select>
 	
 	<select id="select2" resultMap="marketList" >
@@ -93,7 +101,17 @@
   		select * from (
   			select rownum no, m.* from (  
 					select * from market mk join market_files att on mk.market_no=att.market_no
-				 	where market_subject like '%${findStr}%'	and files_main = 1 
+				 	where files_main = 1 
+				 	<if test="findStr != '' and findType == '' ">
+				 	and market_subject like '%${findStr}%'	 
+				 	</if>
+				 	<if test="findStr != '' and findType != ''">
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>
+					<if test="findStr == '' and findType != ''">
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>
+					
 				 	 order by mk.market_date desc ) m   
 				 	) where no between #{startNo} and #{endNo}
 	</select> 
@@ -102,8 +120,17 @@
 		select count(*) from market
 	</select>
 	<!-- select게시글 총 갯수 -->
-	<select id="selectCount" resultType="int">
-		select count(*) from market where market_subject like '%${findStr}%'
+	<select id="selectCount" resultType="int" parameterType="com.doubleu.market.vo.MarketPage">
+		select count(*) from market  
+		<if test="findStr != '' and findType == '' ">
+				 	where market_subject like '%${findStr}%'	 
+				 	</if>
+				 	<if test="findStr != '' and findType != ''">
+					where market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>
+					<if test="findStr == '' and findType != ''">
+					where market_category = '${findType}' and market_subject like '%${findStr}%'
+					</if>
 	</select>
 
 <!-- insert -->

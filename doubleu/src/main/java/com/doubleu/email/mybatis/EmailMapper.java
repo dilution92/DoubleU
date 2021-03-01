@@ -53,5 +53,6 @@ public interface EmailMapper {
 	public List<EmailMainVo> selectTemp(EmailPage page);
 	public int totListSizeTemp(EmailPage page);
 	
-	
+	// 데이터 삭제하기
+	public int updateAllDelete(EmailMainVo vo);
 }

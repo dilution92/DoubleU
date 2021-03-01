@@ -533,6 +533,38 @@ public class EmailMainController {
 
 			return mv;
 		}
+		
+		@RequestMapping(value="/emailDeleteAll", method={RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView emailDeleteAll(
+				EmailMainVo vo,
+				LoginVo loginVo,
+				EmailPage page,
+				HttpServletRequest req,
+				HttpSession session
+				) {
+			ModelAndView mv = new ModelAndView();
+
+			
+			String values[] = req.getParameterValues("deleteBtnList");
+			String[] array = null;
+			
+			for(int i=0; i<values.length; i++) {
+				String str = values[i];
+				array = str.split(",");
+			}
+			
+			for(String arrayList : array) {
+				System.out.println(arrayList);
+				int arrayListInt = Integer.parseInt(arrayList);
+				vo.setEmailNo(arrayListInt);
+				int cnt = DaoService.updateAllDelete(vo);
+			}
+			System.out.println("테스트---------" + vo);
+			
+			
+			mv.setViewName("redirect:/emailIndex");
+			return mv;
+		}
 	
 }
 
