@@ -25,12 +25,13 @@ public class SelectSerivce {
 			LoginVo loginVo = new LoginVo();
 			loginVo = (LoginVo) session.getAttribute("member");	
 			
-			int memberNo = loginVo.getMemberNo();
+			int mailBox = 3;
 			String emailAddress = loginVo.getMemberEmail();
 			
 			
 			EmailMainVo vo = new EmailMainVo();
 			vo.setEmailAddress(emailAddress);
+			vo.setEmailMailBox(mailBox);
 			
 			int cnt = dao.selectSendEmail(vo);
 			System.out.println(vo);

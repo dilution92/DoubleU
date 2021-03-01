@@ -12,7 +12,7 @@
 <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
 
-<!-- 삭제 Modal -->
+<!-- 경조사 삭제 Modal -->
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

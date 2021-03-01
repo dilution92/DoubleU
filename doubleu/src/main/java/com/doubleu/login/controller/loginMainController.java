@@ -13,6 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectReceiverService;
+import com.doubleu.email.mybatis.EmailDao;
+import com.doubleu.email.service.SelectSerivce;
+import com.doubleu.email.vo.EmailPage;
 import com.doubleu.login.mybatis.LoginDao;
 import com.doubleu.login.service.LoginService;
 import com.doubleu.login.vo.LoginVo;
@@ -37,13 +40,21 @@ public class loginMainController {
 	//market
 	@Autowired
 	MarketDao marketDao;
+	
+	//이메일
+	@Autowired
+	EmailDao DaoService;
+	
+	@Autowired
+	SelectSerivce selectService;
 		
 	// 로그인 체크
 	@RequestMapping(value="/loginCheck", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView LoginResult(
 			LoginVo loginVo,
 			HttpServletRequest req,
-			HttpSession session
+			HttpSession session,
+			EmailPage page
 			) {
 		session.setMaxInactiveInterval(-1);
 		ModelAndView mv = new ModelAndView();
@@ -61,11 +72,17 @@ public class loginMainController {
 			mv.setViewName("MainPage/index");
 		}
 		
-		if(loginVo.getMemberName().equals("정해준") || loginVo.getMemberName().equals("정희석")) {
+		if(loginVo.getMemberName().equals("정희석")) {
 			 profileImg = "/img/profilem.jpg";
 		}
+		else if(loginVo.getMemberName().equals("정해준")) {
+			profileImg = "/img/profilehaejun.png";
+		}
+		else if(loginVo.getMemberName().equals("김재현")){
+			 profileImg = "/img/profilekim.png";
+		}
 		else {
-			 profileImg = "/img/profileg.jpg";
+			profileImg = "/img/profileg.jpg";
 		}
 		//전자결재 불러오기
 		mv.addObject("profileImg", profileImg);
@@ -78,6 +95,12 @@ public class loginMainController {
 		List<MarketVo> marketlist = marketDao.selectMarketMain();
 		mv.addObject("marketList", marketlist);
 		
+		//이메일
+		int emailMailBox = 3; //보낸 메일함
+		page.setEmailMailBox(emailMailBox);
+		
+		Map<String, Object> map = DaoService.selectPaging(page, session);
+		mv.addObject("EmailList", map.get("pageList"));		
 		
 		return mv;
 	}

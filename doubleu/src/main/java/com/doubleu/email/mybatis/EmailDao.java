@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
@@ -168,5 +169,71 @@ public class EmailDao {
 		System.out.println("loginList --->" + loginList); 
 		return loginList;
 		
+	}
+	
+	// 삭제하기
+	public int updateSendTrash(EmailMainVo vo) {
+		
+		int cnt = mapper.updateSendTrash(vo);
+		System.out.println("업데이트 행 " + cnt);
+		return cnt;
+	}
+	
+	// 임시 저장 조회
+	public List<EmailMainVo> selectTemp(EmailPage page) {
+		
+		List<EmailMainVo> selectTempList = mapper.selectTemp(page);
+		System.out.println("selectTemp : " + selectTempList);
+		return selectTempList;
+	}
+	
+	public int totListSizeTemp(EmailPage page, HttpSession session, LoginVo vo) {
+
+		int totListSize = mapper.totListSizeTemp(page);
+		System.out.println(page);
+
+		page.setTotListSize(totListSize);
+		page.pageCompute();
+		return totListSize;
+
+	}
+	
+	
+	public Map<String, Object> selectTemp(
+			EmailPage page, HttpSession session) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<EmailMainVo> pageList = null;
+		
+		LoginVo loginVo = (LoginVo) session.getAttribute("member");
+		
+		String emailAddress = loginVo.getMemberEmail();
+	
+		page.setEmailAddress(emailAddress);
+
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+	
+		
+		System.out.println(page.getNowPage());
+		System.out.println(page.getFindStr());
+		
+		int totListSizeTemp = mapper.totListSizeTemp(page);
+		
+		page.setTotListSize(totListSizeTemp);
+		page.pageCompute();
+
+		System.out.println("totListSize " + totListSizeTemp);
+
+		pageList = mapper.selectTemp(page);
+		System.out.println("테스트 pageList" + pageList);
+		
+		map.put("page", page);
+		map.put("pageList", pageList);
+
+		
+		return map;
+
 	}
 }

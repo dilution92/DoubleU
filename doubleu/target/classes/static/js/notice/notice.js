@@ -1,14 +1,14 @@
-/* 게시판 insert 게시기한 radio 선택시 활성/비활성 => 수정해야한다ㅏ */ 
+/* 공지사항 insert 게시기한 radio 선택시 활성/비활성 */ 
 $(document).ready(function(){
  
     // 라디오버튼 클릭시 이벤트 발생
-    $("input:radio[name=searchDate]").click(function(){
-        if($("input[name=searchDate]:checked").val() == "설정"){
+    $("input:radio[name=noticePostType]").click(function(){
+        if($("input[name=noticePostType]:checked").val() == "설정"){
            $("#searchDateOne").attr("readonly",false);
 		   $("#searchDateTwo").attr("readonly",false);
             // radio 버튼의 value 값이 설정이면 활성화
  
-        }else if($("input[name=searchDate]:checked").val() == "영구"){
+        }else if($("input[name=noticePostType]:checked").val() == "영구"){
               $("#searchDateOne").attr("readonly",true);
               $("#searchDateTwo").attr("readonly",true);
             // radio 버튼의 value 값이 영구면 비활성화
@@ -111,7 +111,7 @@ $(document).ready(function(){
     }
 });
 
-/* notice_delete 삭제하기 모달 이후 submit */
+/* notice_update 수정 모달 이후 submit */
 $(function(){
    $("#noticeUpdate1").click(function(){
         $('#staticBackdrop1').modal();
@@ -121,6 +121,12 @@ $(function(){
         $('#noticeUpdateForm').submit();
     })
 })
+/* notice_delete 삭제 모달 이후 submit */
+$(function(){
+   $("#noticedelete1").click(function(){
+        $('#staticBackdrop2').modal();
+    	})
+    })
 
 $(function(){
    $("#familyevnetdelete1").click(function(){

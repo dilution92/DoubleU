@@ -105,8 +105,8 @@
 					name="frm" method="post">
 					
 					<!-- hidden -->
-					<input type="text" name="memberFindStr">
-					<input type="text" name="memberOption">
+					<input type="hidden" name="memberFindStr">
+					<input type="hidden" name="memberOption">
 					<!-- hidden 끝 -->
 					<div class="e-approval-form-box">
 						<span>메일쓰기</span>
@@ -150,10 +150,7 @@
 								</div>
 								<c:forEach begin="0" end="0">
 								<!-- 받는 사람 input -->
-									<input type="text" name="emailReceiverAddress" value="gamcho@gmail.com" readonly class="form-control col-sm-3"
-										id="exampleFormControlInput1">
-									<input type="text" name="emailReceiverAddress" value="angel@gmail.com" readonly class="form-control col-sm-3"
-										id="exampleFormControlInput1">
+
 								</c:forEach>
 								
 
@@ -182,9 +179,7 @@
 								</div>
 								<c:forEach begin="0" end="0">
 									<!-- 참조input -->
-									<input type="email" readonly name="emailReceiverRef" class="form-control col-sm-3"
-										id="exampleFormControlInput1"
-										value="bose@gmail.com"/>
+									
 								</c:forEach>
 							</div>
 							
@@ -213,8 +208,7 @@
 
 							<div class="form-group col-sm-7">
 								<input type="email" class="form-control" name="emailTitle"
-									id="emailTitleId"
-									value="백엔드 작업중입니다. 테스트 부탁드립니다. 안녕하세요.">
+									id="emailTitleId">
 							</div>
 
 

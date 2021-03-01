@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
@@ -5,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>전사게시판-사내공지 insert</title>
+<title>전사게시판-공지사항 insert</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -60,7 +62,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>사내공지</span>
+							<span>공지사항</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -75,9 +77,11 @@
 				</div>
 
 			
-			<!-- 전사게시판 사내공지 글쓰기 code -->
-			
-			<form action="/noticeInsertR" method="post" id="noticeInsertForm">
+			<!-- 전사게시판 공지사항 글쓰기 code -->
+<% Date nowTime = new Date();
+   SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); %>
+ 			
+			<form action="/noticeInsertR" method="post" id="noticeInsertForm" enctype="multipart/form-data">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -85,39 +89,39 @@
 				        <table class="table">
 				        <tr>
 				        <th class="success"><label for="exampleFormControlSelect1">제목</label></th>
-			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요." name="notice_subject"></td>
+			    			<td colspan="3"><input type="text" class="form-control" id="exampleFormControlSelect1" placeholder="제목을 입력하세요." name="noticeSubject"></td>
 				        </tr>
 				        <tr>
 				        	<div class="form-group">
 				            <th class="success">작성자</th>
-				            <td><input type="text" id="mid" name="notice_mid" value="관리자" readonly></td>
+				            <td><input type="text" id="mid" name="noticeMid" value="관리자" readonly></td>
 				            <th class="success">작성일</th>
-				            <td><input type="date" id="mdate" name="notice_date" readonly></td>
+				            <td><input type="date" id="mdate" name="noticeReportingDate" value="<%= format.format(nowTime) %>" readonly></td>
 				            </div>
 				        </tr>
 				        <tr>
-				            <th class="success"><label for="exampleFormControlSelect4">분류</label>
-				            </th>
+				            <th class="success"><label for="exampleFormControlSelect4">분류</label></th>
 				            <td>
-					            <select class="form-control" id="exampleFormControlSelect4" name="notice_type">
-							      <option class="notice-icon">&#xf071중요공지</option>
+					            <select class="form-control" id="exampleFormControlSelect4" name="noticeType">
+							      <option class="notice-icon">중요공지</option>
 							      <option class="notice-icon"selected>일반공지</option>
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
-				            <td><input type="number" id="hit" name="notice_hit" value="1" readonly></td>
+				            <td><input type="number" id="hit" name="noticeHit" value="1" readonly></td>
 				        </tr>
 				        <tr>
 				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
-									<label for="searchDate"></label>
-										<input type="radio" name="searchDate" value="영구" id="r1" checked><label for="r1">영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-										<input type="radio" name="searchDate" value="설정" id="r2"><label for="r2">설정  &nbsp;&nbsp;</label>
+									<label for="noticePostType"></label>
+										<input type="radio" name="noticePostType" value="영구" id="r1" checked><label for="r1">영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+										<input type="radio" name="noticePostType" value="설정" id="r2"><label for="r2">설정  &nbsp;&nbsp;</label>
 											
-											(시작일자 &nbsp;<input type="date" id="searchDateOne" name="searchDateOne" readOnly>
+											(시작일자 &nbsp;<input type="date" id="searchDateOne" name="noticePostStartDate" readOnly>
 											&nbsp;~ &nbsp;
-											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="searchDateOne" readOnly> )
+											종료일자 &nbsp;<input type="date" id="searchDateTwo" name="noticePostEndDate" readOnly> )
+											
 								</div>
 							</td>
 				        </tr> 
@@ -125,7 +129,7 @@
 				        	<div class="form-group">
 					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
 					            <td colspan="3">
-					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요." name="notice_doc"></textarea>
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="내용을 입력하세요." name="noticeDoc"></textarea>
 					            </td>
 						  	</div>
 				        </tr>
@@ -133,7 +137,7 @@
 				        	<th class="success">첨부파일</th>
 				        	<td colspan="3">
 				        		<div class="custom-file mb-3">
-									<input type="file" class="custom-file-input" id="validatedCustomFile" name="notice_file">
+									<input type="file" class="custom-file-input" id="validatedCustomFile" name="noticeFile" multiple="multiple">
 				    				<label class="custom-file-label" for="validatedCustomFile">파일을 선택하세요.</label>
 			    					<div class="invalid-feedback">Example invalid custom file feedback</div>
 			  					</div>
@@ -147,9 +151,9 @@
 				        </tr>
 				        <tr>
 				            <td colspan="4" class="text-center">
-								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" id="temporaryStorage" value="임시저장">
 								<input type="button" class="btn btn-primary" id="noticeSubmit1" value="저장"/>
-								<input type="reset" class="btn btn-primary" value="취소" onclick="location.href=''">
+								<input type="button" class="btn btn-primary" value="취소" onclick="location.href=''">
 				            </td>
 				        </tr>
 				        </table>
@@ -163,7 +167,7 @@
 	       		<jsp:include page="./modal/save_modal.jsp"/>
 			</div>   
 
- 			<!-- 사내공지 댓글창 -->
+ 			<!-- 공지사항 댓글창 -->
  			<jsp:include page="notice_repl.jsp"/>
  			
 		</main>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>전사게시판-사내공지</title>
+<title>전사게시판-공지사항</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -57,7 +57,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>사내공지</span>
+							<span>공지사항</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -70,9 +70,9 @@
 						</div>
 					</form>
 				</div>
-				<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 code -->
+			
+			<!-- 전사게시판 공지사항 code -->
 			<div class="notice-container">
 				<table class="table table-hover">
 			   		<thead>
@@ -86,20 +86,19 @@
                     	</tr>
 	                	</thead>
 					<tbody class="e-approval-list text-muted">
-							<c:forEach begin="1" end="10">
-	                    		<tr>
-			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">일반공지</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">파이널 일정 안내 <i class="fas fa-paperclip"></i></td>
-			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">관리자</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
+	                		<c:forEach var='obj' items="${contentList1 }">
+	                    		<tr onClick="location.href='/noticeView?no=${obj.noticeNo }'">
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeNo }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeType }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeSubject }</td>
+			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">${obj.noticeMid }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeReportingDate }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeHit }</td>
 		                        </tr>
 							</c:forEach>
                 	</tbody>
             	</table>
    			</div>
-   			<!-- ========== -->
    			
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">
@@ -115,7 +114,6 @@
 					</ul>
 				</nav>
 			</div>
-			<!-- ========== -->
 
 		</main>
 	</section>

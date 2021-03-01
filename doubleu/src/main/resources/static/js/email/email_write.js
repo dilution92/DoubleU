@@ -12,6 +12,9 @@
 	
 	추가 : 21.02.28
 	받는 사람, 참조 개별적으로 작성할 때 추가하기
+	
+	추가 : 21.03.01
+	메일 선택 시 삭제하기를 누르면 휴지통으로 이동한다
  */
 
 
@@ -188,30 +191,5 @@ selectChkBox = function(selectAll) {
 }
 
 
-/* ajax 
-
-
-emailMemberSearch = function() {
-	
-	$('#test').on('click', function(){
-		
-		
-		var param = $('#memberFindStr').serialize();
-		console.log(param);
-		
-		$.ajax ({
-			url: '/selectMemberFindStr',
-			data : param,
-			dataType: 'html',
-			method : 'POST',
-			success: function(data) {
-				console.log(data)
-				$('#selectMemberStr').html(data);
-			}
-		});
-	});
-};
-
-*/
 
 

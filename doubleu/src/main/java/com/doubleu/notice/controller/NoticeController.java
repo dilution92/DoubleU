@@ -19,6 +19,7 @@ import com.doubleu.notice.service.NoticeService;
 import com.doubleu.notice.service.NoticeUploadService;
 import com.doubleu.notice.vo.FamilyeventAttVo;
 import com.doubleu.notice.vo.FamilyeventVo;
+import com.doubleu.notice.vo.NoticeAttVo;
 import com.doubleu.notice.vo.NoticeVo;
 
 @RestController
@@ -32,8 +33,10 @@ public class NoticeController {
 	@Autowired
 	NoticeUploadService file;
 	
+/* -------------------- 공지사항 -------------------- */
+
 	
-	// 사내공지 글쓰기 -> index
+	// 공지사항 글쓰기 -> index
 	@RequestMapping(value = "/noticeInsertR", method= RequestMethod.POST)
 	public ModelAndView noticeInsertR(NoticeVo vo) {
 		ModelAndView mv = new ModelAndView();
@@ -43,6 +46,48 @@ public class NoticeController {
 		mv.setViewName("redirect:/noticeIndex");
 		return mv;
 	}
+
+	// 공지사항 view
+	@RequestMapping(value = "/noticeView", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView noticeView(@RequestParam int no) {
+		ModelAndView mv = new ModelAndView();
+		
+		NoticeVo vo = service1.view(no); 
+		List<NoticeAttVo> att = service1.view1(no);
+		mv.addObject("obj", vo);
+		mv.addObject("att", att);
+		
+		mv.setViewName("notice/notice_view");
+		return mv;
+	}
+   
+   // 공지사항 update
+   @RequestMapping(value = "/noticeUpdateR", method = {RequestMethod.POST, RequestMethod.GET})
+   public ModelAndView noticeUpdate(NoticeVo vo){
+      ModelAndView mv = new ModelAndView();
+	  String msg = service1.update(vo);
+	  System.out.println(msg);
+	  List<NoticeVo> contentList1 = service1.select();
+      mv.addObject("contentList1", contentList1);
+      mv.setViewName("/notice/notice_index");
+	  return mv;
+   }
+   
+   // 공지사항 delete
+   @RequestMapping(value = "/noticeDeleteR", method = {RequestMethod.POST, RequestMethod.GET})
+   public ModelAndView noticeDelete(@RequestParam int no){
+	  System.out.println("delete");
+      ModelAndView mv = new ModelAndView();
+	  String msg = "";
+	  msg = service1.delete(no);
+	  mv.setViewName("redirect:/noticeIndex");
+	  System.out.println(msg);
+	  return mv;
+   }
+
+	
+
+/* -------------------- 경조사 -------------------- */
 	
 	// 경조사 글쓰기 -> index
 	@RequestMapping(value = "/familyeventInsertR", method= RequestMethod.POST)
@@ -60,7 +105,7 @@ public class NoticeController {
 	}
 	
 	
-	// 경조사 index view
+	// 경조사 view
 	@RequestMapping(value = "/familyeventView", method= {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView familyeventView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
@@ -69,11 +114,12 @@ public class NoticeController {
 		List<FamilyeventAttVo> att = service2.view1(no);
 		mv.addObject("obj", vo);
 		mv.addObject("att", att);
+		
 		mv.setViewName("notice/familyevent_view");
 		return mv;
 	}
    
-   // 경조사 index update
+   // 경조사 update
    @RequestMapping(value = "/familyeventUpdateR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView familyeventUpdate(FamilyeventVo vo){
       ModelAndView mv = new ModelAndView();
@@ -85,7 +131,7 @@ public class NoticeController {
 	  return mv;
    }
    
-   // 경조사 index delete
+   // 경조사 delete
    @RequestMapping(value = "/familyeventDeleteR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView familyeventDelete(@RequestParam int no){
 	  System.out.println("delete");

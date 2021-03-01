@@ -55,7 +55,7 @@ var selectChkBtn = function() {
 	     });
 	
 	// 삭제하기
-	$("#emailDeleteBtn").click( function(){  
+	$("#deleteBtn").click( function(){  
 	            if($(".chkBoxClass").is(":checked") == false){
 	                swal("메일을 선택해주세요.")
 	                return false;
@@ -163,33 +163,35 @@ var goView =  function(EmailNo) {
 }
 
 
-// 9. 상세보기 검색
-
-
-var btnSearchDetail = function() {
-	var btn = document.querySelector('#searchBtn');
-
-	btn.onclick = function() {
-
-		var searchSend = document.querySelector('#searchSend')
-		var searchReceive = document.querySelector('#searchReceive');
-		var searchContents = document.querySelector('#searchContents');
-		var searchDateOne = document.querySelector('#searchDateOne');
-		var searchDateTwo = document.querySelector('#searchDateTwo')
-		
-		var frm = document.emailForm
-
-		frm.action = "/detail";
-		frm.submit();
-
-	}
-}
-
-// 10. 페이징
+// 8. 페이징
 function goPage(page) {
 	var frm = document.emailForm;
 	frm.nowPage.value = page;
 	frm.action = '/emailIndex';
 	frm.submit();
 
+}
+
+
+// 9. 휴지통으로 이동하기
+
+var DeleteBtn = function() {
+
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value)
+		};
+		
+	}
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+	deleteList.value = valueArr;
+	
+	frm.action = "/DeleteSendTrash"
+	frm.submit();
+	
 }

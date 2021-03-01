@@ -16,6 +16,7 @@
 
 <!-- bootstrap CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -125,14 +126,15 @@
 				<div><!-- 일정이 표시 될 곳 -->
 					<c:forEach items="${list.vo }" var="listVo"> <!-- 일정 타입 -->
 						
-						<input type="hidden" value="${listVo.getCalenderType()}" class="insertCalenderType"> 
 					</c:forEach>
 					<c:forEach items="${list.vo }" var="listVo"> <!-- 장기 일정이 표시 될 곳 -->
+						<div class="${listVo.getCalenderGroup() }">
+						<div class="${listVo.getCalenderType() }">
 						<div class="calender_modal" id="${listVo.getCalenderNo() }" data-toggle="modal" data-target="#Calender_detail_modal">
 						<c:choose>
 							<c:when test="${listVo.getCalenderType() eq '장기'}">
-								장기 ::
 									${listVo.getCalenderSubject() }
+									<input type="hidden">
 									<input type="hidden" value="${listVo.getCalenderNo() }"> <!-- 0 -->
 									<input type="hidden" value="${listVo.getStartDate() }"> <!-- 1 -->
 									<input type="hidden" value="${listVo.getStartTime() }"> <!-- 2 -->
@@ -148,13 +150,16 @@
 							</c:when>
 						</c:choose>
 						</div>
+						</div>
+						</div>
 					</c:forEach>
 					<c:forEach items="${list.vo }" var="listVo"> <!-- 단기 일정이 표시 될 곳 -->
-						<div class="calender_modal" >
+							<div class="${listVo.getCalenderGroup() }">
+							<div class="${listVo.getCalenderType() }">
+							<div class="calender_modal" >
 							<c:choose>
 								<c:when test="${listVo.getCalenderType() eq '단기'}">
-									단기 ::
-										${listVo.getCalenderSubject() }
+										<i class="bi bi-diamond bi-diamond-color"></i>${listVo.getCalenderSubject() }
 										<input type="hidden" value="${listVo.getCalenderNo() }"> <!-- 0 -->
 										<input type="hidden" value="${listVo.getStartDate() }"> <!-- 1 -->
 										<input type="hidden" value="${listVo.getStartTime() }"> <!-- 2 -->
@@ -167,8 +172,11 @@
 										<input type="hidden" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
 										<input type="hidden" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
 										<input type="hidden" value="${listVo.getCalenderTime() }"> <!-- 11 -->
+										
 								</c:when>
 						</c:choose>
+						</div>
+						</div>
 					</div>
 					</c:forEach>
 				</div>

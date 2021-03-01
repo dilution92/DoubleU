@@ -56,15 +56,6 @@ public class CalenderURLController {
 		mv.addObject("currentDay", day);
 		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_week");
-		
-		for (int i = 0; i < list.size(); i++) {
-			if(list.get(i).getVo().get(0).getCalenderContent() != null) {
-				
-				System.out.println(list.get(i).getDay()+" 일  "+list.get(i).getVo().get(0).getCalenderContent());
-				
-			}
-		}
-
 		return mv;
 	}
 	

@@ -251,6 +251,10 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
+.main-approval-item:hover {
+	cursor: pointer;
+}
+
 
 
 /*header name */
