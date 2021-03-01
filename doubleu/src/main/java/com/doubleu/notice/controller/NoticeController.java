@@ -114,7 +114,6 @@ public class NoticeController {
 		List<FamilyeventAttVo> att = service2.view1(no);
 		mv.addObject("obj", vo);
 		mv.addObject("att", att);
-		System.out.println(att.get(0).getOriFile());
 		
 		mv.setViewName("notice/familyevent_view");
 		return mv;
