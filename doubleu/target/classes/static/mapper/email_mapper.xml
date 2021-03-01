@@ -64,6 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	          	WHERE email_title LIKE '%${findStr}%' 
                 AND email_mailBox = ${emailMailBox}
                 AND email_address = #{emailAddress}
+                AND email_delete = 0
                 ORDER BY email_date DESC
 	           ) m
 	        ) WHERE no between ${startNo} and ${endNo}		            
@@ -231,7 +232,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE email_no = ${emailNo}
 	</update>
 	
-	
+	<!-- delete -->
+	<update id="updateAllDelete" 
+	parameterType="com.doubleu.email.vo.EmailMainVo">
+		UPDATE email 
+		SET
+		email_delete = 1
+		WHERE email_no = ${emailNo}
+	</update>
 	
 	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
  
