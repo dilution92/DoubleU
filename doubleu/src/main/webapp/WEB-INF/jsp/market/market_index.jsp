@@ -51,6 +51,7 @@
 			<!-- 글갯수/ 최신순 -->
 			<div class="market-subheader-container">
 				<div class='market-total'>
+					<c:set var="no" value="1"></c:set>
 					<p class="card-text">글 갯수 : ${cnt }</p>
 				</div>
 				<div class="e-approval-dib">

@@ -32,7 +32,7 @@
 							</tr>
 						</thead>
 						<tbody class="text-muted">
-							<c:set var="no" value="1" />
+							<c:set var="outgoingNo" value="1" />
 							<c:forEach var="outgoingVo" items="${outgoingApprovalList }">
 								<tr class="main-approval-item" onclick="location.href='/approvalSelectView?formNo=${outgoingVo.formNo}&&formType=${outgoingVo.formType}'">
 									<td>${outgoingVo.formDate}</td>
@@ -54,8 +54,13 @@
 										</c:when>
 									</c:choose>
 								</tr>
-								<c:set var= "no" value="${no+1 }"></c:set>
+								<c:set var= "outgoingNo" value="${outgoingNo+1 }"></c:set>
 							</c:forEach>
+							<c:if test="${outgoingNo == 1}">
+								<tr>
+									<td colspan="5" rowspan="5" height="150px;" style="line-height: 150px;  font-weight: bold"> 문서가 없습니다. </td>
+								</tr>
+							</c:if>
 						</tbody>
 					</table>
 					<div class="main-go-page">
@@ -74,7 +79,7 @@
 							</tr>
 						</thead>
 						<tbody class="e-approval-list text-muted">
-							<c:set var="no" value="1" />
+							<c:set var="receiverNo" value="1" />
 							<c:forEach var="receiverVo" items="${receiverApprovalList }">
 								<tr class="main-approval-item" onclick="location.href='/approvalSelectView?formNo=${receiverVo.formNo}&&formType=${receiverVo.formType}'">
 									<td>${receiverVo.formDate}</td>
@@ -93,7 +98,13 @@
 										</c:when>
 									</c:choose>
 								</tr>
+								<c:set var="receiverNo" value="${receiverNo+1 }"></c:set>
 							</c:forEach>
+							<c:if test="${receiverNo == 1}">
+								<tr>
+									<td colspan="5" rowspan="5" height="140px;" style="line-height: 140px;  font-weight: bold"> 문서가 없습니다. </td>
+								</tr>
+							</c:if>
 						</tbody>
 					</table>
 					<div class="main-go-page">

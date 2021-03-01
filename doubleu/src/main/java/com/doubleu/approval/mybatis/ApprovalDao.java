@@ -240,7 +240,7 @@ public class ApprovalDao {
 		int deleteFormNo = formVo.getFormNo();
 		String formType = formVo.getFormType();
 		int cnt = 0;
-		if(formType.equals("품의서") || formType.equals("품의서")) {
+		if(formType.equals("품의서") || formType.equals("구매품의서")) {
 			cnt = mapper.deletePetition(deleteFormNo); // 결재 양식이 품의서일 경우
 			if(cnt < 1) {
 				System.out.println("품의서 삭제과정에서 오류가 발생했습니다.");

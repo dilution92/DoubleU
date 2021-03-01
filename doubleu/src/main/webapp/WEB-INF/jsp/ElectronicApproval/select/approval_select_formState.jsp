@@ -32,6 +32,7 @@
 						</tr>
 					</thead>
 					<tbody class="text-muted">
+						<c:set var="no" value="1"></c:set>
 						<c:forEach var="vo" items="${list}">
 							<tr onclick="goView(${vo.formNo})">
 								<td>${vo.formDate}</td>
@@ -65,7 +66,23 @@
 									</c:when>
 								</c:choose>
 							</tr>
+							<c:set var="no" value="${no+1 }"></c:set>
 						</c:forEach>
+						<c:if test="${no == 1 }">
+							<c:choose>
+								<c:when test="${findState == '1' or findState == '0' or findState == '-1'}">
+									<tr>
+										<td colspan="6" rowspan="5" height="150px;" style="line-height: 150px; font-weight: bold"> 문서가 없습니다. </td>
+									</tr>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td colspan="5" rowspan="5" height="150px;" style="line-height: 150px; font-weight: bold"> 문서가 없습니다. </td>
+									</tr>
+								</c:otherwise>
+
+							</c:choose>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
