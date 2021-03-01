@@ -74,7 +74,10 @@
 
 			<!-- ========== -->
 			
-			<!-- 전사게시판 사내공지 상세보기 code -->
+			<!--  사내공지 view code -->
+			<div>
+				${att }
+			</div>
 			<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -82,69 +85,69 @@
 				        <table class="table">
 				        <tr>
 				            <th class="success">제목</th>
-				            <td colspan="3">ㅠㅠㅠㅠㅠㅠㅠ</td>
+				            <td colspan="3">${obj.noticeSubject }</td>
 				        </tr>
 				        <tr>
+				        	<div class="form-group">
 				            <th class="success">작성자</th>
-				            <td>관리자</td>
+				            <td>${obj.noticeMid }</td>
 				            <th class="success">작성일</th>
-				            <td>2021.02.07</td>
+				            <td>${obj.noticeReportingDate }</td>
+				            </div>
 				        </tr>
 				        <tr>
 				            <th class="success">분류</th>
-				            <td><span style="color:red"><i class="fas fa-exclamation-triangle"></i></span> 중요공지</td>
+				            <td>${obj.noticeType }</td>
 				            <th class="success">조회수</th>
-				            <td>1</td>
+				            <td>${obj.noticeHit }</td>
 				        </tr>
 				        <tr>
 				        	<th>게시기한</th>
 				        	<td colspan="3">
-								<input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							</td>
+								<input type="radio" name="noticePostType" value="${obj.noticePostType }" checked>${obj.noticePostType } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								
+										(시작일자 &nbsp;<input type="date" id="searchDateOne" name="noticePostStartDate" value="${obj.noticePostStartDate }" readOnly>
+										&nbsp;~ &nbsp;
+										종료일자 &nbsp;<input type="date" id="searchDateTwo" name= "noticePostEndDate" value="${obj.noticePostEndDate }" readOnly> )
+								</td>
 				        </tr> 				         
 				        <tr>
 				        	<div class="form-group">
 					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
 					            <td colspan="3">
-					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" readonly="readonly" style="background-color:white">
-안녕하세요? 입사지원서 언제 쓰죠?
-안녕하세요? 입사지원서 언제 쓰죠?
-안녕하세요? 입사지원서 언제 쓰죠?
-안녕하세요? 입사지원서 언제 쓰죠?
-안녕하세요? 입사지원서 언제 쓰죠?
-안녕하세요? 입사지원서 언제 쓰죠?
-안녕하세요? 입사지원서 언제 쓰죠?
-안녕하세요? 입사지원서 언제 쓰죠?</textarea>
+					            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" readonly="readonly" style="background-color:white">${obj.noticeDoc }</textarea>
 					            </td>
 						  	</div>
 				        </tr>				        
 				        <tr style="border-color: #ffffff;">
 				        	<th class="success">첨부파일</th>
-				        	<td colspan="3">
-								하기싫어.png
-				        	</td>
+				        	<td colspan="3"></td>
 				        </tr>
 				        <tr>
-				        	<td style="border:none"></td>
-				        	<td colspan="3" style="border:none">
-				        		<img src="https://item.kakaocdn.net/do/7bc82c52413617e0d1e252f100c4738b617ea012db208c18f6e83b1a90a7baa7">
-				        	</td>
+				        	<c:forEach var="att" items="${att}">
+					        	<td style="border:none"></td>
+					        	<td colspan="3" style="border:none">
+					        		${att.oriFile }
+					        	</td>
+				        	</c:forEach>
 				        </tr>
 				        <tr>
 				            <td colspan="4" class="text-center">
-								<input type="button" class="btn btn-primary"  value="임시저장" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" value="저장" onclick="location.href=''">
-								<input type="button" class="btn btn-primary" value="취소" onclick="location.href=''">
-				            </td>
-				        </tr>
+								<input type="button" class="btn btn-primary" value="수정" onclick="location.href='/noticeUpdate?no=${obj.noticeNo }'">
+								<input type="button" class="btn btn-primary" value="목록가기" onclick="location.href='/noticeIndex'">
+					            </td>
+					        </tr>
 				        </table>
 				    </div>
 			    </div>
 			</div>
 			</form>
 			<!-- ========== -->
-			
-  			
+
+ 			<!-- 사내공지 댓글창 -->
+ 			<jsp:include page="notice_repl.jsp"/>
+ 			<!-- ========== -->
+ 			
 		</main>
 	</section>
 	

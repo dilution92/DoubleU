@@ -70,7 +70,7 @@
 						</div>
 					</form>
 				</div>
-				<!-- ========== -->
+			
 			
 			<!-- 전사게시판 사내공지 code -->
 			<div class="notice-container">
@@ -86,20 +86,19 @@
                     	</tr>
 	                	</thead>
 					<tbody class="e-approval-list text-muted">
-							<c:forEach begin="1" end="10">
-	                    		<tr>
-			                        <td style = "background-color:#ffffff; text-align:center;">1</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">일반공지</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">파이널 일정 안내 <i class="fas fa-paperclip"></i></td>
-			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">관리자</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">2021.01.31</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">31</td>
+	                		<c:forEach var='obj' items="${contentList1 }">
+	                    		<tr onClick="location.href='/noticeView?no=${obj.noticeNo }'">
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeNo }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeType }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeSubject }</td>
+			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">${obj.noticeMid }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeReportingDate }</td>
+			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeHit }</td>
 		                        </tr>
 							</c:forEach>
                 	</tbody>
             	</table>
    			</div>
-   			<!-- ========== -->
    			
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">
@@ -115,7 +114,6 @@
 					</ul>
 				</nav>
 			</div>
-			<!-- ========== -->
 
 		</main>
 	</section>

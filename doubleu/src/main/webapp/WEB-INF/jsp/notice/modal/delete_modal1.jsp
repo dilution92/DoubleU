@@ -12,7 +12,7 @@
 <div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
 
-<!-- 경조사 삭제 Modal -->
+<!-- 사내공지 삭제 Modal -->
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -23,7 +23,7 @@
       </div>
       <div class="modal-body">해당 게시물을 삭제하시겠습니까?</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="noticedelete2" onclick="location.href='/familyeventDeleteR?no='+${obj.familyeventNo }">삭제</button>
+        <button type="button" class="btn btn-primary" id="noticedelete2" onclick="location.href='/noticeDeleteR?no='+${obj.noticeNo }">삭제</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
       </div>
     </div>

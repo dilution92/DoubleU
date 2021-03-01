@@ -72,11 +72,17 @@ public class loginMainController {
 			mv.setViewName("MainPage/index");
 		}
 		
-		if(loginVo.getMemberName().equals("정해준") || loginVo.getMemberName().equals("정희석")) {
+		if(loginVo.getMemberName().equals("정희석")) {
 			 profileImg = "/img/profilem.jpg";
 		}
+		else if(loginVo.getMemberName().equals("정해준")) {
+			profileImg = "/img/profilehaejun.png";
+		}
+		else if(loginVo.getMemberName().equals("김재현")){
+			 profileImg = "/img/profilekim.png";
+		}
 		else {
-			 profileImg = "/img/profileg.jpg";
+			profileImg = "/img/profileg.jpg";
 		}
 		//전자결재 불러오기
 		mv.addObject("profileImg", profileImg);
