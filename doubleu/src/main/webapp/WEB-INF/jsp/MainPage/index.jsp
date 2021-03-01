@@ -146,7 +146,7 @@ function clock() {
     var seconds = date.getSeconds();
     var secondsTime = (seconds<10)? '0'+seconds:seconds; 
 
-    clockTarget.innerText = month + '월 ' + clockDate + '일 ' + week[day] + '요일 ' + hoursTime + ':' + minutesTime + ':' + secondsTime;
+    clockTarget.innerText = month+1 + '월 ' + clockDate + '일 ' + week[day] + '요일 ' + hoursTime + ':' + minutesTime + ':' + secondsTime;
     // 월은 0부터 1월이기때문에 +1일을 해주고 
     // 시간 분 초는 한자리수이면 시계가 어색해보일까봐 10보다 작으면 앞에0을 붙혀주는 작업을 3항연산으로 했습니다. 
 }

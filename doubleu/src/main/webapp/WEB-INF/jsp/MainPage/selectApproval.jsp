@@ -10,6 +10,7 @@
 </head>
 <body>
 			<h6 class="article-title">최근 결재함</h6>
+			
 			<ul class="nav nav-tabs ariticle-aTag-ms" id="myTab" role="tablist">
 			 	<li class="nav-item" role="presentation">
 			   		<a class="nav-link active" id="#outgoingApproval-tab" data-toggle="tab" href="#outgoingApproval" role="tab" aria-controls="#outgoingApproval" aria-selected="true">발신</a>
@@ -91,7 +92,6 @@
 											<td><span class="badge badge-warning">결재반려</span></td>	
 										</c:when>
 									</c:choose>
-									
 								</tr>
 							</c:forEach>
 						</tbody>
