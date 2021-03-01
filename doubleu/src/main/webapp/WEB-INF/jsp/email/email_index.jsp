@@ -188,10 +188,6 @@ changeChkReadBtn();
 // 메일 검색 bar
 emailSelectSearch();
 
-btnSearchDetail();
-
-
-
 </script>
 </body>
 </html>

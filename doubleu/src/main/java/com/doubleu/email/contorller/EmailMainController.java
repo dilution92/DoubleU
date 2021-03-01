@@ -1,5 +1,6 @@
 package com.doubleu.email.contorller;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -67,8 +68,9 @@ public class EmailMainController {
 		// 받은 메일함 count 
 		int cnt = selectService.selectSendEmail(req, session);
 		int emailMailBox = 3; //보낸 메일함
+		
 		page.setEmailMailBox(emailMailBox);
-
+		
 		Map<String, Object> map = DaoService.selectPaging(page, session);
 		System.out.println("page : " + page);
 		
@@ -80,6 +82,8 @@ public class EmailMainController {
 		return mv;
 	}
 	
+	
+	// 보낸 메일함
 	@RequestMapping(value="/emailEmailT", 
 			method={RequestMethod.GET, RequestMethod.POST})
 
@@ -97,7 +101,7 @@ public class EmailMainController {
 		loginVo = (LoginVo) session.getAttribute("member");	
 		String memberMid = loginVo.getMemberMid();
 		String memberAddress = loginVo.getMemberEmail();
-		int EmailBox = 4;
+		int EmailBox = 3;
 		
 		vo.setMemberMid(memberMid);
 		vo.setEmailAddress(memberAddress);
@@ -109,7 +113,7 @@ public class EmailMainController {
 		
 	
 
-		int cnt = DaoService.selectSendEmail(vo);
+		int cnt = selectService.selectSendEmail(req, session);
 	
 		// 페이징
 		Map<String, Object> map = DaoService.selectPaging(page, session);
@@ -157,29 +161,6 @@ public class EmailMainController {
 	}
 	
 	
-	// 메일 검색 바 내용, email_name 으로 검색
-		@RequestMapping(value="/selectMemberFindStr", 
-				method={RequestMethod.GET, RequestMethod.POST})
-		public ModelAndView selectMemberFindStr(
-				EmailMainVo vo,
-				HttpServletRequest req,
-				EmailPage page,
-				LoginVo loginVo,
-				HttpSession session
-				) {
-
-			ModelAndView mv = new ModelAndView();
-			
-			String memberFindStr = req.getParameter("memberFindStr");
-			System.out.println(memberFindStr);
-			
-			String memberOption = req.getParameter("memberOption");
-			System.out.println(memberOption);
-			
-			
-			return mv;
-		}
-
 
 	// email_result.jsp
 	@RequestMapping(value="/emailResult", 
@@ -229,10 +210,10 @@ public class EmailMainController {
 		page.setMemberMid(memberMid);
 		
 		// 받은 메일함 count 
-		//int readCnt = DaoService.selectSendEmail(page, session, loginVo);
+		int readCnt = selectService.selectSendEmail(req, session);
 		
 		mv.addObject("EmailMainVo", vo);
-		//mv.addObject("readCnt", readCnt);
+		mv.addObject("readCnt", readCnt);
 		mv.setViewName("email/email_result");
 
 		return mv;
@@ -246,12 +227,12 @@ public class EmailMainController {
 
 	public ModelAndView emailRead(
 			EmailMainVo vo,
-			HttpServletRequest req
-
+			HttpServletRequest req,
+			HttpSession session
 			) {
 
 		ModelAndView mv = new ModelAndView();
-
+		
 		String emailNo_ = req.getParameter("emailNoBtn");
 		int emailNo = Integer.parseInt(emailNo_);
 
@@ -261,10 +242,13 @@ public class EmailMainController {
 		List<EmailReceiverVo> selectSendList= DaoService.selectSendPerson(emailNo);
 		List<EmailReceiverVo> selectRefList= DaoService.selectRefPerson(emailNo);
 		
+		int cnt = selectService.selectSendEmail(req, session);
+		
 		mv.addObject("selectRefList", selectRefList);
 		mv.addObject("selectSendList", selectSendList);
 		mv.addObject("selectRead", selectEmailNo);
 		mv.addObject("selectFiles", selectFiles);
+		mv.addObject("readCnt", cnt);
 		mv.setViewName("email/email_read");
 
 		return mv;
@@ -279,7 +263,8 @@ public class EmailMainController {
 			EmailPage page,
 			EmailMainVo vo,
 			LoginVo loginVo,
-			HttpSession session
+			HttpSession session,
+			HttpServletRequest req
 			) {
 	
 		ModelAndView mv = new ModelAndView();
@@ -298,7 +283,7 @@ public class EmailMainController {
 		page.setEmailMailBox(EmailBox);
 		page.setEmailAddress(emailAddress);
 		
-		int cnt = DaoService.selectSendEmail(vo);
+		int cnt = selectService.selectSendEmail(req, session);
 		
 		
 		
@@ -319,7 +304,8 @@ public class EmailMainController {
 			value="/emailTemp", 
 			method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailTemp(
-			
+			@RequestParam("attEmailFileList") 
+			List<MultipartFile> mul,
 			EmailMainVo vo,
 			LoginVo loginVo,
 			EmailPage page,
@@ -337,17 +323,96 @@ public class EmailMainController {
 		
 		vo.setMemberMid(memberMid);
 		vo.setMemberNo(memberNo);
+		
+		// 메일 쓰기 받은 사람
+		List<EmailReceiverVo> emailRevList = emailReveiverService.insertRev(req);
+		vo.setEmailRevList(emailRevList);
+
+		// 중요 표시 체크
+		String emailChk = req.getParameter("emailChk");
+
+		if(emailChk == null) {
+			emailChk = "";
+			vo.setEmailChk(emailChk);
+		}else {
+			emailChk = "!";
+			vo.setEmailChk(emailChk);
+		}
+
+		// 파일 업로드 
+		List<AttEmailVo> attFileList = FileUpLoadService.upload(mul, req);
+		vo.setAttFileList(attFileList);
+		
 		int tempCnt = DaoService.insertTemporary(vo);
 		
 		page.setMemberMid(memberMid);
 		page.setEmailMailBox(EmailBox);
-		int cnt = DaoService.selectSendEmail(vo);
+		int cnt = selectService.selectSendEmail(req, session);
 		
 		
 		System.out.println("임시저장 : " + tempCnt);
 		
 		mv.addObject("readCnt", cnt);
-		mv.setViewName("email/email_index");
+		mv.setViewName("redirect:/emailTempList");
+
+		return mv;
+	}
+	
+	// email_temporary.jsp
+	@RequestMapping(value="/emailTempList", method={RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView emailTempList(
+			EmailMainVo vo,
+			LoginVo loginVo,
+			EmailPage page,
+			HttpServletRequest req,
+			HttpSession session
+			) {
+		ModelAndView mv = new ModelAndView();
+		
+		int mailBox = 2;
+		page.setEmailMailBox(mailBox);
+		
+		int cnt = selectService.selectSendEmail(req, session);
+		Map<String, Object> map = DaoService.selectTemp(page, session);
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
+		mv.addObject("readCnt", cnt);
+		mv.setViewName("email/email_temporary");
+
+		return mv;
+	}
+	
+	// 임시 저장 읽기
+	@RequestMapping(
+			value="/emailTempRead", 
+			method= {RequestMethod.GET, RequestMethod.POST})
+
+	public ModelAndView emailTempRead(
+			EmailMainVo vo,
+			HttpServletRequest req,
+			HttpSession session
+			) {
+
+		ModelAndView mv = new ModelAndView();
+		
+		String emailNo_ = req.getParameter("emailNoBtn");
+		int emailNo = Integer.parseInt(emailNo_);
+
+		System.out.println(emailNo);
+		List<EmailMainVo> selectEmailNo = DaoService.selectEmailNo(emailNo);
+		List<AttEmailVo> selectFiles = DaoService.selectFiles(emailNo);
+		List<EmailReceiverVo> selectSendList= DaoService.selectSendPerson(emailNo);
+		List<EmailReceiverVo> selectRefList= DaoService.selectRefPerson(emailNo);
+		
+		int cnt = selectService.selectSendEmail(req, session);
+		
+		mv.addObject("selectRefList", selectRefList);
+		mv.addObject("selectSendList", selectSendList);
+		mv.addObject("selectRead", selectEmailNo);
+		mv.addObject("selectFiles", selectFiles);
+		mv.addObject("readCnt", cnt);
+		mv.setViewName("email/email_tempRead");
 
 		return mv;
 	}
@@ -379,17 +444,95 @@ public class EmailMainController {
 		for(String arrayList : array) {
 			System.out.println(arrayList);
 			int arrayListInt = Integer.parseInt(arrayList);
-			
 			vo.setEmailMailBox(mailBox);
 			vo.setEmailNo(arrayListInt);
 			int cnt = DaoService.updateSendTrash(vo);
-			System.out.println(cnt);
 		}
 		
 		mv.setViewName("redirect:/emailIndex");
 		return mv;
 	
 	}
+	
+	// 휴지통
+	@RequestMapping(value="/emailThash", method=RequestMethod.GET)
+	public ModelAndView emailThash(
+			EmailMainVo vo,
+			LoginVo loginVo,
+			EmailPage page,
+			HttpServletRequest req,
+			HttpSession session
+			) {
+		ModelAndView mv = new ModelAndView();
+
+		
+		int mailBox = 5;
+		page.setEmailMailBox(mailBox);
+		
+		int cnt = selectService.selectSendEmail(req, session);
+		Map<String, Object> map = DaoService.selectTemp(page, session);
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
+		mv.addObject("readCnt", cnt);
+		
+		mv.setViewName("email/email_trash");
+
+		return mv;
+	}
+	
+	// email_spam.jsp
+	@RequestMapping(value="/emailSpam", method=RequestMethod.GET)
+	public ModelAndView emailSpam(
+			EmailMainVo vo,
+			LoginVo loginVo,
+			EmailPage page,
+			HttpServletRequest req,
+			HttpSession session
+			) {
+		ModelAndView mv = new ModelAndView();
+
+		
+		int mailBox = 4; //스팸 메일함
+		page.setEmailMailBox(mailBox);
+		
+		int cnt = selectService.selectSendEmail(req, session);
+		Map<String, Object> map = DaoService.selectTemp(page, session);
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
+		mv.addObject("readCnt", cnt);
+		
+		mv.setViewName("email/email_spam");
+
+		return mv;
+	}
+	
+	// email_important.jsp
+		@RequestMapping(value="/emailImportant", method={RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView emailImportant(
+				EmailMainVo vo,
+				LoginVo loginVo,
+				EmailPage page,
+				HttpServletRequest req,
+				HttpSession session
+				) {
+			ModelAndView mv = new ModelAndView();
+
+			
+			int mailBox = 1; //스팸 메일함
+			page.setEmailMailBox(mailBox);
+			
+			int cnt = selectService.selectSendEmail(req, session);
+			Map<String, Object> map = DaoService.selectTemp(page, session);
+			
+			mv.addObject("page", map.get("page"));
+			mv.addObject("list", map.get("pageList"));
+			mv.addObject("readCnt", cnt);
+			mv.setViewName("email/email_important");
+
+			return mv;
+		}
 	
 }
 
