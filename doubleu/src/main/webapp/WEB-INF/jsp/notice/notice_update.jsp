@@ -172,7 +172,7 @@
 
 			<!-- 삭제하기 모달창 -->
 			<div class="modal fade" id="staticBackdrop2" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-	       		<jsp:include page="./modal/delete_modal.jsp"/>
+	       		<jsp:include page="./modal/delete_modal1.jsp"/>
 			</div>   
  			
 		</main>

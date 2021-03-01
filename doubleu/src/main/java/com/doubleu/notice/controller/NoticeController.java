@@ -61,7 +61,7 @@ public class NoticeController {
 		return mv;
 	}
    
-   // 경조사 index update
+   // 사내공지 index update
    @RequestMapping(value = "/noticeUpdateR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView noticeUpdate(NoticeVo vo){
       ModelAndView mv = new ModelAndView();
@@ -73,7 +73,7 @@ public class NoticeController {
 	  return mv;
    }
    
-   // 경조사 index delete
+   // 사내공지 index delete
    @RequestMapping(value = "/noticeDeleteR", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView noticeDelete(@RequestParam int no){
 	  System.out.println("delete");

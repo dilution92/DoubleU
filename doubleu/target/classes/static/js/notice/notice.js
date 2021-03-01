@@ -111,7 +111,7 @@ $(document).ready(function(){
     }
 });
 
-/* notice_delete 삭제하기 모달 이후 submit */
+/* notice_update 수정 모달 이후 submit */
 $(function(){
    $("#noticeUpdate1").click(function(){
         $('#staticBackdrop1').modal();
@@ -121,6 +121,12 @@ $(function(){
         $('#noticeUpdateForm').submit();
     })
 })
+/* notice_delete 삭제 모달 이후 submit */
+$(function(){
+   $("#noticedelete1").click(function(){
+        $('#staticBackdrop2').modal();
+    	})
+    })
 
 $(function(){
    $("#familyevnetdelete1").click(function(){
