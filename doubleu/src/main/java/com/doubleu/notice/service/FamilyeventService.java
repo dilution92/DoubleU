@@ -4,13 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.notice.mybatis.FamilyeventMapper;
 import com.doubleu.notice.vo.FamilyeventAttVo;
 import com.doubleu.notice.vo.FamilyeventVo;
 
 @Service
+@Transactional
 public class FamilyeventService {
+	
 	@Autowired
 	FamilyeventMapper mapper;
 

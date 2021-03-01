@@ -30,8 +30,8 @@
 						<thead class="text-muted text-gray-dark">
 							<tr>
 								<th scope="col"  width="100px;">분류</th>
-								<th scope="col" width="170px;">제목</th>
-								<th scope="col" width="150px;">작성자</th>
+								<th scope="col" width="220px;">제목</th>
+								<th scope="col" width="100px;">작성자</th>
 								<th scope="col" width="100px;">날짜</th>
 								<th scope="col" width="90px;">조회수</th>
 							</tr>
@@ -39,7 +39,7 @@
 						
 						<tbody class="text-muted">
 						<c:set var="size" value="5" />
-	                		<c:forEach var='obj' items="${contentList1 }">
+	                		<c:forEach var='obj' items="${contentList1 }" end="${size }">
 								<tr onclick="location.href='/noticeView?no=${obj.noticeNo }'">
 									<td>${obj.noticeType}</td>
 									<td>${obj.noticeSubject}</td>					
@@ -63,8 +63,8 @@
 						<thead class="text-muted text-gray-dark">
 							<tr>
 								<th scope="col"  width="100px;">분류</th>
-								<th scope="col" width="170px;">제목</th>
-								<th scope="col" width="150px;">작성자</th>
+								<th scope="col" width="220px;">제목</th>
+								<th scope="col" width="100px;">작성자</th>
 								<th scope="col" width="100px;">날짜</th>
 								<th scope="col" width="90px;">조회수</th>
 							</tr>
@@ -72,7 +72,7 @@
 						
 						<tbody class="text-muted">
 						<c:set var="size" value="5" />
-	                		<c:forEach var='obj' items="${contentList }">
+	                		<c:forEach var='obj' items="${contentList }" end="${size }">
 								<tr onclick="location.href='/familyeventView?no=${obj.familyeventNo }'">
 									<td>${obj.familyeventType}</td>
 									<td>${obj.familyeventSubject}</td>					
