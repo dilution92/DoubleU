@@ -76,8 +76,10 @@
 
 			<!-- ========== -->
 			
-			<!-- 경조사 글쓰기 code -->
-			
+			<!-- 경조사 update code -->
+		<div>
+			${att }
+		</div>
 			<form action="/familyeventUpdateR" method="post" id="familyeventUpdateForm"  enctype="multipart/form-data">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>

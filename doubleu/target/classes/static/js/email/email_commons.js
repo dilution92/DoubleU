@@ -193,3 +193,28 @@ function goPage(page) {
 	frm.submit();
 
 }
+
+
+// 11.
+
+var DeleteBtn = function() {
+
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value)
+		};
+		
+	}
+	
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+	deleteList.value = valueArr;
+	
+	frm.action = "/DeleteSendTrash"
+	frm.submit();
+	
+}

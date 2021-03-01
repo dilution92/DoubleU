@@ -76,13 +76,12 @@
 					</form>
 				</div>
 
-			<!-- ========== -->
 			
 			<!-- 경조사 글쓰기 code -->
 <% Date nowTime = new Date();
    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd"); %>
    			
-			<form action="/familyeventInsertR" method="post" id="familyeventInsertForm"  enctype="multipart/form-data">
+			<form action="/familyeventInsertR" method="post" id="familyeventInsertForm" enctype="multipart/form-data">
 				<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -116,8 +115,8 @@
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
 									<label for="familyeventPostType"></label>
-										<input type="radio" name="familyeventPostType" value="영구" checked><label for="r1">영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-										<input type="radio" name="familyeventPostType" value="설정"><label for="r2">설정  &nbsp;&nbsp;</label>
+										<input type="radio" name="familyeventPostType" value="영구" id="r1" checked><label for="r1">영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+										<input type="radio" name="familyeventPostType" value="설정" id="r2"><label for="r2">설정  &nbsp;&nbsp;</label>
 										
 											(시작일자 &nbsp;<input type="date" id="searchDateOne" name="familyeventPostStartDate" readOnly>
 											&nbsp;~ &nbsp;
