@@ -13,13 +13,14 @@ public class MarketPage {
 	int blockSize=4;
 	
 	String findStr;
-	String marketCategory;
+	String findType;
 	
-	public String getMarketCategory() {
-		return marketCategory;
+
+	public String getFindType() {
+		return findType;
 	}
-	public void setMarketCategory(String marketCategory) {
-		this.marketCategory = marketCategory;
+	public void setFindType(String findType) {
+		this.findType = findType;
 	}
 	public MarketPage() {}
 	public MarketPage(int tot, int now) {

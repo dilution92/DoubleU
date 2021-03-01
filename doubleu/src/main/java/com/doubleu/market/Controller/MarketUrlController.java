@@ -36,11 +36,23 @@ public class MarketUrlController {
 			MarketDibVo dibvo,MarketVo vo, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		
-
+		String findStr = "";
+		String findType = "";
+		
+		
 		if(page ==null || page.getNowPage()==0) {
 			page.setNowPage(1);
 		}
-		
+		if(req.getParameter("findStr") != null) {
+			findStr = req.getParameter("findStr");
+		}
+		if(req.getParameter("findType") != null) {
+			findType = req.getParameter("findType");
+		}
+		System.out.println("findStr :" + findStr);
+		System.out.println("findType :" + findType);
+		page.setFindType(findType);
+		page.setFindStr(findStr);
 		Map<String, Object> map = dao.select(page);
 		
 		int cnt = dao.totalCount();

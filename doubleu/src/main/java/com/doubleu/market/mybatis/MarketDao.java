@@ -36,6 +36,7 @@ public class MarketDao {
 			System.out.println("BoardDao.select()..........................1");
 			System.out.println(page.getNowPage());
 			System.out.println(page.getFindStr());
+			System.out.println(page.getFindType());
 			
 			
 			
@@ -46,7 +47,7 @@ public class MarketDao {
 				page.setTotListSize(totListSize);
 				page.pageCompute();
 
-		
+				
 	//			List<MarketAttVo> attList = new ArrayList<>();
 
 //				attList = mapper.selectAttOne();
@@ -74,9 +75,9 @@ public class MarketDao {
 		
 
 		//검색결과갯수
-		public int selectCount() {
+		public int selectCount(MarketPage page) {
 			int cnt = 0;
-			cnt = mapper.selectCount();
+			cnt = mapper.selectCount(page);
 			System.out.println("검색글갯수 : " + cnt);
 			
 			return cnt;

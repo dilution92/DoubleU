@@ -30,10 +30,10 @@
 								<option value="도서/티켓">도서/티켓</option>
 								<option value="기타 중고물품">기타 중고물품</option>
 							</select>
-							<input class="form-control form-control-sm" type="text" placeholder="상품명" aria-label="Search" id='findStr'  value='${param.findStr}'name='findStr' style="margin-left:5px;"/> 
+							<input class="form-control form-control-sm" type="text" placeholder="상품명" aria-label="Search" id='findStr'  value="${(empty param.findStr)? '':param.findStr}" name='findStr' style="margin-left:5px;"/> 
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" style="margin-left:5px;"id="market_btnFind"/> 
 							<!-- hidden -->
-							<input type='hidden' name='marketCategory'  value='null' />
+							<input type='hidden' name='findType'  value="${(empty param.findType)? '':param.findType}" />
 							<input type='hidden' name='marketNo'  value=''/>
 							<input type='hidden' name='dibUser'  value='${member.memberName }'/>
 							

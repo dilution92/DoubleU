@@ -42,11 +42,11 @@
 
 		<main class="e-approval-article">
 			<div class="market-header" style="height: 2%;  margin-bottom: 50px;">
-				<h3 style="width: 200px; height: 30px;">중고게시판 </h3>
+				<h3 style="width: 200px; height: 30px;">더블마켓 </h3>
 			</div>
 			<!-- ========== -->
 			<div class='container market-price-search-container 'id = "content">
-				<div class='market-price-search-form'>
+				<div class='market-price-search-form' style="margin-bottom:50px;">
 					<div id = "cont-wrap" >
 						<div class="cate-top-txt"><h3>시세검색</h3></div>
 			        </div>
@@ -54,8 +54,8 @@
 			                 <form  name="frm_search" action="/marketSelectPrice" method="post" class="search-form" >
 								 <div class="market-search-bar" >
 									 <input class="form-control form-control-lg market-search"
-											type="text" placeholder="상품명" aria-label="Search"
-											id="approvalFindStr" value="${param.selectPrice }" name="selectPrice" style="width:50%;">
+											type="text" placeholder="정확한 상품명을 입력해주세요" aria-label="Search"
+											id="approvalFindStr" value="${param.selectPrice }" name="selectPrice" style="width:50%;font-size:1rem;">
 					                 <input class="btn btn-outline-primary btn-lg" type="submit" value="검색" />
 					                    <input type="hidden" name="nowPage" value="${(empty param.nowPage)? 1: param.nowPage}" size="10">
 									</div>
@@ -74,14 +74,11 @@
       						data-toggle="tooltip" data-placement="left" title="바로검색" id="example">${param.selectPrice }게시물 보기</button>
       					</div>
       				</c:when>
-      				<c:otherwise>
-      					<div class="price-chart-detail">
-						  ${msg}
-						</div>
-      				</c:otherwise>
-      			
+      				<c:when test="${!empty msg }">
+						<div class="alert alert-danger" role="alert"> ${msg }</div>
+					</c:when>
       			</c:choose>
-                    </div>
+     </div>
  
         </div>
  
