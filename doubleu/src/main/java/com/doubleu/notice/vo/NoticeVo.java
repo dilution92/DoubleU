@@ -1,61 +1,107 @@
 package com.doubleu.notice.vo;
 
+import java.util.List;
+
 public class NoticeVo {
-	int notice_no;
-	String notice_subject;
-	String notice_mid;
-	String notice_date;
-	String notice_type;
-	int notice_hit;
-	String notice_doc;
-	String notice_file;
+	int noticeNo;
+	String noticeSubject;
+	String noticeMid;
+	String noticeReportingDate;
+	String noticePostType;
+	String noticePostStartDate;
+	String noticePostEndDate;
+	String noticeType;
+	int noticeHit;
+	String noticeDoc;
 	
-	public int getNotice_no() {
-		return notice_no;
+	List<NoticeAttVo> attList;
+
+	public int getNoticeNo() {
+		return noticeNo;
 	}
-	public void setNotice_no(int notice_no) {
-		this.notice_no = notice_no;
+
+	public void setNoticeNo(int noticeNo) {
+		this.noticeNo = noticeNo;
 	}
-	public String getNotice_subject() {
-		return notice_subject;
+
+	public String getNoticeSubject() {
+		return noticeSubject;
 	}
-	public void setNotice_subject(String notice_subject) {
-		this.notice_subject = notice_subject;
+
+	public void setNoticeSubject(String noticeSubject) {
+		this.noticeSubject = noticeSubject;
 	}
-	public String getNotice_mid() {
-		return notice_mid;
+
+	public String getNoticeMid() {
+		return noticeMid;
 	}
-	public void setNotice_mid(String notice_mid) {
-		this.notice_mid = notice_mid;
+
+	public void setNoticeMid(String noticeMid) {
+		this.noticeMid = noticeMid;
 	}
-	public String getNotice_date() {
-		return notice_date;
+
+	public String getNoticeReportingDate() {
+		return noticeReportingDate;
 	}
-	public void setNotice_date(String notice_date) {
-		this.notice_date = notice_date;
+
+	public void setNoticeReportingDate(String noticeReportingDate) {
+		this.noticeReportingDate = noticeReportingDate;
 	}
-	public String getNotice_type() {
-		return notice_type;
+
+	public String getNoticePostType() {
+		return noticePostType;
 	}
-	public void setNotice_type(String notice_type) {
-		this.notice_type = notice_type;
+
+	public void setNoticePostType(String noticePostType) {
+		this.noticePostType = noticePostType;
 	}
-	public int getNotice_hit() {
-		return notice_hit;
+
+	public String getNoticePostStartDate() {
+		return noticePostStartDate;
 	}
-	public void setNotice_hit(int notice_hit) {
-		this.notice_hit = notice_hit;
+
+	public void setNoticePostStartDate(String noticePostStartDate) {
+		this.noticePostStartDate = noticePostStartDate;
 	}
-	public String getNotice_doc() {
-		return notice_doc;
+
+	public String getNoticePostEndDate() {
+		return noticePostEndDate;
 	}
-	public void setNotice_doc(String notice_doc) {
-		this.notice_doc = notice_doc;
+
+	public void setNoticePostEndDate(String noticePostEndDate) {
+		this.noticePostEndDate = noticePostEndDate;
 	}
-	public String getNotice_file() {
-		return notice_file;
+
+	public String getNoticeType() {
+		return noticeType;
 	}
-	public void setNotice_file(String notice_file) {
-		this.notice_file = notice_file;
+
+	public void setNoticeType(String noticeType) {
+		this.noticeType = noticeType;
 	}
+
+	public int getNoticeHit() {
+		return noticeHit;
+	}
+
+	public void setNoticeHit(int noticeHit) {
+		this.noticeHit = noticeHit;
+	}
+
+	public String getNoticeDoc() {
+		return noticeDoc;
+	}
+
+	public void setNoticeDoc(String noticeDoc) {
+		this.noticeDoc = noticeDoc;
+	}
+
+	public List<NoticeAttVo> getAttList() {
+		return attList;
+	}
+
+	public void setAttList(List<NoticeAttVo> attList) {
+		this.attList = attList;
+	}
+	
 }
