@@ -83,7 +83,8 @@
 			<!-- ========== -->
 			
 			<!-- 최근 수신한 문서함 code -->
-							<strong class="text-gray-dark">최근 수신한 문서</strong>
+		<div class="e-approval-table">
+			<strong class="text-gray-dark">최근 수신한 문서</strong>
 				<table class="table table-hover table-sm e-approval-list">
 					<thead class="text-muted text-gray-dark">
 						<tr>
@@ -130,6 +131,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
+			</div>
 			<!-- ========== -->
 			
 			<!-- 수신 문서함 페이징 아이콘 code -->

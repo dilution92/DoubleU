@@ -48,7 +48,7 @@
 			<div class="chooseMaker-search">
 				<select id="makerPosition" class="form-control form-control-sm e-approval-chooseMaker-select">
 				<option value=""> 부서 선택 </option>
-				<option value="it기술부">it기술부</option>
+				<option value="IT기술부">IT기술부</option>
 				<option value="영업부">영업부</option>
 				<option value="관리부">관리부</option>
 				</select>

@@ -70,7 +70,7 @@
 							<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${i})">${i}</a></li>
 						</c:forEach>
 						<c:choose>
-							<c:when test="${page.endPage >  page.totPage}">
+							<c:when test="${page.endPage < page.totPage}">
 								<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em" onclick="goMemberPage(${page.endPage+1})">&gt;</a></li>
 							</c:when>
 							<c:otherwise>

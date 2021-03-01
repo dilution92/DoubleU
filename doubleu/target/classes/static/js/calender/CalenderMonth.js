@@ -3,8 +3,50 @@
  */
 
 
+/* 월간 일정*/
+
+// 이전 다음 버튼
+$(function(){
+    $("#month").change(function(){
+    	var changedMonth = parseInt($('#month').val());
+    	var url = "/MonthSelectedMonth?changedMonth="+changedMonth;
+    	location.href=url;
+    })
+    
+    $("#year").change(function(){
+    	var changedyear = parseInt($('#year').val());
+    	var url = "/MonthSelectedYear?changedYear="+changedyear;
+    	location.href=url;
+    })
+    
+})
 
 
+/* 주간 일정*/
+
+// 이전 다음 버튼
+$(function(){
+    $("#month").change(function(){
+    	var changedMonth = parseInt($('#month').val());
+    	var url = "/WeekSelectedMonth?changedMonth="+changedMonth;
+    	location.href=url;
+    })
+    
+    $("#year").change(function(){
+    	var changedyear = parseInt($('#year').val());
+    	var url = "/WeekSelectedYear?changedYear="+changedyear;
+    	location.href=url;
+    })
+})
+
+
+
+
+
+
+/* 공통 부분 */
+
+// 모달 창
 $(function(){
 	$(".calender_modal").click(function(){
     	var param = $(this).attr("id");
@@ -50,27 +92,7 @@ $(function(){
     })
 })
 
-$(function(){
-    $("#month").change(function(){
-    	var changedMonth = parseInt($('#month').val());
-    	var url = "/MonthSelectedMonth?changedMonth="+changedMonth;
-    	location.href=url;
-    })
-    
-    $("#year").change(function(){
-    	var changedyear = parseInt($('#year').val());
-    	var url = "/MonthSelectedYear?changedYear="+changedyear;
-    	location.href=url;
-    })
-    
-})
-
-$(document).ready(function(){
-	var month = $("#monthcome").val();
-	
-	 $("#month").val(month).attr("selected","selected");
-})
-
+// 해당 날짜 파란색 테두리
 $(document).ready(function(){
 	var year = $("#year").val();
 	var month = $("#monthcome").val();
@@ -84,3 +106,11 @@ $(document).ready(function(){
 	var targetToday = document.getElementsByClassName(year+month+day)[0];
 	targetToday.style.border="5px skyblue solid";
 })
+
+// 월 셀렉박스 월 받아오기
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	
+	 $("#month").val(month).attr("selected","selected");
+})
+

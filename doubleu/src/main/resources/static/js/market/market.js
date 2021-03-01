@@ -2,13 +2,26 @@
  * 
  */
 
+/*----------댓글 삭제----------------*/
 
 
 
 
-/*--------찜에서 상세보기----------*/
-
-
+/*----------댓글 수정----------------*/
+function replModify(replDoc, replNo) {
+	var frm = document.market_repl_list;
+	frm.replDoc1.value =replDoc;
+	console.log(frm.replDoc1.value);
+	
+	var replDoc2 = frm.replDoc1.value;
+	console.log(replDoc2);
+	document.getElementById("market-message-text").value = replDoc2;
+	
+	var rfrm = document.market_repl_modi;
+	rfrm.replNo.value=replNo;
+	console.log(rfrm.replNo.value);
+	$("#replModal").modal();
+}
 /*--------찜목록으로 가기 ----------*/
 /*function godib(memberName) {
 	var frm = document.frm_market;

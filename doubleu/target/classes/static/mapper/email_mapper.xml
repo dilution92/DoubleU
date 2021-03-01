@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND b.email_rev_address = #{emailAddress}
 	</select>
 	
+
 	
     <!-- 페이지 -->
 	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.email.vo.EmailPage">
@@ -187,6 +188,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		SELECT * FROM dual
 	</insert>
+	
+	
+	<!-- update -->
+	<update id="updateSendTrash"
+	parameterType="com.doubleu.email.vo.EmailMainVo">
+		UPDATE email 
+		SET
+		email_mailBox = ${emailMailBox}
+		WHERE email_no = ${emailNo}
+	</update>
+	
+	
+	
 	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
  
 	<result property="emailNo" column="email_no" />

@@ -8,11 +8,13 @@
 <title>Insert title here</title>
 <!-- bootstrap CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
 
 <link
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
@@ -192,6 +194,54 @@ $(function(){
     $("calenderDateStart").click(function(){
         console.log(document.getElementsByName("calenderDateStart")[0].value);
     })
+    
+    
+    // 전부체크 버튼
+    
+    $("input:checkbox[name=allchk]").click(function(){
+	   var checked = $(this).is(':checked');
+	   if(checked){
+		   $('input:checkbox[name=memberchk]').prop('checked',true);
+	   }else{
+		   $('input:checkbox[name=memberchk]').prop('checked',false);
+	   }
+	});
+    
+    $("#inputButton").click(function(){
+   	 	var checked = $('.memberChk').is(':checked');
+   	 	
+   	 	if(checked){
+   	 	var team = $(this).next().val();
+   		var name = $(this).next().next().val();
+   		var position = $(this).next().next().next().val();
+   		
+   		console.log(team+"@@@@@@@@@@@@@@@@@@@@@@@");
+    	console.log(name+"@@@@@@@@@@@@@@@@@@@@@@@");
+   	 	}
+   	 	
+   	/* 	 if(("input:checkbox[name=memberchk]").is(":checked") ==true){
+   			var team = $(this).parent().find('span').eq(0).val();
+        	var name = $(this).parent().find('span').eq(1).val();
+        	var position = $(this).parent().find('span').eq(2).val();
+        	
+        	
+        	
+        	var c1 = document.createElement('span');
+        	var c2 = document.createElement('span');
+        	var c3 = document.createElement('span');
+        	
+        	c1.append(team);
+        	c2.append(name);
+        	c3.append(position);
+        	
+        	$(".outputMember").append(c1);
+        	$(".outputMember").append(c2);
+        	$(".outputMember").append(c3);
+   		 } */
+    		
+    	
+    })
+    
 })
 
 

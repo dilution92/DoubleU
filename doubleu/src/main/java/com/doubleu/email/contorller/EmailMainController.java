@@ -155,6 +155,30 @@ public class EmailMainController {
 
 		return mv;
 	}
+	
+	
+	// 메일 검색 바 내용, email_name 으로 검색
+		@RequestMapping(value="/selectMemberFindStr", 
+				method={RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView selectMemberFindStr(
+				EmailMainVo vo,
+				HttpServletRequest req,
+				EmailPage page,
+				LoginVo loginVo,
+				HttpSession session
+				) {
+
+			ModelAndView mv = new ModelAndView();
+			
+			String memberFindStr = req.getParameter("memberFindStr");
+			System.out.println(memberFindStr);
+			
+			String memberOption = req.getParameter("memberOption");
+			System.out.println(memberOption);
+			
+			
+			return mv;
+		}
 
 
 	// email_result.jsp
@@ -327,6 +351,46 @@ public class EmailMainController {
 
 		return mv;
 	}
+	
+	// 메인 index에서 메일 휴지통으로 보내기
+	@RequestMapping(
+			value="/DeleteSendTrash", 
+			method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView DeleteSendTrash(
+			EmailMainVo vo,
+			LoginVo loginVo,
+			EmailPage page,
+			HttpServletRequest req,
+			HttpSession session) {
+
+		ModelAndView mv = new ModelAndView();
+		
+		String values[] = req.getParameterValues("deleteBtnList");
+		
+		int mailBox = 5; // 스팸메일함
+		
+		String[] array = null;
+		
+		for(int i=0; i<values.length; i++) {
+			String str = values[i];
+			array = str.split(",");
+		}
+		
+		for(String arrayList : array) {
+			System.out.println(arrayList);
+			int arrayListInt = Integer.parseInt(arrayList);
+			
+			vo.setEmailMailBox(mailBox);
+			vo.setEmailNo(arrayListInt);
+			int cnt = DaoService.updateSendTrash(vo);
+			System.out.println(cnt);
+		}
+		
+		mv.setViewName("redirect:/emailIndex");
+		return mv;
+	
+	}
+	
 }
 
 
