@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			AND b.email_rev_address = #{emailAddress}
 	</select>
 	
+
 	
     <!-- 페이지 -->
 	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.email.vo.EmailPage">

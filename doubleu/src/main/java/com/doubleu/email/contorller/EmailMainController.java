@@ -155,6 +155,30 @@ public class EmailMainController {
 
 		return mv;
 	}
+	
+	
+	// 메일 검색 바 내용, email_name 으로 검색
+		@RequestMapping(value="/selectMemberFindStr", 
+				method={RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView selectMemberFindStr(
+				EmailMainVo vo,
+				HttpServletRequest req,
+				EmailPage page,
+				LoginVo loginVo,
+				HttpSession session
+				) {
+
+			ModelAndView mv = new ModelAndView();
+			
+			String memberFindStr = req.getParameter("memberFindStr");
+			System.out.println(memberFindStr);
+			
+			String memberOption = req.getParameter("memberOption");
+			System.out.println(memberOption);
+			
+			
+			return mv;
+		}
 
 
 	// email_result.jsp

@@ -75,16 +75,15 @@
 		<table class="table table-bordered">
 			<thead><!-- 요일 들어갈 자리 -->
 				<tr height="50px">
-					<th scope="col" width="8%">
+					<th scope="col" width="9%">
 						#
 					</th>
 					<c:forEach var="list" items="${list }" >
-					<th scope="col" width="13.1%" class="${list.month}${list.day}">
+					<th scope="col" width="13%" class="${list.month}${list.day}">
 						<span>${list.week }</span> 
 						<span>${list.day }</span> 
 					</th>
 					</c:forEach>
-					
 				</tr>
 			</thead>
 			<tbody><!-- 달력 컨텐츠가 표시 될 곳 -->
@@ -93,50 +92,57 @@
 		      			All-day
 		      		</th>
 		      		<c:forEach var="list" items="${list }" >
-		      		<td id="calender_content"><!-- all-day 표시칸  -->
-		      			<c:forEach items="${list.vo }" var="listVo1"> <!-- 장기 일정이 표시 될 곳 -->
-							<div class="calender_modal" >
-								<c:choose>
-									<c:when test="${listVo1.getCalenderType() eq '장기'}">
-										장기 ::
-											${listVo1.getCalenderSubject() }
-									</c:when>
-								</c:choose>
-								<c:choose>
-									<c:when test="${listVo1.getCalenderType() eq '단기'}">
-										단기 ::
-											${listVo1.getCalenderSubject() }
-									</c:when>
-								</c:choose>
-							</div>
+		      	
+			      		<c:forEach items="${list.vo }" var="listVo1"> <!-- 장기 일정이 표시 될 곳 -->
+			      			<td id="calender_content"><!-- all-day 표시칸  -->
+								<div class="calender_modal" >
+									<c:choose>
+										<c:when test="${listVo1.getCalenderType() eq '장기'}">
+											장기 ::
+												${listVo1.getCalenderSubject() }
+										</c:when>
+									</c:choose>
+									<c:choose>
+										<c:when test="${listVo1.getCalenderType() eq '단기'}">
+											단기 ::
+												${listVo1.getCalenderSubject() }
+										</c:when>
+									</c:choose>
+								</div>
+			      			</td>	
 						</c:forEach>
-		      		</td>
+						
 					</c:forEach>
+					
+		      	<tr>
+		      		<th>
+			      		<c:forEach begin="0" end="23" var="i">
+			      		
+				      		<table class="table table-borderless">
+							  <tr>
+							    <th>	${i } 시</th>
+							  </tr>
+							</table>
+						
+			      		</c:forEach>
+		      		</th>
+				      	<c:forEach var="list" items="${list }">
+				      		<td>
+				      		<c:forEach begin="0" end="23" var="i">
+					      		<table class="table table-borderless">
+								  <tr>
+									 <td id="calender_content"> <!-- 각 시간별 -->
+										<div class="calender_modal" >
+									  		시간 표시 줄
+									  	</div>
+									 </td>
+								  </tr>
+								</table>
+				      		</c:forEach>
+				      		</td>
+						</c:forEach>
 		      	</tr>
-		      
-	      
-	        <%
-	        	for(int i=1; i<=25; i++){
-	        %>
-	        	<tr><!-- 일주일은 묶는곳 -->
-	        	<th ><!--  -->
-	        		<%=i-1 %> 시
-	        	</th>
-	        <%
-	        		for(int j=1; j<=7; j++){
-	        %>
-				<td id="calender_content"><!-- 월간 달력 한칸 -->
-					<div><!-- 단기 일정이 표시 될 곳 -->
-					</div>
-				</td>
-	        <%
-	        		}
-	        %>		
-	        	</tr>
-	        <% 
-	        	}
-	        %>
-	        
+			      	
 		</tbody>
 		</table>
 		</div>
