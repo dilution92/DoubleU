@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>전사게시판-사내공지</title>
+<title>전사게시판-공지사항</title>
 
 <!-- awesome font CDN(W icon) -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
@@ -57,7 +57,7 @@
 				<div class="e-approval-search-bar">
 					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
 						<div class="e-approval-form-box">
-							<span>사내공지</span>
+							<span>공지사항</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
@@ -72,7 +72,7 @@
 				</div>
 			
 			
-			<!-- 전사게시판 사내공지 code -->
+			<!-- 전사게시판 공지사항 code -->
 			<div class="notice-container">
 				<table class="table table-hover">
 			   		<thead>

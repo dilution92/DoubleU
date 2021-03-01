@@ -30,7 +30,7 @@
 
 			<!-- ========== -->
 			<div class='container market-price-search-container 'id = "content">
-				<div class='market-price-search-form'>
+				<div class='market-price-search-form' style="margin-bottom: 50px;">
 					<div id = "cont-wrap" >
 						<div class="cate-top-txt"><h3>시세검색</h3></div>
 			        </div>
@@ -38,7 +38,7 @@
 			                 <form  name="frm_search" action="/marketSelectPricePopup" method="post" class="search-form" >
 								 <div class="market-search-bar" style="margin-left:0;" >
 									 <input class="form-control form-control-lg market-search"
-											type="text" placeholder="상품명" aria-label="Search"
+											type="text" placeholder="정확한 상품명을 입력해주세요" aria-label="Search"
 											id="approvalFindStr" value="${param.selectPrice }" name="selectPrice" style="width:100%;">
 					                 <input class="btn btn-outline-primary btn-lg" type="submit" value="검색" />
 					                    <input type="hidden" name="nowPage" value="${(empty param.nowPage)? 1: param.nowPage}" size="10">
@@ -57,19 +57,16 @@
       						의 시세 : <span class="badge badge-primary"> ${price }</span>원
       					</div>
       				</c:when>
-      				<c:otherwise>
-      					<div class="price-chart-detail">
-						  ${msg}
-						</div>
-      				</c:otherwise>
+      				<c:when test="${!empty msg }">
+						<div class="alert alert-danger" role="alert"> ${msg }</div>
+					</c:when>
       			
       			</c:choose>
                     </div>
  
         </div>
  
-		</main>
-	</section>
+
 
 
 	<!-- bootstrap script, Jquery CDN -->

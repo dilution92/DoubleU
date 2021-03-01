@@ -17,7 +17,7 @@
  				<input type="button" class="btn btn-primary btn-lg"
 						onClick="location.href='marketInsert'" value="글쓰기">
 	 			<input type="button" class="btn btn-primary btn-lg"
-						onClick="location.href='noticeInsert'" value="사내공지 글쓰기">
+						onClick="location.href='noticeInsert'" value="공지사항 글쓰기">
 	 			<input type="button" class="btn btn-primary btn-lg"
 						onClick="location.href='familyeventInsert'" value="경조사 글쓰기">									
 				</div>
@@ -25,7 +25,7 @@
 				<div class="e-approval-approval-list">
 				<span>전사게시판</span>
 				<ul>
-					<li><a href="noticeIndex">사내공지</a></li>
+					<li><a href="noticeIndex">공지사항</a></li>
 					<li><a href="familyeventIndex">경조사</a></li>
 				</ul>
 				</div>

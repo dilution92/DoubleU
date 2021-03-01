@@ -3,6 +3,8 @@ package com.doubleu.market.Controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,20 +31,38 @@ public class MarketController {
 	
 	//select결과화면->index
 	@RequestMapping(value="/marketSelect" , method= {RequestMethod.GET , RequestMethod.POST})
-	public ModelAndView marketSelect(MarketPage page) {
+	public ModelAndView marketSelect(HttpServletRequest req, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		
+		String findStr = "";
+		String findType = "";
+		String msg = "";
 		
 		if(page ==null || page.getNowPage()==0) {
 			page.setNowPage(1);
 		}
+		if(req.getParameter("findStr") != null) {
+			findStr = req.getParameter("findStr");
+		}
+		if(req.getParameter("findType") != null) {
+			findType = req.getParameter("findType");
+		}
+		
+		System.out.println("findStr :" + findStr);
+		System.out.println("findType :" + findType);
+		page.setFindType(findType);
+		page.setFindStr(findStr);		
+		int cnt = dao.selectCount(page);
+		if (cnt == 0) {
+			 msg = "검색결과 없음";
+		}
 		
 		Map<String, Object> map = dao.select(page);
-		int cnt = dao.selectCount();
 
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
 		mv.addObject("cnt", cnt);
+		mv.addObject("msg", msg);
 		mv.setViewName("market/market_index");
 		
 		return mv;

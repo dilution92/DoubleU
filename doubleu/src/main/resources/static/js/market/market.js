@@ -117,7 +117,7 @@ brd = function() {
 	
 $('#market_btnFind').on('click', function() {
 		var frm = document.frm_market;
-			frm.marketCategory.value = $('#market_category option:selected').val();
+			frm.findType.value = $('#market_category option:selected').val();
 			frm.action = '/marketSelect';
 			frm.submit();
 		});

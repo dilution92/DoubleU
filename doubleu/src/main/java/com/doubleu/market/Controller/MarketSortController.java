@@ -3,6 +3,7 @@ package com.doubleu.market.Controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,16 +23,26 @@ public class MarketSortController {
 	MarketDao Mdao; 
 	
 	 @RequestMapping(value="/marketLowprice", method={RequestMethod.GET, RequestMethod.POST})
-	   public ModelAndView marketLowprice(MarketPage page){
+	   public ModelAndView marketLowprice(HttpServletRequest req, MarketPage page){
 			ModelAndView mv = new ModelAndView();
 
+			String findStr = "";
+			String findType = "";
+			
 			if(page ==null || page.getNowPage()==0) {
 				page.setNowPage(1);
 			}
+			if(req.getParameter("findStr") != null) {
+				findStr = req.getParameter("findStr");
+			}
+			if(req.getParameter("findType") != null) {
+				findType = req.getParameter("findType");
+			}
 			
+			page.setFindType(findType);
+			page.setFindStr(findStr);
 			Map<String, Object> map = dao.selectLowprice(page);
-			int cnt = Mdao.selectCount();
-
+			int cnt = Mdao.selectCount(page);
 			mv.addObject("list", map.get("list"));
 			mv.addObject("page", map.get("page"));
 			mv.addObject("cnt", cnt);
@@ -42,15 +53,26 @@ public class MarketSortController {
 
 	    }
 	 @RequestMapping(value="/marketLatest", method={RequestMethod.GET, RequestMethod.POST})
-	 public ModelAndView marketLatest(MarketPage page){
+	 public ModelAndView marketLatest(HttpServletRequest req,MarketPage page){
 		 ModelAndView mv = new ModelAndView();
 		 
-		 if(page ==null || page.getNowPage()==0) {
-			 page.setNowPage(1);
-		 }
-		 
+		 String findStr = "";
+			String findType = "";
+			
+			if(page ==null || page.getNowPage()==0) {
+				page.setNowPage(1);
+			}
+			if(req.getParameter("findStr") != null) {
+				findStr = req.getParameter("findStr");
+			}
+			if(req.getParameter("findType") != null) {
+				findType = req.getParameter("findType");
+			}
+			
+			page.setFindType(findType);
+			page.setFindStr(findStr);
 		 Map<String, Object> map = dao.selectLatest(page);
-		 int cnt = Mdao.selectCount();
+			int cnt = Mdao.selectCount(page);
 		 
 		 mv.addObject("list", map.get("list"));
 		 mv.addObject("page", map.get("page"));

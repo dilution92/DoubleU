@@ -23,7 +23,7 @@
 						</tr>
 					</thead>
 					<tbody class=" text-muted">
-						<c:set var="no" value="1" />
+						<c:set var="outgoingNo" value="1" />
 						<c:forEach var="outgoingVo" items="${outgoingList }">
 							<tr onclick="goView(${outgoingVo.formNo}, '${outgoingVo.formType }')">
 								<td>${outgoingVo.formDate}</td>
@@ -45,8 +45,13 @@
 									</c:when>
 								</c:choose>
 							</tr>
-							<c:set var= "no" value="${no+1 }"></c:set>
+							<c:set var= "outgoingNo" value="${outgoingNo+1 }"></c:set>
 						</c:forEach>
+						<c:if test="${outgoingNo == 1}">
+							<tr>
+								<td colspan="5" rowspan="5" height="150px;" style="line-height: 150px; font-weight: bold">문서가 없습니다. </td>
+							</tr>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
@@ -97,7 +102,7 @@
 						</tr>
 					</thead>
 					<tbody class="text-muted">
-						<c:set var="no" value="1" />
+						<c:set var="receiverNo" value="1" />
 						<c:forEach var="receiverVo" items="${receiverList }">
 							<tr onclick="goView(${receiverVo.formNo}, '${receiverVo.formType }')">
 								<td>${receiverVo.formDate}</td>
@@ -126,9 +131,14 @@
 										<td><span class="badge badge-warning">결재반려</span></td>	
 									</c:when>
 								</c:choose>
-								
 							</tr>
+							<c:set var="receiverNo" value="${receiverNo+1 }"></c:set>
 						</c:forEach>
+						<c:if test="${receiverNo == 1}">
+							<tr>
+								<td colspan="6" rowspan="5" height="150px;" style="line-height: 150px; font-weight: bold">문서가 없습니다. </td>
+							</tr>
+						</c:if>
 					</tbody>
 				</table>
 			</div>
@@ -168,7 +178,6 @@
 			<!-- ========= -->
 			
 			
-
 <!-- bootstrap script, Jquery CDN -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
