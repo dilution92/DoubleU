@@ -9,7 +9,7 @@
 
 </head>
 <body>
-		<h3 style="width: 200px; height: 30px;">중고게시판</h3>
+		<h3 style="width: 200px; height: 30px;">더블마켓</h3>
 
 				<!-- 찜목록 -->
 					<form class="market-search-form" action="" name="frm_market" method="post" style="display:flex;">

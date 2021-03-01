@@ -19,7 +19,7 @@
 				</div>
 	
 				<div class="e-approval-approval-list">
-					<span><a href="marketIndex?dibUser=${member.memberName }">중고게시판</a></span>
+					<span><a href="marketIndex?dibUser=${member.memberName }">더블마켓</a></span>
 					<!-- 
 					<ul>
 

@@ -56,7 +56,6 @@ public class CalenderURLController {
 		mv.addObject("currentDay", day);
 		mv.addObject("list",list);
 		mv.setViewName("calender/Calender_week");
-
 		return mv;
 	}
 	

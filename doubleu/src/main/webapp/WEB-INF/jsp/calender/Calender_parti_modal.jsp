@@ -40,19 +40,20 @@
 						</tr>
 						<tr height="500px">
 							<td width="350px">
+							<input class="btn btn-outline-primary btn-sm " name="allchk" type="checkbox" value="전체선택" /> 전체선택
 								<c:forEach items="${profile}" var="profile"><!-- 왼쪽 주소록 리스트 -->
 									<div class="inputMember" >
-										<input type="checkbox" name="memberchk" /> 
-										<span class="badge rounded-pill bg-light text-dark">${profile.memberTeam }</span>
-										<span class="badge rounded-pill bg-light text-dark">${profile.memberName }</span> 
-										<span class="badge rounded-pill bg-light text-dark">${profile.memberPosition }</span>
+										<input type="checkbox" class="memberChk" name="memberchk" value="${profile.memberNo }"/>
+										<input type="text" readonly="readonly" class="input-group-text" value="${profile.memberTeam }">
+										<input type="text" readonly="readonly" class="input-group-text" value="${profile.memberName }">
+										<input type="text" readonly="readonly" class="input-group-text" value="${profile.memberPosition }">
 									</div> 
 								</c:forEach>
 							</td>
 							
 							<td width="100px">
 								<div class="search-btn-address-btn-two-align">
-									<button type="button" class="btn btn-outline-primary btn-sm">
+									<button type="button" class="btn btn-outline-primary btn-sm" id="inputButton">
 										<i class="bi bi-plus">+</i>
 									</button>
 									<button type="button" class="btn btn-outline-primary btn-sm">
@@ -62,13 +63,11 @@
 							</td>
 							
 							<td width="350px">
-								<c:forEach begin="0" end="10">
 									<div class="outputMember">
 										<span class="badge rounded-pill bg-light text-dark">더블유 조리팀</span>
 										<span class="badge rounded-pill bg-light text-dark">송연주</span> 
 										<span class="badge rounded-pill bg-light text-dark">사원</span>
 									</div>
-								</c:forEach>
 							</td>
 						</tr>
 					</table>

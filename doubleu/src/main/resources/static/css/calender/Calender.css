@@ -21,7 +21,7 @@ body {
         float: right;
         width: 80%;
         box-sizing: border-box;
-        padding: 3em 5em 0 5em;
+        padding: 3em 2em 0 2em;
     }
     
     #calender_content:hover{

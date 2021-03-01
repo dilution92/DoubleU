@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,9 @@
 								<p class="card-text">
 								<c:choose>
 									<c:when test="${vo.marketPrice == '0' }">무료나눔</c:when>
-									<c:otherwise>${vo.marketPrice}원</c:otherwise>
+									<c:otherwise>
+										<fmt:formatNumber value="${vo.marketPrice}" pattern="#,###원" />
+									</c:otherwise>
 								</c:choose>
 								</p>
 								<p class="card-text">👁${vo.marketHit }

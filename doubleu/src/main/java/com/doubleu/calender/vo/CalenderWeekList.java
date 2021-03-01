@@ -8,8 +8,9 @@ public class CalenderWeekList {
 	int day;
 	int month;
 	int year;
-	String time;
+	List<String> time;
 	String minute;
+	String day1;
 	
 	List<CalenderVo> vo; 
 	
@@ -21,6 +22,14 @@ public class CalenderWeekList {
 	
 	
 	
+	public String getDay1() {
+		return day1;
+	}
+
+	public void setDay1(String day1) {
+		this.day1 = day1;
+	}
+
 	public CalenderWeekList() {
 		vo = new ArrayList<>();
 		period = new ArrayList<>();
@@ -58,10 +67,10 @@ public class CalenderWeekList {
 		vo.add(o);
 	}
 
-	public String getTime() {
+	public List<String> getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(List<String> time) {
 		this.time = time;
 	}
 	public String getMinute() {
