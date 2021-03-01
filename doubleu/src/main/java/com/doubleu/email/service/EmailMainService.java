@@ -13,7 +13,7 @@ import com.doubleu.login.vo.LoginVo;
 
 
 @Service
-public class SelectSerivce {
+public class EmailMainService {
 	
 	@Autowired
 	EmailDao dao;

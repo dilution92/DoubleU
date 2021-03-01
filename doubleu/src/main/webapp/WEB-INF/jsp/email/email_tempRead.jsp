@@ -118,6 +118,7 @@
 						<div class="emailSendContents">
 							<div class="form-group col-sm-2">
 								<label for="exampleFormControlInput1">보내는 사람</label>
+								
 							</div>
 
 							<div class="form-group col-sm-1">
@@ -145,15 +146,21 @@
 
 							
 							<div class="form-group col-sm-7 revEmail">
+								<c:forEach var="sendPerson" items="${selectSendList}">
+							 	 	<input type="email" name="emailReceiverAddress" 
+							 	 	value="${sendPerson.emailReceiverAddress}" class="form-control col-sm-3"
+									id="exampleFormControlInput1">
+								</c:forEach>
 								<div class="emailBtnList" id="parah">
 									<!-- input자리 -->
+								
 								</div>
 								<c:forEach begin="0" end="0">
 								<!-- 받는 사람 input -->
-
+								
 								</c:forEach>
 								
-
+								
 							</div>
 
 							<!-- 주소록 버튼 -->
@@ -174,12 +181,19 @@
 
 							
 							<div class="form-group col-sm-7 revRef">
+								<c:forEach var="refPerson" items="${selectRefList }">
+								<!-- 참조input -->
+								<input type="email" name="emailReceiverRef" class="form-control col-sm-3"
+									id="exampleFormControlInput1"
+									value="${refPerson.emailReceiverAddress }">
+								</c:forEach>
+								
 								<div class="emailBtnRefList" id="Refparah">
 									<!-- input자리 -->
 								</div>
 								<c:forEach begin="0" end="0">
 									<!-- 참조input -->
-									
+							
 								</c:forEach>
 							</div>
 							
@@ -199,24 +213,29 @@
 
 							<div class="form-group col-sm-1 importSend">
 								<div class="form-check">
+									
 									<input class="form-check-input" type="checkbox" name="emailChk"
-										value="" id="defaultCheck1"> 
+										value="" id="defaultCheck1">
+									
 									<label class="form-check-label" for="defaultCheck1"> 중요! </label>
 								</div>
 
 							</div>
 
 							<div class="form-group col-sm-7">
+							<c:forEach var="list" items="${selectRead }">
 								<input type="email" class="form-control" name="emailTitle"
-									id="emailTitleId">
+									id="emailTitleId" value="${list.emailContents }">
 							</div>
 
 
 						</div>
 
 						<!-- 내용 -->
-						<textarea name="emailContents" id="summernote" ></textarea>
-
+						<textarea name="emailContents" id="summernote" >
+						
+						</textarea>
+						</c:forEach>
 
 
 						<!-- 파일첨부 -->
@@ -228,6 +247,7 @@
 								files</label>
 							<div class="file_list" id="fileList">
 								<button type="button" class="btn btn-light">첨부파일</button>
+								
 								<!-- 파일 첨부 시 span 태그가 생김 -->
 							</div>
 						</div>

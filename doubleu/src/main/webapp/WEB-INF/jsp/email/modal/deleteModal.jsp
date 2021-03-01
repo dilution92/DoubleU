@@ -5,13 +5,20 @@
 	       <div class="modal-content modalSpamEmail">
 	           <div class="modalSpamEmailFolder">
 	               <h4>삭제하기</h4>
+
+	               <br>
 	               <p>해당 메일을 정말 삭제하시겠습니까?</p>
-	               <input type="text" placeholder="song@gmail.com">
+	               
+	               <br>
 	               <div class="modalSpamEmailFolderBtn">
 	                   <button onclick="DeleteBtn()" class="btn btn-primary btn-lg btn-primary btn-sm" role="button">삭제하기</button>
-	                   <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+	                   <button class="btn btn-primary btn-lg btn-primary btn-sm" onclick="location.href='/emailIndex'" role="button">취소하기</button>
 	               </div>
 	           </div>
 	       </div>
 	   </div>  
   </div>
+  
+  <script>
+
+  </script>

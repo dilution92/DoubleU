@@ -23,6 +23,7 @@ public interface EmailMapper {
 	
 	
 	public List<EmailMainVo> selectEmailNo(int emailNo);
+	
 	// 파일 데이터 가져오기
 	public List<AttEmailVo> selectFiles(int emailNo);
 	public List<EmailMainVo> selectSearchDetail(String findName, String findContents, String findDate);
@@ -47,4 +48,10 @@ public interface EmailMapper {
 
 	// 삭제하기
 	public int updateSendTrash(EmailMainVo vo);
+	
+	// 임시저장 조회
+	public List<EmailMainVo> selectTemp(EmailPage page);
+	public int totListSizeTemp(EmailPage page);
+	
+	
 }

@@ -14,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectReceiverService;
+import com.doubleu.email.mybatis.EmailDao;
+import com.doubleu.email.service.SelectSerivce;
+import com.doubleu.email.vo.EmailPage;
 import com.doubleu.login.vo.LoginVo;
 import com.doubleu.market.mybatis.MarketDao;
 import com.doubleu.market.mybatis.MarketDibDao;
@@ -31,6 +34,13 @@ public class ControllerMain {
 	//market
 	@Autowired
 	MarketDao marketDao;
+	
+	// 이메일
+	@Autowired
+	EmailDao DaoService;
+	
+	@Autowired
+	SelectSerivce selectService;
 	
 	@RequestMapping(value = "/")
 	public ModelAndView index() {
@@ -50,7 +60,8 @@ public class ControllerMain {
 	@RequestMapping(value = "/mainPage")
 	public ModelAndView mainPage(
 			HttpServletRequest req,
-			HttpSession session
+			HttpSession session,
+			EmailPage page
 			) {
 		ModelAndView mv = new ModelAndView();
 		
@@ -69,6 +80,14 @@ public class ControllerMain {
 		
 		
 		
+		//이메일
+
+		int emailMailBox = 3; //보낸 메일함
+		page.setEmailMailBox(emailMailBox);
+		
+		Map<String, Object> map = DaoService.selectPaging(page, session);
+		mv.addObject("EmailList", map.get("pageList"));		
+				
 		mv.setViewName("MainPage/index");
 		return mv;
 	}
