@@ -192,6 +192,54 @@ $(function(){
     $("calenderDateStart").click(function(){
         console.log(document.getElementsByName("calenderDateStart")[0].value);
     })
+    
+    
+    // 전부체크 버튼
+    
+    $("input:checkbox[name=allchk]").click(function(){
+	   var checked = $(this).is(':checked');
+	   if(checked){
+		   $('input:checkbox[name=memberchk]').prop('checked',true);
+	   }else{
+		   $('input:checkbox[name=memberchk]').prop('checked',false);
+	   }
+	});
+    
+    $("#inputButton").click(function(){
+   	 	var checked = $('.memberChk').is(':checked');
+   	 	
+   	 	if(checked){
+   	 	var team = $(this).next().val();
+   		var name = $(this).next().next().val();
+   		var position = $(this).next().next().next().val();
+   		
+   		console.log(team+"@@@@@@@@@@@@@@@@@@@@@@@");
+    	console.log(name+"@@@@@@@@@@@@@@@@@@@@@@@");
+   	 	}
+   	 	
+   	/* 	 if(("input:checkbox[name=memberchk]").is(":checked") ==true){
+   			var team = $(this).parent().find('span').eq(0).val();
+        	var name = $(this).parent().find('span').eq(1).val();
+        	var position = $(this).parent().find('span').eq(2).val();
+        	
+        	
+        	
+        	var c1 = document.createElement('span');
+        	var c2 = document.createElement('span');
+        	var c3 = document.createElement('span');
+        	
+        	c1.append(team);
+        	c2.append(name);
+        	c3.append(position);
+        	
+        	$(".outputMember").append(c1);
+        	$(".outputMember").append(c2);
+        	$(".outputMember").append(c3);
+   		 } */
+    		
+    	
+    })
+    
 })
 
 

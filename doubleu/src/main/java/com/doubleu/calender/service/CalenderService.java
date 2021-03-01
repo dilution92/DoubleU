@@ -506,11 +506,11 @@ public class CalenderService {
 						
 					}
 				}
-				
 
 				list.add(weekList);
 				startNum = startNum + 1;
 			}
+			
 
 			if (month == 12) {
 				totalweek = setWeekMethod(year, 12, lastDay[11]);
