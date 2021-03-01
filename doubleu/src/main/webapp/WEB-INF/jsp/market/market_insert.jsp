@@ -55,7 +55,7 @@
 				<div class="form-group row">
 		   		 <label for="marketName" class="col-sm-2 col-form-label  is-invalid">상품명</label>
 				    <div class="col-sm-8">
-				      <input type="text" class="form-control "  name="marketSubject"required value="휴대폰">
+				      <input type="text" class="form-control "  name="marketSubject"required >
 				    </div>
 				  </div>
 				  
@@ -80,7 +80,7 @@
 						<button class="btn btn-primary" type="button" style="margin-bottom : 10px;"
 						onclick="window.open('/marketNewpage','window_name','width=650,height=650,location=no,status=no,scrollbars=yes');">시세 확인</button>
 				    	  <div style="display:flex;">
-				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="1,000"onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
+				    	  <input type="text" class="form-control" name="marketPrice" id="marketPrice" value="0" onkeyup="numberWithCommas(this.value)" style="text-align : right;" required>
 				    	  <span class="input-group-text">원</span>
 				    
 				    	</div>
@@ -113,7 +113,7 @@
 								<option value="케이뱅크">케이뱅크</option>
 							</select>	
 						<div style="margin-top : 10px;">			   
-				      <input type="text" class="form-control js-sms-content" id="marketAccount" name="marketAccount"value="3256262585963"onkeyup="accountCheck(this.value)" >
+				      <input type="text" class="form-control js-sms-content" id="marketAccount" name="marketAccount" onkeyup="accountCheck(this.value)" >
 				    </div>
 				    </div>
 				  </div>
@@ -121,7 +121,7 @@
 				  <div class="form-group row">
 		   		 <label for="marketDoc" class="col-sm-2 col-form-label">내용</label>
 				    <div class="col-sm-8">
-				      <textarea class="form-control" id="marketDoc" name = "marketDoc" rows ="10"required>test</textarea>
+				      <textarea class="form-control" id="marketDoc" name = "marketDoc" rows ="10"required></textarea>
 				    </div>
 				  </div>
 				  

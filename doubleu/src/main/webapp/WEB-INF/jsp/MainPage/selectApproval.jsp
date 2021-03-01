@@ -24,16 +24,16 @@
 						<thead class="text-muted text-gray-dark">
 							<tr>
 								<th scope="col"  width="90px;">기안일</th>
-								<th scope="col" width="100px;">결재양식</th>
+								<th scope="col" width="110px;">결재양식</th>
 								<th scope="col">제목</th>
-								<th scope="col" width="100px;">기안자</th>
+								<th scope="col" width="90px;">기안자</th>
 								<th scope="col" width="90px;">결재 상태</th>
 							</tr>
 						</thead>
 						<tbody class="text-muted">
 							<c:set var="no" value="1" />
 							<c:forEach var="outgoingVo" items="${outgoingApprovalList }">
-								<tr onclick="location.href='/approvalSelectView?formNo=${outgoingVo.formNo}&&formType=${outgoingVo.formType}'">
+								<tr class="main-approval-item" onclick="location.href='/approvalSelectView?formNo=${outgoingVo.formNo}&&formType=${outgoingVo.formType}'">
 									<td>${outgoingVo.formDate}</td>
 									<td>${outgoingVo.formType}</td>					
 									<td class="table-title-fixed-length">${outgoingVo.formTitle}</td>
@@ -66,19 +66,19 @@
 						<thead class="e-approval-list text-muted text-gray-dark">
 							<tr>
 								<th scope="col" width="90px;">기안일</th>
-								<th scope="col" width="100px;">결재양식</th>
+								<th scope="col" width="110px;">결재양식</th>
 								<th scope="col" class="table-title-fixed-length">제목</th>
-								<th scope="col" width="100px">기안자</th>
+								<th scope="col" width="90px">기안자</th>
 								<th scope="col" width="90px;">결재 여부</th>
 							</tr>
 						</thead>
 						<tbody class="e-approval-list text-muted">
 							<c:set var="no" value="1" />
 							<c:forEach var="receiverVo" items="${receiverApprovalList }">
-								<tr onclick="goApprovalView(${receiverVo.formNo}, '${receiverVo.formType }')">
+								<tr class="main-approval-item" onclick="location.href='/approvalSelectView?formNo=${receiverVo.formNo}&&formType=${receiverVo.formType}'">
 									<td>${receiverVo.formDate}</td>
 									<td>${receiverVo.formType}</td>					
-									<td>${receiverVo.formTitle}</td>					
+									<td class="table-title-fixed-length">${receiverVo.formTitle}</td>					
 									<td>${receiverVo.drafterName }</td>					
 									<c:choose>
 										<c:when test="${receiverVo.decisionState == '0'}">
