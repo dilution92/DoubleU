@@ -15,7 +15,7 @@
 	<select id="select" parameterType="int" resultMap="marketReplList">
 	select * from market_repl 
 	where market_no = #{marketNo}
-	
+	order by repl_date
 	</select>
 	
 	<insert id="insert" parameterType="com.doubleu.market.vo.MarketReplVo">

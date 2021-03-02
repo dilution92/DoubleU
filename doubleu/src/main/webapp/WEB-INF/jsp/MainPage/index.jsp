@@ -93,11 +93,14 @@
 	<aside class="main-content-calender">
 	
 		<div class="content-calender" >
-			<strong class="text-muted " style="text-align: left;">캘린더  ${currentYear}년  ${currentMonth}월</strong><br>
-			<table class="table table-bordered" style="text-align: center">
+			<div class="content-calender-title">
+			<strong class="text-muted" style="text-align: left;">캘린더</strong>
+			<h6 class="text-primary" style="text-align: right; font-size: .9em;"> - ${currentYear}년  ${currentMonth}월 - </h6>
+			</div>
+			<table class="table table-bordered main-calender" style="text-align: center">
 			<thead><!-- 요일 들어갈 자리 -->
 				<tr height="15px" style="font-size: 13px">
-					<th scope="col" width="14.2%">
+					<th scope="col" width="14.2%" >
 						Sun
 					</th>
 					<th scope="col" width="14.2%">
@@ -126,7 +129,7 @@
 			<c:forEach items="${calender}" var="list">
 			<c:set var="i" value="${i+1 }"/>
 			<c:if test="${i%7==1 }">
-			<tr height="40px;" style="font-size: 13px">
+			<tr height="40px;" style="font-size: 13px" class="calrender-sun">
 			</c:if>
 			
 			

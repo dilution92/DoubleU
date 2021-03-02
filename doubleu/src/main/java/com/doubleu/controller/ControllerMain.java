@@ -80,7 +80,8 @@ public class ControllerMain {
 			EmailPage page
 			) {
 		ModelAndView mv = new ModelAndView();
-		
+		String profileImg;
+		LoginVo loginVo= (LoginVo) session.getAttribute("member");
 		
 		//approval
 		Map<String, Object> receiverMap = selectApprovalReceiver.selectReceiver(req, session);
@@ -88,29 +89,19 @@ public class ControllerMain {
 		Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);
 		mv.addObject("outgoingApprovalList", outgoingMap.get("list"));
 		
-		
-		
 		//market
 		List<MarketVo> marketlist = marketDao.selectMarketMain();
 		mv.addObject("marketList", marketlist);
 		
-		
-		
 		//이메일
-
 		int emailMailBox = 3; //보낸 메일함
 		page.setEmailMailBox(emailMailBox);
-		
 		Map<String, Object> map = DaoService.selectPaging(page, session);
 		mv.addObject("EmailList", map.get("pageList"));		
 				
-		
-		
-		
 		//게시판
 	    List<NoticeVo> contentList1 = noticeService.select();
         mv.addObject("contentList1", contentList1);
-  	    
         List<FamilyeventVo> contentList = familyeventService.select();
         mv.addObject("contentList", contentList);
         
@@ -125,7 +116,20 @@ public class ControllerMain {
 		mv.addObject("currentDay", day);
 		mv.addObject("calender",list);
         
-		
+		//IMG
+		if(loginVo.getMemberName().equals("정희석")) {
+			profileImg = "/img/profilem.jpg";
+		}
+		else if(loginVo.getMemberName().equals("정해준")) {
+			profileImg = "/img/profilehaejun.png";
+		}
+		else if(loginVo.getMemberName().equals("김재현")){
+			profileImg = "/img/profilekim.png";
+		}
+		else {
+			profileImg = "/img/profileg.jpg";
+		}
+		mv.addObject("profileImg", profileImg);
 		
 		mv.setViewName("MainPage/index");
 		return mv;

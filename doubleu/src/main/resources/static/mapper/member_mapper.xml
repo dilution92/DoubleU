@@ -26,21 +26,21 @@
 	
 	</resultMap> -->
 	<select id="selectOne" parameterType="int" resultType="com.doubleu.member.vo.MemberVo">
-	select * from member where member_no = #{memberNo}	
+	<![CDATA[ select * from member where member_no = #{memberNo}	  ]]>
+	
 	</select>
 	<update id="memberUpdate" parameterType="com.doubleu.member.vo.MemberVo">
 		<![CDATA[
 		UPDATE member
 		SET
-			member_pwd = #{memberPwd},
-			member_name = #{memberName}
+			member_name = #{memberName},
 			member_email = #{memberEmail},
 			member_phonenumber = #{memberPhoneNumber},
 			member_zipcode = #{memberZipcode},
-			member_address = #{memberPosition}
+			member_address = #{memberAddress}
 		WHERE
 			member_no = #{memberNo}
 		]]>
-	</update>
+	</update> 
 
 </mapper>

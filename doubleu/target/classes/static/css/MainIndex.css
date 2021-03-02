@@ -1,11 +1,11 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
 * {
 	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
 }
-
 /* main영역 스타일 정의 */
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 .main-gnb {
 	width: 100%;
@@ -109,13 +109,39 @@
 
 .content-calender {
 	width: 100%;
-	height: 360px;
+	height: 390px;
 	margin-bottom: 1rem;
 	border: 1px solid #dee2e6;
 	box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 	border-radius: 5px;
 	padding: 1rem;
 }
+
+.content-calender-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.content-calender-title > h6 {
+	margin: 0;
+}
+
+.main-calender > thead {
+	background-color: #007bff;
+	color: #fff;
+}
+
+.calrender-sun #calender_content:nth-child(1) input[type=text] {
+	color: #dc3545;
+	background-color: #f8f9fa;
+}
+.calrender-sun #calender_content:nth-child(1){
+	color: #dc3545;
+	background-color: #f8f9fa;
+}
+
 /* 근태관리 CSS */
 .content-workManagement {
 	display: flex;
@@ -195,6 +221,10 @@
 .content-schedule a:link,
 .content-schedule a:visited {
 	text-decoration: none;
+	color: #6c757d;
+}
+.content-schedule a {
+	width: 100%;
 }
 .article-title {
 	border-bottom: 1px solid #dee2e6;
@@ -211,8 +241,11 @@
 .schedule-article > p {
 	margin: 0;
 	width: 100%;
-	font-size: .9em;
+	font-size: .85em;
+	color: #6c757d;
 }
+
+
 .main-go-page {
 	padding: .2em .5em 0 .5em;
 	text-align: right;
