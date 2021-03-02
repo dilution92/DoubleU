@@ -141,14 +141,14 @@
   		</tr>
   	</thread>
   	<tbody>
-  		<c:forEach items='${contentList}' var='work'>
+  		<c:forEach items='${contentList2}' var='work'>
   		<c:set var='i' value='${i+1}'/>
   		<tr>
-  			<td>${work.memberName}</td> 
-  			<td>${work.memberDepartment}</td>
-  			<td>${work.memberTeam}</td>
-  			<td>${work.memberEmail}</td>
-  			<td>${work.memberPhoneNumber}</td>
+  			<td>${work.workDate}</td> 
+  			<td>${work.workStart}</td>
+  			<td>${work.workEnd}</td>
+  			<td>${work.workTotal}</td>
+  			<td>${work.workPlus}</td>
   		</tr>
   	</c:forEach>
   	</tbody>
