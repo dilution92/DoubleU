@@ -350,10 +350,12 @@ public class EmailMainController {
 		int cnt = selectService.selectSendEmail(req, session);
 		
 		
+		
+		
 		System.out.println("임시저장 : " + tempCnt);
 		
 		mv.addObject("readCnt", cnt);
-		mv.setViewName("redirect:/emailTempList");
+		mv.setViewName("redirect:/emailIndex");
 
 		return mv;
 	}
@@ -598,6 +600,20 @@ public class EmailMainController {
 			mv.setViewName("redirect:/emailSpam");
 			return mv;
 		}
+		
+		// emailReplyRead
+				@RequestMapping(value="/emailReplyRead", method={RequestMethod.GET, RequestMethod.POST})
+				public ModelAndView emailReplyRead(
+						EmailMainVo vo,
+						EmailPage page,
+						HttpServletRequest req,
+						HttpSession session
+						) {
+					ModelAndView mv = new ModelAndView();
+				
+					mv.setViewName("email/email_reply");
+					return mv;
+				}
 	
 }
 

@@ -116,7 +116,9 @@ public class EmailSelectController {
 			System.out.println("트레쉬메일 ----------" + cnt);
 			mv.setViewName("redirect:/emailIndex");
 			return mv;
-		}	
+		}
+		
+		
 }
 
 
