@@ -141,7 +141,8 @@
 				<!-- hidden -->
 				<input type="hidden" name="marketHit" value = "1">
 				<input type="hidden" name="marketWriter" value = "${member.memberName }">
-				<input type='text' name='marketNo'  value='${vo.marketNo}'/>
+				<input type='hidden' name='marketNo'  value='${vo.marketNo}'/>
+				<input type='hidden' name='dibUser'  value='${member.memberName}'/>
 			</form>
 			</div>
 
