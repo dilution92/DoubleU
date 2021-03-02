@@ -2,6 +2,7 @@ package com.doubleu.notice.controller;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doubleu.email.vo.EmailPage;
+import com.doubleu.notice.vo.NoticePage;
 import com.doubleu.notice.service.FamilyeventService;
 import com.doubleu.notice.service.NoticeService;
 import com.doubleu.notice.vo.FamilyeventVo;
@@ -30,14 +31,17 @@ public class NoticeURLController {
 	
    // notice_index.jsp
    @RequestMapping(value = "/noticeIndex", method = {RequestMethod.POST, RequestMethod.GET})
-   public ModelAndView noticeIndex(EmailPage page){
+   public ModelAndView noticeIndex(NoticePage page){
       ModelAndView mv = new ModelAndView();
+      Map<String, Object> map = service1.selectPaging(page);
+
+      System.out.println(page);
       List<NoticeVo> contentList1 = service1.select();
+
       mv.addObject("contentList1", contentList1);
+      mv.addObject("page", map.get("page"));
+      mv.addObject("list", map.get("pageList"));
       mv.setViewName("/notice/notice_index");
-//      for(int i=0; i<contentList1.size(); i++) {
-//    	  System.out.println(contentList1.get(i));
-//      }
       return mv;
    }
    
@@ -71,10 +75,16 @@ public class NoticeURLController {
    
    // familyevent_index.jsp
    @RequestMapping(value = "/familyeventIndex", method = {RequestMethod.POST, RequestMethod.GET})
-   public ModelAndView familyeventIndex(){
+   public ModelAndView familyeventIndex(NoticePage page){
       ModelAndView mv = new ModelAndView();
+      Map<String, Object> map = service2.selectPaging(page);
+      
+      System.out.println(page);
       List<FamilyeventVo> contentList = service2.select();
+      
       mv.addObject("contentList", contentList);
+      mv.addObject("page", map.get("page"));
+      mv.addObject("list", map.get("pageList"));
       mv.setViewName("/notice/familyevent_index");
       return mv;
    }

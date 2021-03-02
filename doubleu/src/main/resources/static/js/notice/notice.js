@@ -157,3 +157,21 @@ $(function(){
 
 	})
 })
+
+/* 페이징 */
+function goPage1(page) {
+	console.log(page);
+	var frm = document.noticeForm;
+	frm.nowPage.value = page;
+	frm.action = '/noticeIndex';
+	frm.submit();
+}
+
+function goPage(page) {
+	console.log(page);
+	var frm = document.noticeForm;
+	console.log(frm);
+	frm.nowPage.value = page;
+	frm.action = '/familyeventIndex';
+	frm.submit();
+}

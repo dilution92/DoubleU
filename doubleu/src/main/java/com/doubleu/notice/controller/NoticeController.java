@@ -1,12 +1,9 @@
 package com.doubleu.notice.controller;
 
 import java.util.List;
-
-import javax.annotation.Resource;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +17,7 @@ import com.doubleu.notice.service.NoticeUploadService;
 import com.doubleu.notice.vo.FamilyeventAttVo;
 import com.doubleu.notice.vo.FamilyeventVo;
 import com.doubleu.notice.vo.NoticeAttVo;
+import com.doubleu.notice.vo.NoticePage;
 import com.doubleu.notice.vo.NoticeVo;
 
 @RestController
@@ -32,18 +30,26 @@ public class NoticeController {
 	
 	@Autowired
 	NoticeUploadService file;
-	
+
+
 /* -------------------- 공지사항 -------------------- */
 
 	
 	// 공지사항 글쓰기 -> index
 	@RequestMapping(value = "/noticeInsertR", method= RequestMethod.POST)
-	public ModelAndView noticeInsertR(NoticeVo vo) {
+	public ModelAndView noticeInsertR(NoticeVo vo, NoticePage page) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		msg = service1.insert(vo);
 		mv.addObject("viewMsg", msg);
+		
+		// 페이징
+		Map<String, Object> map = service1.selectPaging(page);
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
 		mv.setViewName("redirect:/noticeIndex");
+
 		return mv;
 	}
 
@@ -52,10 +58,12 @@ public class NoticeController {
 	public ModelAndView noticeView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
 		
+		service1.updateHit(no);
 		NoticeVo vo = service1.view(no); 
 		List<NoticeAttVo> att = service1.view1(no);
 		mv.addObject("obj", vo);
 		mv.addObject("att", att);
+		
 		
 		mv.setViewName("notice/notice_view");
 		return mv;
@@ -91,14 +99,19 @@ public class NoticeController {
 	
 	// 경조사 글쓰기 -> index
 	@RequestMapping(value = "/familyeventInsertR", method= RequestMethod.POST)
-	public ModelAndView familyeventInsertR(FamilyeventVo vo,
+	public ModelAndView familyeventInsertR(FamilyeventVo vo, NoticePage page,
 										@RequestParam("familyeventFile") List<MultipartFile> mul) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		List<FamilyeventAttVo> attList = file.upload(mul);
 		vo.setAttList(attList);
-		
+
 		msg = service2.insert(vo);
+		// 페이징
+		Map<String, Object> map = service1.selectPaging(page);
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
 		mv.addObject("viewMsg", msg);
 		mv.setViewName("redirect:/familyeventIndex");
 		return mv;
@@ -110,6 +123,7 @@ public class NoticeController {
 	public ModelAndView familyeventView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
 		
+		service2.updateHit(no);
 		FamilyeventVo vo = service2.view(no);
 		List<FamilyeventAttVo> att = service2.view1(no);
 		mv.addObject("obj", vo);

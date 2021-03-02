@@ -2,10 +2,16 @@ package com.doubleu.profile.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.profile.service.ProfileService;
 import com.doubleu.profile.service.WorkService;
@@ -37,4 +43,29 @@ public class ProfileController {
 		model.addAttribute("contentList2", contentList2);
 		return "member/workStatus";
 	}
+	
+	@RequestMapping(value = "/startWork", method = {RequestMethod.POST,RequestMethod.GET} )
+	public ModelAndView startWork(@RequestParam int no) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 실행");
+		WorkVo vo = service2.startWork(no);
+		
+		mv.addObject("startVo", vo);
+		mv.setViewName("MainPage/index");
+		return mv;
+	
+	}
+	
+	@RequestMapping(value = "/endWork", method = {RequestMethod.POST,RequestMethod.GET} )
+	public ModelAndView endWork(HttpSession req) {
+		ModelAndView mv = new ModelAndView();
+		int no = (int) req.getAttribute("MemberNo");
+		String endTime = service2.endWork(no);
+		
+		mv.addObject("endTime", endTime);
+		mv.setViewName("MainPage/index");
+		return mv;
+	
+	}
+	
 }

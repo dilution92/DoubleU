@@ -3,6 +3,8 @@ package com.doubleu.calender.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.CalenderService;
+import com.doubleu.calender.vo.CalenderVo;
 import com.doubleu.calender.vo.CalenderWeekList;
 import com.doubleu.profile.service.ProfileService;
 import com.doubleu.profile.vo.ProfileVo;
@@ -23,12 +26,12 @@ public class CalenderURLController {
 	ProfileService profile;
 	
 	@RequestMapping(value = "/calenderMonth", method = {RequestMethod.POST, RequestMethod.GET} )
-	public ModelAndView calenderMonth() {
+	public ModelAndView calenderMonth(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		List<CalenderWeekList> list = new ArrayList<>();
 		
 
-		list = calender.setMonthCalender();
+		list = calender.setMonthCalender(session);
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		int day = calender.getDay();
@@ -42,12 +45,12 @@ public class CalenderURLController {
 	}
 	
 	@RequestMapping(value = "/calenderWeek", method = {RequestMethod.POST, RequestMethod.GET} )
-	public ModelAndView calenderWeek() {
+	public ModelAndView calenderWeek(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		List<CalenderWeekList> list = new ArrayList<CalenderWeekList>();
 		
 		
-		list = calender.setCalenderWeek();
+		list = calender.setCalenderWeek(session);
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		int day = calender.getDay();
@@ -60,10 +63,10 @@ public class CalenderURLController {
 	}
 	
 	@RequestMapping(value = "/calenderDay", method = {RequestMethod.POST, RequestMethod.GET} )
-	public ModelAndView calenderDay() {
+	public ModelAndView calenderDay(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		
-		CalenderWeekList listDay = calender.setCalenderDay();
+		CalenderWeekList listDay = calender.setCalenderDay(session);
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		mv.addObject("currentYear", year);
@@ -82,6 +85,21 @@ public class CalenderURLController {
 		List<ProfileVo> profile1 = profile.selectProfile();
 		mv.addObject("profile", profile1);
 		mv.setViewName("calender/Calender_write");
+
+		return mv;
+	}
+	
+	@RequestMapping(value = "/calenderUpdate", method = {RequestMethod.POST, RequestMethod.GET}  )
+	public ModelAndView calenderUpdate(CalenderVo vo) {
+		ModelAndView mv = new ModelAndView();
+		
+		int id = vo.getCalenderNo();
+		CalenderVo selectOne = calender.selectOne(id);
+		/* List<CalenderParticiptant> parti = calender.selectPartiList(id); */
+		
+		mv.addObject("selectVo", selectOne);
+		/* mv.addObject("parti", parti); */
+		mv.setViewName("calender/Calender_update");
 
 		return mv;
 	}

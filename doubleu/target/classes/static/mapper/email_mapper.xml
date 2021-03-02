@@ -49,9 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 임시저장 -->
 	<select id="totListSizeTemp" resultType='int' parameterType="com.doubleu.email.vo.EmailPage">
 		SELECT count(email_no) FROM email
-	          	WHERE email_title LIKE '%${findStr}%' 
-                AND email_mailBox = ${emailMailBox}
+                WHERE email_mailBox = ${emailMailBox}
                 AND email_address = #{emailAddress}
+                AND email_delete = 0
                 ORDER BY email_date DESC
 	</select>
 	
@@ -61,8 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 SELECT * FROM (
 	        SELECT rownum no, m.* from (  
 	          SELECT * from email
-	          	WHERE email_title LIKE '%${findStr}%' 
-                AND email_mailBox = ${emailMailBox}
+                WHERE email_mailBox = ${emailMailBox}
                 AND email_address = #{emailAddress}
                 AND email_delete = 0
                 ORDER BY email_date DESC
@@ -131,9 +130,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		email_main_seq.nextval,
 		#{memberNo},
 		#{memberMid}, 
-		#{emailAddress}, #{emailName}, 
-		#{emailTitle}, SYSTIMESTAMP, 
-		#{emailContents}, 
+		#{emailAddress, jdbcType=VARCHAR}, #{emailName, jdbcType=VARCHAR}, 
+		#{emailTitle, jdbcType=VARCHAR}, SYSTIMESTAMP, 
+		#{emailContents, jdbcType=VARCHAR}, 
 		3, 
 		#{emailChk}, 
 		default)
@@ -159,8 +158,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				VALUES(
 				emailMainSeq(), 
 				email_main_seq.currval, 
-				#{rev.emailReceiverAddress}, 
-				#{rev.emailReceiverRef})
+				#{rev.emailReceiverAddress, jdbcType=VARCHAR}, 
+				#{rev.emailReceiverRef, jdbcType=VARCHAR})
 			</foreach>
 		</if>
 		SELECT * FROM dual
@@ -213,8 +212,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				VALUES(
 				emailMainSeq(), 
 				email_main_seq.currval, 
-				#{rev.emailReceiverAddress}, 
-				#{rev.emailReceiverRef})
+				#{rev.emailReceiverAddress, jdbcType=VARCHAR}, 
+				#{rev.emailReceiverRef, jdbcType=VARCHAR})
 				
 				<!-- VALUES(emailMainSeq(), email_main_seq.currval, #{emailReceiverName}, #{emailReceiverAddress}, #{emailReceiverDept}, #{emailReceiverRef}, #{emailMid}) -->
 			</foreach>
@@ -225,6 +224,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- update -->
 	<update id="updateSendTrash"
+	parameterType="com.doubleu.email.vo.EmailMainVo">
+		UPDATE email 
+		SET
+		email_mailBox = ${emailMailBox}
+		WHERE email_no = ${emailNo}
+	</update>
+	
+	<!-- update -->
+	<update id="updateMoveEmail"
 	parameterType="com.doubleu.email.vo.EmailMainVo">
 		UPDATE email 
 		SET

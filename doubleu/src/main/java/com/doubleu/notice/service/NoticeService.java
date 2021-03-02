@@ -1,15 +1,18 @@
 package com.doubleu.notice.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.notice.mybatis.NoticeMapper;
-import com.doubleu.notice.vo.FamilyeventAttVo;
-import com.doubleu.notice.vo.FamilyeventVo;
 import com.doubleu.notice.vo.NoticeAttVo;
+import com.doubleu.notice.vo.NoticePage;
 import com.doubleu.notice.vo.NoticeVo;
 
 @Service
@@ -66,6 +69,54 @@ public class NoticeService {
 	
 		System.out.println("delete mapper 반환");
 		return msg;
+	}
+	
+	// 페이징 처리
+	public int totListSizeMain(NoticePage page) {
+
+		int totListSize = mapper.totListSizeMain(page);
+		System.out.println(page);
+
+		page.setTotListSize(totListSize);
+		page.pageCompute();
+		return totListSize;
+
+	}
+
+	// 페이징 처리
+	public Map<String, Object> selectPaging(
+			NoticePage page) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<NoticeVo> pageList = null;
+		
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+		
+		System.out.println(page.getNowPage()+"NoticeNowPage");
+		System.out.println(page.getFindStr());
+		
+		int totListSize = mapper.totListSizeMain(page);
+		
+		page.setTotListSize(totListSize);
+		page.pageCompute();
+
+		System.out.println("totListSize notice" + totListSize);
+
+		pageList = mapper.selectPaging(page);
+		System.out.println("테스트 pageList" + pageList);
+		
+		map.put("page", page);
+		map.put("pageList", pageList);
+		
+		return map;
+
+	}
+	
+	// 조회수
+	public int updateHit(int notice_hit) {
+		return mapper.updateHit(notice_hit);
 	}
 
 }

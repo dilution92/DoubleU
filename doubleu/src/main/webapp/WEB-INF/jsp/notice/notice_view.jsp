@@ -36,7 +36,8 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전사게시판 CSS -->
 <link rel="stylesheet" href="/css/notice/notice.css">
-
+<!-- 게시판 JS -->
+<script src='/js/notice/notice.js'></script>
 </head>
 <body>
 
@@ -56,7 +57,7 @@
 
 				<!-- 게시판 검색바 code -->
 				<div class="e-approval-search-bar">
-					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
+					<form class="e-approval-search-form" action="" name="noticeForm" method="post">
 						<div class="e-approval-form-box">
 							<span>공지사항</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />

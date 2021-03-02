@@ -35,6 +35,9 @@
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전사게시판 CSS -->
 <link rel="stylesheet" href="/css/notice/notice.css">
+<!-- 게시판 JS -->
+<script src='/js/notice/notice.js'></script>
+
 
 </head>
 <body>
@@ -53,22 +56,22 @@
 
 		<main class="e-approval-article">
 
+		<form class="e-approval-search-form" action="" name="noticeForm" method="post">
 				<!-- 게시판 검색바 code -->
 				<div class="e-approval-search-bar">
-					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
-						<div class="e-approval-form-box">
-							<span>공지사항</span>
-							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
-							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-								
-							<select	class="form-control form-control-sm e-approval-select-box">
-								<option selected>제목</option>
-								<option value="0">내용</option>
-								<option value="1">제목+내용</option>
-								<option value="2">작성자</option>
-							</select>
-						</div>
-					</form>
+				
+					<div class="e-approval-form-box">
+						<span>공지사항</span>
+						<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
+						<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
+							
+						<select	class="form-control form-control-sm e-approval-select-box">
+							<option selected>제목</option>
+							<option value="0">내용</option>
+							<option value="1">제목+내용</option>
+							<option value="2">작성자</option>
+						</select>
+					</div>
 				</div>
 			
 			
@@ -86,7 +89,7 @@
                     	</tr>
 	                	</thead>
 					<tbody class="e-approval-list text-muted">
-	                		<c:forEach var='obj' items="${contentList1 }">
+	                		<c:forEach var='obj' items="${list }">
 	                    		<tr onClick="location.href='/noticeView?no=${obj.noticeNo }'">
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeNo }</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeType }</td>
@@ -102,19 +105,29 @@
    			
 			<!-- 리스트 페이징 아이콘 code -->
 			<div class="e-approval-list-pagination">
-				<nav aria-label="Page navigation example">
-					<ul class="pagination pagination-sm text-muted justify-content-center" style="padding-top:20px">  
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">first</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&lt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">1</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">2</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">3</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">&gt;</a></li>
-						<li class="page-item"><a class="page-link" href="#" style="font-size: 0.7em">last</a></li>
+				<nav aria-label="Page navigation example">  
+						<ul	class="pagination pagination-sm text-muted justify-content-center">
+						
+						<c:if test="${page.startPage>1 }">
+							<li class="page-item"><a class="page-link" onclick='goPage1(1)'style="font-size: 0.7em">first</a></li>
+							<li class="page-item"><a class="page-link" onclick='goPage1(${page.startPage-1})'style="font-size: 0.7em">&lt;</a></li>
+						</c:if>	
+							<c:forEach var='i' begin='${page.startPage }' end='${page.endPage }'>
+								<li class="page-item"><a class="page-link" onclick='goPage1(${i})' style="font-size: 0.7em">${i }</a></li>
+							</c:forEach>
+							
+						<c:if test="${page.endPage<page.totPage }">
+							<li class="page-item"><a class="page-link" onclick = 'goPage1(${page.endPage+1})'
+								style="font-size: 0.7em">&gt;</a></li>
+							<li class="page-item"><a class="page-link" onclick = 'goPage1(${page.totPage})' style="font-size: 0.7em">last</a></li>
+						</c:if>
+						
 					</ul>
 				</nav>
+				<input type="hidden" name="nowPage" class="nowPage">
 			</div>
-
+			<!-- ========== -->
+		</form>
 		</main>
 	</section>
 	

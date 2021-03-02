@@ -33,12 +33,12 @@
   </div>
 </div>
 
-
-<!-- 답글 Button trigger modal
+<!-- 
+ 답글 Button trigger modal
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">답글</button>
--->
 
-<!-- 답글 Modal -->
+
+답글 Modal
 	<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabe" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -62,7 +62,8 @@
 	      </div>
 	    </div>
 	  </div>
-	</div>
+	</div> 
+-->
 	
 </body>
 </html>

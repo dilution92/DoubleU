@@ -60,7 +60,7 @@
 
 				<!-- 게시판 검색바 code -->
 				<div class="e-approval-search-bar">
-					<form class="e-approval-search-form" action="" name="frm_approval" method="post">
+					<form class="e-approval-search-form" action="" name="noticeForm" method="post">
 						<div class="e-approval-form-box">
 							<span>공지사항</span>
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
@@ -107,8 +107,10 @@
 							      <option class="notice-icon"selected>일반공지</option>
 				   				</select>
 				            </td>
-				            <th class="success">조회수</th>
-				            <td><input type="number" id="hit" name="noticeHit" value="1" readonly></td>
+  				            <th></th>
+				            <td></td>
+<!-- 				            <th class="success">조회수</th>
+				            <td><input type="number" id="hit" name="noticeHit" readonly></td> -->
 				        </tr>
 				        <tr>
 				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>

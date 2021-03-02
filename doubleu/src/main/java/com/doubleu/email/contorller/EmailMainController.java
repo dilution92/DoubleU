@@ -350,10 +350,12 @@ public class EmailMainController {
 		int cnt = selectService.selectSendEmail(req, session);
 		
 		
+		
+		
 		System.out.println("임시저장 : " + tempCnt);
 		
 		mv.addObject("readCnt", cnt);
-		mv.setViewName("redirect:/emailTempList");
+		mv.setViewName("redirect:/emailIndex");
 
 		return mv;
 	}
@@ -369,7 +371,7 @@ public class EmailMainController {
 			) {
 		ModelAndView mv = new ModelAndView();
 		
-		int mailBox = 2;
+		int mailBox = 2; // 임시보관함
 		page.setEmailMailBox(mailBox);
 		
 		int cnt = selectService.selectSendEmail(req, session);
@@ -432,7 +434,7 @@ public class EmailMainController {
 		
 		String values[] = req.getParameterValues("deleteBtnList");
 		
-		int mailBox = 5; // 스팸메일함
+		int mailBox = 5; // 휴지통
 		
 		String[] array = null;
 		
@@ -520,7 +522,7 @@ public class EmailMainController {
 			ModelAndView mv = new ModelAndView();
 
 			
-			int mailBox = 1; //스팸 메일함
+			int mailBox = 1; //중요 메일함
 			page.setEmailMailBox(mailBox);
 			
 			int cnt = selectService.selectSendEmail(req, session);
@@ -534,6 +536,7 @@ public class EmailMainController {
 			return mv;
 		}
 		
+		// 휴지통에서 전체삭제하기
 		@RequestMapping(value="/emailDeleteAll", method={RequestMethod.GET, RequestMethod.POST})
 		public ModelAndView emailDeleteAll(
 				EmailMainVo vo,
@@ -575,7 +578,7 @@ public class EmailMainController {
 				) {
 			ModelAndView mv = new ModelAndView();
 			
-			int emailBox = 4;
+			int emailBox = 4; // 스팸 메일함
 			vo.setEmailMailBox(emailBox);
 			
 			String values[] = req.getParameterValues("deleteBtnList");
@@ -597,6 +600,20 @@ public class EmailMainController {
 			mv.setViewName("redirect:/emailSpam");
 			return mv;
 		}
+		
+		// emailReplyRead
+				@RequestMapping(value="/emailReplyRead", method={RequestMethod.GET, RequestMethod.POST})
+				public ModelAndView emailReplyRead(
+						EmailMainVo vo,
+						EmailPage page,
+						HttpServletRequest req,
+						HttpSession session
+						) {
+					ModelAndView mv = new ModelAndView();
+				
+					mv.setViewName("email/email_reply");
+					return mv;
+				}
 	
 }
 

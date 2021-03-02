@@ -13,7 +13,7 @@ public class ModifyURLController  {
 	@Autowired
 	MemberService service;
 	@RequestMapping(value = "/memberModifyIndex", method= RequestMethod.GET)
-	public ModelAndView memberInsertR(MemberVo vo) {
+	public ModelAndView memberModify(MemberVo vo) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		//msg = service.insert(vo);
