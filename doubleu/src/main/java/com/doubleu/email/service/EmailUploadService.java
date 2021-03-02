@@ -20,7 +20,6 @@ public class EmailUploadService {
 
 
 	public List<AttEmailVo> upload(List<MultipartFile> mul, HttpServletRequest req) {
-		
 		String realPath = req.getServletContext().getRealPath("WEB-INF/upload/email/");
 		this.saveDir = realPath;
 		

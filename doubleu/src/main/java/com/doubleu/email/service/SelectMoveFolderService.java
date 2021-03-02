@@ -31,7 +31,7 @@ public class SelectMoveFolderService {
 			System.out.println("selectMoveFolder" + arrayList);
 			int arrayListInt = Integer.parseInt(arrayList);
 			vo.setEmailNo(arrayListInt);
-			cnt = DaoService.updateSendTrash(vo); 
+			cnt = DaoService.updateSendTrash(vo);
 			System.out.println("selectMoveFolder-------" + cnt);
 		}
 		

@@ -148,6 +148,7 @@
 								<div class="emailBtnList" id="parah">
 									<!-- input자리 -->
 								</div>
+
 								<c:forEach begin="0" end="0">
 								<!-- 받는 사람 input -->
 

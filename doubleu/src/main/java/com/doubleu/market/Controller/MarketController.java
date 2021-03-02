@@ -101,14 +101,18 @@ public class MarketController {
 	
 	@RequestMapping(value="/marketUpdateR" , method= {RequestMethod.POST})
 	public ModelAndView marketUpdateR(@RequestParam("attList") List<MultipartFile> mul, 
-								@ModelAttribute MarketVo vo, @ModelAttribute MarketPage page) {
+								@ModelAttribute MarketVo vo, @ModelAttribute MarketPage page,
+								HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
 		List<MarketAttVo> attList = fu.upload(mul);
+		String dibUser = "";
+		dibUser = req.getParameter("dibUser");
 		
 		vo.setAttlist(attList);
-		
+		System.out.println("vo: "+vo);
 		String msg = dao.update(vo);
 		System.out.println(msg);
+		mv.addObject("dibUser", dibUser);
 		mv.addObject("msg", msg);
 		mv.addObject("page", page);
 		mv.setViewName("redirect:/marketIndex");
@@ -116,11 +120,16 @@ public class MarketController {
 	}
 	
 	@RequestMapping(value="/marketDelete" , method=  {RequestMethod.GET , RequestMethod.POST})
-	public ModelAndView deleteR(MarketVo vo, MarketPage page) {
+	public ModelAndView deleteR(HttpServletRequest req, MarketVo vo, MarketPage page) {
 		ModelAndView mv = new ModelAndView();
+		String dibUser = "";
+		dibUser = req.getParameter("dibUser");
+		
 		System.out.println("delete controller...");
 		String msg = dao.delete(vo);
 		System.out.println(msg);
+		
+		mv.addObject("dibUser", dibUser);
 		mv.addObject("msg", msg);
 		mv.addObject("page", page);
 		mv.setViewName("redirect:/marketIndex");
