@@ -21,6 +21,10 @@ import com.doubleu.login.service.LoginService;
 import com.doubleu.login.vo.LoginVo;
 import com.doubleu.market.mybatis.MarketDao;
 import com.doubleu.market.vo.MarketVo;
+import com.doubleu.notice.service.FamilyeventService;
+import com.doubleu.notice.service.NoticeService;
+import com.doubleu.notice.vo.FamilyeventVo;
+import com.doubleu.notice.vo.NoticeVo;
 
 @Controller
 public class loginMainController {
@@ -47,6 +51,12 @@ public class loginMainController {
 	
 	@Autowired
 	SelectSerivce selectService;
+	
+	@Autowired
+	FamilyeventService familyeventService;
+	
+	@Autowired
+	NoticeService noticeService;
 		
 	// 로그인 체크
 	@RequestMapping(value="/loginCheck", method= {RequestMethod.GET, RequestMethod.POST})
@@ -102,7 +112,14 @@ public class loginMainController {
 		Map<String, Object> map = DaoService.selectPaging(page, session);
 		mv.addObject("EmailList", map.get("pageList"));		
 		
-		return mv;
+		 
+		//게시판
+	    List<NoticeVo> contentList1 = noticeService.select();
+        mv.addObject("contentList1", contentList1);
+  	    
+        List<FamilyeventVo> contentList = familyeventService.select();
+        mv.addObject("contentList", contentList);
+        return mv;
 	}
 	
 	// 로그아웃

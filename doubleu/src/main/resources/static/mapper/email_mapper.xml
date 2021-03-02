@@ -240,7 +240,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		email_delete = 1
 		WHERE email_no = ${emailNo}
 	</update>
-	
+
 	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
  
 	<result property="emailNo" column="email_no" />
