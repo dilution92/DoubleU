@@ -100,8 +100,8 @@ public class loginMainController {
 				profileImg = "/img/profileg.jpg";
 			}
 			mv.addObject("profileImg", profileImg);
-			//전자결재 불러오기
 			
+			//전자결재 불러오기
 			Map<String, Object> receiverMap = selectApprovalReceiver.selectReceiver(req, session);
 			mv.addObject("receiverApprovalList", receiverMap.get("list"));
 			Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);
@@ -125,6 +125,19 @@ public class loginMainController {
 
 			List<FamilyeventVo> contentList = familyeventService.select();
 			mv.addObject("contentList", contentList);
+			
+	        // 일정
+	        List<CalenderWeekList> list = new ArrayList<>();
+	        list = calender.setMonthCalender(session);
+			int year = calender.getYear();
+			int month = calender.getMonth();
+			int day = calender.getDay();
+			mv.addObject("currentYear", year);
+			mv.addObject("currentMonth", month);
+			mv.addObject("currentDay", day);
+			mv.addObject("calender",list);
+	        
+			
 		}
         return mv;
 	}
