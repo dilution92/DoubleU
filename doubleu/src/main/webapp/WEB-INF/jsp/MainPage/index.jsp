@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -14,6 +14,10 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/MainIndex.css">
 
 <script type="text/javascript" src="/js/MainPage.js"></script>
@@ -88,9 +92,63 @@
 	</main>
 	<aside class="main-content-calender">
 	
-		<div class="content-calender">
-			<strong class="text-muted ">캘린더</strong><br>
+		<div class="content-calender" >
+			<strong class="text-muted " style="text-align: left;">캘린더  ${currentYear}년  ${currentMonth}월</strong><br>
+			<table class="table table-bordered" style="text-align: center">
+			<thead><!-- 요일 들어갈 자리 -->
+				<tr height="15px" style="font-size: 13px">
+					<th scope="col" width="14.2%">
+						Sun
+					</th>
+					<th scope="col" width="14.2%">
+						Mon
+					</th>
+					<th scope="col" width="14.2%">
+						Tue
+					</th>
+					<th scope="col" width="14.2%">
+						Wen
+					</th>
+					<th scope="col" width="14.2%">
+						Thu
+					</th>
+					<th scope="col" width="14.2%">
+						Fri
+					</th>
+					<th scope="col" width="14.2%">
+						Sat
+					</th>
+				</tr>
+			</thead>
+			<div><!-- 달력 컨텐츠가 표시 될 곳 -->
+			<form>
 			
+			<c:forEach items="${calender}" var="list">
+			<c:set var="i" value="${i+1 }"/>
+			<c:if test="${i%7==1 }">
+			<tr height="40px;" style="font-size: 13px">
+			</c:if>
+			
+			
+			<td id="calender_content" class="${list.dateIdN}"><!-- 월간 달력 한칸 -->
+				<div ><!-- 날자가 표시 될 곳 -->
+				
+				</div>
+				<div class="calender_icon">
+					<input type="hidden" class="size_chk" value="${list.vo.size() }">
+					<input type="text" class="all_icon" value="${list.day}" style="border-radius: 15px; height: 20px; width: 20px; padding: 0; border: none; text-align: center;">
+				</div> 
+				
+			</td>
+			<c:if test="${i%7==0 }">
+			</tr>
+			</c:if>
+			
+			
+			</c:forEach>
+			</form>
+			</div>
+		</table>
 		</div>
 		<div class="content-schedule">
 			<h6 class="article-title">전사 일정</h6>

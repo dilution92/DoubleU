@@ -12,7 +12,7 @@ import com.doubleu.calender.vo.CalenderVo;
 @Mapper
 public interface CalenderMapper {
 	public int insert(CalenderVo vo);
-	public List<CalenderVo> selectList();
+	public List<CalenderVo> selectList(int id);
 	public CalenderVo selectOne(int id);
 //	public List<CalenderParticiptant> selectPartiList(int no);
 	public int update(CalenderVo vo);
