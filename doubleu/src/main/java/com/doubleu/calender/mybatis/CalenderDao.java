@@ -1,5 +1,7 @@
 package com.doubleu.calender.mybatis;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -30,6 +32,26 @@ public class CalenderDao {
 		int cnt = mapper.insert(vo);
 		System.out.println("service 종료");
 		return msg;
+	}
+	
+	public List<CalenderVo> selectMain(HttpSession session){
+		LoginVo loginVo = (LoginVo) session.getAttribute("member");
+		int id = loginVo.getMemberNo();
+		CalenderVo vo = new CalenderVo();
+		
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		String year = time1.substring(0, 4);
+		String month = time1.substring(5, 7);
+		String day = time1.substring(8, 10);
+		System.out.println(month);
+		vo.setMemberNo(id);
+		vo.setCalenderStartYear(year);
+		vo.setCalenderStartMonth(month);
+		vo.setCalenderStartDay(day);
+		List<CalenderVo> cList = mapper.selectMain(vo);
+		return cList;
 	}
 
 	public List<CalenderVo> selectList(HttpSession session) {

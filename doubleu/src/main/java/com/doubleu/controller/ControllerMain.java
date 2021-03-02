@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectReceiverService;
 import com.doubleu.calender.service.CalenderService;
+import com.doubleu.calender.vo.CalenderVo;
 import com.doubleu.calender.vo.CalenderWeekList;
 import com.doubleu.email.mybatis.EmailDao;
 import com.doubleu.email.service.SelectSerivce;
@@ -117,6 +118,8 @@ public class ControllerMain {
         // 일정
         List<CalenderWeekList> list = new ArrayList<>();
         list = calender.setMonthCalender(session);
+        List<CalenderVo> mainList = calender.selectMain(session);
+
 		int year = calender.getYear();
 		int month = calender.getMonth();
 		int day = calender.getDay();
@@ -124,7 +127,8 @@ public class ControllerMain {
 		mv.addObject("currentMonth", month);
 		mv.addObject("currentDay", day);
 		mv.addObject("calender",list);
-        
+		mv.addObject("mainList",mainList);
+
 		
 		
 		mv.setViewName("MainPage/index");

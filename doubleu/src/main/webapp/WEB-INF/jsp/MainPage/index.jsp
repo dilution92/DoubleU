@@ -151,33 +151,18 @@
 		</table>
 		</div>
 		<div class="content-schedule">
-			<h6 class="article-title">전사 일정</h6>
+			<h6 class="article-title">오늘 일정</h6>
+			 <c:forEach items="${mainList}" var="mainList">
 			<div class="schedule-article">
 				<p>
-					<a href="#">
-					<strong class="d-block text-gray-dark">2021-01-31(일)</strong>
-					<span>임직원 전체 회의입니다.</span>
-					</a>
+					<strong class="d-block text-gray-dark">${mainList.getCalenderStartYear() }-${mainList.getCalenderStartMonth() }-${mainList.getCalenderStartDay() }</strong>
+					<span>${mainList.getCalenderContent() }</span>
 				</p>
 			</div>
-			<div class="schedule-article">
-				<p>
-					<a href="#">
-						<strong class="d-block text-gray-dark">2021-01-31(일)</strong>
-						<span>임직원 전체 회의입니다.</span>
-					</a>
-				</p>
-			</div>
-			<div class="schedule-article">
-				<p>
-					<a href="#">
-						<strong class="d-block text-gray-dark">2021-01-31(일)</strong>
-						<span>임직원 전체 회의입니다.</span>
-					</a>
-				</p>
-			</div>
+			 </c:forEach>
+			
 			<div class="main-go-page">
-				<a href="#">자세히 보기</a>
+				<a href="/calenderMonth">자세히 보기</a>
 			</div>
 		</div>
 	</aside>
