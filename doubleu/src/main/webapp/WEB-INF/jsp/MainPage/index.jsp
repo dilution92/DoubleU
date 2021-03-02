@@ -45,7 +45,7 @@
 		</div>
 		<div class="content-workManagement">
 			<div class="WM-header">
-				<strong class="text-muted">근태 관리</strong><br>
+				<strong class="text-muted ">근태 관리</strong><br>
 				<p class="small lh-sm text-muted" id="clock"></p>
 			</div>
 			<div class="WM-timeTable">
@@ -87,6 +87,11 @@
 	
 	</main>
 	<aside class="main-content-calender">
+	
+		<div class="content-calender">
+			<strong class="text-muted ">캘린더</strong><br>
+			
+		</div>
 		<div class="content-schedule">
 			<h6 class="article-title">전사 일정</h6>
 			<div class="schedule-article">
