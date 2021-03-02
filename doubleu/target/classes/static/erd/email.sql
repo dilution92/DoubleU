@@ -69,7 +69,7 @@ INTO email VALUES(
     email_main_seq.nextval,
     1, 
     'song', 
-    'song@gmail.com', 
+    'gamcho@gmail.com', 
     '송연주', 
     '안녕하세요 프론트 작업 중입니다.', 
     systempsdate, 
@@ -85,7 +85,11 @@ INTO email_receiver (
     email_rev_address,
     email_ref
     )
-VALUES(emailMainSeq(), email_main_seq.currval, 'song1234@gmail.com', 0)
+VALUES(emailMainSeq(), email_main_seq.currval, 'angel@@gmail.com', 0)
+VALUES(emailMainSeq(), email_main_seq.currval, 'boss@@gmail.com', 0)
+VALUES(emailMainSeq(), email_main_seq.currval, 'heerock@gmail.com', 0)
+VALUES(emailMainSeq(), email_main_seq.currval, 'carrot@gmail.com', 1)
+VALUES(emailMainSeq(), email_main_seq.currval, 'yellll@gmail.com', 1)
 
 -- 파일
 INTO email_files VALUES(emailMainSeq(), email_main_seq.currval, '', '파일.png')

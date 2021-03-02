@@ -10,15 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class emailURLController {
 	
-	// email_important.jsp
-	@RequestMapping(value="/emailImportant", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView emailImportant() {
-		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("email/email_important");
-
-		return mv;
-	}
+	
 
 
 	// email_keep_one.jsp 내 메일함 `NOTES`
@@ -62,15 +54,6 @@ public class emailURLController {
 		return mv;
 	}
 
-	// email_spam.jsp
-	@RequestMapping(value="/emailSpam", method=RequestMethod.GET)
-	public ModelAndView emailSpam() {
-		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("email/email_spam");
-
-		return mv;
-	}
 
 	// email_temporary_write.jsp
 	@RequestMapping(value="/emailTempWrite", method=RequestMethod.GET)
@@ -81,32 +64,6 @@ public class emailURLController {
 
 		return mv;
 	}
-	
-	// email_temporary.jsp
-	@RequestMapping(value="/emailTempList", method={RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView emailTempList() {
-		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("email/email_temporary");
-
-		return mv;
-	}
-	
-
-	// email_trash.jsp
-	@RequestMapping(value="/emailThash", method=RequestMethod.GET)
-	public ModelAndView emailThash() {
-		ModelAndView mv = new ModelAndView();
-
-		mv.setViewName("email/email_trash");
-
-		return mv;
-	}
-
-
-
-
-
 
 
 

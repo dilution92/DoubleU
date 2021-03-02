@@ -124,6 +124,7 @@
 				<table class="table table-hover table-sm" id="selectFindStr">
 					<tbody class="e-approval-list text-muted">						
 						<c:forEach var="list" items="${list }">
+							
 							<tr>
 								<td><input name="chkBox" class="chkBoxClass" type="checkbox"
 								value="${list.emailNo}"/></td>
@@ -187,10 +188,6 @@ changeChkReadBtn();
 
 // 메일 검색 bar
 emailSelectSearch();
-
-btnSearchDetail();
-
-
 
 </script>
 </body>

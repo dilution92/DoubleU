@@ -9,9 +9,6 @@ public class FamilyeventVo {
 	String familyeventSubject;
 	String familyeventMid;
 	String familyeventReportingDate;
-	String familyeventPostType;
-	String familyeventPostStartDate;
-	String familyeventPostEndDate;
 	String familyeventType;
 	int familyeventHit;
 	String familyeventDoc;
@@ -41,24 +38,6 @@ public class FamilyeventVo {
 	}
 	public void setFamilyeventReportingDate(String familyeventReportingDate) {
 		this.familyeventReportingDate = familyeventReportingDate;
-	}
-	public String getFamilyeventPostType() {
-		return familyeventPostType;
-	}
-	public void setFamilyeventPostType(String familyeventPostType) {
-		this.familyeventPostType = familyeventPostType;
-	}
-	public String getFamilyeventPostStartDate() {
-		return familyeventPostStartDate;
-	}
-	public void setFamilyeventPostStartDate(String familyeventPostStartDate) {
-		this.familyeventPostStartDate = familyeventPostStartDate;
-	}
-	public String getFamilyeventPostEndDate() {
-		return familyeventPostEndDate;
-	}
-	public void setFamilyeventPostEndDate(String familyeventPostEndDate) {
-		this.familyeventPostEndDate = familyeventPostEndDate;
 	}
 	public String getFamilyeventType() {
 		return familyeventType;

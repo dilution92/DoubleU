@@ -25,7 +25,7 @@ body {
 	width: 20%;
 	text-align: center;
 	padding: 1.2em 1.5em 0em 1.5em;
-	min-height: 100%;
+	min-height: 680px;
 }
 
 .e-approval-lnb-content {
@@ -293,7 +293,6 @@ margin-top: 30px;
 
 .price-chart-detail{
     width: 500px;
-    height: 300px;
     text-align: center;
     margin: auto;
     margin-top: 50px;

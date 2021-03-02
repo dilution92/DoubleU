@@ -101,7 +101,7 @@
 					            <th class="success">조회수</th>
 					            <td>${obj.familyeventHit }</td>
 					        </tr>
- 					        <tr>
+<%--  					        <tr>
 					        	<th>게시기한</th>
 					        	<td colspan="3">
 									<!-- <input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -111,7 +111,7 @@
 										&nbsp;~ &nbsp;
 										종료일자 &nbsp;<input type="date" id="searchDateTwo" name="familyeventPostEndDate" value="${obj.familyeventPostEndDate }" readOnly> )
 								</td>
-					        </tr>
+					        </tr> --%>
 					        <tr>
 					        	<div class="form-group">
 						            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
@@ -145,7 +145,7 @@
 			</form>
 			<!-- ========== -->
 
- 			<!-- 사내공지 댓글창 -->
+ 			<!-- 공지사항 댓글창 -->
  			<jsp:include page="notice_repl.jsp"/>
  			<!-- ========== -->
  			

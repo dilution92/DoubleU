@@ -357,7 +357,9 @@ body {
 /* 스팸함 모달창 */
 
 .modalSpamEmail{
+	margin-top: 80px;
     height: 350px;
+    
 }
 
 .modalSpamEmailFolder {

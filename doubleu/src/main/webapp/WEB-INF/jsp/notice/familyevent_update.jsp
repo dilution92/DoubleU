@@ -111,7 +111,7 @@
 				            <th class="success">조회수</th>
 				            <td><input type="number" id="hit" name="familyeventHit" value="${obj.familyeventHit }" readonly></td>
 				        </tr>
- 				        <tr>
+<%--  				        <tr>
 				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
@@ -126,7 +126,7 @@
 								</div>
 							</td>
 				        </tr>
-				        <tr>
+				        <tr> --%>
 				        	<div class="form-group">
 					            <th class="success"><label for="exampleFormControlTextarea1">내용</label></th>
 					            <td colspan="3">

@@ -47,7 +47,7 @@
 <body>
 	<!-- 그룹웨어 GNB 헤더-->
 
-	<header>
+	<header class="container-fluid main-gnb">
 		<jsp:include page="/WEB-INF/jsp/MainPage/header.jsp"></jsp:include>
 	 </header>
 	 <!-- 그룹웨어 GNB code 끝 -->
@@ -90,7 +90,8 @@
 	    
 	    <!-- 3. 이동 모달창 -->
 	   	 	<jsp:include page="./modal/moveFolderModal.jsp"></jsp:include>
-	     	
+	     <!--4. 삭제하기 모달창-->
+	    <jsp:include page="./modal/deleteModal.jsp"></jsp:include>
 
      <!-- 모달창 모음 끝 -->           
                 
@@ -108,6 +109,7 @@
 		 				<input type="hidden" name="emailNoBtn">
 		 				<input  type="hidden"value='${param.findStr}'name='findStr' >         
 		 				<input type='hidden' name='nowPage' value='${(empty page.nowPage)? 1 : page.nowPage }'/>
+		 				<input type="hidden" name="deleteBtnList" />
 		 		</form>
 			</div>
 			<!-- ========== -->
@@ -124,7 +126,9 @@
 					<tbody class="e-approval-list text-muted">						
 						<c:forEach var="list" items="${list }">
 							<tr>
-								<td><input name="chkBox" class="chkBoxClass" type="checkbox"/></td>
+								<td><input name="chkBox" class="chkBoxClass" 
+								type="checkbox"
+								value="${list.emailNo}"/></td>
 								<td><i class="bi bi-star"></i></td>
                                 <td><i class="bi bi-envelope"></i></td>
                                 <td>${list.emailChk }</td>
@@ -185,8 +189,6 @@ changeChkReadBtn();
 
 // 메일 검색 bar
 emailSelectSearch();
-
-btnSearchDetail();
 
 
 

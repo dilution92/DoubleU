@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			email_receiver b
 			WHERE a.email_no = b.email_no
 			AND b.email_rev_address = #{emailAddress}
+			AND a.email_mailBox = ${emailMailBox}
 	</select>
 	
 
@@ -25,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			email_receiver b
 			WHERE a.email_no = b.email_no
 			AND b.email_rev_address = #{emailAddress}
+			AND a.email_mailBox = ${emailMailBox}
 	</select>
 	
 	 <select id="selectPaging" 
@@ -44,11 +46,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        ) WHERE no between ${startNo} and ${endNo}
 	</select>
 	
+	<!-- 임시저장 -->
+	<select id="totListSizeTemp" resultType='int' parameterType="com.doubleu.email.vo.EmailPage">
+		SELECT count(email_no) FROM email
+	          	WHERE email_title LIKE '%${findStr}%' 
+                AND email_mailBox = ${emailMailBox}
+                AND email_address = #{emailAddress}
+                ORDER BY email_date DESC
+	</select>
+	
+	<select id="selectTemp"  
+	resultMap="getEmailListSelect" 
+	 parameterType="com.doubleu.email.vo.EmailPage">
+		 SELECT * FROM (
+	        SELECT rownum no, m.* from (  
+	          SELECT * from email
+	          	WHERE email_title LIKE '%${findStr}%' 
+                AND email_mailBox = ${emailMailBox}
+                AND email_address = #{emailAddress}
+                AND email_delete = 0
+                ORDER BY email_date DESC
+	           ) m
+	        ) WHERE no between ${startNo} and ${endNo}		            
+	</select>
+	
 	<select id="selectEmailNo" parameterType="int" resultMap="getEmailListSelect">
 		SELECT * FROM email
 		WHERE email_no = #{emailNo}
 	</select>
 	
+	<select id="emailMailSelect" resultMap="getEmailListSelect">
+	          SELECT * from email
+	          	WHERE email_title LIKE '%${findStr}%' 
+                AND email_mailBox = ${emailMailBox}
+                AND email_address = #{emailAddress}
+                ORDER BY email_date DESC
+	</select>
 	<!-- 주소록 -->
 	<select id="selectMembers" resultMap="memberList">
 		SELECT member_name, member_email, member_team FROM member
@@ -199,8 +232,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE email_no = ${emailNo}
 	</update>
 	
+	<!-- update -->
+	<update id="updateMoveEmail"
+	parameterType="com.doubleu.email.vo.EmailMainVo">
+		UPDATE email 
+		SET
+		email_mailBox = ${emailMailBox}
+		WHERE email_no = ${emailNo}
+	</update>
 	
-	
+	<!-- delete -->
+	<update id="updateAllDelete" 
+	parameterType="com.doubleu.email.vo.EmailMainVo">
+		UPDATE email 
+		SET
+		email_delete = 1
+		WHERE email_no = ${emailNo}
+	</update>
+
 	<resultMap id="getEmailListSelect" type="com.doubleu.email.vo.EmailMainVo">
  
 	<result property="emailNo" column="email_no" />

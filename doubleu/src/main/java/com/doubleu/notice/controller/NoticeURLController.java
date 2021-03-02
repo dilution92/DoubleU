@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doubleu.email.vo.EmailPage;
 import com.doubleu.notice.service.FamilyeventService;
 import com.doubleu.notice.service.NoticeService;
 import com.doubleu.notice.vo.FamilyeventVo;
@@ -25,11 +26,11 @@ public class NoticeURLController {
 	FamilyeventService service2;
 
 	
-/* -------------------- 사내공지 -------------------- */
+/* -------------------- 공지사항 -------------------- */
 	
    // notice_index.jsp
    @RequestMapping(value = "/noticeIndex", method = {RequestMethod.POST, RequestMethod.GET})
-   public ModelAndView noticeIndex(){
+   public ModelAndView noticeIndex(EmailPage page){
       ModelAndView mv = new ModelAndView();
       List<NoticeVo> contentList1 = service1.select();
       mv.addObject("contentList1", contentList1);

@@ -71,6 +71,7 @@
 					<input type="button" class="btn btn-primary btn-lg" value="메일쓰기" onclick="location.href='/emailWrite'">
 				</div>
 				<div class="e-approval-approval-list">
+					<span>메일함</span>
 					<!-- 사이드바 링크 jsp page -->
 					<jsp:include page="commonsCode/emailSidebarLink.jsp"></jsp:include>
 				</div>
@@ -94,6 +95,9 @@
    <!-- 2. 스팸 모달창 -->
          
         <jsp:include page="./modal/spamModalRead.jsp"></jsp:include>
+        
+      <!--  3.삭제하기 모달창 -->	
+			<jsp:include page="./modal/deleteModal.jsp"></jsp:include>    
     <!-- 모달창 모음 끝 -->           
                
 	<main class="e-approval-article">
@@ -105,11 +109,12 @@
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
 	      			
 			      	<div class="e-approval-form-box">
-			      		<span>받은 메일함</span>
+			      		<span>메일함</span>
 					</div>
 
 				
 				<div class="email-select-content">
+					
 					<ul class="email-select-list">
                     <li>
                      	<span class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
@@ -119,7 +124,7 @@
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm">삭제하기</span>
+                         <span class="btn btn-outline-primary btn-sm" onclick="DeleteBtn()">삭제하기</span>
                      </li>
 
                      <li>
@@ -244,7 +249,6 @@ readBtn();
 
 // 읽음 버튼을 눌렀을 때 아이콘 변경 
 changeChkReadBtn();
-
 
 // 텍스트 
 summernote();

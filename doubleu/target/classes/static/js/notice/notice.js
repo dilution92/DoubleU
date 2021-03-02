@@ -1,4 +1,4 @@
-/* 사내공지 insert 게시기한 radio 선택시 활성/비활성 */ 
+/* 공지사항 insert 게시기한 radio 선택시 활성/비활성 */ 
 $(document).ready(function(){
  
     // 라디오버튼 클릭시 이벤트 발생

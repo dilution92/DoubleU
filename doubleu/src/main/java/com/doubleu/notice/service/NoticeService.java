@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.doubleu.notice.mybatis.NoticeMapper;
 import com.doubleu.notice.vo.FamilyeventAttVo;
@@ -12,6 +13,7 @@ import com.doubleu.notice.vo.NoticeAttVo;
 import com.doubleu.notice.vo.NoticeVo;
 
 @Service
+@Transactional
 public class NoticeService {
 	@Autowired
 	NoticeMapper mapper;
