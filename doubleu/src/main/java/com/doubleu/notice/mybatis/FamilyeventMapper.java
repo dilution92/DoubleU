@@ -23,5 +23,8 @@ public interface FamilyeventMapper {
 	//페이지
 	public int totListSizeMain(NoticePage page);
 	public List<NoticeVo> selectPaging(NoticePage page);
+	
+	// 조회수
+	public int updateHit(int notice_hit);
 }
 

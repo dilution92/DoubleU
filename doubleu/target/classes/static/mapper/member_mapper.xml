@@ -4,11 +4,43 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.doubleu.member.mybatis.MemberMapper">
-	<insert id="insert" parameterType="com.doubleu.member.vo.MemberVo">
-		insert into Member(member_no, member_mid, member_name, member_email, member_department, member_team, member_phoneNumber, member_roadAddress,member_jibunAddress) 
-		values(seq_member_no.nextval, #{member_mid}, #{member_name}, #{member_email}, #{member_department}, #{member_team}, #{member_phoneNumber},#{member_roadAddress}, #{member_jibunAddress})
-	</insert>
+	<!-- <select id="selectProfile" parameterType="com.doubleu.profile.vo.ProfileVo" resultMap="selectProfileData">
+		SELECT * FROM member
+	</select>
 
+    
 
+	<resultMap id="selectProfileData" type="com.doubleu.profile.vo.ProfileVo">
+ 
+	<result property="memberNo" column="member_no" /> 
+	<result property="memberMid" column="member_mid" /> 
+	<result property="memberPwd" column="member_pwd" /> 
+	<result property="memberName" column="member_name" /> 
+	<result property="memberEmail" column="member_email" /> 
+	<result property="memberDepartment" column="member_department"  />
+	<result property="memberTeam" column="member_team"  /> 
+	<result property="memberPhoneNumber" column="member_phonenumber"/>  
+	<result property="memberZipcode" column="member_zipcode" />
+	<result property="memberAddress" column="member_address" /> 
+	<result property="memberPosition" column="member_position" /> 
+	
+	</resultMap> -->
+	<select id="selectOne" parameterType="int" resultType="com.doubleu.member.vo.MemberVo">
+	select * from member where member_no = #{memberNo}	
+	</select>
+	<update id="memberUpdate" parameterType="com.doubleu.member.vo.MemberVo">
+		<![CDATA[
+		UPDATE member
+		SET
+			member_pwd = #{memberPwd},
+			member_name = #{memberName}
+			member_email = #{memberEmail},
+			member_phonenumber = #{memberPhoneNumber},
+			member_zipcode = #{memberZipcode},
+			member_address = #{memberPosition}
+		WHERE
+			member_no = #{memberNo}
+		]]>
+	</update>
 
 </mapper>

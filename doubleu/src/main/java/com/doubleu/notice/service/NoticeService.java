@@ -113,5 +113,10 @@ public class NoticeService {
 		return map;
 
 	}
+	
+	// 조회수
+	public int updateHit(int notice_hit) {
+		return mapper.updateHit(notice_hit);
+	}
 
 }

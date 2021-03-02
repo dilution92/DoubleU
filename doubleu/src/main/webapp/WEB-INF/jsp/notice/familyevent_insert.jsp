@@ -107,8 +107,10 @@
 							      <option> 부고</option>
 				   				</select>
 				            </td>
-				            <th class="success">조회수</th>
-				            <td><input type="number" id="hit" name="familyeventHit" value="1" readonly></td>
+				            <th></th>
+				            <td></td>
+<!-- 				            <th class="success">조회수</th>
+				            <td><input type="number" id="hit" name="familyeventHit" value="1" readonly></td> -->
 				        </tr>
 <!-- 				        <tr>
 				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>

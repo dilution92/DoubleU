@@ -115,6 +115,15 @@
 		]]>
 	</update>
 	
+	<!-- 조회수 -->
+	<update id="updateHit" parameterType="int">
+	<![CDATA[
+			update FAMILYEVENT 
+			set familyeventHit = familyeventHit + 1 
+			where familyeventNo = #{_parameter} 
+	]]>
+	</update>
+	
 	<select id="delete" parameterType="int">
 		<![CDATA[
 			delete from FAMILYEVENT where familyeventNo = #{_parameter}

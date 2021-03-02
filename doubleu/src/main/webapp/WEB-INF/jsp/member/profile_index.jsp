@@ -86,7 +86,7 @@
   		</tr>
   	</thread>
   	<tbody>
-  	<c:forEach items='${contentList}' var='profile'>
+  	<c:forEach items='${contentList1}' var='profile'>
   		<c:set var='i' value='${i+1}'/>
   		<tr>
   			<td>${profile.memberName}</td> 
