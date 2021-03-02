@@ -45,7 +45,7 @@ public class ModifyController {
 		ModelAndView mv = new ModelAndView();
 		memberService.memberUpdate(vo);
 		
-		mv.setViewName("/member/profile_index");
+		mv.setViewName("redirect:/profileIndex");
 		return mv;
 	}
 }
