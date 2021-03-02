@@ -55,4 +55,7 @@ public interface EmailMapper {
 	
 	// 데이터 삭제하기
 	public int updateAllDelete(EmailMainVo vo);
+	
+	// 스팸 메일함으로 이동하기
+	public int spamMoveSelect(EmailMainVo vo);
 }
