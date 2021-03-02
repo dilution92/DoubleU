@@ -49,6 +49,26 @@
 		SELECT * FROM dual
 	</insert>
 	
+	<!-- 페이지 -->
+	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.notice.vo.NoticePage">
+		SELECT count(notice_no) 
+		FROM notice
+	</select>
+	
+ <select id="selectPaging" 
+	 resultMap="NoticeVo" 
+	 parameterType="com.doubleu.notice.vo.NoticePage">
+	 
+	 <![CDATA[
+	    SELECT * FROM (
+	        SELECT rownum no, m.* from (  
+	           SELECT * FROM notice
+				ORDER BY notice_no DESC
+	           ) m
+	        ) WHERE no between ${startNo} and ${endNo}
+	 ]]>
+	</select>
+	
 	<select id="select" resultMap="NoticeVo">
 		<![CDATA[
 			select notice_no, 

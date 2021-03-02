@@ -43,6 +43,26 @@
 		SELECT * FROM dual
 	</insert>
 	
+	<!-- 페이지 -->
+	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.notice.vo.NoticePage">
+		SELECT count(familyeventNo) 
+		FROM FAMILYEVENT
+	</select>
+	
+ <select id="selectPaging" 
+	 resultMap="FamilyeventVo" 
+	 parameterType="com.doubleu.notice.vo.NoticePage">
+	
+	<![CDATA[
+	    SELECT * FROM (
+	        SELECT rownum no, m.* from (  
+	           SELECT * FROM FAMILYEVENT
+				ORDER BY familyeventNo DESC
+	           ) m
+	        ) WHERE no between ${startNo} and ${endNo}
+	]]>
+	</select>
+	
 	<select id="select" resultType="com.doubleu.notice.vo.FamilyeventVo">
 		<![CDATA[
 			select familyeventNo, 
@@ -100,6 +120,16 @@
 			delete from FAMILYEVENT where familyeventNo = #{_parameter}
 		]]>
 	</select>
+
+	<resultMap id="FamilyeventVo" type="com.doubleu.notice.vo.FamilyeventVo">
+		<result property="familyeventNo" column="familyeventNo"/>
+		<result property="familyeventSubject" column="familyeventSubject"/>
+		<result property="familyeventMid" column="familyeventMid"/>
+		<result property="familyeventReportingDate" column="familyeventReportingDate"/>
+		<result property="familyeventeventType" column="familyeventeventType"/>
+		<result property="familyeventeventHit" column="familyeventeventHit"/>
+		<result property="familyeventeventDoc" column="familyeventeventDoc"/>
+	</resultMap>
 
 	<resultMap id="attList" type="com.doubleu.notice.vo.FamilyeventAttVo">
 		<result property="filesNo" column="files_no"/>
