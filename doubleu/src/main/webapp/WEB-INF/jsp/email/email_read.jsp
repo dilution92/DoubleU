@@ -124,7 +124,7 @@
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm" onclick="DeleteBtn()">삭제하기</span>
+                         <span class="btn btn-outline-primary btn-sm" >삭제하기</span>
                      </li>
 
                      <li>
@@ -250,8 +250,7 @@ readBtn();
 // 읽음 버튼을 눌렀을 때 아이콘 변경 
 changeChkReadBtn();
 
-// 텍스트 
-summernote();
+
 </script>
 	
 </body>

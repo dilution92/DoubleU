@@ -225,7 +225,7 @@
 							<div class="form-group col-sm-7">
 							<c:forEach var="list" items="${selectRead }">
 								<input type="email" class="form-control" name="emailTitle"
-									id="emailTitleId" value="${list.emailContents }">
+									id="emailTitleId" value="${list.emailTitle }">
 							</div>
 
 

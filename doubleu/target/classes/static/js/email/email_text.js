@@ -4,7 +4,7 @@
 
 	summernote = function() {
 		$('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
+        placeholder: '',
         tabsize: 2,
         height: 300,
         toolbar: [

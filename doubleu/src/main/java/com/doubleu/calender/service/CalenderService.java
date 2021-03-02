@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,14 +59,20 @@ public class CalenderService {
 //		
 //		return dao.selectPartiList(no);
 //	}
+	
+	// selectMain
+	public List<CalenderVo> selectMain(HttpSession session){
+		return dao.selectMain(session);
+	}
+	
 	// delete
 	public String delete(CalenderVo vo){
 		return dao.delete(vo); 
 	}
 	
 	//selectList
-	public List<CalenderVo> selectList(){
-		return dao.selectList();
+	public List<CalenderVo> selectList(HttpSession session){
+		return dao.selectList(session);
 	}
 	
 	//selectOne
@@ -78,7 +86,7 @@ public class CalenderService {
 	}
 	
 	// insert 
-	public String insert(CalenderVo vo) {
+	public String insert(CalenderVo vo, HttpSession session) {
 		
 		/*
 		 * List<CalenderParticiptant> calpartiList = new ArrayList<>(); for(int i=0;
@@ -87,7 +95,7 @@ public class CalenderService {
 		 * vo.setCalPartiList(calpartiList);
 		 */
 		
-		return dao.insert(vo);
+		return dao.insert(vo, session);
 	}
 	
 	// update 
@@ -192,7 +200,7 @@ public class CalenderService {
 		return totalweek;
 	}
 
-	public List<CalenderWeekList> setMonthCalender() {
+	public List<CalenderWeekList> setMonthCalender(HttpSession session) {
 
 		List<CalenderWeekList> list = new ArrayList<>();
 
@@ -232,7 +240,7 @@ public class CalenderService {
 		int lastMonthday = lastDay[lastmonth]; // 이전달 마지막 일 구하기
 		System.out.println(lastMonthday);
 
-		List<CalenderVo> cList = dao.selectList();
+		List<CalenderVo> cList = dao.selectList(session);
 
 		if (month == 1) {
 			for (int i = 0; i < monthweek; i++) {
@@ -374,7 +382,7 @@ public class CalenderService {
 	}
 
 	// Month 이전,다음
-	public List<CalenderWeekList> changeMonth(int diff) {
+	public void changeMonth(int diff) {
 		System.out.println("월 변경 시작");
 		if ((month + diff) > 12) {
 			setMonth(1);
@@ -386,11 +394,10 @@ public class CalenderService {
 			setMonth(month + diff);
 		}
 		System.out.println(month);
-		return setMonthCalender();
 	}
 
 	// Month오늘
-	public List<CalenderWeekList> changeMonthToday() {
+	public void changeMonthToday() {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
 		String time1 = format1.format(time);
@@ -398,17 +405,14 @@ public class CalenderService {
 		month = Integer.parseInt(time1.substring(5, 7));
 		day = Integer.parseInt(time1.substring(8, 10));
 
-		return setMonthCalender();
 	}
 
-	public List<CalenderWeekList> monthSelectedMonth(int changedMonth) {
+	public void monthSelectedMonth(int changedMonth) {
 		setMonth(changedMonth);
-		return setMonthCalender();
 	}
 
-	public List<CalenderWeekList> monthSelectedYear(int changedYear) {
+	public void monthSelectedYear(int changedYear) {
 		setYear(changedYear);
-		return setMonthCalender();
 	}
 
 	// @@@@@@@@@@@@@@@@@@ CalenderWeek @@@@@@@@@@@@@@@@@@@
@@ -417,10 +421,10 @@ public class CalenderService {
 	
 	
 
-	public List<CalenderWeekList> setCalenderWeek() {
+	public List<CalenderWeekList> setCalenderWeek(HttpSession session) {
 
 		List<CalenderWeekList> list = new ArrayList<>();
-		List<CalenderVo> cList = dao.selectList();
+		List<CalenderVo> cList = dao.selectList(session);
 		
 		int totalweek;
 		int startNum;
@@ -731,7 +735,7 @@ public class CalenderService {
 	}
 
 	// Week 이전,다음
-	public List<CalenderWeekList> changeWeek(int diff) {
+	public void changeWeek(int diff) {
 		List<CalenderWeekList> list = new ArrayList<CalenderWeekList>();
 		
 		int totalweek;
@@ -761,12 +765,10 @@ public class CalenderService {
 			setDay((day + diff));
 		}
 
-		list = setCalenderWeek();
 		System.out.println(day + "현재 설정날짜");
-		return list;
 	}
 
-	public List<CalenderWeekList> changeWeekToday() {
+	public void changeWeekToday() {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
 		String time1 = format1.format(time);
@@ -777,12 +779,11 @@ public class CalenderService {
 		System.out.println(year);
 		System.out.println(month);
 		System.out.println(day);
-		return setCalenderWeek();
 	}
 
-	public CalenderWeekList setCalenderDay() {
+	public CalenderWeekList setCalenderDay(HttpSession session) {
 		CalenderWeekList listDay = new CalenderWeekList();
-		List<CalenderVo> cList = dao.selectList();
+		List<CalenderVo> cList = dao.selectList(session);
 		listDay.setYear(year);
 		listDay.setMonth(month);
 		listDay.setDay(day);
@@ -816,21 +817,18 @@ public class CalenderService {
 		return listDay;
 	}
 
-	public List<CalenderWeekList> weekSelectedMonth(int changedMonth) {
+	public void weekSelectedMonth(int changedMonth) {
 		setMonth(changedMonth);
-		return setCalenderWeek();
 	}
 
-	public List<CalenderWeekList> weekSelectedYear(int changedYear) {
+	public void weekSelectedYear(int changedYear) {
 		setYear(changedYear);
-		return setCalenderWeek();
 	}
 
 	// Day 이전,다음
-	public CalenderWeekList changeDay(int diff) {
+	public void changeDay(int diff) {
 
 		CalenderWeekList listDay = new CalenderWeekList();
-		List<CalenderVo> cList = dao.selectList();
 
 		if (day + diff == 0) {
 			if (month == 1) {
@@ -858,36 +856,11 @@ public class CalenderService {
 		listDay.setWeek(week[setWeekMethod(year, month, day)]);
 		listDay.setDateIdN(MakeCalenderId(year, month, day));
 		
-		for(int j=0; j<cList.size(); j++) {
-			if(MakeVoEndId(cList.get(j))>= listDay.getDateIdN() && listDay.getDateIdN()>=MakeVoId(cList.get(j))) {
-				
-				 if(cList.get(j).getCalenderType().equals("장기")) {
-					 listDay.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
-					 listDay.setVo(cList.get(j));
-				 }else if(cList.get(j).getCalenderType().equals("단기")) {
-					 if(listDay.getDateIdN()==MakeVoId(cList.get(j))) {
-						 listDay.setVo(cList.get(j));
-					 }
-				 }
-				
-			}
-		}
-		/* 시간 별 일정 정리 */
-		List<String> timeList = new ArrayList<>();
-		for(int j=0; j<24; j++) {
-			String time1 = Integer.toString(j);
-			timeList.add(time1);
-			
-		}
-		listDay.setTime(timeList);
-		
-		return listDay;
 	}
 
-	public CalenderWeekList changeDayToday() {
+	public void changeDayToday() {
 
 		CalenderWeekList listDay = new CalenderWeekList();
-		List<CalenderVo> cList = dao.selectList();
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
 		String time1 = format1.format(time);
@@ -901,40 +874,13 @@ public class CalenderService {
 		listDay.setWeek(week[setWeekMethod(year, month, day)]);
 		listDay.setDateIdN(MakeCalenderId(year, month, day));
 		
-		for(int j=0; j<cList.size(); j++) {
-			if(MakeVoEndId(cList.get(j))>= listDay.getDateIdN() && listDay.getDateIdN()>=MakeVoId(cList.get(j))) {
-				
-				 if(cList.get(j).getCalenderType().equals("장기")) {
-					 listDay.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
-					 listDay.setVo(cList.get(j));
-				 }else if(cList.get(j).getCalenderType().equals("단기")) {
-					 if(listDay.getDateIdN()==MakeVoId(cList.get(j))) {
-						 listDay.setVo(cList.get(j));
-					 }
-				 }
-				
-			}
-		}
-		
-		/* 시간 별 일정 정리 */
-		List<String> timeList = new ArrayList<>();
-		for(int j=0; j<24; j++) {
-			String time11 = Integer.toString(j);
-			timeList.add(time11);
-			
-		}
-		listDay.setTime(timeList);
-		
-		return listDay;
 	}
 
-	public CalenderWeekList daySelectedMonth(int changedMonth) {
+	public void daySelectedMonth(int changedMonth) {
 		setMonth(changedMonth);
-		return setCalenderDay();
 	}
 
-	public CalenderWeekList daySelectedYear(int changedYear) {
+	public void daySelectedYear(int changedYear) {
 		setYear(changedYear);
-		return setCalenderDay();
 	}
 }

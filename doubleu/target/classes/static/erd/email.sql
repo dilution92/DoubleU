@@ -17,11 +17,11 @@ CREATE TABLE email
 (
   email_no NUMBER ,
   member_no NUMBER,
-  member_mid VARCHAR(20),
-  email_address VARCHAR(200),
-  email_name VARCHAR(100),
-  email_title VARCHAR(300),
-  email_date tempstamp,
+  member_mid VARCHAR2(20),
+  email_address VARCHAR2(200),
+  email_name VARCHAR2(100),
+  email_title VARCHAR2(300),
+  email_date timestamp,
   email_contents CLOB,
   email_mailbox NUMBER DEFAULT 3,
   email_chk CHAR(4),
@@ -36,11 +36,11 @@ CREATE TABLE email_receiver
 (
     email_rev_no NUMBER,
     email_no NUMBER,
-    email_rev_name VARCHAR(100),
-    email_rev_address VARCHAR(500),
-    email_rev_department VARCHAR(100),
+    email_rev_name VARCHAR2(100),
+    email_rev_address VARCHAR2(500),
+    email_rev_department VARCHAR2(100),
     email_ref NUMBER,
-    email_mid VARCHAR(200),
+    email_mid VARCHAR2(200),
 
     CONSTRAINT email_rev_pk PRIMARY KEY (email_rev_no),
     CONSTRAINT email_rev_fk FOREIGN KEY (email_no) REFERENCES email (email_no)
@@ -50,8 +50,8 @@ CREATE TABLE email_files
 (
 	files_no NUMBER,
 	email_no NUMBER,
-	file_sysfile VARCHAR(4000),
-	file_orifile VARCHAR(4000),
+	file_sysfile VARCHAR2(4000),
+	file_orifile VARCHAR2(4000),
 
     CONSTRAINT email_files_pk PRIMARY KEY (files_no),
     CONSTRAINT email_files_fk FOREIGN KEY (email_no) REFERENCES email (email_no)

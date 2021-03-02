@@ -13,7 +13,7 @@
       	data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
      </li>
      <li>
-           <span class="btn btn-outline-primary btn-sm" id="emailSendBtn">답장하기</span>
+           <span class="btn btn-outline-primary btn-sm" id="emailSendBtn" onclick="replyMail()">답장하기</span>
       </li>
 
       <li>
@@ -137,6 +137,30 @@ var sendTempEmail = function() {
 	deleteList.value = valueArr;
 
 	frm.action = "/selectTempMailBtn"
+	frm.submit();
+}
+
+
+var replyMail = function() {
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value);
+			
+		};
+		
+	}
+
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+
+	deleteList.value = valueArr;
+
+	console.log(deleteList.value);
+	frm.action = "/emailWrite"
 	frm.submit();
 }
 </script>

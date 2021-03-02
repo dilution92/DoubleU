@@ -24,7 +24,8 @@
 			calender_place, 
 			calender_writer, 
 			calender_group, 
-			calender_time)
+			calender_time,
+			member_no)
 		values
 			(seq_calender_no.nextval, 
 			#{calenderStartYear}, 
@@ -43,7 +44,8 @@
 			#{calenderPlace}, 
 			#{calenderWriter}, 
 			#{calenderGroup}, 
-			SYSDATE)
+			SYSDATE,
+			#{memberNo})
 			
 			<!-- <if test="calPartiList != null">
 				<foreach collection="calPartiList" item="parti">
@@ -62,8 +64,8 @@
 			SELECT * FROM dual -->
 	</insert>
 	
-	<select id = 'selectList' resultMap="ResultVo" >
-		SELECT * FROM CALENDER
+	<select id = 'selectList' parameterType="int" resultMap="ResultVo" >
+		SELECT * FROM CALENDER WHERE member_no =#{_parameter} or member_no = 5
 	</select>
 	
 	<!-- <select id="selectPartiList" resultMap="partiList" parameterType="int">
@@ -74,6 +76,13 @@
 		SELECT * FROM CALENDER WHERE calender_no=#{_parameter}
 	</select>
 	
+	<select id="selectMain" parameterType="com.doubleu.calender.vo.CalenderVo" resultMap="ResultVo">
+	 	SELECT * FROM CALENDER 
+	 	WHERE member_no = #{memberNo}
+	 	and calender_start_year = #{calenderStartYear}
+	 	and calender_start_month = #{calenderStartMonth}
+	 	and calender_start_day = #{calenderStartDay}
+	</select>
 	
 	<update id="update" parameterType="com.doubleu.calender.vo.CalenderVo">
 		UPDATE CALENDER
@@ -131,6 +140,7 @@
 		<result property="calenderWriter" column="calender_writer"/>
 		<result property="calenderGroup" column="calender_group"/>
 		<result property="calenderTime" column="calender_time"/>
+		<result property="memberNo" column="member_no"/>
 	</resultMap>
 	
 	<!-- <resultMap type="com.doubleu.calender.vo.CalenderParticiptant" id="partiList">

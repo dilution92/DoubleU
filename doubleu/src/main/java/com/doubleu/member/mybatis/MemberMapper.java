@@ -13,6 +13,5 @@ import com.doubleu.profile.vo.WorkVo;
 @Mapper
 public interface MemberMapper {
 	public List<MemberVo> selectOne(int no); 
-	public int updateMember(MemberVo vo);
 	public void memberUpdate(MemberVo vo);
 }
