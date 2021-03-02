@@ -43,6 +43,9 @@
 			<c:when test="${vo.approvalState eq '(발신)반려' and member.memberNo == vo.memberNo }">
 				<div class="e-approval-view-btn-box">
 					<div class="e-approva-view-btn-content">
+						<input type="hidden" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
+					</div>
+					<div class="e-approva-view-btn-content">
 						<input type="button" id="btnApprovalUpdate" class="btn btn-outline-primary btn-sm" value="수정" style="float: left">
 						<input type="button" id="btnApprovalDelete" class="btn btn-outline-secondary btn-sm" value="삭제" style="float: left">
 						<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">

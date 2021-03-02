@@ -63,21 +63,22 @@
 			<main>
 
 				<div class="row g-3">
-
+					<form action="/memberUpdate" method="post">
 					<div class="main">
 						<h5 class="mb-3">회원정보 수정</h5>
 						<form class="needs-validation" novalidate>
 							<div class="row g-3">
+							<input name="memberNo" type="hidden" value="${member.memberNo}">
 								<div class="col-sm-12">
-									<label for="Name" class="form-label">이름</label> <input
+									<label for="Name" class="form-label">이름</label> <input name="memberName"
 										type="text" class="form-control" id="Name"
 										placeholder="이름을 입력하세요." value="${member.memberName}" required>
 									<div class="invalid-feedback">이름은 필수 정보입니다.</div>
 								</div>
 
 								<div class="col-12">
-									<label for="email" class="form-label">이메일</label> <input
-										type="email" class="form-control" id="email"
+									<label for="email" class="form-label">이메일</label> <input name="memberEmail"
+										type="text" class="form-control" id="email"
 										placeholder="you@example.com" value="${member.memberEmail}">
 									<div class="invalid-feedback">이메일은 필수 정보입니다.</div>
 								</div>
@@ -91,7 +92,7 @@
 								</div>
 
 								<div class="col-12">
-									<label for="number" class="form-label">휴대폰 번호</label> <input
+									<label for="number" class="form-label">휴대폰 번호</label> <input name="memberPhoneNumber"
 										type="text" class="form-control" id="number"
 										placeholder="010OOOOOOOO" value="${member.memberPhoneNumber}"
 										required>
@@ -104,7 +105,7 @@
 								<div class="form-group">
 									<input class="form-control"
 										style="width: 40%; display: inline;" placeholder="우편번호"
-										name="addr1" id="addr1" type="text" readonly="readonly">
+										name="memberZipcode" id="addr1" type="text" readonly="readonly">
 									<button type="button" class="btn btn-default"
 										onclick="execPostCode();">
 										<i class="fa fa-search"></i> 우편번호 찾기
@@ -112,7 +113,7 @@
 								</div>
 								<div class="form-group">
 									<input class="form-control" style="top: 5px;"
-										placeholder="도로명 주소" name="addr2" id="addr2" type="text"
+										placeholder="도로명 주소" name="memberAddress" id="addr2" type="text"
 										readonly="readonly" />
 								</div>
 
@@ -138,10 +139,10 @@
 
 					<hr class="my-4">
 
-					<button class="w-100 btn btn-primary btn-lg" type="submit"
-						onclick="location.href=/memberModify">저장</button>
+					<button class="w-100 btn btn-primary btn-lg" type="submit">저장</button>
 
 				</div>
+				</form>
 		</div>
 
 
@@ -181,8 +182,8 @@
 	                // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	       
 	                
-	                $("[name=addr2]").val(data.zonecode);
-	                $("[name=addr2]").val(fullRoadAddr);
+	                $("[name=memberZipcode]").val(data.zonecode);
+	                $("[name=memberAddress]").val(fullRoadAddr);
 	                document.getElementById('sample3_postcode').value = data.zonecode; //5자리 새우편번호 사용
 	                document.getElementById('sample3_address').value = fullAddr;
 
