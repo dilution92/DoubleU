@@ -45,7 +45,7 @@
     <div id="calender_main_content">
     	<h2>일정 입력</h2>
     	<form action="/CalenderInsertR" method="post" id="InsertForm">
-    		<input type="hidden" value="writer" name="calenderWriter">
+    		<input type="hidden" value="${member.memberName }" name="calenderWriter">
 			<table class="table table-bordered" >
     			<tr>
     				<td width="20%">제목</td>
@@ -72,6 +72,7 @@
     				<input type="hidden" name="calenderEndMinute">
     				
     				<input type="hidden" name="calenderType" value="">
+    				
     				</td>
     			</tr>
     			<tr>

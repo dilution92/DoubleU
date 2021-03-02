@@ -27,7 +27,7 @@
 			#{noticePostStartDate}, 
 			#{noticePostEndDate}, 
 			#{noticeType}, 
-			#{noticeHit}, 
+			0, 
 			#{noticeDoc} 
 			)
 		<if test="attList != null">
@@ -129,6 +129,16 @@
 			where notice_no = #{noticeNo} 
 		]]>
 	</update>
+	
+	<!-- 조회수 -->
+	<update id="updateHit" parameterType="int">
+	<![CDATA[
+			update NOTICE 
+			set notice_hit = notice_hit + 1 
+			where notice_no = #{_parameter} 
+	]]>
+	</update>
+
 	
 	<select id="delete" parameterType="int">
 		<![CDATA[

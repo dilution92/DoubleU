@@ -3,11 +3,7 @@ package com.doubleu.notice.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.doubleu.email.vo.EmailPage;
 import com.doubleu.notice.service.FamilyeventService;
 import com.doubleu.notice.service.NoticeService;
 import com.doubleu.notice.service.NoticeUploadService;
@@ -63,10 +58,12 @@ public class NoticeController {
 	public ModelAndView noticeView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
 		
+		service1.updateHit(no);
 		NoticeVo vo = service1.view(no); 
 		List<NoticeAttVo> att = service1.view1(no);
 		mv.addObject("obj", vo);
 		mv.addObject("att", att);
+		
 		
 		mv.setViewName("notice/notice_view");
 		return mv;
@@ -126,6 +123,7 @@ public class NoticeController {
 	public ModelAndView familyeventView(@RequestParam int no) {
 		ModelAndView mv = new ModelAndView();
 		
+		service2.updateHit(no);
 		FamilyeventVo vo = service2.view(no);
 		List<FamilyeventAttVo> att = service2.view1(no);
 		mv.addObject("obj", vo);
