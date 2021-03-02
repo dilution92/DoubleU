@@ -84,7 +84,7 @@
     					</select>
     				</td>
     			</tr>
-    			<tr>
+    			<!-- <tr>
     				<td>참석자
 							<input type="button" class="btn btn-outline-primary btn-sm"
 								data-toggle="modal" data-target="#Calender_parti_modal" role="button"
@@ -93,7 +93,7 @@
     				<td> <input type="text" name="calPartiList1">  
     					<input type="text" name="calPartiList1">
     				</td>
-    			</tr>
+    			</tr> -->
     			<tr>
     				<td>장소</td>
     				<td> <input type="text" name="calenderPlace"> </td>

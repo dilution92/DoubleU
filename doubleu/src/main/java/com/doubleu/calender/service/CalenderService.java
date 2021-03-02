@@ -52,6 +52,15 @@ public class CalenderService {
 		this.day = day;
 	}
 	
+//	//selectPartiList
+//	public List<CalenderParticiptant> selectPartiList(int no){
+//		
+//		return dao.selectPartiList(no);
+//	}
+	// delete
+	public String delete(CalenderVo vo){
+		return dao.delete(vo); 
+	}
 	
 	//selectList
 	public List<CalenderVo> selectList(){
@@ -60,27 +69,40 @@ public class CalenderService {
 	
 	//selectOne
 	public CalenderVo selectOne(int id) {
-		CalenderVo cList = dao.selectOne(id);
-		int no = cList.getCalenderNo();
-		List<CalenderParticiptant> pList = dao.selectPartiList(no);
-		cList.setCalPartiList(pList);
+		
+		/*
+		 * int no = cList.getCalenderNo(); List<CalenderParticiptant> pList =
+		 * dao.selectPartiList(no); cList.setCalPartiList(pList);
+		 */
 		return dao.selectOne(id);
 	}
 	
 	// insert 
-	public String insert(CalenderVo vo, List<String> cp) {
+	public String insert(CalenderVo vo) {
 		
-		 List<CalenderParticiptant> calpartiList = new ArrayList<>(); 
-		 for(int i=0; i<cp.size(); i++) { 
-			 CalenderParticiptant cp1 = new CalenderParticiptant();
-			 cp1.setCalenderPartiMember(cp.get(i));
-			 calpartiList.add(cp1); 
-			 }
-			 vo.setCalPartiList(calpartiList);
-		 
+		/*
+		 * List<CalenderParticiptant> calpartiList = new ArrayList<>(); for(int i=0;
+		 * i<cp.size(); i++) { CalenderParticiptant cp1 = new CalenderParticiptant();
+		 * cp1.setCalenderPartiMember(cp.get(i)); calpartiList.add(cp1); }
+		 * vo.setCalPartiList(calpartiList);
+		 */
 		
 		return dao.insert(vo);
 	}
+	
+	// update 
+		public String update(CalenderVo vo) {
+			
+			/*
+			 * List<CalenderParticiptant> calpartiList = new ArrayList<>(); for(int i=0;
+			 * i<cp.size(); i++) { CalenderParticiptant cp1 = new CalenderParticiptant();
+			 * cp1.setCalenderPartiMember(cp.get(i)); cp1.setCalenderNo(vo.getCalenderNo());
+			 * int partiNo = Integer.parseInt(cn.get(i)); cp1.setCalenderPartiNo(partiNo);
+			 * calpartiList.add(cp1); } dao.updateParti(calpartiList);
+			 */
+				 
+			return dao.update(vo);
+		}
 	
 	
 

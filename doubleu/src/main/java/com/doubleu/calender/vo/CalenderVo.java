@@ -23,15 +23,14 @@ public class CalenderVo {
 	private String calenderGroup;
 	private String calenderTime;
 	
-	private List<CalenderParticiptant> calPartiList;
-	
-	
-	public List<CalenderParticiptant> getCalPartiList() {
-		return calPartiList;
-	}
-	public void setCalPartiList(List<CalenderParticiptant> calPartiList) {
-		this.calPartiList = calPartiList;
-	}
+	/*
+	 * private List<CalenderParticiptant> calPartiList;
+	 * 
+	 * 
+	 * public List<CalenderParticiptant> getCalPartiList() { return calPartiList; }
+	 * public void setCalPartiList(List<CalenderParticiptant> calPartiList) {
+	 * this.calPartiList = calPartiList; }
+	 */
 	public String getStartDate() {
 		String date;
 		date = getCalenderStartYear()+"-"
