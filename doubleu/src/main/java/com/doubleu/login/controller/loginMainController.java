@@ -136,8 +136,6 @@ public class loginMainController {
 			mv.addObject("currentMonth", month);
 			mv.addObject("currentDay", day);
 			mv.addObject("calender",list);
-	        
-			
 		}
         return mv;
 	}

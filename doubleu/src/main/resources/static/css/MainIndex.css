@@ -1,12 +1,11 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 
 * {
 	box-sizing: border-box;
-	font-family: "맑은 고딕", 돋움, 굴림;
+	font-family: 'Noto Sans KR', sans-serif;
 }
-
 /* main영역 스타일 정의 */
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 
 .main-gnb {
 	width: 100%;
