@@ -33,6 +33,9 @@ public class NoticeURLController {
    @RequestMapping(value = "/noticeIndex", method = {RequestMethod.POST, RequestMethod.GET})
    public ModelAndView noticeIndex(NoticePage page){
       ModelAndView mv = new ModelAndView();
+      
+      service1.updatePost();
+      
       Map<String, Object> map = service1.selectPaging(page);
 
       System.out.println(page);
