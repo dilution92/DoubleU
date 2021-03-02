@@ -232,6 +232,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE email_no = ${emailNo}
 	</update>
 	
+	<!-- update -->
+	<update id="updateMoveEmail"
+	parameterType="com.doubleu.email.vo.EmailMainVo">
+		UPDATE email 
+		SET
+		email_mailBox = ${emailMailBox}
+		WHERE email_no = ${emailNo}
+	</update>
+	
 	<!-- delete -->
 	<update id="updateAllDelete" 
 	parameterType="com.doubleu.email.vo.EmailMainVo">

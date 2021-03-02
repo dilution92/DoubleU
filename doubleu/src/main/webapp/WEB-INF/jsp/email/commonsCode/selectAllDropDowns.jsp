@@ -33,13 +33,11 @@
 	      <div class="input-group mb-3">
 			  <div class="input-group-prepend">
 			    <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">이동</button>
-			    <div class="dropdown-menu">
-			      <a class="dropdown-item" href="#">받은 메일함</a>
-			      <a class="dropdown-item" href="#">별표 메일함</a>
-			      <a class="dropdown-item" href="#">임시 보관함</a>
-			      <a class="dropdown-item" href="#">보낸 메일함</a>
-			      <a class="dropdown-item" href="#">스팸 메일함</a>
-			      <a class="dropdown-item" href="#">휴지통</a>
+			    <div class="dropdown-menu">	 
+			      <a class="dropdown-item" onclick="sendImpEmail()">중요 메일함</a>
+			      <a class="dropdown-item" onclick="sendTempEmail()">임시 보관함</a>
+			      <a class="dropdown-item" onclick="sendSpamEmail()">스팸 메일함</a>
+			      <a class="dropdown-item" onclick="sendTrashEmail()">휴지통</a>
 			      <div role="separator" class="dropdown-divider"></div>
 			      <a class="dropdown-item" href="#">NOTES</a>
 			    </div>
@@ -48,5 +46,97 @@
      </li>	
 </ul>
 <script>
+var sendSpamEmail = function() {
+	console.log('실행 중')
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value);
+			
+		};
+		
+	}
 
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+
+	deleteList.value = valueArr;
+
+	frm.action = "/selectSendMailBtn"
+	frm.submit();
+}
+
+var sendImpEmail = function() {
+	console.log('실행 중')
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value);
+			
+		};
+		
+	}
+
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+
+	deleteList.value = valueArr;
+
+	frm.action = "/selectImpMailBtn"
+	frm.submit();
+}
+
+var sendTrashEmail = function() {
+	console.log('실행 중')
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value);
+			
+		};
+		
+	}
+
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+
+	deleteList.value = valueArr;
+	
+	
+	frm.action = "/selectTrashMailBtn"
+	frm.submit();
+}
+
+
+var sendTempEmail = function() {
+	console.log('실행 중')
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value);
+			
+		};
+		
+	}
+
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+
+	deleteList.value = valueArr;
+
+	frm.action = "/selectTempMailBtn"
+	frm.submit();
+}
 </script>
