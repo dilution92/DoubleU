@@ -39,7 +39,7 @@
 				<td class="repl-when">2021.02.07   10:11</td>
 				<td rowspan="2" class="text-right">
 					<!-- <input type="button" class="btn btn-primary" value="답글" onclick="location.href=''"> -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">답글</button>
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">답글</button> -->
 					<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal2">삭제</button>
 				</td>
 			</tr>
@@ -54,7 +54,7 @@
 				<td class="repl-when">2021.02.07   9:11</td>
 				<td rowspan="2" class="text-right">
 					<!-- <input type="button" class="btn btn-primary" value="답글" onclick="location.href=''"> -->
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">답글</button>
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">답글</button> -->
 					<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal2">삭제</button>
 				</td>
 			</tr>

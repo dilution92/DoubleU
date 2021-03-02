@@ -14,8 +14,6 @@
 <!-- 					<input type="button" class="btn btn-primary btn-lg"
 						data-toggle="modal" data-target="#exampleModal" value="글쓰기">
  -->					
- 				<input type="button" class="btn btn-primary btn-lg"
-						onClick="location.href='marketInsert'" value="글쓰기">
 	 			<input type="button" class="btn btn-primary btn-lg"
 						onClick="location.href='noticeInsert'" value="공지사항 글쓰기">
 	 			<input type="button" class="btn btn-primary btn-lg"

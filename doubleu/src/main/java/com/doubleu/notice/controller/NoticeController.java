@@ -1,6 +1,7 @@
 package com.doubleu.notice.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -14,12 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.doubleu.email.vo.EmailPage;
 import com.doubleu.notice.service.FamilyeventService;
 import com.doubleu.notice.service.NoticeService;
 import com.doubleu.notice.service.NoticeUploadService;
 import com.doubleu.notice.vo.FamilyeventAttVo;
 import com.doubleu.notice.vo.FamilyeventVo;
 import com.doubleu.notice.vo.NoticeAttVo;
+import com.doubleu.notice.vo.NoticePage;
 import com.doubleu.notice.vo.NoticeVo;
 
 @RestController
@@ -32,18 +35,26 @@ public class NoticeController {
 	
 	@Autowired
 	NoticeUploadService file;
-	
+
+
 /* -------------------- 공지사항 -------------------- */
 
 	
 	// 공지사항 글쓰기 -> index
 	@RequestMapping(value = "/noticeInsertR", method= RequestMethod.POST)
-	public ModelAndView noticeInsertR(NoticeVo vo) {
+	public ModelAndView noticeInsertR(NoticeVo vo, NoticePage page) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		msg = service1.insert(vo);
 		mv.addObject("viewMsg", msg);
+		
+		// 페이징
+		Map<String, Object> map = service1.selectPaging(page);
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
 		mv.setViewName("redirect:/noticeIndex");
+
 		return mv;
 	}
 
@@ -91,14 +102,19 @@ public class NoticeController {
 	
 	// 경조사 글쓰기 -> index
 	@RequestMapping(value = "/familyeventInsertR", method= RequestMethod.POST)
-	public ModelAndView familyeventInsertR(FamilyeventVo vo,
+	public ModelAndView familyeventInsertR(FamilyeventVo vo, NoticePage page,
 										@RequestParam("familyeventFile") List<MultipartFile> mul) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		List<FamilyeventAttVo> attList = file.upload(mul);
 		vo.setAttList(attList);
-		
+
 		msg = service2.insert(vo);
+		// 페이징
+		Map<String, Object> map = service1.selectPaging(page);
+		
+		mv.addObject("page", map.get("page"));
+		mv.addObject("list", map.get("pageList"));
 		mv.addObject("viewMsg", msg);
 		mv.setViewName("redirect:/familyeventIndex");
 		return mv;
