@@ -87,7 +87,6 @@ public class loginMainController {
 			session.setAttribute("member", loginVo);
 			mv.setViewName("MainPage/index");
 			
-
 			if(loginVo.getMemberName().equals("정희석")) {
 				 profileImg = "/img/profilem.jpg";
 			}
