@@ -39,7 +39,7 @@
 
 		<!-- lnb code 끝 -->
 
-		<main class="e-approval-article">
+		<main class="e-approval-article" style="margin-bottom:100px;">
 			<div class="market-header" style="height: 2%;  margin-bottom: 50px;">
 				<jsp:include page="market_header.jsp"/>
 	
