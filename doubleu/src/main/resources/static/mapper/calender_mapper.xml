@@ -5,7 +5,7 @@
 	
 <mapper namespace="com.doubleu.calender.mybatis.CalenderMapper">
 	<insert id = 'insert' parameterType="com.doubleu.calender.vo.CalenderVo">
-		INSERT ALL
+		INSERT
 		INTO CALENDER
 			(calender_no,
 			calender_start_year,
@@ -45,12 +45,13 @@
 			#{calenderGroup}, 
 			SYSDATE)
 			
-			<if test="calPartiList != null">
+			<!-- <if test="calPartiList != null">
 				<foreach collection="calPartiList" item="parti">
 					INTO calender_participtant
-					(calender_parti_no,
+					(
+					calender_parti_no,
 					calender_no,
-					calender_partiMember
+					calender_partiMember,
 					)
 					values
 					(CalenderpartiSeq(),
@@ -58,21 +59,58 @@
 					#{parti.calenderPartiMember})
 				</foreach>
 			</if>
-			SELECT * FROM dual
+			SELECT * FROM dual -->
 	</insert>
 	
-	<select id = 'selectList' resultMap="ResultVo"  parameterType="com.doubleu.calender.vo.CalenderVo">
+	<select id = 'selectList' resultMap="ResultVo" >
 		SELECT * FROM CALENDER
 	</select>
 	
-	<select id="selectPartiList" resultMap="partiList" parameterType="int">
+	<!-- <select id="selectPartiList" resultMap="partiList" parameterType="int">
 		SELECT * FROM CALENDER_PARTICIPTANT where calender_no=#{_parameter}
-	</select>
+	</select> -->
 	
 	<select id="selectOne" parameterType="int" resultMap="ResultVo" >
 		SELECT * FROM CALENDER WHERE calender_no=#{_parameter}
 	</select>
 	
+	
+	<update id="update" parameterType="com.doubleu.calender.vo.CalenderVo">
+		UPDATE CALENDER
+		SET
+		calender_start_year = #{calenderStartYear},
+		calender_start_month = #{calenderStartMonth},
+		calender_start_day = #{calenderStartDay},
+		calender_start_time = #{calenderStartTime},
+		calender_start_minute = #{calenderStartMinute},
+		calender_end_year = #{calenderEndYear},
+		calender_end_month = #{calenderEndMonth},
+		calender_end_day = #{calenderEndDay},
+		calender_end_time = #{calenderEndTime},
+		calender_end_minute = #{calenderEndMinute},
+		calender_type = #{calenderType},
+		calender_subject = #{calenderSubject},
+		calender_content = #{calenderContent}, 
+		calender_place = #{calenderPlace}, 
+		calender_writer = #{calenderWriter}, 
+		calender_group = #{calenderGroup}, 
+		calender_time = SYSDATE
+		WHERE 
+		calender_no = #{calenderNo}
+	</update>
+	
+	<delete id="delete" parameterType="com.doubleu.calender.vo.CalenderVo">
+		DELETE FROM CALENDER WHERE calender_no = #{calenderNo}
+	</delete>
+	
+<!-- 	<update id="updateParti" parameterType="com.doubleu.calender.vo.CalenderParticiptant">
+		UPDATE calender_participtant
+		SET
+		calender_partiMember = #{calenderPartiMember}
+		WHERE 
+		calender_parti_no = #{calenderPartiNo},
+		calender_no = #{calenderNo}
+	</update> -->
 	
 	<resultMap type="com.doubleu.calender.vo.CalenderVo" id="ResultVo">
 		<result property="calenderNo" column="calender_no"/>
@@ -95,9 +133,9 @@
 		<result property="calenderTime" column="calender_time"/>
 	</resultMap>
 	
-	<resultMap type="com.doubleu.calender.vo.CalenderParticiptant" id="partiList">
+	<!-- <resultMap type="com.doubleu.calender.vo.CalenderParticiptant" id="partiList">
 		<result property="calenderPartiNo" column="calender_parti_no"/>
 		<result property="calenderNo" column="calender_no"/>
 		<result property="calenderPartiMember" column="calender_partiMember"/>
-	</resultMap>
+	</resultMap> -->
 </mapper>

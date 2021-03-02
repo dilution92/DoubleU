@@ -46,7 +46,7 @@ public interface EmailMapper {
 	// 멤버 조회
 	public List<LoginVo> selectMembers();
 
-	// 삭제하기
+	// 삭제하기 , 이동하기
 	public int updateSendTrash(EmailMainVo vo);
 	
 	// 임시저장 조회
@@ -55,4 +55,5 @@ public interface EmailMapper {
 	
 	// 데이터 삭제하기
 	public int updateAllDelete(EmailMainVo vo);
+
 }

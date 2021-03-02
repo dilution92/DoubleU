@@ -14,5 +14,8 @@ public interface CalenderMapper {
 	public int insert(CalenderVo vo);
 	public List<CalenderVo> selectList();
 	public CalenderVo selectOne(int id);
-	public List<CalenderParticiptant> selectPartiList(int no);
+//	public List<CalenderParticiptant> selectPartiList(int no);
+	public int update(CalenderVo vo);
+//	public int updateParti(List<CalenderParticiptant> pList);
+	public int delete(CalenderVo vo);
 }

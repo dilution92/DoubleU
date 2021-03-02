@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.CalenderService;
+import com.doubleu.calender.vo.CalenderVo;
 import com.doubleu.calender.vo.CalenderWeekList;
 import com.doubleu.profile.service.ProfileService;
 import com.doubleu.profile.vo.ProfileVo;
@@ -82,6 +83,21 @@ public class CalenderURLController {
 		List<ProfileVo> profile1 = profile.selectProfile();
 		mv.addObject("profile", profile1);
 		mv.setViewName("calender/Calender_write");
+
+		return mv;
+	}
+	
+	@RequestMapping(value = "/calenderUpdate", method = {RequestMethod.POST, RequestMethod.GET}  )
+	public ModelAndView calenderUpdate(CalenderVo vo) {
+		ModelAndView mv = new ModelAndView();
+		
+		int id = vo.getCalenderNo();
+		CalenderVo selectOne = calender.selectOne(id);
+		/* List<CalenderParticiptant> parti = calender.selectPartiList(id); */
+		
+		mv.addObject("selectVo", selectOne);
+		/* mv.addObject("parti", parti); */
+		mv.setViewName("calender/Calender_update");
 
 		return mv;
 	}

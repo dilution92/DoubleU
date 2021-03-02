@@ -3,8 +3,6 @@ package com.doubleu.calender.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.calender.service.CalenderService;
 import com.doubleu.calender.vo.CalenderWeekList;
-import com.doubleu.calender.vo.CalenderParticiptant;
 import com.doubleu.calender.vo.CalenderVo;
 
 @RestController
@@ -23,8 +20,50 @@ public class CalenderController {
 	@Autowired
 	CalenderService calender;
 	
+	@RequestMapping(value = "/CalenderDelete", method= {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView CalenderDelete(CalenderVo vo) {
+		ModelAndView mv = new ModelAndView();
+		String msg = "";
+		List<CalenderWeekList> list = new ArrayList<>();
+		msg = calender.delete(vo); 
+		
+		list = calender.setMonthCalender();
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("currentDay", day);
+		mv.setViewName("calender/Calender_month");
+		return mv;
+	}
+	
+	
+	@RequestMapping(value="/CalenderUpdateR", method=RequestMethod.POST)
+	public ModelAndView CalenderUpdateR(CalenderVo vo) {
+		System.out.println("@@ update controller 시작");
+		ModelAndView mv = new ModelAndView();
+		String msg = "";
+		List<CalenderWeekList> list = new ArrayList<>();
+		
+		msg = calender.update(vo);
+		list = calender.setMonthCalender();
+		int year = calender.getYear();
+		int month = calender.getMonth();
+		int day = calender.getDay();
+		mv.addObject("list", list);
+		mv.addObject("currentYear", year);
+		mv.addObject("currentMonth", month);
+		mv.addObject("currentDay", day);
+		mv.setViewName("calender/Calender_month");
+		return mv;
+	}
+	
+	
+	
 	@RequestMapping(value = "/CalenderMonthModal", method= {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView CalenderMonthModal(@RequestParam int id) {
+	public ModelAndView CalenderMonthModal() {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("@@ 컨트롤러 시작");
 		
@@ -49,13 +88,13 @@ public class CalenderController {
 	}
 	
 	@RequestMapping(value="/CalenderInsertR", method=RequestMethod.POST)
-	public ModelAndView calenderInsertR(@RequestParam("calPartiList1") List<String> cp ,CalenderVo vo) {
+	public ModelAndView calenderInsertR(CalenderVo vo) {
 		System.out.println("controller 시작");
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		List<CalenderWeekList> list = new ArrayList<>();
 		
-		msg = calender.insert(vo, cp);
+		msg = calender.insert(vo);
 		list = calender.setMonthCalender();
 		int year = calender.getYear();
 		int month = calender.getMonth();

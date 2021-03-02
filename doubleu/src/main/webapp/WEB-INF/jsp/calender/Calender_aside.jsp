@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 </head>
 <body>
+<div class="calender_lnb">
 	<h2>Calender Home</h2>
  	<div> <!-- 일정등록 버튼 -->
         <input type="button" class="btn btn-primary" value="일정등록" name="calender_aside_btn" onclick="location.href='/calenderWrite'">
@@ -27,5 +28,6 @@
         	</div>
         </form>
     </div>
+</div>
 </body>
 </html>
