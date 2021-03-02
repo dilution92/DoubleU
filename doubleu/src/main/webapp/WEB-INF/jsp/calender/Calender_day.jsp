@@ -146,6 +146,7 @@
 											<c:when test="${listVo.getCalenderType() eq '단기'}">
 												<c:if test="${listVo.getCalenderStartTime() eq time }">
 													<i class="bi bi-diamond bi-diamond-color"></i>${listVo.getCalenderSubject() }
+													&nbsp;&nbsp;&nbsp;&nbsp;${listVo.getCalenderContent() }
 													<input type="hidden" value="${listVo.getCalenderNo() }"> <!-- 0 -->
 													<input type="hidden" value="${listVo.getStartDate() }"> <!-- 1 -->
 													<input type="hidden" value="${listVo.getStartTime() }"> <!-- 2 -->
@@ -180,41 +181,5 @@
 </main>
 
 
-
-<script type="text/javascript">
-$(function(){
-    $(".calender_modal").click(function(){
-        $('#Calender_detail_modal').modal();
-    })
-    
-     $("#month").change(function(){
-    	var changedMonth = parseInt($('#month').val());
-    	console.log(month+"셀렉박스 월 값");
-    	var url = "/DaySelectedMonth?changedMonth="+changedMonth;
-    	location.href=url;
-    })
-    
-    $("#year").change(function(){
-    	var changedyear = parseInt($('#year').val());
-    	console.log(changedyear+"셀렉박스 년 값");
-    	var url = "/DaySelectedYear?changedYear="+changedyear;
-    	location.href=url;
-    })
-})
-
-$(document).ready(function(){
-	var month = $("#monthcome").val();
-	console.log(month);
-	 $("#month").val(month).attr("selected","selected");
-})
-
-$(document).ready(function(){
-	var month = $("#monthcome").val();
-	var day = $("#daycome").val();
-	var targetToday = document.getElementsByClassName(month+day)[0];
-	targetToday.style.border="5px skyblue solid";
-})
-
-</script>
 </body>
 </html>

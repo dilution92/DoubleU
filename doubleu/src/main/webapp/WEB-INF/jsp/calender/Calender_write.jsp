@@ -45,7 +45,7 @@
     <div id="calender_main_content">
     	<h2>일정 입력</h2>
     	<form action="/CalenderInsertR" method="post" id="InsertForm">
-    		<input type="hidden" value="writer" name="calenderWriter">
+    		<input type="hidden" value="${member.memberName }" name="calenderWriter">
 			<table class="table table-bordered" >
     			<tr>
     				<td width="20%">제목</td>
@@ -72,6 +72,7 @@
     				<input type="hidden" name="calenderEndMinute">
     				
     				<input type="hidden" name="calenderType" value="">
+    				
     				</td>
     			</tr>
     			<tr>
@@ -84,7 +85,7 @@
     					</select>
     				</td>
     			</tr>
-    			<tr>
+    			<!-- <tr>
     				<td>참석자
 							<input type="button" class="btn btn-outline-primary btn-sm"
 								data-toggle="modal" data-target="#Calender_parti_modal" role="button"
@@ -93,7 +94,7 @@
     				<td> <input type="text" name="calPartiList1">  
     					<input type="text" name="calPartiList1">
     				</td>
-    			</tr>
+    			</tr> -->
     			<tr>
     				<td>장소</td>
     				<td> <input type="text" name="calenderPlace"> </td>

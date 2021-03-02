@@ -9,6 +9,8 @@
 		SELECT * FROM member
 	</select>
 
+    
+
 	<resultMap id="selectProfileData" type="com.doubleu.profile.vo.ProfileVo">
  
 	<result property="memberNo" column="member_no" /> 
@@ -25,9 +27,36 @@
 	
 	</resultMap>
 	
-	
+	<insert id="startWork" parameterType="com.doubleu.profile.vo.WorkVo">
+		<![CDATA[
+			insert into WORK(
+				work_no,
+				member_no,
+				member_mid,
+				work_date,
+				work_start,
+				work_finish,
+				work_total,
+				work_plus
+				)
+			values(
+				work_seq.nextval, 
+				#{memberNo}, 
+				#{workMid}, 
+				#{workDate}, 
+				#{workStart}, 
+				#{workFinish}, 
+				#{workTotal}, 
+				#{workPlus}
+				)
+		]]>
+	</insert>
 	<select id="selectWork" parameterType="com.doubleu.profile.vo.WorkVo" resultMap="selectWorkData">
 		SELECT * FROM WORK
+	</select>
+
+	<select id="selectWorkOne" parameterType="com.doubleu.profile.vo.WorkVo" resultMap="selectWorkData">
+		select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work)
 	</select>
 
 	<resultMap id="selectWorkData" type="com.doubleu.profile.vo.WorkVo">

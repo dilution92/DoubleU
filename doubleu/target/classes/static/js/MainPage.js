@@ -10,3 +10,8 @@ function goApprovalView() {
 	frm.action = "/approvalSelectView";
 	frm.submit();	
 }
+$(function(){
+	$(".size_chk").filter(function(){
+		return this.value != "0";
+	}).next().css('background-color','skyblue');
+});

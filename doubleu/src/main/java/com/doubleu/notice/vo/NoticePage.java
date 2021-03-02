@@ -157,12 +157,20 @@ public class NoticePage {
 		this.memberMid = memberMid;
 	}
 	
+	public int getnoticeBox() {
+		return noticeBox;
+	}
+
+	public void setnoticeBox(int noticeBox) {
+		this.noticeBox = noticeBox;
+	}
+	
 	@Override
 	public String toString() {
 		return "NoticePage [totListSize=" + totListSize + ", totPage=" + totPage + ", startPage=" + startPage
 				+ ", endPage=" + endPage + ", startNo=" + startNo + ", endNo=" + endNo + ", nowPage=" + nowPage
 				+ ", listSize=" + listSize + ", blockSize=" + blockSize + ", memberMid=" + memberMid + ", findStr="
-				+ findStr + ", findStrList=" + findStrList + "]";
+				+ findStr + ", findStrList=" + findStrList + ", noticeBox=" + noticeBox + "]";
 	}
 	
 }

@@ -13,5 +13,9 @@ import com.doubleu.profile.vo.WorkVo;
 public interface ProfileMapper {
 	public List<ProfileVo> selectProfile();
 	public List<WorkVo> selectWork();
+	public void endWork(int no ,String date , String time2);
+	public WorkVo selectWorkOne(int no);
+	public void startUpdateWork(WorkVo vo);
+	public void startWork(WorkVo vo);
 }
 

@@ -147,6 +147,7 @@
 									<input type="hidden" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
 									<input type="hidden" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
 									<input type="hidden" value="${listVo.getCalenderTime() }"> <!-- 11 -->
+									
 							</c:when>
 						</c:choose>
 						</div>

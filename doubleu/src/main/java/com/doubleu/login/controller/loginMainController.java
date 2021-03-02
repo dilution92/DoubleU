@@ -1,4 +1,5 @@
 package com.doubleu.login.controller;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectReceiverService;
+import com.doubleu.calender.service.CalenderService;
+import com.doubleu.calender.vo.CalenderWeekList;
 import com.doubleu.email.mybatis.EmailDao;
 import com.doubleu.email.service.SelectSerivce;
 import com.doubleu.email.vo.EmailPage;
@@ -57,7 +60,14 @@ public class loginMainController {
 
 	@Autowired
 	NoticeService noticeService;
+<<<<<<< HEAD
 
+=======
+	
+	@Autowired
+	CalenderService calender;
+		
+>>>>>>> c9e86aef2e144a30024949f91a76f05d5a4be96b
 	// 로그인 체크
 	@RequestMapping(value="/loginCheck", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView LoginResult(
@@ -80,24 +90,42 @@ public class loginMainController {
 		}else {
 			session.setAttribute("member", loginVo);
 			mv.setViewName("MainPage/index");
+<<<<<<< HEAD
 			if(loginVo.getMemberName().equals("정희석")) {
 				profileImg = "/img/profilem.jpg";
+=======
+			
+
+			if(loginVo.getMemberName().equals("정희석")) {
+				 profileImg = "/img/profilem.jpg";
+>>>>>>> c9e86aef2e144a30024949f91a76f05d5a4be96b
 			}
 			else if(loginVo.getMemberName().equals("정해준")) {
 				profileImg = "/img/profilehaejun.png";
 			}
 			else if(loginVo.getMemberName().equals("김재현")){
+<<<<<<< HEAD
 				profileImg = "/img/profilekim.png";
+=======
+				 profileImg = "/img/profilekim.png";
+>>>>>>> c9e86aef2e144a30024949f91a76f05d5a4be96b
 			}
 			else {
 				profileImg = "/img/profileg.jpg";
 			}
+<<<<<<< HEAD
 			mv.addObject("profileImg", profileImg);
 			//전자결재 불러오기
+=======
+			
+			//전자결재 불러오기
+			mv.addObject("profileImg", profileImg);
+>>>>>>> c9e86aef2e144a30024949f91a76f05d5a4be96b
 			Map<String, Object> receiverMap = selectApprovalReceiver.selectReceiver(req, session);
 			mv.addObject("receiverApprovalList", receiverMap.get("list"));
 			Map<String, Object> outgoingMap = selectApprovalOutgoing.selectOutgoing(req, session);
 			mv.addObject("outgoingApprovalList", outgoingMap.get("list"));
+<<<<<<< HEAD
 
 			//market
 			List<MarketVo> marketlist = marketDao.selectMarketMain();
@@ -121,6 +149,47 @@ public class loginMainController {
 
 
 		return mv;
+=======
+			
+			//market
+			List<MarketVo> marketlist = marketDao.selectMarketMain();
+			mv.addObject("marketList", marketlist);
+			
+			//이메일
+			int emailMailBox = 3; //보낸 메일함
+			page.setEmailMailBox(emailMailBox);
+			
+			Map<String, Object> map = DaoService.selectPaging(page, session);
+			mv.addObject("EmailList", map.get("pageList"));		
+			
+			 
+			//게시판
+		    List<NoticeVo> contentList1 = noticeService.select();
+	        mv.addObject("contentList1", contentList1);
+	  	    
+	        List<FamilyeventVo> contentList = familyeventService.select();
+	        mv.addObject("contentList", contentList);
+	        
+	        // 일정
+	        List<CalenderWeekList> list = new ArrayList<>();
+	        list = calender.setMonthCalender(session);
+			int year = calender.getYear();
+			int month = calender.getMonth();
+			int day = calender.getDay();
+			mv.addObject("currentYear", year);
+			mv.addObject("currentMonth", month);
+			mv.addObject("currentDay", day);
+			mv.addObject("calender",list);
+			
+			
+		}
+		
+		
+        
+        
+        
+        return mv;
+>>>>>>> c9e86aef2e144a30024949f91a76f05d5a4be96b
 	}
 
 	// 로그아웃
