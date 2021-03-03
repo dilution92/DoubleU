@@ -48,9 +48,41 @@ public class ModifyController {
 		mv.setViewName("redirect:/profileIndex");
 		return mv;
 	}
+	
+	@RequestMapping(value="/memberManage",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView memberManage() {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 시작");
+		List<MemberVo> list = memberService.selectManage();
+		System.out.println("@@@@list"+list);
+		mv.addObject("contentList1", list);
+		System.out.println("부서검색 컨트롤러 끝");
+		mv.setViewName("member/profile_index");
+		return mv;
+	}
+	
+	@RequestMapping(value="/memberBusiness",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView memberBusiness() {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 시작");
+		List<MemberVo> list = memberService.selectBusiness();
+		System.out.println("@@@@list"+list);
+		mv.addObject("contentList1", list);
+		System.out.println("부서검색 컨트롤러 끝");
+		mv.setViewName("member/profile_index");
+		return mv;
+	}
+	
+	@RequestMapping(value="/memberIT",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView memberIT() {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 시작");
+		List<MemberVo> list = memberService.selectIT();
+		System.out.println("@@@@list"+list);
+		mv.addObject("contentList1", list);
+		System.out.println("부서검색 컨트롤러 끝");
+		mv.setViewName("member/profile_index");
+		return mv;
+	}
 }
-//수정완료되면 확인가능하도록
-/*
- * @RequestMapping(value="/update.do") public String update(MemberVO vo) throws
- * Exception{ s.updateMember(vo); return "member_list.do"; }
- */
+

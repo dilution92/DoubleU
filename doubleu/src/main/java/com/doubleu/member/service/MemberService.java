@@ -22,6 +22,17 @@ public class MemberService {
 		mapper.memberUpdate(vo);
 		System.out.println("updateMember 완료");
 	}
+	
+	public List<MemberVo> selectManage() {
+		return mapper.selectManage();
+	}
+	
+	public List<MemberVo> selectBusiness() {
+		return mapper.selectBusiness();
+	}
+	public List<MemberVo> selectIT() {
+		return mapper.selectIT();
+	}
 }
 
 
