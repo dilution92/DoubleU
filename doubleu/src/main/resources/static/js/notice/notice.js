@@ -186,6 +186,8 @@ $(function(){
 		var p = $(this).parent('tr');
 		console.log(p);
 		return a == str;
-	}).parent('tr').children().css('background-color','#f8f9fa');
+	}).parent('tr').children().css('background-color','#f8f9fa')
+	.parent('tr').children().css('font-weight','bold')
+	.parent('tr').children().css('color','#4f555c')
 });
 		
