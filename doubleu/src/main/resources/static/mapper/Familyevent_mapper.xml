@@ -54,7 +54,14 @@
 	 parameterType="com.doubleu.notice.vo.NoticePage">
 	
 	<![CDATA[
-	    SELECT * FROM (
+		select familyeventNo, 
+			   familyeventSubject, 
+			   familyeventMid, 
+			   to_char(familyeventreportingdate, 'YYYY-MM-DD') as familyeventreportingdate, 
+			   familyeventType, 
+			   familyeventHit, 
+			   familyeventDoc 
+	     FROM (
 	        SELECT rownum no, m.* from (  
 	           SELECT * FROM FAMILYEVENT
 				ORDER BY familyeventNo DESC

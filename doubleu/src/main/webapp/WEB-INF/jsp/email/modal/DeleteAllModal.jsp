@@ -19,19 +19,18 @@
   var deleteAllBtn = function() {
 
 		var valueArr = new Array();
-		var list = $('input:checkbox[name=chkBox]')
+		var list = $('input:checkbox[name=chkBox]:checked')
 		
 		for(var i=0; i<list.length; i++) {
 			if(list[i].checked) {
 				valueArr.push(list[i].value)
 			};
-			
 		}
 		
 		var frm = document.emailForm;
 		var deleteList = frm.deleteBtnList;
 		deleteList.value = valueArr;
-		
+		console.log(deleteList.value)
 		frm.action = "/emailDeleteAll"
 		frm.submit();
   }

@@ -60,7 +60,17 @@
 	 parameterType="com.doubleu.notice.vo.NoticePage">
 	 
 	 <![CDATA[
-	    SELECT * FROM (
+	    SELECT notice_no, 
+			   notice_subject, 
+			   notice_mid, 
+			   to_char(notice_reportingdate, 'YYYY-MM-DD') as notice_reportingdate, 
+			   notice_postType, 
+			   notice_postStartDate,  
+			   notice_postEndDate, 
+			   notice_type, 
+			   notice_hit, 
+			   notice_doc  
+		 FROM (
 	        SELECT rownum no, m.* from (  
 	           SELECT * FROM notice
 				order by notice_Type desc, notice_no desc

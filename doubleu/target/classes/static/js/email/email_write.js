@@ -112,10 +112,10 @@ function saveValue(intId,strValue) {
 	}  
 			
 function createInput(id,value) {
-	  return "<input type='text' style='width: 150px;' class='emailBtnList > input' name='emailReceiverAddress' value='' style='border: 1px solid #ced4da;' id='emailBtn "+ id +"' onChange='javascript:saveValue("+ id +",this.value)' value='"+ 
+	  return "<input type='text' style='width: 150px; border-radius:10px;' class='emailBtnList > input' name='emailReceiverAddress' value='' style='border: 1px solid #ced4da;' id='emailBtn "+ id +"' onChange='javascript:saveValue("+ id +",this.value)' value='"+ 
 	 
 	value +"'>"
-	+"<input type='button' class='emailBtnList > input' onclick='deleteInput()' value='x' style='width:20px; margin-right:5px'  id='del "+ id +"' onChange='javascript:saveValue("+ id +",this.value)' value='"+ 
+	+"<input type='button' class='emailBtnList > input' onclick='deleteInput()' value='x' style='width:20px; background-color:white;  margin-right:5px; border-radius:3px;'  id='del "+ id +"' onChange='javascript:saveValue("+ id +",this.value)' value='"+ 
 	 
 	value +"'>";
 	}
@@ -157,10 +157,10 @@ function saveValueRef(intId,strValue) {
 	}  
 			
 function createInputRef(id,value) {
-	  return "<input type='text' style='width: 150px;' class='emailBtnList > input' name='emailReceiverRef' value='' style='border: 1px solid #ced4da;' id='emailRefBtn "+ id +"' onChange='javascript:saveValueRef("+ id +",this.value)' value='"+ 
+	  return "<input type='text' style='width: 150px; border-radius:10px;' class='emailBtnList > input' name='emailReceiverRef' value='' style='border: 1px solid #ced4da;' id='emailRefBtn "+ id +"' onChange='javascript:saveValueRef("+ id +",this.value)' value='"+ 
 	 
 	value +"'>"
-	+"<input type='button' class='emailBtnList > input' onclick='deleteInputRef()' value='x' style='width:20px; margin-right:5px'  id='delRef "+ id +"' onChange='javascript:saveValueRef("+ id +",this.value)' value='"+ 
+	+"<input type='button' class='emailBtnList > input' onclick='deleteInputRef()' value='x' style='width:20px; background-color:white;  margin-right:5px; border-radius:3px;'  id='delRef "+ id +"' onChange='javascript:saveValueRef("+ id +",this.value)' value='"+ 
 	 
 	value +"'>";
 	}
