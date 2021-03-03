@@ -4,7 +4,7 @@
   <class id="1" language="java" name="com.doubleu.approval.controller.URLController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/controller/URLController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2601" y="1158"/>    
+    <position height="-1" width="-1" x="1599" y="1158"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -14,7 +14,7 @@
   <class id="2" language="java" name="com.doubleu.approval.controller.MainController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/controller/MainController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2959" y="236"/>    
+    <position height="-1" width="-1" x="1957" y="236"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,7 +23,7 @@
   </class>  
   <class id="3" language="java" name="com.doubleu.approval.controller.FileDownload" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/controller/FileDownload.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2317" y="131"/>    
+    <position height="-1" width="-1" x="1315" y="131"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -32,7 +32,7 @@
   </class>  
   <interface id="4" language="java" name="com.doubleu.approval.mybatis.ApprovalMapper" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/mybatis/ApprovalMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3661" y="1156"/>    
+    <position height="-1" width="-1" x="2659" y="1156"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -41,7 +41,7 @@
   </interface>  
   <class id="5" language="java" name="com.doubleu.approval.mybatis.ApprovalDao" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/mybatis/ApprovalDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3077" y="1158"/>    
+    <position height="-1" width="-1" x="2075" y="1158"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -51,7 +51,7 @@
   <class id="6" language="java" name="com.doubleu.approval.service.SelectReceiverService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/SelectReceiverService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2661" y="743"/>    
+    <position height="-1" width="-1" x="1659" y="743"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -61,7 +61,7 @@
   <class id="7" language="java" name="com.doubleu.approval.service.SelectMemberService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/SelectMemberService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2042" y="751"/>    
+    <position height="-1" width="-1" x="1040" y="751"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -71,7 +71,7 @@
   <class id="8" language="java" name="com.doubleu.approval.service.SelectChooseService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/SelectChooseService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3028" y="738"/>    
+    <position height="-1" width="-1" x="2026" y="738"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -81,7 +81,7 @@
   <class id="9" language="java" name="com.doubleu.approval.service.SelectViewService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/SelectViewService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2337" y="742"/>    
+    <position height="-1" width="-1" x="1335" y="742"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -90,7 +90,7 @@
   </class>  
   <class id="10" language="java" name="com.doubleu.approval.service.UpdateService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/UpdateService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3340" y="735"/>    
+    <position height="-1" width="-1" x="2338" y="735"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -100,7 +100,7 @@
   <class id="11" language="java" name="com.doubleu.approval.service.SelectOutgoingService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/SelectOutgoingService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3652" y="731"/>    
+    <position height="-1" width="-1" x="2650" y="731"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -110,7 +110,7 @@
   <class id="12" language="java" name="com.doubleu.approval.service.CreateDesicionMakerService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/CreateDesicionMakerService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3637" y="423"/>    
+    <position height="-1" width="-1" x="2643" y="349"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -119,7 +119,7 @@
   </class>  
   <class id="13" language="java" name="com.doubleu.approval.service.SelectFormType" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/SelectFormType.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3627" y="565"/>    
+    <position height="-1" width="-1" x="2633" y="491"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -128,7 +128,7 @@
   </class>  
   <class id="14" language="java" name="com.doubleu.approval.service.UploadService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/service/UploadService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3642" y="236"/>    
+    <position height="-1" width="-1" x="2648" y="162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -137,7 +137,7 @@
   </class>  
   <class id="15" language="java" name="com.doubleu.approval.vo.FormVacationVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/FormVacationVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1694" y="1216"/>    
+    <position height="-1" width="-1" x="692" y="1216"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -146,7 +146,7 @@
   </class>  
   <class id="16" language="java" name="com.doubleu.approval.vo.IndexPage" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/IndexPage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1181" y="450"/>    
+    <position height="-1" width="-1" x="179" y="450"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -155,7 +155,7 @@
   </class>  
   <class id="17" language="java" name="com.doubleu.approval.vo.UpdateFormStateVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/UpdateFormStateVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2572" y="167"/>    
+    <position height="-1" width="-1" x="1570" y="167"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -164,7 +164,7 @@
   </class>  
   <class id="18" language="java" name="com.doubleu.approval.vo.MemberVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/MemberVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1877" y="381"/>    
+    <position height="-1" width="-1" x="875" y="381"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -173,7 +173,7 @@
   </class>  
   <class id="19" language="java" name="com.doubleu.approval.vo.UpdateMakerOrderVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/UpdateMakerOrderVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2073" y="194"/>    
+    <position height="-1" width="-1" x="1071" y="194"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -182,7 +182,7 @@
   </class>  
   <class id="20" language="java" name="com.doubleu.approval.vo.SelectPage" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/SelectPage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1656" y="452"/>    
+    <position height="-1" width="-1" x="654" y="452"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -191,7 +191,7 @@
   </class>  
   <class id="21" language="java" name="com.doubleu.approval.vo.AttFileVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/AttFileVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1303" y="1250"/>    
+    <position height="-1" width="-1" x="301" y="1250"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -200,7 +200,7 @@
   </class>  
   <class id="22" language="java" name="com.doubleu.approval.vo.FormVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/FormVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1419" y="520"/>    
+    <position height="-1" width="-1" x="417" y="520"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -218,7 +218,7 @@
   </class>  
   <class id="24" language="java" name="com.doubleu.approval.vo.FormPetitionVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/approval/vo/FormPetitionVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1128" y="1227"/>    
+    <position height="-1" width="-1" x="126" y="1227"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -227,98 +227,98 @@
   </class>  
   <association id="25">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="26" name="checkFormType">        
-        <position height="0" width="0" x="-448" y="-542"/>      
+      <attribute id="26" name="selectMemberService">        
+        <position height="0" width="0" x="-900" y="-338"/>      
       </attribute>      
       <multiplicity id="27" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-448" y="-542"/>      
+        <position height="0" width="0" x="-900" y="-338"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="28">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="29" name="uploadService">        
-        <position height="0" width="0" x="-1116" y="-898"/>      
+      <attribute id="29" name="outgoingService">        
+        <position height="0" width="0" x="-1046" y="-358"/>      
       </attribute>      
       <multiplicity id="30" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-1116" y="-898"/>      
+        <position height="0" width="0" x="-1046" y="-358"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="31">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="32" name="dao">        
-        <position height="0" width="0" x="96" y="-610"/>      
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="32" name="formVacationVo">        
+        <position height="0" width="0" x="-980" y="-26"/>      
       </attribute>      
       <multiplicity id="33" minimum="0" maximum="1">        
-        <position height="0" width="0" x="96" y="-610"/>      
+        <position height="0" width="0" x="-980" y="-26"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="34">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="35" name="service">        
-        <position height="0" width="0" x="96" y="-610"/>      
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="35" name="dao">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </attribute>      
       <multiplicity id="36" minimum="0" maximum="1">        
-        <position height="0" width="0" x="96" y="-610"/>      
+        <position height="0" width="0" x="-906" y="-610"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="37">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="38" name="viewService">        
-        <position height="0" width="0" x="76" y="-356"/>      
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="38" name="service">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </attribute>      
       <multiplicity id="39" minimum="0" maximum="1">        
-        <position height="0" width="0" x="76" y="-356"/>      
+        <position height="0" width="0" x="-906" y="-610"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="40">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="41" name="decisionMakerService">        
-        <position height="0" width="0" x="-768" y="-666"/>      
+      <attribute id="41" name="chooseService">        
+        <position height="0" width="0" x="-986" y="-360"/>      
       </attribute>      
       <multiplicity id="42" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-768" y="-666"/>      
+        <position height="0" width="0" x="-986" y="-360"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="43">    
     <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="44" name="updateService">        
-        <position height="0" width="0" x="-14" y="-354"/>      
+        <position height="0" width="0" x="-1016" y="-354"/>      
       </attribute>      
       <multiplicity id="45" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-14" y="-354"/>      
+        <position height="0" width="0" x="-1016" y="-354"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="46">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="47" name="selectReceiverService">        
-        <position height="0" width="0" x="46" y="-346"/>      
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="47" name="dao">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </attribute>      
       <multiplicity id="48" minimum="0" maximum="1">        
-        <position height="0" width="0" x="46" y="-346"/>      
+        <position height="0" width="0" x="-906" y="-610"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="49">    
@@ -334,24 +334,24 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="52">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="53" name="dao">        
-        <position height="0" width="0" x="96" y="-610"/>      
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="53" name="attFileList">        
+        <position height="0" width="0" x="-968" y="62"/>      
       </attribute>      
-      <multiplicity id="54" minimum="0" maximum="1">        
-        <position height="0" width="0" x="96" y="-610"/>      
+      <multiplicity id="54" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-968" y="62"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="55">    
     <end type="SOURCE" refId="22" navigable="false">      
       <attribute id="56" name="formPetitionVo">        
-        <position height="0" width="0" x="48" y="66"/>      
+        <position height="0" width="0" x="-954" y="66"/>      
       </attribute>      
       <multiplicity id="57" minimum="0" maximum="1">        
-        <position height="0" width="0" x="48" y="66"/>      
+        <position height="0" width="0" x="-954" y="66"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="24" navigable="true"/>    
@@ -359,122 +359,122 @@
   </association>  
   <association id="58">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="59" name="selectMemberService">        
-        <position height="0" width="0" x="102" y="-338"/>      
+      <attribute id="59" name="uploadService">        
+        <position height="0" width="0" x="-2110" y="-972"/>      
       </attribute>      
       <multiplicity id="60" minimum="0" maximum="1">        
-        <position height="0" width="0" x="102" y="-338"/>      
+        <position height="0" width="0" x="-2110" y="-972"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="61">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="62" name="mapper">        
-        <position height="0" width="0" x="694" y="-1183"/>      
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="62" name="dao">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </attribute>      
       <multiplicity id="63" minimum="0" maximum="1">        
-        <position height="0" width="0" x="694" y="-1183"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="64">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="65" name="formVacationVo">        
-        <position height="0" width="0" x="22" y="-26"/>      
-      </attribute>      
-      <multiplicity id="66" minimum="0" maximum="1">        
-        <position height="0" width="0" x="22" y="-26"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="67">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="68" name="dao">        
-        <position height="0" width="0" x="96" y="-610"/>      
-      </attribute>      
-      <multiplicity id="69" minimum="0" maximum="1">        
-        <position height="0" width="0" x="96" y="-610"/>      
+        <position height="0" width="0" x="-906" y="-610"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="70">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="71" name="chooseService">        
-        <position height="0" width="0" x="16" y="-360"/>      
+  <association id="64">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="65" name="dao">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </attribute>      
-      <multiplicity id="72" minimum="0" maximum="1">        
-        <position height="0" width="0" x="16" y="-360"/>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="68" name="viewService">        
+        <position height="0" width="0" x="-926" y="-356"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-926" y="-356"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="71" name="mapper">        
+        <position height="0" width="0" x="-308" y="-1183"/>      
+      </attribute>      
+      <multiplicity id="72" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-308" y="-1183"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="73">    
-    <end type="SOURCE" refId="11" navigable="false">      
+    <end type="SOURCE" refId="7" navigable="false">      
       <attribute id="74" name="dao">        
-        <position height="0" width="0" x="96" y="-610"/>      
+        <position height="0" width="0" x="-906" y="-610"/>      
       </attribute>      
       <multiplicity id="75" minimum="0" maximum="1">        
-        <position height="0" width="0" x="96" y="-610"/>      
+        <position height="0" width="0" x="-906" y="-610"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="76">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="77" name="dao">        
-        <position height="0" width="0" x="96" y="-610"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="77" name="selectReceiverService">        
+        <position height="0" width="0" x="-956" y="-346"/>      
       </attribute>      
       <multiplicity id="78" minimum="0" maximum="1">        
-        <position height="0" width="0" x="96" y="-610"/>      
+        <position height="0" width="0" x="-956" y="-346"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="79">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="80" name="outgoingService">        
-        <position height="0" width="0" x="-44" y="-358"/>      
+      <attribute id="80" name="decisionMakerService">        
+        <position height="0" width="0" x="-1762" y="-740"/>      
       </attribute>      
       <multiplicity id="81" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-44" y="-358"/>      
+        <position height="0" width="0" x="-1762" y="-740"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="82">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="83" name="dao">        
-        <position height="0" width="0" x="96" y="-610"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="83" name="checkFormType">        
+        <position height="0" width="0" x="-1442" y="-616"/>      
       </attribute>      
       <multiplicity id="84" minimum="0" maximum="1">        
-        <position height="0" width="0" x="96" y="-610"/>      
+        <position height="0" width="0" x="-1442" y="-616"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="85">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="86" name="attFileList">        
-        <position height="0" width="0" x="34" y="62"/>      
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="86" name="dao">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </attribute>      
-      <multiplicity id="87" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="34" y="62"/>      
+      <multiplicity id="87" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-906" y="-610"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

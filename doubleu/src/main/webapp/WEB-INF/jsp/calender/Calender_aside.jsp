@@ -14,7 +14,7 @@
     <div id="calender_aside_checkbox"> <!-- 스케줄 체크박스 -->
         <form action="">
         	<div style="display: block; margin-top: 20px;">
-	            <label for="all_con">전체일정</label>
+	            <label for="all_con">전사일정</label>
 	            <input type="checkbox" name="" id="all_con" checked="checked">
         	</div>
         	<div style="display: block;">

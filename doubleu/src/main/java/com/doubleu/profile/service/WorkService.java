@@ -95,6 +95,8 @@ public WorkVo endWork(int no) {
 		return vo;
 	}
 	
+<<<<<<< HEAD
+=======
 	public void changeTime(WorkVo vo) {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
@@ -107,7 +109,6 @@ public WorkVo endWork(int no) {
 		int mm = Integer.parseInt(time1.substring(14, 16));
 		int ss = Integer.parseInt(time1.substring(17, 19));
 		
-		2021-03-03
 		int shh= Integer.parseInt(vo.getWorkStart().substring(11, 13));
 		
 		// 1시간 = 60분 = 3600초
@@ -118,4 +119,5 @@ public WorkVo endWork(int no) {
 		
 		System.out.println("셀렉트원 완료");
 	}
+>>>>>>> 4f23185afbacae16212416af2702fd49c5e1dee6
 }

@@ -79,11 +79,9 @@
         		  <table class="table table-hover">
   	<thread>
   		<tr>
-  			<th>일(요일)</th>
+  			<th>근무일자</th>
   			<th>출근시간</th>
   			<th>퇴근시간</th>
-  			<th>근무시간</th>
-  			<th>연장근무시간</th>
   		</tr>
   	</thread>
   	<tbody>
@@ -93,8 +91,6 @@
   			<td>${work.workDate}</td> 
   			<td>${work.workStart}</td>
   			<td>${work.workFinish}</td>
-  			<td>${work.workTotal}</td>
-  			<td>${work.workPlus}</td>
   		</tr>
   	</c:forEach>
   	</tbody>
