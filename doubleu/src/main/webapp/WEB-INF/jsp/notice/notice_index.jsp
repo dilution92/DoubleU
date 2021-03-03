@@ -50,26 +50,19 @@
 
 	<section class="e-approval-container">
 	
-		<!-- e-approval-lnb code -->
+		<!-- side_menu -->
 		<jsp:include page="side_menu.jsp"/>
-		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
 
-		<form class="e-approval-search-form" action="" name="noticeForm" method="post">
+		<form class="e-approval-search-form" action="" name="noticeForm" method="post" id="frm">
 				<!-- 게시판 검색바 code -->
 				<div class="e-approval-search-bar">
 				
 					<div class="e-approval-form-box">
 						<span>공지사항</span>
-						<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
-						<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-							
-						<select	class="form-control form-control-sm e-approval-select-box">
-							<option selected>제목</option>
-							<option value="0">내용</option>
-							<option value="1">제목+내용</option>
-						</select>
+						<input class="btn btn-outline-primary btn-sm" type="button" value="검색" onclick="document.getElementById('frm').submit();"/>
+						<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr" name="findStr">
 					</div>
 				</div>
 			
@@ -123,7 +116,7 @@
 						
 					</ul>
 				</nav>
-				<input type="hidden" name="nowPage" class="nowPage">
+				<input type="hidden" name="nowPage" class="nowPage" value="${page.nowPage }">
 			</div>
 			<!-- ========== -->
 		</form>

@@ -72,15 +72,17 @@
 	</select>
 	
 	<select id="totListSize" resultType='int' parameterType="com.doubleu.market.vo.MarketPage">
-		select count(market_no) from market
+		select count(mk.market_no) 
+         from market mk join market_files mf  on mk.market_no = mf.market_no
+         where mf.files_main = 1
 		<if test="findStr != '' and findType == '' ">
-			where market_subject like '%${findStr}%'	 
+			and market_subject like '%${findStr}%'	 
 		</if>
 		<if test="findStr != '' and findType != ''">
-			where market_category = '${findType}' and market_subject like '%${findStr}%'
+			and market_category = '${findType}' and market_subject like '%${findStr}%'
 		</if>
 		<if test="findStr == '' and findType != ''">
-			where market_category = '${findType}' and market_subject like '%${findStr}%'
+			and market_category = '${findType}' and market_subject like '%${findStr}%'
 		</if>
 	</select>
 	
@@ -121,23 +123,25 @@
 	</select>
 	<!-- select게시글 총 갯수 -->
 	<select id="selectCount" resultType="int" parameterType="com.doubleu.market.vo.MarketPage">
-		select count(*) from market  
+		 select count(mk.market_no) 
+         from market mk join market_files mf  on mk.market_no = mf.market_no
+         where mf.files_main = 1
 		<if test="findStr != '' and findType == '' ">
-				 	where market_subject like '%${findStr}%'	 
+				 	and market_subject like '%${findStr}%'	 
 				 	</if>
 				 	<if test="findStr != '' and findType != ''">
-					where market_category = '${findType}' and market_subject like '%${findStr}%'
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
 					</if>
 					<if test="findStr == '' and findType != ''">
-					where market_category = '${findType}' and market_subject like '%${findStr}%'
+					and market_category = '${findType}' and market_subject like '%${findStr}%'
 					</if>
 	</select>
 
 <!-- insert -->
 	<insert id = 'insert' parameterType="com.doubleu.market.vo.MarketVo">
 		insert all
-		into market(market_no, market_category, market_writer, market_subject, market_price, market_account, market_doc, market_hit, market_date, market_bank, market_dib)
-		values(market_seq.nextval, #{marketCategory, jdbcType=VARCHAR}, #{marketWriter, jdbcType=VARCHAR}, #{marketSubject}, #{marketPrice}, #{marketAccount}, #{marketDoc},#{marketHit}, SYSDATE, #{marketBank}, #{marketDib})
+		into market(market_no, market_category, market_writer, market_subject, market_price, market_account, market_doc, market_hit, market_date, market_bank)
+		values(market_seq.nextval, #{marketCategory, jdbcType=VARCHAR}, #{marketWriter, jdbcType=VARCHAR}, #{marketSubject}, #{marketPrice}, #{marketAccount}, #{marketDoc},#{marketHit}, SYSDATE, #{marketBank})
 		<if test="attlist != null">
 			<foreach collection="attlist" item="att">
 				into market_files(files_no, market_no, files_sysfile, files_orifile, files_main)

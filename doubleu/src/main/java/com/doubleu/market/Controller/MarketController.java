@@ -57,7 +57,10 @@ public class MarketController {
 			 msg = "검색결과 없음";
 		}
 		
+		String dibUser = req.getParameter("dibUser");
+		System.out.println("selectuser:" + dibUser);
 		Map<String, Object> map = dao.select(page);
+		mv.addObject("dibUser", dibUser);
 
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
@@ -70,7 +73,7 @@ public class MarketController {
 	
 	//insert결과화면->index
 	@RequestMapping(value="/marketInsertR", method= {RequestMethod.GET , RequestMethod.POST})
-	public ModelAndView marketInsertR(@RequestParam("attList") List<MultipartFile> mul, 
+	public ModelAndView marketInsertR(HttpServletRequest req,@RequestParam("attList") List<MultipartFile> mul, 
 								@ModelAttribute MarketVo vo, @ModelAttribute MarketPage page) {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
@@ -92,6 +95,9 @@ public class MarketController {
 
 		int cnt = dao.totalCount();
 		
+		String dibUser = req.getParameter("dibUser");
+		System.out.println("insertDibuser:" + dibUser);
+		mv.addObject("dibUser", dibUser);
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
 		mv.addObject("cnt", cnt);
