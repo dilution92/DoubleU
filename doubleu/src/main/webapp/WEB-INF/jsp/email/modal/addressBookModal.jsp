@@ -75,7 +75,7 @@
 								<div class="rev-mail-one">
 									<div class="rev-align-scroll">
 										
-										<c:forEach begin="0" end="30">
+										<c:forEach begin="0" end="50">
 											<!-- 받는 사람 -->
 											
 											<div id="resultDual">
@@ -90,7 +90,7 @@
 								<div class="ref-mail-two">
 									<div class="rev-align-scroll">
 										<div id="resultRefDual">
-										<c:forEach begin="0" end="30">
+										<c:forEach begin="0" end="50">
 											<div id="resultRef">
 											</div>
 										</c:forEach>	
@@ -250,6 +250,7 @@ function addAddress() {
 		  node.setAttribute('value', ResultContents[i]);
 		  node.setAttribute('name', 'emailReceiverAddress')
 		  node.setAttribute('class', 'class="form-control"')
+		  node.setAttribute('style', 'background-color: #f8f9fa; border:none;')
 		  var textnode = document.createTextNode(ResultContents[i]);     
 		  var appendNode = node.appendChild(textnode);
          
@@ -269,12 +270,15 @@ function addAddress() {
 		  node.setAttribute('value', ResultContentsRef[i]);
 		  node.setAttribute('name', 'emailReceiverRef')
 		  node.setAttribute('class', 'class="form-control"')
+		  node.setAttribute('style', 'background-color: #f8f9fa; border:none;')
 		  var textnode = document.createTextNode(ResultContentsRef[i]);     
 		  var appendNode = node.appendChild(textnode);
          
 		  //부모
 		  document.getElementById('revRef').appendChild(node);
 	  }	
+
+	
 }
 
 

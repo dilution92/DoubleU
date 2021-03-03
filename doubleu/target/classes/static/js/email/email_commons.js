@@ -62,6 +62,14 @@ var selectChkBtn = function() {
 	            }
 	     });
 	
+	//휴지통 삭제하기
+	$("#deleteAlllBtn").click( function(){  
+	            if($(".chkBoxClass").is(":checked") == false){
+	                swal("메일을 선택해주세요.")
+	                return false;
+	            }
+	     });
+	
 	// 전달하기
 	$("#emailPassBtn").click( function(){ 
 	            if($(".chkBoxClass").is(":checked") == false){
@@ -78,7 +86,14 @@ var selectChkBtn = function() {
 	            }
 
 	     });
+	// 이동
+	$("#MoveFolderBtn").click( function(){ 
+	            if($(".chkBoxClass").is(":checked") == false){
+	                swal("메일을 선택해주세요.")
+	                return false;
+	            }
 
+	     });
 }
 
 // 3.즐겨찾기
