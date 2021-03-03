@@ -48,11 +48,11 @@
             <input type="button" class="btn btn-primary" onclick="location.href='/CalenderWeekDiff?diff=7'" value="다음">
             <input type="button" class="btn btn-primary" onclick="location.href='/CalenderWeekToday'" value="오늘">
         </div>
-        <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
-            <input type="number" id="year" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
+        <div style="position: absolute; left: 48rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
+            <input type="number" id="Wyear" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
             <input type="hidden" id="monthcome" value="${currentMonth }">
             <input type="hidden" id="daycome" value="${currentDay }">
-            <select id="month" class="form-control" style="width:100px; display:initial;">
+            <select id="Wmonth" class="form-control" style="width:100px; display:initial;">
             	<option value="1">1월</option>
             	<option value="2">2월</option>
             	<option value="3">3월</option>
@@ -150,7 +150,6 @@
 											 <div class="calender_modal" >
 												<c:choose>
 												<c:when test="${listVo.getCalenderType() eq '단기'}">
-													<c:if test="${listVo.getCalenderStartDay() eq list.day1 }">
 													<c:if test="${listVo.getCalenderStartTime() eq time }">
 														<i class="bi bi-diamond bi-diamond-color"></i>${listVo.getCalenderSubject() }
 														<input type="hidden" value="${listVo.getCalenderNo() }"> <!-- 0 -->
@@ -165,7 +164,6 @@
 														<input type="hidden" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
 														<input type="hidden" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
 														<input type="hidden" value="${listVo.getCalenderTime() }"> <!-- 11 -->
-													</c:if>
 													</c:if>
 												</c:when>
 												</c:choose>

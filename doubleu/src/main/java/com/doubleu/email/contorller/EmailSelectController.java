@@ -57,7 +57,7 @@ public class EmailSelectController {
 			
 			int cnt = emailMoveService.selectMoveFolder(req, vo);
 		
-			mv.setViewName("redirect:/emailIndex");
+			mv.setViewName("/emailImportant");
 			return mv;
 		}
 	

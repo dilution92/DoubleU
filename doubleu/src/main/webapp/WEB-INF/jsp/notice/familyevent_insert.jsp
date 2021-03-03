@@ -112,7 +112,7 @@
 				            <td><input type="number" id="hit" name="familyeventHit" value="1" readonly></td> -->
 				        </tr>
 <!-- 				        <tr>
-				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
+				        	<th><label for="exampleFormControlSelect5"></label>게시기간</th>
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
 									<label for="familyeventPostType"></label>

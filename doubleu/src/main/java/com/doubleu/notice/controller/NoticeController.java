@@ -77,7 +77,7 @@ public class NoticeController {
 	  System.out.println(msg);
 	  List<NoticeVo> contentList1 = service1.select();
       mv.addObject("contentList1", contentList1);
-      mv.setViewName("/notice/notice_index");
+      mv.setViewName("redirect:/noticeIndex");
 	  return mv;
    }
    
@@ -141,7 +141,7 @@ public class NoticeController {
 	  System.out.println(msg);
 	  List<FamilyeventVo> contentList = service2.select();
       mv.addObject("contentList", contentList);
-      mv.setViewName("/notice/familyevent_index");
+      mv.setViewName("redirect:/familyeventIndex");
 	  return mv;
    }
    

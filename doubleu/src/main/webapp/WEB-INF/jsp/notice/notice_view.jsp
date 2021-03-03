@@ -99,7 +99,7 @@
 				            <td>${obj.noticeHit }</td>
 				        </tr>
 				        <tr>
-				        	<th>게시기한</th>
+				        	<th>게시기간</th>
 				        	<td colspan="3">
 								<input type="radio" name="noticePostType" value="${obj.noticePostType }" checked>${obj.noticePostType } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								

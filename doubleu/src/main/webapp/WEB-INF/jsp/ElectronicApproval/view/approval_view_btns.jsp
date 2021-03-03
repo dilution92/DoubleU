@@ -12,7 +12,7 @@
 			<c:when test="${vo.approvalState eq '(발신)상신' and member.memberNo == vo.memberNo}">
 					<div class="e-approval-view-btn-box">
 						<div class="e-approva-view-btn-content">
-							<input type="button" class="btn btn-outline-primary btn-sm" value="인쇄">
+							<input type="hidden" class="btn btn-outline-primary btn-sm" value="인쇄">
 						</div>
 						<div class="e-approva-view-btn-content">
 							<input type="button" id="btnApprovalCancelReport" class="btn btn-outline-primary btn-sm" value="상신 취소" style="float: left">
@@ -33,7 +33,7 @@
 			<c:when test="${vo.approvalState eq '(발신)승인' and member.memberNo == vo.memberNo}">
 				<div class="e-approval-view-btn-box">
 					<div class="e-approva-view-btn-content">
-						<input type="button" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
+						<input type="hidden" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
 					</div>
 					<div class="e-approva-view-btn-content">
 						<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">
@@ -64,7 +64,7 @@
 			<c:when test="${makerVo.decisionState == '1' and makerVo.makerOrder == '0'}">
 				<div class="e-approval-view-btn-box">
 					<div class="e-approva-view-btn-content">
-						<input type="button" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
+						<input type="hidden" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
 					</div>
 					<div class="e-approva-view-btn-content">
 						<input type="button" name="btnFormReject" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target="#exampleModal_reject"  value="반려" style="float: left">
@@ -75,7 +75,7 @@
 			<c:when test="${makerVo.decisionState == '1' and makerVo.makerOrder == '-1'}">
 				<div class="e-approval-view-btn-box">
 					<div class="e-approva-view-btn-content">
-						<input type="button" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
+						<input type="hidden" id="btnApprovalPrint" class="btn btn-outline-primary btn-sm" value="인쇄">
 					</div>
 					<div class="e-approva-view-btn-content">
 						<input type="button" name="btnApprovalSelect" id="btnApprovalSelect" class="btn btn-outline-secondary btn-sm" value="목록으로">

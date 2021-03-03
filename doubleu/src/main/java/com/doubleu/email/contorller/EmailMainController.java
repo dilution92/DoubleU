@@ -557,7 +557,6 @@ public class EmailMainController {
 			}
 			
 			for(String arrayList : array) {
-				System.out.println(arrayList);
 				int arrayListInt = Integer.parseInt(arrayList);
 				vo.setEmailNo(arrayListInt);
 				int cnt = DaoService.updateAllDelete(vo);

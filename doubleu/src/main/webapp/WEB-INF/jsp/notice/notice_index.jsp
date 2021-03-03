@@ -91,7 +91,7 @@
 	                		<c:forEach var='obj' items="${list }">
 	                    		<tr onClick="location.href='/noticeView?no=${obj.noticeNo }'">
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeNo }</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeType }</td>
+			                        <td class="noticeType" style = "background-color:#ffffff; text-align:center;">${obj.noticeType }</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeSubject }</td>
 			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">${obj.noticeMid }</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeReportingDate }</td>

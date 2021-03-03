@@ -119,7 +119,7 @@ public class NoticeService {
 		return mapper.updateHit(notice_hit);
 	}
 	
-	// 게시기한에 따른 일반공지 전환
+	// 게시기간에 따른 일반공지 전환
 	public void updatePost() {
 		mapper.updatePost();
 	}

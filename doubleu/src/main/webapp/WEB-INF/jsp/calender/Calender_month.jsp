@@ -56,11 +56,11 @@
             <input type="button" class="btn btn-primary" onclick="location.href='/CalenderMonthDiff?diff=1'" value="다음">
             <input type="button" class="btn btn-primary" onclick="location.href='/CalenderMonthToday'" value="오늘">
         </div>
-        <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
-            <input type="number" id="year" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
+        <div style="position: absolute; left: 48rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
+            <input type="number" id="Myear" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
             <input type="hidden" id="monthcome" value="${currentMonth }">
             <input type="hidden" id="daycome" value="${currentDay }">
-            <select id="month" class="form-control" style="width:100px; display:initial;">
+            <select id="Mmonth" class="form-control" style="width:100px; display:initial;">
             	<option value="1">1월</option>
             	<option value="2">2월</option>
             	<option value="3">3월</option>
@@ -195,7 +195,6 @@
 	</div>
 	
 	
-	<input type="text" value="${selectVo.getCalenderNo() }" id="modalchk">
 	
 		<!-- 모달창 -->
 	<div class="modal fade" id="Calender_detail_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
