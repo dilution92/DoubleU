@@ -92,7 +92,6 @@
 							<option value="사유서"> 사유서</option>
 							<option value="휴가신청서"> 휴가신청서 </option>
 							<option value="지각/결근사유서"> 지각/결근사유서 </option>
-							<option value="지출결의서"> 지각/결근사유서 </option>
 						</select>
 					</div>
 					<!-- hidden 탭 -->
