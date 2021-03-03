@@ -53,13 +53,18 @@
 	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.notice.vo.NoticePage">
 		SELECT count(notice_no) 
 		FROM notice
+		
+	  <if test="findStr !=''">
+         where notice_subject like '%${findStr}%' or notice_doc = '%${findStr}%'  
+      </if>
+      
 	</select>
 	
  <select id="selectPaging" 
 	 resultMap="NoticeVo" 
 	 parameterType="com.doubleu.notice.vo.NoticePage">
 	 
-	 <![CDATA[
+	 
 	    SELECT notice_no, 
 			   notice_subject, 
 			   notice_mid, 
@@ -73,10 +78,13 @@
 		 FROM (
 	        SELECT rownum no, m.* from (  
 	           SELECT * FROM notice
-				order by notice_Type desc, notice_no desc
+	           <if test="findStr !=''">
+       			  where notice_subject like '%${findStr}%' or notice_doc = '%${findStr}%'  
+      		  </if>
+				order by notice_type desc, notice_no desc
 	           ) m
 	        ) WHERE no between ${startNo} and ${endNo}
-	 ]]>
+	
 	</select>
 	
 	<select id="select" resultMap="NoticeVo">

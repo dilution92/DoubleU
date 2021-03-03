@@ -47,13 +47,15 @@
 	<select id="totListSizeMain" resultType='int' parameterType="com.doubleu.notice.vo.NoticePage">
 		SELECT count(familyeventNo) 
 		FROM FAMILYEVENT
+		<if test="findStr !=''">
+         where familyeventSubject like '%${findStr}%' or familyeventDoc = '%${findStr}%'  
+      	</if>
 	</select>
 	
  <select id="selectPaging" 
 	 resultMap="FamilyeventVo" 
 	 parameterType="com.doubleu.notice.vo.NoticePage">
 	
-	<![CDATA[
 		select familyeventNo, 
 			   familyeventSubject, 
 			   familyeventMid, 
@@ -64,10 +66,12 @@
 	     FROM (
 	        SELECT rownum no, m.* from (  
 	           SELECT * FROM FAMILYEVENT
+	           <if test="findStr !=''">
+		         where familyeventSubject like '%${findStr}%' or familyeventDoc = '%${findStr}%'  
+		      	</if>
 				ORDER BY familyeventNo DESC
 	           ) m
 	        ) WHERE no between ${startNo} and ${endNo}
-	]]>
 	</select>
 	
 	<select id="select" resultType="com.doubleu.notice.vo.FamilyeventVo">

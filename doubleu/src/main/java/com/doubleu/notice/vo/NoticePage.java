@@ -25,11 +25,7 @@ public class NoticePage {
 	
 	public NoticeVo vo;
 	
-	
 	String findStr;
-	List<String> findStrList = new ArrayList<>();
-	
-	
 
 	public NoticePage() {
 		
@@ -61,13 +57,6 @@ public class NoticePage {
 		
 	}
 	
-	public List<String> getFindStrList() {
-		if(findStr != null) {
-			String[] temp = findStr.split(" ");
-			findStrList.addAll(Arrays.asList(temp));
-		}
-		return findStrList;
-	}
 	
 	public int getTotListSize() {
 		return totListSize;
@@ -170,7 +159,7 @@ public class NoticePage {
 		return "NoticePage [totListSize=" + totListSize + ", totPage=" + totPage + ", startPage=" + startPage
 				+ ", endPage=" + endPage + ", startNo=" + startNo + ", endNo=" + endNo + ", nowPage=" + nowPage
 				+ ", listSize=" + listSize + ", blockSize=" + blockSize + ", memberMid=" + memberMid + ", findStr="
-				+ findStr + ", findStrList=" + findStrList + ", noticeBox=" + noticeBox + "]";
+				+ findStr + ", findStrList=" + ", noticeBox=" + noticeBox + "]";
 	}
 	
 }
