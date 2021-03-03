@@ -61,7 +61,7 @@
 	</select>
 
 	<select id="selectMain" parameterType="int" resultMap="selectWorkData">
-		<![CDATA[select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work where member_no=#{_parameter}) and work_date like '2021-03-03' ]]>
+		<![CDATA[select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work where member_no=#{_parameter}) and work_date like '2021-03-04' ]]>
 	</select>
 	<!-- <select id="selectPlus" parameterType="int" resultType="int">
 		<![CDATA[ select MOD(to_date(work_finish,'DDHH24MI') -TO_DATE(work_start,'YYYYMMDDHH24MI'),1)*24from dual  where member_no = #{_parameter} ; ]]>

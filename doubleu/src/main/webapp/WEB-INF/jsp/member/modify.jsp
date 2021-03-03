@@ -62,7 +62,7 @@
 		<div class="container">
 			<main>
 
-				<div class="row g-3">
+				<div class="row g-3" style="padding:80px;">
 					<form action="/memberUpdate" method="post">
 					<div class="main">
 						<h5 class="mb-3">회원정보 수정</h5>
@@ -144,6 +144,7 @@
 				</div>
 				</form>
 		</div>
+		<div class="last" style="padding:50px;"></div>
 
 
 
