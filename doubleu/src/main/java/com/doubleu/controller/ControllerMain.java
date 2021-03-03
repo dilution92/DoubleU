@@ -30,6 +30,8 @@ import com.doubleu.notice.service.FamilyeventService;
 import com.doubleu.notice.service.NoticeService;
 import com.doubleu.notice.vo.FamilyeventVo;
 import com.doubleu.notice.vo.NoticeVo;
+import com.doubleu.profile.service.WorkService;
+import com.doubleu.profile.vo.WorkVo;
 
 @RestController
 public class ControllerMain {
@@ -58,6 +60,9 @@ public class ControllerMain {
 	
 	@Autowired
 	FamilyeventService familyeventService;
+	
+	@Autowired
+	WorkService workService;
 	
 	@RequestMapping(value = "/")
 	public ModelAndView index() {
@@ -118,6 +123,12 @@ public class ControllerMain {
 	         mv.addObject("currentDay", day);
 	         mv.addObject("calender",list);
 	         mv.addObject("mainList",mainList);
+	         
+	         // 출퇴근
+	         WorkVo work = new WorkVo();
+	         int memberNo= loginVo.getMemberNo();
+	         work = workService.selectMain(memberNo);
+	         mv.addObject("work", work);
         
 		//IMG
 		if(loginVo.getMemberName().equals("정희석")) {
