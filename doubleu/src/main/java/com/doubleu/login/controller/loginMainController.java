@@ -149,7 +149,7 @@ public class loginMainController {
  	         mv.addObject("currentDay", day);
  	         mv.addObject("calender",list);
  	         mv.addObject("mainList",mainList);
-
+ 
        
        // 출퇴근
        WorkVo work = new WorkVo();
