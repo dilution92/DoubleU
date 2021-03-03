@@ -107,7 +107,6 @@ public WorkVo endWork(int no) {
 		int mm = Integer.parseInt(time1.substring(14, 16));
 		int ss = Integer.parseInt(time1.substring(17, 19));
 		
-		2021-03-03
 		int shh= Integer.parseInt(vo.getWorkStart().substring(11, 13));
 		
 		// 1시간 = 60분 = 3600초
