@@ -55,16 +55,16 @@
 			<div class="WM-timeTable">
 				<div class="WM-timeTable-attendance">
 					<span>출근 시간</span>				
-					<input type="text" value="09:30" name="attentdance" readonly="readonly">
+					<input type="text" value="${work.workStart }" name="attentdance" readonly="readonly">
 				</div>
 				<div class="WM-timeTable-leaveWork">
 					<span>퇴근 시간</span>				
-					<input type="text" value="18:30" name="leaveWork" readonly="readonly">
+					<input type="text" value="${work.workFinish }" name="leaveWork" readonly="readonly">
 				</div>
 			</div>
 			<div class="WM-btns">
-				<input type="button" value="출근" class="btn btn-primary btn-sm">
-				<input type="button" value="퇴근" class="btn btn-primary btn-sm"> 
+				<input type="button" value="출근" class="btn btn-primary btn-sm"  onClick="location.href='/startWork'">
+				<input type="button" value="퇴근" class="btn btn-primary btn-sm" onClick="location.href='/endWork'"> 
 			</div>
 			<div class="WM-workState">
 				<select class="form-control form-control-sm">

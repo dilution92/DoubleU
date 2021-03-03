@@ -29,6 +29,8 @@ import com.doubleu.notice.service.FamilyeventService;
 import com.doubleu.notice.service.NoticeService;
 import com.doubleu.notice.vo.FamilyeventVo;
 import com.doubleu.notice.vo.NoticeVo;
+import com.doubleu.profile.service.WorkService;
+import com.doubleu.profile.vo.WorkVo;
 
 @Controller
 public class loginMainController {
@@ -64,6 +66,9 @@ public class loginMainController {
    
    @Autowired
    CalenderService calender;
+   
+   @Autowired
+   WorkService workService;
       
    // 로그인 체크
    @RequestMapping(value="/loginCheck", method= {RequestMethod.GET, RequestMethod.POST})
@@ -145,6 +150,12 @@ public class loginMainController {
  	         mv.addObject("calender",list);
  	         mv.addObject("mainList",mainList);
 
+       
+       // 출퇴근
+       WorkVo work = new WorkVo();
+       int memberNo= loginVo.getMemberNo();
+       work = workService.selectMain(memberNo);
+       mv.addObject("work", work);
       }
         return mv;
    }

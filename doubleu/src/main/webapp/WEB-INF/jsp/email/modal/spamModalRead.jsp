@@ -13,8 +13,8 @@
 	               </c:forEach>
 	               
 	               <div class="modalSpamEmailFolderBtn">
-	                   <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">차단하기</button>
-	                   <button class="btn btn-primary btn-lg btn-primary btn-sm" role="button">취소하기</button>
+	                   <button onclick="" class="btn btn-primary btn-lg btn-primary btn-sm" role="button">차단하기</button>
+	                   <button class="btn btn-primary btn-lg btn-primary btn-sm" class="close" data-dismiss="modal" aria-label="Close" role="button">취소하기</button>
 	               </div>
 	           </div>
 	       </div>
