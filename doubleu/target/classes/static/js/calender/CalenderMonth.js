@@ -7,14 +7,14 @@
 
 // 이전 다음 버튼
 $(function(){
-    $("#month").change(function(){
-    	var changedMonth = parseInt($('#month').val());
+    $("#Mmonth").change(function(){
+    	var changedMonth = parseInt($('#Mmonth').val());
     	var url = "/MonthSelectedMonth?changedMonth="+changedMonth;
     	location.href=url;
     })
     
-    $("#year").change(function(){
-    	var changedyear = parseInt($('#year').val());
+    $("#Myear").change(function(){
+    	var changedyear = parseInt($('#Myear').val());
     	var url = "/MonthSelectedYear?changedYear="+changedyear;
     	location.href=url;
     })
@@ -22,22 +22,74 @@ $(function(){
 })
 
 
+// 해당 날짜 파란색 테두리
+$(document).ready(function(){
+	var year = $("#Myear").val();
+	var month = $("#monthcome").val();
+	if(month<10){
+		month = "0"+month;
+	}
+	var day = $("#daycome").val();
+	if(day<10){
+		day = "0"+day;
+	}
+	var targetToday = document.getElementsByClassName(year+month+day)[0];
+	targetToday.style.border="5px skyblue solid";
+})
+
+// 월 셀렉박스 월 받아오기
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	
+	 $("#Mmonth").val(month).attr("selected","selected");
+})
+
 /* 주간 일정*/
 
 // 이전 다음 버튼
 $(function(){
-    $("#month").change(function(){
-    	var changedMonth = parseInt($('#month').val());
+    $("#Wmonth").change(function(){
+    	var changedMonth = parseInt($('#Wmonth').val());
     	var url = "/WeekSelectedMonth?changedMonth="+changedMonth;
     	location.href=url;
     })
     
-    $("#year").change(function(){
-    	var changedyear = parseInt($('#year').val());
+    $("#Wyear").change(function(){
+    	var changedyear = parseInt($('#Wyear').val());
     	var url = "/WeekSelectedYear?changedYear="+changedyear;
     	location.href=url;
     })
 })
+// 월 셀렉박스 월 받아오기
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	
+	 $("#month").val(month).attr("selected","selected");
+})
+
+// 해당 날짜 파란색 테두리
+$(document).ready(function(){
+	var year = $("#Wyear").val();
+	var month = $("#monthcome").val();
+	if(month<10){
+		month = "0"+month;
+	}
+	var day = $("#daycome").val();
+	if(day<10){
+		day = "0"+day;
+	}
+	var targetToday = document.getElementsByClassName(year+month+day)[0];
+	targetToday.style.border="5px skyblue solid";
+})
+
+// 월 셀렉박스 월 받아오기
+$(document).ready(function(){
+	var month = $("#monthcome").val();
+	
+	 $("#Wmonth").val(month).attr("selected","selected");
+})
+
+
 
 /* 일간 일정 */
 
@@ -112,27 +164,7 @@ $(".calender_modal").click(function(){
 	$('#btn_modify').submit();
 })
 
-// 해당 날짜 파란색 테두리
-$(document).ready(function(){
-	var year = $("#year").val();
-	var month = $("#monthcome").val();
-	if(month<10){
-		month = "0"+month;
-	}
-	var day = $("#daycome").val();
-	if(day<10){
-		day = "0"+day;
-	}
-	var targetToday = document.getElementsByClassName(year+month+day)[0];
-	targetToday.style.border="5px skyblue solid";
-})
 
-// 월 셀렉박스 월 받아오기
-$(document).ready(function(){
-	var month = $("#monthcome").val();
-	
-	 $("#month").val(month).attr("selected","selected");
-})
 
 $(function(){
 	$("#btn_modify").click(function(){
@@ -267,4 +299,36 @@ $(function(){
 	})
 })
 
+$(function(){
+	$('#all_con').change(function(){
+	console.log("일정변경 시작");
+	if($('#all_con').is(":checked")){
+		console.log("일정 체크된 경우");
+		$('.전사일정').show();
+	}else{
+		console.log("일정 체크 안된 경우");
+		$('.전사일정').hide();
+	}
+	})
+	$('#group_con').change(function(){
+	console.log("일정변경 시작");
+	if($('#group_con').is(":checked")){
+		console.log("일정 체크된 경우");
+		$('.그룹일정').show();
+	}else{
+		console.log("일정 체크 안된 경우");
+		$('.그룹일정').hide();
+	}
+	})
+	$('#my_con').change(function(){
+	console.log("일정변경 시작");
+	if($('#my_con').is(":checked")){
+		console.log("일정 체크된 경우");
+		$('.내일정').show();
+	}else{
+		console.log("일정 체크 안된 경우");
+		$('.내일정').hide();
+	}
+})
 
+})
