@@ -5,7 +5,7 @@
 <ul class="email-select-list">
 	<li>
 		<label class="btn btn-outline-primary btn-sm">
-		<input type="checkbox" name="chkBox" id="chkBoxId" onclick="selectChkBox(this)"/>전체선택
+		<input type="checkbox" onclick="selectChkBox(this)"/>전체선택
 		</label>
 	</li>
      <li>
@@ -32,7 +32,7 @@
       <li>
 	      <div class="input-group mb-3">
 			  <div class="input-group-prepend">
-			    <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">이동</button>
+			    <button class="btn btn-outline-primary btn-sm" id="MoveFolderBtn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">이동</button>
 			    <div class="dropdown-menu">	 
 			      <a class="dropdown-item" onclick="sendImpEmail()">중요 메일함</a>
 			      <a class="dropdown-item" onclick="sendTempEmail()">임시 보관함</a>
@@ -140,7 +140,7 @@ var sendTempEmail = function() {
 	frm.submit();
 }
 
-
+// 답장하기
 var replyMail = function() {
 	var valueArr = new Array();
 	var list = $('input:checkbox[name=chkBox]')

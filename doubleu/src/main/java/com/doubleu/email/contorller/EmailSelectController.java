@@ -57,7 +57,7 @@ public class EmailSelectController {
 			
 			int cnt = emailMoveService.selectMoveFolder(req, vo);
 		
-			mv.setViewName("redirect:/emailIndex");
+			mv.setViewName("/emailImportant");
 			return mv;
 		}
 	
@@ -115,6 +115,26 @@ public class EmailSelectController {
 			int cnt = emailMoveService.selectMoveFolder(req, vo);
 			System.out.println("트레쉬메일 ----------" + cnt);
 			mv.setViewName("redirect:/emailIndex");
+			return mv;
+		}
+		
+		
+		//--------------------주소록 조회하기
+		@RequestMapping(value="/selectAddressFind", method={RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView selectAddressFind(
+				LoginVo vo,
+				HttpServletRequest req,
+				HttpSession session
+				) {
+			ModelAndView mv = new ModelAndView();
+			
+			
+			String memberFindStr = (String) req.getParameter("memberFindStr");
+
+			List<LoginVo> memberNameList = DaoService.memberFindStrName(memberFindStr);
+
+			mv.addObject("memberNameList", memberNameList);
+			mv.setViewName("email/ajax/addressBookModal");
 			return mv;
 		}
 		

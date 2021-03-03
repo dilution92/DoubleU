@@ -557,7 +557,6 @@ public class EmailMainController {
 			}
 			
 			for(String arrayList : array) {
-				System.out.println(arrayList);
 				int arrayListInt = Integer.parseInt(arrayList);
 				vo.setEmailNo(arrayListInt);
 				int cnt = DaoService.updateAllDelete(vo);
@@ -600,20 +599,6 @@ public class EmailMainController {
 			mv.setViewName("redirect:/emailSpam");
 			return mv;
 		}
-		
-		// emailReplyRead
-				@RequestMapping(value="/emailReplyRead", method={RequestMethod.GET, RequestMethod.POST})
-				public ModelAndView emailReplyRead(
-						EmailMainVo vo,
-						EmailPage page,
-						HttpServletRequest req,
-						HttpSession session
-						) {
-					ModelAndView mv = new ModelAndView();
-				
-					mv.setViewName("email/email_reply");
-					return mv;
-				}
 	
 }
 

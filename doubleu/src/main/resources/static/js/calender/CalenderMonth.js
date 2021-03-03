@@ -64,7 +64,7 @@ $(function(){
 $(document).ready(function(){
 	var month = $("#monthcome").val();
 	
-	 $("#month").val(month).attr("selected","selected");
+	 $("#Wmonth").val(month).attr("selected","selected");
 })
 
 // 해당 날짜 파란색 테두리

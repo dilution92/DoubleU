@@ -31,33 +31,41 @@
 			insert into WORK(
 				work_no,
 				member_no,
-				member_mid,
 				work_date,
-				work_start,
-				work_finish,
-				work_total,
-				work_plus
+				work_start
 				)
 			values(
 				work_seq.nextval, 
 				#{memberNo}, 
-				#{workMid}, 
 				#{workDate}, 
-				#{workStart}, 
-				#{workFinish}, 
-				#{workTotal}, 
-				#{workPlus}
+				#{workStart}
 				)
 		]]>
 	</insert>
+	
+	<update id="endWork" parameterType="com.doubleu.profile.vo.WorkVo">
+		<![CDATA[
+			UPDATE WORK SET
+				work_finish=#{workFinish}
+			WHERE
+			work_no = #{workNo}
+		]]>
+	</update>
+	
 	<select id="selectWork" parameterType="com.doubleu.profile.vo.WorkVo" resultMap="selectWorkData">
 		SELECT * FROM WORK
 	</select>
 
-	<select id="selectWorkOne" parameterType="com.doubleu.profile.vo.WorkVo" resultMap="selectWorkData">
-		<![CDATA[select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work)  ]]>
+	<select id="selectWorkOne" parameterType="int" resultMap="selectWorkData">
+		<![CDATA[select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work where member_no=#{_parameter})  ]]>
 	</select>
 
+	<select id="selectMain" parameterType="int" resultMap="selectWorkData">
+		<![CDATA[select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work where member_no=#{_parameter}) and work_date like '2021-03-03' ]]>
+	</select>
+	<!-- <select id="selectPlus" parameterType="int" resultType="int">
+		<![CDATA[ select MOD(to_date(work_finish,'DDHH24MI') -TO_DATE(work_start,'YYYYMMDDHH24MI'),1)*24from dual  where member_no = #{_parameter} ; ]]>
+	</select> -->
 	<resultMap id="selectWorkData" type="com.doubleu.profile.vo.WorkVo">
  
 	<result property="workNo" column="work_no" /> 

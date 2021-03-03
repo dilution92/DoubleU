@@ -56,6 +56,7 @@
     						<option value="" >그룹선택</option >
 						    <option value="그룹일정">그룹일정</option>
 						    <option value="내일정">내 일정</option>
+						    <option value="전사일정">전사일정</option>
     					</select>
 		    			</td>
 		    		</tr>

@@ -195,7 +195,6 @@
 	</div>
 	
 	
-	<input type="text" value="${selectVo.getCalenderNo() }" id="modalchk">
 	
 		<!-- 모달창 -->
 	<div class="modal fade" id="Calender_detail_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

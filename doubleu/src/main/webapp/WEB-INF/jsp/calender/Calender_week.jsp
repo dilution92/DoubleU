@@ -150,7 +150,6 @@
 											 <div class="calender_modal" >
 												<c:choose>
 												<c:when test="${listVo.getCalenderType() eq '단기'}">
-													<c:if test="${listVo.getCalenderStartDay() eq list.day1 }">
 													<c:if test="${listVo.getCalenderStartTime() eq time }">
 														<i class="bi bi-diamond bi-diamond-color"></i>${listVo.getCalenderSubject() }
 														<input type="hidden" value="${listVo.getCalenderNo() }"> <!-- 0 -->
@@ -165,7 +164,6 @@
 														<input type="hidden" value="${listVo.getCalenderWriter() }"> <!-- 9 -->
 														<input type="hidden" value="${listVo.getCalenderGroup() }"> <!-- 10 -->
 														<input type="hidden" value="${listVo.getCalenderTime() }"> <!-- 11 -->
-													</c:if>
 													</c:if>
 												</c:when>
 												</c:choose>
