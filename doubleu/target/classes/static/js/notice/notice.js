@@ -1,4 +1,4 @@
-/* 공지사항 insert 게시기한 radio 선택시 활성/비활성 */ 
+/* 공지사항 insert 게시기간 radio 선택시 활성/비활성 */ 
 $(document).ready(function(){
  
     // 라디오버튼 클릭시 이벤트 발생
@@ -16,7 +16,7 @@ $(document).ready(function(){
     });
 });
 
-/* 경조사 insert 게시기한 radio 선택시 활성/비활성 */
+/* 경조사 insert 게시기간 radio 선택시 활성/비활성 */
 $(document).ready(function(){
  
     // 라디오버튼 클릭시 이벤트 발생
@@ -36,7 +36,7 @@ $(document).ready(function(){
     });
 });
 
-/* notice_insert 게시기한 날짜 비교 */
+/* notice_insert 게시기간 날짜 비교 */
 $(function(){
     $('#searchDateTwo').change(function (){
         var date1 = $('#searchDateOne').val();
@@ -93,7 +93,7 @@ $(function(){
     })
 })
 
-/* notice_update 게시기한 값 끌어오기 */
+/* notice_update 게시기간 값 끌어오기 */
 $(document).ready(function(){
 	if($("#familyeventPostTypehidden").val() == "설정"){
    	   $("#r2").attr("checked",true);
@@ -175,3 +175,17 @@ function goPage(page) {
 	frm.action = '/familyeventIndex';
 	frm.submit();
 }
+
+/* 중요공지 상단 고정 색상 지정 */
+$(function(){
+	$(".noticeType").filter(function(){
+		console.log(this);
+		var a = this.innerText;
+		console.log(a); 
+		var str = "중요공지";
+		var p = $(this).parent('tr');
+		console.log(p);
+		return a == str;
+	}).parent('tr').children().css('background-color','#f8f9fa');
+});
+		

@@ -69,7 +69,6 @@
 							<option selected>제목</option>
 							<option value="0">내용</option>
 							<option value="1">제목+내용</option>
-							<option value="2">작성자</option>
 						</select>
 					</div>
 				</div>
@@ -88,11 +87,11 @@
 	                        <th style = "background-color:#f8f9fa; text-align:center;">조회수</th>
                     	</tr>
 	                	</thead>
-					<tbody class="e-approval-list text-muted">
+					<tbody class="e-approval-list text-muted" id="noticeTypeColor">
 	                		<c:forEach var='obj' items="${list }">
 	                    		<tr onClick="location.href='/noticeView?no=${obj.noticeNo }'">
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeNo }</td>
-			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeType }</td>
+			                        <td class="noticeType" style = "background-color:#ffffff; text-align:center;">${obj.noticeType }</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeSubject }</td>
 			                        <td style = "background-color:#ffffff; text-align:center; color:#6c757d">${obj.noticeMid }</td>
 			                        <td style = "background-color:#ffffff; text-align:center;">${obj.noticeReportingDate }</td>

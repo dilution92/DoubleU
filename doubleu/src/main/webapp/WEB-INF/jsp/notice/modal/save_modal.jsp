@@ -18,7 +18,7 @@
 
 <!-- 저장 Modal -->
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" style="margin-top:310px;">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">저장</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

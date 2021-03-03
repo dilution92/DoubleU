@@ -126,18 +126,17 @@ public class loginMainController {
          List<FamilyeventVo> contentList = familyeventService.select();
          mv.addObject("contentList", contentList);
          
-           // 일정
-           List<CalenderWeekList> list = new ArrayList<>();
-           list = calender.setMonthCalender(session);
-           List<CalenderVo> mainList = calender.selectMain(session);
-	         int year = calender.getYear();
-	         int month = calender.getMonth();
-	         int day = calender.getDay();
-	         mv.addObject("currentYear", year);
-	         mv.addObject("currentMonth", month);
-	         mv.addObject("currentDay", day);
-	         mv.addObject("calender",list);
-	         mv.addObject("mainList",mainList);
+         // 일정
+         List<CalenderWeekList> list = new ArrayList<>();
+         list = calender.setMonthCalender(session);
+       int year = calender.getYear();
+       int month = calender.getMonth();
+       int day = calender.getDay();
+       mv.addObject("currentYear", year);
+       mv.addObject("currentMonth", month);
+       mv.addObject("currentDay", day);
+       mv.addObject("calender",list);
+
       }
         return mv;
    }
@@ -157,4 +156,6 @@ public class loginMainController {
       mv.setViewName("redirect:/login");
       return mv;
    }
+
 }
+

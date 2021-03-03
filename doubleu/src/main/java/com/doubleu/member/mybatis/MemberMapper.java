@@ -14,4 +14,7 @@ import com.doubleu.profile.vo.WorkVo;
 public interface MemberMapper {
 	public List<MemberVo> selectOne(int no); 
 	public void memberUpdate(MemberVo vo);
+	public List<MemberVo> selectManage(); 
+	public List<MemberVo> selectBusiness();
+	public List<MemberVo> selectIT();
 }

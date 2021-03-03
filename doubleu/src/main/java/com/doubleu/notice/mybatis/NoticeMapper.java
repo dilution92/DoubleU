@@ -25,4 +25,7 @@ public interface NoticeMapper {
 	
 	// 조회수
 	public int updateHit(int notice_hit);
+	
+	// 게시기간에 따른 일반공지 전환
+	public void updatePost();
 }

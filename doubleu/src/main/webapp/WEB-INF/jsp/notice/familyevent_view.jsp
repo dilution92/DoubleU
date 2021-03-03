@@ -68,7 +68,6 @@
 								<option selected>제목</option>
 								<option value="0">내용</option>
 								<option value="1">제목+내용</option>
-								<option value="2">작성자</option>
 							</select>
 						</div>
 					</form>
@@ -77,9 +76,6 @@
 			<!-- ========== -->
 			
 			<!-- 경조사 view code -->
-			<div>
-				${att }
-			</div>
 			<div class="row">
 			    <div class="col-xs-1 col-md-1"></div>
 			    <div class="col-xs-8 col-md-10">
@@ -104,7 +100,7 @@
 					            <td>${obj.familyeventHit }</td>
 					        </tr>
 <%--  					        <tr>
-					        	<th>게시기한</th>
+					        	<th>게시기간</th>
 					        	<td colspan="3">
 									<!-- <input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 									<input type="radio" name="familyeventPostType" value="${obj.familyeventPostType }" checked>${obj.familyeventPostType } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
