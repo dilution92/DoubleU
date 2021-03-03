@@ -159,9 +159,6 @@ function getCheckboxValue()  {
 		  
 	  }
 
-	   var input = document.getElementById('tempFrm');
-	   input.value = ResultContents;
-	
 }
 
 function getSendDel()  {
@@ -199,7 +196,9 @@ function getCheckboxValueRef()  {
 		   ResultContents[i] = selectedEls[i].value;
 
 		  var node = document.createElement('span');
-		  console.log("node " + node)              
+		  node.setAttribute('value', ResultContents[i]);
+		  node.setAttribute('name', 'emailReceiverRef')
+		  node.setAttribute('class', 'badge rounded-pill bg-light text-dark')      
 		  var textnode = document.createTextNode(ResultContents[i]);         
 		  var appendNode = node.appendChild(textnode);
 
@@ -236,7 +235,7 @@ function getSendDelRef()  {
 
 function addAddress() {
 
-		 const query = 'input[name="emailAddressChk"]:checked';
+		 const query = 'span[name="emailReceiverAddress"]';
 		 const selectedEls = 
 		      document.querySelectorAll(query);	
 			console.log(query)
@@ -244,22 +243,40 @@ function addAddress() {
 		 var ResultContents = new Array();  
 			
 		 for(var i=0; i<selectedEls.length; i++) {
-		   ResultContents[i] = selectedEls[i].value;
+		   ResultContents[i] = selectedEls[i].innerHTML;
 		   console.log(ResultContents)
 
-		  var node = document.createElement('span');
+		  var node = document.createElement('input');
 		  node.setAttribute('value', ResultContents[i]);
 		  node.setAttribute('name', 'emailReceiverAddress')
-		  node.setAttribute('class', 'badge rounded-pill bg-light text-dark')
+		  node.setAttribute('class', 'class="form-control"')
 		  var textnode = document.createTextNode(ResultContents[i]);     
 		  var appendNode = node.appendChild(textnode);
          
 		  //부모
 		  document.getElementById('revMail').appendChild(node);
-		  
 	  }	
 
+		 const queryRef = 'span[name="emailReceiverRef"]';
+		 const selectedElsRef = document.querySelectorAll(queryRef);	
+	      var ResultContentsRef = new Array();  
+			
+		 for(var i=0; i<selectedElsRef.length; i++) {
+		   ResultContentsRef[i] = selectedElsRef[i].innerHTML;
+		   console.log(ResultContentsRef)
+
+		  var node = document.createElement('input');
+		  node.setAttribute('value', ResultContentsRef[i]);
+		  node.setAttribute('name', 'emailReceiverRef')
+		  node.setAttribute('class', 'class="form-control"')
+		  var textnode = document.createTextNode(ResultContentsRef[i]);     
+		  var appendNode = node.appendChild(textnode);
+         
+		  //부모
+		  document.getElementById('revRef').appendChild(node);
+	  }	
 }
+
 
 
 </script>
