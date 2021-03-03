@@ -95,8 +95,6 @@ public WorkVo endWork(int no) {
 		return vo;
 	}
 	
-<<<<<<< HEAD
-=======
 	public void changeTime(WorkVo vo) {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
@@ -119,5 +117,4 @@ public WorkVo endWork(int no) {
 		
 		System.out.println("셀렉트원 완료");
 	}
->>>>>>> 4f23185afbacae16212416af2702fd49c5e1dee6
 }
