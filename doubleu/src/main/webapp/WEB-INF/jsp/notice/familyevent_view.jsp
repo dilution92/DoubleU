@@ -61,14 +61,6 @@
 					<form class="e-approval-search-form" action="" name="noticeForm" method="post">
 						<div class="e-approval-form-box">
 							<span>경조사</span>
-							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
-							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
-								
-							<select	class="form-control form-control-sm e-approval-select-box">
-								<option selected>제목</option>
-								<option value="0">내용</option>
-								<option value="1">제목+내용</option>
-							</select>
 						</div>
 					</form>
 				</div>
@@ -132,8 +124,10 @@
 					        </tr>
 					        <tr>
 					            <td colspan="4" class="text-center">
-									<input type="button" class="btn btn-primary" value="수정" onclick="location.href='/familyeventUpdate?no=${obj.familyeventNo }'">
-									<input type="button" class="btn btn-primary" value="목록가기" onclick="location.href='/familyeventIndex'">
+					            	<c:if test="${loginName eq '강성연' }">		
+										<input type="button" class="btn btn-primary" value="수정" onclick="location.href='/familyeventUpdate?no=${obj.familyeventNo }'">
+									</c:if>
+										<input type="button" class="btn btn-primary" value="목록가기" onclick="location.href='/familyeventIndex'">
 					            </td>
 					        </tr>
 				        </table>

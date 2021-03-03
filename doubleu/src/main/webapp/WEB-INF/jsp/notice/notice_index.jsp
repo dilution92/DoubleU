@@ -50,9 +50,8 @@
 
 	<section class="e-approval-container">
 	
-		<!-- e-approval-lnb code -->
+		<!-- side_menu -->
 		<jsp:include page="side_menu.jsp"/>
-		<!-- lnb code 끝 -->
 
 		<main class="e-approval-article">
 
