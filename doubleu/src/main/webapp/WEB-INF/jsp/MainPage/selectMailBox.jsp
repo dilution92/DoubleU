@@ -20,8 +20,8 @@
 				 	<table class="table table-hover table-sm main-approval-table" style="table-layout:fixed">
 						<thead class="text-muted text-gray-dark">
 							<tr>
-								<th scope="col"  width="50px;">중요</th>
-								<th scope="col" width="150px;">이름</th>
+								<th scope="col"  width="30px;">중요</th>
+								<th scope="col" width="60px;">이름</th>
 								<th scope="col" width="150px;">메일주소</th>
 								<th scope="col" width="100px;">제목</th>
 								<th scope="col" width="90px;">날짜</th>
@@ -32,7 +32,7 @@
 						<c:set var="size" value="4" />
 							<c:forEach var="list" items="${EmailList}" end="${size }" >
 								<tr>
-									<td>${list.emailChk}</td>
+									<td style="color:red;">${list.emailChk}</td>
 									<td>${list.emailName}</td>					
 									<td>${list.emailAddress}</td>
 									<td class="table-title-fixed-length">${list.emailTitle}</td>						
