@@ -92,7 +92,7 @@
   		<tr>
   			<td>${work.workDate}</td> 
   			<td>${work.workStart}</td>
-  			<td>${work.workEnd}</td>
+  			<td>${work.workFinish}</td>
   			<td>${work.workTotal}</td>
   			<td>${work.workPlus}</td>
   		</tr>

@@ -31,52 +31,90 @@ public class WorkService {
 		String time1 = format1.format(time);
 		String date = time1.substring(0, 10);
 		String time2 = time1.substring(11, 19);
-		
+		System.out.println("@@@@@@@@@@@@@@     "+date+"     @@@@@@@@@@@@@@@@@@@@@@@@@@");
 		WorkVo vo = selectWorkOne(no);
+		System.out.println("셀렉트원 완료");
 		if(vo.getWorkStart() != null && vo.getWorkFinish() != null) {
+			System.out.println("1111111111111111111111111111111");
+
 			WorkVo newVo = new WorkVo();
-			vo.setMemberNo(no);
-			vo.setWorkDate(date);
-			vo.setWorkStart(time2);
+			newVo.setMemberNo(no);
+			newVo.setWorkDate(date);
+			newVo.setWorkStart(time2);
 			mapper.startWork(newVo);
 		}else if(vo.getWorkStart() != null && vo.getWorkFinish() == null ){
 			// 찍을 이유 없음
-		}else if(vo.getWorkStart() == null && vo.getWorkFinish() == null ){
+		}else if(vo == null ){
 			WorkVo newVo = new WorkVo();
-			vo.setMemberNo(no);
-			vo.setWorkDate(date);
-			vo.setWorkStart(time2);
-			mapper.startUpdateWork(newVo);
+			newVo.setMemberNo(no);
+			newVo.setWorkDate(date);
+			newVo.setWorkStart(time2);
+			mapper.startWork(newVo);
 		}else {
 			System.out.println("예외 발생");
 		}
-		
+		System.out.println("출근 계산 완료");
 		WorkVo vo2 = selectWorkOne(no);
-		
-		
-		
 		return vo2;
 	}
 	
-public String endWork(int no) {
-		
+public WorkVo endWork(int no) {
+	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Date time = new Date();
+	String time1 = format1.format(time);
+	String date = time1.substring(0, 10);
+	String time2 = time1.substring(11, 19);
+	System.out.println("@@@@@@@@@@@@@@     "+date+"     @@@@@@@@@@@@@@@@@@@@@@@@@@");
+	WorkVo vo = selectWorkOne(no);
+	System.out.println("셀렉트원 완료");
+	if(vo.getWorkStart() != null && vo.getWorkFinish() == null) {
+		System.out.println("1111111111111111111111111111111");
+		vo.setWorkFinish(time2);
+		mapper.endWork(vo);
+	}else if(vo.getWorkStart() == null && vo.getWorkFinish() !=null ){
+		System.out.println("출근하지 않았다고 알람뜨게 하고 싶음");
+	}else if(vo.getWorkStart() == null && vo.getWorkFinish() == null ){
+		System.out.println("출근하지 않았다고 알람뜨게 하고 싶음");
+	}else if(vo.getWorkStart() != null && vo.getWorkFinish() != null ){
+		System.out.println("출근을 먼저 누르세요");
+	}else {
+		System.out.println("예외발생");
+	}
+	System.out.println("퇴근 계산 완료");
+		WorkVo vo2 = selectWorkOne(no);
+		return vo2;
+	}
+
+	public WorkVo selectWorkOne(int no) {
+		WorkVo vo = mapper.selectWorkOne(no);
+		return vo;
+	}
+	
+	public WorkVo selectMain(int no) {
+		WorkVo vo = mapper.selectMain(no);
+		return vo;
+	}
+	
+	public void changeTime(WorkVo vo) {
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date time = new Date();
 		String time1 = format1.format(time);
 		String date = time1.substring(0, 10);
 		String time2 = time1.substring(11, 19);
 		
-		mapper.endWork(no , date , time2);
 		
+		int hh = Integer.parseInt(time1.substring(11, 13));
+		int mm = Integer.parseInt(time1.substring(14, 16));
+		int ss = Integer.parseInt(time1.substring(17, 19));
 		
-		System.out.println(date);
-		System.out.println(time2);
+		int shh= Integer.parseInt(vo.getWorkStart().substring(11, 13));
 		
-		return time2;
-	}
-
-	public WorkVo selectWorkOne(int no) {
-		WorkVo vo = mapper.selectWorkOne(no);
-		return vo;
+		// 1시간 = 60분 = 3600초
+		// hh*3600+ mm*60 + ss - 퇴근 hh*3600 + mm*60+ss = 시간
+		//
+		
+		System.out.println("@@@@@@@@@@@@@@     "+date+"     @@@@@@@@@@@@@@@@@@@@@@@@@@");
+		
+		System.out.println("셀렉트원 완료");
 	}
 }

@@ -55,5 +55,8 @@ public interface EmailMapper {
 	
 	// 데이터 삭제하기
 	public int updateAllDelete(EmailMainVo vo);
+	
+	// 주소록 멤버 조회하기
+	public List<LoginVo> memberFindStrName(String findStr);
 
 }
