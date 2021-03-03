@@ -112,6 +112,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<!-- 주소록 멤버 조회하기 -->
+	<select id="memberFindStrName" parameterType="String" resultMap="memberList">
+		SELECT * FROM member
+			WHERE member_team LIKE '%${findStr}%'
+	</select>
+	
 	<!-- insert -->
 	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
 		INSERT ALL

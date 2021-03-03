@@ -17,15 +17,16 @@
 
 
 <!-- bootstrap script, Jquery CDN -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
+<!-- JQuery -->
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
 	crossorigin="anonymous"></script>
 <!-- ****************************** -->
-
 
 <!-- include summernote css/js-->
 <link
@@ -33,6 +34,8 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+
 
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
@@ -110,8 +113,8 @@
 					name="frm" method="post">
 					
 					<!-- hidden -->
-					<input type="hidden" name="memberFindStr">
-					<input type="hidden" name="memberOption">
+					<input type="hidden" name="memberFindStrInput">
+					<input type="hidden" name="memberOptionInput">
 					<!-- hidden 끝 -->
 					<div class="e-approval-form-box">
 						<span>메일쓰기</span>

@@ -243,5 +243,11 @@ public class EmailDao {
 		System.out.println("삭제행 " + cnt);
 		return cnt;
 	}
+	
+	// 주소록 멤버 조회
+	public List<LoginVo> memberFindStrName(String findStr) {
+		List<LoginVo> FindStrList = mapper.memberFindStrName(findStr);
+		return FindStrList;
+	}
 
 }
