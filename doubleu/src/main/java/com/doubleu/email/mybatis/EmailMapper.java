@@ -59,4 +59,7 @@ public interface EmailMapper {
 	// 주소록 멤버 조회하기
 	public List<LoginVo> memberFindStrName(String findStr);
 
+
+	public EmailMainVo replyWriteMail(int emailNo);
+
 }

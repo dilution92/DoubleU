@@ -22,7 +22,7 @@
       </li>
 
       <li>
-          <span class="btn btn-outline-primary btn-sm" id="emailPassBtn">전달하기</span>
+          <span class="btn btn-outline-primary btn-sm" id="emailPassBtn" onclick="transMail()">전달하기</span>
       </li>
 
       <li>
@@ -142,6 +142,7 @@ var sendTempEmail = function() {
 
 // 답장하기
 var replyMail = function() {
+	
 	var valueArr = new Array();
 	var list = $('input:checkbox[name=chkBox]')
 	
@@ -160,7 +161,32 @@ var replyMail = function() {
 	deleteList.value = valueArr;
 
 	console.log(deleteList.value);
-	frm.action = "/emailWrite"
+	frm.action = "/ReplyWrite"
+	frm.submit();
+}
+
+// 전달하기
+var transMail = function() {
+	
+	var valueArr = new Array();
+	var list = $('input:checkbox[name=chkBox]')
+	
+	for(var i=0; i<list.length; i++) {
+		if(list[i].checked) {
+			valueArr.push(list[i].value);
+			
+		};
+		
+	}
+
+	
+	var frm = document.emailForm;
+	var deleteList = frm.deleteBtnList;
+
+	deleteList.value = valueArr;
+
+	console.log(deleteList.value);
+	frm.action = "/transWrite"
 	frm.submit();
 }
 </script>
