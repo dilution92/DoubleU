@@ -97,6 +97,12 @@ public class loginMainController {
          else if(loginVo.getMemberName().equals("김재현")){
             profileImg = "/img/profilekim.png";
          }
+ 	  	 else if(loginVo.getMemberName().equals("전예린")){
+	 		profileImg = "/img/profilejeon.jpg";
+		 }
+		 else if(loginVo.getMemberName().equals("강성연")){
+			profileImg = "/img/profilekang.png";
+		 }
          else {
             profileImg = "/img/profileg.jpg";
          }
