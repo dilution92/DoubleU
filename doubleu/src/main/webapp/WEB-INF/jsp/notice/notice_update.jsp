@@ -103,15 +103,15 @@
 				            <td>
 				            	<input type="hidden" id="noticeTypehidden" value="${obj.noticeType}">
 					            <select class="form-control" id="exampleFormControlSelect4" name="noticeType" >
-							      <option id="결혼" value="결혼">결혼</option>
-							      <option id="부고" value="부고">부고</option>
+							      <option class="notice-icon">중요공지</option>
+							      <option class="notice-icon"selected>일반공지</option>
 				   				</select>
 				            </td>
 				            <th class="success">조회수</th>
 				            <td><input type="number" id="hit" name="noticeHit" value="${obj.noticeHit }" readonly></td>
 				        </tr>
  				        <tr>
-				        	<th><label for="exampleFormControlSelect5"></label>게시기한</th>
+				        	<th><label for="exampleFormControlSelect5"></label>게시기간</th>
 				        	<td colspan="3" style="padding-left:8px;">
 							    <div class="dropdown-align">
 									<label for="noticePostType"></label>

@@ -139,7 +139,7 @@
 	]]>
 	</update>
 	
-	<!-- 게시기한에 따른 일반공지 전환 -->
+	<!-- 게시기간에 따른 일반공지 전환 -->
 	<update id="updatePost">
 	<![CDATA[
 			update NOTICE

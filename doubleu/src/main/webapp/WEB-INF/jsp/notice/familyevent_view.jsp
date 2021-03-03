@@ -100,7 +100,7 @@
 					            <td>${obj.familyeventHit }</td>
 					        </tr>
 <%--  					        <tr>
-					        	<th>게시기한</th>
+					        	<th>게시기간</th>
 					        	<td colspan="3">
 									<!-- <input type="radio" name="searchDate" value="영구" checked readonly="readonly"> 영구 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 									<input type="radio" name="familyeventPostType" value="${obj.familyeventPostType }" checked>${obj.familyeventPostType } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
