@@ -55,7 +55,8 @@ public class ProfileController {
 		WorkVo vo = service2.startWork(no);
 		
 		mv.addObject("work", vo);
-		mv.setViewName("MainPage/index");
+		mv.setViewName("redirect:/mainPage");
+	
 		return mv;
 	
 	}
@@ -69,7 +70,7 @@ public class ProfileController {
 		WorkVo vo = service2.endWork(no);
 		
 		mv.addObject("work", vo);
-		mv.setViewName("MainPage/index");
+		mv.setViewName("redirect:/mainPage");
 		return mv;
 	
 	}

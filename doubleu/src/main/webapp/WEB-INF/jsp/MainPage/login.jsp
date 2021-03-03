@@ -27,6 +27,11 @@
 <!-- js -->
 <script src="js/login/login.js">
 </script>
+
+<!-- favicon -->
+<link rel="shortcut icon" href="../images/w_icon.ico">
+<link rel="icon" href="w_icon.ico">
+
 </head>
 
 <body>

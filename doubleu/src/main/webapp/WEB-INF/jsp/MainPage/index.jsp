@@ -20,6 +20,10 @@
   crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/css/MainIndex.css">
 
+<!-- favicon -->
+<link rel="shortcut icon" href="../images/w_icon.ico">
+<link rel="icon" href="w_icon.ico">
+
 <script type="text/javascript" src="/js/MainPage.js"></script>
 </head>
 
