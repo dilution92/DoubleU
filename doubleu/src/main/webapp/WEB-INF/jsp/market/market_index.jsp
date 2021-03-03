@@ -47,7 +47,10 @@
 			</div>
 			<!-- ========== -->
 
-
+				<input type='hidden' name='findStr' value='${page.findStr }'/>
+				<input type='hidden' name='nowPage' value='${page.nowPage }'/>
+				<input type='hidden' name='findType'  value='${page.findType}'/>
+				<input type='hidden' name='dibUser'  value='${member.memberName}'/>
 			<!-- 글갯수/ 최신순 -->
 			<div class="market-subheader-container">
 				<div class='market-total'>
