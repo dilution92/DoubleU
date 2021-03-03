@@ -461,10 +461,14 @@ public class CalenderService {
 					
 					/* 시간 별 일정 정리 */
 					List<String> timeList = new ArrayList<>();
+					System.out.println("시간 77777777");
 					for(int j=0; j<24; j++) {
-						String time = Integer.toString(j);
-						timeList.add(time);
-						
+							String time="";
+						if(j<10) {
+							time +="0";
+						}
+							time += Integer.toString(j);
+							timeList.add(time);
 					}
 					weekList.setTime(timeList);
 					
@@ -493,6 +497,7 @@ public class CalenderService {
 								 weekList.setPeriod(MakeVoEndId(cList.get(j))-MakeVoId(cList.get(j)));
 								 weekList.setVo(cList.get(j));
 							 }else if(cList.get(j).getCalenderType().equals("단기")) {
+								 System.out.println("아하아하아하아하아하아하");
 								 System.out.println("@@@ 단기 : 달력 아이디 :" +weekList.getDateIdN());
 								 System.out.println("@@@ 단기 : 디비 아이디 :" +MakeVoId(cList.get(j)));
 								 if(weekList.getDateIdN()==MakeVoId(cList.get(j))) {
@@ -505,9 +510,14 @@ public class CalenderService {
 					
 					/* 시간 별 일정 정리 */
 					List<String> timeList = new ArrayList<>();
+					System.out.println("시간 77777777");
 					for(int j=0; j<24; j++) {
-						String time = Integer.toString(j);
-						timeList.add(time);
+							String time="";
+						if(j<10) {
+							time +="0";
+						}
+							time += Integer.toString(j);
+							timeList.add(time);
 					}
 					weekList.setTime(timeList);
 					
@@ -526,7 +536,9 @@ public class CalenderService {
 				weekList.setYear(year);
 				weekList.setDay1(MakeDaytoString(startNum));
 				weekList.setDateIdN(MakeCalenderId(year, month, startNum));
-
+				
+				System.out.println("Day1 데이터   "+weekList.getDay1());
+				
 				for(int j=0; j<cList.size(); j++) {
 					if(MakeVoEndId(cList.get(j))>= weekList.getDateIdN() && weekList.getDateIdN()>=MakeVoId(cList.get(j))) {
 						
@@ -547,10 +559,14 @@ public class CalenderService {
 
 				/* 시간 별 일정 정리 */
 				List<String> timeList = new ArrayList<>();
+				System.out.println("시간 77777777");
 				for(int j=0; j<24; j++) {
-					String time = Integer.toString(j);
-					timeList.add(time);
-
+						String time="";
+					if(j<10) {
+						time +="0";
+					}
+						time += Integer.toString(j);
+						timeList.add(time);
 				}
 				weekList.setTime(timeList);
 				
@@ -590,10 +606,14 @@ public class CalenderService {
 
 				/* 시간 별 일정 정리 */
 				List<String> timeList = new ArrayList<>();
+				System.out.println("시간 77777777");
 				for(int j=0; j<24; j++) {
-					String time = Integer.toString(j);
-					timeList.add(time);
-					
+						String time="";
+					if(j<10) {
+						time +="0";
+					}
+						time += Integer.toString(j);
+						timeList.add(time);
 				}
 				weekList.setTime(timeList);
 				
@@ -633,9 +653,14 @@ public class CalenderService {
 
 					/* 시간 별 일정 정리 */
 					List<String> timeList = new ArrayList<>();
+					System.out.println("시간 77777777");
 					for(int j=0; j<24; j++) {
-						String time = Integer.toString(j);
-						timeList.add(time);
+							String time="";
+						if(j<10) {
+							time +="0";
+						}
+							time += Integer.toString(j);
+							timeList.add(time);
 					}
 					weekList.setTime(timeList);
 					
@@ -674,13 +699,16 @@ public class CalenderService {
 
 					/* 시간 별 일정 정리 */
 					List<String> timeList = new ArrayList<>();
+					System.out.println("시간 77777777");
 					for(int j=0; j<24; j++) {
-						String time = Integer.toString(j);
-						timeList.add(time);
-						
+							String time="";
+						if(j<10) {
+							time +="0";
+						}
+							time += Integer.toString(j);
+							timeList.add(time);
 					}
 					weekList.setTime(timeList);
-					
 
 					list.add(weekList);
 					startNum = startNum + 1;
@@ -716,13 +744,17 @@ public class CalenderService {
 						
 					}
 				}
-
+				
 				/* 시간 별 일정 정리 */
 				List<String> timeList = new ArrayList<>();
+				System.out.println("시간 77777777");
 				for(int j=0; j<24; j++) {
-					String time1 = Integer.toString(j);
-					timeList.add(time1);
-					
+						String time="";
+					if(j<10) {
+						time +="0";
+					}
+						time += Integer.toString(j);
+						timeList.add(time);
 				}
 				weekList.setTime(timeList);
 				
@@ -730,7 +762,12 @@ public class CalenderService {
 				startNum = startNum + 1;
 			}
 		}
-
+		
+		
+		
+		
+		System.out.println("service 종료");
+		
 		return list;
 	}
 
@@ -807,10 +844,14 @@ public class CalenderService {
 		
 		/* 시간 별 일정 정리 */
 		List<String> timeList = new ArrayList<>();
+		System.out.println("시간 77777777");
 		for(int j=0; j<24; j++) {
-			String time11 = Integer.toString(j);
-			timeList.add(time11);
-			
+				String time="";
+			if(j<10) {
+				time +="0";
+			}
+				time += Integer.toString(j);
+				timeList.add(time);
 		}
 		listDay.setTime(timeList);
 		
