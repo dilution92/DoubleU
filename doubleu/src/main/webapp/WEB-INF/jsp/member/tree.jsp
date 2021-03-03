@@ -12,16 +12,16 @@
 <body>
 <div class="tree">
     <ul>
-        <li><a href="#">Double U</a>
+        <li><a href="profileIndex">Double U</a>
             <ul>
-                <li><a href="#">관리부</a>
+                <li><a href="memberManage">관리부</a>
                     <ul>
                         <li><a href="#">경영지원팀</a></li>
                         <li><a href="#">인사관리팀</a></li>
                     </ul>
 
                 </li>
-                <li><a href="#">영업부</a>
+                <li><a href="memberBusiness">영업부</a>
                     <ul>
                         <li><a href="#">영업기획팀</a>
                             <ul>
@@ -32,7 +32,7 @@
                         <li><a href="#">영업지원팀</a></li>
                     </ul>
                   </li>
-                  <li><a href="#">it기술부</a>
+                  <li><a href="memberIT">it기술부</a>
                     <ul>
                         <li><a href="#">개발팀</a>
                         <ul>

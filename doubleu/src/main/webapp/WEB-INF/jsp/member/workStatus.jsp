@@ -32,80 +32,26 @@
 		crossorigin="anonymous"></script>
 <!-- ****************************** -->	
 
+<!-- Custom styles for this template -->
+<link href="form-validation.css" rel="stylesheet">
 <!-- main page CSS -->
 <link rel="stylesheet" href="/css/MainIndex.css">
 <!-- 전사게시판 CSS -->
 <link rel="stylesheet" href="/css/notice/notice.css">
-
 </head>
 <body>
 
 	<!-- 그룹웨어 GNB -->
-	<header>
-		<div class="container-fluid main-gnb">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light main-gnb-content">
-				<a class="navbar-brand navbar-text-light " href="#"	style="margin-right: 28em">
-					<span style="color:#007BFF"><i class="fab fa-weebly fa-2x"></i></span></a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse"
-					data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto main-gnb-menu">
-						<li class="nav-item active"><a class="nav-link" href="#">홈<span
-								class="sr-only">(current)</span></a></li>
-						<li class="nav-item"><a class="nav-link" href="#">게시판</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">주소록</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">캘린더</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">메일함</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">전자결재</a></li>
-					</ul>
-
-					<ul class="navbar-nav my-2 my-lg-0">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> <span class="navbar-toggler-icon"></span>
-						</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item  " href="#">정보 수정</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item  " href="#">로그아웃</a>
-							</div></li>
-					</ul>
-				</div>
-			</nav>
-		</div>
+<header class="container-fluid main-gnb">
+		<jsp:include page="../MainPage/header.jsp"></jsp:include>
 	</header>
 	<!-- 그룹웨어 GNB code 끝 -->
 
 	<section class="e-approval-container">
-	<!-- e-approval-lnb code -->
-		<nav class="e-approval-lnb">
-			<div class="e-approval-lnb-content">
-				<h4>인사 페이지</h4>
-				<div class="e-approval-form-btn">
-					<input type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal" value="회원정보 수정">
-				</div>
-				<div class="e-approval-approval-list">
-					<span>인사 관리</span>
-					<ul>
-						<li><a href="#">조직도</a></li>
-						<li><a href="#">프로필</a></li>
-					</ul>
-				</div>
-				<div class="e-approval-approval-list">
-					<span>근태 관리</span>					
-					<ul>
-						<li><a href="#">출/퇴근 관리</a></li>
-						<li><a href="#">연/월차 관리</a></li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	<!-- lnb code 끝 -->
+		<!-- e-approval-lnb code -->
+		<!-- e-approval-lnb code -->
+		<jsp:include page="member_aside.jsp" />
+		<!-- lnb code 끝 -->
 		<main class="e-approval-article">
 
 				<!-- 게시판 검색바 code -->

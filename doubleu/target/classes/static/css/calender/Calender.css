@@ -11,7 +11,7 @@ body {
         width: 20%;
         text-align: center;
         padding: 1.2em 1.5em 0em 1.5em;
-    	min-height: 722px;
+    	min-height: 2080px;
         float: left;
         box-sizing: border-box;
         
@@ -52,18 +52,18 @@ body {
 	
 /*	일정 그룹별 색상 지정	  */
 	.내일정 .장기{
-		background-color: #C4F4FE; /* 파스텔톤 하늘색 */
+		background-color: #FF9999; /* 파스텔톤 하늘색 */
 		padding: 0;
 		margin-bottom: 4px;
 	}
 	.그룹일정 .장기{
-		background-color: #F2E5D5; /* 파스텔톤 베이지 */
+		background-color: #C4F4FE; 
 		padding: 0;
 		margin-bottom: 4px;
 			
 	}
 	.전사일정 .장기{
-		background-color: #C4F4FE;
+		background-color: #F2E5D5;
 		padding: 0;
 		margin-bottom: 4px;
 	}
@@ -88,12 +88,12 @@ body {
 		border-radius: 15px;
 	}
 	.그룹일정>.단기>.calender_modal>.bi-diamond::before{
-		background-color : #148CFF;
+		background-color : #C4F4FE;
 		border-radius: 15px;
 			
 	}
 	.전사일정>.단기>.calender_modal>.bi-diamond::before{
-		background-color : #009900;
+		background-color : #F2E5D5; /* 파스텔톤 베이지 */
 		border-radius: 15px;
 	}
 	

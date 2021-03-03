@@ -9,7 +9,6 @@
 		SELECT * FROM member
 	</select>
 
-    
 
 	<resultMap id="selectProfileData" type="com.doubleu.profile.vo.ProfileVo">
  
@@ -56,7 +55,7 @@
 	</select>
 
 	<select id="selectWorkOne" parameterType="com.doubleu.profile.vo.WorkVo" resultMap="selectWorkData">
-		select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work)
+		<![CDATA[select * from work where member_no = #{_parameter} and  work_no=(select max(work_no)from work)  ]]>
 	</select>
 
 	<resultMap id="selectWorkData" type="com.doubleu.profile.vo.WorkVo">

@@ -29,7 +29,7 @@
 					<span>근태 관리</span>
 					<ul>
 						<li><a href="workIndex">출/퇴근 조회</a></li>
-						<li><a href="vacationIndex">연/월차 조회</a></li>
+						<li><a href=""></a></li>
 					</ul>
 				</div>
 			</div>
