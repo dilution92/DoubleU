@@ -94,7 +94,12 @@
 
 		<!-- 주소록 모달창 -->
 		<jsp:include page="./modal/addressBookModal.jsp"></jsp:include>
+		
 		<!-- 모달창 모음 끝 -->
+
+
+
+
 
 		<main class="e-approval-article">
 
@@ -144,7 +149,7 @@
 							</div>
 
 							
-							<div class="form-group col-sm-7 revEmail">
+							<div class="form-group col-sm-7 revEmail" id="revMail">
 								<div class="emailBtnList" id="parah">
 									<!-- input자리 -->
 								</div>
@@ -174,7 +179,7 @@
 							</div>
 
 							
-							<div class="form-group col-sm-7 revRef">
+							<div class="form-group col-sm-7 revRef" id="revRef">
 								<div class="emailBtnRefList" id="Refparah">
 									<!-- input자리 -->
 								</div>

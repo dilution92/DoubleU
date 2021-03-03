@@ -65,7 +65,7 @@
 	</insert>
 	
 	<select id = 'selectList' parameterType="int" resultMap="ResultVo" >
-		SELECT * FROM CALENDER WHERE member_no =#{_parameter}
+		SELECT * FROM CALENDER WHERE member_no =#{_parameter} or member_no = 5
 	</select>
 	
 	<!-- <select id="selectPartiList" resultMap="partiList" parameterType="int">
@@ -76,6 +76,13 @@
 		SELECT * FROM CALENDER WHERE calender_no=#{_parameter}
 	</select>
 	
+	<select id="selectMain" parameterType="com.doubleu.calender.vo.CalenderVo" resultMap="ResultVo">
+	 	SELECT * FROM CALENDER 
+	 	WHERE member_no = #{memberNo}
+	 	and calender_start_year = #{calenderStartYear}
+	 	and calender_start_month = #{calenderStartMonth}
+	 	and calender_start_day = #{calenderStartDay}
+	</select>
 	
 	<update id="update" parameterType="com.doubleu.calender.vo.CalenderVo">
 		UPDATE CALENDER

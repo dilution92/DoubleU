@@ -59,6 +59,12 @@ public class CalenderService {
 //		
 //		return dao.selectPartiList(no);
 //	}
+	
+	// selectMain
+	public List<CalenderVo> selectMain(HttpSession session){
+		return dao.selectMain(session);
+	}
+	
 	// delete
 	public String delete(CalenderVo vo){
 		return dao.delete(vo); 

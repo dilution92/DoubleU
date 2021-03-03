@@ -63,7 +63,7 @@
 	    SELECT * FROM (
 	        SELECT rownum no, m.* from (  
 	           SELECT * FROM notice
-				ORDER BY notice_no DESC
+				order by notice_Type desc, notice_no desc
 	           ) m
 	        ) WHERE no between ${startNo} and ${endNo}
 	 ]]>
@@ -81,8 +81,8 @@
 				   notice_type, 
 				   notice_hit, 
 				   notice_doc 
-			from notice 
-			order by notice_no desc 
+			from NOTICE 
+			order by notice_type desc
 		]]>
 	</select>
 	
@@ -136,6 +136,16 @@
 			update NOTICE 
 			set notice_hit = notice_hit + 1 
 			where notice_no = #{_parameter} 
+	]]>
+	</update>
+	
+	<!-- 게시기한에 따른 일반공지 전환 -->
+	<update id="updatePost">
+	<![CDATA[
+			update NOTICE
+			set notice_type = '일반공지'
+			where notice_postEndDate < SYSDATE
+            and notice_type = '중요공지'
 	]]>
 	</update>
 

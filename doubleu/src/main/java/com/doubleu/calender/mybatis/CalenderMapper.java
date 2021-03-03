@@ -18,4 +18,5 @@ public interface CalenderMapper {
 	public int update(CalenderVo vo);
 //	public int updateParti(List<CalenderParticiptant> pList);
 	public int delete(CalenderVo vo);
+	public List<CalenderVo> selectMain(CalenderVo vo);
 }

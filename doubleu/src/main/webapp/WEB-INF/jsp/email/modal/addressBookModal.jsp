@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <div class="modal fade bs-example-modal-lg" id="EmailAddress"
 			tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
 			aria-hidden="true">
@@ -17,7 +18,7 @@
 					style="margin-left: -30px;">
 					<div class="modalAddressEmailFolder">
 						<h4>주소록</h4>
-					
+						
 						<div class="search-btn">
 							<select class="form-control form-control-sm" name="selectFindStr" id="selectFindStr" style="width: 70px;">
 								<option value="이름">이름</option>
@@ -31,7 +32,6 @@
 								onclick="memberFindStr()"
 								 />
 						</div>
-
 						<div class="search-btn-address" id="selectMemberStr">
 							<div class="search-btn-address-btn-one col-5">
 								<label class="btn btn-outline-primary btn-sm"> 
@@ -40,7 +40,7 @@
 								<c:forEach var="listMember" items="${memberList }">
 									<div class="address-name">
 										<input type="checkbox" name="emailAddressChk" id="test"
-										value="${listMember.memberName } ${listMember.memberEmail} ${listMember.memberTeam }"/>
+										value="${listMember.memberEmail}"/>
 										
 										<span class="badge rounded-pill bg-light text-dark">${listMember.memberName }</span>  
 										<span class="badge rounded-pill bg-light text-dark">${listMember.memberEmail}</span>
@@ -74,8 +74,10 @@
 								<div>받는 사람</div>
 								<div class="rev-mail-one">
 									<div class="rev-align-scroll">
+										
 										<c:forEach begin="0" end="30">
 											<!-- 받는 사람 -->
+											
 											<div id="resultDual">
 												<div id="result">
 												</div>
@@ -83,7 +85,7 @@
 										</c:forEach>
 									</div>
 								</div>
-
+								
 								<div style="margin-top: 10px">참조</div>
 								<div class="ref-mail-two">
 									<div class="rev-align-scroll">
@@ -99,7 +101,7 @@
 						</div>
 
 						<div class="modalAddressEmailFolderBtn">
-							<button class="btn btn-primary btn-lg btn-primary btn-sm"
+							<button onclick="addAddress()" class="btn btn-primary btn-lg btn-primary btn-sm"
 								role="button">추가하기</button>
 							<button class="btn btn-primary btn-lg btn-primary btn-sm"
 								role="button">취소하기</button>
@@ -135,21 +137,27 @@ function getCheckboxValue()  {
 	  const query = 'input[name="emailAddressChk"]:checked';
 	  const selectedEls = 
 	      document.querySelectorAll(query);
-
-	  var ResultContents = new Array();  
+		
+	  var ResultContents = new Array();
+	  var InputArray = new Array();  
 	  // 선택된 목록에서 value 찾기
 	  
 	   for(var i=0; i<selectedEls.length; i++) {
 		   ResultContents[i] = selectedEls[i].value;
 
-		  var node = document.createElement('span');              
-		  var textnode = document.createTextNode(ResultContents[i]);         
-		  var appendNode = node.appendChild(textnode);
 
-			//부모
-		  document.getElementById('result').appendChild(node); 
+		
+		  var node = document.createElement('span');
+		  node.setAttribute('value', ResultContents[i]);
+		  node.setAttribute('name', 'emailReceiverAddress')
+		  node.setAttribute('class', 'badge rounded-pill bg-light text-dark')
+		  var textnode = document.createTextNode(ResultContents[i]);     
+		  var appendNode = node.appendChild(textnode);
+         
+		  //부모
+		  document.getElementById('result').appendChild(node);
+		  
 	  }
-		  console.log(ResultContents)
 
 }
 
@@ -188,13 +196,17 @@ function getCheckboxValueRef()  {
 		   ResultContents[i] = selectedEls[i].value;
 
 		  var node = document.createElement('span');
-		  console.log("node " + node)              
+		  node.setAttribute('value', ResultContents[i]);
+		  node.setAttribute('name', 'emailReceiverRef')
+		  node.setAttribute('class', 'badge rounded-pill bg-light text-dark')      
 		  var textnode = document.createTextNode(ResultContents[i]);         
 		  var appendNode = node.appendChild(textnode);
 
 		  //부모
-		  document.getElementById('resultRef').appendChild(node); 
+		  document.getElementById('resultRef').appendChild(node);
+		  
 	  }
+
 		
 }
 
@@ -221,6 +233,49 @@ function getSendDelRef()  {
 }
 
 
+function addAddress() {
+
+		 const query = 'span[name="emailReceiverAddress"]';
+		 const selectedEls = 
+		      document.querySelectorAll(query);	
+			console.log(query)
+		
+		 var ResultContents = new Array();  
+			
+		 for(var i=0; i<selectedEls.length; i++) {
+		   ResultContents[i] = selectedEls[i].innerHTML;
+		   console.log(ResultContents)
+
+		  var node = document.createElement('input');
+		  node.setAttribute('value', ResultContents[i]);
+		  node.setAttribute('name', 'emailReceiverAddress')
+		  node.setAttribute('class', 'class="form-control"')
+		  var textnode = document.createTextNode(ResultContents[i]);     
+		  var appendNode = node.appendChild(textnode);
+         
+		  //부모
+		  document.getElementById('revMail').appendChild(node);
+	  }	
+
+		 const queryRef = 'span[name="emailReceiverRef"]';
+		 const selectedElsRef = document.querySelectorAll(queryRef);	
+	      var ResultContentsRef = new Array();  
+			
+		 for(var i=0; i<selectedElsRef.length; i++) {
+		   ResultContentsRef[i] = selectedElsRef[i].innerHTML;
+		   console.log(ResultContentsRef)
+
+		  var node = document.createElement('input');
+		  node.setAttribute('value', ResultContentsRef[i]);
+		  node.setAttribute('name', 'emailReceiverRef')
+		  node.setAttribute('class', 'class="form-control"')
+		  var textnode = document.createTextNode(ResultContentsRef[i]);     
+		  var appendNode = node.appendChild(textnode);
+         
+		  //부모
+		  document.getElementById('revRef').appendChild(node);
+	  }	
+}
 
 
 

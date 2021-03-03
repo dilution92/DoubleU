@@ -175,3 +175,11 @@ function goPage(page) {
 	frm.action = '/familyeventIndex';
 	frm.submit();
 }
+
+/* 중요공지 상단 고정 색상 지정 */
+$(function(){
+   if($(td.eq(1)).val() == "중요공지"){
+	  $("#noticeTypeColor").css("background-color","blue");
+	}else if($(td.eq(1)).val() != "중요공지"){
+	  $("#noticeTypeColor").css("background-color", "");
+}});

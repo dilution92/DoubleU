@@ -4,7 +4,7 @@
   <class id="1" language="java" name="com.doubleu.market.Controller.MarketReplController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/Controller/MarketReplController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1430" y="-1455"/>    
+    <position height="142" width="552" x="1142" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -14,7 +14,7 @@
   <class id="2" language="java" name="com.doubleu.market.Controller.ChartController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/Controller/ChartController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="954" y="-1464"/>    
+    <position height="124" width="320" x="782" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -24,7 +24,7 @@
   <class id="3" language="java" name="com.doubleu.market.Controller.MarketUploadController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/Controller/MarketUploadController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3366" y="-1070"/>    
+    <position height="124" width="293" x="3298" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -33,7 +33,7 @@
   </class>  
   <interface id="4" language="java" name="com.doubleu.market.mybatis.MarketDibMapper" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/MarketDibMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1793" y="-654"/>    
+    <position height="160" width="275" x="1734" y="1160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -43,7 +43,7 @@
   <class id="5" language="java" name="com.doubleu.market.Controller.MarketUrlController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/Controller/MarketUrlController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2007" y="-1428"/>    
+    <position height="196" width="522" x="1734" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -52,7 +52,7 @@
   </class>  
   <class id="6" language="java" name="com.doubleu.market.mybatis.MarketReplDao" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/MarketReplDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1462" y="-1052"/>    
+    <position height="160" width="204" x="1438" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -61,7 +61,7 @@
   </class>  
   <interface id="7" language="java" name="com.doubleu.market.mybatis.SortMapper" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/SortMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2923" y="-672"/>    
+    <position height="124" width="286" x="2858" y="1160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -70,7 +70,7 @@
   </interface>  
   <class id="8" language="java" name="com.doubleu.market.mybatis.MarketDibDao" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/MarketDibDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1824" y="-1060"/>    
+    <position height="178" width="300" x="1734" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -79,7 +79,7 @@
   </class>  
   <class id="9" language="java" name="com.doubleu.market.mybatis.MarketDao" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/MarketDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2422" y="-984"/>    
+    <position height="304" width="260" x="2296" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -89,7 +89,7 @@
   <class id="10" language="java" name="com.doubleu.market.Controller.MarketSortController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/Controller/MarketSortController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3070" y="-1464"/>    
+    <position height="124" width="400" x="2858" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -98,7 +98,7 @@
   </class>  
   <interface id="11" language="java" name="com.doubleu.market.mybatis.MarketMapper" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/MarketMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2335" y="-555"/>    
+    <position height="358" width="235" x="2296" y="1160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -107,7 +107,7 @@
   </interface>  
   <interface id="12" language="java" name="com.doubleu.market.mybatis.MarketReplMapper" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/MarketReplMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1449" y="-663"/>    
+    <position height="142" width="179" x="1438" y="1160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -116,7 +116,7 @@
   </interface>  
   <class id="13" language="java" name="com.doubleu.market.mybatis.SortDao" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/SortDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2935" y="-1070"/>    
+    <position height="124" width="311" x="2858" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -125,7 +125,7 @@
   </class>  
   <class id="14" language="java" name="com.doubleu.market.vo.MarketDibVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/vo/MarketDibVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="258" y="-1401"/>    
+    <position height="250" width="158" x="167" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -134,7 +134,7 @@
   </class>  
   <class id="15" language="java" name="com.doubleu.market.vo.MarketReplVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/vo/MarketReplVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="463" y="-1347"/>    
+    <position height="358" width="173" x="365" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -143,7 +143,7 @@
   </class>  
   <class id="16" language="java" name="com.doubleu.market.vo.MarketVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/vo/MarketVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3922" y="-1095"/>    
+    <position height="862" width="234" x="3908" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -153,7 +153,7 @@
   <class id="17" language="java" name="com.doubleu.market.Controller.MarketDibController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/Controller/MarketDibController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2569" y="-1455"/>    
+    <position height="142" width="522" x="2296" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -163,7 +163,7 @@
   <class id="18" language="java" name="com.doubleu.market.Controller.MarketController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/Controller/MarketController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3537" y="-1446"/>    
+    <position height="160" width="570" x="3298" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -172,7 +172,7 @@
   </class>  
   <interface id="19" language="java" name="com.doubleu.market.mybatis.ChartMapper" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/ChartMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="958" y="-920"/>    
+    <position height="124" width="322" x="782" y="1160"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -181,7 +181,7 @@
   </interface>  
   <class id="20" language="java" name="com.doubleu.market.vo.MarketAttVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/vo/MarketAttVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3883" y="-445"/>    
+    <position height="358" width="156" x="3908" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -190,7 +190,7 @@
   </class>  
   <class id="21" language="java" name="com.doubleu.market.mybatis.ChartDao" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/mybatis/ChartDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="958" y="-1309"/>    
+    <position height="142" width="322" x="782" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -199,7 +199,7 @@
   </class>  
   <class id="22" language="java" name="com.doubleu.market.vo.MarketPage" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/market/vo/MarketPage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="672" y="-1167"/>    
+    <position height="718" width="164" x="578" y="-140"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -207,87 +207,87 @@
     </display>  
   </class>  
   <association id="23">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="24" name="mapper"/>      
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="24" name="Mdao"/>      
       <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="26">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="27" name="dao"/>      
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="27" name="mapper"/>      
       <multiplicity id="28" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="29">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="30" name="replDao"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="33" name="Mdao"/>      
-      <multiplicity id="34" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="35">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="36" name="dao"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
+      <attribute id="30" name="dao"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="38">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="39" name="fu"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="42" name="dao"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="44">    
+  <association id="32">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="45" name="dao"/>      
-      <multiplicity id="46" minimum="0" maximum="1"/>    
+      <attribute id="33" name="dao"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="48" name="mapper"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
+  <association id="35">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="36" name="mapper"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="51" name="dao"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
+  <association id="38">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="39" name="dao"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="53">    
+  <association id="41">    
     <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="42" name="replDao"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="45" name="mapper"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="47">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="48" name="Mdao"/>      
+      <multiplicity id="49" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="50">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="51" name="mapper"/>      
+      <multiplicity id="52" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="53">    
+    <end type="SOURCE" refId="1" navigable="false">      
       <attribute id="54" name="Ddao"/>      
       <multiplicity id="55" minimum="0" maximum="1"/>    
     </end>    
@@ -303,67 +303,67 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="59">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="60" name="Mdao"/>      
-      <multiplicity id="61" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="60" name="delFiles"/>      
+      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="62">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="63" name="dao"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="62">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="63" name="mapper"/>      
-      <multiplicity id="64" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="65">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="66" name="mapper"/>      
-      <multiplicity id="67" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="66" name="attlist"/>      
+      <multiplicity id="67" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="68">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="69" name="mapper"/>      
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="69" name="dao"/>      
       <multiplicity id="70" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="72" name="Ddao"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="75" name="mapper"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="71">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="72" name="delFiles"/>      
-      <multiplicity id="73" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="74">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="75" name="attlist"/>      
-      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="77">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="78" name="dao"/>      
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="78" name="fu"/>      
       <multiplicity id="79" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="80">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="81" name="Ddao"/>      
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="81" name="dao"/>      
       <multiplicity id="82" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
