@@ -599,20 +599,6 @@ public class EmailMainController {
 			mv.setViewName("redirect:/emailSpam");
 			return mv;
 		}
-		
-		// emailReplyRead
-				@RequestMapping(value="/emailReplyRead", method={RequestMethod.GET, RequestMethod.POST})
-				public ModelAndView emailReplyRead(
-						EmailMainVo vo,
-						EmailPage page,
-						HttpServletRequest req,
-						HttpSession session
-						) {
-					ModelAndView mv = new ModelAndView();
-				
-					mv.setViewName("email/email_reply");
-					return mv;
-				}
 	
 }
 

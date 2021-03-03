@@ -78,7 +78,7 @@
 	
 	<select id="selectMain" parameterType="com.doubleu.calender.vo.CalenderVo" resultMap="ResultVo">
 	 	SELECT * FROM CALENDER 
-	 	WHERE member_no = #{memberNo}
+	 	WHERE (member_no = #{memberNo} or member_no = 5)
 	 	and calender_start_year = #{calenderStartYear}
 	 	and calender_start_month = #{calenderStartMonth}
 	 	and calender_start_day = #{calenderStartDay}

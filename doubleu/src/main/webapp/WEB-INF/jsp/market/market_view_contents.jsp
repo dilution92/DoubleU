@@ -113,12 +113,14 @@
 				
 				<!-- hidden -->
 				<input type='hidden' name='findStr' value='${page.findStr }'/>
-				<input type='hidden' name='nowPage' value='${page.nowPage }'/>
+				<input type='hidden' name='findType'  value='${page.findType}'/>
+				<input type='text' name='nowPage' value='${page.nowPage }'/>
 				<input type='hidden' name='marketNo'  value='${vo.marketNo}'/>
 				<input type='hidden' name='dibUser'  value='${member.memberName}'/>
 				
 				<div class="market-btn-zone">
-					<button class="btn btn-primary" type="button" onclick = "location.href='marketIndex?dibUser=${member.memberName}'">목록</button>
+					<button class="btn btn-primary" type="button" 
+					onclick = "location.href='marketIndex?dibUser=${member.memberName}&findStr=${param.findStr }&findType=${param.findType }&nowPage=${page.nowPage }'">목록</button>
 					
 					
 					<c:if test="${vo.marketWriter==member.memberName }">
@@ -178,7 +180,10 @@
 		<input type ="hidden" name = "dibMarketNo" value="${vo.marketNo }"/>
 	
  </c:forEach>
-
+				<input type='hidden' name='findStr' value='${page.findStr }'/>
+				<input type='text' name='nowPage' value='${page.nowPage }'/>
+				<input type='hidden' name='findType'  value='${page.findType}'/>
+				<input type='hidden' name='dibUser'  value='${member.memberName}'/>
 <script>date()</script>
 </body>
 </html>

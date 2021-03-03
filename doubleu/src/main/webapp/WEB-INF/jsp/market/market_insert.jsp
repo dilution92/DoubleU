@@ -45,7 +45,7 @@
 		
 		
 			<div class='market-insert-form'>
-			<form action = "/marketInsertR" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
+			<form action = "/marketInsertR?dibUser=${member.memberName }" class="frm_market_insert" name="frm_market_insert" method="post"enctype="multipart/form-data" >
 				<div class="form-group row">
 		   		 <label for="marketWriter" class="col-sm-2 col-form-label  is-invalid">작성자</label>
 				    <div class="col-sm-8">

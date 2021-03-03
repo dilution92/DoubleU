@@ -36,6 +36,7 @@
 							<input type='hidden' name='findType'  value="${(empty param.findType)? '':param.findType}" />
 							<input type='hidden' name='marketNo'  value=''/>
 							<input type='hidden' name='dibUser'  value='${member.memberName }'/>
+							<input type='hidden' name='nowPage'  value='${page.nowPage}'/>
 							
 							
 						</div>

@@ -4,7 +4,7 @@
   <class id="1" language="java" name="com.doubleu.email.contorller.EmailSelectController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/contorller/EmailSelectController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="153" width="469" x="734" y="-127"/>    
+    <position height="-1" width="-1" x="395" y="455"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -24,7 +24,7 @@
   <class id="3" language="java" name="com.doubleu.email.service.EmailReveiverService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/service/EmailReveiverService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="99" width="285" x="1243" y="840"/>    
+    <position height="-1" width="-1" x="1284" y="-51"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -33,7 +33,7 @@
   </class>  
   <class id="4" language="java" name="com.doubleu.email.mybatis.EmailDao" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/mybatis/EmailDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="369" width="306" x="862" y="1709"/>    
+    <position height="-1" width="-1" x="1020" y="987"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -42,7 +42,7 @@
   </class>  
   <class id="5" language="java" name="com.doubleu.email.vo.AttEmailVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/vo/AttEmailVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="315" width="135" x="1805" y="1709"/>    
+    <position height="-1" width="-1" x="2848" y="83"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -51,7 +51,7 @@
   </class>  
   <class id="6" language="java" name="com.doubleu.email.vo.EmailReceiverVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/vo/EmailReceiverVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="477" width="209" x="1980" y="1709"/>    
+    <position height="-1" width="-1" x="2790" y="524"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -60,7 +60,7 @@
   </class>  
   <class id="7" language="java" name="com.doubleu.email.service.EmailMainService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/service/EmailMainService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="280" x="233" y="840"/>    
+    <position height="-1" width="-1" x="1654" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -69,7 +69,7 @@
   </class>  
   <class id="8" language="java" name="com.doubleu.email.service.SelectSerivce" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/service/SelectSerivce.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="280" x="902" y="840"/>    
+    <position height="-1" width="-1" x="1021" y="445"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -78,7 +78,7 @@
   </class>  
   <class id="9" language="java" name="com.doubleu.email.vo.EmailMainVo" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/vo/EmailMainVo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="819" width="241" x="1938" y="840"/>    
+    <position height="-1" width="-1" x="2410" y="330"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -87,7 +87,7 @@
   </class>  
   <interface id="10" language="java" name="com.doubleu.email.mybatis.EmailMapper" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/mybatis/EmailMapper.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="333" width="305" x="862" y="2226"/>    
+    <position height="-1" width="-1" x="1029" y="1448"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -97,7 +97,7 @@
   <class id="11" language="java" name="com.doubleu.email.contorller.EmailMainController" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/contorller/EmailMainController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="369" width="562" x="1243" y="-127"/>    
+    <position height="-1" width="-1" x="1578" y="465"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -106,7 +106,7 @@
   </class>  
   <class id="12" language="java" name="com.doubleu.email.service.EmailUploadService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/service/EmailUploadService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="330" x="1568" y="840"/>    
+    <position height="-1" width="-1" x="1620" y="-54"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -134,7 +134,7 @@
   <class id="15" language="java" name="com.doubleu.email.service.SelectMoveFolderService" project="doubleu" 
     file="/doubleu/src/main/java/com/doubleu/email/service/SelectMoveFolderService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="99" width="288" x="553" y="840"/>    
+    <position height="-1" width="-1" x="407" y="994"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -142,117 +142,173 @@
     </display>  
   </class>  
   <association id="16">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="17" name="dao">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="19">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="17" name="attFileList"/>      
-      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+      <attribute id="20" name="attFileList">        
+        <position height="0" width="0" x="976" y="-1783"/>      
+      </attribute>      
+      <multiplicity id="21" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="976" y="-1783"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="20" name="dao"/>      
-      <multiplicity id="21" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="22">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="23" name="emailMoveService"/>      
-      <multiplicity id="24" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="23" name="vo">        
+        <position height="0" width="0" x="352" y="-919"/>      
+      </attribute>      
+      <multiplicity id="24" minimum="0" maximum="1">        
+        <position height="0" width="0" x="352" y="-919"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="25">    
-    <bendpoint x="1212" y="840"/>    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="26" name="DaoService"/>      
-      <multiplicity id="27" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="28">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="29" name="dao"/>      
-      <multiplicity id="30" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="31">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="32" name="mapper"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="34">    
-    <bendpoint x="871" y="840"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="35" name="DaoService"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="37">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="38" name="emailReveiverService"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
+      <attribute id="26" name="emailReveiverService">        
+        <position height="0" width="0" x="-101" y="-940"/>      
+      </attribute>      
+      <multiplicity id="27" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-101" y="-940"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="29" name="selectService">        
+        <position height="0" width="0" x="-21" y="-444"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-21" y="-444"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="32" name="FileUpLoadService">        
+        <position height="0" width="0" x="-113" y="-952"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-113" y="-952"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="35" name="mapper">        
+        <position height="0" width="0" x="15" y="-944"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="0" width="0" x="15" y="-944"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="38" name="dao">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="1">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="40">    
     <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="41" name="DaoService"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
+      <attribute id="41" name="DaoService">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </attribute>      
+      <multiplicity id="42" minimum="0" maximum="1">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="43">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="44" name="selectService"/>      
-      <multiplicity id="45" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="46">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="47" name="emailReadList"/>      
-      <multiplicity id="48" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="50" name="FileUpLoadService"/>      
-      <multiplicity id="51" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="53" name="emailRevList"/>      
-      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
+      <attribute id="44" name="emailRevList">        
+        <position height="0" width="0" x="706" y="-1423"/>      
+      </attribute>      
+      <multiplicity id="45" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="706" y="-1423"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="55">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="56" name="vo"/>      
-      <multiplicity id="57" minimum="0" maximum="1"/>    
+  <association id="46">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="47" name="emailMoveService">        
+        <position height="0" width="0" x="-290" y="105"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-290" y="105"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="50" name="emailReadList">        
+        <position height="0" width="0" x="352" y="-919"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="352" y="-919"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <bendpoint x="871" y="840"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="53" name="DaoService">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </attribute>      
+      <multiplicity id="54" minimum="0" maximum="1">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <bendpoint x="1212" y="840"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="56" name="DaoService">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </attribute>      
+      <multiplicity id="57" minimum="0" maximum="1">        
+        <position height="0" width="0" x="5" y="-906"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

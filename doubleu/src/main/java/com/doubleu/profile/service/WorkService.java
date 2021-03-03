@@ -95,4 +95,29 @@ public WorkVo endWork(int no) {
 		return vo;
 	}
 	
+<<<<<<< HEAD
+=======
+	public void changeTime(WorkVo vo) {
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		String date = time1.substring(0, 10);
+		String time2 = time1.substring(11, 19);
+		
+		
+		int hh = Integer.parseInt(time1.substring(11, 13));
+		int mm = Integer.parseInt(time1.substring(14, 16));
+		int ss = Integer.parseInt(time1.substring(17, 19));
+		
+		int shh= Integer.parseInt(vo.getWorkStart().substring(11, 13));
+		
+		// 1시간 = 60분 = 3600초
+		// hh*3600+ mm*60 + ss - 퇴근 hh*3600 + mm*60+ss = 시간
+		//
+		
+		System.out.println("@@@@@@@@@@@@@@     "+date+"     @@@@@@@@@@@@@@@@@@@@@@@@@@");
+		
+		System.out.println("셀렉트원 완료");
+	}
+>>>>>>> 4f23185afbacae16212416af2702fd49c5e1dee6
 }
