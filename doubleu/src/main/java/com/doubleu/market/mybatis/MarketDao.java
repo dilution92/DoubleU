@@ -47,22 +47,9 @@ public class MarketDao {
 				page.setTotListSize(totListSize);
 				page.pageCompute();
 
-				
-	//			List<MarketAttVo> attList = new ArrayList<>();
 
-//				attList = mapper.selectAttOne();
-//				//System.out.println("v: " + v);
-//				for (int i = 0; i < attList.size(); i++) {
-//					System.out.println(attList.get(i).getOriFile());
-//				}
-				//System.out.println("attlist: " + attList.get(0).getOriFile());
-				
 				list = mapper.select(page);
-//				for (int j = 0; j < list.size(); j++) {
-//					System.out.println(list.get(j).getMarketSubject());
-//					System.out.println(list.get(j).getOriFile());
-//					
-//				}
+
 				map.put("page", page);
 				map.put("list", list);
 				//map.put("attList", attList);
@@ -220,6 +207,39 @@ public class MarketDao {
 		}
 		return list;
 	}
+
+
+	public Map<String, Object> selectMine(MarketPage page) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<MarketVo> list = null;
+		try {
+			int totListSize = mapper.totListSizeMine(page);
+			page.setTotListSize(totListSize);
+			page.pageCompute();
+
+
+			list = mapper.selectMine(page);
+
+			map.put("page", page);
+			map.put("list", list);
+			//map.put("attList", attList);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			return map;
+		}
+	}
+
+
+	public int selectMineCnt(MarketPage page) {
+		int cnt = 0;
+		cnt = mapper.selectMineCnt(page);
+		System.out.println("검색글갯수 : " + cnt);
+		
+		return cnt;
+	}
+
+
 	
 	}
 

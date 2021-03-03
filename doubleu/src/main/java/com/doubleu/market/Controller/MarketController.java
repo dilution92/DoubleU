@@ -36,6 +36,7 @@ public class MarketController {
 		
 		String findStr = "";
 		String findType = "";
+		String dibUser = "";
 		String msg = "";
 		
 		if(page ==null || page.getNowPage()==0) {
@@ -48,17 +49,19 @@ public class MarketController {
 			findType = req.getParameter("findType");
 		}
 		
+		
 		System.out.println("findStr :" + findStr);
 		System.out.println("findType :" + findType);
 		page.setFindType(findType);
-		page.setFindStr(findStr);		
+		page.setFindStr(findStr);	
+		page.setMarketWriter(dibUser);
+		
+		
 		int cnt = dao.selectCount(page);
 		if (cnt == 0) {
 			 msg = "검색결과 없음";
 		}
 		
-		String dibUser = req.getParameter("dibUser");
-		System.out.println("selectuser:" + dibUser);
 		Map<String, Object> map = dao.select(page);
 		mv.addObject("dibUser", dibUser);
 
@@ -141,5 +144,38 @@ public class MarketController {
 		mv.setViewName("redirect:/marketIndex");
 		return mv;
 	}
+	
+	@RequestMapping(value="/marketSelectMine" , method= {RequestMethod.GET , RequestMethod.POST})
+	public ModelAndView marketSelectMine(HttpServletRequest req, MarketPage page) {
+		ModelAndView mv = new ModelAndView();
+		
+		String msg = "";
+		
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+		
+		
+		
+		String dibUser = req.getParameter("dibUser");
+		page.setMarketWriter(dibUser);
+		Map<String, Object> map = dao.selectMine(page);
+		
+		int cnt = dao.selectMineCnt(page);
+		if (cnt == 0) {
+			 msg = "작성한 글 없음";
+		}
+		
+		mv.addObject("dibUser", dibUser);
+
+		mv.addObject("list", map.get("list"));
+		mv.addObject("page", map.get("page"));
+		mv.addObject("cnt", cnt);
+		mv.addObject("msg", msg);
+		mv.setViewName("market/market_index");
+		
+		return mv;
+	}
+	
 	
 }

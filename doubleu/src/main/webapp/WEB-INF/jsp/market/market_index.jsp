@@ -25,6 +25,9 @@
 <link rel="stylesheet" href="/css/market/market.css">
 <!-- market javascript -->
 <script src='js/market/market.js'></script>
+<!-- favicon -->
+<link rel="shortcut icon" href="../images/w_icon.ico">
+<link rel="icon" href="w_icon.ico">
 </head>
 <body>
 
@@ -106,6 +109,7 @@
 			</div>
 			<input  type="hidden"value='${param.findStr}'name='findStr' >                                                                                 
 			<input  type="hidden"value='${param.findType}'name='findType' >                                                                                 
+			<input  type="hidden"value='${member.memberName}'name='marketWriter' >                                                                                 
 			
 			</form>
 			<!-- ========== -->
