@@ -16,8 +16,8 @@
 						<div class="card"  onclick="view(${vo.marketNo})">	
 							<div class="card-body">
 		<img src='images/market/${vo.oriFile}'class="card-img-top" alt="..." style="width:150px; height : 150px;">
-								<h5 class="card-title">${vo.marketSubject } </h5>
-								<p class="card-text">
+								<h5 class="card-title" style="font-weight:600;margin-top: 10px;text-align: center;">${vo.marketSubject } </h5>
+								<p class="card-text" style="text-align: center;margin-bottom: 40px;">
 								<c:choose>
 									<c:when test="${vo.marketPrice == '0' }">무료나눔</c:when>
 									<c:otherwise>
@@ -25,9 +25,12 @@
 									</c:otherwise>
 								</c:choose>
 								</p>
-								<p class="card-text">👁${vo.marketHit }
-								<p>
-								<p class="card-text-name">${vo.marketWriter}
+								<div style="display:flex;">
+									<p class="card-text" style="width:50px;">👁${vo.marketHit }
+									<p>
+									<p class="card-text-name" style="margin-left:70px;">${vo.marketWriter}
+								
+								</div>
 								<input type='hidden' class='marketNo' value='${vo.marketNo}'/>
 								<p>
 							</div>

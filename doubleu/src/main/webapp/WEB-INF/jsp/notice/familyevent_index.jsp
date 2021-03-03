@@ -70,7 +70,6 @@
 							<option selected>제목</option>
 							<option value="0">내용</option>
 							<option value="1">제목+내용</option>
-							<option value="2">작성자</option>
 						</select>
 					</div>
 				</div>

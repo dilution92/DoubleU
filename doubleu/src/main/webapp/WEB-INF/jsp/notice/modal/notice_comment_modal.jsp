@@ -15,7 +15,7 @@
 <!-- 댓글 Modal -->
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" style="margin-top:310px;">
       <div class="modal-header">
         <h5 class="modal-delete" id="exampleModal2">댓글 삭제</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

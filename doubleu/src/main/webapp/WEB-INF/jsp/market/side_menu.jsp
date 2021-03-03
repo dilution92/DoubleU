@@ -9,7 +9,7 @@
 <body>
 	<nav class="e-approval-lnb">
 			<div class="e-approval-lnb-content">
-				<h4>게시판</h4>
+				<h4><span><a href="marketIndex?dibUser=${member.memberName }" style="text-decoration:none; color:black;">더블마켓</a></span></h4>
 				<div class="e-approval-form-btn">
 <!-- 					<input type="button" class="btn btn-primary btn-lg"
 						data-toggle="modal" data-target="#exampleModal" value="글쓰기">
@@ -19,14 +19,8 @@
 				</div>
 	
 				<div class="e-approval-approval-list">
-					<span><a href="marketIndex?dibUser=${member.memberName }">더블마켓</a></span>
-					<!-- 
-					<ul>
-
-						<li><a href="#">나눠야하나</a></li>
-					
-					</ul>
-					 -->
+<%-- 					<span><a href="marketIndex?dibUser=${member.memberName }">더블마켓</a></span>
+ --%>				
 				</div>
 
 			</div>

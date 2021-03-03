@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.doubleu.approval.service.SelectOutgoingService;
 import com.doubleu.approval.service.SelectReceiverService;
 import com.doubleu.calender.service.CalenderService;
+import com.doubleu.calender.vo.CalenderVo;
 import com.doubleu.calender.vo.CalenderWeekList;
 import com.doubleu.email.mybatis.EmailDao;
 import com.doubleu.email.service.SelectSerivce;
@@ -125,16 +126,17 @@ public class loginMainController {
          List<FamilyeventVo> contentList = familyeventService.select();
          mv.addObject("contentList", contentList);
          
-           // 일정
-           List<CalenderWeekList> list = new ArrayList<>();
-           list = calender.setMonthCalender(session);
-         int year = calender.getYear();
-         int month = calender.getMonth();
-         int day = calender.getDay();
-         mv.addObject("currentYear", year);
-         mv.addObject("currentMonth", month);
-         mv.addObject("currentDay", day);
-         mv.addObject("calender",list);
+         // 일정
+         List<CalenderWeekList> list = new ArrayList<>();
+         list = calender.setMonthCalender(session);
+       int year = calender.getYear();
+       int month = calender.getMonth();
+       int day = calender.getDay();
+       mv.addObject("currentYear", year);
+       mv.addObject("currentMonth", month);
+       mv.addObject("currentDay", day);
+       mv.addObject("calender",list);
+
       }
         return mv;
    }
@@ -154,4 +156,8 @@ public class loginMainController {
       mv.setViewName("redirect:/login");
       return mv;
    }
+
 }
+
+}
+
