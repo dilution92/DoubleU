@@ -46,7 +46,7 @@
             <input type="button" class="btn btn-primary" onclick="location.href='/CalenderDayDiff?diff=1'" value="다음">
             <input type="button" class="btn btn-primary" onclick="location.href='/CalenderDayToday'" value="오늘">
         </div>
-        <div style="position: absolute; left: 53rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
+        <div style="position: absolute; left: 48rem;" id="calender_main_top_header"> <!-- 중앙 이름 -->
             <input type="number" id="year" class="form-control" value="${currentYear }" style="width:100px; display:initial;">
             <input type="hidden" id="monthcome" value="${currentMonth }">
             <input type="hidden" id="daycome" value="${currentDay }">
