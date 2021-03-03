@@ -55,7 +55,7 @@ public class MarketUrlController {
 		page.setFindStr(findStr);
 		Map<String, Object> map = dao.select(page);
 		
-		int cnt = dao.totalCount();
+		int cnt = dao.selectCount(page);
 		
 		
 		String dibUser = req.getParameter("dibUser");
@@ -69,6 +69,7 @@ public class MarketUrlController {
 		String msg = dao.updateHit(vo);
 		System.out.println(msg);
 		
+		mv.addObject("dibUser", dibUser);
 		mv.addObject("marketlist", dMap.get("list"));
 		mv.addObject("list", map.get("list"));
 		mv.addObject("page", map.get("page"));
@@ -81,9 +82,11 @@ public class MarketUrlController {
 	
 	// market_price_range.jsp
 	@RequestMapping(value="/marketPriceRange", method=RequestMethod.GET)
-	public ModelAndView marketPriceRange() {
+	public ModelAndView marketPriceRange(HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView();
-		
+		String dibUser = req.getParameter("dibUser");
+		mv.addObject("dibUser", dibUser);
+
 		mv.setViewName("market/market_price_range");
 		
 		return mv;
@@ -102,12 +105,26 @@ public class MarketUrlController {
 	
 	// market_view.jsp
 	@RequestMapping(value="/marketView", method={RequestMethod.GET , RequestMethod.POST})
-	public ModelAndView marketView(@RequestParam("dibUser") String dibUser,
+	public ModelAndView marketView(HttpServletRequest req,@RequestParam("dibUser") String dibUser,
 			MarketDibVo dibvo,MarketVo v, MarketPage page, MarketReplVo rvo) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("marketNo: " + v.getMarketNo());
 		MarketVo vo = dao.view(v.getMarketNo());
 		
+		String findStr = "";
+		String findType = "";
+		
+		System.out.println("nowpage1: " + page.getNowPage());
+		if(page ==null || page.getNowPage()==0) {
+			page.setNowPage(1);
+		}
+		if(req.getParameter("findStr") != null) {
+			findStr = req.getParameter("findStr");
+		}
+		if(req.getParameter("findType") != null) {
+			findType = req.getParameter("findType");
+		}
+		System.out.println("nowpage:" + page.getNowPage());
 		int hitCnt = vo.getMarketHit();
 		hitCnt = hitCnt+1;
 		vo.setMarketHit(hitCnt);
