@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.doubleu.login.vo.LoginVo;
+import com.doubleu.member.vo.MemberVo;
 import com.doubleu.profile.service.ProfileService;
 import com.doubleu.profile.service.WorkService;
 import com.doubleu.profile.vo.ProfileVo;
@@ -43,6 +44,42 @@ public class ProfileController {
 		List<WorkVo> contentList2 = service2.selectWork();
 		model.addAttribute("contentList2", contentList2);
 		mv.setViewName("member/workIndex");
+		return mv;
+	}
+	
+	@RequestMapping(value="selectWork1",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView selectWork1() {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 시작");
+		List<WorkVo> contentList2 = service2.selectWork1();
+		System.out.println("@@@@list"+contentList2);
+		mv.addObject("contentList2", contentList2);
+		System.out.println("부서검색 컨트롤러 끝");
+		mv.setViewName("/member/workStatus");
+		return mv;
+	}
+	
+	@RequestMapping(value="selectWork2",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView selectWork2() {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 시작");
+		List<WorkVo> contentList2 = service2.selectWork2();
+		System.out.println("@@@@list"+contentList2);
+		mv.addObject("contentList2", contentList2);
+		System.out.println("부서검색 컨트롤러 끝");
+		mv.setViewName("/member/workStatus");
+		return mv;
+	}
+	
+	@RequestMapping(value="selectWork3",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView selectWork3() {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 시작");
+		List<WorkVo> contentList2 = service2.selectWork3();
+		System.out.println("@@@@list"+contentList2);
+		mv.addObject("contentList2", contentList2);
+		System.out.println("부서검색 컨트롤러 끝");
+		mv.setViewName("/member/workStatus");
 		return mv;
 	}
 	

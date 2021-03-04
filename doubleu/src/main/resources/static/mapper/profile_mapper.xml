@@ -66,6 +66,15 @@
 	<!-- <select id="selectPlus" parameterType="int" resultType="int">
 		<![CDATA[ select MOD(to_date(work_finish,'DDHH24MI') -TO_DATE(work_start,'YYYYMMDDHH24MI'),1)*24from dual  where member_no = #{_parameter} ; ]]>
 	</select> -->
+	<select id="selectWork1" resultMap="selectWorkData">
+	<![CDATA[SELECT * FROM work where work_date like '2021-01-%']]>
+	</select>
+	<select id="selectWork2" resultMap="selectWorkData">
+		<![CDATA[SELECT * FROM work where work_date like '2021-02-%']]>
+	</select>
+	<select id="selectWork3" resultMap="selectWorkData">
+		<![CDATA[SELECT * FROM work where work_date like '2021-03-%']]>
+	</select>
 	<resultMap id="selectWorkData" type="com.doubleu.profile.vo.WorkVo">
  
 	<result property="workNo" column="work_no" /> 

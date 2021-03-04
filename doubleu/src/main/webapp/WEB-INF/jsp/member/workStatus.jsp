@@ -62,11 +62,11 @@
 							<input class="btn btn-outline-primary btn-sm" type="button" value="검색" />
 							<input class="form-control form-control-sm" type="text" placeholder="Search" aria-label="Search" id="approvalFindStr">
 								
-							<select	class="form-control form-control-sm e-approval-select-box">
+							<select	class="form-control form-control-sm e-approval-select-box"  onChange="location.href=this.value">
 								<option selected>월 선택</option>
-								<option value="0">1월</option>
-								<option value="1">2월</option>
-								<option value="0">3월</option>
+								<option value="selectWork1">1월</option>
+								<option value="selectWork2">2월</option>
+								<option value="selectWork3">3월</option>
 							</select>
 						</div>
 					</form>
