@@ -9,15 +9,18 @@
 
 </head>
 <body>
-		<h3 style="width: 200px; height: 30px;">더블마켓</h3>
+		<h3 style="width: 120px; height: 30px;">더블마켓</h3>
 
 				<!-- 찜목록 -->
-					<form class="market-search-form" action="" name="frm_market" method="post" style="display:flex;">
+					<form class="market-search-form" action="/marketSelectMine?dibUser=${member.memberName }" name="frm_market" method="post" style="display:flex;">
 				<input class="btn btn-outline-primary btn-sm market-dib" type="button" onclick="godib('${member.memberName}')" value="찜목록"
 				   data-toggle="modal" data-target="#dibModal"/>
 				<!-- 시세확인 -->
 				<input class="btn btn-outline-primary btn-sm market-dib" 
 				onClick="location.href='marketPriceRange'" type="button" value="시세확인" />
+				<!-- 내글 -->
+				<input class="btn btn-outline-primary btn-sm market-dib" 
+				 type="submit" value="판매내역" />
 				<!-- 전자결재홈 검색바 code -->
 				<div class="market-search-bar">
 						<div class="market-search-form-box" style="display:flex;margin-top:10px;">
@@ -37,6 +40,7 @@
 							<input type='hidden' name='marketNo'  value=''/>
 							<input type='hidden' name='dibUser'  value='${member.memberName }'/>
 							<input type='hidden' name='nowPage'  value='${page.nowPage}'/>
+							<input type='hidden' name='marketWriter'  value='${member.memberName}'/>
 							
 							
 						</div>

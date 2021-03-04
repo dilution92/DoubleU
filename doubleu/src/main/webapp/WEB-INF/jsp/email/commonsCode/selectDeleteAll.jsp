@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%--email_index.jsp --%>
+
+<%--휴지통--%>
 <ul class="email-select-list">
 	<li>
 		<label class="btn btn-outline-primary btn-sm">
@@ -13,7 +13,7 @@
       	data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
      </li>
      <li>
-           <span class="btn btn-outline-primary btn-sm" id="emailSendBtn">답장하기</span>
+           <span class="btn btn-outline-primary btn-sm" onclick="replyMail()" id="emailSendBtn">답장하기</span>
       </li>
 
       <li>
@@ -22,7 +22,7 @@
       </li>
 
       <li>
-          <span class="btn btn-outline-primary btn-sm" id="emailPassBtn">전달하기</span>
+          <span class="btn btn-outline-primary btn-sm" onclick="transMail()" id="emailPassBtn">전달하기</span>
       </li>
 
       <li>
@@ -137,5 +137,70 @@ var sendTempEmail = function() {
 
 	frm.action = "/selectTempMailBtn"
 	frm.submit();
+}
+
+//답장하기
+var replyMail = function() {
+	$("#emailSendBtn").click( function(){ 
+        if($(".chkBoxClass").is(":checked") == false){
+            swal("메일을 선택해주세요.")
+            return false;
+        }
+
+        var valueArr = new Array();
+    	var list = $('input:checkbox[name=chkBox]')
+    	
+    	for(var i=0; i<list.length; i++) {
+    		if(list[i].checked) {
+    			valueArr.push(list[i].value);
+    			
+    		};
+    		
+    	}
+
+    	
+    	var frm = document.emailForm;
+    	var deleteList = frm.deleteBtnList;
+
+    	deleteList.value = valueArr;
+
+    	console.log(deleteList.value);
+    	frm.action = "/ReplyWrite"
+    	frm.submit();
+ });
+	
+}
+
+// 전달하기
+var transMail = function() {
+
+	$("#emailPassBtn").click( function(){ 
+        if($(".chkBoxClass").is(":checked") == false){
+            swal("메일을 선택해주세요.")
+            return false;
+        }
+        
+        var valueArr = new Array();
+    	var list = $('input:checkbox[name=chkBox]')
+    	
+    	for(var i=0; i<list.length; i++) {
+    		if(list[i].checked) {
+    			valueArr.push(list[i].value);
+    			
+    		};
+    		
+    	}
+
+    	
+    	var frm = document.emailForm;
+    	var deleteList = frm.deleteBtnList;
+
+    	deleteList.value = valueArr;
+
+    	console.log(deleteList.value);
+    	frm.action = "/transWrite"
+    	frm.submit();
+ });
+	
 }
 </script>

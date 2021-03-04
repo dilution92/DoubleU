@@ -250,4 +250,11 @@ public class EmailDao {
 		return FindStrList;
 	}
 
+
+	public EmailMainVo replyWriteMail(int emailNo) {
+		
+		EmailMainVo vo = mapper.replyWriteMail(emailNo);
+		return  vo;
+	}
+
 }

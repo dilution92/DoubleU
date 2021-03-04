@@ -4,7 +4,28 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="com.doubleu.market.mybatis.MarketMapper">
-
+<!-- 판매내역 -->
+	<select id="selectMine" resultType="com.doubleu.market.vo.MarketVo" parameterType="com.doubleu.market.vo.MarketPage"
+	resultMap="marketList">
+	select * from (
+  			select rownum no, m.* from (  
+					select * from market mk join market_files att on mk.market_no=att.market_no
+				 	where files_main = 1 and market_writer = #{marketWriter}
+				 	 order by mk.market_date desc ) m   
+				 	) where no between #{startNo} and #{endNo}
+	</select>
+	
+	<select id="selectMineCnt" resultType="int" parameterType="com.doubleu.market.vo.MarketPage">
+	select count(*) 
+    from market mk join market_files mf  on mk.market_no = mf.market_no
+    where mf.files_main = 1 and market_writer = #{marketWriter} 
+	</select>
+	
+	<select id="totListSizeMine" resultType='int' parameterType="com.doubleu.market.vo.MarketPage">
+		select count(mk.market_no) 
+         from market mk join market_files mf  on mk.market_no = mf.market_no
+         where mf.files_main = 1 and market_writer = #{marketWriter} 
+	</select>
 <!-- 조회수 -->
 
 	<update id="updateHit" parameterType="com.doubleu.market.vo.MarketVo" >

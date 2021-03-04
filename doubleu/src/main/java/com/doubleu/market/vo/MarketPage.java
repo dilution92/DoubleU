@@ -14,8 +14,15 @@ public class MarketPage {
 	
 	String findStr;
 	String findType;
+	String marketWriter;
 	
-
+	
+	public String getMarketWriter() {
+		return marketWriter;
+	}
+	public void setMarketWriter(String marketWriter) {
+		this.marketWriter = marketWriter;
+	}
 	public String getFindType() {
 		return findType;
 	}

@@ -118,6 +118,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE member_team LIKE '%${findStr}%'
 	</select>
 	
+	<!-- 답장하기 -->
+	<select id="replyWriteMail" parameterType="int" resultMap="getEmailListSelect">
+	SELECT * from EMAIL
+		WHERE email_no = ${parameter}
+	</select>
+	
 	<!-- insert -->
 	<insert id='insertSendWrite' parameterType="com.doubleu.email.vo.EmailMainVo">
 		INSERT ALL

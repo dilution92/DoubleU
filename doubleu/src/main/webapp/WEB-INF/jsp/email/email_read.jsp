@@ -104,10 +104,11 @@
 
 	
 		<!-- 메일 검색바 code -->
-		
 			<div class="e-approval-search-bar">
 	      		<form class="e-approval-search-form" action="" name="frm" method="post">
-	      			
+	      			<c:forEach var="list" items="${selectRead }">
+	      			<input type="hidden" name="deleteBtnList" value="${list.emailNo }" />
+	      			</c:forEach>
 			      	<div class="e-approval-form-box">
 			      		<span>메일함</span>
 					</div>
@@ -120,7 +121,7 @@
                      	<span class="btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#spamEmailRev">스팸차단</span>
                     </li>
                     <li>
-                          <span class="btn btn-outline-primary btn-sm">답장하기</span>
+                          <span class="btn btn-outline-primary btn-sm" onclick="replyMail()">답장하기</span>
                      </li>
 
                      <li>
@@ -128,7 +129,7 @@
                      </li>
 
                      <li>
-                         <span class="btn btn-outline-primary btn-sm">전달하기</span>
+                         <span class="btn btn-outline-primary btn-sm" onclick="transMail()">전달하기</span>
                      </li>
 
 				</ul>
@@ -250,6 +251,29 @@ readBtn();
 // 읽음 버튼을 눌렀을 때 아이콘 변경 
 changeChkReadBtn();
 
+
+//답장하기
+var replyMail = function() {
+	
+	var frm = document.frm;
+
+	
+	console.log(frm.deleteBtnList.value);
+
+	frm.action = "/ReplyWrite"
+	frm.submit();
+}
+
+// 전달하기
+var transMail = function() {
+
+
+var frm = document.frm;
+	console.log(frm.deleteBtnList.value);
+
+	frm.action = "/transWrite"
+	frm.submit();
+}
 
 </script>
 	

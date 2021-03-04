@@ -30,6 +30,9 @@ public interface MarketMapper {
 	public int deleteAttNo(int marketNo);
 	public int updateHit(MarketVo vo);
 	public List<MarketVo> selectMarketMain();
+	public List<MarketVo> selectMine(MarketPage page);
+	public int selectMineCnt(MarketPage page);
+	public int totListSizeMine(MarketPage page);
 
 
 }
