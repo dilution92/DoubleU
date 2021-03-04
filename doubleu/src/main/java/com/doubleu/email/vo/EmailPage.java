@@ -14,7 +14,7 @@ public class EmailPage {
 	int startNo;
 	int endNo; 
 	int nowPage;
-	int listSize = 8;
+	int listSize = 15;
 	int blockSize = 3;
 	
 	

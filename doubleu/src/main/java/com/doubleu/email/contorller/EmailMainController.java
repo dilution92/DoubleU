@@ -177,7 +177,7 @@ public class EmailMainController {
 			) {
 
 		ModelAndView mv = new ModelAndView();
-
+		
 		loginVo = (LoginVo) session.getAttribute("member");	
 		String memberMid = loginVo.getMemberMid();
 		int memberNo = loginVo.getMemberNo();
@@ -457,7 +457,7 @@ public class EmailMainController {
 	}
 	
 	// 휴지통
-	@RequestMapping(value="/emailThash", method=RequestMethod.GET)
+	@RequestMapping(value="/emailThash", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailThash(
 			EmailMainVo vo,
 			LoginVo loginVo,
@@ -484,7 +484,7 @@ public class EmailMainController {
 	}
 	
 	// email_spam.jsp
-	@RequestMapping(value="/emailSpam", method=RequestMethod.GET)
+	@RequestMapping(value="/emailSpam", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView emailSpam(
 			EmailMainVo vo,
 			LoginVo loginVo,
@@ -509,6 +509,7 @@ public class EmailMainController {
 
 		return mv;
 	}
+	
 	
 	// email_important.jsp
 		@RequestMapping(value="/emailImportant", method={RequestMethod.GET, RequestMethod.POST})

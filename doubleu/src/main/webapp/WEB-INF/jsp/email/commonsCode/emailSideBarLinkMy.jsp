@@ -9,7 +9,6 @@
 <body>
 <ul>
 	<li><a href="/emailKeepOne">NOTES</a></li>
-	<li><a href="/emailKeepTwo">보관함</a></li>
 </ul>
 </body>
 </html>

@@ -161,7 +161,7 @@
 
 								<c:forEach begin="0" end="0">
 								<!-- 받는 사람 input -->
-								<input type="text" style="background-color: #f8f9fa; border:none;"
+								<input type="text" name="emailReceiverAddress" style="background-color: #f8f9fa; border:none;"
 								value="${reply.emailAddress }">
 								</c:forEach>
 								

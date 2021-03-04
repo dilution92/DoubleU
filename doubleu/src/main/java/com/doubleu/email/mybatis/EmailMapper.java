@@ -62,4 +62,7 @@ public interface EmailMapper {
 
 	public EmailMainVo replyWriteMail(int emailNo);
 
+
+	public int spamAllDelBtn(EmailMainVo vo);
+
 }

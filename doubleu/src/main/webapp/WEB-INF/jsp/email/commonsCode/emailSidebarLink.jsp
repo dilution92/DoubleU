@@ -16,7 +16,10 @@
 	<li><a href="/emailTempList">임시 보관함</a></li>
 	<li><a href="/emailEmailT">보낸 메일함</a></li>
 	<li><a href="/emailSpam">스팸 메일함</a> <button type="button" id="deleteSpam" style="font-size:10px;"class="btn btn-primary btn-sm">비우기</button></li>
-	<li><a href="/emailThash">휴지통</a> <button type="button" id="deleteThash" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
+	<li><a href="/emailThash">휴지통</a> <button  type="button" id="deleteThash" style="font-size:10px;" class="btn btn-primary btn-sm">비우기</button></li>
 </ul>
 </body>
+<script>
+
+</script>
 </html>

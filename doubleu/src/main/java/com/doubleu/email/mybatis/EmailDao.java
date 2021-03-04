@@ -257,4 +257,11 @@ public class EmailDao {
 		return  vo;
 	}
 
+
+	public int spamAllDelBtn(EmailMainVo vo) {
+		
+		int cnt = mapper.spamAllDelBtn(vo);
+		return cnt;
+	}
+
 }
