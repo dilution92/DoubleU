@@ -26,7 +26,7 @@
                         <li><a href="#">영업기획팀</a>
                             <ul>
                                 <li><a href="#">영업1팀</a></li>
-                                <li><a href="#">영업2팀</a></li>
+                                <li><a href="#">영업2팀</a></li>*
                             </ul>
                         </li>
                         <li><a href="#">영업지원팀</a></li>
@@ -34,7 +34,7 @@
                   </li>
                   <li><a href="memberIT">it기술부</a>
                     <ul>
-                        <li><a href="#">개발팀</a>
+                        <li><a href="memberDevelop">개발팀</a>
                         <ul>
                                 <li><a href="#">시스템개발팀</a></li>
                                 <li><a href="#">웹개발팀</a></li>

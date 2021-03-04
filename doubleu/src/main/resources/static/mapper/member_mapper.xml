@@ -15,6 +15,11 @@
 	<select id="selectIT" resultMap="selectProfileData">
 		<![CDATA[SELECT * FROM member where member_department like 'IT기술부']]>
 	</select>
+	
+	<select id="selectDevelop" resultMap="selectProfileData">
+		<![CDATA[SELECT * FROM member where member_team like '개발팀']]>
+	</select>
+	
 	<resultMap id="selectProfileData" type="com.doubleu.member.vo.MemberVo">
  
 	<result property="memberNo" column="member_no" /> 

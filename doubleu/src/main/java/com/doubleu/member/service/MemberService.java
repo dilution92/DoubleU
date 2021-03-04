@@ -33,6 +33,10 @@ public class MemberService {
 	public List<MemberVo> selectIT() {
 		return mapper.selectIT();
 	}
+	
+	public List<MemberVo> selectDevelop() {
+		return mapper.selectDevelop();
+	}
 }
 
 

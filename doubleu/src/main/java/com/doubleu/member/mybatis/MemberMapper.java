@@ -17,4 +17,5 @@ public interface MemberMapper {
 	public List<MemberVo> selectManage(); 
 	public List<MemberVo> selectBusiness();
 	public List<MemberVo> selectIT();
+	public List<MemberVo> selectDevelop();
 }
