@@ -34,7 +34,7 @@
                   </li>
                   <li><a href="memberIT">it기술부</a>
                     <ul>
-                        <li><a href="#">개발팀</a>
+                        <li><a href="memberDevelop">개발팀</a>
                         <ul>
                                 <li><a href="#">시스템개발팀</a></li>
                                 <li><a href="#">웹개발팀</a></li>

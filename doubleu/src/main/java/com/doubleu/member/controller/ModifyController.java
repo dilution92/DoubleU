@@ -84,5 +84,17 @@ public class ModifyController {
 		mv.setViewName("member/profile_index");
 		return mv;
 	}
+	
+	@RequestMapping(value="/memberDevelop",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView memberDevelop() {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("컨트롤러 시작");
+		List<MemberVo> list = memberService.selectDevelop();
+		System.out.println("@@@@list"+list);
+		mv.addObject("contentList1", list);
+		System.out.println("부서검색 컨트롤러 끝");
+		mv.setViewName("member/profile_index");
+		return mv;
+	}
 }
 

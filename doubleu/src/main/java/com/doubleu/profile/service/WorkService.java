@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.doubleu.member.vo.MemberVo;
 import com.doubleu.profile.mybatis.ProfileMapper;
 import com.doubleu.profile.vo.WorkVo;
 
@@ -93,5 +94,17 @@ public WorkVo endWork(int no) {
 	public WorkVo selectMain(int no) {
 		WorkVo vo = mapper.selectMain(no);
 		return vo;
+	}
+	
+	public List<WorkVo> selectWork1() {
+		return mapper.selectWork1();
+	}
+	
+	public List<WorkVo> selectWork2() {
+		return mapper.selectWork2();
+	}
+	
+	public List<WorkVo> selectWork3() {
+		return mapper.selectWork3();
 	}
 }
