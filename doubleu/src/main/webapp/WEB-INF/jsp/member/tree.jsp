@@ -26,7 +26,7 @@
                         <li><a href="#">영업기획팀</a>
                             <ul>
                                 <li><a href="#">영업1팀</a></li>
-                                <li><a href="#">영업2팀</a></li>*
+                                <li><a href="#">영업2팀</a></li>
                             </ul>
                         </li>
                         <li><a href="#">영업지원팀</a></li>
