@@ -64,7 +64,7 @@
 						</tbody>
 					</table>
 					<div class="main-go-page">
-						<a href="#">자세히 보기</a>
+						<a href="/approvalIndex?memberNo=${member.memberName }">자세히 보기</a>
 					</div>
 			  	</div>
 			 	 <div class="tab-pane fade" id="receiverApproval" role="tabpanel" aria-labelledby="receiverApproval-tab">
@@ -108,7 +108,7 @@
 						</tbody>
 					</table>
 					<div class="main-go-page">
-						<a href="#">자세히 보기</a>
+						<a href="/approvalIndex?memberNo=${member.memberName }">자세히 보기</a>
 					</div>
 			 	 </div>
 			</div>
